@@ -38,12 +38,12 @@ MrconvertVariousFileParameters = typing.TypedDict('MrconvertVariousFileParameter
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
-MrconvertVariousStringParameters_ = typing.TypedDict('MrconvertVariousStringParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousString"],
+MrconvertVariousString1Parameters = typing.TypedDict('MrconvertVariousString1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
-MrconvertVariousFileParameters_ = typing.TypedDict('MrconvertVariousFileParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousFile"],
+MrconvertVariousFile1Parameters = typing.TypedDict('MrconvertVariousFile1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
 MrconvertFslgradParameters = typing.TypedDict('MrconvertFslgradParameters', {
@@ -83,7 +83,7 @@ MrconvertParameters = typing.TypedDict('MrconvertParameters', {
     "set_property": typing.NotRequired[list[MrconvertSetPropertyParameters] | None],
     "append_property": typing.NotRequired[list[MrconvertAppendPropertyParameters] | None],
     "copy_properties": typing.NotRequired[typing.Union[MrconvertVariousStringParameters, MrconvertVariousFileParameters] | None],
-    "strides": typing.NotRequired[typing.Union[MrconvertVariousStringParameters_, MrconvertVariousFileParameters_] | None],
+    "strides": typing.NotRequired[typing.Union[MrconvertVariousString1Parameters, MrconvertVariousFile1Parameters] | None],
     "datatype": typing.NotRequired[str | None],
     "grad": typing.NotRequired[InputPathType | None],
     "fslgrad": typing.NotRequired[MrconvertFslgradParameters | None],
@@ -126,8 +126,8 @@ def dyn_cargs(
         "append_property": mrconvert_append_property_cargs,
         "VariousString": mrconvert_various_string_cargs,
         "VariousFile": mrconvert_various_file_cargs,
-        "VariousString": mrconvert_various_string_cargs_,
-        "VariousFile": mrconvert_various_file_cargs_,
+        "VariousString_1": mrconvert_various_string_1_cargs,
+        "VariousFile_1": mrconvert_various_file_1_cargs,
         "fslgrad": mrconvert_fslgrad_cargs,
         "export_grad_fsl": mrconvert_export_grad_fsl_cargs,
         "import_pe_eddy": mrconvert_import_pe_eddy_cargs,
@@ -394,9 +394,9 @@ def mrconvert_various_file_cargs(
     return cargs
 
 
-def mrconvert_various_string_params_(
+def mrconvert_various_string_1_params(
     obj: str,
-) -> MrconvertVariousStringParameters_:
+) -> MrconvertVariousString1Parameters:
     """
     Build parameters.
     
@@ -406,14 +406,14 @@ def mrconvert_various_string_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousString",
+        "__STYXTYPE__": "VariousString_1",
         "obj": obj,
     }
     return params
 
 
-def mrconvert_various_string_cargs_(
-    params: MrconvertVariousStringParameters_,
+def mrconvert_various_string_1_cargs(
+    params: MrconvertVariousString1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -430,9 +430,9 @@ def mrconvert_various_string_cargs_(
     return cargs
 
 
-def mrconvert_various_file_params_(
+def mrconvert_various_file_1_params(
     obj: InputPathType,
-) -> MrconvertVariousFileParameters_:
+) -> MrconvertVariousFile1Parameters:
     """
     Build parameters.
     
@@ -442,14 +442,14 @@ def mrconvert_various_file_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousFile",
+        "__STYXTYPE__": "VariousFile_1",
         "obj": obj,
     }
     return params
 
 
-def mrconvert_various_file_cargs_(
-    params: MrconvertVariousFileParameters_,
+def mrconvert_various_file_1_cargs(
+    params: MrconvertVariousFile1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -786,7 +786,7 @@ def mrconvert_params(
     set_property: list[MrconvertSetPropertyParameters] | None = None,
     append_property: list[MrconvertAppendPropertyParameters] | None = None,
     copy_properties: typing.Union[MrconvertVariousStringParameters, MrconvertVariousFileParameters] | None = None,
-    strides: typing.Union[MrconvertVariousStringParameters_, MrconvertVariousFileParameters_] | None = None,
+    strides: typing.Union[MrconvertVariousString1Parameters, MrconvertVariousFile1Parameters] | None = None,
     datatype: str | None = None,
     grad: InputPathType | None = None,
     fslgrad: MrconvertFslgradParameters | None = None,
@@ -1170,7 +1170,7 @@ def mrconvert(
     set_property: list[MrconvertSetPropertyParameters] | None = None,
     append_property: list[MrconvertAppendPropertyParameters] | None = None,
     copy_properties: typing.Union[MrconvertVariousStringParameters, MrconvertVariousFileParameters] | None = None,
-    strides: typing.Union[MrconvertVariousStringParameters_, MrconvertVariousFileParameters_] | None = None,
+    strides: typing.Union[MrconvertVariousString1Parameters, MrconvertVariousFile1Parameters] | None = None,
     datatype: str | None = None,
     grad: InputPathType | None = None,
     fslgrad: MrconvertFslgradParameters | None = None,
@@ -1340,10 +1340,10 @@ __all__ = [
     "MrconvertOutputs",
     "MrconvertParameters",
     "MrconvertSetPropertyParameters",
+    "MrconvertVariousFile1Parameters",
     "MrconvertVariousFileParameters",
-    "MrconvertVariousFileParameters_",
+    "MrconvertVariousString1Parameters",
     "MrconvertVariousStringParameters",
-    "MrconvertVariousStringParameters_",
     "mrconvert",
     "mrconvert_append_property_params",
     "mrconvert_clear_property_params",
@@ -1355,8 +1355,8 @@ __all__ = [
     "mrconvert_import_pe_eddy_params",
     "mrconvert_params",
     "mrconvert_set_property_params",
+    "mrconvert_various_file_1_params",
     "mrconvert_various_file_params",
-    "mrconvert_various_file_params_",
+    "mrconvert_various_string_1_params",
     "mrconvert_various_string_params",
-    "mrconvert_various_string_params_",
 ]

@@ -48,7 +48,7 @@ FabberParameters = typing.TypedDict('FabberParameters', {
     "list_params": bool,
     "desc_params": bool,
     "list_outputs": bool,
-    "optfile": typing.NotRequired[InputPathType | None],
+    "optfile_1": typing.NotRequired[InputPathType | None],
     "old_optfile": typing.NotRequired[InputPathType | None],
 })
 
@@ -153,7 +153,7 @@ def fabber_params(
     list_params: bool = False,
     desc_params: bool = False,
     list_outputs: bool = False,
-    optfile_: InputPathType | None = None,
+    optfile_1: InputPathType | None = None,
     old_optfile: InputPathType | None = None,
 ) -> FabberParameters:
     """
@@ -213,7 +213,7 @@ def fabber_params(
             models provide parameter descriptions.
         list_outputs: List additional model outputs (requires model\
             configuration options to be given).
-        optfile_: Read options in option=value form from the specified file.
+        optfile_1: Read options in option=value form from the specified file.
         old_optfile: Read options in command line form from the specified file\
             (DEPRECATED).
     Returns:
@@ -267,8 +267,8 @@ def fabber_params(
         params["load_models"] = load_models
     if optfile is not None:
         params["optfile"] = optfile
-    if optfile_ is not None:
-        params["optfile"] = optfile_
+    if optfile_1 is not None:
+        params["optfile_1"] = optfile_1
     if old_optfile is not None:
         params["old_optfile"] = old_optfile
     return params
@@ -397,10 +397,10 @@ def fabber_cargs(
         cargs.append("--descparams")
     if params.get("list_outputs"):
         cargs.append("--listoutputs")
-    if params.get("optfile") is not None:
+    if params.get("optfile_1") is not None:
         cargs.extend([
             "-f",
-            execution.input_file(params.get("optfile"))
+            execution.input_file(params.get("optfile_1"))
         ])
     if params.get("old_optfile") is not None:
         cargs.extend([
@@ -500,7 +500,7 @@ def fabber(
     list_params: bool = False,
     desc_params: bool = False,
     list_outputs: bool = False,
-    optfile_: InputPathType | None = None,
+    optfile_1: InputPathType | None = None,
     old_optfile: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> FabberOutputs:
@@ -565,7 +565,7 @@ def fabber(
             models provide parameter descriptions.
         list_outputs: List additional model outputs (requires model\
             configuration options to be given).
-        optfile_: Read options in option=value form from the specified file.
+        optfile_1: Read options in option=value form from the specified file.
         old_optfile: Read options in command line form from the specified file\
             (DEPRECATED).
         runner: Command runner.
@@ -574,7 +574,7 @@ def fabber(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_METADATA)
-    params = fabber_params(output=output, method=method, model=model, data_file=data_file, data_files=data_files, data_order=data_order, mask_file=mask_file, mt_n=mt_n, supp_data=supp_data, evaluate_output=evaluate_output, evaluate_params=evaluate_params, evaluate_nt=evaluate_nt, simple_output=simple_output, overwrite=overwrite, link_to_latest=link_to_latest, load_models=load_models, debug=debug, optfile=optfile, save_model_fit=save_model_fit, save_residuals=save_residuals, save_model_extras=save_model_extras, save_mvn=save_mvn, save_mean=save_mean, save_std=save_std, save_var=save_var, save_zstat=save_zstat, save_noise_mean=save_noise_mean, save_noise_std=save_noise_std, save_free_energy=save_free_energy, help_=help_, list_methods=list_methods, list_models=list_models, list_params=list_params, desc_params=desc_params, list_outputs=list_outputs, optfile_=optfile_, old_optfile=old_optfile)
+    params = fabber_params(output=output, method=method, model=model, data_file=data_file, data_files=data_files, data_order=data_order, mask_file=mask_file, mt_n=mt_n, supp_data=supp_data, evaluate_output=evaluate_output, evaluate_params=evaluate_params, evaluate_nt=evaluate_nt, simple_output=simple_output, overwrite=overwrite, link_to_latest=link_to_latest, load_models=load_models, debug=debug, optfile=optfile, save_model_fit=save_model_fit, save_residuals=save_residuals, save_model_extras=save_model_extras, save_mvn=save_mvn, save_mean=save_mean, save_std=save_std, save_var=save_var, save_zstat=save_zstat, save_noise_mean=save_noise_mean, save_noise_std=save_noise_std, save_free_energy=save_free_energy, help_=help_, list_methods=list_methods, list_models=list_models, list_params=list_params, desc_params=desc_params, list_outputs=list_outputs, optfile_1=optfile_1, old_optfile=old_optfile)
     return fabber_execute(params, execution)
 
 

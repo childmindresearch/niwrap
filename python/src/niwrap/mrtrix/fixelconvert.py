@@ -24,12 +24,12 @@ FixelconvertVariousFileParameters = typing.TypedDict('FixelconvertVariousFilePar
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
-FixelconvertVariousStringParameters_ = typing.TypedDict('FixelconvertVariousStringParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousString"],
+FixelconvertVariousString1Parameters = typing.TypedDict('FixelconvertVariousString1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
-FixelconvertVariousFileParameters_ = typing.TypedDict('FixelconvertVariousFileParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousFile"],
+FixelconvertVariousFile1Parameters = typing.TypedDict('FixelconvertVariousFile1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
 FixelconvertParameters = typing.TypedDict('FixelconvertParameters', {
@@ -49,7 +49,7 @@ FixelconvertParameters = typing.TypedDict('FixelconvertParameters', {
     "help": bool,
     "version": bool,
     "fixel_in": typing.Union[FixelconvertVariousStringParameters, FixelconvertVariousFileParameters],
-    "fixel_out": typing.Union[FixelconvertVariousStringParameters_, FixelconvertVariousFileParameters_],
+    "fixel_out": typing.Union[FixelconvertVariousString1Parameters, FixelconvertVariousFile1Parameters],
 })
 
 
@@ -69,8 +69,8 @@ def dyn_cargs(
         "config": fixelconvert_config_cargs,
         "VariousString": fixelconvert_various_string_cargs,
         "VariousFile": fixelconvert_various_file_cargs,
-        "VariousString": fixelconvert_various_string_cargs_,
-        "VariousFile": fixelconvert_various_file_cargs_,
+        "VariousString_1": fixelconvert_various_string_1_cargs,
+        "VariousFile_1": fixelconvert_various_file_1_cargs,
     }.get(t)
 
 
@@ -202,9 +202,9 @@ def fixelconvert_various_file_cargs(
     return cargs
 
 
-def fixelconvert_various_string_params_(
+def fixelconvert_various_string_1_params(
     obj: str,
-) -> FixelconvertVariousStringParameters_:
+) -> FixelconvertVariousString1Parameters:
     """
     Build parameters.
     
@@ -214,14 +214,14 @@ def fixelconvert_various_string_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousString",
+        "__STYXTYPE__": "VariousString_1",
         "obj": obj,
     }
     return params
 
 
-def fixelconvert_various_string_cargs_(
-    params: FixelconvertVariousStringParameters_,
+def fixelconvert_various_string_1_cargs(
+    params: FixelconvertVariousString1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -238,9 +238,9 @@ def fixelconvert_various_string_cargs_(
     return cargs
 
 
-def fixelconvert_various_file_params_(
+def fixelconvert_various_file_1_params(
     obj: InputPathType,
-) -> FixelconvertVariousFileParameters_:
+) -> FixelconvertVariousFile1Parameters:
     """
     Build parameters.
     
@@ -250,14 +250,14 @@ def fixelconvert_various_file_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousFile",
+        "__STYXTYPE__": "VariousFile_1",
         "obj": obj,
     }
     return params
 
 
-def fixelconvert_various_file_cargs_(
-    params: FixelconvertVariousFileParameters_,
+def fixelconvert_various_file_1_cargs(
+    params: FixelconvertVariousFile1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -284,7 +284,7 @@ class FixelconvertOutputs(typing.NamedTuple):
 
 def fixelconvert_params(
     fixel_in: typing.Union[FixelconvertVariousStringParameters, FixelconvertVariousFileParameters],
-    fixel_out: typing.Union[FixelconvertVariousStringParameters_, FixelconvertVariousFileParameters_],
+    fixel_out: typing.Union[FixelconvertVariousString1Parameters, FixelconvertVariousFile1Parameters],
     name: str | None = None,
     nii: bool = False,
     out_size: bool = False,
@@ -473,7 +473,7 @@ def fixelconvert_execute(
 
 def fixelconvert(
     fixel_in: typing.Union[FixelconvertVariousStringParameters, FixelconvertVariousFileParameters],
-    fixel_out: typing.Union[FixelconvertVariousStringParameters_, FixelconvertVariousFileParameters_],
+    fixel_out: typing.Union[FixelconvertVariousString1Parameters, FixelconvertVariousFile1Parameters],
     name: str | None = None,
     nii: bool = False,
     out_size: bool = False,
@@ -544,15 +544,15 @@ __all__ = [
     "FixelconvertConfigParameters",
     "FixelconvertOutputs",
     "FixelconvertParameters",
+    "FixelconvertVariousFile1Parameters",
     "FixelconvertVariousFileParameters",
-    "FixelconvertVariousFileParameters_",
+    "FixelconvertVariousString1Parameters",
     "FixelconvertVariousStringParameters",
-    "FixelconvertVariousStringParameters_",
     "fixelconvert",
     "fixelconvert_config_params",
     "fixelconvert_params",
+    "fixelconvert_various_file_1_params",
     "fixelconvert_various_file_params",
-    "fixelconvert_various_file_params_",
+    "fixelconvert_various_string_1_params",
     "fixelconvert_various_string_params",
-    "fixelconvert_various_string_params_",
 ]

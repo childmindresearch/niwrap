@@ -15,9 +15,9 @@ VGradFlipTestParameters = typing.TypedDict('VGradFlipTestParameters', {
     "__STYX_TYPE__": typing.Literal["@GradFlipTest"],
     "dwi": InputPathType,
     "grad_col_matT": typing.NotRequired[InputPathType | None],
-    "grad_col_matT": typing.NotRequired[InputPathType | None],
-    "grad_col_matT": typing.NotRequired[InputPathType | None],
-    "grad_col_matT": typing.NotRequired[InputPathType | None],
+    "grad_col_matT_1": typing.NotRequired[InputPathType | None],
+    "grad_col_matT_2": typing.NotRequired[InputPathType | None],
+    "grad_col_matT_3": typing.NotRequired[InputPathType | None],
     "mask": typing.NotRequired[InputPathType | None],
     "bvals": typing.NotRequired[InputPathType | None],
     "thresh_fa": typing.NotRequired[float | None],
@@ -77,7 +77,7 @@ class VGradFlipTestOutputs(typing.NamedTuple):
 def v__grad_flip_test_params(
     dwi: InputPathType,
     grad_col_mat_t: InputPathType | None = None,
-    grad_col_mat_t_: InputPathType | None = None,
+    grad_col_mat_t_1: InputPathType | None = None,
     grad_col_mat_t_2: InputPathType | None = None,
     grad_col_mat_t_3: InputPathType | None = None,
     mask: InputPathType | None = None,
@@ -97,7 +97,7 @@ def v__grad_flip_test_params(
         dwi: Set of DWIs (N total volumes).
         grad_col_mat_t: Set of column-wise g- or b-matrix elements\
             ("TORTOISE"-style format, "row-first").
-        grad_col_mat_t_: Set of column-wise g- or b-matrix elements\
+        grad_col_mat_t_1: Set of column-wise g- or b-matrix elements\
             ("TORTOISE"-style format, "row-first").
         grad_col_mat_t_2: Set of column-wise g- or b-matrix elements\
             ("TORTOISE"-style format, "row-first").
@@ -127,12 +127,12 @@ def v__grad_flip_test_params(
     }
     if grad_col_mat_t is not None:
         params["grad_col_matT"] = grad_col_mat_t
-    if grad_col_mat_t_ is not None:
-        params["grad_col_matT"] = grad_col_mat_t_
+    if grad_col_mat_t_1 is not None:
+        params["grad_col_matT_1"] = grad_col_mat_t_1
     if grad_col_mat_t_2 is not None:
-        params["grad_col_matT"] = grad_col_mat_t_2
+        params["grad_col_matT_2"] = grad_col_mat_t_2
     if grad_col_mat_t_3 is not None:
-        params["grad_col_matT"] = grad_col_mat_t_3
+        params["grad_col_matT_3"] = grad_col_mat_t_3
     if mask is not None:
         params["mask"] = mask
     if bvals is not None:
@@ -174,20 +174,20 @@ def v__grad_flip_test_cargs(
             "-in_col_matT",
             execution.input_file(params.get("grad_col_matT"))
         ])
-    if params.get("grad_col_matT") is not None:
+    if params.get("grad_col_matT_1") is not None:
         cargs.extend([
             "-in_col_matT",
-            execution.input_file(params.get("grad_col_matT"))
+            execution.input_file(params.get("grad_col_matT_1"))
         ])
-    if params.get("grad_col_matT") is not None:
+    if params.get("grad_col_matT_2") is not None:
         cargs.extend([
             "-in_col_matT",
-            execution.input_file(params.get("grad_col_matT"))
+            execution.input_file(params.get("grad_col_matT_2"))
         ])
-    if params.get("grad_col_matT") is not None:
+    if params.get("grad_col_matT_3") is not None:
         cargs.extend([
             "-in_col_matT",
-            execution.input_file(params.get("grad_col_matT"))
+            execution.input_file(params.get("grad_col_matT_3"))
         ])
     if params.get("mask") is not None:
         cargs.extend([
@@ -278,7 +278,7 @@ def v__grad_flip_test_execute(
 def v__grad_flip_test(
     dwi: InputPathType,
     grad_col_mat_t: InputPathType | None = None,
-    grad_col_mat_t_: InputPathType | None = None,
+    grad_col_mat_t_1: InputPathType | None = None,
     grad_col_mat_t_2: InputPathType | None = None,
     grad_col_mat_t_3: InputPathType | None = None,
     mask: InputPathType | None = None,
@@ -303,7 +303,7 @@ def v__grad_flip_test(
         dwi: Set of DWIs (N total volumes).
         grad_col_mat_t: Set of column-wise g- or b-matrix elements\
             ("TORTOISE"-style format, "row-first").
-        grad_col_mat_t_: Set of column-wise g- or b-matrix elements\
+        grad_col_mat_t_1: Set of column-wise g- or b-matrix elements\
             ("TORTOISE"-style format, "row-first").
         grad_col_mat_t_2: Set of column-wise g- or b-matrix elements\
             ("TORTOISE"-style format, "row-first").
@@ -328,7 +328,7 @@ def v__grad_flip_test(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GRAD_FLIP_TEST_METADATA)
-    params = v__grad_flip_test_params(dwi=dwi, grad_col_mat_t=grad_col_mat_t, grad_col_mat_t_=grad_col_mat_t_, grad_col_mat_t_2=grad_col_mat_t_2, grad_col_mat_t_3=grad_col_mat_t_3, mask=mask, bvals=bvals, thresh_fa=thresh_fa, thresh_len=thresh_len, prefix=prefix, check_abs_min=check_abs_min, scale_out_1000=scale_out_1000, wdir=wdir, do_clean=do_clean)
+    params = v__grad_flip_test_params(dwi=dwi, grad_col_mat_t=grad_col_mat_t, grad_col_mat_t_1=grad_col_mat_t_1, grad_col_mat_t_2=grad_col_mat_t_2, grad_col_mat_t_3=grad_col_mat_t_3, mask=mask, bvals=bvals, thresh_fa=thresh_fa, thresh_len=thresh_len, prefix=prefix, check_abs_min=check_abs_min, scale_out_1000=scale_out_1000, wdir=wdir, do_clean=do_clean)
     return v__grad_flip_test_execute(params, execution)
 
 

@@ -12,7 +12,7 @@ FSLMATHS_METADATA = Metadata(
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 FslmathsOperationParameters = typing.TypedDict('FslmathsOperationParameters', {
-    "__STYX_TYPE__": typing.Literal["operations"],
+    "__STYX_TYPE__": typing.Literal["operation"],
     "add": typing.NotRequired[float | None],
     "sub": typing.NotRequired[float | None],
     "mul": typing.NotRequired[float | None],
@@ -135,7 +135,7 @@ def dyn_cargs(
     """
     return {
         "fslmaths": fslmaths_cargs,
-        "operations": fslmaths_operation_cargs,
+        "operation": fslmaths_operation_cargs,
     }.get(t)
 
 
@@ -385,7 +385,7 @@ def fslmaths_operation_params(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "operations",
+        "__STYXTYPE__": "operation",
         "save": save,
         "exp": exp,
         "log": log,

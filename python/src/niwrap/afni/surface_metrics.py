@@ -14,25 +14,25 @@ SURFACE_METRICS_METADATA = Metadata(
 SurfaceMetricsParameters = typing.TypedDict('SurfaceMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["SurfaceMetrics"],
     "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
-    "internal_nodes": bool,
+    "internal_nodes_1": bool,
+    "internal_nodes_2": bool,
+    "internal_nodes_3": bool,
+    "internal_nodes_4": bool,
+    "internal_nodes_5": bool,
+    "internal_nodes_6": bool,
+    "internal_nodes_7": bool,
+    "internal_nodes_8": bool,
+    "internal_nodes_9": bool,
+    "internal_nodes_10": bool,
+    "internal_nodes_11": bool,
+    "internal_nodes_12": bool,
+    "internal_nodes_13": bool,
+    "internal_nodes_14": bool,
+    "internal_nodes_15": bool,
+    "internal_nodes_16": bool,
+    "internal_nodes_17": bool,
+    "internal_nodes_18": bool,
+    "internal_nodes_19": bool,
     "surf1": str,
     "tlrc": bool,
     "prefix": typing.NotRequired[str | None],
@@ -81,7 +81,7 @@ class SurfaceMetricsOutputs(typing.NamedTuple):
 def surface_metrics_params(
     surf1: str,
     internal_nodes: bool = False,
-    internal_nodes_: bool = False,
+    internal_nodes_1: bool = False,
     internal_nodes_2: bool = False,
     internal_nodes_3: bool = False,
     internal_nodes_4: bool = False,
@@ -109,7 +109,7 @@ def surface_metrics_params(
     Args:
         surf1: Specifies the input surface.
         internal_nodes: Output nodes that are not a boundary.
-        internal_nodes_: Output nodes that are not a boundary.
+        internal_nodes_1: Output nodes that are not a boundary.
         internal_nodes_2: Output nodes that are not a boundary.
         internal_nodes_3: Output nodes that are not a boundary.
         internal_nodes_4: Output nodes that are not a boundary.
@@ -136,25 +136,25 @@ def surface_metrics_params(
     params = {
         "__STYXTYPE__": "SurfaceMetrics",
         "internal_nodes": internal_nodes,
-        "internal_nodes": internal_nodes_,
-        "internal_nodes": internal_nodes_2,
-        "internal_nodes": internal_nodes_3,
-        "internal_nodes": internal_nodes_4,
-        "internal_nodes": internal_nodes_5,
-        "internal_nodes": internal_nodes_6,
-        "internal_nodes": internal_nodes_7,
-        "internal_nodes": internal_nodes_8,
-        "internal_nodes": internal_nodes_9,
-        "internal_nodes": internal_nodes_10,
-        "internal_nodes": internal_nodes_11,
-        "internal_nodes": internal_nodes_12,
-        "internal_nodes": internal_nodes_13,
-        "internal_nodes": internal_nodes_14,
-        "internal_nodes": internal_nodes_15,
-        "internal_nodes": internal_nodes_16,
-        "internal_nodes": internal_nodes_17,
-        "internal_nodes": internal_nodes_18,
-        "internal_nodes": internal_nodes_19,
+        "internal_nodes_1": internal_nodes_1,
+        "internal_nodes_2": internal_nodes_2,
+        "internal_nodes_3": internal_nodes_3,
+        "internal_nodes_4": internal_nodes_4,
+        "internal_nodes_5": internal_nodes_5,
+        "internal_nodes_6": internal_nodes_6,
+        "internal_nodes_7": internal_nodes_7,
+        "internal_nodes_8": internal_nodes_8,
+        "internal_nodes_9": internal_nodes_9,
+        "internal_nodes_10": internal_nodes_10,
+        "internal_nodes_11": internal_nodes_11,
+        "internal_nodes_12": internal_nodes_12,
+        "internal_nodes_13": internal_nodes_13,
+        "internal_nodes_14": internal_nodes_14,
+        "internal_nodes_15": internal_nodes_15,
+        "internal_nodes_16": internal_nodes_16,
+        "internal_nodes_17": internal_nodes_17,
+        "internal_nodes_18": internal_nodes_18,
+        "internal_nodes_19": internal_nodes_19,
         "surf1": surf1,
         "tlrc": tlrc,
     }
@@ -180,43 +180,43 @@ def surface_metrics_cargs(
     cargs.append("SurfaceMetrics")
     if params.get("internal_nodes"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_1"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_2"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_3"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_4"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_5"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_6"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_7"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_8"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_9"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_10"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_11"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_12"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_13"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_14"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_15"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_16"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_17"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_18"):
         cargs.append("-internal_nodes")
-    if params.get("internal_nodes"):
+    if params.get("internal_nodes_19"):
         cargs.append("-internal_nodes")
     cargs.extend([
         "-SURF_1",
@@ -277,7 +277,7 @@ def surface_metrics_execute(
 def surface_metrics(
     surf1: str,
     internal_nodes: bool = False,
-    internal_nodes_: bool = False,
+    internal_nodes_1: bool = False,
     internal_nodes_2: bool = False,
     internal_nodes_3: bool = False,
     internal_nodes_4: bool = False,
@@ -310,7 +310,7 @@ def surface_metrics(
     Args:
         surf1: Specifies the input surface.
         internal_nodes: Output nodes that are not a boundary.
-        internal_nodes_: Output nodes that are not a boundary.
+        internal_nodes_1: Output nodes that are not a boundary.
         internal_nodes_2: Output nodes that are not a boundary.
         internal_nodes_3: Output nodes that are not a boundary.
         internal_nodes_4: Output nodes that are not a boundary.
@@ -337,7 +337,7 @@ def surface_metrics(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_METRICS_METADATA)
-    params = surface_metrics_params(internal_nodes=internal_nodes, internal_nodes_=internal_nodes_, internal_nodes_2=internal_nodes_2, internal_nodes_3=internal_nodes_3, internal_nodes_4=internal_nodes_4, internal_nodes_5=internal_nodes_5, internal_nodes_6=internal_nodes_6, internal_nodes_7=internal_nodes_7, internal_nodes_8=internal_nodes_8, internal_nodes_9=internal_nodes_9, internal_nodes_10=internal_nodes_10, internal_nodes_11=internal_nodes_11, internal_nodes_12=internal_nodes_12, internal_nodes_13=internal_nodes_13, internal_nodes_14=internal_nodes_14, internal_nodes_15=internal_nodes_15, internal_nodes_16=internal_nodes_16, internal_nodes_17=internal_nodes_17, internal_nodes_18=internal_nodes_18, internal_nodes_19=internal_nodes_19, surf1=surf1, tlrc=tlrc, prefix=prefix)
+    params = surface_metrics_params(internal_nodes=internal_nodes, internal_nodes_1=internal_nodes_1, internal_nodes_2=internal_nodes_2, internal_nodes_3=internal_nodes_3, internal_nodes_4=internal_nodes_4, internal_nodes_5=internal_nodes_5, internal_nodes_6=internal_nodes_6, internal_nodes_7=internal_nodes_7, internal_nodes_8=internal_nodes_8, internal_nodes_9=internal_nodes_9, internal_nodes_10=internal_nodes_10, internal_nodes_11=internal_nodes_11, internal_nodes_12=internal_nodes_12, internal_nodes_13=internal_nodes_13, internal_nodes_14=internal_nodes_14, internal_nodes_15=internal_nodes_15, internal_nodes_16=internal_nodes_16, internal_nodes_17=internal_nodes_17, internal_nodes_18=internal_nodes_18, internal_nodes_19=internal_nodes_19, surf1=surf1, tlrc=tlrc, prefix=prefix)
     return surface_metrics_execute(params, execution)
 
 

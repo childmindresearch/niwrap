@@ -40,7 +40,7 @@ ScaleToMapParameters = typing.TypedDict('ScaleToMapParameters', {
     "noxform": bool,
     "setenv": typing.NotRequired[str | None],
     "TRACE": bool,
-    "TRACE": bool,
+    "TRACE_1": bool,
     "nomall": bool,
     "yesmall": bool,
 })
@@ -113,7 +113,7 @@ def scale_to_map_params(
     noxform: bool = False,
     setenv: str | None = None,
     trace_: bool = False,
-    trace_2: bool = False,
+    trace_1: bool = False,
     nomall: bool = False,
     yesmall: bool = False,
 ) -> ScaleToMapParameters:
@@ -151,7 +151,7 @@ def scale_to_map_params(
         setenv: Set environment variable ENVname to ENVvalue. Quotes are\
             necessary.
         trace_: Turn on extreme tracing.
-        trace_2: Turn on extreme tracing.
+        trace_1: Turn on extreme tracing.
         nomall: Turn off memory tracing.
         yesmall: Turn on memory tracing (default).
     Returns:
@@ -175,7 +175,7 @@ def scale_to_map_params(
         "novolreg": novolreg,
         "noxform": noxform,
         "TRACE": trace_,
-        "TRACE": trace_2,
+        "TRACE_1": trace_1,
         "nomall": nomall,
         "yesmall": yesmall,
     }
@@ -303,7 +303,7 @@ def scale_to_map_cargs(
         ])
     if params.get("TRACE"):
         cargs.append("-TRACE")
-    if params.get("TRACE"):
+    if params.get("TRACE_1"):
         cargs.append("-TRACE")
     if params.get("nomall"):
         cargs.append("-nomall")
@@ -382,7 +382,7 @@ def scale_to_map(
     noxform: bool = False,
     setenv: str | None = None,
     trace_: bool = False,
-    trace_2: bool = False,
+    trace_1: bool = False,
     nomall: bool = False,
     yesmall: bool = False,
     runner: Runner | None = None,
@@ -425,7 +425,7 @@ def scale_to_map(
         setenv: Set environment variable ENVname to ENVvalue. Quotes are\
             necessary.
         trace_: Turn on extreme tracing.
-        trace_2: Turn on extreme tracing.
+        trace_1: Turn on extreme tracing.
         nomall: Turn off memory tracing.
         yesmall: Turn on memory tracing (default).
         runner: Command runner.
@@ -434,7 +434,7 @@ def scale_to_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SCALE_TO_MAP_METADATA)
-    params = scale_to_map_params(input_file=input_file, icol=icol, vcol=vcol, cmap=cmap, cmapfile=cmapfile, cmapdb=cmapdb, frf=frf, clp=clp, perc_clp=perc_clp, apr=apr, anr=anr, interp=interp, nointerp=nointerp, direct=direct, msk_zero=msk_zero, msk=msk, msk_col=msk_col, nomsk_col=nomsk_col, br=br, help_=help_, verbose=verbose, showmap=showmap, showdb=showdb, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, trace_2=trace_2, nomall=nomall, yesmall=yesmall)
+    params = scale_to_map_params(input_file=input_file, icol=icol, vcol=vcol, cmap=cmap, cmapfile=cmapfile, cmapdb=cmapdb, frf=frf, clp=clp, perc_clp=perc_clp, apr=apr, anr=anr, interp=interp, nointerp=nointerp, direct=direct, msk_zero=msk_zero, msk=msk, msk_col=msk_col, nomsk_col=nomsk_col, br=br, help_=help_, verbose=verbose, showmap=showmap, showdb=showdb, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, trace_1=trace_1, nomall=nomall, yesmall=yesmall)
     return scale_to_map_execute(params, execution)
 
 

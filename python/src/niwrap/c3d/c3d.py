@@ -411,8 +411,8 @@ C3dOutputMultipleParameters = typing.TypedDict('C3dOutputMultipleParameters', {
     "__STYX_TYPE__": typing.Literal["output_multiple"],
     "output_multiple": str,
 })
-C3dOrientParameters_ = typing.TypedDict('C3dOrientParameters_', {
-    "__STYX_TYPE__": typing.Literal["orient"],
+C3dOrient1Parameters = typing.TypedDict('C3dOrient1Parameters', {
+    "__STYX_TYPE__": typing.Literal["orient_1"],
     "orient": str,
 })
 C3dOriginParameters = typing.TypedDict('C3dOriginParameters', {
@@ -567,8 +567,8 @@ C3dScaleParameters = typing.TypedDict('C3dScaleParameters', {
     "__STYX_TYPE__": typing.Literal["scale"],
     "scale": str,
 })
-C3dSetSformParameters_ = typing.TypedDict('C3dSetSformParameters_', {
-    "__STYX_TYPE__": typing.Literal["set_sform"],
+C3dSetSform1Parameters = typing.TypedDict('C3dSetSform1Parameters', {
+    "__STYX_TYPE__": typing.Literal["set_sform_1"],
     "set_sform": str,
 })
 C3dSinParameters = typing.TypedDict('C3dSinParameters', {
@@ -730,7 +730,7 @@ C3dWeightedSumVoxelwiseParameters = typing.TypedDict('C3dWeightedSumVoxelwisePar
 C3dParameters = typing.TypedDict('C3dParameters', {
     "__STYX_TYPE__": typing.Literal["c3d"],
     "input": list[InputPathType],
-    "operations": list[typing.Union[C3dAccumParameters, C3dAcosParameters, C3dAddParameters, C3dAlignLandmarksParameters, C3dAnisotropicDiffusionParameters, C3dAntialiasParameters, C3dSetParameters, C3dAsinParameters, C3dAtan2Parameters, C3dBackgroundParameters, C3dN4BiasCorrectionParameters, C3dBinarizeParameters, C3dCannyParameters, C3dCeilParameters, C3dCentroidParameters, C3dCentroidMarkParameters, C3dConnectedComponentsParameters, C3dClearParameters, C3dClipParameters, C3dColorMapParameters, C3dCompressParameters, C3dNoCompressParameters, C3dConvParameters, C3dCoordinateMapVoxelParameters, C3dCoordinateMapPhysicalParameters, C3dCopyTransformParameters, C3dCosParameters, C3dCreateParameters, C3dDicomSeriesListParameters, C3dDicomSeriesReadParameters, C3dDilateParameters, C3dDivideParameters, C3dDuplicateParameters, C3dEndaccumParameters, C3dEndforParameters, C3dErodeParameters, C3dErfParameters, C3dExpParameters, C3dExportPatchesParameters, C3dExportPatchesAugParameters, C3dExtrudeSegParameters, C3dFillBackgroundWithNoiseParameters, C3dFftParameters, C3dFlipParameters, C3dFloorParameters, C3dForeachParameters, C3dForeachCompParameters, C3dGlmParameters, C3dGradientParameters, C3dHelpParameters, C3dHolefillParameters, C3dHessianEigenvaluesParameters, C3dHessianObjectnessParameters, C3dHistogramMatchParameters, C3dInfoParameters, C3dInfoFullParameters, C3dInsertParameters, C3dInterpolationParameters, C3dIterationsParameters, C3dLabelOverlapParameters, C3dLabelStatisticsParameters, C3dLandmarksToSpheresParameters, C3dLaplacianParameters, C3dLevelsetParameters, C3dLevelsetCurvatureParameters, C3dLevelsetAdvectionParameters, C3dLogParameters, C3dLog10Parameters, C3dManualParameters, C3dMatchBoundingBoxParameters, C3dMaximumParameters, C3dMulticomponentSplitParameters, C3dMeanParameters, C3dMedianFilterParameters, C3dMergeParameters, C3dMeanFilterParameters, C3dMutualInfoParameters, C3dMinimumParameters, C3dMixtureModelParameters, C3dMomentsParameters, C3dMattesMutualInfoParameters, C3dMeanSquareParameters, C3dMultiplyParameters, C3dNormalizedCrossCorrelationParameters, C3dNormalizedCorrelationParameters, C3dNormalizedMutualInfoParameters, C3dNoiseGaussianParameters, C3dNoisePoissonParameters, C3dNoiseSpeckleParameters, C3dNoiseSaltPepperParameters, C3dNoMulticomponentSplitParameters, C3dNormalizeLocalWindowParameters, C3dNormpdfParameters, C3dNoroundParameters, C3dNospmParameters, C3dOutputParameters, C3dOutputMulticomponentParameters, C3dOutputMultipleMulticomponentParameters, C3dOrientParameters, C3dOutputMultipleParameters, C3dOrientParameters_, C3dOriginParameters, C3dOriginVoxelParameters, C3dOriginVoxelCoordParameters, C3dOverlapParameters, C3dOverlayLabelImageParameters, C3dPadParameters, C3dPadToParameters, C3dPcaParameters, C3dPercentIntensityModeParameters, C3dPixelParameters, C3dPopParameters, C3dPopasParameters, C3dProbeParameters, C3dPushParameters, C3dRankParameters, C3dReciprocalParameters, C3dRegionParameters, C3dReorderParameters, C3dRetainLabelsParameters, C3dRfApplyParameters, C3dRfTrainParameters, C3dRfParamPatchParameters, C3dRfParamUsexyzParameters, C3dRfParamNousexyzParameters, C3dRfParamNtreesParameters, C3dRfParamTreedepthParameters, C3dSetSformParameters, C3dReplaceParameters, C3dResampleParameters, C3dResampleIsoParameters, C3dResampleMmParameters, C3dResliceItkParameters, C3dResliceMatrixParameters, C3dResliceIdentityParameters, C3dRgb2hsvParameters, C3dRmsParameters, C3dRoundParameters, C3dScaleParameters, C3dSetSformParameters_, C3dSinParameters, C3dSliceParameters, C3dSliceAllParameters, C3dSharpenParameters, C3dShiftParameters, C3dSignedDistanceTransformParameters, C3dSmoothParameters, C3dSmoothFastParameters, C3dSpacingParameters, C3dSplitParameters, C3dSqrtParameters, C3dStapleParameters, C3dStructureTensorEigenvaluesParameters, C3dSpmParameters, C3dSubtractParameters, C3dSupervoxelParameters, C3dStretchParameters, C3dSwapdimParameters, C3dTestImageParameters, C3dTestProbeParameters, C3dThresholdParameters, C3dTileParameters, C3dTrimParameters, C3dTrimToSizeParameters, C3dTypeParameters, C3dVerboseParameters, C3dNoverboseParameters, C3dVersionParameters, C3dVoteParameters, C3dVoteMrfParameters, C3dVoteLabelParameters, C3dVoxelSumParameters, C3dVoxelIntegralParameters, C3dVoxelwiseRegressionParameters, C3dWarpParameters, C3dWarpLabelParameters, C3dWrapParameters, C3dWeightedSumParameters, C3dWeightedSumVoxelwiseParameters]],
+    "operations": list[typing.Union[C3dAccumParameters, C3dAcosParameters, C3dAddParameters, C3dAlignLandmarksParameters, C3dAnisotropicDiffusionParameters, C3dAntialiasParameters, C3dSetParameters, C3dAsinParameters, C3dAtan2Parameters, C3dBackgroundParameters, C3dN4BiasCorrectionParameters, C3dBinarizeParameters, C3dCannyParameters, C3dCeilParameters, C3dCentroidParameters, C3dCentroidMarkParameters, C3dConnectedComponentsParameters, C3dClearParameters, C3dClipParameters, C3dColorMapParameters, C3dCompressParameters, C3dNoCompressParameters, C3dConvParameters, C3dCoordinateMapVoxelParameters, C3dCoordinateMapPhysicalParameters, C3dCopyTransformParameters, C3dCosParameters, C3dCreateParameters, C3dDicomSeriesListParameters, C3dDicomSeriesReadParameters, C3dDilateParameters, C3dDivideParameters, C3dDuplicateParameters, C3dEndaccumParameters, C3dEndforParameters, C3dErodeParameters, C3dErfParameters, C3dExpParameters, C3dExportPatchesParameters, C3dExportPatchesAugParameters, C3dExtrudeSegParameters, C3dFillBackgroundWithNoiseParameters, C3dFftParameters, C3dFlipParameters, C3dFloorParameters, C3dForeachParameters, C3dForeachCompParameters, C3dGlmParameters, C3dGradientParameters, C3dHelpParameters, C3dHolefillParameters, C3dHessianEigenvaluesParameters, C3dHessianObjectnessParameters, C3dHistogramMatchParameters, C3dInfoParameters, C3dInfoFullParameters, C3dInsertParameters, C3dInterpolationParameters, C3dIterationsParameters, C3dLabelOverlapParameters, C3dLabelStatisticsParameters, C3dLandmarksToSpheresParameters, C3dLaplacianParameters, C3dLevelsetParameters, C3dLevelsetCurvatureParameters, C3dLevelsetAdvectionParameters, C3dLogParameters, C3dLog10Parameters, C3dManualParameters, C3dMatchBoundingBoxParameters, C3dMaximumParameters, C3dMulticomponentSplitParameters, C3dMeanParameters, C3dMedianFilterParameters, C3dMergeParameters, C3dMeanFilterParameters, C3dMutualInfoParameters, C3dMinimumParameters, C3dMixtureModelParameters, C3dMomentsParameters, C3dMattesMutualInfoParameters, C3dMeanSquareParameters, C3dMultiplyParameters, C3dNormalizedCrossCorrelationParameters, C3dNormalizedCorrelationParameters, C3dNormalizedMutualInfoParameters, C3dNoiseGaussianParameters, C3dNoisePoissonParameters, C3dNoiseSpeckleParameters, C3dNoiseSaltPepperParameters, C3dNoMulticomponentSplitParameters, C3dNormalizeLocalWindowParameters, C3dNormpdfParameters, C3dNoroundParameters, C3dNospmParameters, C3dOutputParameters, C3dOutputMulticomponentParameters, C3dOutputMultipleMulticomponentParameters, C3dOrientParameters, C3dOutputMultipleParameters, C3dOrient1Parameters, C3dOriginParameters, C3dOriginVoxelParameters, C3dOriginVoxelCoordParameters, C3dOverlapParameters, C3dOverlayLabelImageParameters, C3dPadParameters, C3dPadToParameters, C3dPcaParameters, C3dPercentIntensityModeParameters, C3dPixelParameters, C3dPopParameters, C3dPopasParameters, C3dProbeParameters, C3dPushParameters, C3dRankParameters, C3dReciprocalParameters, C3dRegionParameters, C3dReorderParameters, C3dRetainLabelsParameters, C3dRfApplyParameters, C3dRfTrainParameters, C3dRfParamPatchParameters, C3dRfParamUsexyzParameters, C3dRfParamNousexyzParameters, C3dRfParamNtreesParameters, C3dRfParamTreedepthParameters, C3dSetSformParameters, C3dReplaceParameters, C3dResampleParameters, C3dResampleIsoParameters, C3dResampleMmParameters, C3dResliceItkParameters, C3dResliceMatrixParameters, C3dResliceIdentityParameters, C3dRgb2hsvParameters, C3dRmsParameters, C3dRoundParameters, C3dScaleParameters, C3dSetSform1Parameters, C3dSinParameters, C3dSliceParameters, C3dSliceAllParameters, C3dSharpenParameters, C3dShiftParameters, C3dSignedDistanceTransformParameters, C3dSmoothParameters, C3dSmoothFastParameters, C3dSpacingParameters, C3dSplitParameters, C3dSqrtParameters, C3dStapleParameters, C3dStructureTensorEigenvaluesParameters, C3dSpmParameters, C3dSubtractParameters, C3dSupervoxelParameters, C3dStretchParameters, C3dSwapdimParameters, C3dTestImageParameters, C3dTestProbeParameters, C3dThresholdParameters, C3dTileParameters, C3dTrimParameters, C3dTrimToSizeParameters, C3dTypeParameters, C3dVerboseParameters, C3dNoverboseParameters, C3dVersionParameters, C3dVoteParameters, C3dVoteMrfParameters, C3dVoteLabelParameters, C3dVoxelSumParameters, C3dVoxelIntegralParameters, C3dVoxelwiseRegressionParameters, C3dWarpParameters, C3dWarpLabelParameters, C3dWrapParameters, C3dWeightedSumParameters, C3dWeightedSumVoxelwiseParameters]],
     "output": str,
 })
 
@@ -848,7 +848,7 @@ def dyn_cargs(
         "output_multiple_multicomponent": c3d_output_multiple_multicomponent_cargs,
         "orient": c3d_orient_cargs,
         "output_multiple": c3d_output_multiple_cargs,
-        "orient": c3d_orient_cargs_,
+        "orient_1": c3d_orient_1_cargs,
         "origin": c3d_origin_cargs,
         "origin_voxel": c3d_origin_voxel_cargs,
         "origin_voxel_coord": c3d_origin_voxel_coord_cargs,
@@ -887,7 +887,7 @@ def dyn_cargs(
         "rms": c3d_rms_cargs,
         "round": c3d_round_cargs,
         "scale": c3d_scale_cargs,
-        "set_sform": c3d_set_sform_cargs_,
+        "set_sform_1": c3d_set_sform_1_cargs,
         "sin": c3d_sin_cargs,
         "slice": c3d_slice_cargs,
         "slice_all": c3d_slice_all_cargs,
@@ -5914,9 +5914,9 @@ def c3d_output_multiple_cargs(
     return cargs
 
 
-def c3d_orient_params_(
+def c3d_orient_1_params(
     orient: str,
-) -> C3dOrientParameters_:
+) -> C3dOrient1Parameters:
     """
     Build parameters.
     
@@ -5950,14 +5950,14 @@ def c3d_orient_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "orient",
+        "__STYXTYPE__": "orient_1",
         "orient": orient,
     }
     return params
 
 
-def c3d_orient_cargs_(
-    params: C3dOrientParameters_,
+def c3d_orient_1_cargs(
+    params: C3dOrient1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -7917,9 +7917,9 @@ def c3d_scale_cargs(
     return cargs
 
 
-def c3d_set_sform_params_(
+def c3d_set_sform_1_params(
     set_sform: str,
-) -> C3dSetSformParameters_:
+) -> C3dSetSform1Parameters:
     """
     Build parameters.
     
@@ -7934,14 +7934,14 @@ def c3d_set_sform_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "set_sform",
+        "__STYXTYPE__": "set_sform_1",
         "set_sform": set_sform,
     }
     return params
 
 
-def c3d_set_sform_cargs_(
-    params: C3dSetSformParameters_,
+def c3d_set_sform_1_cargs(
+    params: C3dSetSform1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -9984,7 +9984,7 @@ class C3dOutputs(typing.NamedTuple):
 
 def c3d_params(
     input_: list[InputPathType],
-    operations: list[typing.Union[C3dAccumParameters, C3dAcosParameters, C3dAddParameters, C3dAlignLandmarksParameters, C3dAnisotropicDiffusionParameters, C3dAntialiasParameters, C3dSetParameters, C3dAsinParameters, C3dAtan2Parameters, C3dBackgroundParameters, C3dN4BiasCorrectionParameters, C3dBinarizeParameters, C3dCannyParameters, C3dCeilParameters, C3dCentroidParameters, C3dCentroidMarkParameters, C3dConnectedComponentsParameters, C3dClearParameters, C3dClipParameters, C3dColorMapParameters, C3dCompressParameters, C3dNoCompressParameters, C3dConvParameters, C3dCoordinateMapVoxelParameters, C3dCoordinateMapPhysicalParameters, C3dCopyTransformParameters, C3dCosParameters, C3dCreateParameters, C3dDicomSeriesListParameters, C3dDicomSeriesReadParameters, C3dDilateParameters, C3dDivideParameters, C3dDuplicateParameters, C3dEndaccumParameters, C3dEndforParameters, C3dErodeParameters, C3dErfParameters, C3dExpParameters, C3dExportPatchesParameters, C3dExportPatchesAugParameters, C3dExtrudeSegParameters, C3dFillBackgroundWithNoiseParameters, C3dFftParameters, C3dFlipParameters, C3dFloorParameters, C3dForeachParameters, C3dForeachCompParameters, C3dGlmParameters, C3dGradientParameters, C3dHelpParameters, C3dHolefillParameters, C3dHessianEigenvaluesParameters, C3dHessianObjectnessParameters, C3dHistogramMatchParameters, C3dInfoParameters, C3dInfoFullParameters, C3dInsertParameters, C3dInterpolationParameters, C3dIterationsParameters, C3dLabelOverlapParameters, C3dLabelStatisticsParameters, C3dLandmarksToSpheresParameters, C3dLaplacianParameters, C3dLevelsetParameters, C3dLevelsetCurvatureParameters, C3dLevelsetAdvectionParameters, C3dLogParameters, C3dLog10Parameters, C3dManualParameters, C3dMatchBoundingBoxParameters, C3dMaximumParameters, C3dMulticomponentSplitParameters, C3dMeanParameters, C3dMedianFilterParameters, C3dMergeParameters, C3dMeanFilterParameters, C3dMutualInfoParameters, C3dMinimumParameters, C3dMixtureModelParameters, C3dMomentsParameters, C3dMattesMutualInfoParameters, C3dMeanSquareParameters, C3dMultiplyParameters, C3dNormalizedCrossCorrelationParameters, C3dNormalizedCorrelationParameters, C3dNormalizedMutualInfoParameters, C3dNoiseGaussianParameters, C3dNoisePoissonParameters, C3dNoiseSpeckleParameters, C3dNoiseSaltPepperParameters, C3dNoMulticomponentSplitParameters, C3dNormalizeLocalWindowParameters, C3dNormpdfParameters, C3dNoroundParameters, C3dNospmParameters, C3dOutputParameters, C3dOutputMulticomponentParameters, C3dOutputMultipleMulticomponentParameters, C3dOrientParameters, C3dOutputMultipleParameters, C3dOrientParameters_, C3dOriginParameters, C3dOriginVoxelParameters, C3dOriginVoxelCoordParameters, C3dOverlapParameters, C3dOverlayLabelImageParameters, C3dPadParameters, C3dPadToParameters, C3dPcaParameters, C3dPercentIntensityModeParameters, C3dPixelParameters, C3dPopParameters, C3dPopasParameters, C3dProbeParameters, C3dPushParameters, C3dRankParameters, C3dReciprocalParameters, C3dRegionParameters, C3dReorderParameters, C3dRetainLabelsParameters, C3dRfApplyParameters, C3dRfTrainParameters, C3dRfParamPatchParameters, C3dRfParamUsexyzParameters, C3dRfParamNousexyzParameters, C3dRfParamNtreesParameters, C3dRfParamTreedepthParameters, C3dSetSformParameters, C3dReplaceParameters, C3dResampleParameters, C3dResampleIsoParameters, C3dResampleMmParameters, C3dResliceItkParameters, C3dResliceMatrixParameters, C3dResliceIdentityParameters, C3dRgb2hsvParameters, C3dRmsParameters, C3dRoundParameters, C3dScaleParameters, C3dSetSformParameters_, C3dSinParameters, C3dSliceParameters, C3dSliceAllParameters, C3dSharpenParameters, C3dShiftParameters, C3dSignedDistanceTransformParameters, C3dSmoothParameters, C3dSmoothFastParameters, C3dSpacingParameters, C3dSplitParameters, C3dSqrtParameters, C3dStapleParameters, C3dStructureTensorEigenvaluesParameters, C3dSpmParameters, C3dSubtractParameters, C3dSupervoxelParameters, C3dStretchParameters, C3dSwapdimParameters, C3dTestImageParameters, C3dTestProbeParameters, C3dThresholdParameters, C3dTileParameters, C3dTrimParameters, C3dTrimToSizeParameters, C3dTypeParameters, C3dVerboseParameters, C3dNoverboseParameters, C3dVersionParameters, C3dVoteParameters, C3dVoteMrfParameters, C3dVoteLabelParameters, C3dVoxelSumParameters, C3dVoxelIntegralParameters, C3dVoxelwiseRegressionParameters, C3dWarpParameters, C3dWarpLabelParameters, C3dWrapParameters, C3dWeightedSumParameters, C3dWeightedSumVoxelwiseParameters]],
+    operations: list[typing.Union[C3dAccumParameters, C3dAcosParameters, C3dAddParameters, C3dAlignLandmarksParameters, C3dAnisotropicDiffusionParameters, C3dAntialiasParameters, C3dSetParameters, C3dAsinParameters, C3dAtan2Parameters, C3dBackgroundParameters, C3dN4BiasCorrectionParameters, C3dBinarizeParameters, C3dCannyParameters, C3dCeilParameters, C3dCentroidParameters, C3dCentroidMarkParameters, C3dConnectedComponentsParameters, C3dClearParameters, C3dClipParameters, C3dColorMapParameters, C3dCompressParameters, C3dNoCompressParameters, C3dConvParameters, C3dCoordinateMapVoxelParameters, C3dCoordinateMapPhysicalParameters, C3dCopyTransformParameters, C3dCosParameters, C3dCreateParameters, C3dDicomSeriesListParameters, C3dDicomSeriesReadParameters, C3dDilateParameters, C3dDivideParameters, C3dDuplicateParameters, C3dEndaccumParameters, C3dEndforParameters, C3dErodeParameters, C3dErfParameters, C3dExpParameters, C3dExportPatchesParameters, C3dExportPatchesAugParameters, C3dExtrudeSegParameters, C3dFillBackgroundWithNoiseParameters, C3dFftParameters, C3dFlipParameters, C3dFloorParameters, C3dForeachParameters, C3dForeachCompParameters, C3dGlmParameters, C3dGradientParameters, C3dHelpParameters, C3dHolefillParameters, C3dHessianEigenvaluesParameters, C3dHessianObjectnessParameters, C3dHistogramMatchParameters, C3dInfoParameters, C3dInfoFullParameters, C3dInsertParameters, C3dInterpolationParameters, C3dIterationsParameters, C3dLabelOverlapParameters, C3dLabelStatisticsParameters, C3dLandmarksToSpheresParameters, C3dLaplacianParameters, C3dLevelsetParameters, C3dLevelsetCurvatureParameters, C3dLevelsetAdvectionParameters, C3dLogParameters, C3dLog10Parameters, C3dManualParameters, C3dMatchBoundingBoxParameters, C3dMaximumParameters, C3dMulticomponentSplitParameters, C3dMeanParameters, C3dMedianFilterParameters, C3dMergeParameters, C3dMeanFilterParameters, C3dMutualInfoParameters, C3dMinimumParameters, C3dMixtureModelParameters, C3dMomentsParameters, C3dMattesMutualInfoParameters, C3dMeanSquareParameters, C3dMultiplyParameters, C3dNormalizedCrossCorrelationParameters, C3dNormalizedCorrelationParameters, C3dNormalizedMutualInfoParameters, C3dNoiseGaussianParameters, C3dNoisePoissonParameters, C3dNoiseSpeckleParameters, C3dNoiseSaltPepperParameters, C3dNoMulticomponentSplitParameters, C3dNormalizeLocalWindowParameters, C3dNormpdfParameters, C3dNoroundParameters, C3dNospmParameters, C3dOutputParameters, C3dOutputMulticomponentParameters, C3dOutputMultipleMulticomponentParameters, C3dOrientParameters, C3dOutputMultipleParameters, C3dOrient1Parameters, C3dOriginParameters, C3dOriginVoxelParameters, C3dOriginVoxelCoordParameters, C3dOverlapParameters, C3dOverlayLabelImageParameters, C3dPadParameters, C3dPadToParameters, C3dPcaParameters, C3dPercentIntensityModeParameters, C3dPixelParameters, C3dPopParameters, C3dPopasParameters, C3dProbeParameters, C3dPushParameters, C3dRankParameters, C3dReciprocalParameters, C3dRegionParameters, C3dReorderParameters, C3dRetainLabelsParameters, C3dRfApplyParameters, C3dRfTrainParameters, C3dRfParamPatchParameters, C3dRfParamUsexyzParameters, C3dRfParamNousexyzParameters, C3dRfParamNtreesParameters, C3dRfParamTreedepthParameters, C3dSetSformParameters, C3dReplaceParameters, C3dResampleParameters, C3dResampleIsoParameters, C3dResampleMmParameters, C3dResliceItkParameters, C3dResliceMatrixParameters, C3dResliceIdentityParameters, C3dRgb2hsvParameters, C3dRmsParameters, C3dRoundParameters, C3dScaleParameters, C3dSetSform1Parameters, C3dSinParameters, C3dSliceParameters, C3dSliceAllParameters, C3dSharpenParameters, C3dShiftParameters, C3dSignedDistanceTransformParameters, C3dSmoothParameters, C3dSmoothFastParameters, C3dSpacingParameters, C3dSplitParameters, C3dSqrtParameters, C3dStapleParameters, C3dStructureTensorEigenvaluesParameters, C3dSpmParameters, C3dSubtractParameters, C3dSupervoxelParameters, C3dStretchParameters, C3dSwapdimParameters, C3dTestImageParameters, C3dTestProbeParameters, C3dThresholdParameters, C3dTileParameters, C3dTrimParameters, C3dTrimToSizeParameters, C3dTypeParameters, C3dVerboseParameters, C3dNoverboseParameters, C3dVersionParameters, C3dVoteParameters, C3dVoteMrfParameters, C3dVoteLabelParameters, C3dVoxelSumParameters, C3dVoxelIntegralParameters, C3dVoxelwiseRegressionParameters, C3dWarpParameters, C3dWarpLabelParameters, C3dWrapParameters, C3dWeightedSumParameters, C3dWeightedSumVoxelwiseParameters]],
     output: str,
 ) -> C3dParameters:
     """
@@ -10075,7 +10075,7 @@ def c3d_execute(
 
 def c3d_(
     input_: list[InputPathType],
-    operations: list[typing.Union[C3dAccumParameters, C3dAcosParameters, C3dAddParameters, C3dAlignLandmarksParameters, C3dAnisotropicDiffusionParameters, C3dAntialiasParameters, C3dSetParameters, C3dAsinParameters, C3dAtan2Parameters, C3dBackgroundParameters, C3dN4BiasCorrectionParameters, C3dBinarizeParameters, C3dCannyParameters, C3dCeilParameters, C3dCentroidParameters, C3dCentroidMarkParameters, C3dConnectedComponentsParameters, C3dClearParameters, C3dClipParameters, C3dColorMapParameters, C3dCompressParameters, C3dNoCompressParameters, C3dConvParameters, C3dCoordinateMapVoxelParameters, C3dCoordinateMapPhysicalParameters, C3dCopyTransformParameters, C3dCosParameters, C3dCreateParameters, C3dDicomSeriesListParameters, C3dDicomSeriesReadParameters, C3dDilateParameters, C3dDivideParameters, C3dDuplicateParameters, C3dEndaccumParameters, C3dEndforParameters, C3dErodeParameters, C3dErfParameters, C3dExpParameters, C3dExportPatchesParameters, C3dExportPatchesAugParameters, C3dExtrudeSegParameters, C3dFillBackgroundWithNoiseParameters, C3dFftParameters, C3dFlipParameters, C3dFloorParameters, C3dForeachParameters, C3dForeachCompParameters, C3dGlmParameters, C3dGradientParameters, C3dHelpParameters, C3dHolefillParameters, C3dHessianEigenvaluesParameters, C3dHessianObjectnessParameters, C3dHistogramMatchParameters, C3dInfoParameters, C3dInfoFullParameters, C3dInsertParameters, C3dInterpolationParameters, C3dIterationsParameters, C3dLabelOverlapParameters, C3dLabelStatisticsParameters, C3dLandmarksToSpheresParameters, C3dLaplacianParameters, C3dLevelsetParameters, C3dLevelsetCurvatureParameters, C3dLevelsetAdvectionParameters, C3dLogParameters, C3dLog10Parameters, C3dManualParameters, C3dMatchBoundingBoxParameters, C3dMaximumParameters, C3dMulticomponentSplitParameters, C3dMeanParameters, C3dMedianFilterParameters, C3dMergeParameters, C3dMeanFilterParameters, C3dMutualInfoParameters, C3dMinimumParameters, C3dMixtureModelParameters, C3dMomentsParameters, C3dMattesMutualInfoParameters, C3dMeanSquareParameters, C3dMultiplyParameters, C3dNormalizedCrossCorrelationParameters, C3dNormalizedCorrelationParameters, C3dNormalizedMutualInfoParameters, C3dNoiseGaussianParameters, C3dNoisePoissonParameters, C3dNoiseSpeckleParameters, C3dNoiseSaltPepperParameters, C3dNoMulticomponentSplitParameters, C3dNormalizeLocalWindowParameters, C3dNormpdfParameters, C3dNoroundParameters, C3dNospmParameters, C3dOutputParameters, C3dOutputMulticomponentParameters, C3dOutputMultipleMulticomponentParameters, C3dOrientParameters, C3dOutputMultipleParameters, C3dOrientParameters_, C3dOriginParameters, C3dOriginVoxelParameters, C3dOriginVoxelCoordParameters, C3dOverlapParameters, C3dOverlayLabelImageParameters, C3dPadParameters, C3dPadToParameters, C3dPcaParameters, C3dPercentIntensityModeParameters, C3dPixelParameters, C3dPopParameters, C3dPopasParameters, C3dProbeParameters, C3dPushParameters, C3dRankParameters, C3dReciprocalParameters, C3dRegionParameters, C3dReorderParameters, C3dRetainLabelsParameters, C3dRfApplyParameters, C3dRfTrainParameters, C3dRfParamPatchParameters, C3dRfParamUsexyzParameters, C3dRfParamNousexyzParameters, C3dRfParamNtreesParameters, C3dRfParamTreedepthParameters, C3dSetSformParameters, C3dReplaceParameters, C3dResampleParameters, C3dResampleIsoParameters, C3dResampleMmParameters, C3dResliceItkParameters, C3dResliceMatrixParameters, C3dResliceIdentityParameters, C3dRgb2hsvParameters, C3dRmsParameters, C3dRoundParameters, C3dScaleParameters, C3dSetSformParameters_, C3dSinParameters, C3dSliceParameters, C3dSliceAllParameters, C3dSharpenParameters, C3dShiftParameters, C3dSignedDistanceTransformParameters, C3dSmoothParameters, C3dSmoothFastParameters, C3dSpacingParameters, C3dSplitParameters, C3dSqrtParameters, C3dStapleParameters, C3dStructureTensorEigenvaluesParameters, C3dSpmParameters, C3dSubtractParameters, C3dSupervoxelParameters, C3dStretchParameters, C3dSwapdimParameters, C3dTestImageParameters, C3dTestProbeParameters, C3dThresholdParameters, C3dTileParameters, C3dTrimParameters, C3dTrimToSizeParameters, C3dTypeParameters, C3dVerboseParameters, C3dNoverboseParameters, C3dVersionParameters, C3dVoteParameters, C3dVoteMrfParameters, C3dVoteLabelParameters, C3dVoxelSumParameters, C3dVoxelIntegralParameters, C3dVoxelwiseRegressionParameters, C3dWarpParameters, C3dWarpLabelParameters, C3dWrapParameters, C3dWeightedSumParameters, C3dWeightedSumVoxelwiseParameters]],
+    operations: list[typing.Union[C3dAccumParameters, C3dAcosParameters, C3dAddParameters, C3dAlignLandmarksParameters, C3dAnisotropicDiffusionParameters, C3dAntialiasParameters, C3dSetParameters, C3dAsinParameters, C3dAtan2Parameters, C3dBackgroundParameters, C3dN4BiasCorrectionParameters, C3dBinarizeParameters, C3dCannyParameters, C3dCeilParameters, C3dCentroidParameters, C3dCentroidMarkParameters, C3dConnectedComponentsParameters, C3dClearParameters, C3dClipParameters, C3dColorMapParameters, C3dCompressParameters, C3dNoCompressParameters, C3dConvParameters, C3dCoordinateMapVoxelParameters, C3dCoordinateMapPhysicalParameters, C3dCopyTransformParameters, C3dCosParameters, C3dCreateParameters, C3dDicomSeriesListParameters, C3dDicomSeriesReadParameters, C3dDilateParameters, C3dDivideParameters, C3dDuplicateParameters, C3dEndaccumParameters, C3dEndforParameters, C3dErodeParameters, C3dErfParameters, C3dExpParameters, C3dExportPatchesParameters, C3dExportPatchesAugParameters, C3dExtrudeSegParameters, C3dFillBackgroundWithNoiseParameters, C3dFftParameters, C3dFlipParameters, C3dFloorParameters, C3dForeachParameters, C3dForeachCompParameters, C3dGlmParameters, C3dGradientParameters, C3dHelpParameters, C3dHolefillParameters, C3dHessianEigenvaluesParameters, C3dHessianObjectnessParameters, C3dHistogramMatchParameters, C3dInfoParameters, C3dInfoFullParameters, C3dInsertParameters, C3dInterpolationParameters, C3dIterationsParameters, C3dLabelOverlapParameters, C3dLabelStatisticsParameters, C3dLandmarksToSpheresParameters, C3dLaplacianParameters, C3dLevelsetParameters, C3dLevelsetCurvatureParameters, C3dLevelsetAdvectionParameters, C3dLogParameters, C3dLog10Parameters, C3dManualParameters, C3dMatchBoundingBoxParameters, C3dMaximumParameters, C3dMulticomponentSplitParameters, C3dMeanParameters, C3dMedianFilterParameters, C3dMergeParameters, C3dMeanFilterParameters, C3dMutualInfoParameters, C3dMinimumParameters, C3dMixtureModelParameters, C3dMomentsParameters, C3dMattesMutualInfoParameters, C3dMeanSquareParameters, C3dMultiplyParameters, C3dNormalizedCrossCorrelationParameters, C3dNormalizedCorrelationParameters, C3dNormalizedMutualInfoParameters, C3dNoiseGaussianParameters, C3dNoisePoissonParameters, C3dNoiseSpeckleParameters, C3dNoiseSaltPepperParameters, C3dNoMulticomponentSplitParameters, C3dNormalizeLocalWindowParameters, C3dNormpdfParameters, C3dNoroundParameters, C3dNospmParameters, C3dOutputParameters, C3dOutputMulticomponentParameters, C3dOutputMultipleMulticomponentParameters, C3dOrientParameters, C3dOutputMultipleParameters, C3dOrient1Parameters, C3dOriginParameters, C3dOriginVoxelParameters, C3dOriginVoxelCoordParameters, C3dOverlapParameters, C3dOverlayLabelImageParameters, C3dPadParameters, C3dPadToParameters, C3dPcaParameters, C3dPercentIntensityModeParameters, C3dPixelParameters, C3dPopParameters, C3dPopasParameters, C3dProbeParameters, C3dPushParameters, C3dRankParameters, C3dReciprocalParameters, C3dRegionParameters, C3dReorderParameters, C3dRetainLabelsParameters, C3dRfApplyParameters, C3dRfTrainParameters, C3dRfParamPatchParameters, C3dRfParamUsexyzParameters, C3dRfParamNousexyzParameters, C3dRfParamNtreesParameters, C3dRfParamTreedepthParameters, C3dSetSformParameters, C3dReplaceParameters, C3dResampleParameters, C3dResampleIsoParameters, C3dResampleMmParameters, C3dResliceItkParameters, C3dResliceMatrixParameters, C3dResliceIdentityParameters, C3dRgb2hsvParameters, C3dRmsParameters, C3dRoundParameters, C3dScaleParameters, C3dSetSform1Parameters, C3dSinParameters, C3dSliceParameters, C3dSliceAllParameters, C3dSharpenParameters, C3dShiftParameters, C3dSignedDistanceTransformParameters, C3dSmoothParameters, C3dSmoothFastParameters, C3dSpacingParameters, C3dSplitParameters, C3dSqrtParameters, C3dStapleParameters, C3dStructureTensorEigenvaluesParameters, C3dSpmParameters, C3dSubtractParameters, C3dSupervoxelParameters, C3dStretchParameters, C3dSwapdimParameters, C3dTestImageParameters, C3dTestProbeParameters, C3dThresholdParameters, C3dTileParameters, C3dTrimParameters, C3dTrimToSizeParameters, C3dTypeParameters, C3dVerboseParameters, C3dNoverboseParameters, C3dVersionParameters, C3dVoteParameters, C3dVoteMrfParameters, C3dVoteLabelParameters, C3dVoxelSumParameters, C3dVoxelIntegralParameters, C3dVoxelwiseRegressionParameters, C3dWarpParameters, C3dWarpLabelParameters, C3dWrapParameters, C3dWeightedSumParameters, C3dWeightedSumVoxelwiseParameters]],
     output: str,
     runner: Runner | None = None,
 ) -> C3dOutputs:
@@ -10197,8 +10197,8 @@ __all__ = [
     "C3dNoroundParameters",
     "C3dNospmParameters",
     "C3dNoverboseParameters",
+    "C3dOrient1Parameters",
     "C3dOrientParameters",
-    "C3dOrientParameters_",
     "C3dOriginParameters",
     "C3dOriginVoxelCoordParameters",
     "C3dOriginVoxelParameters",
@@ -10244,8 +10244,8 @@ __all__ = [
     "C3dRoundParameters",
     "C3dScaleParameters",
     "C3dSetParameters",
+    "C3dSetSform1Parameters",
     "C3dSetSformParameters",
-    "C3dSetSformParameters_",
     "C3dSharpenParameters",
     "C3dShiftParameters",
     "C3dSignedDistanceTransformParameters",
@@ -10380,8 +10380,8 @@ __all__ = [
     "c3d_noround_params",
     "c3d_nospm_params",
     "c3d_noverbose_params",
+    "c3d_orient_1_params",
     "c3d_orient_params",
-    "c3d_orient_params_",
     "c3d_origin_params",
     "c3d_origin_voxel_coord_params",
     "c3d_origin_voxel_params",
@@ -10425,8 +10425,8 @@ __all__ = [
     "c3d_round_params",
     "c3d_scale_params",
     "c3d_set_params",
+    "c3d_set_sform_1_params",
     "c3d_set_sform_params",
-    "c3d_set_sform_params_",
     "c3d_sharpen_params",
     "c3d_shift_params",
     "c3d_signed_distance_transform_params",

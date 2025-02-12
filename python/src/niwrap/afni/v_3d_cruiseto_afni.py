@@ -18,7 +18,7 @@ V3dCruisetoAfniParameters = typing.TypedDict('V3dCruisetoAfniParameters', {
     "noxform": bool,
     "setenv": typing.NotRequired[str | None],
     "TRACE": bool,
-    "TRACE": bool,
+    "TRACE_1": bool,
     "nomall": bool,
     "yesmall": bool,
     "help": bool,
@@ -71,7 +71,7 @@ def v_3d_cruiseto_afni_params(
     noxform: bool = False,
     setenv: str | None = None,
     trace_: bool = False,
-    trace_2: bool = False,
+    trace_1: bool = False,
     nomall: bool = False,
     yesmall: bool = False,
     help_: bool = False,
@@ -88,7 +88,7 @@ def v_3d_cruiseto_afni_params(
         setenv: Set environment variable ENVname to be ENVvalue. Quotes are\
             necessary. Example: suma -setenv "'SUMA_BackgroundColor = 1 0 1'".
         trace_: Turns on extreme tracing.
-        trace_2: Turns on extreme tracing.
+        trace_1: Turns on extreme tracing.
         nomall: Turn off memory tracing.
         yesmall: Turn on memory tracing (default).
         help_: The entire help output.
@@ -102,7 +102,7 @@ def v_3d_cruiseto_afni_params(
         "novolreg": novolreg,
         "noxform": noxform,
         "TRACE": trace_,
-        "TRACE": trace_2,
+        "TRACE_1": trace_1,
         "nomall": nomall,
         "yesmall": yesmall,
         "help": help_,
@@ -143,7 +143,7 @@ def v_3d_cruiseto_afni_cargs(
         ])
     if params.get("TRACE"):
         cargs.append("-TRACE")
-    if params.get("TRACE"):
+    if params.get("TRACE_1"):
         cargs.append("-TRACE")
     if params.get("nomall"):
         cargs.append("-nomall")
@@ -204,7 +204,7 @@ def v_3d_cruiseto_afni(
     noxform: bool = False,
     setenv: str | None = None,
     trace_: bool = False,
-    trace_2: bool = False,
+    trace_1: bool = False,
     nomall: bool = False,
     yesmall: bool = False,
     help_: bool = False,
@@ -226,7 +226,7 @@ def v_3d_cruiseto_afni(
         setenv: Set environment variable ENVname to be ENVvalue. Quotes are\
             necessary. Example: suma -setenv "'SUMA_BackgroundColor = 1 0 1'".
         trace_: Turns on extreme tracing.
-        trace_2: Turns on extreme tracing.
+        trace_1: Turns on extreme tracing.
         nomall: Turn off memory tracing.
         yesmall: Turn on memory tracing (default).
         help_: The entire help output.
@@ -237,7 +237,7 @@ def v_3d_cruiseto_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CRUISETO_AFNI_METADATA)
-    params = v_3d_cruiseto_afni_params(input_=input_, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, trace_2=trace_2, nomall=nomall, yesmall=yesmall, help_=help_, h=h)
+    params = v_3d_cruiseto_afni_params(input_=input_, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, trace_1=trace_1, nomall=nomall, yesmall=yesmall, help_=help_, h=h)
     return v_3d_cruiseto_afni_execute(params, execution)
 
 

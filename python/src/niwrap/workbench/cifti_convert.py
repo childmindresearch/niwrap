@@ -44,8 +44,8 @@ CiftiConvertToNiftiParameters = typing.TypedDict('CiftiConvertToNiftiParameters'
     "opt_smaller_file": bool,
     "opt_smaller_dims": bool,
 })
-CiftiConvertResetTimepointsParameters_ = typing.TypedDict('CiftiConvertResetTimepointsParameters_', {
-    "__STYX_TYPE__": typing.Literal["reset_timepoints"],
+CiftiConvertResetTimepoints1Parameters = typing.TypedDict('CiftiConvertResetTimepoints1Parameters', {
+    "__STYX_TYPE__": typing.Literal["reset_timepoints_1"],
     "timestep": float,
     "timestart": float,
     "opt_unit_unit": typing.NotRequired[str | None],
@@ -55,7 +55,7 @@ CiftiConvertFromNiftiParameters = typing.TypedDict('CiftiConvertFromNiftiParamet
     "nifti_in": InputPathType,
     "cifti_template": InputPathType,
     "cifti_out": str,
-    "reset_timepoints": typing.NotRequired[CiftiConvertResetTimepointsParameters_ | None],
+    "reset_timepoints": typing.NotRequired[CiftiConvertResetTimepoints1Parameters | None],
     "opt_reset_scalars": bool,
 })
 CiftiConvertToTextParameters = typing.TypedDict('CiftiConvertToTextParameters', {
@@ -64,8 +64,8 @@ CiftiConvertToTextParameters = typing.TypedDict('CiftiConvertToTextParameters', 
     "text_out": str,
     "opt_col_delim_delim_string": typing.NotRequired[str | None],
 })
-CiftiConvertResetTimepointsParameters_2 = typing.TypedDict('CiftiConvertResetTimepointsParameters_2', {
-    "__STYX_TYPE__": typing.Literal["reset_timepoints"],
+CiftiConvertResetTimepoints2Parameters = typing.TypedDict('CiftiConvertResetTimepoints2Parameters', {
+    "__STYX_TYPE__": typing.Literal["reset_timepoints_2"],
     "timestep": float,
     "timestart": float,
     "opt_unit_unit": typing.NotRequired[str | None],
@@ -76,7 +76,7 @@ CiftiConvertFromTextParameters = typing.TypedDict('CiftiConvertFromTextParameter
     "cifti_template": InputPathType,
     "cifti_out": str,
     "opt_col_delim_delim_string": typing.NotRequired[str | None],
-    "reset_timepoints": typing.NotRequired[CiftiConvertResetTimepointsParameters_2 | None],
+    "reset_timepoints": typing.NotRequired[CiftiConvertResetTimepoints2Parameters | None],
     "opt_reset_scalars": bool,
 })
 CiftiConvertParameters = typing.TypedDict('CiftiConvertParameters', {
@@ -109,10 +109,10 @@ def dyn_cargs(
         "replace_binary": cifti_convert_replace_binary_cargs,
         "to_nifti": cifti_convert_to_nifti_cargs,
         "from_nifti": cifti_convert_from_nifti_cargs,
-        "reset_timepoints": cifti_convert_reset_timepoints_cargs_,
+        "reset_timepoints_1": cifti_convert_reset_timepoints_1_cargs,
         "to_text": cifti_convert_to_text_cargs,
         "from_text": cifti_convert_from_text_cargs,
-        "reset_timepoints": cifti_convert_reset_timepoints_cargs_2,
+        "reset_timepoints_2": cifti_convert_reset_timepoints_2_cargs,
     }.get(t)
 
 
@@ -453,11 +453,11 @@ def cifti_convert_to_nifti_outputs(
     return ret
 
 
-def cifti_convert_reset_timepoints_params_(
+def cifti_convert_reset_timepoints_1_params(
     timestep: float,
     timestart: float,
     opt_unit_unit: str | None = None,
-) -> CiftiConvertResetTimepointsParameters_:
+) -> CiftiConvertResetTimepoints1Parameters:
     """
     Build parameters.
     
@@ -470,7 +470,7 @@ def cifti_convert_reset_timepoints_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "reset_timepoints",
+        "__STYXTYPE__": "reset_timepoints_1",
         "timestep": timestep,
         "timestart": timestart,
     }
@@ -479,8 +479,8 @@ def cifti_convert_reset_timepoints_params_(
     return params
 
 
-def cifti_convert_reset_timepoints_cargs_(
-    params: CiftiConvertResetTimepointsParameters_,
+def cifti_convert_reset_timepoints_1_cargs(
+    params: CiftiConvertResetTimepoints1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -518,7 +518,7 @@ def cifti_convert_from_nifti_params(
     nifti_in: InputPathType,
     cifti_template: InputPathType,
     cifti_out: str,
-    reset_timepoints: CiftiConvertResetTimepointsParameters_ | None = None,
+    reset_timepoints: CiftiConvertResetTimepoints1Parameters | None = None,
     opt_reset_scalars: bool = False,
 ) -> CiftiConvertFromNiftiParameters:
     """
@@ -644,11 +644,11 @@ def cifti_convert_to_text_cargs(
     return cargs
 
 
-def cifti_convert_reset_timepoints_params_2(
+def cifti_convert_reset_timepoints_2_params(
     timestep: float,
     timestart: float,
     opt_unit_unit: str | None = None,
-) -> CiftiConvertResetTimepointsParameters_2:
+) -> CiftiConvertResetTimepoints2Parameters:
     """
     Build parameters.
     
@@ -661,7 +661,7 @@ def cifti_convert_reset_timepoints_params_2(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "reset_timepoints",
+        "__STYXTYPE__": "reset_timepoints_2",
         "timestep": timestep,
         "timestart": timestart,
     }
@@ -670,8 +670,8 @@ def cifti_convert_reset_timepoints_params_2(
     return params
 
 
-def cifti_convert_reset_timepoints_cargs_2(
-    params: CiftiConvertResetTimepointsParameters_2,
+def cifti_convert_reset_timepoints_2_cargs(
+    params: CiftiConvertResetTimepoints2Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -710,7 +710,7 @@ def cifti_convert_from_text_params(
     cifti_template: InputPathType,
     cifti_out: str,
     opt_col_delim_delim_string: str | None = None,
-    reset_timepoints: CiftiConvertResetTimepointsParameters_2 | None = None,
+    reset_timepoints: CiftiConvertResetTimepoints2Parameters | None = None,
     opt_reset_scalars: bool = False,
 ) -> CiftiConvertFromTextParameters:
     """
@@ -1032,9 +1032,9 @@ __all__ = [
     "CiftiConvertOutputs",
     "CiftiConvertParameters",
     "CiftiConvertReplaceBinaryParameters",
+    "CiftiConvertResetTimepoints1Parameters",
+    "CiftiConvertResetTimepoints2Parameters",
     "CiftiConvertResetTimepointsParameters",
-    "CiftiConvertResetTimepointsParameters_",
-    "CiftiConvertResetTimepointsParameters_2",
     "CiftiConvertToGiftiExtParameters",
     "CiftiConvertToNiftiOutputs",
     "CiftiConvertToNiftiParameters",
@@ -1045,9 +1045,9 @@ __all__ = [
     "cifti_convert_from_text_params",
     "cifti_convert_params",
     "cifti_convert_replace_binary_params",
+    "cifti_convert_reset_timepoints_1_params",
+    "cifti_convert_reset_timepoints_2_params",
     "cifti_convert_reset_timepoints_params",
-    "cifti_convert_reset_timepoints_params_",
-    "cifti_convert_reset_timepoints_params_2",
     "cifti_convert_to_gifti_ext_params",
     "cifti_convert_to_nifti_params",
     "cifti_convert_to_text_params",

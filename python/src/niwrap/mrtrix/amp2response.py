@@ -33,7 +33,7 @@ Amp2responseParameters = typing.TypedDict('Amp2responseParameters', {
     "version": bool,
     "amps": InputPathType,
     "mask": InputPathType,
-    "directions": InputPathType,
+    "directions_1": InputPathType,
     "response": str,
 })
 
@@ -125,7 +125,7 @@ class Amp2responseOutputs(typing.NamedTuple):
 def amp2response_params(
     amps: InputPathType,
     mask: InputPathType,
-    directions_: InputPathType,
+    directions_1: InputPathType,
     response: str,
     isotropic: bool = False,
     noconstraint: bool = False,
@@ -148,7 +148,7 @@ def amp2response_params(
         amps: the amplitudes image.
         mask: the mask containing the voxels from which to estimate the\
             response function.
-        directions_: a 4D image containing the estimated fibre directions.
+        directions_1: a 4D image containing the estimated fibre directions.
         response: the output zonal spherical harmonic coefficients.
         isotropic: estimate an isotropic response function (lmax=0 for all\
             shells).
@@ -194,7 +194,7 @@ def amp2response_params(
         "version": version,
         "amps": amps,
         "mask": mask,
-        "directions": directions_,
+        "directions_1": directions_1,
         "response": response,
     }
     if directions is not None:
@@ -265,7 +265,7 @@ def amp2response_cargs(
         cargs.append("-version")
     cargs.append(execution.input_file(params.get("amps")))
     cargs.append(execution.input_file(params.get("mask")))
-    cargs.append(execution.input_file(params.get("directions")))
+    cargs.append(execution.input_file(params.get("directions_1")))
     cargs.append(params.get("response"))
     return cargs
 
@@ -333,7 +333,7 @@ def amp2response_execute(
 def amp2response(
     amps: InputPathType,
     mask: InputPathType,
-    directions_: InputPathType,
+    directions_1: InputPathType,
     response: str,
     isotropic: bool = False,
     noconstraint: bool = False,
@@ -378,7 +378,7 @@ def amp2response(
         amps: the amplitudes image.
         mask: the mask containing the voxels from which to estimate the\
             response function.
-        directions_: a 4D image containing the estimated fibre directions.
+        directions_1: a 4D image containing the estimated fibre directions.
         response: the output zonal spherical harmonic coefficients.
         isotropic: estimate an isotropic response function (lmax=0 for all\
             shells).
@@ -415,7 +415,7 @@ def amp2response(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AMP2RESPONSE_METADATA)
-    params = amp2response_params(isotropic=isotropic, noconstraint=noconstraint, directions=directions, shells=shells, lmax=lmax, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, amps=amps, mask=mask, directions_=directions_, response=response)
+    params = amp2response_params(isotropic=isotropic, noconstraint=noconstraint, directions=directions, shells=shells, lmax=lmax, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, amps=amps, mask=mask, directions_1=directions_1, response=response)
     return amp2response_execute(params, execution)
 
 

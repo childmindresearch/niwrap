@@ -53,29 +53,29 @@ TckgenIncludeOrderedParameters = typing.TypedDict('TckgenIncludeOrderedParameter
     "__STYX_TYPE__": typing.Literal["include_ordered"],
     "image": str,
 })
-TckgenVariousStringParameters_ = typing.TypedDict('TckgenVariousStringParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousString"],
+TckgenVariousString1Parameters = typing.TypedDict('TckgenVariousString1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
-TckgenVariousFileParameters_ = typing.TypedDict('TckgenVariousFileParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousFile"],
+TckgenVariousFile1Parameters = typing.TypedDict('TckgenVariousFile1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
 TckgenExcludeParameters = typing.TypedDict('TckgenExcludeParameters', {
     "__STYX_TYPE__": typing.Literal["exclude"],
-    "spec": typing.Union[TckgenVariousStringParameters_, TckgenVariousFileParameters_],
+    "spec": typing.Union[TckgenVariousString1Parameters, TckgenVariousFile1Parameters],
 })
-TckgenVariousStringParameters_2 = typing.TypedDict('TckgenVariousStringParameters_2', {
-    "__STYX_TYPE__": typing.Literal["VariousString"],
+TckgenVariousString2Parameters = typing.TypedDict('TckgenVariousString2Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString_2"],
     "obj": str,
 })
-TckgenVariousFileParameters_2 = typing.TypedDict('TckgenVariousFileParameters_2', {
-    "__STYX_TYPE__": typing.Literal["VariousFile"],
+TckgenVariousFile2Parameters = typing.TypedDict('TckgenVariousFile2Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile_2"],
     "obj": InputPathType,
 })
 TckgenMaskParameters = typing.TypedDict('TckgenMaskParameters', {
     "__STYX_TYPE__": typing.Literal["mask"],
-    "spec": typing.Union[TckgenVariousStringParameters_2, TckgenVariousFileParameters_2],
+    "spec": typing.Union[TckgenVariousString2Parameters, TckgenVariousFile2Parameters],
 })
 TckgenFslgradParameters = typing.TypedDict('TckgenFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
@@ -162,11 +162,11 @@ def dyn_cargs(
         "VariousFile": tckgen_various_file_cargs,
         "include_ordered": tckgen_include_ordered_cargs,
         "exclude": tckgen_exclude_cargs,
-        "VariousString": tckgen_various_string_cargs_,
-        "VariousFile": tckgen_various_file_cargs_,
+        "VariousString_1": tckgen_various_string_1_cargs,
+        "VariousFile_1": tckgen_various_file_1_cargs,
         "mask": tckgen_mask_cargs,
-        "VariousString": tckgen_various_string_cargs_2,
-        "VariousFile": tckgen_various_file_cargs_2,
+        "VariousString_2": tckgen_various_string_2_cargs,
+        "VariousFile_2": tckgen_various_file_2_cargs,
         "fslgrad": tckgen_fslgrad_cargs,
         "config": tckgen_config_cargs,
     }.get(t)
@@ -580,9 +580,9 @@ def tckgen_include_ordered_cargs(
     return cargs
 
 
-def tckgen_various_string_params_(
+def tckgen_various_string_1_params(
     obj: str,
-) -> TckgenVariousStringParameters_:
+) -> TckgenVariousString1Parameters:
     """
     Build parameters.
     
@@ -592,14 +592,14 @@ def tckgen_various_string_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousString",
+        "__STYXTYPE__": "VariousString_1",
         "obj": obj,
     }
     return params
 
 
-def tckgen_various_string_cargs_(
-    params: TckgenVariousStringParameters_,
+def tckgen_various_string_1_cargs(
+    params: TckgenVariousString1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -616,9 +616,9 @@ def tckgen_various_string_cargs_(
     return cargs
 
 
-def tckgen_various_file_params_(
+def tckgen_various_file_1_params(
     obj: InputPathType,
-) -> TckgenVariousFileParameters_:
+) -> TckgenVariousFile1Parameters:
     """
     Build parameters.
     
@@ -628,14 +628,14 @@ def tckgen_various_file_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousFile",
+        "__STYXTYPE__": "VariousFile_1",
         "obj": obj,
     }
     return params
 
 
-def tckgen_various_file_cargs_(
-    params: TckgenVariousFileParameters_,
+def tckgen_various_file_1_cargs(
+    params: TckgenVariousFile1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -653,7 +653,7 @@ def tckgen_various_file_cargs_(
 
 
 def tckgen_exclude_params(
-    spec: typing.Union[TckgenVariousStringParameters_, TckgenVariousFileParameters_],
+    spec: typing.Union[TckgenVariousString1Parameters, TckgenVariousFile1Parameters],
 ) -> TckgenExcludeParameters:
     """
     Build parameters.
@@ -691,9 +691,9 @@ def tckgen_exclude_cargs(
     return cargs
 
 
-def tckgen_various_string_params_2(
+def tckgen_various_string_2_params(
     obj: str,
-) -> TckgenVariousStringParameters_2:
+) -> TckgenVariousString2Parameters:
     """
     Build parameters.
     
@@ -703,14 +703,14 @@ def tckgen_various_string_params_2(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousString",
+        "__STYXTYPE__": "VariousString_2",
         "obj": obj,
     }
     return params
 
 
-def tckgen_various_string_cargs_2(
-    params: TckgenVariousStringParameters_2,
+def tckgen_various_string_2_cargs(
+    params: TckgenVariousString2Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -727,9 +727,9 @@ def tckgen_various_string_cargs_2(
     return cargs
 
 
-def tckgen_various_file_params_2(
+def tckgen_various_file_2_params(
     obj: InputPathType,
-) -> TckgenVariousFileParameters_2:
+) -> TckgenVariousFile2Parameters:
     """
     Build parameters.
     
@@ -739,14 +739,14 @@ def tckgen_various_file_params_2(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousFile",
+        "__STYXTYPE__": "VariousFile_2",
         "obj": obj,
     }
     return params
 
 
-def tckgen_various_file_cargs_2(
-    params: TckgenVariousFileParameters_2,
+def tckgen_various_file_2_cargs(
+    params: TckgenVariousFile2Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -764,7 +764,7 @@ def tckgen_various_file_cargs_2(
 
 
 def tckgen_mask_params(
-    spec: typing.Union[TckgenVariousStringParameters_2, TckgenVariousFileParameters_2],
+    spec: typing.Union[TckgenVariousString2Parameters, TckgenVariousFile2Parameters],
 ) -> TckgenMaskParameters:
     """
     Build parameters.
@@ -1868,12 +1868,12 @@ __all__ = [
     "TckgenSeedRandomPerVoxelParameters",
     "TckgenSeedRejectionParameters",
     "TckgenSeedSphereParameters",
+    "TckgenVariousFile1Parameters",
+    "TckgenVariousFile2Parameters",
     "TckgenVariousFileParameters",
-    "TckgenVariousFileParameters_",
-    "TckgenVariousFileParameters_2",
+    "TckgenVariousString1Parameters",
+    "TckgenVariousString2Parameters",
     "TckgenVariousStringParameters",
-    "TckgenVariousStringParameters_",
-    "TckgenVariousStringParameters_2",
     "tckgen",
     "tckgen_config_params",
     "tckgen_exclude_params",
@@ -1888,10 +1888,10 @@ __all__ = [
     "tckgen_seed_random_per_voxel_params",
     "tckgen_seed_rejection_params",
     "tckgen_seed_sphere_params",
+    "tckgen_various_file_1_params",
+    "tckgen_various_file_2_params",
     "tckgen_various_file_params",
-    "tckgen_various_file_params_",
-    "tckgen_various_file_params_2",
+    "tckgen_various_string_1_params",
+    "tckgen_various_string_2_params",
     "tckgen_various_string_params",
-    "tckgen_various_string_params_",
-    "tckgen_various_string_params_2",
 ]

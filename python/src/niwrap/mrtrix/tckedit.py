@@ -27,29 +27,29 @@ TckeditIncludeOrderedParameters = typing.TypedDict('TckeditIncludeOrderedParamet
     "__STYX_TYPE__": typing.Literal["include_ordered"],
     "image": str,
 })
-TckeditVariousStringParameters_ = typing.TypedDict('TckeditVariousStringParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousString"],
+TckeditVariousString1Parameters = typing.TypedDict('TckeditVariousString1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
-TckeditVariousFileParameters_ = typing.TypedDict('TckeditVariousFileParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousFile"],
+TckeditVariousFile1Parameters = typing.TypedDict('TckeditVariousFile1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
 TckeditExcludeParameters = typing.TypedDict('TckeditExcludeParameters', {
     "__STYX_TYPE__": typing.Literal["exclude"],
-    "spec": typing.Union[TckeditVariousStringParameters_, TckeditVariousFileParameters_],
+    "spec": typing.Union[TckeditVariousString1Parameters, TckeditVariousFile1Parameters],
 })
-TckeditVariousStringParameters_2 = typing.TypedDict('TckeditVariousStringParameters_2', {
-    "__STYX_TYPE__": typing.Literal["VariousString"],
+TckeditVariousString2Parameters = typing.TypedDict('TckeditVariousString2Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString_2"],
     "obj": str,
 })
-TckeditVariousFileParameters_2 = typing.TypedDict('TckeditVariousFileParameters_2', {
-    "__STYX_TYPE__": typing.Literal["VariousFile"],
+TckeditVariousFile2Parameters = typing.TypedDict('TckeditVariousFile2Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile_2"],
     "obj": InputPathType,
 })
 TckeditMaskParameters = typing.TypedDict('TckeditMaskParameters', {
     "__STYX_TYPE__": typing.Literal["mask"],
-    "spec": typing.Union[TckeditVariousStringParameters_2, TckeditVariousFileParameters_2],
+    "spec": typing.Union[TckeditVariousString2Parameters, TckeditVariousFile2Parameters],
 })
 TckeditConfigParameters = typing.TypedDict('TckeditConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
@@ -103,11 +103,11 @@ def dyn_cargs(
         "VariousFile": tckedit_various_file_cargs,
         "include_ordered": tckedit_include_ordered_cargs,
         "exclude": tckedit_exclude_cargs,
-        "VariousString": tckedit_various_string_cargs_,
-        "VariousFile": tckedit_various_file_cargs_,
+        "VariousString_1": tckedit_various_string_1_cargs,
+        "VariousFile_1": tckedit_various_file_1_cargs,
         "mask": tckedit_mask_cargs,
-        "VariousString": tckedit_various_string_cargs_2,
-        "VariousFile": tckedit_various_file_cargs_2,
+        "VariousString_2": tckedit_various_string_2_cargs,
+        "VariousFile_2": tckedit_various_file_2_cargs,
         "config": tckedit_config_cargs,
     }.get(t)
 
@@ -279,9 +279,9 @@ def tckedit_include_ordered_cargs(
     return cargs
 
 
-def tckedit_various_string_params_(
+def tckedit_various_string_1_params(
     obj: str,
-) -> TckeditVariousStringParameters_:
+) -> TckeditVariousString1Parameters:
     """
     Build parameters.
     
@@ -291,14 +291,14 @@ def tckedit_various_string_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousString",
+        "__STYXTYPE__": "VariousString_1",
         "obj": obj,
     }
     return params
 
 
-def tckedit_various_string_cargs_(
-    params: TckeditVariousStringParameters_,
+def tckedit_various_string_1_cargs(
+    params: TckeditVariousString1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -315,9 +315,9 @@ def tckedit_various_string_cargs_(
     return cargs
 
 
-def tckedit_various_file_params_(
+def tckedit_various_file_1_params(
     obj: InputPathType,
-) -> TckeditVariousFileParameters_:
+) -> TckeditVariousFile1Parameters:
     """
     Build parameters.
     
@@ -327,14 +327,14 @@ def tckedit_various_file_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousFile",
+        "__STYXTYPE__": "VariousFile_1",
         "obj": obj,
     }
     return params
 
 
-def tckedit_various_file_cargs_(
-    params: TckeditVariousFileParameters_,
+def tckedit_various_file_1_cargs(
+    params: TckeditVariousFile1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -352,7 +352,7 @@ def tckedit_various_file_cargs_(
 
 
 def tckedit_exclude_params(
-    spec: typing.Union[TckeditVariousStringParameters_, TckeditVariousFileParameters_],
+    spec: typing.Union[TckeditVariousString1Parameters, TckeditVariousFile1Parameters],
 ) -> TckeditExcludeParameters:
     """
     Build parameters.
@@ -390,9 +390,9 @@ def tckedit_exclude_cargs(
     return cargs
 
 
-def tckedit_various_string_params_2(
+def tckedit_various_string_2_params(
     obj: str,
-) -> TckeditVariousStringParameters_2:
+) -> TckeditVariousString2Parameters:
     """
     Build parameters.
     
@@ -402,14 +402,14 @@ def tckedit_various_string_params_2(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousString",
+        "__STYXTYPE__": "VariousString_2",
         "obj": obj,
     }
     return params
 
 
-def tckedit_various_string_cargs_2(
-    params: TckeditVariousStringParameters_2,
+def tckedit_various_string_2_cargs(
+    params: TckeditVariousString2Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -426,9 +426,9 @@ def tckedit_various_string_cargs_2(
     return cargs
 
 
-def tckedit_various_file_params_2(
+def tckedit_various_file_2_params(
     obj: InputPathType,
-) -> TckeditVariousFileParameters_2:
+) -> TckeditVariousFile2Parameters:
     """
     Build parameters.
     
@@ -438,14 +438,14 @@ def tckedit_various_file_params_2(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousFile",
+        "__STYXTYPE__": "VariousFile_2",
         "obj": obj,
     }
     return params
 
 
-def tckedit_various_file_cargs_2(
-    params: TckeditVariousFileParameters_2,
+def tckedit_various_file_2_cargs(
+    params: TckeditVariousFile2Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -463,7 +463,7 @@ def tckedit_various_file_cargs_2(
 
 
 def tckedit_mask_params(
-    spec: typing.Union[TckeditVariousStringParameters_2, TckeditVariousFileParameters_2],
+    spec: typing.Union[TckeditVariousString2Parameters, TckeditVariousFile2Parameters],
 ) -> TckeditMaskParameters:
     """
     Build parameters.
@@ -931,12 +931,12 @@ __all__ = [
     "TckeditMaskParameters",
     "TckeditOutputs",
     "TckeditParameters",
+    "TckeditVariousFile1Parameters",
+    "TckeditVariousFile2Parameters",
     "TckeditVariousFileParameters",
-    "TckeditVariousFileParameters_",
-    "TckeditVariousFileParameters_2",
+    "TckeditVariousString1Parameters",
+    "TckeditVariousString2Parameters",
     "TckeditVariousStringParameters",
-    "TckeditVariousStringParameters_",
-    "TckeditVariousStringParameters_2",
     "tckedit",
     "tckedit_config_params",
     "tckedit_exclude_params",
@@ -944,10 +944,10 @@ __all__ = [
     "tckedit_include_params",
     "tckedit_mask_params",
     "tckedit_params",
+    "tckedit_various_file_1_params",
+    "tckedit_various_file_2_params",
     "tckedit_various_file_params",
-    "tckedit_various_file_params_",
-    "tckedit_various_file_params_2",
+    "tckedit_various_string_1_params",
+    "tckedit_various_string_2_params",
     "tckedit_various_string_params",
-    "tckedit_various_string_params_",
-    "tckedit_various_string_params_2",
 ]

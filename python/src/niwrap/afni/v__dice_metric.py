@@ -17,7 +17,7 @@ VDiceMetricParameters = typing.TypedDict('VDiceMetricParameters', {
     "dsets": list[InputPathType],
     "max_roi": typing.NotRequired[float | None],
     "forceoutput": typing.NotRequired[InputPathType | None],
-    "forceoutput": typing.NotRequired[InputPathType | None],
+    "forceoutput_1": typing.NotRequired[InputPathType | None],
     "echo": bool,
     "save_match": bool,
     "save_diff": bool,
@@ -73,7 +73,7 @@ def v__dice_metric_params(
     dsets: list[InputPathType],
     max_roi: float | None = None,
     forceoutput: InputPathType | None = None,
-    forceoutput_: InputPathType | None = None,
+    forceoutput_1: InputPathType | None = None,
     echo: bool = False,
     save_match: bool = False,
     save_diff: bool = False,
@@ -93,7 +93,7 @@ def v__dice_metric_params(
         max_roi: The maximum possible ROI index. Default is 12 or based on\
             LTFILE if specified.
         forceoutput: If given, force output for each class in LTFILE.
-        forceoutput_: If given, force output for each class in LTFILE.
+        forceoutput_1: If given, force output for each class in LTFILE.
         echo: Set echo.
         save_match: Save volume showing BASE*equals(BASE,DSET).
         save_diff: Save volume showing BASE*(1-equals(BASE,DSET)).
@@ -126,8 +126,8 @@ def v__dice_metric_params(
         params["max_roi"] = max_roi
     if forceoutput is not None:
         params["forceoutput"] = forceoutput
-    if forceoutput_ is not None:
-        params["forceoutput"] = forceoutput_
+    if forceoutput_1 is not None:
+        params["forceoutput_1"] = forceoutput_1
     if prefix is not None:
         params["prefix"] = prefix
     return params
@@ -166,10 +166,10 @@ def v__dice_metric_cargs(
             "-forceoutput",
             execution.input_file(params.get("forceoutput"))
         ])
-    if params.get("forceoutput") is not None:
+    if params.get("forceoutput_1") is not None:
         cargs.extend([
             "-forceoutput",
-            execution.input_file(params.get("forceoutput"))
+            execution.input_file(params.get("forceoutput_1"))
         ])
     if params.get("echo"):
         cargs.append("-echo")
@@ -240,7 +240,7 @@ def v__dice_metric(
     dsets: list[InputPathType],
     max_roi: float | None = None,
     forceoutput: InputPathType | None = None,
-    forceoutput_: InputPathType | None = None,
+    forceoutput_1: InputPathType | None = None,
     echo: bool = False,
     save_match: bool = False,
     save_diff: bool = False,
@@ -265,7 +265,7 @@ def v__dice_metric(
         max_roi: The maximum possible ROI index. Default is 12 or based on\
             LTFILE if specified.
         forceoutput: If given, force output for each class in LTFILE.
-        forceoutput_: If given, force output for each class in LTFILE.
+        forceoutput_1: If given, force output for each class in LTFILE.
         echo: Set echo.
         save_match: Save volume showing BASE*equals(BASE,DSET).
         save_diff: Save volume showing BASE*(1-equals(BASE,DSET)).
@@ -285,7 +285,7 @@ def v__dice_metric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DICE_METRIC_METADATA)
-    params = v__dice_metric_params(base=base, dsets=dsets, max_roi=max_roi, forceoutput=forceoutput, forceoutput_=forceoutput_, echo=echo, save_match=save_match, save_diff=save_diff, do_not_mask_by_base=do_not_mask_by_base, mask_by_base=mask_by_base, prefix=prefix, ignore_bad=ignore_bad, keep_tmp=keep_tmp)
+    params = v__dice_metric_params(base=base, dsets=dsets, max_roi=max_roi, forceoutput=forceoutput, forceoutput_1=forceoutput_1, echo=echo, save_match=save_match, save_diff=save_diff, do_not_mask_by_base=do_not_mask_by_base, mask_by_base=mask_by_base, prefix=prefix, ignore_bad=ignore_bad, keep_tmp=keep_tmp)
     return v__dice_metric_execute(params, execution)
 
 

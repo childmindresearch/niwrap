@@ -24,12 +24,12 @@ FixelfilterVariousFileParameters = typing.TypedDict('FixelfilterVariousFileParam
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
-FixelfilterVariousStringParameters_ = typing.TypedDict('FixelfilterVariousStringParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousString"],
+FixelfilterVariousString1Parameters = typing.TypedDict('FixelfilterVariousString1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
-FixelfilterVariousFileParameters_ = typing.TypedDict('FixelfilterVariousFileParameters_', {
-    "__STYX_TYPE__": typing.Literal["VariousFile"],
+FixelfilterVariousFile1Parameters = typing.TypedDict('FixelfilterVariousFile1Parameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
 FixelfilterParameters = typing.TypedDict('FixelfilterParameters', {
@@ -50,7 +50,7 @@ FixelfilterParameters = typing.TypedDict('FixelfilterParameters', {
     "version": bool,
     "input": typing.Union[FixelfilterVariousStringParameters, FixelfilterVariousFileParameters],
     "filter": str,
-    "output": typing.Union[FixelfilterVariousStringParameters_, FixelfilterVariousFileParameters_],
+    "output": typing.Union[FixelfilterVariousString1Parameters, FixelfilterVariousFile1Parameters],
 })
 
 
@@ -70,8 +70,8 @@ def dyn_cargs(
         "config": fixelfilter_config_cargs,
         "VariousString": fixelfilter_various_string_cargs,
         "VariousFile": fixelfilter_various_file_cargs,
-        "VariousString": fixelfilter_various_string_cargs_,
-        "VariousFile": fixelfilter_various_file_cargs_,
+        "VariousString_1": fixelfilter_various_string_1_cargs,
+        "VariousFile_1": fixelfilter_various_file_1_cargs,
     }.get(t)
 
 
@@ -203,9 +203,9 @@ def fixelfilter_various_file_cargs(
     return cargs
 
 
-def fixelfilter_various_string_params_(
+def fixelfilter_various_string_1_params(
     obj: str,
-) -> FixelfilterVariousStringParameters_:
+) -> FixelfilterVariousString1Parameters:
     """
     Build parameters.
     
@@ -215,14 +215,14 @@ def fixelfilter_various_string_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousString",
+        "__STYXTYPE__": "VariousString_1",
         "obj": obj,
     }
     return params
 
 
-def fixelfilter_various_string_cargs_(
-    params: FixelfilterVariousStringParameters_,
+def fixelfilter_various_string_1_cargs(
+    params: FixelfilterVariousString1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -239,9 +239,9 @@ def fixelfilter_various_string_cargs_(
     return cargs
 
 
-def fixelfilter_various_file_params_(
+def fixelfilter_various_file_1_params(
     obj: InputPathType,
-) -> FixelfilterVariousFileParameters_:
+) -> FixelfilterVariousFile1Parameters:
     """
     Build parameters.
     
@@ -251,14 +251,14 @@ def fixelfilter_various_file_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "VariousFile",
+        "__STYXTYPE__": "VariousFile_1",
         "obj": obj,
     }
     return params
 
 
-def fixelfilter_various_file_cargs_(
-    params: FixelfilterVariousFileParameters_,
+def fixelfilter_various_file_1_cargs(
+    params: FixelfilterVariousFile1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -287,7 +287,7 @@ def fixelfilter_params(
     matrix: InputPathType,
     input_: typing.Union[FixelfilterVariousStringParameters, FixelfilterVariousFileParameters],
     filter_: str,
-    output: typing.Union[FixelfilterVariousStringParameters_, FixelfilterVariousFileParameters_],
+    output: typing.Union[FixelfilterVariousString1Parameters, FixelfilterVariousFile1Parameters],
     threshold_value: float | None = None,
     threshold_connectivity: float | None = None,
     fwhm: float | None = None,
@@ -493,7 +493,7 @@ def fixelfilter(
     matrix: InputPathType,
     input_: typing.Union[FixelfilterVariousStringParameters, FixelfilterVariousFileParameters],
     filter_: str,
-    output: typing.Union[FixelfilterVariousStringParameters_, FixelfilterVariousFileParameters_],
+    output: typing.Union[FixelfilterVariousString1Parameters, FixelfilterVariousFile1Parameters],
     threshold_value: float | None = None,
     threshold_connectivity: float | None = None,
     fwhm: float | None = None,
@@ -571,15 +571,15 @@ __all__ = [
     "FixelfilterConfigParameters",
     "FixelfilterOutputs",
     "FixelfilterParameters",
+    "FixelfilterVariousFile1Parameters",
     "FixelfilterVariousFileParameters",
-    "FixelfilterVariousFileParameters_",
+    "FixelfilterVariousString1Parameters",
     "FixelfilterVariousStringParameters",
-    "FixelfilterVariousStringParameters_",
     "fixelfilter",
     "fixelfilter_config_params",
     "fixelfilter_params",
+    "fixelfilter_various_file_1_params",
     "fixelfilter_various_file_params",
-    "fixelfilter_various_file_params_",
+    "fixelfilter_various_string_1_params",
     "fixelfilter_various_string_params",
-    "fixelfilter_various_string_params_",
 ]

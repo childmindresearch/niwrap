@@ -31,13 +31,13 @@ MrfilterParameters = typing.TypedDict('MrfilterParameters', {
     "magnitude": bool,
     "centre_zero": bool,
     "stdev": typing.NotRequired[list[float] | None],
-    "magnitude": bool,
+    "magnitude_1": bool,
     "scanner": bool,
     "extent": typing.NotRequired[list[int] | None],
-    "extent": typing.NotRequired[list[int] | None],
-    "stdev": typing.NotRequired[list[float] | None],
+    "extent_1": typing.NotRequired[list[int] | None],
+    "stdev_1": typing.NotRequired[list[float] | None],
     "fwhm": typing.NotRequired[list[float] | None],
-    "extent": typing.NotRequired[list[int] | None],
+    "extent_2": typing.NotRequired[list[int] | None],
     "zupper": typing.NotRequired[float | None],
     "zlower": typing.NotRequired[float | None],
     "bridge": typing.NotRequired[int | None],
@@ -228,11 +228,11 @@ def mrfilter_params(
     magnitude: bool = False,
     centre_zero: bool = False,
     stdev: list[float] | None = None,
-    magnitude_: bool = False,
+    magnitude_1: bool = False,
     scanner: bool = False,
     extent: list[int] | None = None,
-    extent_: list[int] | None = None,
-    stdev_: list[float] | None = None,
+    extent_1: list[int] | None = None,
+    stdev_1: list[float] | None = None,
     fwhm: list[float] | None = None,
     extent_2: list[int] | None = None,
     zupper: float | None = None,
@@ -270,7 +270,7 @@ def mrfilter_params(
             stdev of 1 voxel. This can be specified either as a single value to be\
             used for all 3 axes, or as a comma-separated list of 3 values, one for\
             each axis.
-        magnitude_: output the gradient magnitude, rather than the default\
+        magnitude_1: output the gradient magnitude, rather than the default\
             x,y,z components.
         scanner: define the gradient with respect to the scanner coordinate\
             frame of reference.
@@ -278,14 +278,14 @@ def mrfilter_params(
             This can be specified either as a single value to be used for all 3\
             axes, or as a comma-separated list of 3 values, one for each axis\
             (default: 3x3x3).
-        extent_: specify extent of normalisation filtering neighbourhood in\
+        extent_1: specify extent of normalisation filtering neighbourhood in\
             voxels. This can be specified either as a single value to be used for\
             all 3 axes, or as a comma-separated list of 3 values, one for each axis\
             (default: 3x3x3).
-        stdev_: apply Gaussian smoothing with the specified standard deviation.\
-            The standard deviation is defined in mm (Default 1 voxel). This can be\
-            specified either as a single value to be used for all axes, or as a\
-            comma-separated list of the stdev for each axis.
+        stdev_1: apply Gaussian smoothing with the specified standard\
+            deviation. The standard deviation is defined in mm (Default 1 voxel).\
+            This can be specified either as a single value to be used for all axes,\
+            or as a comma-separated list of the stdev for each axis.
         fwhm: apply Gaussian smoothing with the specified full-width half\
             maximum. The FWHM is defined in mm (Default 1 voxel * 2.3548). This can\
             be specified either as a single value to be used for all axes, or as a\
@@ -325,7 +325,7 @@ def mrfilter_params(
         "inverse": inverse,
         "magnitude": magnitude,
         "centre_zero": centre_zero,
-        "magnitude": magnitude_,
+        "magnitude_1": magnitude_1,
         "scanner": scanner,
         "info": info,
         "quiet": quiet,
@@ -343,14 +343,14 @@ def mrfilter_params(
         params["stdev"] = stdev
     if extent is not None:
         params["extent"] = extent
-    if extent_ is not None:
-        params["extent"] = extent_
-    if stdev_ is not None:
-        params["stdev"] = stdev_
+    if extent_1 is not None:
+        params["extent_1"] = extent_1
+    if stdev_1 is not None:
+        params["stdev_1"] = stdev_1
     if fwhm is not None:
         params["fwhm"] = fwhm
     if extent_2 is not None:
-        params["extent"] = extent_2
+        params["extent_2"] = extent_2
     if zupper is not None:
         params["zupper"] = zupper
     if zlower is not None:
@@ -401,7 +401,7 @@ def mrfilter_cargs(
             "-stdev",
             ",".join(map(str, params.get("stdev")))
         ])
-    if params.get("magnitude"):
+    if params.get("magnitude_1"):
         cargs.append("-magnitude")
     if params.get("scanner"):
         cargs.append("-scanner")
@@ -410,25 +410,25 @@ def mrfilter_cargs(
             "-extent",
             ",".join(map(str, params.get("extent")))
         ])
-    if params.get("extent") is not None:
+    if params.get("extent_1") is not None:
         cargs.extend([
             "-extent",
-            ",".join(map(str, params.get("extent")))
+            ",".join(map(str, params.get("extent_1")))
         ])
-    if params.get("stdev") is not None:
+    if params.get("stdev_1") is not None:
         cargs.extend([
             "-stdev",
-            ",".join(map(str, params.get("stdev")))
+            ",".join(map(str, params.get("stdev_1")))
         ])
     if params.get("fwhm") is not None:
         cargs.extend([
             "-fwhm",
             ",".join(map(str, params.get("fwhm")))
         ])
-    if params.get("extent") is not None:
+    if params.get("extent_2") is not None:
         cargs.extend([
             "-extent",
-            ",".join(map(str, params.get("extent")))
+            ",".join(map(str, params.get("extent_2")))
         ])
     if params.get("zupper") is not None:
         cargs.extend([
@@ -548,11 +548,11 @@ def mrfilter(
     magnitude: bool = False,
     centre_zero: bool = False,
     stdev: list[float] | None = None,
-    magnitude_: bool = False,
+    magnitude_1: bool = False,
     scanner: bool = False,
     extent: list[int] | None = None,
-    extent_: list[int] | None = None,
-    stdev_: list[float] | None = None,
+    extent_1: list[int] | None = None,
+    stdev_1: list[float] | None = None,
     fwhm: list[float] | None = None,
     extent_2: list[int] | None = None,
     zupper: float | None = None,
@@ -605,7 +605,7 @@ def mrfilter(
             stdev of 1 voxel. This can be specified either as a single value to be\
             used for all 3 axes, or as a comma-separated list of 3 values, one for\
             each axis.
-        magnitude_: output the gradient magnitude, rather than the default\
+        magnitude_1: output the gradient magnitude, rather than the default\
             x,y,z components.
         scanner: define the gradient with respect to the scanner coordinate\
             frame of reference.
@@ -613,14 +613,14 @@ def mrfilter(
             This can be specified either as a single value to be used for all 3\
             axes, or as a comma-separated list of 3 values, one for each axis\
             (default: 3x3x3).
-        extent_: specify extent of normalisation filtering neighbourhood in\
+        extent_1: specify extent of normalisation filtering neighbourhood in\
             voxels. This can be specified either as a single value to be used for\
             all 3 axes, or as a comma-separated list of 3 values, one for each axis\
             (default: 3x3x3).
-        stdev_: apply Gaussian smoothing with the specified standard deviation.\
-            The standard deviation is defined in mm (Default 1 voxel). This can be\
-            specified either as a single value to be used for all axes, or as a\
-            comma-separated list of the stdev for each axis.
+        stdev_1: apply Gaussian smoothing with the specified standard\
+            deviation. The standard deviation is defined in mm (Default 1 voxel).\
+            This can be specified either as a single value to be used for all axes,\
+            or as a comma-separated list of the stdev for each axis.
         fwhm: apply Gaussian smoothing with the specified full-width half\
             maximum. The FWHM is defined in mm (Default 1 voxel * 2.3548). This can\
             be specified either as a single value to be used for all axes, or as a\
@@ -658,7 +658,7 @@ def mrfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRFILTER_METADATA)
-    params = mrfilter_params(axes=axes, inverse=inverse, magnitude=magnitude, centre_zero=centre_zero, stdev=stdev, magnitude_=magnitude_, scanner=scanner, extent=extent, extent_=extent_, stdev_=stdev_, fwhm=fwhm, extent_2=extent_2, zupper=zupper, zlower=zlower, bridge=bridge, maskin=maskin, maskout=maskout, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, filter_=filter_, output=output)
+    params = mrfilter_params(axes=axes, inverse=inverse, magnitude=magnitude, centre_zero=centre_zero, stdev=stdev, magnitude_1=magnitude_1, scanner=scanner, extent=extent, extent_1=extent_1, stdev_1=stdev_1, fwhm=fwhm, extent_2=extent_2, zupper=zupper, zlower=zlower, bridge=bridge, maskin=maskin, maskout=maskout, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, filter_=filter_, output=output)
     return mrfilter_execute(params, execution)
 
 

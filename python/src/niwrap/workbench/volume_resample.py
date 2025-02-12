@@ -21,15 +21,15 @@ VolumeResampleAffineParameters = typing.TypedDict('VolumeResampleAffineParameter
     "affine": str,
     "flirt": typing.NotRequired[VolumeResampleFlirtParameters | None],
 })
-VolumeResampleFlirtParameters_ = typing.TypedDict('VolumeResampleFlirtParameters_', {
-    "__STYX_TYPE__": typing.Literal["flirt"],
+VolumeResampleFlirt1Parameters = typing.TypedDict('VolumeResampleFlirt1Parameters', {
+    "__STYX_TYPE__": typing.Literal["flirt_1"],
     "source_volume": str,
     "target_volume": str,
 })
 VolumeResampleAffineSeriesParameters = typing.TypedDict('VolumeResampleAffineSeriesParameters', {
     "__STYX_TYPE__": typing.Literal["affine_series"],
     "affine_series": str,
-    "flirt": typing.NotRequired[VolumeResampleFlirtParameters_ | None],
+    "flirt": typing.NotRequired[VolumeResampleFlirt1Parameters | None],
 })
 VolumeResampleWarpParameters = typing.TypedDict('VolumeResampleWarpParameters', {
     "__STYX_TYPE__": typing.Literal["warp"],
@@ -64,7 +64,7 @@ def dyn_cargs(
         "affine": volume_resample_affine_cargs,
         "flirt": volume_resample_flirt_cargs,
         "affine_series": volume_resample_affine_series_cargs,
-        "flirt": volume_resample_flirt_cargs_,
+        "flirt_1": volume_resample_flirt_1_cargs,
         "warp": volume_resample_warp_cargs,
     }.get(t)
 
@@ -169,10 +169,10 @@ def volume_resample_affine_cargs(
     return cargs
 
 
-def volume_resample_flirt_params_(
+def volume_resample_flirt_1_params(
     source_volume: str,
     target_volume: str,
-) -> VolumeResampleFlirtParameters_:
+) -> VolumeResampleFlirt1Parameters:
     """
     Build parameters.
     
@@ -183,15 +183,15 @@ def volume_resample_flirt_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "flirt",
+        "__STYXTYPE__": "flirt_1",
         "source_volume": source_volume,
         "target_volume": target_volume,
     }
     return params
 
 
-def volume_resample_flirt_cargs_(
-    params: VolumeResampleFlirtParameters_,
+def volume_resample_flirt_1_cargs(
+    params: VolumeResampleFlirt1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -212,7 +212,7 @@ def volume_resample_flirt_cargs_(
 
 def volume_resample_affine_series_params(
     affine_series: str,
-    flirt: VolumeResampleFlirtParameters_ | None = None,
+    flirt: VolumeResampleFlirt1Parameters | None = None,
 ) -> VolumeResampleAffineSeriesParameters:
     """
     Build parameters.
@@ -485,16 +485,16 @@ __all__ = [
     "VOLUME_RESAMPLE_METADATA",
     "VolumeResampleAffineParameters",
     "VolumeResampleAffineSeriesParameters",
+    "VolumeResampleFlirt1Parameters",
     "VolumeResampleFlirtParameters",
-    "VolumeResampleFlirtParameters_",
     "VolumeResampleOutputs",
     "VolumeResampleParameters",
     "VolumeResampleWarpParameters",
     "volume_resample",
     "volume_resample_affine_params",
     "volume_resample_affine_series_params",
+    "volume_resample_flirt_1_params",
     "volume_resample_flirt_params",
-    "volume_resample_flirt_params_",
     "volume_resample_params",
     "volume_resample_warp_params",
 ]

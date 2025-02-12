@@ -202,7 +202,7 @@ AntsRegistrationConvergenceParameters = typing.TypedDict('AntsRegistrationConver
     "convergence_window_size": int,
 })
 AntsRegistrationStageParameters = typing.TypedDict('AntsRegistrationStageParameters', {
-    "__STYX_TYPE__": typing.Literal["stages"],
+    "__STYX_TYPE__": typing.Literal["stage"],
     "transform": typing.Union[AntsRegistrationTransformRigidParameters, AntsRegistrationTransformAffineParameters, AntsRegistrationTransformCompositeAffineParameters, AntsRegistrationTransformSimilarityParameters, AntsRegistrationTransformTranslationParameters, AntsRegistrationTransformBsplineParameters, AntsRegistrationTransformGaussianDisplacementFieldParameters, AntsRegistrationTransformBsplineDisplacementFieldParameters, AntsRegistrationTransformTimeVaryingVelocityFieldParameters, AntsRegistrationTransformTimeVaryingBsplineVelocityFieldParameters, AntsRegistrationTransformSynParameters, AntsRegistrationTransformBsplineSynParameters, AntsRegistrationTransformExponentialParameters, AntsRegistrationTransformBsplineExponentialParameters],
     "metric": typing.Union[AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationParameters, AntsRegistrationMetricMutualInformationParameters, AntsRegistrationMetricMattesParameters, AntsRegistrationMetricMeanSquaresParameters, AntsRegistrationMetricDemonsParameters, AntsRegistrationMetricGlobalCorrelationParameters, AntsRegistrationMetricEuclideanIcpParameters, AntsRegistrationMetricPointSetExpectationParameters, AntsRegistrationMetricJensenHavrdaCharvetTsallisParameters, AntsRegistrationMetricIgdmParameters],
     "convergence": AntsRegistrationConvergenceParameters,
@@ -260,7 +260,7 @@ def dyn_cargs(
         "initial_moving_transform": ants_registration_initial_moving_transform_cargs,
         "initial_moving_transform_use_inverse": ants_registration_initial_moving_transform_use_inverse_cargs,
         "initial_moving_transform_initialization_feature": ants_registration_initial_moving_transform_initialization_feature_cargs,
-        "stages": ants_registration_stage_cargs,
+        "stage": ants_registration_stage_cargs,
         "transform_rigid": ants_registration_transform_rigid_cargs,
         "transform_affine": ants_registration_transform_affine_cargs,
         "transform_composite_affine": ants_registration_transform_composite_affine_cargs,
@@ -1654,7 +1654,7 @@ def ants_registration_stage_params(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "stages",
+        "__STYXTYPE__": "stage",
         "transform": transform,
         "metric": metric,
         "convergence": convergence,

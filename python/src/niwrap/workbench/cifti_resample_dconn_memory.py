@@ -22,8 +22,8 @@ CiftiResampleDconnMemoryVolumePredilateParameters = typing.TypedDict('CiftiResam
     "opt_nearest": bool,
     "weighted": typing.NotRequired[CiftiResampleDconnMemoryWeightedParameters | None],
 })
-CiftiResampleDconnMemoryWeightedParameters_ = typing.TypedDict('CiftiResampleDconnMemoryWeightedParameters_', {
-    "__STYX_TYPE__": typing.Literal["weighted"],
+CiftiResampleDconnMemoryWeighted1Parameters = typing.TypedDict('CiftiResampleDconnMemoryWeighted1Parameters', {
+    "__STYX_TYPE__": typing.Literal["weighted_1"],
     "opt_exponent_exponent": typing.NotRequired[float | None],
     "opt_legacy_cutoff": bool,
 })
@@ -32,7 +32,7 @@ CiftiResampleDconnMemorySurfacePostdilateParameters = typing.TypedDict('CiftiRes
     "dilate_mm": float,
     "opt_nearest": bool,
     "opt_linear": bool,
-    "weighted": typing.NotRequired[CiftiResampleDconnMemoryWeightedParameters_ | None],
+    "weighted": typing.NotRequired[CiftiResampleDconnMemoryWeighted1Parameters | None],
 })
 CiftiResampleDconnMemoryFlirtParameters = typing.TypedDict('CiftiResampleDconnMemoryFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["flirt"],
@@ -135,7 +135,7 @@ def dyn_cargs(
         "volume_predilate": cifti_resample_dconn_memory_volume_predilate_cargs,
         "weighted": cifti_resample_dconn_memory_weighted_cargs,
         "surface_postdilate": cifti_resample_dconn_memory_surface_postdilate_cargs,
-        "weighted": cifti_resample_dconn_memory_weighted_cargs_,
+        "weighted_1": cifti_resample_dconn_memory_weighted_1_cargs,
         "affine": cifti_resample_dconn_memory_affine_cargs,
         "flirt": cifti_resample_dconn_memory_flirt_cargs,
         "warpfield": cifti_resample_dconn_memory_warpfield_cargs,
@@ -264,10 +264,10 @@ def cifti_resample_dconn_memory_volume_predilate_cargs(
     return cargs
 
 
-def cifti_resample_dconn_memory_weighted_params_(
+def cifti_resample_dconn_memory_weighted_1_params(
     opt_exponent_exponent: float | None = None,
     opt_legacy_cutoff: bool = False,
-) -> CiftiResampleDconnMemoryWeightedParameters_:
+) -> CiftiResampleDconnMemoryWeighted1Parameters:
     """
     Build parameters.
     
@@ -280,7 +280,7 @@ def cifti_resample_dconn_memory_weighted_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "weighted",
+        "__STYXTYPE__": "weighted_1",
         "opt_legacy_cutoff": opt_legacy_cutoff,
     }
     if opt_exponent_exponent is not None:
@@ -288,8 +288,8 @@ def cifti_resample_dconn_memory_weighted_params_(
     return params
 
 
-def cifti_resample_dconn_memory_weighted_cargs_(
-    params: CiftiResampleDconnMemoryWeightedParameters_,
+def cifti_resample_dconn_memory_weighted_1_cargs(
+    params: CiftiResampleDconnMemoryWeighted1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -317,7 +317,7 @@ def cifti_resample_dconn_memory_surface_postdilate_params(
     dilate_mm: float,
     opt_nearest: bool = False,
     opt_linear: bool = False,
-    weighted: CiftiResampleDconnMemoryWeightedParameters_ | None = None,
+    weighted: CiftiResampleDconnMemoryWeighted1Parameters | None = None,
 ) -> CiftiResampleDconnMemorySurfacePostdilateParameters:
     """
     Build parameters.
@@ -1201,8 +1201,8 @@ __all__ = [
     "CiftiResampleDconnMemorySurfacePostdilateParameters",
     "CiftiResampleDconnMemoryVolumePredilateParameters",
     "CiftiResampleDconnMemoryWarpfieldParameters",
+    "CiftiResampleDconnMemoryWeighted1Parameters",
     "CiftiResampleDconnMemoryWeightedParameters",
-    "CiftiResampleDconnMemoryWeightedParameters_",
     "cifti_resample_dconn_memory",
     "cifti_resample_dconn_memory_affine_params",
     "cifti_resample_dconn_memory_cerebellum_area_metrics_params",
@@ -1219,6 +1219,6 @@ __all__ = [
     "cifti_resample_dconn_memory_surface_postdilate_params",
     "cifti_resample_dconn_memory_volume_predilate_params",
     "cifti_resample_dconn_memory_warpfield_params",
+    "cifti_resample_dconn_memory_weighted_1_params",
     "cifti_resample_dconn_memory_weighted_params",
-    "cifti_resample_dconn_memory_weighted_params_",
 ]

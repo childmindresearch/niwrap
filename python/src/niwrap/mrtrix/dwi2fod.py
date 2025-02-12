@@ -47,8 +47,8 @@ Dwi2fodParameters = typing.TypedDict('Dwi2fodParameters', {
     "norm_lambda": typing.NotRequired[float | None],
     "threshold": typing.NotRequired[float | None],
     "niter": typing.NotRequired[int | None],
-    "norm_lambda": typing.NotRequired[float | None],
-    "neg_lambda": typing.NotRequired[float | None],
+    "norm_lambda_1": typing.NotRequired[float | None],
+    "neg_lambda_1": typing.NotRequired[float | None],
     "predicted_signal": typing.NotRequired[str | None],
     "strides": typing.NotRequired[typing.Union[Dwi2fodVariousStringParameters, Dwi2fodVariousFileParameters] | None],
     "info": bool,
@@ -361,8 +361,8 @@ def dwi2fod_params(
     norm_lambda: float | None = None,
     threshold: float | None = None,
     niter: int | None = None,
-    norm_lambda_: float | None = None,
-    neg_lambda_: float | None = None,
+    norm_lambda_1: float | None = None,
+    neg_lambda_1: float | None = None,
     predicted_signal: str | None = None,
     strides: typing.Union[Dwi2fodVariousStringParameters, Dwi2fodVariousFileParameters] | None = None,
     info: bool = False,
@@ -428,10 +428,10 @@ def dwi2fod_params(
         niter: the maximum number of iterations to perform for each voxel\
             (default = 50). Use '-niter 0' for a linear unconstrained spherical\
             deconvolution.
-        norm_lambda_: the regularisation parameter lambda that controls the\
+        norm_lambda_1: the regularisation parameter lambda that controls the\
             strength of the constraint on the norm of the solution (default =\
             1e-10).
-        neg_lambda_: the regularisation parameter lambda that controls the\
+        neg_lambda_1: the regularisation parameter lambda that controls the\
             strength of the non-negativity constraint (default = 1e-10).
         predicted_signal: output the predicted dwi image.
         strides: specify the strides of the output data in memory; either as a\
@@ -487,10 +487,10 @@ def dwi2fod_params(
         params["threshold"] = threshold
     if niter is not None:
         params["niter"] = niter
-    if norm_lambda_ is not None:
-        params["norm_lambda"] = norm_lambda_
-    if neg_lambda_ is not None:
-        params["neg_lambda"] = neg_lambda_
+    if norm_lambda_1 is not None:
+        params["norm_lambda_1"] = norm_lambda_1
+    if neg_lambda_1 is not None:
+        params["neg_lambda_1"] = neg_lambda_1
     if predicted_signal is not None:
         params["predicted_signal"] = predicted_signal
     if strides is not None:
@@ -569,15 +569,15 @@ def dwi2fod_cargs(
             "-niter",
             str(params.get("niter"))
         ])
-    if params.get("norm_lambda") is not None:
+    if params.get("norm_lambda_1") is not None:
         cargs.extend([
             "-norm_lambda",
-            str(params.get("norm_lambda"))
+            str(params.get("norm_lambda_1"))
         ])
-    if params.get("neg_lambda") is not None:
+    if params.get("neg_lambda_1") is not None:
         cargs.extend([
             "-neg_lambda",
-            str(params.get("neg_lambda"))
+            str(params.get("neg_lambda_1"))
         ])
     if params.get("predicted_signal") is not None:
         cargs.extend([
@@ -694,8 +694,8 @@ def dwi2fod(
     norm_lambda: float | None = None,
     threshold: float | None = None,
     niter: int | None = None,
-    norm_lambda_: float | None = None,
-    neg_lambda_: float | None = None,
+    norm_lambda_1: float | None = None,
+    neg_lambda_1: float | None = None,
     predicted_signal: str | None = None,
     strides: typing.Union[Dwi2fodVariousStringParameters, Dwi2fodVariousFileParameters] | None = None,
     info: bool = False,
@@ -787,10 +787,10 @@ def dwi2fod(
         niter: the maximum number of iterations to perform for each voxel\
             (default = 50). Use '-niter 0' for a linear unconstrained spherical\
             deconvolution.
-        norm_lambda_: the regularisation parameter lambda that controls the\
+        norm_lambda_1: the regularisation parameter lambda that controls the\
             strength of the constraint on the norm of the solution (default =\
             1e-10).
-        neg_lambda_: the regularisation parameter lambda that controls the\
+        neg_lambda_1: the regularisation parameter lambda that controls the\
             strength of the non-negativity constraint (default = 1e-10).
         predicted_signal: output the predicted dwi image.
         strides: specify the strides of the output data in memory; either as a\
@@ -815,7 +815,7 @@ def dwi2fod(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWI2FOD_METADATA)
-    params = dwi2fod_params(grad=grad, fslgrad=fslgrad, shells=shells, directions=directions, lmax=lmax, mask=mask, filter_=filter_, neg_lambda=neg_lambda, norm_lambda=norm_lambda, threshold=threshold, niter=niter, norm_lambda_=norm_lambda_, neg_lambda_=neg_lambda_, predicted_signal=predicted_signal, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, algorithm=algorithm, dwi=dwi, response_odf=response_odf)
+    params = dwi2fod_params(grad=grad, fslgrad=fslgrad, shells=shells, directions=directions, lmax=lmax, mask=mask, filter_=filter_, neg_lambda=neg_lambda, norm_lambda=norm_lambda, threshold=threshold, niter=niter, norm_lambda_1=norm_lambda_1, neg_lambda_1=neg_lambda_1, predicted_signal=predicted_signal, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, algorithm=algorithm, dwi=dwi, response_odf=response_odf)
     return dwi2fod_execute(params, execution)
 
 

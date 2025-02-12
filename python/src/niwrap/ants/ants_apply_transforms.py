@@ -43,7 +43,7 @@ AntsApplyTransformsAlphaParameters = typing.TypedDict('AntsApplyTransformsAlphaP
     "alpha": float,
 })
 AntsApplyTransformsParamParameters = typing.TypedDict('AntsApplyTransformsParamParameters', {
-    "__STYX_TYPE__": typing.Literal["params"],
+    "__STYX_TYPE__": typing.Literal["param"],
     "params": list[typing.Union[AntsApplyTransformsSigmaParameters, AntsApplyTransformsAlphaParameters]],
 })
 AntsApplyTransformsMultiLabelParameters = typing.TypedDict('AntsApplyTransformsMultiLabelParameters', {
@@ -120,7 +120,7 @@ def dyn_cargs(
         "nearestNeighbor": ants_apply_transforms_nearest_neighbor_cargs,
         "multiLabelnoparams": ants_apply_transforms_multi_labelnoparams_cargs,
         "multiLabel": ants_apply_transforms_multi_label_cargs,
-        "params": ants_apply_transforms_param_cargs,
+        "param": ants_apply_transforms_param_cargs,
         "sigma": ants_apply_transforms_sigma_cargs,
         "alpha": ants_apply_transforms_alpha_cargs,
         "gaussian": ants_apply_transforms_gaussian_cargs,
@@ -546,7 +546,7 @@ def ants_apply_transforms_param_params(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "params",
+        "__STYXTYPE__": "param",
         "params": params,
     }
     return params

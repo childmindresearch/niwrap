@@ -20,7 +20,7 @@ SlicesSummaryParameters = typing.TypedDict('SlicesSummaryParameters', {
     "single_slice_flag": bool,
     "darker_background_flag": bool,
     "dumb_rule_flag": bool,
-    "pictures_sum_second": str,
+    "pictures_sum_second_1": str,
     "output_png": str,
     "timepoints": str,
 })
@@ -75,7 +75,7 @@ def slices_summary_params(
     threshold: float,
     background_image: InputPathType,
     pictures_sum_second: str,
-    pictures_sum_second_: str,
+    pictures_sum_second_1: str,
     output_png: str,
     timepoints: str,
     single_slice_flag: bool = False,
@@ -90,7 +90,7 @@ def slices_summary_params(
         threshold: Threshold value for the slices.
         background_image: Background image file (e.g., standard/MNI152_T1_2mm).
         pictures_sum_second: Path to summary images directory.
-        pictures_sum_second_: Path to summary images directory.
+        pictures_sum_second_1: Path to summary images directory.
         output_png: Output PNG file.
         timepoints: Space-separated list of timepoints to use; first timepoint\
             is 0.
@@ -111,7 +111,7 @@ def slices_summary_params(
         "single_slice_flag": single_slice_flag,
         "darker_background_flag": darker_background_flag,
         "dumb_rule_flag": dumb_rule_flag,
-        "pictures_sum_second": pictures_sum_second_,
+        "pictures_sum_second_1": pictures_sum_second_1,
         "output_png": output_png,
         "timepoints": timepoints,
     }
@@ -145,7 +145,7 @@ def slices_summary_cargs(
         cargs.append("-c")
     cargs.append("|")
     cargs.append("slices_summary")
-    cargs.append(params.get("pictures_sum_second"))
+    cargs.append(params.get("pictures_sum_second_1"))
     cargs.append(params.get("output_png"))
     cargs.append(params.get("timepoints"))
     return cargs
@@ -166,7 +166,7 @@ def slices_summary_outputs(
     """
     ret = SlicesSummaryOutputs(
         root=execution.output_file("."),
-        summary_images_directory=execution.output_file(params.get("pictures_sum_second")),
+        summary_images_directory=execution.output_file(params.get("pictures_sum_second_1")),
         combined_summary_image=execution.output_file(params.get("output_png")),
     )
     return ret
@@ -200,7 +200,7 @@ def slices_summary(
     threshold: float,
     background_image: InputPathType,
     pictures_sum_second: str,
-    pictures_sum_second_: str,
+    pictures_sum_second_1: str,
     output_png: str,
     timepoints: str,
     single_slice_flag: bool = False,
@@ -220,7 +220,7 @@ def slices_summary(
         threshold: Threshold value for the slices.
         background_image: Background image file (e.g., standard/MNI152_T1_2mm).
         pictures_sum_second: Path to summary images directory.
-        pictures_sum_second_: Path to summary images directory.
+        pictures_sum_second_1: Path to summary images directory.
         output_png: Output PNG file.
         timepoints: Space-separated list of timepoints to use; first timepoint\
             is 0.
@@ -235,7 +235,7 @@ def slices_summary(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICES_SUMMARY_METADATA)
-    params = slices_summary_params(v_4d_input_file=v_4d_input_file, threshold=threshold, background_image=background_image, pictures_sum_second=pictures_sum_second, single_slice_flag=single_slice_flag, darker_background_flag=darker_background_flag, dumb_rule_flag=dumb_rule_flag, pictures_sum_second_=pictures_sum_second_, output_png=output_png, timepoints=timepoints)
+    params = slices_summary_params(v_4d_input_file=v_4d_input_file, threshold=threshold, background_image=background_image, pictures_sum_second=pictures_sum_second, single_slice_flag=single_slice_flag, darker_background_flag=darker_background_flag, dumb_rule_flag=dumb_rule_flag, pictures_sum_second_1=pictures_sum_second_1, output_png=output_png, timepoints=timepoints)
     return slices_summary_execute(params, execution)
 
 

@@ -22,8 +22,8 @@ CiftiResampleVolumePredilateParameters = typing.TypedDict('CiftiResampleVolumePr
     "opt_nearest": bool,
     "weighted": typing.NotRequired[CiftiResampleWeightedParameters | None],
 })
-CiftiResampleWeightedParameters_ = typing.TypedDict('CiftiResampleWeightedParameters_', {
-    "__STYX_TYPE__": typing.Literal["weighted"],
+CiftiResampleWeighted1Parameters = typing.TypedDict('CiftiResampleWeighted1Parameters', {
+    "__STYX_TYPE__": typing.Literal["weighted_1"],
     "opt_exponent_exponent": typing.NotRequired[float | None],
     "opt_legacy_cutoff": bool,
 })
@@ -32,7 +32,7 @@ CiftiResampleSurfacePostdilateParameters = typing.TypedDict('CiftiResampleSurfac
     "dilate_mm": float,
     "opt_nearest": bool,
     "opt_linear": bool,
-    "weighted": typing.NotRequired[CiftiResampleWeightedParameters_ | None],
+    "weighted": typing.NotRequired[CiftiResampleWeighted1Parameters | None],
 })
 CiftiResampleFlirtParameters = typing.TypedDict('CiftiResampleFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["flirt"],
@@ -136,7 +136,7 @@ def dyn_cargs(
         "volume_predilate": cifti_resample_volume_predilate_cargs,
         "weighted": cifti_resample_weighted_cargs,
         "surface_postdilate": cifti_resample_surface_postdilate_cargs,
-        "weighted": cifti_resample_weighted_cargs_,
+        "weighted_1": cifti_resample_weighted_1_cargs,
         "affine": cifti_resample_affine_cargs,
         "flirt": cifti_resample_flirt_cargs,
         "warpfield": cifti_resample_warpfield_cargs,
@@ -265,10 +265,10 @@ def cifti_resample_volume_predilate_cargs(
     return cargs
 
 
-def cifti_resample_weighted_params_(
+def cifti_resample_weighted_1_params(
     opt_exponent_exponent: float | None = None,
     opt_legacy_cutoff: bool = False,
-) -> CiftiResampleWeightedParameters_:
+) -> CiftiResampleWeighted1Parameters:
     """
     Build parameters.
     
@@ -281,7 +281,7 @@ def cifti_resample_weighted_params_(
         Parameter dictionary
     """
     params = {
-        "__STYXTYPE__": "weighted",
+        "__STYXTYPE__": "weighted_1",
         "opt_legacy_cutoff": opt_legacy_cutoff,
     }
     if opt_exponent_exponent is not None:
@@ -289,8 +289,8 @@ def cifti_resample_weighted_params_(
     return params
 
 
-def cifti_resample_weighted_cargs_(
-    params: CiftiResampleWeightedParameters_,
+def cifti_resample_weighted_1_cargs(
+    params: CiftiResampleWeighted1Parameters,
     execution: Execution,
 ) -> list[str]:
     """
@@ -318,7 +318,7 @@ def cifti_resample_surface_postdilate_params(
     dilate_mm: float,
     opt_nearest: bool = False,
     opt_linear: bool = False,
-    weighted: CiftiResampleWeightedParameters_ | None = None,
+    weighted: CiftiResampleWeighted1Parameters | None = None,
 ) -> CiftiResampleSurfacePostdilateParameters:
     """
     Build parameters.
@@ -1218,8 +1218,8 @@ __all__ = [
     "CiftiResampleSurfacePostdilateParameters",
     "CiftiResampleVolumePredilateParameters",
     "CiftiResampleWarpfieldParameters",
+    "CiftiResampleWeighted1Parameters",
     "CiftiResampleWeightedParameters",
-    "CiftiResampleWeightedParameters_",
     "cifti_resample",
     "cifti_resample_affine_params",
     "cifti_resample_cerebellum_area_metrics_params",
@@ -1236,6 +1236,6 @@ __all__ = [
     "cifti_resample_surface_postdilate_params",
     "cifti_resample_volume_predilate_params",
     "cifti_resample_warpfield_params",
+    "cifti_resample_weighted_1_params",
     "cifti_resample_weighted_params",
-    "cifti_resample_weighted_params_",
 ]

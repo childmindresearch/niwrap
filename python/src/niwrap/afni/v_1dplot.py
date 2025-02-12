@@ -19,7 +19,7 @@ V1dplotParameters = typing.TypedDict('V1dplotParameters', {
     "one": bool,
     "sepscl": bool,
     "NOLINE": bool,
-    "NOLINE": bool,
+    "NOLINE_1": bool,
     "box": bool,
     "hist": bool,
     "norm2": bool,
@@ -57,7 +57,7 @@ V1dplotParameters = typing.TypedDict('V1dplotParameters', {
     "ynames": typing.NotRequired[list[str] | None],
     "volreg": bool,
     "THICK": bool,
-    "THICK": bool,
+    "THICK_1": bool,
     "dashed": typing.NotRequired[str | None],
     "setenv": typing.NotRequired[str | None],
     "censor_RGB": typing.NotRequired[str | None],
@@ -65,7 +65,7 @@ V1dplotParameters = typing.TypedDict('V1dplotParameters', {
     "CENSORTR": typing.NotRequired[list[str] | None],
     "concat": typing.NotRequired[InputPathType | None],
     "Rbox": typing.NotRequired[str | None],
-    "Rbox": typing.NotRequired[str | None],
+    "Rbox_1": typing.NotRequired[str | None],
     "line": typing.NotRequired[str | None],
 })
 
@@ -116,7 +116,7 @@ def v_1dplot_params(
     one: bool = False,
     sepscl: bool = False,
     noline: bool = False,
-    noline_: bool = False,
+    noline_1: bool = False,
     box: bool = False,
     hist: bool = False,
     norm2: bool = False,
@@ -154,7 +154,7 @@ def v_1dplot_params(
     ynames: list[str] | None = None,
     volreg: bool = False,
     thick: bool = False,
-    thick_: bool = False,
+    thick_1: bool = False,
     dashed: str | None = None,
     setenv: str | None = None,
     censor_rgb: str | None = None,
@@ -162,7 +162,7 @@ def v_1dplot_params(
     censortr: list[str] | None = None,
     concat: InputPathType | None = None,
     rbox: str | None = None,
-    rbox_: str | None = None,
+    rbox_1: str | None = None,
     line: str | None = None,
 ) -> V1dplotParameters:
     """
@@ -178,7 +178,7 @@ def v_1dplot_params(
             -one!.
         noline: Same as -noline, but will not try to plot values outside the\
             rectangular box that contains the graph axes.
-        noline_: Same as -noline, but will not try to plot values outside the\
+        noline_1: Same as -noline, but will not try to plot values outside the\
             rectangular box that contains the graph axes.
         box: Plot a small 'box' at each data point.
         hist: Plot graphs in histogram style (i.e., vertical boxes).
@@ -232,7 +232,7 @@ def v_1dplot_params(
         volreg: Makes the 'ynames' be the same as the 6 labels used in\
             plug_volreg for Roll, Pitch, Yaw, I-S, R-L, and A-P movements.
         thick: Twice the power of '-thick' at no extra cost!.
-        thick_: Twice the power of '-thick' at no extra cost!.
+        thick_1: Twice the power of '-thick' at no extra cost!.
         dashed: Plot dashed lines between data points using specified\
             colon-separated list of dash values (1: solid, 2: longer dashes, 3:\
             shorter dashes).
@@ -243,7 +243,7 @@ def v_1dplot_params(
         censortr: Specify time indexes to be marked in the graph(s).
         concat: Specify the filename for the list of concatenated runs.
         rbox: Draw a rectangular box with one extra horizontal line.
-        rbox_: Draw a rectangular box with one extra horizontal line.
+        rbox_1: Draw a rectangular box with one extra horizontal line.
         line: Draw one line segment.
     Returns:
         Parameter dictionary
@@ -256,7 +256,7 @@ def v_1dplot_params(
         "one": one,
         "sepscl": sepscl,
         "NOLINE": noline,
-        "NOLINE": noline_,
+        "NOLINE_1": noline_1,
         "box": box,
         "hist": hist,
         "norm2": norm2,
@@ -269,7 +269,7 @@ def v_1dplot_params(
         "ps": ps,
         "volreg": volreg,
         "THICK": thick,
-        "THICK": thick_,
+        "THICK_1": thick_1,
     }
     if x is not None:
         params["x"] = x
@@ -335,8 +335,8 @@ def v_1dplot_params(
         params["concat"] = concat
     if rbox is not None:
         params["Rbox"] = rbox
-    if rbox_ is not None:
-        params["Rbox"] = rbox_
+    if rbox_1 is not None:
+        params["Rbox_1"] = rbox_1
     if line is not None:
         params["line"] = line
     return params
@@ -368,7 +368,7 @@ def v_1dplot_cargs(
         cargs.append("-sepscl")
     if params.get("NOLINE"):
         cargs.append("-NOLINE")
-    if params.get("NOLINE"):
+    if params.get("NOLINE_1"):
         cargs.append("-NOLINE")
     if params.get("box"):
         cargs.append("-box")
@@ -519,7 +519,7 @@ def v_1dplot_cargs(
         cargs.append("-volreg")
     if params.get("THICK"):
         cargs.append("-THICK")
-    if params.get("THICK"):
+    if params.get("THICK_1"):
         cargs.append("-THICK")
     if params.get("dashed") is not None:
         cargs.extend([
@@ -556,10 +556,10 @@ def v_1dplot_cargs(
             "-Rbox",
             params.get("Rbox")
         ])
-    if params.get("Rbox") is not None:
+    if params.get("Rbox_1") is not None:
         cargs.extend([
             "-Rbox",
-            params.get("Rbox")
+            params.get("Rbox_1")
         ])
     if params.get("line") is not None:
         cargs.extend([
@@ -619,7 +619,7 @@ def v_1dplot(
     one: bool = False,
     sepscl: bool = False,
     noline: bool = False,
-    noline_: bool = False,
+    noline_1: bool = False,
     box: bool = False,
     hist: bool = False,
     norm2: bool = False,
@@ -657,7 +657,7 @@ def v_1dplot(
     ynames: list[str] | None = None,
     volreg: bool = False,
     thick: bool = False,
-    thick_: bool = False,
+    thick_1: bool = False,
     dashed: str | None = None,
     setenv: str | None = None,
     censor_rgb: str | None = None,
@@ -665,7 +665,7 @@ def v_1dplot(
     censortr: list[str] | None = None,
     concat: InputPathType | None = None,
     rbox: str | None = None,
-    rbox_: str | None = None,
+    rbox_1: str | None = None,
     line: str | None = None,
     runner: Runner | None = None,
 ) -> V1dplotOutputs:
@@ -687,7 +687,7 @@ def v_1dplot(
             -one!.
         noline: Same as -noline, but will not try to plot values outside the\
             rectangular box that contains the graph axes.
-        noline_: Same as -noline, but will not try to plot values outside the\
+        noline_1: Same as -noline, but will not try to plot values outside the\
             rectangular box that contains the graph axes.
         box: Plot a small 'box' at each data point.
         hist: Plot graphs in histogram style (i.e., vertical boxes).
@@ -741,7 +741,7 @@ def v_1dplot(
         volreg: Makes the 'ynames' be the same as the 6 labels used in\
             plug_volreg for Roll, Pitch, Yaw, I-S, R-L, and A-P movements.
         thick: Twice the power of '-thick' at no extra cost!.
-        thick_: Twice the power of '-thick' at no extra cost!.
+        thick_1: Twice the power of '-thick' at no extra cost!.
         dashed: Plot dashed lines between data points using specified\
             colon-separated list of dash values (1: solid, 2: longer dashes, 3:\
             shorter dashes).
@@ -752,7 +752,7 @@ def v_1dplot(
         censortr: Specify time indexes to be marked in the graph(s).
         concat: Specify the filename for the list of concatenated runs.
         rbox: Draw a rectangular box with one extra horizontal line.
-        rbox_: Draw a rectangular box with one extra horizontal line.
+        rbox_1: Draw a rectangular box with one extra horizontal line.
         line: Draw one line segment.
         runner: Command runner.
     Returns:
@@ -760,7 +760,7 @@ def v_1dplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DPLOT_METADATA)
-    params = v_1dplot_params(tsfiles=tsfiles, install=install, sep=sep, one=one, sepscl=sepscl, noline=noline, noline_=noline_, box=box, hist=hist, norm2=norm2, normx=normx, norm1=norm1, demean=demean, x=x, xl10=xl10, dx=dx, xzero=xzero, nopush=nopush, ignore=ignore, use=use, xlabel=xlabel, ylabel=ylabel, plabel=plabel, title=title, wintitle=wintitle, naked=naked, aspect=aspect, stdin=stdin, ps=ps, jpg=jpg, jpeg=jpeg, png=png, pnm=pnm, pngs=pngs, jpgs=jpgs, jpegs=jpegs, pnms=pnms, ytran=ytran, xtran=xtran, xaxis=xaxis, yaxis=yaxis, ynames=ynames, volreg=volreg, thick=thick, thick_=thick_, dashed=dashed, setenv=setenv, censor_rgb=censor_rgb, censor=censor, censortr=censortr, concat=concat, rbox=rbox, rbox_=rbox_, line=line)
+    params = v_1dplot_params(tsfiles=tsfiles, install=install, sep=sep, one=one, sepscl=sepscl, noline=noline, noline_1=noline_1, box=box, hist=hist, norm2=norm2, normx=normx, norm1=norm1, demean=demean, x=x, xl10=xl10, dx=dx, xzero=xzero, nopush=nopush, ignore=ignore, use=use, xlabel=xlabel, ylabel=ylabel, plabel=plabel, title=title, wintitle=wintitle, naked=naked, aspect=aspect, stdin=stdin, ps=ps, jpg=jpg, jpeg=jpeg, png=png, pnm=pnm, pngs=pngs, jpgs=jpgs, jpegs=jpegs, pnms=pnms, ytran=ytran, xtran=xtran, xaxis=xaxis, yaxis=yaxis, ynames=ynames, volreg=volreg, thick=thick, thick_1=thick_1, dashed=dashed, setenv=setenv, censor_rgb=censor_rgb, censor=censor, censortr=censortr, concat=concat, rbox=rbox, rbox_1=rbox_1, line=line)
     return v_1dplot_execute(params, execution)
 
 
