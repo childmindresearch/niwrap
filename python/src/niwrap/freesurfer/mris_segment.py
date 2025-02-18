@@ -145,6 +145,7 @@ def mris_segment_execute(
     """
     cargs = mris_segment_cargs(params, execution)
     ret = mris_segment_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

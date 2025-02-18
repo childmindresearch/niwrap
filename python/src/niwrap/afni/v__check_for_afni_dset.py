@@ -136,6 +136,7 @@ def v__check_for_afni_dset_execute(
     """
     cargs = v__check_for_afni_dset_cargs(params, execution)
     ret = v__check_for_afni_dset_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

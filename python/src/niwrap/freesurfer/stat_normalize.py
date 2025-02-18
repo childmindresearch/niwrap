@@ -195,6 +195,7 @@ def stat_normalize_execute(
     """
     cargs = stat_normalize_cargs(params, execution)
     ret = stat_normalize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

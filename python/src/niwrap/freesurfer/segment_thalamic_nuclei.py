@@ -140,6 +140,7 @@ def segment_thalamic_nuclei_execute(
     """
     cargs = segment_thalamic_nuclei_cargs(params, execution)
     ret = segment_thalamic_nuclei_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

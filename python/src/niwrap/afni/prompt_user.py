@@ -145,6 +145,7 @@ def prompt_user_execute(
     """
     cargs = prompt_user_cargs(params, execution)
     ret = prompt_user_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

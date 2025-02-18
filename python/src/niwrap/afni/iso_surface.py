@@ -262,6 +262,7 @@ def iso_surface_execute(
     """
     cargs = iso_surface_cargs(params, execution)
     ret = iso_surface_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

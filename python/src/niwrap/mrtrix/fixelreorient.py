@@ -267,6 +267,7 @@ def fixelreorient_execute(
     """
     cargs = fixelreorient_cargs(params, execution)
     ret = fixelreorient_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

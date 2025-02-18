@@ -175,6 +175,7 @@ def rca_long_tp_init_execute(
     """
     cargs = rca_long_tp_init_cargs(params, execution)
     ret = rca_long_tp_init_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

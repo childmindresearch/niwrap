@@ -375,6 +375,7 @@ def fabber_asl_execute(
     """
     cargs = fabber_asl_cargs(params, execution)
     ret = fabber_asl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -145,6 +145,7 @@ def slicesmask_execute(
     """
     cargs = slicesmask_cargs(params, execution)
     ret = slicesmask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

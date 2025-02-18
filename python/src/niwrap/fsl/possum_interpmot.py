@@ -166,6 +166,7 @@ def possum_interpmot_execute(
     """
     cargs = possum_interpmot_cargs(params, execution)
     ret = possum_interpmot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -298,6 +298,7 @@ def border_merge_execute(
     """
     cargs = border_merge_cargs(params, execution)
     ret = border_merge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

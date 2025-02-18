@@ -176,6 +176,7 @@ def mri_relabel_nonwm_hypos_execute(
     """
     cargs = mri_relabel_nonwm_hypos_cargs(params, execution)
     ret = mri_relabel_nonwm_hypos_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

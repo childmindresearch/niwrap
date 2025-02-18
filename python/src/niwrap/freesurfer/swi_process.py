@@ -237,6 +237,7 @@ def swi_process_execute(
     """
     cargs = swi_process_cargs(params, execution)
     ret = swi_process_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

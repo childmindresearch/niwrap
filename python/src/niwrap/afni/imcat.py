@@ -364,6 +364,7 @@ def imcat_execute(
     """
     cargs = imcat_cargs(params, execution)
     ret = imcat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

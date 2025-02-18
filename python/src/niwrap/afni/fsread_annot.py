@@ -245,6 +245,7 @@ def fsread_annot_execute(
     """
     cargs = fsread_annot_cargs(params, execution)
     ret = fsread_annot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

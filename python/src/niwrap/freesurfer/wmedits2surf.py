@@ -211,6 +211,7 @@ def wmedits2surf_execute(
     """
     cargs = wmedits2surf_cargs(params, execution)
     ret = wmedits2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

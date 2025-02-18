@@ -145,6 +145,7 @@ def mris_sample_label_execute(
     """
     cargs = mris_sample_label_cargs(params, execution)
     ret = mris_sample_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

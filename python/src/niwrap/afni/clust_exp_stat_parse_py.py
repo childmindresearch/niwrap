@@ -266,6 +266,7 @@ def clust_exp_stat_parse_py_execute(
     """
     cargs = clust_exp_stat_parse_py_cargs(params, execution)
     ret = clust_exp_stat_parse_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

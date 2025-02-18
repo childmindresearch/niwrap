@@ -309,6 +309,7 @@ def dmri_pathstats_execute(
     """
     cargs = dmri_pathstats_cargs(params, execution)
     ret = dmri_pathstats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -254,6 +254,7 @@ def metric_stats_execute(
     """
     cargs = metric_stats_cargs(params, execution)
     ret = metric_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

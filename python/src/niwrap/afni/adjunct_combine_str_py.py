@@ -148,6 +148,7 @@ def adjunct_combine_str_py_execute(
     """
     cargs = adjunct_combine_str_py_cargs(params, execution)
     ret = adjunct_combine_str_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

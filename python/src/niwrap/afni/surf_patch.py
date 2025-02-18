@@ -299,6 +299,7 @@ def surf_patch_execute(
     """
     cargs = surf_patch_cargs(params, execution)
     ret = surf_patch_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

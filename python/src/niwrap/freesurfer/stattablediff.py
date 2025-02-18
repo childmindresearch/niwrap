@@ -207,6 +207,7 @@ def stattablediff_execute(
     """
     cargs = stattablediff_cargs(params, execution)
     ret = stattablediff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

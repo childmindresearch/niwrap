@@ -284,6 +284,7 @@ def surface_distortion_execute(
     """
     cargs = surface_distortion_cargs(params, execution)
     ret = surface_distortion_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

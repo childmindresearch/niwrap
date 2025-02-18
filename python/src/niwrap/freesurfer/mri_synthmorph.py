@@ -255,6 +255,7 @@ def mri_synthmorph_execute(
     """
     cargs = mri_synthmorph_cargs(params, execution)
     ret = mri_synthmorph_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

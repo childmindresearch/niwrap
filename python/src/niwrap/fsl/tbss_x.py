@@ -136,6 +136,7 @@ def tbss_x_execute(
     """
     cargs = tbss_x_cargs(params, execution)
     ret = tbss_x_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

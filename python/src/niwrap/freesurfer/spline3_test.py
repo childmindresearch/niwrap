@@ -148,6 +148,7 @@ def spline3_test_execute(
     """
     cargs = spline3_test_cargs(params, execution)
     ret = spline3_test_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

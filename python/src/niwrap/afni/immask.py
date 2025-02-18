@@ -168,6 +168,7 @@ def immask_execute(
     """
     cargs = immask_cargs(params, execution)
     ret = immask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

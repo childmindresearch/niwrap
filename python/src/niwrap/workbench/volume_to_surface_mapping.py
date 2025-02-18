@@ -570,6 +570,7 @@ def volume_to_surface_mapping_execute(
     """
     cargs = volume_to_surface_mapping_cargs(params, execution)
     ret = volume_to_surface_mapping_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

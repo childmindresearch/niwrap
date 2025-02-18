@@ -132,6 +132,7 @@ def fs_install_mcr_execute(
     """
     cargs = fs_install_mcr_cargs(params, execution)
     ret = fs_install_mcr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

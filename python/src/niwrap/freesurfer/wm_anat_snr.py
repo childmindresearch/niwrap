@@ -185,6 +185,7 @@ def wm_anat_snr_execute(
     """
     cargs = wm_anat_snr_cargs(params, execution)
     ret = wm_anat_snr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

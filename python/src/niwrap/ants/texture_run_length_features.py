@@ -188,6 +188,7 @@ def texture_run_length_features_execute(
     """
     cargs = texture_run_length_features_cargs(params, execution)
     ret = texture_run_length_features_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

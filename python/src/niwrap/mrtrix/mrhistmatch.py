@@ -298,6 +298,7 @@ def mrhistmatch_execute(
     """
     cargs = mrhistmatch_cargs(params, execution)
     ret = mrhistmatch_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

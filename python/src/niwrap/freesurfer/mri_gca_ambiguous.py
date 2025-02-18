@@ -141,6 +141,7 @@ def mri_gca_ambiguous_execute(
     """
     cargs = mri_gca_ambiguous_cargs(params, execution)
     ret = mri_gca_ambiguous_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

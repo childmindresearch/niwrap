@@ -166,6 +166,7 @@ def label2surf_execute(
     """
     cargs = label2surf_cargs(params, execution)
     ret = label2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

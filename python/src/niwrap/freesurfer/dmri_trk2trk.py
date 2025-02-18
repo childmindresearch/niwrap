@@ -382,6 +382,7 @@ def dmri_trk2trk_execute(
     """
     cargs = dmri_trk2trk_cargs(params, execution)
     ret = dmri_trk2trk_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

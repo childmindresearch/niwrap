@@ -237,6 +237,7 @@ def fnirtfileutils_execute(
     """
     cargs = fnirtfileutils_cargs(params, execution)
     ret = fnirtfileutils_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

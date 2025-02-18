@@ -425,6 +425,7 @@ def cifti_replace_structure_execute(
     """
     cargs = cifti_replace_structure_cargs(params, execution)
     ret = cifti_replace_structure_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

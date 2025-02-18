@@ -132,6 +132,7 @@ def renormalize_t1_subject_execute(
     """
     cargs = renormalize_t1_subject_cargs(params, execution)
     ret = renormalize_t1_subject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

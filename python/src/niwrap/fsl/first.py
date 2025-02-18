@@ -252,6 +252,7 @@ def first_execute(
     """
     cargs = first_cargs(params, execution)
     ret = first_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

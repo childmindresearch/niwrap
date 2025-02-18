@@ -145,6 +145,7 @@ def v__djunct_dwi_selector_execute(
     """
     cargs = v__djunct_dwi_selector_cargs(params, execution)
     ret = v__djunct_dwi_selector_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

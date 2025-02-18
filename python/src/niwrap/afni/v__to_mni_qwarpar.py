@@ -131,6 +131,7 @@ def v__to_mni_qwarpar_execute(
     """
     cargs = v__to_mni_qwarpar_cargs(params, execution)
     ret = v__to_mni_qwarpar_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

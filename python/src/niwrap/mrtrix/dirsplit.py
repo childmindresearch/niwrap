@@ -268,6 +268,7 @@ def dirsplit_execute(
     """
     cargs = dirsplit_cargs(params, execution)
     ret = dirsplit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

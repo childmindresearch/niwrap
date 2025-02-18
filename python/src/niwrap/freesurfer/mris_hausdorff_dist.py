@@ -156,6 +156,7 @@ def mris_hausdorff_dist_execute(
     """
     cargs = mris_hausdorff_dist_cargs(params, execution)
     ret = mris_hausdorff_dist_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

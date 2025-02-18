@@ -485,6 +485,7 @@ def fixelfilter_execute(
     """
     cargs = fixelfilter_cargs(params, execution)
     ret = fixelfilter_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -132,6 +132,7 @@ def get_label_thickness_execute(
     """
     cargs = get_label_thickness_cargs(params, execution)
     ret = get_label_thickness_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

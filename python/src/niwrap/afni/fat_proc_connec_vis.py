@@ -248,6 +248,7 @@ def fat_proc_connec_vis_execute(
     """
     cargs = fat_proc_connec_vis_cargs(params, execution)
     ret = fat_proc_connec_vis_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -202,6 +202,7 @@ def bbmask_execute(
     """
     cargs = bbmask_cargs(params, execution)
     ret = bbmask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

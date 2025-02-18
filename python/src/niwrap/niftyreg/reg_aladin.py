@@ -242,6 +242,7 @@ def reg_aladin_execute(
     """
     cargs = reg_aladin_cargs(params, execution)
     ret = reg_aladin_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

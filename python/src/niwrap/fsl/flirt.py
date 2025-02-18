@@ -548,6 +548,7 @@ def flirt_execute(
     """
     cargs = flirt_cargs(params, execution)
     ret = flirt_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

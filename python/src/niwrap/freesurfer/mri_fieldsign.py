@@ -320,6 +320,7 @@ def mri_fieldsign_execute(
     """
     cargs = mri_fieldsign_cargs(params, execution)
     ret = mri_fieldsign_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

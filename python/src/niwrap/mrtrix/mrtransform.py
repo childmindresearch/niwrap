@@ -788,6 +788,7 @@ def mrtransform_execute(
     """
     cargs = mrtransform_cargs(params, execution)
     ret = mrtransform_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

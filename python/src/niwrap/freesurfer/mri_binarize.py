@@ -415,6 +415,7 @@ def mri_binarize_execute(
     """
     cargs = mri_binarize_cargs(params, execution)
     ret = mri_binarize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

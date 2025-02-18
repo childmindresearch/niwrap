@@ -146,6 +146,7 @@ def labels_union_execute(
     """
     cargs = labels_union_cargs(params, execution)
     ret = labels_union_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

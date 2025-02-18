@@ -165,6 +165,7 @@ def surface_apply_warpfield_execute(
     """
     cargs = surface_apply_warpfield_cargs(params, execution)
     ret = surface_apply_warpfield_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

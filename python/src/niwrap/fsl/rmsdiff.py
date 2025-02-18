@@ -148,6 +148,7 @@ def rmsdiff_execute(
     """
     cargs = rmsdiff_cargs(params, execution)
     ret = rmsdiff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

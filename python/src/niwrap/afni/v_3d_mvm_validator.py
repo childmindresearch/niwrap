@@ -146,6 +146,7 @@ def v_3d_mvm_validator_execute(
     """
     cargs = v_3d_mvm_validator_cargs(params, execution)
     ret = v_3d_mvm_validator_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

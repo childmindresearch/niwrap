@@ -212,6 +212,7 @@ def create_icosahedron_execute(
     """
     cargs = create_icosahedron_cargs(params, execution)
     ret = create_icosahedron_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

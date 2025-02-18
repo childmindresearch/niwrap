@@ -296,6 +296,7 @@ def mrcolour_execute(
     """
     cargs = mrcolour_cargs(params, execution)
     ret = mrcolour_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

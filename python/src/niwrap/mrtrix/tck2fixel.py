@@ -269,6 +269,7 @@ def tck2fixel_execute(
     """
     cargs = tck2fixel_cargs(params, execution)
     ret = tck2fixel_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

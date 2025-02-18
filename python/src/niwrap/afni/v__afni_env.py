@@ -191,6 +191,7 @@ def v__afni_env_execute(
     """
     cargs = v__afni_env_cargs(params, execution)
     ret = v__afni_env_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -194,6 +194,7 @@ def surf_qual_execute(
     """
     cargs = surf_qual_cargs(params, execution)
     ret = surf_qual_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

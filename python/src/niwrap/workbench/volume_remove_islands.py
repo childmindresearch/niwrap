@@ -144,6 +144,7 @@ def volume_remove_islands_execute(
     """
     cargs = volume_remove_islands_cargs(params, execution)
     ret = volume_remove_islands_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

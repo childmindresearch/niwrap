@@ -169,6 +169,7 @@ def suma_change_spec_execute(
     """
     cargs = suma_change_spec_cargs(params, execution)
     ret = suma_change_spec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

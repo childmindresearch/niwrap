@@ -242,6 +242,7 @@ def dmri_extract_surface_measurements_execute(
     """
     cargs = dmri_extract_surface_measurements_cargs(params, execution)
     ret = dmri_extract_surface_measurements_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

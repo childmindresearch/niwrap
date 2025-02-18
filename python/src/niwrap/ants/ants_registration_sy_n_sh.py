@@ -318,6 +318,7 @@ def ants_registration_sy_n_sh_execute(
     """
     cargs = ants_registration_sy_n_sh_cargs(params, execution)
     ret = ants_registration_sy_n_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

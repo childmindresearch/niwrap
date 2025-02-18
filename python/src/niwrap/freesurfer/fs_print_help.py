@@ -134,6 +134,7 @@ def fs_print_help_execute(
     """
     cargs = fs_print_help_cargs(params, execution)
     ret = fs_print_help_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

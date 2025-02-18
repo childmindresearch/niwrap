@@ -172,6 +172,7 @@ def ants_align_origin_execute(
     """
     cargs = ants_align_origin_cargs(params, execution)
     ret = ants_align_origin_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

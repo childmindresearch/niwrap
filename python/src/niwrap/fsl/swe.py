@@ -433,6 +433,7 @@ def swe_execute(
     """
     cargs = swe_cargs(params, execution)
     ret = swe_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

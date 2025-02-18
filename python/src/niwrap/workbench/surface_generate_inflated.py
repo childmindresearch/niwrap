@@ -166,6 +166,7 @@ def surface_generate_inflated_execute(
     """
     cargs = surface_generate_inflated_cargs(params, execution)
     ret = surface_generate_inflated_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -270,6 +270,7 @@ def surface_metrics_execute(
     """
     cargs = surface_metrics_cargs(params, execution)
     ret = surface_metrics_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

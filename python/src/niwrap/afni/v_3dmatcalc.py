@@ -169,6 +169,7 @@ def v_3dmatcalc_execute(
     """
     cargs = v_3dmatcalc_cargs(params, execution)
     ret = v_3dmatcalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

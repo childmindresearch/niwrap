@@ -145,6 +145,7 @@ def quick_alpha_vals_py_execute(
     """
     cargs = quick_alpha_vals_py_cargs(params, execution)
     ret = quick_alpha_vals_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

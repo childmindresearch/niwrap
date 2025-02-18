@@ -266,6 +266,7 @@ def annot2std_execute(
     """
     cargs = annot2std_cargs(params, execution)
     ret = annot2std_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

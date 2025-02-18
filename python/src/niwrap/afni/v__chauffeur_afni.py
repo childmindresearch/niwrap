@@ -157,6 +157,7 @@ def v__chauffeur_afni_execute(
     """
     cargs = v__chauffeur_afni_cargs(params, execution)
     ret = v__chauffeur_afni_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

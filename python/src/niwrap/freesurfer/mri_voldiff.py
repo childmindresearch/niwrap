@@ -193,6 +193,7 @@ def mri_voldiff_execute(
     """
     cargs = mri_voldiff_cargs(params, execution)
     ret = mri_voldiff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

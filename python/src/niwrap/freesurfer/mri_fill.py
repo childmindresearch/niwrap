@@ -293,6 +293,7 @@ def mri_fill_execute(
     """
     cargs = mri_fill_cargs(params, execution)
     ret = mri_fill_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

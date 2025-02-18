@@ -188,6 +188,7 @@ def v_3d_synthesize_execute(
     """
     cargs = v_3d_synthesize_cargs(params, execution)
     ret = v_3d_synthesize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

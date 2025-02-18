@@ -180,6 +180,7 @@ def v_3d_par2_afni_execute(
     """
     cargs = v_3d_par2_afni_cargs(params, execution)
     ret = v_3d_par2_afni_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

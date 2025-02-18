@@ -171,6 +171,7 @@ def eddy_squad_execute(
     """
     cargs = eddy_squad_cargs(params, execution)
     ret = eddy_squad_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

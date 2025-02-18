@@ -136,6 +136,7 @@ def morph_rgb_lh_execute(
     """
     cargs = morph_rgb_lh_cargs(params, execution)
     ret = morph_rgb_lh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -247,6 +247,7 @@ def tckinfo_execute(
     """
     cargs = tckinfo_cargs(params, execution)
     ret = tckinfo_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

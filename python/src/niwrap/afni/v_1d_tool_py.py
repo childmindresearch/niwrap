@@ -242,6 +242,7 @@ def v_1d_tool_py_execute(
     """
     cargs = v_1d_tool_py_cargs(params, execution)
     ret = v_1d_tool_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

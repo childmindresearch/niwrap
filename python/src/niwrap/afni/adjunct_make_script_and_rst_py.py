@@ -179,6 +179,7 @@ def adjunct_make_script_and_rst_py_execute(
     """
     cargs = adjunct_make_script_and_rst_py_cargs(params, execution)
     ret = adjunct_make_script_and_rst_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

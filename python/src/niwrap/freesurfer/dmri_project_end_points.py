@@ -184,6 +184,7 @@ def dmri_project_end_points_execute(
     """
     cargs = dmri_project_end_points_cargs(params, execution)
     ret = dmri_project_end_points_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

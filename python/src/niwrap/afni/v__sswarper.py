@@ -349,6 +349,7 @@ def v__sswarper_execute(
     """
     cargs = v__sswarper_cargs(params, execution)
     ret = v__sswarper_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

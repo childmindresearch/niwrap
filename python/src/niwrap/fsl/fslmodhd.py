@@ -141,6 +141,7 @@ def fslmodhd_execute(
     """
     cargs = fslmodhd_cargs(params, execution)
     ret = fslmodhd_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -448,6 +448,7 @@ def mtnormalise_execute(
     """
     cargs = mtnormalise_cargs(params, execution)
     ret = mtnormalise_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -250,6 +250,7 @@ def mris_label2annot_execute(
     """
     cargs = mris_label2annot_cargs(params, execution)
     ret = mris_label2annot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

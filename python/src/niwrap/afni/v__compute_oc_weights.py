@@ -218,6 +218,7 @@ def v__compute_oc_weights_execute(
     """
     cargs = v__compute_oc_weights_cargs(params, execution)
     ret = v__compute_oc_weights_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

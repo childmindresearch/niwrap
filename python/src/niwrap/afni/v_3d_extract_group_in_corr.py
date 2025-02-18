@@ -148,6 +148,7 @@ def v_3d_extract_group_in_corr_execute(
     """
     cargs = v_3d_extract_group_in_corr_cargs(params, execution)
     ret = v_3d_extract_group_in_corr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

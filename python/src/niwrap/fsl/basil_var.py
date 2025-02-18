@@ -142,6 +142,7 @@ def basil_var_execute(
     """
     cargs = basil_var_cargs(params, execution)
     ret = basil_var_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

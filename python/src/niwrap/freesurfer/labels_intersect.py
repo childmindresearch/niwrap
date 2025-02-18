@@ -145,6 +145,7 @@ def labels_intersect_execute(
     """
     cargs = labels_intersect_cargs(params, execution)
     ret = labels_intersect_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

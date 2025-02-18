@@ -131,6 +131,7 @@ def unpackimadir2_execute(
     """
     cargs = unpackimadir2_cargs(params, execution)
     ret = unpackimadir2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -135,6 +135,7 @@ def help_format_execute(
     """
     cargs = help_format_cargs(params, execution)
     ret = help_format_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

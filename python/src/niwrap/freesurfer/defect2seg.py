@@ -202,6 +202,7 @@ def defect2seg_execute(
     """
     cargs = defect2seg_cargs(params, execution)
     ret = defect2seg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

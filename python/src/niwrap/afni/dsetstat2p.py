@@ -160,6 +160,7 @@ def dsetstat2p_execute(
     """
     cargs = dsetstat2p_cargs(params, execution)
     ret = dsetstat2p_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

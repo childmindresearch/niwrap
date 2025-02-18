@@ -204,6 +204,7 @@ def swi_preprocess_execute(
     """
     cargs = swi_preprocess_cargs(params, execution)
     ret = swi_preprocess_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

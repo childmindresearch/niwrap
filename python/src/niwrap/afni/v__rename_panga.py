@@ -205,6 +205,7 @@ def v__rename_panga_execute(
     """
     cargs = v__rename_panga_cargs(params, execution)
     ret = v__rename_panga_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

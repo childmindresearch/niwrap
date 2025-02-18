@@ -250,6 +250,7 @@ def vol2subfield_execute(
     """
     cargs = vol2subfield_cargs(params, execution)
     ret = vol2subfield_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

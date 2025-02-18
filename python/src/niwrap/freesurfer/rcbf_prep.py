@@ -195,6 +195,7 @@ def rcbf_prep_execute(
     """
     cargs = rcbf_prep_cargs(params, execution)
     ret = rcbf_prep_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

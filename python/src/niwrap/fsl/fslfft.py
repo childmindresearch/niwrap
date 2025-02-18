@@ -147,6 +147,7 @@ def fslfft_execute(
     """
     cargs = fslfft_cargs(params, execution)
     ret = fslfft_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

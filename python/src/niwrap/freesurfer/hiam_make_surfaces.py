@@ -138,6 +138,7 @@ def hiam_make_surfaces_execute(
     """
     cargs = hiam_make_surfaces_cargs(params, execution)
     ret = hiam_make_surfaces_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -135,6 +135,7 @@ def surface_information_execute(
     """
     cargs = surface_information_cargs(params, execution)
     ret = surface_information_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

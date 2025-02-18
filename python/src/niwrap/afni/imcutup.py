@@ -179,6 +179,7 @@ def imcutup_execute(
     """
     cargs = imcutup_cargs(params, execution)
     ret = imcutup_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -257,6 +257,7 @@ def label2mesh_execute(
     """
     cargs = label2mesh_cargs(params, execution)
     ret = label2mesh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

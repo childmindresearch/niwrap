@@ -282,6 +282,7 @@ def mris_volmask_novtk_execute(
     """
     cargs = mris_volmask_novtk_cargs(params, execution)
     ret = mris_volmask_novtk_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -215,6 +215,7 @@ def v__fast_roi_execute(
     """
     cargs = v__fast_roi_cargs(params, execution)
     ret = v__fast_roi_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

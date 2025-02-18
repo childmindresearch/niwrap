@@ -148,6 +148,7 @@ def border_export_color_table_execute(
     """
     cargs = border_export_color_table_cargs(params, execution)
     ret = border_export_color_table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

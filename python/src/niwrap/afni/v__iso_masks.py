@@ -141,6 +141,7 @@ def v__iso_masks_execute(
     """
     cargs = v__iso_masks_cargs(params, execution)
     ret = v__iso_masks_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

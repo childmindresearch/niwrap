@@ -225,6 +225,7 @@ def applywarp_execute(
     """
     cargs = applywarp_cargs(params, execution)
     ret = applywarp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

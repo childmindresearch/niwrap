@@ -271,6 +271,7 @@ def gcatrain_execute(
     """
     cargs = gcatrain_cargs(params, execution)
     ret = gcatrain_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

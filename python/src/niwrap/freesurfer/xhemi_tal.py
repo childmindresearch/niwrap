@@ -135,6 +135,7 @@ def xhemi_tal_execute(
     """
     cargs = xhemi_tal_cargs(params, execution)
     ret = xhemi_tal_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

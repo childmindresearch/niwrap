@@ -214,6 +214,7 @@ def cifti_create_parcellated_from_template_execute(
     """
     cargs = cifti_create_parcellated_from_template_cargs(params, execution)
     ret = cifti_create_parcellated_from_template_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

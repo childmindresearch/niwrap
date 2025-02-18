@@ -251,6 +251,7 @@ def surfreg_execute(
     """
     cargs = surfreg_cargs(params, execution)
     ret = surfreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

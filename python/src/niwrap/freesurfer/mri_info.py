@@ -451,6 +451,7 @@ def mri_info_execute(
     """
     cargs = mri_info_cargs(params, execution)
     ret = mri_info_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

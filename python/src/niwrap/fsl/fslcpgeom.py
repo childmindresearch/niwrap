@@ -142,6 +142,7 @@ def fslcpgeom_execute(
     """
     cargs = fslcpgeom_cargs(params, execution)
     ret = fslcpgeom_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -328,6 +328,7 @@ def bet_fsl_execute(
     """
     cargs = bet_fsl_cargs(params, execution)
     ret = bet_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

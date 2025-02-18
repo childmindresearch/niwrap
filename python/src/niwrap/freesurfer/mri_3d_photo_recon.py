@@ -256,6 +256,7 @@ def mri_3d_photo_recon_execute(
     """
     cargs = mri_3d_photo_recon_cargs(params, execution)
     ret = mri_3d_photo_recon_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

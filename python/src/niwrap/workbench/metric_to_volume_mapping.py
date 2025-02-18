@@ -249,6 +249,7 @@ def metric_to_volume_mapping_execute(
     """
     cargs = metric_to_volume_mapping_cargs(params, execution)
     ret = metric_to_volume_mapping_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

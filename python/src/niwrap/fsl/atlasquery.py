@@ -174,6 +174,7 @@ def atlasquery_execute(
     """
     cargs = atlasquery_cargs(params, execution)
     ret = atlasquery_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -170,6 +170,7 @@ def mri_gcut_execute(
     """
     cargs = mri_gcut_cargs(params, execution)
     ret = mri_gcut_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

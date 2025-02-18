@@ -190,6 +190,7 @@ def seg2filled_execute(
     """
     cargs = seg2filled_cargs(params, execution)
     ret = seg2filled_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

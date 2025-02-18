@@ -248,6 +248,7 @@ def metric_dilate_execute(
     """
     cargs = metric_dilate_cargs(params, execution)
     ret = metric_dilate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

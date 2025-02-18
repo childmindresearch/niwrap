@@ -163,6 +163,7 @@ def fsl_prepare_fieldmap_execute(
     """
     cargs = fsl_prepare_fieldmap_cargs(params, execution)
     ret = fsl_prepare_fieldmap_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

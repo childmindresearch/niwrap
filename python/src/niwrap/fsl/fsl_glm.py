@@ -390,6 +390,7 @@ def fsl_glm_execute(
     """
     cargs = fsl_glm_cargs(params, execution)
     ret = fsl_glm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

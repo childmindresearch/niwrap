@@ -142,6 +142,7 @@ def scene_file_relocate_execute(
     """
     cargs = scene_file_relocate_cargs(params, execution)
     ret = scene_file_relocate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

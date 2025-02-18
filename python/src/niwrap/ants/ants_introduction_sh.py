@@ -234,6 +234,7 @@ def ants_introduction_sh_execute(
     """
     cargs = ants_introduction_sh_cargs(params, execution)
     ret = ants_introduction_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

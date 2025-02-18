@@ -347,6 +347,7 @@ def long_submit_jobs_execute(
     """
     cargs = long_submit_jobs_cargs(params, execution)
     ret = long_submit_jobs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

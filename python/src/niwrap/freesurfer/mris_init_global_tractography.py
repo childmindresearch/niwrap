@@ -141,6 +141,7 @@ def mris_init_global_tractography_execute(
     """
     cargs = mris_init_global_tractography_cargs(params, execution)
     ret = mris_init_global_tractography_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -431,6 +431,7 @@ def dwi2tensor_execute(
     """
     cargs = dwi2tensor_cargs(params, execution)
     ret = dwi2tensor_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

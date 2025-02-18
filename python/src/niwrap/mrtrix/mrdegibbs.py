@@ -323,6 +323,7 @@ def mrdegibbs_execute(
     """
     cargs = mrdegibbs_cargs(params, execution)
     ret = mrdegibbs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

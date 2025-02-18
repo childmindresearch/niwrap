@@ -174,6 +174,7 @@ def djpeg_execute(
     """
     cargs = djpeg_cargs(params, execution)
     ret = djpeg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

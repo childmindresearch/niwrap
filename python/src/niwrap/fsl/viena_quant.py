@@ -145,6 +145,7 @@ def viena_quant_execute(
     """
     cargs = viena_quant_cargs(params, execution)
     ret = viena_quant_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

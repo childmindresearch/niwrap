@@ -217,6 +217,7 @@ def fat_mat_tableize_execute(
     """
     cargs = fat_mat_tableize_cargs(params, execution)
     ret = fat_mat_tableize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

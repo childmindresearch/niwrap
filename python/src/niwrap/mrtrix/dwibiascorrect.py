@@ -362,6 +362,7 @@ def dwibiascorrect_execute(
     """
     cargs = dwibiascorrect_cargs(params, execution)
     ret = dwibiascorrect_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

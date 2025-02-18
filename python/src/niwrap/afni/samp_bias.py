@@ -188,6 +188,7 @@ def samp_bias_execute(
     """
     cargs = samp_bias_cargs(params, execution)
     ret = samp_bias_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

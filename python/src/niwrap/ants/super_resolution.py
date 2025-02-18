@@ -172,6 +172,7 @@ def super_resolution_execute(
     """
     cargs = super_resolution_cargs(params, execution)
     ret = super_resolution_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

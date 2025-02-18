@@ -154,6 +154,7 @@ def reregister_subject_mixed_execute(
     """
     cargs = reregister_subject_mixed_cargs(params, execution)
     ret = reregister_subject_mixed_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

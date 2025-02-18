@@ -240,6 +240,7 @@ def volume_gradient_execute(
     """
     cargs = volume_gradient_cargs(params, execution)
     ret = volume_gradient_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

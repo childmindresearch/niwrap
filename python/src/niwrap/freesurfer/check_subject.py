@@ -131,6 +131,7 @@ def check_subject_execute(
     """
     cargs = check_subject_cargs(params, execution)
     ret = check_subject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

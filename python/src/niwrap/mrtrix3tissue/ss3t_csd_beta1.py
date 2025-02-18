@@ -360,6 +360,7 @@ def ss3t_csd_beta1_execute(
     """
     cargs = ss3t_csd_beta1_cargs(params, execution)
     ret = ss3t_csd_beta1_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

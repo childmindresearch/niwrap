@@ -318,6 +318,7 @@ def slicer_execute(
     """
     cargs = slicer_cargs(params, execution)
     ret = slicer_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

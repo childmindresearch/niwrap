@@ -232,6 +232,7 @@ def mri_modify_execute(
     """
     cargs = mri_modify_cargs(params, execution)
     ret = mri_modify_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -479,6 +479,7 @@ def mri_rf_label_execute(
     """
     cargs = mri_rf_label_cargs(params, execution)
     ret = mri_rf_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

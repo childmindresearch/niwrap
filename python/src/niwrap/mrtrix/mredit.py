@@ -435,6 +435,7 @@ def mredit_execute(
     """
     cargs = mredit_cargs(params, execution)
     ret = mredit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

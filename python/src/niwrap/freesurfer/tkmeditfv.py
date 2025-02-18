@@ -372,6 +372,7 @@ def tkmeditfv_execute(
     """
     cargs = tkmeditfv_cargs(params, execution)
     ret = tkmeditfv_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

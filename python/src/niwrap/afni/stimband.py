@@ -174,6 +174,7 @@ def stimband_execute(
     """
     cargs = stimband_cargs(params, execution)
     ret = stimband_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

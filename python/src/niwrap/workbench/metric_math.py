@@ -292,6 +292,7 @@ def metric_math_execute(
     """
     cargs = metric_math_cargs(params, execution)
     ret = metric_math_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

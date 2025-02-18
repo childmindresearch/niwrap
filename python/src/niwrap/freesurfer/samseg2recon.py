@@ -226,6 +226,7 @@ def samseg2recon_execute(
     """
     cargs = samseg2recon_cargs(params, execution)
     ret = samseg2recon_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

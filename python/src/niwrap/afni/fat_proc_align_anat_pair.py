@@ -232,6 +232,7 @@ def fat_proc_align_anat_pair_execute(
     """
     cargs = fat_proc_align_anat_pair_cargs(params, execution)
     ret = fat_proc_align_anat_pair_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

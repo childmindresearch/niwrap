@@ -341,6 +341,7 @@ def mri_sbbr_execute(
     """
     cargs = mri_sbbr_cargs(params, execution)
     ret = mri_sbbr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

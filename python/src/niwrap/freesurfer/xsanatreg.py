@@ -204,6 +204,7 @@ def xsanatreg_execute(
     """
     cargs = xsanatreg_cargs(params, execution)
     ret = xsanatreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

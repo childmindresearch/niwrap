@@ -746,6 +746,7 @@ def mri_glmfit_execute(
     """
     cargs = mri_glmfit_cargs(params, execution)
     ret = mri_glmfit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -132,6 +132,7 @@ def nmovie_qt_execute(
     """
     cargs = nmovie_qt_cargs(params, execution)
     ret = nmovie_qt_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

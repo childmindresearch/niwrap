@@ -177,6 +177,7 @@ def mris_divide_parcellation_execute(
     """
     cargs = mris_divide_parcellation_cargs(params, execution)
     ret = mris_divide_parcellation_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

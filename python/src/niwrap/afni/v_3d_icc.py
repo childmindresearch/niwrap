@@ -170,6 +170,7 @@ def v_3d_icc_execute(
     """
     cargs = v_3d_icc_cargs(params, execution)
     ret = v_3d_icc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

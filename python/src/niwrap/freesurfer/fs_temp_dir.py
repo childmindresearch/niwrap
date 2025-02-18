@@ -147,6 +147,7 @@ def fs_temp_dir_execute(
     """
     cargs = fs_temp_dir_cargs(params, execution)
     ret = fs_temp_dir_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -151,6 +151,7 @@ def tal_compare_execute(
     """
     cargs = tal_compare_cargs(params, execution)
     ret = tal_compare_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -259,6 +259,7 @@ def mesh2voxel_execute(
     """
     cargs = mesh2voxel_cargs(params, execution)
     ret = mesh2voxel_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

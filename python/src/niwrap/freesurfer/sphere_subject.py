@@ -147,6 +147,7 @@ def sphere_subject_execute(
     """
     cargs = sphere_subject_cargs(params, execution)
     ret = sphere_subject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

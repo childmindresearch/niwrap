@@ -151,6 +151,7 @@ def mris_merge_parcellations_execute(
     """
     cargs = mris_merge_parcellations_cargs(params, execution)
     ret = mris_merge_parcellations_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

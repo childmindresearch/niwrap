@@ -237,6 +237,7 @@ def v_3d_fwhmx_execute(
     """
     cargs = v_3d_fwhmx_cargs(params, execution)
     ret = v_3d_fwhmx_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

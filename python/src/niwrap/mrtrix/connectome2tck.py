@@ -340,6 +340,7 @@ def connectome2tck_execute(
     """
     cargs = connectome2tck_cargs(params, execution)
     ret = connectome2tck_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

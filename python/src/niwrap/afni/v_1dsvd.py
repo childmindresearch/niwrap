@@ -200,6 +200,7 @@ def v_1dsvd_execute(
     """
     cargs = v_1dsvd_cargs(params, execution)
     ret = v_1dsvd_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

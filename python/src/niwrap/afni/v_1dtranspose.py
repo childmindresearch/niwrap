@@ -143,6 +143,7 @@ def v_1dtranspose_execute(
     """
     cargs = v_1dtranspose_cargs(params, execution)
     ret = v_1dtranspose_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

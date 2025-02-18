@@ -294,6 +294,7 @@ def mean_execute(
     """
     cargs = mean_cargs(params, execution)
     ret = mean_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

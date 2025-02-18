@@ -185,6 +185,7 @@ def v__djunct_modal_smoothing_with_rep_execute(
     """
     cargs = v__djunct_modal_smoothing_with_rep_cargs(params, execution)
     ret = v__djunct_modal_smoothing_with_rep_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

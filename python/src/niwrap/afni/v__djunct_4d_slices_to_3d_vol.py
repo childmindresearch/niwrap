@@ -136,6 +136,7 @@ def v__djunct_4d_slices_to_3d_vol_execute(
     """
     cargs = v__djunct_4d_slices_to_3d_vol_cargs(params, execution)
     ret = v__djunct_4d_slices_to_3d_vol_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

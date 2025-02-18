@@ -205,6 +205,7 @@ def roigrow_execute(
     """
     cargs = roigrow_cargs(params, execution)
     ret = roigrow_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

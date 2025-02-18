@@ -141,6 +141,7 @@ def mris_interpolate_warp_execute(
     """
     cargs = mris_interpolate_warp_cargs(params, execution)
     ret = mris_interpolate_warp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

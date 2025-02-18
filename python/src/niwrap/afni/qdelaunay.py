@@ -392,6 +392,7 @@ def qdelaunay_execute(
     """
     cargs = qdelaunay_cargs(params, execution)
     ret = qdelaunay_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

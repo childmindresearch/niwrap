@@ -240,6 +240,7 @@ def conf2hires_execute(
     """
     cargs = conf2hires_cargs(params, execution)
     ret = conf2hires_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

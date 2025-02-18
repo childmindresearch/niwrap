@@ -176,6 +176,7 @@ def lesion_filling_execute(
     """
     cargs = lesion_filling_cargs(params, execution)
     ret = lesion_filling_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

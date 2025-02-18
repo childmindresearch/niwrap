@@ -315,6 +315,7 @@ def afdconnectivity_execute(
     """
     cargs = afdconnectivity_cargs(params, execution)
     ret = afdconnectivity_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -264,6 +264,7 @@ def mri_seghead_execute(
     """
     cargs = mri_seghead_cargs(params, execution)
     ret = mri_seghead_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -431,6 +431,7 @@ def v_1dplot_py_execute(
     """
     cargs = v_1dplot_py_cargs(params, execution)
     ret = v_1dplot_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

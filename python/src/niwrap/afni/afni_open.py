@@ -220,6 +220,7 @@ def afni_open_execute(
     """
     cargs = afni_open_cargs(params, execution)
     ret = afni_open_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

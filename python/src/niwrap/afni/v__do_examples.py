@@ -138,6 +138,7 @@ def v__do_examples_execute(
     """
     cargs = v__do_examples_cargs(params, execution)
     ret = v__do_examples_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

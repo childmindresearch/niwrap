@@ -377,6 +377,7 @@ def shconv_execute(
     """
     cargs = shconv_cargs(params, execution)
     ret = shconv_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

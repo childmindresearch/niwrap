@@ -315,6 +315,7 @@ def v_5ttedit_execute(
     """
     cargs = v_5ttedit_cargs(params, execution)
     ret = v_5ttedit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

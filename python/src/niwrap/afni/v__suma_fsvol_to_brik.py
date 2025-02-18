@@ -144,6 +144,7 @@ def v__suma_fsvol_to_brik_execute(
     """
     cargs = v__suma_fsvol_to_brik_cargs(params, execution)
     ret = v__suma_fsvol_to_brik_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

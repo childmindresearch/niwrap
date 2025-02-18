@@ -178,6 +178,7 @@ def dmri_mergepaths_execute(
     """
     cargs = dmri_mergepaths_cargs(params, execution)
     ret = dmri_mergepaths_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -156,6 +156,7 @@ def get_afni_model_prf_6_bad_execute(
     """
     cargs = get_afni_model_prf_6_bad_cargs(params, execution)
     ret = get_afni_model_prf_6_bad_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

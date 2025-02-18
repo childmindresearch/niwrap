@@ -263,6 +263,7 @@ def label2colour_execute(
     """
     cargs = label2colour_cargs(params, execution)
     ret = label2colour_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

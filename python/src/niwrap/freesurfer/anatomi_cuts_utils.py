@@ -134,6 +134,7 @@ def anatomi_cuts_utils_execute(
     """
     cargs = anatomi_cuts_utils_cargs(params, execution)
     ret = anatomi_cuts_utils_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

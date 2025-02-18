@@ -242,6 +242,7 @@ def spmregister_execute(
     """
     cargs = spmregister_cargs(params, execution)
     ret = spmregister_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

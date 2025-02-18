@@ -206,6 +206,7 @@ def std2imgcoord_execute(
     """
     cargs = std2imgcoord_cargs(params, execution)
     ret = std2imgcoord_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

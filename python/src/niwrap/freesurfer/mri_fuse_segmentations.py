@@ -183,6 +183,7 @@ def mri_fuse_segmentations_execute(
     """
     cargs = mri_fuse_segmentations_cargs(params, execution)
     ret = mri_fuse_segmentations_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

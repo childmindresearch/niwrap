@@ -209,6 +209,7 @@ def v__examine_gen_feat_dists_execute(
     """
     cargs = v__examine_gen_feat_dists_cargs(params, execution)
     ret = v__examine_gen_feat_dists_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

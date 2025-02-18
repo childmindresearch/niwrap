@@ -254,6 +254,7 @@ def mris_multimodal_surface_placement_execute(
     """
     cargs = mris_multimodal_surface_placement_cargs(params, execution)
     ret = mris_multimodal_surface_placement_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

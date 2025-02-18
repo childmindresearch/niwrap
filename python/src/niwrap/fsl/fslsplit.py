@@ -154,6 +154,7 @@ def fslsplit_execute(
     """
     cargs = fslsplit_cargs(params, execution)
     ret = fslsplit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

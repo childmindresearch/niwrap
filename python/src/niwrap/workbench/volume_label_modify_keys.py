@@ -171,6 +171,7 @@ def volume_label_modify_keys_execute(
     """
     cargs = volume_label_modify_keys_cargs(params, execution)
     ret = volume_label_modify_keys_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

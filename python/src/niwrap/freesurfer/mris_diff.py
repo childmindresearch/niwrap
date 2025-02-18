@@ -180,6 +180,7 @@ def mris_diff_execute(
     """
     cargs = mris_diff_cargs(params, execution)
     ret = mris_diff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

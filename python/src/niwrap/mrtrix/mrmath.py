@@ -300,6 +300,7 @@ def mrmath_execute(
     """
     cargs = mrmath_cargs(params, execution)
     ret = mrmath_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

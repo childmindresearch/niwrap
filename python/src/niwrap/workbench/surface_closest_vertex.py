@@ -149,6 +149,7 @@ def surface_closest_vertex_execute(
     """
     cargs = surface_closest_vertex_cargs(params, execution)
     ret = surface_closest_vertex_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

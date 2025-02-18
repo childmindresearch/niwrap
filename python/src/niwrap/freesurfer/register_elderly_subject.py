@@ -176,6 +176,7 @@ def register_elderly_subject_execute(
     """
     cargs = register_elderly_subject_cargs(params, execution)
     ret = register_elderly_subject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

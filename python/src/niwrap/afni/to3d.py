@@ -478,6 +478,7 @@ def to3d_execute(
     """
     cargs = to3d_cargs(params, execution)
     ret = to3d_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

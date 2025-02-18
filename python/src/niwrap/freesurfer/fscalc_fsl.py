@@ -148,6 +148,7 @@ def fscalc_fsl_execute(
     """
     cargs = fscalc_fsl_cargs(params, execution)
     ret = fscalc_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

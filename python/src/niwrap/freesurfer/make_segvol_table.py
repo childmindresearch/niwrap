@@ -222,6 +222,7 @@ def make_segvol_table_execute(
     """
     cargs = make_segvol_table_cargs(params, execution)
     ret = make_segvol_table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

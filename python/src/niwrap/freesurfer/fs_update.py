@@ -140,6 +140,7 @@ def fs_update_execute(
     """
     cargs = fs_update_cargs(params, execution)
     ret = fs_update_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

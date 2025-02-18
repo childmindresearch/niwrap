@@ -204,6 +204,7 @@ def long_stats_combine_execute(
     """
     cargs = long_stats_combine_cargs(params, execution)
     ret = long_stats_combine_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -161,6 +161,7 @@ def afni_batch_r_execute(
     """
     cargs = afni_batch_r_cargs(params, execution)
     ret = afni_batch_r_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

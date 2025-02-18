@@ -164,6 +164,7 @@ def adjunct_aw_tableize_roi_info_py_execute(
     """
     cargs = adjunct_aw_tableize_roi_info_py_cargs(params, execution)
     ret = adjunct_aw_tableize_roi_info_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

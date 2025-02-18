@@ -166,6 +166,7 @@ def mri_paint_execute(
     """
     cargs = mri_paint_cargs(params, execution)
     ret = mri_paint_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

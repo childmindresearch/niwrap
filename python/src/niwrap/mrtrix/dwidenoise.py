@@ -343,6 +343,7 @@ def dwidenoise_execute(
     """
     cargs = dwidenoise_cargs(params, execution)
     ret = dwidenoise_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -197,6 +197,7 @@ def mri_make_uchar_execute(
     """
     cargs = mri_make_uchar_cargs(params, execution)
     ret = mri_make_uchar_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

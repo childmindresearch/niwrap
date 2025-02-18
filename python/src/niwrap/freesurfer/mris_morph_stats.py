@@ -152,6 +152,7 @@ def mris_morph_stats_execute(
     """
     cargs = mris_morph_stats_cargs(params, execution)
     ret = mris_morph_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

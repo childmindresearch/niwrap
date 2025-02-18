@@ -259,6 +259,7 @@ def dirorder_execute(
     """
     cargs = dirorder_cargs(params, execution)
     ret = dirorder_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

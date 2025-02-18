@@ -267,6 +267,7 @@ def fsl_sbca_execute(
     """
     cargs = fsl_sbca_cargs(params, execution)
     ret = fsl_sbca_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

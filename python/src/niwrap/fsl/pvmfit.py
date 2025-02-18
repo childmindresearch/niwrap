@@ -249,6 +249,7 @@ def pvmfit_execute(
     """
     cargs = pvmfit_cargs(params, execution)
     ret = pvmfit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

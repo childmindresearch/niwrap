@@ -196,6 +196,7 @@ def unpackmincdir_execute(
     """
     cargs = unpackmincdir_cargs(params, execution)
     ret = unpackmincdir_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

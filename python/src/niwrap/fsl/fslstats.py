@@ -341,6 +341,7 @@ def fslstats_execute(
     """
     cargs = fslstats_cargs(params, execution)
     ret = fslstats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -221,6 +221,7 @@ def plugout_ijk_execute(
     """
     cargs = plugout_ijk_cargs(params, execution)
     ret = plugout_ijk_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

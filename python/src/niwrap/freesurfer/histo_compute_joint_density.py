@@ -145,6 +145,7 @@ def histo_compute_joint_density_execute(
     """
     cargs = histo_compute_joint_density_cargs(params, execution)
     ret = histo_compute_joint_density_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

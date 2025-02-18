@@ -289,6 +289,7 @@ def convex_hull_execute(
     """
     cargs = convex_hull_cargs(params, execution)
     ret = convex_hull_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

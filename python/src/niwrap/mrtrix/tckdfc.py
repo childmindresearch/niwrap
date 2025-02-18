@@ -402,6 +402,7 @@ def tckdfc_execute(
     """
     cargs = tckdfc_cargs(params, execution)
     ret = tckdfc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

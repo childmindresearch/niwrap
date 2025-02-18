@@ -169,6 +169,7 @@ def zip_spec_file_execute(
     """
     cargs = zip_spec_file_cargs(params, execution)
     ret = zip_spec_file_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

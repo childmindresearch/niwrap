@@ -204,6 +204,7 @@ def mri_rf_long_train_execute(
     """
     cargs = mri_rf_long_train_cargs(params, execution)
     ret = mri_rf_long_train_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

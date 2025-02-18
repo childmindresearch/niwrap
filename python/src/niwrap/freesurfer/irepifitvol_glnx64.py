@@ -141,6 +141,7 @@ def irepifitvol_glnx64_execute(
     """
     cargs = irepifitvol_glnx64_cargs(params, execution)
     ret = irepifitvol_glnx64_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

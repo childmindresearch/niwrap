@@ -160,6 +160,7 @@ def fslswapdim_fsl_execute(
     """
     cargs = fslswapdim_fsl_cargs(params, execution)
     ret = fslswapdim_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

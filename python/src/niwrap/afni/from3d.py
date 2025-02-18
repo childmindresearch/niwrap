@@ -217,6 +217,7 @@ def from3d_execute(
     """
     cargs = from3d_cargs(params, execution)
     ret = from3d_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

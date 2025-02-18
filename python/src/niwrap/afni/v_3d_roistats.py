@@ -269,6 +269,7 @@ def v_3d_roistats_execute(
     """
     cargs = v_3d_roistats_cargs(params, execution)
     ret = v_3d_roistats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs, handle_stdout=lambda s: ret.stats.append(s))
     return ret
 

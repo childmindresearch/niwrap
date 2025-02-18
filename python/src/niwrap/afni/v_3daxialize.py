@@ -188,6 +188,7 @@ def v_3daxialize_execute(
     """
     cargs = v_3daxialize_cargs(params, execution)
     ret = v_3daxialize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

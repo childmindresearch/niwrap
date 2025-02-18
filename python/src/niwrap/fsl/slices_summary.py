@@ -191,6 +191,7 @@ def slices_summary_execute(
     """
     cargs = slices_summary_cargs(params, execution)
     ret = slices_summary_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

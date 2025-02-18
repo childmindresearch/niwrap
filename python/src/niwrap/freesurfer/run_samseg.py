@@ -406,6 +406,7 @@ def run_samseg_execute(
     """
     cargs = run_samseg_cargs(params, execution)
     ret = run_samseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

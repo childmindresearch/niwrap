@@ -334,6 +334,7 @@ def epidewarp_fsl_execute(
     """
     cargs = epidewarp_fsl_cargs(params, execution)
     ret = epidewarp_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

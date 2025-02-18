@@ -247,6 +247,7 @@ def cifti_label_to_border_execute(
     """
     cargs = cifti_label_to_border_cargs(params, execution)
     ret = cifti_label_to_border_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

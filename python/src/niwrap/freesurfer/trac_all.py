@@ -182,6 +182,7 @@ def trac_all_execute(
     """
     cargs = trac_all_cargs(params, execution)
     ret = trac_all_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -223,6 +223,7 @@ def v_3d_isc_execute(
     """
     cargs = v_3d_isc_cargs(params, execution)
     ret = v_3d_isc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

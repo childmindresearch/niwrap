@@ -145,6 +145,7 @@ def mris_remove_negative_vertices_execute(
     """
     cargs = mris_remove_negative_vertices_cargs(params, execution)
     ret = mris_remove_negative_vertices_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

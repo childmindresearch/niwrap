@@ -137,6 +137,7 @@ def inflate_subject_execute(
     """
     cargs = inflate_subject_cargs(params, execution)
     ret = inflate_subject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

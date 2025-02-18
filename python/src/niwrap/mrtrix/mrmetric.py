@@ -315,6 +315,7 @@ def mrmetric_execute(
     """
     cargs = mrmetric_cargs(params, execution)
     ret = mrmetric_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

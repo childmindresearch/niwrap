@@ -582,6 +582,7 @@ def mri_volcluster_execute(
     """
     cargs = mri_volcluster_cargs(params, execution)
     ret = mri_volcluster_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

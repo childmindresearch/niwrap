@@ -136,6 +136,7 @@ def afni_run_r_execute(
     """
     cargs = afni_run_r_cargs(params, execution)
     ret = afni_run_r_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

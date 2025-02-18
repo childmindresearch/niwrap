@@ -253,6 +253,7 @@ def mri_segment_hypothalamic_subunits_execute(
     """
     cargs = mri_segment_hypothalamic_subunits_cargs(params, execution)
     ret = mri_segment_hypothalamic_subunits_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

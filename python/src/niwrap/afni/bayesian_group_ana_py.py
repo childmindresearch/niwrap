@@ -256,6 +256,7 @@ def bayesian_group_ana_py_execute(
     """
     cargs = bayesian_group_ana_py_cargs(params, execution)
     ret = bayesian_group_ana_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

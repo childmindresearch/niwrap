@@ -161,6 +161,7 @@ def mri_transform_execute(
     """
     cargs = mri_transform_cargs(params, execution)
     ret = mri_transform_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

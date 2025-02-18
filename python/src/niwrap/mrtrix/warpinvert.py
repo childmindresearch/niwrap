@@ -274,6 +274,7 @@ def warpinvert_execute(
     """
     cargs = warpinvert_cargs(params, execution)
     ret = warpinvert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

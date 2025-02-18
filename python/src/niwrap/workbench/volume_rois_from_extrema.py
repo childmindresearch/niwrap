@@ -199,6 +199,7 @@ def volume_rois_from_extrema_execute(
     """
     cargs = volume_rois_from_extrema_cargs(params, execution)
     ret = volume_rois_from_extrema_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

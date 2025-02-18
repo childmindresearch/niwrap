@@ -272,6 +272,7 @@ def v_3dmaxima_execute(
     """
     cargs = v_3dmaxima_cargs(params, execution)
     ret = v_3dmaxima_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -136,6 +136,7 @@ def mris_extract_patches_execute(
     """
     cargs = mris_extract_patches_cargs(params, execution)
     ret = mris_extract_patches_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

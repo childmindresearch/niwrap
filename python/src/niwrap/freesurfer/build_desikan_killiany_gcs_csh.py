@@ -132,6 +132,7 @@ def build_desikan_killiany_gcs_csh_execute(
     """
     cargs = build_desikan_killiany_gcs_csh_cargs(params, execution)
     ret = build_desikan_killiany_gcs_csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

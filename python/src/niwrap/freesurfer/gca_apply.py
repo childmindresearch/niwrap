@@ -298,6 +298,7 @@ def gca_apply_execute(
     """
     cargs = gca_apply_cargs(params, execution)
     ret = gca_apply_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

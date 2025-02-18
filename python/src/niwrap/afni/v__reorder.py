@@ -168,6 +168,7 @@ def v__reorder_execute(
     """
     cargs = v__reorder_cargs(params, execution)
     ret = v__reorder_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

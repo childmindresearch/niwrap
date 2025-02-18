@@ -173,6 +173,7 @@ def talairach_afd_execute(
     """
     cargs = talairach_afd_cargs(params, execution)
     ret = talairach_afd_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -524,6 +524,7 @@ def tcksift2_execute(
     """
     cargs = tcksift2_cargs(params, execution)
     ret = tcksift2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

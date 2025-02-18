@@ -145,6 +145,7 @@ def compute_vox2vox_execute(
     """
     cargs = compute_vox2vox_cargs(params, execution)
     ret = compute_vox2vox_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

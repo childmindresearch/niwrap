@@ -277,6 +277,7 @@ def simulate_displacement_field_execute(
     """
     cargs = simulate_displacement_field_cargs(params, execution)
     ret = simulate_displacement_field_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

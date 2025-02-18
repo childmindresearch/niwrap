@@ -136,6 +136,7 @@ def feat_gm_prepare_execute(
     """
     cargs = feat_gm_prepare_cargs(params, execution)
     ret = feat_gm_prepare_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

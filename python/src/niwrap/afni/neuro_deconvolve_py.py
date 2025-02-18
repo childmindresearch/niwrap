@@ -220,6 +220,7 @@ def neuro_deconvolve_py_execute(
     """
     cargs = neuro_deconvolve_py_cargs(params, execution)
     ret = neuro_deconvolve_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

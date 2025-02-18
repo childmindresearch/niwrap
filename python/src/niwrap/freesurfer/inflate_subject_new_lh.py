@@ -138,6 +138,7 @@ def inflate_subject_new_lh_execute(
     """
     cargs = inflate_subject_new_lh_cargs(params, execution)
     ret = inflate_subject_new_lh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

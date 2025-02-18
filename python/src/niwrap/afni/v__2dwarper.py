@@ -135,6 +135,7 @@ def v__2dwarper_execute(
     """
     cargs = v__2dwarper_cargs(params, execution)
     ret = v__2dwarper_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

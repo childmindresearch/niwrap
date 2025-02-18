@@ -312,6 +312,7 @@ def v__suma_align_to_experiment_execute(
     """
     cargs = v__suma_align_to_experiment_cargs(params, execution)
     ret = v__suma_align_to_experiment_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

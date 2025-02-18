@@ -383,6 +383,7 @@ def dirstat_execute(
     """
     cargs = dirstat_cargs(params, execution)
     ret = dirstat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -190,6 +190,7 @@ def volume_parcel_resampling_generic_execute(
     """
     cargs = volume_parcel_resampling_generic_cargs(params, execution)
     ret = volume_parcel_resampling_generic_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

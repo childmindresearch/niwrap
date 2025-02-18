@@ -136,6 +136,7 @@ def adjunct_is_label_py_execute(
     """
     cargs = adjunct_is_label_py_cargs(params, execution)
     ret = adjunct_is_label_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

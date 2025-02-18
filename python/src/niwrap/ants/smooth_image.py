@@ -168,6 +168,7 @@ def smooth_image_execute(
     """
     cargs = smooth_image_cargs(params, execution)
     ret = smooth_image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

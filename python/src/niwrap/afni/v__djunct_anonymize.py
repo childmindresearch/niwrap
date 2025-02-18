@@ -157,6 +157,7 @@ def v__djunct_anonymize_execute(
     """
     cargs = v__djunct_anonymize_cargs(params, execution)
     ret = v__djunct_anonymize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

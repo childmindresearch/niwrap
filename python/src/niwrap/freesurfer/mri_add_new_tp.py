@@ -137,6 +137,7 @@ def mri_add_new_tp_execute(
     """
     cargs = mri_add_new_tp_cargs(params, execution)
     ret = mri_add_new_tp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

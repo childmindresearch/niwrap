@@ -156,6 +156,7 @@ def imgreg_4dfp_execute(
     """
     cargs = imgreg_4dfp_cargs(params, execution)
     ret = imgreg_4dfp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

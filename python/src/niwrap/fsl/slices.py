@@ -170,6 +170,7 @@ def slices_execute(
     """
     cargs = slices_cargs(params, execution)
     ret = slices_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

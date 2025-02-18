@@ -284,6 +284,7 @@ def talsegprob_execute(
     """
     cargs = talsegprob_cargs(params, execution)
     ret = talsegprob_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

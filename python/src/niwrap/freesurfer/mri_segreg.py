@@ -141,6 +141,7 @@ def mri_segreg_execute(
     """
     cargs = mri_segreg_cargs(params, execution)
     ret = mri_segreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

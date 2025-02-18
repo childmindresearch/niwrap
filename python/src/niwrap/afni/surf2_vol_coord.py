@@ -229,6 +229,7 @@ def surf2_vol_coord_execute(
     """
     cargs = surf2_vol_coord_cargs(params, execution)
     ret = surf2_vol_coord_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

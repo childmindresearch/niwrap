@@ -157,6 +157,7 @@ def fslorient_fsl_execute(
     """
     cargs = fslorient_fsl_cargs(params, execution)
     ret = fslorient_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

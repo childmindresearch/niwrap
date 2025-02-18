@@ -148,6 +148,7 @@ def test_orientation_planes_from_parcellation_execute(
     """
     cargs = test_orientation_planes_from_parcellation_cargs(params, execution)
     ret = test_orientation_planes_from_parcellation_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

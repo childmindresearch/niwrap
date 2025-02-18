@@ -200,6 +200,7 @@ def mris_estimate_wm_execute(
     """
     cargs = mris_estimate_wm_cargs(params, execution)
     ret = mris_estimate_wm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

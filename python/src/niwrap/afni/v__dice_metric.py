@@ -231,6 +231,7 @@ def v__dice_metric_execute(
     """
     cargs = v__dice_metric_cargs(params, execution)
     ret = v__dice_metric_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

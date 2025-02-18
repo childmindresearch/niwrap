@@ -244,6 +244,7 @@ def mri_synthseg_execute(
     """
     cargs = mri_synthseg_cargs(params, execution)
     ret = mri_synthseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -176,6 +176,7 @@ def midtrans_execute(
     """
     cargs = midtrans_cargs(params, execution)
     ret = midtrans_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

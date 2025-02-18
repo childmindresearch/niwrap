@@ -217,6 +217,7 @@ def trac_preproc_execute(
     """
     cargs = trac_preproc_cargs(params, execution)
     ret = trac_preproc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

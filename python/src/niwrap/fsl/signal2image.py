@@ -233,6 +233,7 @@ def signal2image_execute(
     """
     cargs = signal2image_cargs(params, execution)
     ret = signal2image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

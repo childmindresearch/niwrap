@@ -173,6 +173,7 @@ def mris_wm_volume_execute(
     """
     cargs = mris_wm_volume_cargs(params, execution)
     ret = mris_wm_volume_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

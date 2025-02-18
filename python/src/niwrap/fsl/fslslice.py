@@ -142,6 +142,7 @@ def fslslice_execute(
     """
     cargs = fslslice_cargs(params, execution)
     ret = fslslice_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

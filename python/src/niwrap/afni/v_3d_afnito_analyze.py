@@ -167,6 +167,7 @@ def v_3d_afnito_analyze_execute(
     """
     cargs = v_3d_afnito_analyze_cargs(params, execution)
     ret = v_3d_afnito_analyze_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

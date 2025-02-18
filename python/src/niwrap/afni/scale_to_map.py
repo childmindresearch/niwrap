@@ -350,6 +350,7 @@ def scale_to_map_execute(
     """
     cargs = scale_to_map_cargs(params, execution)
     ret = scale_to_map_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

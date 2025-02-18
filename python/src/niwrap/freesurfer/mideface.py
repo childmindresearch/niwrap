@@ -319,6 +319,7 @@ def mideface_execute(
     """
     cargs = mideface_cargs(params, execution)
     ret = mideface_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -142,6 +142,7 @@ def v__to_mni_awarp_execute(
     """
     cargs = v__to_mni_awarp_cargs(params, execution)
     ret = v__to_mni_awarp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

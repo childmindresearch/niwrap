@@ -174,6 +174,7 @@ def mri_brainvol_stats_execute(
     """
     cargs = mri_brainvol_stats_cargs(params, execution)
     ret = mri_brainvol_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

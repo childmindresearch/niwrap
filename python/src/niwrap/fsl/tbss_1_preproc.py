@@ -131,6 +131,7 @@ def tbss_1_preproc_execute(
     """
     cargs = tbss_1_preproc_cargs(params, execution)
     ret = tbss_1_preproc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

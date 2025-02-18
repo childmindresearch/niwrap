@@ -172,6 +172,7 @@ def mri_threshold_execute(
     """
     cargs = mri_threshold_cargs(params, execution)
     ret = mri_threshold_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

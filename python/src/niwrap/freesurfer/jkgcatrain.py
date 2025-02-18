@@ -166,6 +166,7 @@ def jkgcatrain_execute(
     """
     cargs = jkgcatrain_cargs(params, execution)
     ret = jkgcatrain_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

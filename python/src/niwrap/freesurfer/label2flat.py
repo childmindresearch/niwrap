@@ -150,6 +150,7 @@ def label2flat_execute(
     """
     cargs = label2flat_cargs(params, execution)
     ret = label2flat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

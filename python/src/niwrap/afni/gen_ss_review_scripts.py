@@ -326,6 +326,7 @@ def gen_ss_review_scripts_execute(
     """
     cargs = gen_ss_review_scripts_cargs(params, execution)
     ret = gen_ss_review_scripts_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

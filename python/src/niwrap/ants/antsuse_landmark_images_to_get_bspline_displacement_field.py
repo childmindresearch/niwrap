@@ -188,6 +188,7 @@ def antsuse_landmark_images_to_get_bspline_displacement_field_execute(
     """
     cargs = antsuse_landmark_images_to_get_bspline_displacement_field_cargs(params, execution)
     ret = antsuse_landmark_images_to_get_bspline_displacement_field_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

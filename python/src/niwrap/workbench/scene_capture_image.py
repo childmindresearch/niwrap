@@ -526,6 +526,7 @@ def scene_capture_image_execute(
     """
     cargs = scene_capture_image_cargs(params, execution)
     ret = scene_capture_image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

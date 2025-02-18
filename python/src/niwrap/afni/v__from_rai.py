@@ -142,6 +142,7 @@ def v__from_rai_execute(
     """
     cargs = v__from_rai_cargs(params, execution)
     ret = v__from_rai_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

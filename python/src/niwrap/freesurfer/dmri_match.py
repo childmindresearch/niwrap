@@ -211,6 +211,7 @@ def dmri_match_execute(
     """
     cargs = dmri_match_cargs(params, execution)
     ret = dmri_match_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

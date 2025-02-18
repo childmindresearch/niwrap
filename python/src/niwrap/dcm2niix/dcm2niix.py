@@ -407,6 +407,7 @@ def dcm2niix_execute(
     """
     cargs = dcm2niix_cargs(params, execution)
     ret = dcm2niix_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

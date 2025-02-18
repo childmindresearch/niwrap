@@ -404,6 +404,7 @@ def fabber_t1_execute(
     """
     cargs = fabber_t1_cargs(params, execution)
     ret = fabber_t1_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

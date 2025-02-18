@@ -175,6 +175,7 @@ def biasfield_execute(
     """
     cargs = biasfield_cargs(params, execution)
     ret = biasfield_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

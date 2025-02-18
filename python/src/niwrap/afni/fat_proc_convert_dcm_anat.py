@@ -210,6 +210,7 @@ def fat_proc_convert_dcm_anat_execute(
     """
     cargs = fat_proc_convert_dcm_anat_cargs(params, execution)
     ret = fat_proc_convert_dcm_anat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

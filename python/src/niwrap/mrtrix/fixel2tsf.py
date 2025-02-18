@@ -267,6 +267,7 @@ def fixel2tsf_execute(
     """
     cargs = fixel2tsf_cargs(params, execution)
     ret = fixel2tsf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

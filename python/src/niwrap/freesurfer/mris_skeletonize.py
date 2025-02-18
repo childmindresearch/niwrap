@@ -267,6 +267,7 @@ def mris_skeletonize_execute(
     """
     cargs = mris_skeletonize_cargs(params, execution)
     ret = mris_skeletonize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

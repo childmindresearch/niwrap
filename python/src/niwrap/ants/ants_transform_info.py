@@ -139,6 +139,7 @@ def ants_transform_info_execute(
     """
     cargs = ants_transform_info_cargs(params, execution)
     ret = ants_transform_info_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

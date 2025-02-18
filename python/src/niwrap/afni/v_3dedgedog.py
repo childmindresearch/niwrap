@@ -257,6 +257,7 @@ def v_3dedgedog_execute(
     """
     cargs = v_3dedgedog_cargs(params, execution)
     ret = v_3dedgedog_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

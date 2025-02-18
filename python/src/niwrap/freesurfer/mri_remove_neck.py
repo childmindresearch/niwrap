@@ -150,6 +150,7 @@ def mri_remove_neck_execute(
     """
     cargs = mri_remove_neck_cargs(params, execution)
     ret = mri_remove_neck_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -333,6 +333,7 @@ def dcmdrle_fs_execute(
     """
     cargs = dcmdrle_fs_cargs(params, execution)
     ret = dcmdrle_fs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -177,6 +177,7 @@ def volume_distortion_execute(
     """
     cargs = volume_distortion_cargs(params, execution)
     ret = volume_distortion_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

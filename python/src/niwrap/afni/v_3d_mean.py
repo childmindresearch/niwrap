@@ -262,6 +262,7 @@ def v_3d_mean_execute(
     """
     cargs = v_3d_mean_cargs(params, execution)
     ret = v_3d_mean_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -245,6 +245,7 @@ def mri_cor2label_execute(
     """
     cargs = mri_cor2label_cargs(params, execution)
     ret = mri_cor2label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -159,6 +159,7 @@ def mri_extract_execute(
     """
     cargs = mri_extract_cargs(params, execution)
     ret = mri_extract_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

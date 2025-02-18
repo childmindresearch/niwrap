@@ -250,6 +250,7 @@ def vol2segavg_execute(
     """
     cargs = vol2segavg_cargs(params, execution)
     ret = vol2segavg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

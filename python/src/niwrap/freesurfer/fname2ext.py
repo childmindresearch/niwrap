@@ -136,6 +136,7 @@ def fname2ext_execute(
     """
     cargs = fname2ext_cargs(params, execution)
     ret = fname2ext_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

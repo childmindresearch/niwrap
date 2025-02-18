@@ -174,6 +174,7 @@ def run_mesh_utils_execute(
     """
     cargs = run_mesh_utils_cargs(params, execution)
     ret = run_mesh_utils_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

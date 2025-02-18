@@ -262,6 +262,7 @@ def ants_brain_extraction_sh_execute(
     """
     cargs = ants_brain_extraction_sh_cargs(params, execution)
     ret = ants_brain_extraction_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

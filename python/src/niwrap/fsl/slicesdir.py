@@ -167,6 +167,7 @@ def slicesdir_execute(
     """
     cargs = slicesdir_cargs(params, execution)
     ret = slicesdir_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -280,6 +280,7 @@ def reg_feat2anat_execute(
     """
     cargs = reg_feat2anat_cargs(params, execution)
     ret = reg_feat2anat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

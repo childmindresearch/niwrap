@@ -175,6 +175,7 @@ def long_qdec_table_execute(
     """
     cargs = long_qdec_table_cargs(params, execution)
     ret = long_qdec_table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

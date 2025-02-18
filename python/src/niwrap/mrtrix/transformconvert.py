@@ -258,6 +258,7 @@ def transformconvert_execute(
     """
     cargs = transformconvert_cargs(params, execution)
     ret = transformconvert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

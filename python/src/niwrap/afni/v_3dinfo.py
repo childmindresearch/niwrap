@@ -862,6 +862,7 @@ def v_3dinfo_execute(
     """
     cargs = v_3dinfo_cargs(params, execution)
     ret = v_3dinfo_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs, handle_stdout=lambda s: ret.info.append(s))
     return ret
 

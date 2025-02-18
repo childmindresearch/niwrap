@@ -162,6 +162,7 @@ def xtract_stats_execute(
     """
     cargs = xtract_stats_cargs(params, execution)
     ret = xtract_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

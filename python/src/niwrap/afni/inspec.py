@@ -193,6 +193,7 @@ def inspec_execute(
     """
     cargs = inspec_cargs(params, execution)
     ret = inspec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

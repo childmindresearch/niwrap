@@ -160,6 +160,7 @@ def bugr_execute(
     """
     cargs = bugr_cargs(params, execution)
     ret = bugr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

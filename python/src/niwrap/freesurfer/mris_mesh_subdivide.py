@@ -168,6 +168,7 @@ def mris_mesh_subdivide_execute(
     """
     cargs = mris_mesh_subdivide_cargs(params, execution)
     ret = mris_mesh_subdivide_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

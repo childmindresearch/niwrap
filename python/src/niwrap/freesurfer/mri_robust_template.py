@@ -457,6 +457,7 @@ def mri_robust_template_execute(
     """
     cargs = mri_robust_template_cargs(params, execution)
     ret = mri_robust_template_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

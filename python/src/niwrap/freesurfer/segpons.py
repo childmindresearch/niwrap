@@ -176,6 +176,7 @@ def segpons_execute(
     """
     cargs = segpons_cargs(params, execution)
     ret = segpons_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

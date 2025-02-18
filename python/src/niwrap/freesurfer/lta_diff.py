@@ -192,6 +192,7 @@ def lta_diff_execute(
     """
     cargs = lta_diff_cargs(params, execution)
     ret = lta_diff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

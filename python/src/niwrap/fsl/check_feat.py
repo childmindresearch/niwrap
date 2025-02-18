@@ -143,6 +143,7 @@ def check_feat_execute(
     """
     cargs = check_feat_cargs(params, execution)
     ret = check_feat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

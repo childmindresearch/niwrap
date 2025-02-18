@@ -461,6 +461,7 @@ def v__auto_tlrc_execute(
     """
     cargs = v__auto_tlrc_cargs(params, execution)
     ret = v__auto_tlrc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

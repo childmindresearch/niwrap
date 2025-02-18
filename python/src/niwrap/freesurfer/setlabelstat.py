@@ -161,6 +161,7 @@ def setlabelstat_execute(
     """
     cargs = setlabelstat_cargs(params, execution)
     ret = setlabelstat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

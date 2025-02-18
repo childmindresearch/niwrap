@@ -157,6 +157,7 @@ def v__deblank_file_names_execute(
     """
     cargs = v__deblank_file_names_cargs(params, execution)
     ret = v__deblank_file_names_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

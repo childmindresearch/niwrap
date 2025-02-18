@@ -148,6 +148,7 @@ def asegstatsdiff_execute(
     """
     cargs = asegstatsdiff_cargs(params, execution)
     ret = asegstatsdiff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

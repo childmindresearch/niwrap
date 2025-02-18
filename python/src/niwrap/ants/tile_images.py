@@ -155,6 +155,7 @@ def tile_images_execute(
     """
     cargs = tile_images_cargs(params, execution)
     ret = tile_images_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

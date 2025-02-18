@@ -426,6 +426,7 @@ def map_central_sulcus_execute(
     """
     cargs = map_central_sulcus_cargs(params, execution)
     ret = map_central_sulcus_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -174,6 +174,7 @@ def zip_scene_file_execute(
     """
     cargs = zip_scene_file_cargs(params, execution)
     ret = zip_scene_file_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -167,6 +167,7 @@ def v__xyz_to_ijk_execute(
     """
     cargs = v__xyz_to_ijk_cargs(params, execution)
     ret = v__xyz_to_ijk_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -168,6 +168,7 @@ def v__spharm_examples_execute(
     """
     cargs = v__spharm_examples_cargs(params, execution)
     ret = v__spharm_examples_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

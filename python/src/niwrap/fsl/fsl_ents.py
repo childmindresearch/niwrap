@@ -168,6 +168,7 @@ def fsl_ents_execute(
     """
     cargs = fsl_ents_cargs(params, execution)
     ret = fsl_ents_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -175,6 +175,7 @@ def mris_simulate_atrophy_execute(
     """
     cargs = mris_simulate_atrophy_cargs(params, execution)
     ret = mris_simulate_atrophy_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

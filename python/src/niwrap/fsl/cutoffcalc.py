@@ -178,6 +178,7 @@ def cutoffcalc_execute(
     """
     cargs = cutoffcalc_cargs(params, execution)
     ret = cutoffcalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

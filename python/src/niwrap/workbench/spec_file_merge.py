@@ -145,6 +145,7 @@ def spec_file_merge_execute(
     """
     cargs = spec_file_merge_cargs(params, execution)
     ret = spec_file_merge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

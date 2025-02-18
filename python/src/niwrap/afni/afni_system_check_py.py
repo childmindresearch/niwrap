@@ -206,6 +206,7 @@ def afni_system_check_py_execute(
     """
     cargs = afni_system_check_py_cargs(params, execution)
     ret = afni_system_check_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

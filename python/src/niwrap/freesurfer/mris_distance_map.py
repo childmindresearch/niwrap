@@ -142,6 +142,7 @@ def mris_distance_map_execute(
     """
     cargs = mris_distance_map_cargs(params, execution)
     ret = mris_distance_map_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

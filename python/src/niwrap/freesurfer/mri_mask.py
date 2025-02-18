@@ -306,6 +306,7 @@ def mri_mask_execute(
     """
     cargs = mri_mask_cargs(params, execution)
     ret = mri_mask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

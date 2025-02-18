@@ -292,6 +292,7 @@ def sh2response_execute(
     """
     cargs = sh2response_cargs(params, execution)
     ret = sh2response_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

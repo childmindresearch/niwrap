@@ -157,6 +157,7 @@ def antsuse_landmark_images_to_get_affine_transform_execute(
     """
     cargs = antsuse_landmark_images_to_get_affine_transform_cargs(params, execution)
     ret = antsuse_landmark_images_to_get_affine_transform_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

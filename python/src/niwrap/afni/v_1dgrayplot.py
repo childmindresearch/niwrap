@@ -177,6 +177,7 @@ def v_1dgrayplot_execute(
     """
     cargs = v_1dgrayplot_cargs(params, execution)
     ret = v_1dgrayplot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

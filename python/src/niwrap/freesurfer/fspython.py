@@ -134,6 +134,7 @@ def fspython_execute(
     """
     cargs = fspython_cargs(params, execution)
     ret = fspython_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -338,6 +338,7 @@ def atropos_execute(
     """
     cargs = atropos_cargs(params, execution)
     ret = atropos_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

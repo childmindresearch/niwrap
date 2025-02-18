@@ -150,6 +150,7 @@ def make_pq_script_py_execute(
     """
     cargs = make_pq_script_py_cargs(params, execution)
     ret = make_pq_script_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

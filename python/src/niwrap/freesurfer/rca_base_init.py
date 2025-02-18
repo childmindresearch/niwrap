@@ -149,6 +149,7 @@ def rca_base_init_execute(
     """
     cargs = rca_base_init_cargs(params, execution)
     ret = rca_base_init_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -152,6 +152,7 @@ def mris_remove_variance_execute(
     """
     cargs = mris_remove_variance_cargs(params, execution)
     ret = mris_remove_variance_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

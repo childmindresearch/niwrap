@@ -183,6 +183,7 @@ def fsl_reg_execute(
     """
     cargs = fsl_reg_cargs(params, execution)
     ret = fsl_reg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

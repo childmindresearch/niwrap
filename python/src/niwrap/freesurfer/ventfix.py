@@ -145,6 +145,7 @@ def ventfix_execute(
     """
     cargs = ventfix_cargs(params, execution)
     ret = ventfix_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

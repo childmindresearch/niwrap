@@ -146,6 +146,7 @@ def surface_sphere_triangular_patches_execute(
     """
     cargs = surface_sphere_triangular_patches_cargs(params, execution)
     ret = surface_sphere_triangular_patches_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

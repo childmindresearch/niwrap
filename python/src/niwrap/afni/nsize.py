@@ -140,6 +140,7 @@ def nsize_execute(
     """
     cargs = nsize_cargs(params, execution)
     ret = nsize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -166,6 +166,7 @@ def mri_warp_convert_execute(
     """
     cargs = mri_warp_convert_cargs(params, execution)
     ret = mri_warp_convert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

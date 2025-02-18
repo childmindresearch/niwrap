@@ -346,6 +346,7 @@ def mri_defacer_execute(
     """
     cargs = mri_defacer_cargs(params, execution)
     ret = mri_defacer_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

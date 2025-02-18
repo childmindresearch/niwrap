@@ -387,6 +387,7 @@ def fod2fixel_execute(
     """
     cargs = fod2fixel_cargs(params, execution)
     ret = fod2fixel_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

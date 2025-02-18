@@ -172,6 +172,7 @@ def mri_twoclass_execute(
     """
     cargs = mri_twoclass_cargs(params, execution)
     ret = mri_twoclass_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

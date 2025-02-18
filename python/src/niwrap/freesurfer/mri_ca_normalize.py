@@ -378,6 +378,7 @@ def mri_ca_normalize_execute(
     """
     cargs = mri_ca_normalize_cargs(params, execution)
     ret = mri_ca_normalize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

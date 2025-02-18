@@ -257,6 +257,7 @@ def transformcalc_execute(
     """
     cargs = transformcalc_cargs(params, execution)
     ret = transformcalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

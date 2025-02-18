@@ -254,6 +254,7 @@ def compare_surfaces_execute(
     """
     cargs = compare_surfaces_cargs(params, execution)
     ret = compare_surfaces_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

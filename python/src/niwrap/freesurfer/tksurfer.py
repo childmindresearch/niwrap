@@ -148,6 +148,7 @@ def tksurfer_execute(
     """
     cargs = tksurfer_cargs(params, execution)
     ret = tksurfer_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

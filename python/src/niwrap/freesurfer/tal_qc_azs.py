@@ -131,6 +131,7 @@ def tal_qc_azs_execute(
     """
     cargs = tal_qc_azs_cargs(params, execution)
     ret = tal_qc_azs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

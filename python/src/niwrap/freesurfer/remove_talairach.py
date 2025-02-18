@@ -142,6 +142,7 @@ def remove_talairach_execute(
     """
     cargs = remove_talairach_cargs(params, execution)
     ret = remove_talairach_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

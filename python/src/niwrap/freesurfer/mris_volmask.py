@@ -290,6 +290,7 @@ def mris_volmask_execute(
     """
     cargs = mris_volmask_cargs(params, execution)
     ret = mris_volmask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

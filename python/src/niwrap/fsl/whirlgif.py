@@ -186,6 +186,7 @@ def whirlgif_execute(
     """
     cargs = whirlgif_cargs(params, execution)
     ret = whirlgif_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

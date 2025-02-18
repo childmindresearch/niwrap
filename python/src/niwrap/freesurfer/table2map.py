@@ -183,6 +183,7 @@ def table2map_execute(
     """
     cargs = table2map_cargs(params, execution)
     ret = table2map_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

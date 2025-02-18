@@ -132,6 +132,7 @@ def v__4_daverage_execute(
     """
     cargs = v__4_daverage_cargs(params, execution)
     ret = v__4_daverage_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

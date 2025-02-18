@@ -229,6 +229,7 @@ def mris_smooth_intracortical_execute(
     """
     cargs = mris_smooth_intracortical_cargs(params, execution)
     ret = mris_smooth_intracortical_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

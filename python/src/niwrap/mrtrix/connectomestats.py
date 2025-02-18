@@ -546,6 +546,7 @@ def connectomestats_execute(
     """
     cargs = connectomestats_cargs(params, execution)
     ret = connectomestats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

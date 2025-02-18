@@ -136,6 +136,7 @@ def v__afni_refacer_make_onebig_a12_execute(
     """
     cargs = v__afni_refacer_make_onebig_a12_cargs(params, execution)
     ret = v__afni_refacer_make_onebig_a12_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

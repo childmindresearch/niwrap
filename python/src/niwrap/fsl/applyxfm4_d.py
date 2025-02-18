@@ -151,6 +151,7 @@ def applyxfm4_d_execute(
     """
     cargs = applyxfm4_d_cargs(params, execution)
     ret = applyxfm4_d_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

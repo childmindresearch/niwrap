@@ -246,6 +246,7 @@ def merge_stats_tables_execute(
     """
     cargs = merge_stats_tables_cargs(params, execution)
     ret = merge_stats_tables_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

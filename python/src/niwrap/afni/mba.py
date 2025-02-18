@@ -274,6 +274,7 @@ def mba_execute(
     """
     cargs = mba_cargs(params, execution)
     ret = mba_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -179,6 +179,7 @@ def v__shift_volume_execute(
     """
     cargs = v__shift_volume_cargs(params, execution)
     ret = v__shift_volume_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

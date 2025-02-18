@@ -287,6 +287,7 @@ def msm_execute(
     """
     cargs = msm_cargs(params, execution)
     ret = msm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

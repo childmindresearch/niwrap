@@ -158,6 +158,7 @@ def rebase_tensor_image_execute(
     """
     cargs = rebase_tensor_image_cargs(params, execution)
     ret = rebase_tensor_image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

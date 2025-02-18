@@ -353,6 +353,7 @@ def dmri_train_execute(
     """
     cargs = dmri_train_cargs(params, execution)
     ret = dmri_train_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

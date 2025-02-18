@@ -147,6 +147,7 @@ def orient_las_execute(
     """
     cargs = orient_las_cargs(params, execution)
     ret = orient_las_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

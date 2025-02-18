@@ -146,6 +146,7 @@ def maskdyads_execute(
     """
     cargs = maskdyads_cargs(params, execution)
     ret = maskdyads_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

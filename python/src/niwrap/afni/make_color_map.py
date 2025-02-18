@@ -314,6 +314,7 @@ def make_color_map_execute(
     """
     cargs = make_color_map_cargs(params, execution)
     ret = make_color_map_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

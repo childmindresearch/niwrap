@@ -150,6 +150,7 @@ def mist_fa_reg_execute(
     """
     cargs = mist_fa_reg_cargs(params, execution)
     ret = mist_fa_reg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

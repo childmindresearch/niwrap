@@ -622,6 +622,7 @@ def mris_make_surfaces_execute(
     """
     cargs = mris_make_surfaces_cargs(params, execution)
     ret = mris_make_surfaces_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

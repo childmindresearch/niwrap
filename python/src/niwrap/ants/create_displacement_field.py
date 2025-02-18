@@ -162,6 +162,7 @@ def create_displacement_field_execute(
     """
     cargs = create_displacement_field_cargs(params, execution)
     ret = create_displacement_field_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

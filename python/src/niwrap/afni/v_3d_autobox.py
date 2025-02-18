@@ -244,6 +244,7 @@ def v_3d_autobox_execute(
     """
     cargs = v_3d_autobox_cargs(params, execution)
     ret = v_3d_autobox_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

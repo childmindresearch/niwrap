@@ -414,6 +414,7 @@ def cifti_weighted_stats_execute(
     """
     cargs = cifti_weighted_stats_cargs(params, execution)
     ret = cifti_weighted_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -173,6 +173,7 @@ def talairach_avi_execute(
     """
     cargs = talairach_avi_cargs(params, execution)
     ret = talairach_avi_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

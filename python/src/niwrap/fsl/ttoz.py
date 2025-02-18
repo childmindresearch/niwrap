@@ -161,6 +161,7 @@ def ttoz_execute(
     """
     cargs = ttoz_cargs(params, execution)
     ret = ttoz_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

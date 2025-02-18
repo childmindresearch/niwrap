@@ -435,6 +435,7 @@ def popp_execute(
     """
     cargs = popp_cargs(params, execution)
     ret = popp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

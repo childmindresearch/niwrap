@@ -234,6 +234,7 @@ def v__djunct_ssw_intermed_edge_imgs_execute(
     """
     cargs = v__djunct_ssw_intermed_edge_imgs_cargs(params, execution)
     ret = v__djunct_ssw_intermed_edge_imgs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

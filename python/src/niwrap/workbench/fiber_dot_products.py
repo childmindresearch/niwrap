@@ -174,6 +174,7 @@ def fiber_dot_products_execute(
     """
     cargs = fiber_dot_products_cargs(params, execution)
     ret = fiber_dot_products_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

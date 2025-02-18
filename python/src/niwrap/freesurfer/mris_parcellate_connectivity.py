@@ -156,6 +156,7 @@ def mris_parcellate_connectivity_execute(
     """
     cargs = mris_parcellate_connectivity_cargs(params, execution)
     ret = mris_parcellate_connectivity_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

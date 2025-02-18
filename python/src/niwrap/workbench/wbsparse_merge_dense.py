@@ -190,6 +190,7 @@ def wbsparse_merge_dense_execute(
     """
     cargs = wbsparse_merge_dense_cargs(params, execution)
     ret = wbsparse_merge_dense_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

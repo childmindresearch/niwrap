@@ -212,6 +212,7 @@ def border_file_export_to_caret5_execute(
     """
     cargs = border_file_export_to_caret5_cargs(params, execution)
     ret = border_file_export_to_caret5_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -131,6 +131,7 @@ def fslnvols_execute(
     """
     cargs = fslnvols_cargs(params, execution)
     ret = fslnvols_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -174,6 +174,7 @@ def mri_easywarp_execute(
     """
     cargs = mri_easywarp_cargs(params, execution)
     ret = mri_easywarp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

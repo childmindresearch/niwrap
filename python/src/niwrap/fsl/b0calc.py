@@ -267,6 +267,7 @@ def b0calc_execute(
     """
     cargs = b0calc_cargs(params, execution)
     ret = b0calc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

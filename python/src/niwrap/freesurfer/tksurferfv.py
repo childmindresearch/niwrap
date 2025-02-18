@@ -192,6 +192,7 @@ def tksurferfv_execute(
     """
     cargs = tksurferfv_cargs(params, execution)
     ret = tksurferfv_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

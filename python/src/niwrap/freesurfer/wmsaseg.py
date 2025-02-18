@@ -213,6 +213,7 @@ def wmsaseg_execute(
     """
     cargs = wmsaseg_cargs(params, execution)
     ret = wmsaseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

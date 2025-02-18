@@ -150,6 +150,7 @@ def avi2talxfm_execute(
     """
     cargs = avi2talxfm_cargs(params, execution)
     ret = avi2talxfm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

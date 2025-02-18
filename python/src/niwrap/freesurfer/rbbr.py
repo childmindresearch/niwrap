@@ -290,6 +290,7 @@ def rbbr_execute(
     """
     cargs = rbbr_cargs(params, execution)
     ret = rbbr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

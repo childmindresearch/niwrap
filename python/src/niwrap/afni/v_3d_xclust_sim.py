@@ -276,6 +276,7 @@ def v_3d_xclust_sim_execute(
     """
     cargs = v_3d_xclust_sim_cargs(params, execution)
     ret = v_3d_xclust_sim_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

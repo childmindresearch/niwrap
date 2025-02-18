@@ -229,6 +229,7 @@ def fspalm_execute(
     """
     cargs = fspalm_cargs(params, execution)
     ret = fspalm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

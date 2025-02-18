@@ -172,6 +172,7 @@ def baycest_execute(
     """
     cargs = baycest_cargs(params, execution)
     ret = baycest_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

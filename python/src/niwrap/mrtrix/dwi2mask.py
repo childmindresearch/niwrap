@@ -349,6 +349,7 @@ def dwi2mask_execute(
     """
     cargs = dwi2mask_cargs(params, execution)
     ret = dwi2mask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

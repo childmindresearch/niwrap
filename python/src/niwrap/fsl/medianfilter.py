@@ -141,6 +141,7 @@ def medianfilter_execute(
     """
     cargs = medianfilter_cargs(params, execution)
     ret = medianfilter_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

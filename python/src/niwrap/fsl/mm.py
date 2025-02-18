@@ -271,6 +271,7 @@ def mm_execute(
     """
     cargs = mm_cargs(params, execution)
     ret = mm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

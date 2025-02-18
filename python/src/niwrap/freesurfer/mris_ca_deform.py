@@ -157,6 +157,7 @@ def mris_ca_deform_execute(
     """
     cargs = mris_ca_deform_cargs(params, execution)
     ret = mris_ca_deform_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -214,6 +214,7 @@ def v_1dsound_execute(
     """
     cargs = v_1dsound_cargs(params, execution)
     ret = v_1dsound_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

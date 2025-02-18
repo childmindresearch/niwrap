@@ -153,6 +153,7 @@ def ants_denoise_image_fs_execute(
     """
     cargs = ants_denoise_image_fs_cargs(params, execution)
     ret = ants_denoise_image_fs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

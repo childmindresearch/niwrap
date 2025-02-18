@@ -140,6 +140,7 @@ def plot_structure_stats_tcl_execute(
     """
     cargs = plot_structure_stats_tcl_cargs(params, execution)
     ret = plot_structure_stats_tcl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

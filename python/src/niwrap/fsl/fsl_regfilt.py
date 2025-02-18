@@ -286,6 +286,7 @@ def fsl_regfilt_execute(
     """
     cargs = fsl_regfilt_cargs(params, execution)
     ret = fsl_regfilt_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

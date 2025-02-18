@@ -150,6 +150,7 @@ def mri_label_histo_execute(
     """
     cargs = mri_label_histo_cargs(params, execution)
     ret = mri_label_histo_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

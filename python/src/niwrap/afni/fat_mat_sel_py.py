@@ -347,6 +347,7 @@ def fat_mat_sel_py_execute(
     """
     cargs = fat_mat_sel_py_cargs(params, execution)
     ret = fat_mat_sel_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

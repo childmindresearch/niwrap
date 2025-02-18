@@ -137,6 +137,7 @@ def v_3dmask_svd_execute(
     """
     cargs = v_3dmask_svd_cargs(params, execution)
     ret = v_3dmask_svd_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

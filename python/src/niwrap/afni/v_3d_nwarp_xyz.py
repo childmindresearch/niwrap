@@ -148,6 +148,7 @@ def v_3d_nwarp_xyz_execute(
     """
     cargs = v_3d_nwarp_xyz_cargs(params, execution)
     ret = v_3d_nwarp_xyz_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -178,6 +178,7 @@ def mris_label_area_execute(
     """
     cargs = mris_label_area_cargs(params, execution)
     ret = mris_label_area_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

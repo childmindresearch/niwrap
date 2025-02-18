@@ -498,6 +498,7 @@ def amp2sh_execute(
     """
     cargs = amp2sh_cargs(params, execution)
     ret = amp2sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -208,6 +208,7 @@ def volume_label_import_execute(
     """
     cargs = volume_label_import_cargs(params, execution)
     ret = volume_label_import_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -226,6 +226,7 @@ def mri_stopmask_execute(
     """
     cargs = mri_stopmask_cargs(params, execution)
     ret = mri_stopmask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

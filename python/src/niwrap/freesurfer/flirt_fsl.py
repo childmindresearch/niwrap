@@ -452,6 +452,7 @@ def flirt_fsl_execute(
     """
     cargs = flirt_fsl_cargs(params, execution)
     ret = flirt_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

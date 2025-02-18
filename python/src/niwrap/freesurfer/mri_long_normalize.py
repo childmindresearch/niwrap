@@ -218,6 +218,7 @@ def mri_long_normalize_execute(
     """
     cargs = mri_long_normalize_cargs(params, execution)
     ret = mri_long_normalize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

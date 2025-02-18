@@ -139,6 +139,7 @@ def cat_matvec_execute(
     """
     cargs = cat_matvec_cargs(params, execution)
     ret = cat_matvec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

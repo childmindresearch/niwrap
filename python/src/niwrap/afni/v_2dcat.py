@@ -365,6 +365,7 @@ def v_2dcat_execute(
     """
     cargs = v_2dcat_cargs(params, execution)
     ret = v_2dcat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

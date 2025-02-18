@@ -156,6 +156,7 @@ def mris_nudge_execute(
     """
     cargs = mris_nudge_cargs(params, execution)
     ret = mris_nudge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

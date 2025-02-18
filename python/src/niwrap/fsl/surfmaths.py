@@ -148,6 +148,7 @@ def surfmaths_execute(
     """
     cargs = surfmaths_cargs(params, execution)
     ret = surfmaths_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

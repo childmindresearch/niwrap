@@ -141,6 +141,7 @@ def possum_plot_execute(
     """
     cargs = possum_plot_cargs(params, execution)
     ret = possum_plot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

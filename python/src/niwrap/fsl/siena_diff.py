@@ -185,6 +185,7 @@ def siena_diff_execute(
     """
     cargs = siena_diff_cargs(params, execution)
     ret = siena_diff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -347,6 +347,7 @@ def cifti_math_execute(
     """
     cargs = cifti_math_cargs(params, execution)
     ret = cifti_math_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

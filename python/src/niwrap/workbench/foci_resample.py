@@ -323,6 +323,7 @@ def foci_resample_execute(
     """
     cargs = foci_resample_cargs(params, execution)
     ret = foci_resample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

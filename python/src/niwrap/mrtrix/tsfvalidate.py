@@ -246,6 +246,7 @@ def tsfvalidate_execute(
     """
     cargs = tsfvalidate_cargs(params, execution)
     ret = tsfvalidate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

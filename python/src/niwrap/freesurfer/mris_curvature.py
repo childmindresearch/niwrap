@@ -262,6 +262,7 @@ def mris_curvature_execute(
     """
     cargs = mris_curvature_cargs(params, execution)
     ret = mris_curvature_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

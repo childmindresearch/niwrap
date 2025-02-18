@@ -390,6 +390,7 @@ def dcmdjpeg_fs_execute(
     """
     cargs = dcmdjpeg_fs_cargs(params, execution)
     ret = dcmdjpeg_fs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -132,6 +132,7 @@ def tbss_4_prestats_execute(
     """
     cargs = tbss_4_prestats_cargs(params, execution)
     ret = tbss_4_prestats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

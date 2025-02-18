@@ -219,6 +219,7 @@ def slicetimer_execute(
     """
     cargs = slicetimer_cargs(params, execution)
     ret = slicetimer_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

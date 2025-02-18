@@ -160,6 +160,7 @@ def vertexvol_execute(
     """
     cargs = vertexvol_cargs(params, execution)
     ret = vertexvol_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

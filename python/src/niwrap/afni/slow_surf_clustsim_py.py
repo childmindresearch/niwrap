@@ -211,6 +211,7 @@ def slow_surf_clustsim_py_execute(
     """
     cargs = slow_surf_clustsim_py_cargs(params, execution)
     ret = slow_surf_clustsim_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

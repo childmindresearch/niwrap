@@ -170,6 +170,7 @@ def mri_tessellate_execute(
     """
     cargs = mri_tessellate_cargs(params, execution)
     ret = mri_tessellate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

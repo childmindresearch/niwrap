@@ -198,6 +198,7 @@ def susan_execute(
     """
     cargs = susan_cargs(params, execution)
     ret = susan_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -173,6 +173,7 @@ def surface_cortex_layer_execute(
     """
     cargs = surface_cortex_layer_cargs(params, execution)
     ret = surface_cortex_layer_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

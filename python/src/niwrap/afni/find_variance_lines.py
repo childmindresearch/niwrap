@@ -269,6 +269,7 @@ def find_variance_lines_execute(
     """
     cargs = find_variance_lines_cargs(params, execution)
     ret = find_variance_lines_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

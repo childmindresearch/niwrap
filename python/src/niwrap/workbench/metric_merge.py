@@ -299,6 +299,7 @@ def metric_merge_execute(
     """
     cargs = metric_merge_cargs(params, execution)
     ret = metric_merge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -176,6 +176,7 @@ def wfilemask_execute(
     """
     cargs = wfilemask_cargs(params, execution)
     ret = wfilemask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

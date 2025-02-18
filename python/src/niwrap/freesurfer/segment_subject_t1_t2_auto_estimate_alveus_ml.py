@@ -153,6 +153,7 @@ def segment_subject_t1_t2_auto_estimate_alveus_ml_execute(
     """
     cargs = segment_subject_t1_t2_auto_estimate_alveus_ml_cargs(params, execution)
     ret = segment_subject_t1_t2_auto_estimate_alveus_ml_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

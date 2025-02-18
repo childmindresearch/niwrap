@@ -443,6 +443,7 @@ def surf_clust_execute(
     """
     cargs = surf_clust_cargs(params, execution)
     ret = surf_clust_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

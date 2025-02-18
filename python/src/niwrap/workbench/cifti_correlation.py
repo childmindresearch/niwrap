@@ -296,6 +296,7 @@ def cifti_correlation_execute(
     """
     cargs = cifti_correlation_cargs(params, execution)
     ret = cifti_correlation_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -131,6 +131,7 @@ def segment_monkey_execute(
     """
     cargs = segment_monkey_cargs(params, execution)
     ret = segment_monkey_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

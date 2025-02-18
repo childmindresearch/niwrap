@@ -194,6 +194,7 @@ def fsl_schurprod_execute(
     """
     cargs = fsl_schurprod_cargs(params, execution)
     ret = fsl_schurprod_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

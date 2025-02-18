@@ -183,6 +183,7 @@ def robustfov_execute(
     """
     cargs = robustfov_cargs(params, execution)
     ret = robustfov_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

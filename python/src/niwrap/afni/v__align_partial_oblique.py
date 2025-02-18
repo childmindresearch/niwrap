@@ -214,6 +214,7 @@ def v__align_partial_oblique_execute(
     """
     cargs = v__align_partial_oblique_cargs(params, execution)
     ret = v__align_partial_oblique_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

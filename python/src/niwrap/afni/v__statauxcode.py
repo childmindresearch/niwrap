@@ -136,6 +136,7 @@ def v__statauxcode_execute(
     """
     cargs = v__statauxcode_cargs(params, execution)
     ret = v__statauxcode_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

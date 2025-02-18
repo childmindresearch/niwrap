@@ -135,6 +135,7 @@ def check_recons_sh_execute(
     """
     cargs = check_recons_sh_cargs(params, execution)
     ret = check_recons_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

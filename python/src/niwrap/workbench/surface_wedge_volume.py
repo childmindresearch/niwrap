@@ -150,6 +150,7 @@ def surface_wedge_volume_execute(
     """
     cargs = surface_wedge_volume_cargs(params, execution)
     ret = surface_wedge_volume_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

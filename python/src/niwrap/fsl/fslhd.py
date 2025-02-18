@@ -137,6 +137,7 @@ def fslhd_execute(
     """
     cargs = fslhd_cargs(params, execution)
     ret = fslhd_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

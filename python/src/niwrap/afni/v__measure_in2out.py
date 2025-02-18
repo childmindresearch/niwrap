@@ -271,6 +271,7 @@ def v__measure_in2out_execute(
     """
     cargs = v__measure_in2out_cargs(params, execution)
     ret = v__measure_in2out_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

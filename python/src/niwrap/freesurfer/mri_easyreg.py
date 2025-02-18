@@ -235,6 +235,7 @@ def mri_easyreg_execute(
     """
     cargs = mri_easyreg_cargs(params, execution)
     ret = mri_easyreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

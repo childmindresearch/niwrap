@@ -319,6 +319,7 @@ def v_3d_lmer_execute(
     """
     cargs = v_3d_lmer_cargs(params, execution)
     ret = v_3d_lmer_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

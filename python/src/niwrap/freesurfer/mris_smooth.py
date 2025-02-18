@@ -233,6 +233,7 @@ def mris_smooth_execute(
     """
     cargs = mris_smooth_cargs(params, execution)
     ret = mris_smooth_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

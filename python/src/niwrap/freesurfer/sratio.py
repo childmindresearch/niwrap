@@ -157,6 +157,7 @@ def sratio_execute(
     """
     cargs = sratio_cargs(params, execution)
     ret = sratio_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

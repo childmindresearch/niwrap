@@ -525,6 +525,7 @@ def mri_surfcluster_execute(
     """
     cargs = mri_surfcluster_cargs(params, execution)
     ret = mri_surfcluster_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

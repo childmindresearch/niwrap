@@ -239,6 +239,7 @@ def v__align_centers_execute(
     """
     cargs = v__align_centers_cargs(params, execution)
     ret = v__align_centers_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

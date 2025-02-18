@@ -242,6 +242,7 @@ def mri_exvivo_strip_execute(
     """
     cargs = mri_exvivo_strip_cargs(params, execution)
     ret = mri_exvivo_strip_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

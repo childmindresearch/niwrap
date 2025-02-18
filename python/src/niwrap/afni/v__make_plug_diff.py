@@ -178,6 +178,7 @@ def v__make_plug_diff_execute(
     """
     cargs = v__make_plug_diff_cargs(params, execution)
     ret = v__make_plug_diff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

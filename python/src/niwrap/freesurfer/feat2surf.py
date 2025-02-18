@@ -231,6 +231,7 @@ def feat2surf_execute(
     """
     cargs = feat2surf_cargs(params, execution)
     ret = feat2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

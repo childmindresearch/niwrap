@@ -172,6 +172,7 @@ def v_3d_friedman_execute(
     """
     cargs = v_3d_friedman_cargs(params, execution)
     ret = v_3d_friedman_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

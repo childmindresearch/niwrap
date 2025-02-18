@@ -237,6 +237,7 @@ def mri_fit_bias_execute(
     """
     cargs = mri_fit_bias_cargs(params, execution)
     ret = mri_fit_bias_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

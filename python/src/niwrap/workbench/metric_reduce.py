@@ -229,6 +229,7 @@ def metric_reduce_execute(
     """
     cargs = metric_reduce_cargs(params, execution)
     ret = metric_reduce_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

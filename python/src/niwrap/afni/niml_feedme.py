@@ -192,6 +192,7 @@ def niml_feedme_execute(
     """
     cargs = niml_feedme_cargs(params, execution)
     ret = niml_feedme_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

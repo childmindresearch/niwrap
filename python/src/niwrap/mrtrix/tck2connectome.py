@@ -415,6 +415,7 @@ def tck2connectome_execute(
     """
     cargs = tck2connectome_cargs(params, execution)
     ret = tck2connectome_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

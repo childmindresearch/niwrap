@@ -254,6 +254,7 @@ def v_3dpc_execute(
     """
     cargs = v_3dpc_cargs(params, execution)
     ret = v_3dpc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

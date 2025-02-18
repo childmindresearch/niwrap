@@ -193,6 +193,7 @@ def mri_extract_label_execute(
     """
     cargs = mri_extract_label_cargs(params, execution)
     ret = mri_extract_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

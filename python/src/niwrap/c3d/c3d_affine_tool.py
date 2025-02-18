@@ -273,6 +273,7 @@ def c3d_affine_tool_execute(
     """
     cargs = c3d_affine_tool_cargs(params, execution)
     ret = c3d_affine_tool_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

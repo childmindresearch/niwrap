@@ -145,6 +145,7 @@ def segment_subfields_t1_longitudinal_execute(
     """
     cargs = segment_subfields_t1_longitudinal_cargs(params, execution)
     ret = segment_subfields_t1_longitudinal_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -147,6 +147,7 @@ def images_equal_execute(
     """
     cargs = images_equal_cargs(params, execution)
     ret = images_equal_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

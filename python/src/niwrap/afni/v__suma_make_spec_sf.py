@@ -159,6 +159,7 @@ def v__suma_make_spec_sf_execute(
     """
     cargs = v__suma_make_spec_sf_cargs(params, execution)
     ret = v__suma_make_spec_sf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

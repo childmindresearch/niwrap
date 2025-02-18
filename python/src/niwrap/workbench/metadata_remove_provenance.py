@@ -139,6 +139,7 @@ def metadata_remove_provenance_execute(
     """
     cargs = metadata_remove_provenance_cargs(params, execution)
     ret = metadata_remove_provenance_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

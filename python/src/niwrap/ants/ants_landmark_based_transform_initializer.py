@@ -197,6 +197,7 @@ def ants_landmark_based_transform_initializer_execute(
     """
     cargs = ants_landmark_based_transform_initializer_cargs(params, execution)
     ret = ants_landmark_based_transform_initializer_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

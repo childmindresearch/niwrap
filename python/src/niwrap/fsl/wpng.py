@@ -182,6 +182,7 @@ def wpng_execute(
     """
     cargs = wpng_cargs(params, execution)
     ret = wpng_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

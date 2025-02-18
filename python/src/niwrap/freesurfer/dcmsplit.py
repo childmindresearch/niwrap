@@ -194,6 +194,7 @@ def dcmsplit_execute(
     """
     cargs = dcmsplit_cargs(params, execution)
     ret = dcmsplit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

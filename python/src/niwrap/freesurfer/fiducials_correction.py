@@ -139,6 +139,7 @@ def fiducials_correction_execute(
     """
     cargs = fiducials_correction_cargs(params, execution)
     ret = fiducials_correction_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

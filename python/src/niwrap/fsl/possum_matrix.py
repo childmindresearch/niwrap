@@ -188,6 +188,7 @@ def possum_matrix_execute(
     """
     cargs = possum_matrix_cargs(params, execution)
     ret = possum_matrix_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

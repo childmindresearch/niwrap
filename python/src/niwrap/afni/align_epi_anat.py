@@ -264,6 +264,7 @@ def align_epi_anat_execute(
     """
     cargs = align_epi_anat_cargs(params, execution)
     ret = align_epi_anat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

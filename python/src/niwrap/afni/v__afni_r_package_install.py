@@ -181,6 +181,7 @@ def v__afni_r_package_install_execute(
     """
     cargs = v__afni_r_package_install_cargs(params, execution)
     ret = v__afni_r_package_install_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

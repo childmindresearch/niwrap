@@ -224,6 +224,7 @@ def mri_maps2csd_execute(
     """
     cargs = mri_maps2csd_cargs(params, execution)
     ret = mri_maps2csd_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

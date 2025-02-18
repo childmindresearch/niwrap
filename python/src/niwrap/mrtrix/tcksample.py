@@ -295,6 +295,7 @@ def tcksample_execute(
     """
     cargs = tcksample_cargs(params, execution)
     ret = tcksample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

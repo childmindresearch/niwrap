@@ -1515,6 +1515,7 @@ def tckgen_execute(
     """
     cargs = tckgen_cargs(params, execution)
     ret = tckgen_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -177,6 +177,7 @@ def mri_reorient_lr_csh_execute(
     """
     cargs = mri_reorient_lr_csh_cargs(params, execution)
     ret = mri_reorient_lr_csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

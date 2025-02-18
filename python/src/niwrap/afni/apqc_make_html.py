@@ -134,6 +134,7 @@ def apqc_make_html_execute(
     """
     cargs = apqc_make_html_cargs(params, execution)
     ret = apqc_make_html_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

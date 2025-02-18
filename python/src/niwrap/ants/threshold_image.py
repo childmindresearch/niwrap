@@ -198,6 +198,7 @@ def threshold_image_execute(
     """
     cargs = threshold_image_cargs(params, execution)
     ret = threshold_image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

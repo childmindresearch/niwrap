@@ -155,6 +155,7 @@ def mri_probedicom_execute(
     """
     cargs = mri_probedicom_cargs(params, execution)
     ret = mri_probedicom_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -151,6 +151,7 @@ def polyorder_execute(
     """
     cargs = polyorder_cargs(params, execution)
     ret = polyorder_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

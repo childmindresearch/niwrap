@@ -151,6 +151,7 @@ def tbss_2_reg_execute(
     """
     cargs = tbss_2_reg_cargs(params, execution)
     ret = tbss_2_reg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

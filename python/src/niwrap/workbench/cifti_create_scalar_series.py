@@ -229,6 +229,7 @@ def cifti_create_scalar_series_execute(
     """
     cargs = cifti_create_scalar_series_cargs(params, execution)
     ret = cifti_create_scalar_series_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

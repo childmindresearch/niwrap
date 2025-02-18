@@ -140,6 +140,7 @@ def imln_execute(
     """
     cargs = imln_cargs(params, execution)
     ret = imln_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

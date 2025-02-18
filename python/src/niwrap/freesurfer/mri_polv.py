@@ -149,6 +149,7 @@ def mri_polv_execute(
     """
     cargs = mri_polv_cargs(params, execution)
     ret = mri_polv_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

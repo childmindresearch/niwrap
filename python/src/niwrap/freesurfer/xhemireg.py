@@ -219,6 +219,7 @@ def xhemireg_execute(
     """
     cargs = xhemireg_cargs(params, execution)
     ret = xhemireg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

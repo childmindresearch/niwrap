@@ -137,6 +137,7 @@ def v_2swap_execute(
     """
     cargs = v_2swap_cargs(params, execution)
     ret = v_2swap_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

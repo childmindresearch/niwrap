@@ -154,6 +154,7 @@ def volume_reorient_execute(
     """
     cargs = volume_reorient_cargs(params, execution)
     ret = volume_reorient_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

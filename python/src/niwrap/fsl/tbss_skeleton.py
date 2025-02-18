@@ -209,6 +209,7 @@ def tbss_skeleton_execute(
     """
     cargs = tbss_skeleton_cargs(params, execution)
     ret = tbss_skeleton_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -230,6 +230,7 @@ def vecreg_execute(
     """
     cargs = vecreg_cargs(params, execution)
     ret = vecreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

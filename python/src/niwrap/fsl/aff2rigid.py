@@ -138,6 +138,7 @@ def aff2rigid_execute(
     """
     cargs = aff2rigid_cargs(params, execution)
     ret = aff2rigid_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

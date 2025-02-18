@@ -168,6 +168,7 @@ def mri_vessel_segment_execute(
     """
     cargs = mri_vessel_segment_cargs(params, execution)
     ret = mri_vessel_segment_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

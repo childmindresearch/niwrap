@@ -137,6 +137,7 @@ def v__np_execute(
     """
     cargs = v__np_cargs(params, execution)
     ret = v__np_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

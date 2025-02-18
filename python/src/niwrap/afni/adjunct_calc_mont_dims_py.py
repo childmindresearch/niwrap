@@ -132,6 +132,7 @@ def adjunct_calc_mont_dims_py_execute(
     """
     cargs = adjunct_calc_mont_dims_py_cargs(params, execution)
     ret = adjunct_calc_mont_dims_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

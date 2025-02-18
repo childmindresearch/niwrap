@@ -190,6 +190,7 @@ def v__extract_meica_ortvec_execute(
     """
     cargs = v__extract_meica_ortvec_cargs(params, execution)
     ret = v__extract_meica_ortvec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

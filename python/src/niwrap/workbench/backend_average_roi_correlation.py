@@ -143,6 +143,7 @@ def backend_average_roi_correlation_execute(
     """
     cargs = backend_average_roi_correlation_cargs(params, execution)
     ret = backend_average_roi_correlation_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

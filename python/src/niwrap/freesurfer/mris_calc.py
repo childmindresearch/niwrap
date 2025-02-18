@@ -182,6 +182,7 @@ def mris_calc_execute(
     """
     cargs = mris_calc_cargs(params, execution)
     ret = mris_calc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

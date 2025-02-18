@@ -178,6 +178,7 @@ def sigloss_execute(
     """
     cargs = sigloss_cargs(params, execution)
     ret = sigloss_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

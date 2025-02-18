@@ -238,6 +238,7 @@ def mri_funcvits_execute(
     """
     cargs = mri_funcvits_cargs(params, execution)
     ret = mri_funcvits_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

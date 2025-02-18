@@ -236,6 +236,7 @@ def fslmeants_execute(
     """
     cargs = fslmeants_cargs(params, execution)
     ret = fslmeants_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

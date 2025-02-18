@@ -149,6 +149,7 @@ def cp_dicom_execute(
     """
     cargs = cp_dicom_cargs(params, execution)
     ret = cp_dicom_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

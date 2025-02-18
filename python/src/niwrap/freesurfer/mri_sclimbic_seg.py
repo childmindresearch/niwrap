@@ -341,6 +341,7 @@ def mri_sclimbic_seg_execute(
     """
     cargs = mri_sclimbic_seg_cargs(params, execution)
     ret = mri_sclimbic_seg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -199,6 +199,7 @@ def mris_flatten_execute(
     """
     cargs = mris_flatten_cargs(params, execution)
     ret = mris_flatten_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

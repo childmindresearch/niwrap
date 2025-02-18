@@ -131,6 +131,7 @@ def adjunct_simplify_cost_execute(
     """
     cargs = adjunct_simplify_cost_cargs(params, execution)
     ret = adjunct_simplify_cost_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

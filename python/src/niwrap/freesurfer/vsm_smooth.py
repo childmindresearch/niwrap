@@ -168,6 +168,7 @@ def vsm_smooth_execute(
     """
     cargs = vsm_smooth_cargs(params, execution)
     ret = vsm_smooth_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

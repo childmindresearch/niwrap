@@ -186,6 +186,7 @@ def fsr_coreg_execute(
     """
     cargs = fsr_coreg_cargs(params, execution)
     ret = fsr_coreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -198,6 +198,7 @@ def v_3dbucket_execute(
     """
     cargs = v_3dbucket_cargs(params, execution)
     ret = v_3dbucket_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

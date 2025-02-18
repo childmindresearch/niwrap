@@ -224,6 +224,7 @@ def gen_epi_review_py_execute(
     """
     cargs = gen_epi_review_py_cargs(params, execution)
     ret = gen_epi_review_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

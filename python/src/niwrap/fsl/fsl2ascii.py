@@ -140,6 +140,7 @@ def fsl2ascii_execute(
     """
     cargs = fsl2ascii_cargs(params, execution)
     ret = fsl2ascii_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

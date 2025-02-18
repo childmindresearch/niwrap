@@ -162,6 +162,7 @@ def deface_subject_execute(
     """
     cargs = deface_subject_cargs(params, execution)
     ret = deface_subject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

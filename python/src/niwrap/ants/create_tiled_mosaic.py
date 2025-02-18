@@ -262,6 +262,7 @@ def create_tiled_mosaic_execute(
     """
     cargs = create_tiled_mosaic_cargs(params, execution)
     ret = create_tiled_mosaic_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

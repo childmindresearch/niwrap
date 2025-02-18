@@ -147,6 +147,7 @@ def v_3dvolreg_afni_execute(
     """
     cargs = v_3dvolreg_afni_cargs(params, execution)
     ret = v_3dvolreg_afni_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

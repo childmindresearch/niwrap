@@ -193,6 +193,7 @@ def gps_execute(
     """
     cargs = gps_cargs(params, execution)
     ret = gps_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

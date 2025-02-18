@@ -132,6 +132,7 @@ def inflate_subject_sc_execute(
     """
     cargs = inflate_subject_sc_cargs(params, execution)
     ret = inflate_subject_sc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -244,6 +244,7 @@ def gen_ss_review_table_py_execute(
     """
     cargs = gen_ss_review_table_py_cargs(params, execution)
     ret = gen_ss_review_table_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

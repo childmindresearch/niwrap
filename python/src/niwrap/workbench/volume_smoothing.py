@@ -193,6 +193,7 @@ def volume_smoothing_execute(
     """
     cargs = volume_smoothing_cargs(params, execution)
     ret = volume_smoothing_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -423,6 +423,7 @@ def cifti_parcellate_execute(
     """
     cargs = cifti_parcellate_cargs(params, execution)
     ret = cifti_parcellate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

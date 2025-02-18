@@ -453,6 +453,7 @@ def n4_bias_field_correction_execute(
     """
     cargs = n4_bias_field_correction_cargs(params, execution)
     ret = n4_bias_field_correction_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

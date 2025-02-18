@@ -148,6 +148,7 @@ def surface_flip_normals_execute(
     """
     cargs = surface_flip_normals_cargs(params, execution)
     ret = surface_flip_normals_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

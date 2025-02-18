@@ -295,6 +295,7 @@ def cifti_estimate_fwhm_execute(
     """
     cargs = cifti_estimate_fwhm_cargs(params, execution)
     ret = cifti_estimate_fwhm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

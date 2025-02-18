@@ -226,6 +226,7 @@ def mri_normalize_tp2_execute(
     """
     cargs = mri_normalize_tp2_cargs(params, execution)
     ret = mri_normalize_tp2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

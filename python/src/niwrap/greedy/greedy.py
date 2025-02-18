@@ -1481,6 +1481,7 @@ def greedy_execute(
     """
     cargs = greedy_cargs(params, execution)
     ret = greedy_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

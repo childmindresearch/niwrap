@@ -284,6 +284,7 @@ def file_information_execute(
     """
     cargs = file_information_cargs(params, execution)
     ret = file_information_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

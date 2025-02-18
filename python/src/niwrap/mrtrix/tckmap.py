@@ -560,6 +560,7 @@ def tckmap_execute(
     """
     cargs = tckmap_cargs(params, execution)
     ret = tckmap_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

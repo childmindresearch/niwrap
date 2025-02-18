@@ -217,6 +217,7 @@ def mri_nlfilter_execute(
     """
     cargs = mri_nlfilter_cargs(params, execution)
     ret = mri_nlfilter_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

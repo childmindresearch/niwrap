@@ -196,6 +196,7 @@ def quickspec_execute(
     """
     cargs = quickspec_cargs(params, execution)
     ret = quickspec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

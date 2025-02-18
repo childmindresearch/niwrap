@@ -151,6 +151,7 @@ def mri_fuse_intensity_images_execute(
     """
     cargs = mri_fuse_intensity_images_cargs(params, execution)
     ret = mri_fuse_intensity_images_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

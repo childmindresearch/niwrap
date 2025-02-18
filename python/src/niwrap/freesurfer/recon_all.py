@@ -628,6 +628,7 @@ def recon_all_execute(
     """
     cargs = recon_all_cargs(params, execution)
     ret = recon_all_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

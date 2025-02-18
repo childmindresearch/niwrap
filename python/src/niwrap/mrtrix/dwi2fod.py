@@ -675,6 +675,7 @@ def dwi2fod_execute(
     """
     cargs = dwi2fod_cargs(params, execution)
     ret = dwi2fod_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

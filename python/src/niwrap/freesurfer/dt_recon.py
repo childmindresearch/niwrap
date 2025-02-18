@@ -289,6 +289,7 @@ def dt_recon_execute(
     """
     cargs = dt_recon_cargs(params, execution)
     ret = dt_recon_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

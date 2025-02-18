@@ -146,6 +146,7 @@ def ccalc_execute(
     """
     cargs = ccalc_cargs(params, execution)
     ret = ccalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

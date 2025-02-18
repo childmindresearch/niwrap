@@ -144,6 +144,7 @@ def v_3d_dwito_dt_execute(
     """
     cargs = v_3d_dwito_dt_cargs(params, execution)
     ret = v_3d_dwito_dt_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

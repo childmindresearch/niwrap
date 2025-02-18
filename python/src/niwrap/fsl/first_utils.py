@@ -364,6 +364,7 @@ def first_utils_execute(
     """
     cargs = first_utils_cargs(params, execution)
     ret = first_utils_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -151,6 +151,7 @@ def xfmrot_execute(
     """
     cargs = xfmrot_cargs(params, execution)
     ret = xfmrot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

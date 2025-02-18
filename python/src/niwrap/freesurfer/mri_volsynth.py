@@ -536,6 +536,7 @@ def mri_volsynth_execute(
     """
     cargs = mri_volsynth_cargs(params, execution)
     ret = mri_volsynth_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

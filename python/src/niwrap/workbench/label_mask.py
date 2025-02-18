@@ -161,6 +161,7 @@ def label_mask_execute(
     """
     cargs = label_mask_cargs(params, execution)
     ret = label_mask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

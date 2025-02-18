@@ -148,6 +148,7 @@ def surface_curvature_execute(
     """
     cargs = surface_curvature_cargs(params, execution)
     ret = surface_curvature_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

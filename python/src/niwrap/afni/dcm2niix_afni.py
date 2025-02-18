@@ -410,6 +410,7 @@ def dcm2niix_afni_execute(
     """
     cargs = dcm2niix_afni_cargs(params, execution)
     ret = dcm2niix_afni_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

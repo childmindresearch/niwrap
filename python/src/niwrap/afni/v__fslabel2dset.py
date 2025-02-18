@@ -163,6 +163,7 @@ def v__fslabel2dset_execute(
     """
     cargs = v__fslabel2dset_cargs(params, execution)
     ret = v__fslabel2dset_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

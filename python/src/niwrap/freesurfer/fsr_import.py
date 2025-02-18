@@ -169,6 +169,7 @@ def fsr_import_execute(
     """
     cargs = fsr_import_cargs(params, execution)
     ret = fsr_import_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

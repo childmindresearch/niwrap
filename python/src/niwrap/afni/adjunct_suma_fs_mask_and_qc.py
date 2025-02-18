@@ -191,6 +191,7 @@ def adjunct_suma_fs_mask_and_qc_execute(
     """
     cargs = adjunct_suma_fs_mask_and_qc_cargs(params, execution)
     ret = adjunct_suma_fs_mask_and_qc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -180,6 +180,7 @@ def samseg_long_execute(
     """
     cargs = samseg_long_cargs(params, execution)
     ret = samseg_long_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

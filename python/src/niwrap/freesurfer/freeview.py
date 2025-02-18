@@ -133,6 +133,7 @@ def freeview_execute(
     """
     cargs = freeview_cargs(params, execution)
     ret = freeview_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

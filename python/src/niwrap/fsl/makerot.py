@@ -190,6 +190,7 @@ def makerot_execute(
     """
     cargs = makerot_cargs(params, execution)
     ret = makerot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

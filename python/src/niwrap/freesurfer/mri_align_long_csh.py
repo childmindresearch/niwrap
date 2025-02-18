@@ -139,6 +139,7 @@ def mri_align_long_csh_execute(
     """
     cargs = mri_align_long_csh_cargs(params, execution)
     ret = mri_align_long_csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -272,6 +272,7 @@ def mrcheckerboardmask_execute(
     """
     cargs = mrcheckerboardmask_cargs(params, execution)
     ret = mrcheckerboardmask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

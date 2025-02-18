@@ -203,6 +203,7 @@ def mksurfatlas_execute(
     """
     cargs = mksurfatlas_cargs(params, execution)
     ret = mksurfatlas_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

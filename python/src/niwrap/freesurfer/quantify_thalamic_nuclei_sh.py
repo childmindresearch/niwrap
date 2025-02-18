@@ -147,6 +147,7 @@ def quantify_thalamic_nuclei_sh_execute(
     """
     cargs = quantify_thalamic_nuclei_sh_cargs(params, execution)
     ret = quantify_thalamic_nuclei_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

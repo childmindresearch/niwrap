@@ -342,6 +342,7 @@ def possum_execute(
     """
     cargs = possum_cargs(params, execution)
     ret = possum_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

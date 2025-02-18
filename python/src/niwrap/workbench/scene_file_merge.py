@@ -294,6 +294,7 @@ def scene_file_merge_execute(
     """
     cargs = scene_file_merge_cargs(params, execution)
     ret = scene_file_merge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

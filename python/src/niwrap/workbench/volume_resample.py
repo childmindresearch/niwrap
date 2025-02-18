@@ -430,6 +430,7 @@ def volume_resample_execute(
     """
     cargs = volume_resample_cargs(params, execution)
     ret = volume_resample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

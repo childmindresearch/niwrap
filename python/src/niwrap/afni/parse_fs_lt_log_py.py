@@ -164,6 +164,7 @@ def parse_fs_lt_log_py_execute(
     """
     cargs = parse_fs_lt_log_py_cargs(params, execution)
     ret = parse_fs_lt_log_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

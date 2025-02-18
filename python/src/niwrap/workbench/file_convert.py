@@ -318,6 +318,7 @@ def file_convert_execute(
     """
     cargs = file_convert_cargs(params, execution)
     ret = file_convert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

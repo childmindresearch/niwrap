@@ -210,6 +210,7 @@ def test_recon_all_csh_execute(
     """
     cargs = test_recon_all_csh_cargs(params, execution)
     ret = test_recon_all_csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

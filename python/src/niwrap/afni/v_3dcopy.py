@@ -140,6 +140,7 @@ def v_3dcopy_execute(
     """
     cargs = v_3dcopy_cargs(params, execution)
     ret = v_3dcopy_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

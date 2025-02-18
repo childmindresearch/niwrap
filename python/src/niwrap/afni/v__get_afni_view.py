@@ -136,6 +136,7 @@ def v__get_afni_view_execute(
     """
     cargs = v__get_afni_view_cargs(params, execution)
     ret = v__get_afni_view_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

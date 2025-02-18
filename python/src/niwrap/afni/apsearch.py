@@ -148,6 +148,7 @@ def apsearch_execute(
     """
     cargs = apsearch_cargs(params, execution)
     ret = apsearch_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

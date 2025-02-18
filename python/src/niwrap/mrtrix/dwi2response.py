@@ -1144,6 +1144,7 @@ def dwi2response_execute(
     """
     cargs = dwi2response_cargs(params, execution)
     ret = dwi2response_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

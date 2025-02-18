@@ -175,6 +175,7 @@ def v_2perm_execute(
     """
     cargs = v_2perm_cargs(params, execution)
     ret = v_2perm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

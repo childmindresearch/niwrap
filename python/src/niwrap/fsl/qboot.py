@@ -317,6 +317,7 @@ def qboot_execute(
     """
     cargs = qboot_cargs(params, execution)
     ret = qboot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

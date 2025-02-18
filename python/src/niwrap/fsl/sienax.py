@@ -229,6 +229,7 @@ def sienax_execute(
     """
     cargs = sienax_cargs(params, execution)
     ret = sienax_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

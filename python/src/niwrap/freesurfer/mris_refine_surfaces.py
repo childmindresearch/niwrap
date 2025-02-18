@@ -187,6 +187,7 @@ def mris_refine_surfaces_execute(
     """
     cargs = mris_refine_surfaces_cargs(params, execution)
     ret = mris_refine_surfaces_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -203,6 +203,7 @@ def anatomical_average_execute(
     """
     cargs = anatomical_average_cargs(params, execution)
     ret = anatomical_average_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -187,6 +187,7 @@ def smooth_displacement_field_execute(
     """
     cargs = smooth_displacement_field_cargs(params, execution)
     ret = smooth_displacement_field_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -141,6 +141,7 @@ def mri_compile_edits_execute(
     """
     cargs = mri_compile_edits_cargs(params, execution)
     ret = mri_compile_edits_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

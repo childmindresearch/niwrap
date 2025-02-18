@@ -179,6 +179,7 @@ def fslcc_execute(
     """
     cargs = fslcc_cargs(params, execution)
     ret = fslcc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

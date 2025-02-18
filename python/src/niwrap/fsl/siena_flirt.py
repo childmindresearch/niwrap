@@ -145,6 +145,7 @@ def siena_flirt_execute(
     """
     cargs = siena_flirt_cargs(params, execution)
     ret = siena_flirt_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

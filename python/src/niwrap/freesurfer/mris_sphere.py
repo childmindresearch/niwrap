@@ -145,6 +145,7 @@ def mris_sphere_execute(
     """
     cargs = mris_sphere_cargs(params, execution)
     ret = mris_sphere_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

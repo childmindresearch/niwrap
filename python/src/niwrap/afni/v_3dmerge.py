@@ -227,6 +227,7 @@ def v_3dmerge_execute(
     """
     cargs = v_3dmerge_cargs(params, execution)
     ret = v_3dmerge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

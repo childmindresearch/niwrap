@@ -482,6 +482,7 @@ def v_3d_vol2_surf_execute(
     """
     cargs = v_3d_vol2_surf_cargs(params, execution)
     ret = v_3d_vol2_surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -192,6 +192,7 @@ def dmri_forrest_execute(
     """
     cargs = dmri_forrest_cargs(params, execution)
     ret = dmri_forrest_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

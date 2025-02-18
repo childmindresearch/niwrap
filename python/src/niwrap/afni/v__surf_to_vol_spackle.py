@@ -236,6 +236,7 @@ def v__surf_to_vol_spackle_execute(
     """
     cargs = v__surf_to_vol_spackle_cargs(params, execution)
     ret = v__surf_to_vol_spackle_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -278,6 +278,7 @@ def mri_wbc_execute(
     """
     cargs = mri_wbc_cargs(params, execution)
     ret = mri_wbc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

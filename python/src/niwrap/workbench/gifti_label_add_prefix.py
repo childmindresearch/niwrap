@@ -148,6 +148,7 @@ def gifti_label_add_prefix_execute(
     """
     cargs = gifti_label_add_prefix_cargs(params, execution)
     ret = gifti_label_add_prefix_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

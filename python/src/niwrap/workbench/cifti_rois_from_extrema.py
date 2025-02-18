@@ -270,6 +270,7 @@ def cifti_rois_from_extrema_execute(
     """
     cargs = cifti_rois_from_extrema_cargs(params, execution)
     ret = cifti_rois_from_extrema_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

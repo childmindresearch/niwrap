@@ -192,6 +192,7 @@ def mris_exvivo_surfaces_execute(
     """
     cargs = mris_exvivo_surfaces_cargs(params, execution)
     ret = mris_exvivo_surfaces_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -257,6 +257,7 @@ def bet2_execute(
     """
     cargs = bet2_cargs(params, execution)
     ret = bet2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

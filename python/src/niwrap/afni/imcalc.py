@@ -177,6 +177,7 @@ def imcalc_execute(
     """
     cargs = imcalc_cargs(params, execution)
     ret = imcalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

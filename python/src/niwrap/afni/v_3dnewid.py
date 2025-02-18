@@ -178,6 +178,7 @@ def v_3dnewid_execute(
     """
     cargs = v_3dnewid_cargs(params, execution)
     ret = v_3dnewid_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

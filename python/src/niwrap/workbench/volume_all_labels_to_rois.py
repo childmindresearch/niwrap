@@ -150,6 +150,7 @@ def volume_all_labels_to_rois_execute(
     """
     cargs = volume_all_labels_to_rois_cargs(params, execution)
     ret = volume_all_labels_to_rois_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

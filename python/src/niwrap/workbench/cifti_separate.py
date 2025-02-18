@@ -618,6 +618,7 @@ def cifti_separate_execute(
     """
     cargs = cifti_separate_cargs(params, execution)
     ret = cifti_separate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

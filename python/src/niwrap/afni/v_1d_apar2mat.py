@@ -187,6 +187,7 @@ def v_1d_apar2mat_execute(
     """
     cargs = v_1d_apar2mat_cargs(params, execution)
     ret = v_1d_apar2mat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -164,6 +164,7 @@ def mri_parse_sdcmdir_execute(
     """
     cargs = mri_parse_sdcmdir_cargs(params, execution)
     ret = mri_parse_sdcmdir_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

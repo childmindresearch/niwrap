@@ -148,6 +148,7 @@ def fsl_5_0_2_xyztrans_sch_execute(
     """
     cargs = fsl_5_0_2_xyztrans_sch_cargs(params, execution)
     ret = fsl_5_0_2_xyztrans_sch_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

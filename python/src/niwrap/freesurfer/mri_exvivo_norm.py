@@ -260,6 +260,7 @@ def mri_exvivo_norm_execute(
     """
     cargs = mri_exvivo_norm_cargs(params, execution)
     ret = mri_exvivo_norm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

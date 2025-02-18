@@ -141,6 +141,7 @@ def mri_motion_correct_fsl_execute(
     """
     cargs = mri_motion_correct_fsl_cargs(params, execution)
     ret = mri_motion_correct_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

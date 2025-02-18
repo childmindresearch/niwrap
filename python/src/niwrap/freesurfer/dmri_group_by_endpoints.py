@@ -150,6 +150,7 @@ def dmri_group_by_endpoints_execute(
     """
     cargs = dmri_group_by_endpoints_cargs(params, execution)
     ret = dmri_group_by_endpoints_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -467,6 +467,7 @@ def fixelconvert_execute(
     """
     cargs = fixelconvert_cargs(params, execution)
     ret = fixelconvert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

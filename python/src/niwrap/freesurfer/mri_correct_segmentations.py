@@ -136,6 +136,7 @@ def mri_correct_segmentations_execute(
     """
     cargs = mri_correct_segmentations_cargs(params, execution)
     ret = mri_correct_segmentations_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -205,6 +205,7 @@ def new_invwarp_execute(
     """
     cargs = new_invwarp_cargs(params, execution)
     ret = new_invwarp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

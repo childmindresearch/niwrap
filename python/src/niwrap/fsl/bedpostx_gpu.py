@@ -222,6 +222,7 @@ def bedpostx_gpu_execute(
     """
     cargs = bedpostx_gpu_cargs(params, execution)
     ret = bedpostx_gpu_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -356,6 +356,7 @@ def asl_file_execute(
     """
     cargs = asl_file_cargs(params, execution)
     ret = asl_file_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

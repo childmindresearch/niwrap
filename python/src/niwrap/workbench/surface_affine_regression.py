@@ -148,6 +148,7 @@ def surface_affine_regression_execute(
     """
     cargs = surface_affine_regression_cargs(params, execution)
     ret = surface_affine_regression_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

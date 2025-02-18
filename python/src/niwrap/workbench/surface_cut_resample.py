@@ -157,6 +157,7 @@ def surface_cut_resample_execute(
     """
     cargs = surface_cut_resample_cargs(params, execution)
     ret = surface_cut_resample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

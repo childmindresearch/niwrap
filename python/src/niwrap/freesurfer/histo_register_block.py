@@ -171,6 +171,7 @@ def histo_register_block_execute(
     """
     cargs = histo_register_block_cargs(params, execution)
     ret = histo_register_block_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

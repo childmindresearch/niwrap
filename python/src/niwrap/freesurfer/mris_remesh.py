@@ -194,6 +194,7 @@ def mris_remesh_execute(
     """
     cargs = mris_remesh_cargs(params, execution)
     ret = mris_remesh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

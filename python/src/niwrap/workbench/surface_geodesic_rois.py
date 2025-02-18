@@ -210,6 +210,7 @@ def surface_geodesic_rois_execute(
     """
     cargs = surface_geodesic_rois_cargs(params, execution)
     ret = surface_geodesic_rois_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

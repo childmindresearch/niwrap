@@ -172,6 +172,7 @@ def fixup_mni_paths_execute(
     """
     cargs = fixup_mni_paths_cargs(params, execution)
     ret = fixup_mni_paths_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

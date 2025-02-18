@@ -642,6 +642,7 @@ def tkregister2_cmdl_execute(
     """
     cargs = tkregister2_cmdl_cargs(params, execution)
     ret = tkregister2_cmdl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -532,6 +532,7 @@ def mrclusterstats_execute(
     """
     cargs = mrclusterstats_cargs(params, execution)
     ret = mrclusterstats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

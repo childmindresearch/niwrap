@@ -266,6 +266,7 @@ def v_3d_polyfit_execute(
     """
     cargs = v_3d_polyfit_cargs(params, execution)
     ret = v_3d_polyfit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

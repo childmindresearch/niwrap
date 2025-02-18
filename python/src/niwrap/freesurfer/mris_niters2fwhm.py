@@ -190,6 +190,7 @@ def mris_niters2fwhm_execute(
     """
     cargs = mris_niters2fwhm_cargs(params, execution)
     ret = mris_niters2fwhm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

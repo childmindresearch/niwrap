@@ -158,6 +158,7 @@ def cifti_parcel_mapping_to_label_execute(
     """
     cargs = cifti_parcel_mapping_to_label_cargs(params, execution)
     ret = cifti_parcel_mapping_to_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

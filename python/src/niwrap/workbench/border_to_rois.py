@@ -171,6 +171,7 @@ def border_to_rois_execute(
     """
     cargs = border_to_rois_cargs(params, execution)
     ret = border_to_rois_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

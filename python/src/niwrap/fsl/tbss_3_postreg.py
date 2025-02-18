@@ -140,6 +140,7 @@ def tbss_3_postreg_execute(
     """
     cargs = tbss_3_postreg_cargs(params, execution)
     ret = tbss_3_postreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

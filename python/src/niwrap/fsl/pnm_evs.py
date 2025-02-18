@@ -321,6 +321,7 @@ def pnm_evs_execute(
     """
     cargs = pnm_evs_cargs(params, execution)
     ret = pnm_evs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

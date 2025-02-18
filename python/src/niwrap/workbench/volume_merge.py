@@ -299,6 +299,7 @@ def volume_merge_execute(
     """
     cargs = volume_merge_cargs(params, execution)
     ret = volume_merge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

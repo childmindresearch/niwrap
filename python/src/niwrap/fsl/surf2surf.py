@@ -219,6 +219,7 @@ def surf2surf_execute(
     """
     cargs = surf2surf_cargs(params, execution)
     ret = surf2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

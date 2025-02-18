@@ -314,6 +314,7 @@ def afni_execute(
     """
     cargs = afni_cargs(params, execution)
     ret = afni_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

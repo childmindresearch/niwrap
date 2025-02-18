@@ -150,6 +150,7 @@ def mris_surface_to_vol_distances_execute(
     """
     cargs = mris_surface_to_vol_distances_cargs(params, execution)
     ret = mris_surface_to_vol_distances_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

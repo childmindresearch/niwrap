@@ -179,6 +179,7 @@ def cifti_label_adjacency_execute(
     """
     cargs = cifti_label_adjacency_cargs(params, execution)
     ret = cifti_label_adjacency_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

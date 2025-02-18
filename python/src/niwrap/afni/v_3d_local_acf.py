@@ -170,6 +170,7 @@ def v_3d_local_acf_execute(
     """
     cargs = v_3d_local_acf_cargs(params, execution)
     ret = v_3d_local_acf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

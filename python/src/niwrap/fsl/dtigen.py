@@ -197,6 +197,7 @@ def dtigen_execute(
     """
     cargs = dtigen_cargs(params, execution)
     ret = dtigen_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

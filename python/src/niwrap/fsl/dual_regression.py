@@ -188,6 +188,7 @@ def dual_regression_execute(
     """
     cargs = dual_regression_cargs(params, execution)
     ret = dual_regression_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

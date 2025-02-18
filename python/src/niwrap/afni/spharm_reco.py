@@ -205,6 +205,7 @@ def spharm_reco_execute(
     """
     cargs = spharm_reco_cargs(params, execution)
     ret = spharm_reco_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

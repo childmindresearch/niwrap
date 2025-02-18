@@ -199,6 +199,7 @@ def mri_probe_ima_execute(
     """
     cargs = mri_probe_ima_cargs(params, execution)
     ret = mri_probe_ima_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -179,6 +179,7 @@ def mris_extract_values_execute(
     """
     cargs = mris_extract_values_cargs(params, execution)
     ret = mris_extract_values_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

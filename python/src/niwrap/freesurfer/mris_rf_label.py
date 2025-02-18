@@ -161,6 +161,7 @@ def mris_rf_label_execute(
     """
     cargs = mris_rf_label_cargs(params, execution)
     ret = mris_rf_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

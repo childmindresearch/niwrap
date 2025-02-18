@@ -147,6 +147,7 @@ def make_hemi_mask_execute(
     """
     cargs = make_hemi_mask_cargs(params, execution)
     ret = make_hemi_mask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

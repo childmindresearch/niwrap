@@ -133,6 +133,7 @@ def dmri_ac_sh_execute(
     """
     cargs = dmri_ac_sh_cargs(params, execution)
     ret = dmri_ac_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

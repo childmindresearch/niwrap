@@ -388,6 +388,7 @@ def drive_suma_execute(
     """
     cargs = drive_suma_cargs(params, execution)
     ret = drive_suma_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

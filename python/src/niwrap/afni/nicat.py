@@ -155,6 +155,7 @@ def nicat_execute(
     """
     cargs = nicat_cargs(params, execution)
     ret = nicat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

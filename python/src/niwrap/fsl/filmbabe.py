@@ -286,6 +286,7 @@ def filmbabe_execute(
     """
     cargs = filmbabe_cargs(params, execution)
     ret = filmbabe_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

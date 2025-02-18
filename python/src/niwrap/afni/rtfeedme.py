@@ -228,6 +228,7 @@ def rtfeedme_execute(
     """
     cargs = rtfeedme_cargs(params, execution)
     ret = rtfeedme_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

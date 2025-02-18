@@ -295,6 +295,7 @@ def surf2vol_execute(
     """
     cargs = surf2vol_cargs(params, execution)
     ret = surf2vol_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

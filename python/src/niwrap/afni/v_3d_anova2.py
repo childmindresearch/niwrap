@@ -397,6 +397,7 @@ def v_3d_anova2_execute(
     """
     cargs = v_3d_anova2_cargs(params, execution)
     ret = v_3d_anova2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

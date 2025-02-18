@@ -332,6 +332,7 @@ def v_3dttest___execute(
     """
     cargs = v_3dttest___cargs(params, execution)
     ret = v_3dttest___outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

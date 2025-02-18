@@ -159,6 +159,7 @@ def border_to_vertices_execute(
     """
     cargs = border_to_vertices_cargs(params, execution)
     ret = border_to_vertices_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

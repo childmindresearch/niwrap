@@ -151,6 +151,7 @@ def ico_supersample_execute(
     """
     cargs = ico_supersample_cargs(params, execution)
     ret = ico_supersample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

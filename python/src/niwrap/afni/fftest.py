@@ -147,6 +147,7 @@ def fftest_execute(
     """
     cargs = fftest_cargs(params, execution)
     ret = fftest_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

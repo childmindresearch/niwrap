@@ -314,6 +314,7 @@ def metric_weighted_stats_execute(
     """
     cargs = metric_weighted_stats_cargs(params, execution)
     ret = metric_weighted_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

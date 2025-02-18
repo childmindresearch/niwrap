@@ -133,6 +133,7 @@ def check_mcr_sh_execute(
     """
     cargs = check_mcr_sh_cargs(params, execution)
     ret = check_mcr_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

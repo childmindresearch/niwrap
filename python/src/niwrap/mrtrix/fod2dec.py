@@ -339,6 +339,7 @@ def fod2dec_execute(
     """
     cargs = fod2dec_cargs(params, execution)
     ret = fod2dec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -143,6 +143,7 @@ def mri_brain_volume_execute(
     """
     cargs = mri_brain_volume_cargs(params, execution)
     ret = mri_brain_volume_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

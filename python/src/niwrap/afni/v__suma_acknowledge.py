@@ -195,6 +195,7 @@ def v__suma_acknowledge_execute(
     """
     cargs = v__suma_acknowledge_cargs(params, execution)
     ret = v__suma_acknowledge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

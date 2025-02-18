@@ -454,6 +454,7 @@ def cifti_create_dense_timeseries_execute(
     """
     cargs = cifti_create_dense_timeseries_cargs(params, execution)
     ret = cifti_create_dense_timeseries_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

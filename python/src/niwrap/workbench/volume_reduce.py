@@ -229,6 +229,7 @@ def volume_reduce_execute(
     """
     cargs = volume_reduce_cargs(params, execution)
     ret = volume_reduce_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

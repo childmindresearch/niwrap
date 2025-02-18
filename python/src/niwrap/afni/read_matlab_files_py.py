@@ -169,6 +169,7 @@ def read_matlab_files_py_execute(
     """
     cargs = read_matlab_files_py_cargs(params, execution)
     ret = read_matlab_files_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

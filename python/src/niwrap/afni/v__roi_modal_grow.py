@@ -193,6 +193,7 @@ def v__roi_modal_grow_execute(
     """
     cargs = v__roi_modal_grow_cargs(params, execution)
     ret = v__roi_modal_grow_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

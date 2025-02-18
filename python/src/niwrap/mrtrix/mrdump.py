@@ -264,6 +264,7 @@ def mrdump_execute(
     """
     cargs = mrdump_cargs(params, execution)
     ret = mrdump_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

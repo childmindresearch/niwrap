@@ -154,6 +154,7 @@ def v__script_check_execute(
     """
     cargs = v__script_check_cargs(params, execution)
     ret = v__script_check_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

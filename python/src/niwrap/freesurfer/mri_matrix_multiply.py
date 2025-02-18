@@ -185,6 +185,7 @@ def mri_matrix_multiply_execute(
     """
     cargs = mri_matrix_multiply_cargs(params, execution)
     ret = mri_matrix_multiply_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

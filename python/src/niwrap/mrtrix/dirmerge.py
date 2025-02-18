@@ -272,6 +272,7 @@ def dirmerge_execute(
     """
     cargs = dirmerge_cargs(params, execution)
     ret = dirmerge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

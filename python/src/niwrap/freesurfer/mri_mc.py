@@ -153,6 +153,7 @@ def mri_mc_execute(
     """
     cargs = mri_mc_cargs(params, execution)
     ret = mri_mc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

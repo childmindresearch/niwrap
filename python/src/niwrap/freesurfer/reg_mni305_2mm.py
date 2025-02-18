@@ -148,6 +148,7 @@ def reg_mni305_2mm_execute(
     """
     cargs = reg_mni305_2mm_cargs(params, execution)
     ret = reg_mni305_2mm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

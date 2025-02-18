@@ -166,6 +166,7 @@ def easythresh_execute(
     """
     cargs = easythresh_cargs(params, execution)
     ret = easythresh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

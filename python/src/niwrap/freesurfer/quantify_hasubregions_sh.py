@@ -153,6 +153,7 @@ def quantify_hasubregions_sh_execute(
     """
     cargs = quantify_hasubregions_sh_cargs(params, execution)
     ret = quantify_hasubregions_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

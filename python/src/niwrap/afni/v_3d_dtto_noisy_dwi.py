@@ -205,6 +205,7 @@ def v_3d_dtto_noisy_dwi_execute(
     """
     cargs = v_3d_dtto_noisy_dwi_cargs(params, execution)
     ret = v_3d_dtto_noisy_dwi_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

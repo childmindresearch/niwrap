@@ -186,6 +186,7 @@ def mri_pretess_execute(
     """
     cargs = mri_pretess_cargs(params, execution)
     ret = mri_pretess_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

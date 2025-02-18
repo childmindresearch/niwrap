@@ -168,6 +168,7 @@ def flirt_average_execute(
     """
     cargs = flirt_average_cargs(params, execution)
     ret = flirt_average_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

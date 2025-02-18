@@ -408,6 +408,7 @@ def reg_transform_execute(
     """
     cargs = reg_transform_cargs(params, execution)
     ret = reg_transform_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

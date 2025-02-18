@@ -133,6 +133,7 @@ def run_qdec_glm_execute(
     """
     cargs = run_qdec_glm_cargs(params, execution)
     ret = run_qdec_glm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

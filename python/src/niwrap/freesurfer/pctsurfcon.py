@@ -230,6 +230,7 @@ def pctsurfcon_execute(
     """
     cargs = pctsurfcon_cargs(params, execution)
     ret = pctsurfcon_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

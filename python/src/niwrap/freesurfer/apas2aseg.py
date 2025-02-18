@@ -162,6 +162,7 @@ def apas2aseg_execute(
     """
     cargs = apas2aseg_cargs(params, execution)
     ret = apas2aseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

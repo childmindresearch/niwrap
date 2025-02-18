@@ -224,6 +224,7 @@ def fdr_execute(
     """
     cargs = fdr_cargs(params, execution)
     ret = fdr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -225,6 +225,7 @@ def trac_paths_execute(
     """
     cargs = trac_paths_cargs(params, execution)
     ret = trac_paths_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

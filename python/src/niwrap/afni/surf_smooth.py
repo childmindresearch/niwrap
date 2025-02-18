@@ -290,6 +290,7 @@ def surf_smooth_execute(
     """
     cargs = surf_smooth_cargs(params, execution)
     ret = surf_smooth_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

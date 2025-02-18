@@ -143,6 +143,7 @@ def cluster2html_execute(
     """
     cargs = cluster2html_cargs(params, execution)
     ret = cluster2html_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

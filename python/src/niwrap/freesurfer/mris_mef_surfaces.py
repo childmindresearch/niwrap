@@ -170,6 +170,7 @@ def mris_mef_surfaces_execute(
     """
     cargs = mris_mef_surfaces_cargs(params, execution)
     ret = mris_mef_surfaces_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

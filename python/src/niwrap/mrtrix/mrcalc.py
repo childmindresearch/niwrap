@@ -2570,6 +2570,7 @@ def mrcalc_execute(
     """
     cargs = mrcalc_cargs(params, execution)
     ret = mrcalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

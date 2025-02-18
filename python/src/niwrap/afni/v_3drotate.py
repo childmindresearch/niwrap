@@ -349,6 +349,7 @@ def v_3drotate_execute(
     """
     cargs = v_3drotate_cargs(params, execution)
     ret = v_3drotate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

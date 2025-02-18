@@ -191,6 +191,7 @@ def ants_motion_corr_stats_execute(
     """
     cargs = ants_motion_corr_stats_cargs(params, execution)
     ret = ants_motion_corr_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

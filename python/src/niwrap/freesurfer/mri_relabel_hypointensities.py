@@ -145,6 +145,7 @@ def mri_relabel_hypointensities_execute(
     """
     cargs = mri_relabel_hypointensities_cargs(params, execution)
     ret = mri_relabel_hypointensities_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -155,6 +155,7 @@ def calc_grad_perc_dev_execute(
     """
     cargs = calc_grad_perc_dev_cargs(params, execution)
     ret = calc_grad_perc_dev_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

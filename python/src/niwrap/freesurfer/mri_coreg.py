@@ -610,6 +610,7 @@ def mri_coreg_execute(
     """
     cargs = mri_coreg_cargs(params, execution)
     ret = mri_coreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

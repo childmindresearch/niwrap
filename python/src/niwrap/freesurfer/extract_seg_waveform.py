@@ -192,6 +192,7 @@ def extract_seg_waveform_execute(
     """
     cargs = extract_seg_waveform_cargs(params, execution)
     ret = extract_seg_waveform_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

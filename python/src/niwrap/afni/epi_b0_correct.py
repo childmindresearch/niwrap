@@ -361,6 +361,7 @@ def epi_b0_correct_execute(
     """
     cargs = epi_b0_correct_cargs(params, execution)
     ret = epi_b0_correct_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -204,6 +204,7 @@ def label2patch_execute(
     """
     cargs = label2patch_cargs(params, execution)
     ret = label2patch_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -181,6 +181,7 @@ def abids_json_info_py_execute(
     """
     cargs = abids_json_info_py_cargs(params, execution)
     ret = abids_json_info_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

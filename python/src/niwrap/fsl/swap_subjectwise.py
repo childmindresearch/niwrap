@@ -185,6 +185,7 @@ def swap_subjectwise_execute(
     """
     cargs = swap_subjectwise_cargs(params, execution)
     ret = swap_subjectwise_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

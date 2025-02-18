@@ -238,6 +238,7 @@ def metric_find_clusters_execute(
     """
     cargs = metric_find_clusters_cargs(params, execution)
     ret = metric_find_clusters_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

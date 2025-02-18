@@ -127,6 +127,7 @@ def fsfirst_fsl_execute(
     """
     cargs = fsfirst_fsl_cargs(params, execution)
     ret = fsfirst_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -147,6 +147,7 @@ def v_24swap_execute(
     """
     cargs = v_24swap_cargs(params, execution)
     ret = v_24swap_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

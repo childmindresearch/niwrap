@@ -190,6 +190,7 @@ def qatools_py_execute(
     """
     cargs = qatools_py_cargs(params, execution)
     ret = qatools_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

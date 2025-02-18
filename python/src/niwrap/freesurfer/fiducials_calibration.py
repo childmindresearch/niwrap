@@ -126,6 +126,7 @@ def fiducials_calibration_execute(
     """
     cargs = fiducials_calibration_cargs(params, execution)
     ret = fiducials_calibration_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

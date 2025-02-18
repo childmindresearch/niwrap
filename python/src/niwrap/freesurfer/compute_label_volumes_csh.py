@@ -169,6 +169,7 @@ def compute_label_volumes_csh_execute(
     """
     cargs = compute_label_volumes_csh_cargs(params, execution)
     ret = compute_label_volumes_csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

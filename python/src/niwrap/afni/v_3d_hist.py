@@ -305,6 +305,7 @@ def v_3d_hist_execute(
     """
     cargs = v_3d_hist_cargs(params, execution)
     ret = v_3d_hist_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -388,6 +388,7 @@ def mrthreshold_execute(
     """
     cargs = mrthreshold_cargs(params, execution)
     ret = mrthreshold_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

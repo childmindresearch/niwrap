@@ -208,6 +208,7 @@ def overlay_execute(
     """
     cargs = overlay_cargs(params, execution)
     ret = overlay_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

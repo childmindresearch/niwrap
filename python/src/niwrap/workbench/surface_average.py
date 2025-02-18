@@ -234,6 +234,7 @@ def surface_average_execute(
     """
     cargs = surface_average_cargs(params, execution)
     ret = surface_average_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

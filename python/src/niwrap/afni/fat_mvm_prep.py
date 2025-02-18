@@ -192,6 +192,7 @@ def fat_mvm_prep_execute(
     """
     cargs = fat_mvm_prep_cargs(params, execution)
     ret = fat_mvm_prep_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

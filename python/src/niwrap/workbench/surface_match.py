@@ -145,6 +145,7 @@ def surface_match_execute(
     """
     cargs = surface_match_cargs(params, execution)
     ret = surface_match_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

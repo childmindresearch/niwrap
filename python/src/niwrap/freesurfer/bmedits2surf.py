@@ -215,6 +215,7 @@ def bmedits2surf_execute(
     """
     cargs = bmedits2surf_cargs(params, execution)
     ret = bmedits2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

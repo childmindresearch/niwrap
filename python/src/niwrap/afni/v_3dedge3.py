@@ -201,6 +201,7 @@ def v_3dedge3_execute(
     """
     cargs = v_3dedge3_cargs(params, execution)
     ret = v_3dedge3_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -156,6 +156,7 @@ def tbss_fill_execute(
     """
     cargs = tbss_fill_cargs(params, execution)
     ret = tbss_fill_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

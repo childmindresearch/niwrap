@@ -140,6 +140,7 @@ def fslval_execute(
     """
     cargs = fslval_cargs(params, execution)
     ret = fslval_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

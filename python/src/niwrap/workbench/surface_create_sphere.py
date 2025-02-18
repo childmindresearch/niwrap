@@ -153,6 +153,7 @@ def surface_create_sphere_execute(
     """
     cargs = surface_create_sphere_cargs(params, execution)
     ret = surface_create_sphere_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

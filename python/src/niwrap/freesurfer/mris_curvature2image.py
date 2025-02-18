@@ -195,6 +195,7 @@ def mris_curvature2image_execute(
     """
     cargs = mris_curvature2image_cargs(params, execution)
     ret = mris_curvature2image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

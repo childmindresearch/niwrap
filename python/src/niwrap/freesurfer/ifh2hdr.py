@@ -142,6 +142,7 @@ def ifh2hdr_execute(
     """
     cargs = ifh2hdr_cargs(params, execution)
     ret = ifh2hdr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

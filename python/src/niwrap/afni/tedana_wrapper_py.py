@@ -230,6 +230,7 @@ def tedana_wrapper_py_execute(
     """
     cargs = tedana_wrapper_py_cargs(params, execution)
     ret = tedana_wrapper_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

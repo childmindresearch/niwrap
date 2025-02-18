@@ -210,6 +210,7 @@ def mri_sph2surf_execute(
     """
     cargs = mri_sph2surf_cargs(params, execution)
     ret = mri_sph2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

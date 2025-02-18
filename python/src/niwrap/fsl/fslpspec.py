@@ -142,6 +142,7 @@ def fslpspec_execute(
     """
     cargs = fslpspec_cargs(params, execution)
     ret = fslpspec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

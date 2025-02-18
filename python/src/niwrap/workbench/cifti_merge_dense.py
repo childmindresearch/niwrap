@@ -206,6 +206,7 @@ def cifti_merge_dense_execute(
     """
     cargs = cifti_merge_dense_cargs(params, execution)
     ret = cifti_merge_dense_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

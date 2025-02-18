@@ -376,6 +376,7 @@ def pulse_execute(
     """
     cargs = pulse_cargs(params, execution)
     ret = pulse_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

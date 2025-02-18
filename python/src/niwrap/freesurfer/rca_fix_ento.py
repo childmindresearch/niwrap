@@ -179,6 +179,7 @@ def rca_fix_ento_execute(
     """
     cargs = rca_fix_ento_cargs(params, execution)
     ret = rca_fix_ento_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

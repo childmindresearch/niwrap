@@ -177,6 +177,7 @@ def strblast_execute(
     """
     cargs = strblast_cargs(params, execution)
     ret = strblast_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

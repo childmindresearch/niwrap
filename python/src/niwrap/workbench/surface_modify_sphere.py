@@ -161,6 +161,7 @@ def surface_modify_sphere_execute(
     """
     cargs = surface_modify_sphere_cargs(params, execution)
     ret = surface_modify_sphere_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

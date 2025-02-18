@@ -396,6 +396,7 @@ def cifti_smoothing_execute(
     """
     cargs = cifti_smoothing_cargs(params, execution)
     ret = cifti_smoothing_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

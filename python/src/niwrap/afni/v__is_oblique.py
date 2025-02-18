@@ -135,6 +135,7 @@ def v__is_oblique_execute(
     """
     cargs = v__is_oblique_cargs(params, execution)
     ret = v__is_oblique_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

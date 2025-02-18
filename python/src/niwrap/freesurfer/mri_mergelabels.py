@@ -156,6 +156,7 @@ def mri_mergelabels_execute(
     """
     cargs = mri_mergelabels_cargs(params, execution)
     ret = mri_mergelabels_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -252,6 +252,7 @@ def connectomeedit_execute(
     """
     cargs = connectomeedit_cargs(params, execution)
     ret = connectomeedit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -361,6 +361,7 @@ def avw2fsl_execute(
     """
     cargs = avw2fsl_cargs(params, execution)
     ret = avw2fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

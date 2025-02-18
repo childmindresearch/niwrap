@@ -150,6 +150,7 @@ def v_3d_convolve_execute(
     """
     cargs = v_3d_convolve_cargs(params, execution)
     ret = v_3d_convolve_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

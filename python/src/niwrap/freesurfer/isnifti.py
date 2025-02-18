@@ -131,6 +131,7 @@ def isnifti_execute(
     """
     cargs = isnifti_cargs(params, execution)
     ret = isnifti_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

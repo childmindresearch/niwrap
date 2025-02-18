@@ -174,6 +174,7 @@ def adjunct_suma_fs_roi_info_execute(
     """
     cargs = adjunct_suma_fs_roi_info_cargs(params, execution)
     ret = adjunct_suma_fs_roi_info_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

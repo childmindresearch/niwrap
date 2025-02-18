@@ -215,6 +215,7 @@ def foci_create_execute(
     """
     cargs = foci_create_cargs(params, execution)
     ret = foci_create_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

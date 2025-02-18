@@ -241,6 +241,7 @@ def v_3d_fdr_execute(
     """
     cargs = v_3d_fdr_cargs(params, execution)
     ret = v_3d_fdr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -330,6 +330,7 @@ def fvcompare_execute(
     """
     cargs = fvcompare_cargs(params, execution)
     ret = fvcompare_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

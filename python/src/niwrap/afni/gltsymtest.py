@@ -144,6 +144,7 @@ def gltsymtest_execute(
     """
     cargs = gltsymtest_cargs(params, execution)
     ret = gltsymtest_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

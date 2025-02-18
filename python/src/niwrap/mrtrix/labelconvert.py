@@ -278,6 +278,7 @@ def labelconvert_execute(
     """
     cargs = labelconvert_cargs(params, execution)
     ret = labelconvert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -136,6 +136,7 @@ def filmbabescript_execute(
     """
     cargs = filmbabescript_cargs(params, execution)
     ret = filmbabescript_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

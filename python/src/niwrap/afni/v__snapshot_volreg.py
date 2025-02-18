@@ -156,6 +156,7 @@ def v__snapshot_volreg_execute(
     """
     cargs = v__snapshot_volreg_cargs(params, execution)
     ret = v__snapshot_volreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

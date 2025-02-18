@@ -158,6 +158,7 @@ def column_cat_execute(
     """
     cargs = column_cat_cargs(params, execution)
     ret = column_cat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

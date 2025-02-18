@@ -254,6 +254,7 @@ def fsl_sub_mgh_execute(
     """
     cargs = fsl_sub_mgh_cargs(params, execution)
     ret = fsl_sub_mgh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

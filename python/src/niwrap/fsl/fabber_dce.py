@@ -415,6 +415,7 @@ def fabber_dce_execute(
     """
     cargs = fabber_dce_cargs(params, execution)
     ret = fabber_dce_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

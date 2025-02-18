@@ -219,6 +219,7 @@ def surf_info_execute(
     """
     cargs = surf_info_cargs(params, execution)
     ret = surf_info_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

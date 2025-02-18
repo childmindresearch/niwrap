@@ -272,6 +272,7 @@ def v_3dclust_execute(
     """
     cargs = v_3dclust_cargs(params, execution)
     ret = v_3dclust_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

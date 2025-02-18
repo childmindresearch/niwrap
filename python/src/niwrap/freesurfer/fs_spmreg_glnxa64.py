@@ -131,6 +131,7 @@ def fs_spmreg_glnxa64_execute(
     """
     cargs = fs_spmreg_glnxa64_cargs(params, execution)
     ret = fs_spmreg_glnxa64_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -131,6 +131,7 @@ def mris_talairach_execute(
     """
     cargs = mris_talairach_cargs(params, execution)
     ret = mris_talairach_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

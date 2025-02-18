@@ -147,6 +147,7 @@ def fslmaths_fsl_execute(
     """
     cargs = fslmaths_fsl_cargs(params, execution)
     ret = fslmaths_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -136,6 +136,7 @@ def fix_subject_corrected_execute(
     """
     cargs = fix_subject_corrected_cargs(params, execution)
     ret = fix_subject_corrected_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

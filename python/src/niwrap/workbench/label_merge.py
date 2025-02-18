@@ -299,6 +299,7 @@ def label_merge_execute(
     """
     cargs = label_merge_cargs(params, execution)
     ret = label_merge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

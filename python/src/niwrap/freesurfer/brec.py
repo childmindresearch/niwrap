@@ -137,6 +137,7 @@ def brec_execute(
     """
     cargs = brec_cargs(params, execution)
     ret = brec_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

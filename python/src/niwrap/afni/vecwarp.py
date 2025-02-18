@@ -197,6 +197,7 @@ def vecwarp_execute(
     """
     cargs = vecwarp_cargs(params, execution)
     ret = vecwarp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

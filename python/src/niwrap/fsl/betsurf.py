@@ -211,6 +211,7 @@ def betsurf_execute(
     """
     cargs = betsurf_cargs(params, execution)
     ret = betsurf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

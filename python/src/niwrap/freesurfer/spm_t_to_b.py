@@ -136,6 +136,7 @@ def spm_t_to_b_execute(
     """
     cargs = spm_t_to_b_cargs(params, execution)
     ret = spm_t_to_b_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

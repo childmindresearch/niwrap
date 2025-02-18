@@ -160,6 +160,7 @@ def fslmerge_execute(
     """
     cargs = fslmerge_cargs(params, execution)
     ret = fslmerge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

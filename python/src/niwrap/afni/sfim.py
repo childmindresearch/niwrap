@@ -173,6 +173,7 @@ def sfim_execute(
     """
     cargs = sfim_cargs(params, execution)
     ret = sfim_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

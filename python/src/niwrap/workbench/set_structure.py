@@ -218,6 +218,7 @@ def set_structure_execute(
     """
     cargs = set_structure_cargs(params, execution)
     ret = set_structure_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

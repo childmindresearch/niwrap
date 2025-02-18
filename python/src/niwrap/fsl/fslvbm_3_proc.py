@@ -418,6 +418,7 @@ def fslvbm_3_proc_execute(
     """
     cargs = fslvbm_3_proc_cargs(params, execution)
     ret = fslvbm_3_proc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

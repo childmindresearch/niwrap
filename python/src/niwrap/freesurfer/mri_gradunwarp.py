@@ -229,6 +229,7 @@ def mri_gradunwarp_execute(
     """
     cargs = mri_gradunwarp_cargs(params, execution)
     ret = mri_gradunwarp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

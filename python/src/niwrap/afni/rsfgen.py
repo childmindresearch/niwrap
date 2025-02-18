@@ -249,6 +249,7 @@ def rsfgen_execute(
     """
     cargs = rsfgen_cargs(params, execution)
     ret = rsfgen_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

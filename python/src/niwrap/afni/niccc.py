@@ -225,6 +225,7 @@ def niccc_execute(
     """
     cargs = niccc_cargs(params, execution)
     ret = niccc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

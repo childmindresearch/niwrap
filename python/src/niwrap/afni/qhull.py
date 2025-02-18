@@ -269,6 +269,7 @@ def qhull_execute(
     """
     cargs = qhull_cargs(params, execution)
     ret = qhull_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

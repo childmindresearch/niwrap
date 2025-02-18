@@ -508,6 +508,7 @@ def mri_vol2vol_execute(
     """
     cargs = mri_vol2vol_cargs(params, execution)
     ret = mri_vol2vol_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

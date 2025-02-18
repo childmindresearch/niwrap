@@ -184,6 +184,7 @@ def mris_compute_lgi_execute(
     """
     cargs = mris_compute_lgi_cargs(params, execution)
     ret = mris_compute_lgi_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

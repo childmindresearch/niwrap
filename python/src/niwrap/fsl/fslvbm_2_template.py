@@ -366,6 +366,7 @@ def fslvbm_2_template_execute(
     """
     cargs = fslvbm_2_template_cargs(params, execution)
     ret = fslvbm_2_template_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

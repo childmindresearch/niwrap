@@ -440,6 +440,7 @@ def tckconvert_execute(
     """
     cargs = tckconvert_cargs(params, execution)
     ret = tckconvert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -442,6 +442,7 @@ def v__make_label_table_execute(
     """
     cargs = v__make_label_table_cargs(params, execution)
     ret = v__make_label_table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

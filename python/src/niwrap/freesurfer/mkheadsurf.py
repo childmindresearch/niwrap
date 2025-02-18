@@ -370,6 +370,7 @@ def mkheadsurf_execute(
     """
     cargs = mkheadsurf_cargs(params, execution)
     ret = mkheadsurf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

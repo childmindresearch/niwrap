@@ -161,6 +161,7 @@ def metric_fill_holes_execute(
     """
     cargs = metric_fill_holes_cargs(params, execution)
     ret = metric_fill_holes_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

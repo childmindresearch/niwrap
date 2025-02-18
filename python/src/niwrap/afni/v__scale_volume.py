@@ -189,6 +189,7 @@ def v__scale_volume_execute(
     """
     cargs = v__scale_volume_cargs(params, execution)
     ret = v__scale_volume_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

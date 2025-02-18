@@ -145,6 +145,7 @@ def quantify_brainstem_structures_sh_execute(
     """
     cargs = quantify_brainstem_structures_sh_cargs(params, execution)
     ret = quantify_brainstem_structures_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

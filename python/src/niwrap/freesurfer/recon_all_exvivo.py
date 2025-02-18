@@ -150,6 +150,7 @@ def recon_all_exvivo_execute(
     """
     cargs = recon_all_exvivo_cargs(params, execution)
     ret = recon_all_exvivo_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

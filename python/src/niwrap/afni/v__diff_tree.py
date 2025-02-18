@@ -263,6 +263,7 @@ def v__diff_tree_execute(
     """
     cargs = v__diff_tree_cargs(params, execution)
     ret = v__diff_tree_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

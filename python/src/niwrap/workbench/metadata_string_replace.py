@@ -156,6 +156,7 @@ def metadata_string_replace_execute(
     """
     cargs = metadata_string_replace_cargs(params, execution)
     ret = metadata_string_replace_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

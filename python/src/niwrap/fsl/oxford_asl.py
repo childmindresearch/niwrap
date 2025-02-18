@@ -147,6 +147,7 @@ def oxford_asl_execute(
     """
     cargs = oxford_asl_cargs(params, execution)
     ret = oxford_asl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -314,6 +314,7 @@ def fixel2voxel_execute(
     """
     cargs = fixel2voxel_cargs(params, execution)
     ret = fixel2voxel_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

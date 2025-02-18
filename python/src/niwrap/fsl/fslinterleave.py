@@ -151,6 +151,7 @@ def fslinterleave_execute(
     """
     cargs = fslinterleave_cargs(params, execution)
     ret = fslinterleave_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

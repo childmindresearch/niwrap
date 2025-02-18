@@ -439,6 +439,7 @@ def fsl_sub_execute(
     """
     cargs = fsl_sub_cargs(params, execution)
     ret = fsl_sub_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

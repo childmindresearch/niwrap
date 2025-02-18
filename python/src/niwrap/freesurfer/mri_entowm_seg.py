@@ -355,6 +355,7 @@ def mri_entowm_seg_execute(
     """
     cargs = mri_entowm_seg_cargs(params, execution)
     ret = mri_entowm_seg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

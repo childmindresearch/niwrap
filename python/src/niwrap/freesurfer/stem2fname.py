@@ -137,6 +137,7 @@ def stem2fname_execute(
     """
     cargs = stem2fname_cargs(params, execution)
     ret = stem2fname_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -198,6 +198,7 @@ def mris_ms_refine_execute(
     """
     cargs = mris_ms_refine_cargs(params, execution)
     ret = mris_ms_refine_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

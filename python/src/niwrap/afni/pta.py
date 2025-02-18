@@ -210,6 +210,7 @@ def pta_execute(
     """
     cargs = pta_cargs(params, execution)
     ret = pta_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

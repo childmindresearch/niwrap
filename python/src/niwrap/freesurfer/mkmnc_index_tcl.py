@@ -140,6 +140,7 @@ def mkmnc_index_tcl_execute(
     """
     cargs = mkmnc_index_tcl_cargs(params, execution)
     ret = mkmnc_index_tcl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

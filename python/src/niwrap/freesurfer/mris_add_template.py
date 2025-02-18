@@ -130,6 +130,7 @@ def mris_add_template_execute(
     """
     cargs = mris_add_template_cargs(params, execution)
     ret = mris_add_template_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -148,6 +148,7 @@ def perfusion_subtract_execute(
     """
     cargs = perfusion_subtract_cargs(params, execution)
     ret = perfusion_subtract_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

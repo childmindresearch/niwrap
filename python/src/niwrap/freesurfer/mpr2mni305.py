@@ -131,6 +131,7 @@ def mpr2mni305_execute(
     """
     cargs = mpr2mni305_cargs(params, execution)
     ret = mpr2mni305_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

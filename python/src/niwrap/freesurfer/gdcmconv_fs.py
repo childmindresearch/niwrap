@@ -412,6 +412,7 @@ def gdcmconv_fs_execute(
     """
     cargs = gdcmconv_fs_cargs(params, execution)
     ret = gdcmconv_fs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

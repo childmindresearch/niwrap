@@ -145,6 +145,7 @@ def mri_copy_values_execute(
     """
     cargs = mri_copy_values_cargs(params, execution)
     ret = mri_copy_values_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

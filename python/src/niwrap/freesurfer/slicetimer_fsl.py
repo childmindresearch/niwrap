@@ -220,6 +220,7 @@ def slicetimer_fsl_execute(
     """
     cargs = slicetimer_fsl_cargs(params, execution)
     ret = slicetimer_fsl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

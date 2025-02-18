@@ -255,6 +255,7 @@ def ccops_execute(
     """
     cargs = ccops_cargs(params, execution)
     ret = ccops_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

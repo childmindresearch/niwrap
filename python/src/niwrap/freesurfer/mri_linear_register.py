@@ -145,6 +145,7 @@ def mri_linear_register_execute(
     """
     cargs = mri_linear_register_cargs(params, execution)
     ret = mri_linear_register_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

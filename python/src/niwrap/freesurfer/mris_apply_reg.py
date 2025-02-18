@@ -323,6 +323,7 @@ def mris_apply_reg_execute(
     """
     cargs = mris_apply_reg_cargs(params, execution)
     ret = mris_apply_reg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

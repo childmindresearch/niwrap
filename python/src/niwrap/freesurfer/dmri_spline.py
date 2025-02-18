@@ -209,6 +209,7 @@ def dmri_spline_execute(
     """
     cargs = dmri_spline_cargs(params, execution)
     ret = dmri_spline_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

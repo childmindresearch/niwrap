@@ -134,6 +134,7 @@ def gcainit_execute(
     """
     cargs = gcainit_cargs(params, execution)
     ret = gcainit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

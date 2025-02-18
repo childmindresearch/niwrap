@@ -152,6 +152,7 @@ def mri_extract_fcd_features_execute(
     """
     cargs = mri_extract_fcd_features_cargs(params, execution)
     ret = mri_extract_fcd_features_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

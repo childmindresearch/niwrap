@@ -159,6 +159,7 @@ def surface_based_smoothing_execute(
     """
     cargs = surface_based_smoothing_cargs(params, execution)
     ret = surface_based_smoothing_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

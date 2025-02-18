@@ -196,6 +196,7 @@ def mkxsubjreg_execute(
     """
     cargs = mkxsubjreg_cargs(params, execution)
     ret = mkxsubjreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

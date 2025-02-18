@@ -173,6 +173,7 @@ def mri_create_t2combined_execute(
     """
     cargs = mri_create_t2combined_cargs(params, execution)
     ret = mri_create_t2combined_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

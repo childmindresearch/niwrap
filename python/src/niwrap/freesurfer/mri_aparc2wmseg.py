@@ -155,6 +155,7 @@ def mri_aparc2wmseg_execute(
     """
     cargs = mri_aparc2wmseg_cargs(params, execution)
     ret = mri_aparc2wmseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

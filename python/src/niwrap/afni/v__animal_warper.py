@@ -451,6 +451,7 @@ def v__animal_warper_execute(
     """
     cargs = v__animal_warper_cargs(params, execution)
     ret = v__animal_warper_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

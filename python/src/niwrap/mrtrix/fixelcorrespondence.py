@@ -273,6 +273,7 @@ def fixelcorrespondence_execute(
     """
     cargs = fixelcorrespondence_cargs(params, execution)
     ret = fixelcorrespondence_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -134,6 +134,7 @@ def is_surface_execute(
     """
     cargs = is_surface_cargs(params, execution)
     ret = is_surface_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

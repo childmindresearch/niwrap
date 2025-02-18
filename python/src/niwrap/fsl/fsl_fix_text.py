@@ -140,6 +140,7 @@ def fsl_fix_text_execute(
     """
     cargs = fsl_fix_text_cargs(params, execution)
     ret = fsl_fix_text_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

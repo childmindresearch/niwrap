@@ -137,6 +137,7 @@ def fs_tutorial_data_execute(
     """
     cargs = fs_tutorial_data_cargs(params, execution)
     ret = fs_tutorial_data_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

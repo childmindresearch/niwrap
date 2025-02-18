@@ -246,6 +246,7 @@ def count_execute(
     """
     cargs = count_cargs(params, execution)
     ret = count_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

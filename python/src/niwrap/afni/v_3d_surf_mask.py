@@ -194,6 +194,7 @@ def v_3d_surf_mask_execute(
     """
     cargs = v_3d_surf_mask_cargs(params, execution)
     ret = v_3d_surf_mask_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

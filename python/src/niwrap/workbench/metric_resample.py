@@ -330,6 +330,7 @@ def metric_resample_execute(
     """
     cargs = metric_resample_cargs(params, execution)
     ret = metric_resample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

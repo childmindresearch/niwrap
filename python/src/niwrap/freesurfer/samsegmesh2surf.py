@@ -190,6 +190,7 @@ def samsegmesh2surf_execute(
     """
     cargs = samsegmesh2surf_cargs(params, execution)
     ret = samsegmesh2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

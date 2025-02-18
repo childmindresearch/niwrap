@@ -204,6 +204,7 @@ def fslcreatehd_execute(
     """
     cargs = fslcreatehd_cargs(params, execution)
     ret = fslcreatehd_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

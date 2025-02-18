@@ -213,6 +213,7 @@ def segment_subregions_execute(
     """
     cargs = segment_subregions_cargs(params, execution)
     ret = segment_subregions_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

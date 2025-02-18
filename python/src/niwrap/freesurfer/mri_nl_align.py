@@ -547,6 +547,7 @@ def mri_nl_align_execute(
     """
     cargs = mri_nl_align_cargs(params, execution)
     ret = mri_nl_align_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

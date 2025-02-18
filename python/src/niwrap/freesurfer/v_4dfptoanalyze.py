@@ -170,6 +170,7 @@ def v_4dfptoanalyze_execute(
     """
     cargs = v_4dfptoanalyze_cargs(params, execution)
     ret = v_4dfptoanalyze_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

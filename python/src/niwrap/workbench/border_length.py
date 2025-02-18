@@ -170,6 +170,7 @@ def border_length_execute(
     """
     cargs = border_length_cargs(params, execution)
     ret = border_length_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

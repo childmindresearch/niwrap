@@ -188,6 +188,7 @@ def mri_segcentroids_execute(
     """
     cargs = mri_segcentroids_cargs(params, execution)
     ret = mri_segcentroids_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -271,6 +271,7 @@ def v_3dvolreg_execute(
     """
     cargs = v_3dvolreg_cargs(params, execution)
     ret = v_3dvolreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

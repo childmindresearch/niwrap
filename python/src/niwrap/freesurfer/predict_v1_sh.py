@@ -164,6 +164,7 @@ def predict_v1_sh_execute(
     """
     cargs = predict_v1_sh_cargs(params, execution)
     ret = predict_v1_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

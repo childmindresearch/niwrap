@@ -144,6 +144,7 @@ def abids_tool_execute(
     """
     cargs = abids_tool_cargs(params, execution)
     ret = abids_tool_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

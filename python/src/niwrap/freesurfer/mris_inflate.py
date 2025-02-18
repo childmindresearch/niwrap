@@ -205,6 +205,7 @@ def mris_inflate_execute(
     """
     cargs = mris_inflate_cargs(params, execution)
     ret = mris_inflate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

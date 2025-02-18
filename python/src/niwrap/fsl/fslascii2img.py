@@ -180,6 +180,7 @@ def fslascii2img_execute(
     """
     cargs = fslascii2img_cargs(params, execution)
     ret = fslascii2img_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

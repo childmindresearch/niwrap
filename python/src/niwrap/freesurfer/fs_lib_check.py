@@ -156,6 +156,7 @@ def fs_lib_check_execute(
     """
     cargs = fs_lib_check_cargs(params, execution)
     ret = fs_lib_check_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -192,6 +192,7 @@ def mri_hausdorff_dist_execute(
     """
     cargs = mri_hausdorff_dist_cargs(params, execution)
     ret = mri_hausdorff_dist_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

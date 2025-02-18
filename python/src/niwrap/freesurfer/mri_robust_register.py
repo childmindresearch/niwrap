@@ -581,6 +581,7 @@ def mri_robust_register_execute(
     """
     cargs = mri_robust_register_cargs(params, execution)
     ret = mri_robust_register_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

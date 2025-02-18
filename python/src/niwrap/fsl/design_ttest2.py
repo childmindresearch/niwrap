@@ -147,6 +147,7 @@ def design_ttest2_execute(
     """
     cargs = design_ttest2_cargs(params, execution)
     ret = design_ttest2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

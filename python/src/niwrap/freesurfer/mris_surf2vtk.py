@@ -146,6 +146,7 @@ def mris_surf2vtk_execute(
     """
     cargs = mris_surf2vtk_cargs(params, execution)
     ret = mris_surf2vtk_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

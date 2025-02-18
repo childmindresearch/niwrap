@@ -184,6 +184,7 @@ def surf_localstat_execute(
     """
     cargs = surf_localstat_cargs(params, execution)
     ret = surf_localstat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

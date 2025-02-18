@@ -151,6 +151,7 @@ def mris_compute_layer_intensities_execute(
     """
     cargs = mris_compute_layer_intensities_cargs(params, execution)
     ret = mris_compute_layer_intensities_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -137,6 +137,7 @@ def v__afni_refacer_make_master_execute(
     """
     cargs = v__afni_refacer_make_master_cargs(params, execution)
     ret = v__afni_refacer_make_master_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

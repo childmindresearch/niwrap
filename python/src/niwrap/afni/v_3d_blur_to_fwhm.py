@@ -203,6 +203,7 @@ def v_3d_blur_to_fwhm_execute(
     """
     cargs = v_3d_blur_to_fwhm_cargs(params, execution)
     ret = v_3d_blur_to_fwhm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -307,6 +307,7 @@ def timing_tool_py_execute(
     """
     cargs = timing_tool_py_cargs(params, execution)
     ret = timing_tool_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

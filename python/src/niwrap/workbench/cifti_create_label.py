@@ -419,6 +419,7 @@ def cifti_create_label_execute(
     """
     cargs = cifti_create_label_cargs(params, execution)
     ret = cifti_create_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

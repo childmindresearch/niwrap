@@ -189,6 +189,7 @@ def v__move_to_series_dirs_execute(
     """
     cargs = v__move_to_series_dirs_cargs(params, execution)
     ret = v__move_to_series_dirs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

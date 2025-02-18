@@ -138,6 +138,7 @@ def talairach2_execute(
     """
     cargs = talairach2_cargs(params, execution)
     ret = talairach2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

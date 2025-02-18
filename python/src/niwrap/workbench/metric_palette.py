@@ -567,6 +567,7 @@ def metric_palette_execute(
     """
     cargs = metric_palette_cargs(params, execution)
     ret = metric_palette_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

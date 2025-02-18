@@ -180,6 +180,7 @@ def volume_parcel_smoothing_execute(
     """
     cargs = volume_parcel_smoothing_cargs(params, execution)
     ret = volume_parcel_smoothing_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

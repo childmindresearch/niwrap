@@ -407,6 +407,7 @@ def sccan_execute(
     """
     cargs = sccan_cargs(params, execution)
     ret = sccan_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

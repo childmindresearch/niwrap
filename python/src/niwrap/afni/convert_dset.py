@@ -314,6 +314,7 @@ def convert_dset_execute(
     """
     cargs = convert_dset_cargs(params, execution)
     ret = convert_dset_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -262,6 +262,7 @@ def warpinit_execute(
     """
     cargs = warpinit_cargs(params, execution)
     ret = warpinit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

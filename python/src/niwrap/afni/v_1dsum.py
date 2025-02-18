@@ -176,6 +176,7 @@ def v_1dsum_execute(
     """
     cargs = v_1dsum_cargs(params, execution)
     ret = v_1dsum_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

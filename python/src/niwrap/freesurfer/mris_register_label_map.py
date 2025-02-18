@@ -210,6 +210,7 @@ def mris_register_label_map_execute(
     """
     cargs = mris_register_label_map_cargs(params, execution)
     ret = mris_register_label_map_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

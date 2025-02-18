@@ -166,6 +166,7 @@ def make_cortex_label_execute(
     """
     cargs = make_cortex_label_cargs(params, execution)
     ret = make_cortex_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

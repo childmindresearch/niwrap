@@ -296,6 +296,7 @@ def aparc_stats_aseg_execute(
     """
     cargs = aparc_stats_aseg_cargs(params, execution)
     ret = aparc_stats_aseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

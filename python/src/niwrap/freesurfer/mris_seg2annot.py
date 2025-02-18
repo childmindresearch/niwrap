@@ -222,6 +222,7 @@ def mris_seg2annot_execute(
     """
     cargs = mris_seg2annot_cargs(params, execution)
     ret = mris_seg2annot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

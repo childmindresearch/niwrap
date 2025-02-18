@@ -197,6 +197,7 @@ def meica_py_execute(
     """
     cargs = meica_py_cargs(params, execution)
     ret = meica_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

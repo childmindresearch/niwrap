@@ -151,6 +151,7 @@ def set_spacing_execute(
     """
     cargs = set_spacing_cargs(params, execution)
     ret = set_spacing_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

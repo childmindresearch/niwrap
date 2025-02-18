@@ -430,6 +430,7 @@ def tcksift_execute(
     """
     cargs = tcksift_cargs(params, execution)
     ret = tcksift_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

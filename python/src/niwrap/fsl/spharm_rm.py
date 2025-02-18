@@ -173,6 +173,7 @@ def spharm_rm_execute(
     """
     cargs = spharm_rm_cargs(params, execution)
     ret = spharm_rm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

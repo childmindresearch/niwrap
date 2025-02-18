@@ -160,6 +160,7 @@ def image_math_execute(
     """
     cargs = image_math_cargs(params, execution)
     ret = image_math_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -172,6 +172,7 @@ def volume_erode_execute(
     """
     cargs = volume_erode_cargs(params, execution)
     ret = volume_erode_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

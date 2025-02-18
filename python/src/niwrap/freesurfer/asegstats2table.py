@@ -347,6 +347,7 @@ def asegstats2table_execute(
     """
     cargs = asegstats2table_cargs(params, execution)
     ret = asegstats2table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

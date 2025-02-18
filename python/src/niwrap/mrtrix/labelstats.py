@@ -258,6 +258,7 @@ def labelstats_execute(
     """
     cargs = labelstats_cargs(params, execution)
     ret = labelstats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

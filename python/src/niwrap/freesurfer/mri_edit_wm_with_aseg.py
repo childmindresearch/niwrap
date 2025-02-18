@@ -231,6 +231,7 @@ def mri_edit_wm_with_aseg_execute(
     """
     cargs = mri_edit_wm_with_aseg_cargs(params, execution)
     ret = mri_edit_wm_with_aseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

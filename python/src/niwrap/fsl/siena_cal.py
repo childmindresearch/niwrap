@@ -153,6 +153,7 @@ def siena_cal_execute(
     """
     cargs = siena_cal_cargs(params, execution)
     ret = siena_cal_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

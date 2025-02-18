@@ -183,6 +183,7 @@ def xcorr_execute(
     """
     cargs = xcorr_cargs(params, execution)
     ret = xcorr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

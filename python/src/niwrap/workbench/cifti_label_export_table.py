@@ -145,6 +145,7 @@ def cifti_label_export_table_execute(
     """
     cargs = cifti_label_export_table_cargs(params, execution)
     ret = cifti_label_export_table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

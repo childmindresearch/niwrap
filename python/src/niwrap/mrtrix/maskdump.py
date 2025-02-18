@@ -253,6 +253,7 @@ def maskdump_execute(
     """
     cargs = maskdump_cargs(params, execution)
     ret = maskdump_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

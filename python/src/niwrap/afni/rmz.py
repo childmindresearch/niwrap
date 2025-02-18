@@ -153,6 +153,7 @@ def rmz_execute(
     """
     cargs = rmz_cargs(params, execution)
     ret = rmz_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

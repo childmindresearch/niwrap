@@ -178,6 +178,7 @@ def gifti_label_to_roi_execute(
     """
     cargs = gifti_label_to_roi_cargs(params, execution)
     ret = gifti_label_to_roi_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

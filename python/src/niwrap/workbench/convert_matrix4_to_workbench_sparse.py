@@ -228,6 +228,7 @@ def convert_matrix4_to_workbench_sparse_execute(
     """
     cargs = convert_matrix4_to_workbench_sparse_cargs(params, execution)
     ret = convert_matrix4_to_workbench_sparse_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

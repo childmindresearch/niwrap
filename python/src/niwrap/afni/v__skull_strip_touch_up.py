@@ -170,6 +170,7 @@ def v__skull_strip_touch_up_execute(
     """
     cargs = v__skull_strip_touch_up_cargs(params, execution)
     ret = v__skull_strip_touch_up_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

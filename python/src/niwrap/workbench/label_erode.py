@@ -192,6 +192,7 @@ def label_erode_execute(
     """
     cargs = label_erode_cargs(params, execution)
     ret = label_erode_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

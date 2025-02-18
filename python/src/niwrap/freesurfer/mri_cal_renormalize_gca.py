@@ -155,6 +155,7 @@ def mri_cal_renormalize_gca_execute(
     """
     cargs = mri_cal_renormalize_gca_cargs(params, execution)
     ret = mri_cal_renormalize_gca_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

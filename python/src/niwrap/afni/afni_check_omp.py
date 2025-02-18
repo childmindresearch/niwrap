@@ -133,6 +133,7 @@ def afni_check_omp_execute(
     """
     cargs = afni_check_omp_cargs(params, execution)
     ret = afni_check_omp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

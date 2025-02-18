@@ -163,6 +163,7 @@ def segment_subject_sc_execute(
     """
     cargs = segment_subject_sc_cargs(params, execution)
     ret = segment_subject_sc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -161,6 +161,7 @@ def ttologp_execute(
     """
     cargs = ttologp_cargs(params, execution)
     ret = ttologp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

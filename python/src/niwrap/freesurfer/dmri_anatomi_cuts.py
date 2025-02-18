@@ -187,6 +187,7 @@ def dmri_anatomi_cuts_execute(
     """
     cargs = dmri_anatomi_cuts_cargs(params, execution)
     ret = dmri_anatomi_cuts_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

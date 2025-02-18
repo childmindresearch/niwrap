@@ -149,6 +149,7 @@ def v__find_afni_dset_path_execute(
     """
     cargs = v__find_afni_dset_path_cargs(params, execution)
     ret = v__find_afni_dset_path_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

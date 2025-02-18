@@ -237,6 +237,7 @@ def plugout_tt_execute(
     """
     cargs = plugout_tt_cargs(params, execution)
     ret = plugout_tt_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

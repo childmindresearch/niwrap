@@ -132,6 +132,7 @@ def fsr_getxopts_execute(
     """
     cargs = fsr_getxopts_cargs(params, execution)
     ret = fsr_getxopts_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

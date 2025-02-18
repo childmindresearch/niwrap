@@ -157,6 +157,7 @@ def sbtiv_execute(
     """
     cargs = sbtiv_cargs(params, execution)
     ret = sbtiv_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

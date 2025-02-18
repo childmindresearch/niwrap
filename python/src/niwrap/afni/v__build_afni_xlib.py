@@ -150,6 +150,7 @@ def v__build_afni_xlib_execute(
     """
     cargs = v__build_afni_xlib_cargs(params, execution)
     ret = v__build_afni_xlib_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

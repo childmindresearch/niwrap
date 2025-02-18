@@ -380,6 +380,7 @@ def fat_proc_dwi_to_dt_execute(
     """
     cargs = fat_proc_dwi_to_dt_cargs(params, execution)
     ret = fat_proc_dwi_to_dt_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

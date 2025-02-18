@@ -299,6 +299,7 @@ def v__update_afni_binaries_execute(
     """
     cargs = v__update_afni_binaries_cargs(params, execution)
     ret = v__update_afni_binaries_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

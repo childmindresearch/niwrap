@@ -319,6 +319,7 @@ def dcminfo_execute(
     """
     cargs = dcminfo_cargs(params, execution)
     ret = dcminfo_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

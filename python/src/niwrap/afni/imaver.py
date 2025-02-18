@@ -153,6 +153,7 @@ def imaver_execute(
     """
     cargs = imaver_cargs(params, execution)
     ret = imaver_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

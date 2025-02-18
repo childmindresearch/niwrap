@@ -144,6 +144,7 @@ def surface_vertex_areas_execute(
     """
     cargs = surface_vertex_areas_cargs(params, execution)
     ret = surface_vertex_areas_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

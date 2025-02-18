@@ -200,6 +200,7 @@ def annotation_resample_execute(
     """
     cargs = annotation_resample_cargs(params, execution)
     ret = annotation_resample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

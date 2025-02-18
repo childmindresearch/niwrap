@@ -140,6 +140,7 @@ def fslvbm_1_bet_execute(
     """
     cargs = fslvbm_1_bet_cargs(params, execution)
     ret = fslvbm_1_bet_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

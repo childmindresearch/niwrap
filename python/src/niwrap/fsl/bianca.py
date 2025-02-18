@@ -263,6 +263,7 @@ def bianca_execute(
     """
     cargs = bianca_cargs(params, execution)
     ret = bianca_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

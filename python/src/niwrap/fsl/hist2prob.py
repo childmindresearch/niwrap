@@ -150,6 +150,7 @@ def hist2prob_execute(
     """
     cargs = hist2prob_cargs(params, execution)
     ret = hist2prob_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

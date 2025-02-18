@@ -140,6 +140,7 @@ def fsl_gen_3_d_execute(
     """
     cargs = fsl_gen_3_d_cargs(params, execution)
     ret = fsl_gen_3_d_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

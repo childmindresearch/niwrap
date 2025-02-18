@@ -328,6 +328,7 @@ def label_resample_execute(
     """
     cargs = label_resample_cargs(params, execution)
     ret = label_resample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

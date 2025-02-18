@@ -255,6 +255,7 @@ def tsfdivide_execute(
     """
     cargs = tsfdivide_cargs(params, execution)
     ret = tsfdivide_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

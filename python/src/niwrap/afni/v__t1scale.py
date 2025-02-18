@@ -243,6 +243,7 @@ def v__t1scale_execute(
     """
     cargs = v__t1scale_cargs(params, execution)
     ret = v__t1scale_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

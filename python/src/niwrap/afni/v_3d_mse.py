@@ -214,6 +214,7 @@ def v_3d_mse_execute(
     """
     cargs = v_3d_mse_cargs(params, execution)
     ret = v_3d_mse_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

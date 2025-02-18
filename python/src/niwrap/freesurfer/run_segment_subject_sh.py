@@ -144,6 +144,7 @@ def run_segment_subject_sh_execute(
     """
     cargs = run_segment_subject_sh_cargs(params, execution)
     ret = run_segment_subject_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -655,6 +655,7 @@ def dwiextract_execute(
     """
     cargs = dwiextract_cargs(params, execution)
     ret = dwiextract_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

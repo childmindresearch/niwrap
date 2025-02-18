@@ -131,6 +131,7 @@ def csvprint_execute(
     """
     cargs = csvprint_cargs(params, execution)
     ret = csvprint_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

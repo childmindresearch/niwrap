@@ -412,6 +412,7 @@ def tensor2metric_execute(
     """
     cargs = tensor2metric_cargs(params, execution)
     ret = tensor2metric_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

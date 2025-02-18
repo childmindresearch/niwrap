@@ -416,6 +416,7 @@ def file_tool_execute(
     """
     cargs = file_tool_cargs(params, execution)
     ret = file_tool_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -138,6 +138,7 @@ def feat_model_execute(
     """
     cargs = feat_model_cargs(params, execution)
     ret = feat_model_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

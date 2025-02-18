@@ -156,6 +156,7 @@ def pointset2label_execute(
     """
     cargs = pointset2label_cargs(params, execution)
     ret = pointset2label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

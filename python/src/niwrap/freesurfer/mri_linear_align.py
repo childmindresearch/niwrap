@@ -141,6 +141,7 @@ def mri_linear_align_execute(
     """
     cargs = mri_linear_align_cargs(params, execution)
     ret = mri_linear_align_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

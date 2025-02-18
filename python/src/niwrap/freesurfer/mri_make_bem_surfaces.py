@@ -145,6 +145,7 @@ def mri_make_bem_surfaces_execute(
     """
     cargs = mri_make_bem_surfaces_cargs(params, execution)
     ret = mri_make_bem_surfaces_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

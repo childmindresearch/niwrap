@@ -1153,6 +1153,7 @@ def mrconvert_execute(
     """
     cargs = mrconvert_cargs(params, execution)
     ret = mrconvert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

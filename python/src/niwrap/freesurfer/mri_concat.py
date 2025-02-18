@@ -467,6 +467,7 @@ def mri_concat_execute(
     """
     cargs = mri_concat_cargs(params, execution)
     ret = mri_concat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

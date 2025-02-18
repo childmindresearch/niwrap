@@ -215,6 +215,7 @@ def mri_concatenate_lta_execute(
     """
     cargs = mri_concatenate_lta_cargs(params, execution)
     ret = mri_concatenate_lta_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

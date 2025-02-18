@@ -160,6 +160,7 @@ def mri_ribbon_execute(
     """
     cargs = mri_ribbon_cargs(params, execution)
     ret = mri_ribbon_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

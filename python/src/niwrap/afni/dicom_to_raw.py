@@ -135,6 +135,7 @@ def dicom_to_raw_execute(
     """
     cargs = dicom_to_raw_cargs(params, execution)
     ret = dicom_to_raw_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

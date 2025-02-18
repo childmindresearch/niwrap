@@ -185,6 +185,7 @@ def v__electro_grid_execute(
     """
     cargs = v__electro_grid_cargs(params, execution)
     ret = v__electro_grid_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

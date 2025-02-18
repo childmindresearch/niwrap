@@ -309,6 +309,7 @@ def dirgen_execute(
     """
     cargs = dirgen_cargs(params, execution)
     ret = dirgen_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

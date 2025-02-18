@@ -202,6 +202,7 @@ def v__diff_files_execute(
     """
     cargs = v__diff_files_cargs(params, execution)
     ret = v__diff_files_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

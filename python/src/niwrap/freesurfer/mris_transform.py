@@ -174,6 +174,7 @@ def mris_transform_execute(
     """
     cargs = mris_transform_cargs(params, execution)
     ret = mris_transform_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

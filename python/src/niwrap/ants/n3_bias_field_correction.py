@@ -259,6 +259,7 @@ def n3_bias_field_correction_execute(
     """
     cargs = n3_bias_field_correction_cargs(params, execution)
     ret = n3_bias_field_correction_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

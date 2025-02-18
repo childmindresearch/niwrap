@@ -140,6 +140,7 @@ def minc2seqinfo_execute(
     """
     cargs = minc2seqinfo_cargs(params, execution)
     ret = minc2seqinfo_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

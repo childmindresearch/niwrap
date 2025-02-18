@@ -336,6 +336,7 @@ def metric_extrema_execute(
     """
     cargs = metric_extrema_cargs(params, execution)
     ret = metric_extrema_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -148,6 +148,7 @@ def bianca_cluster_stats_execute(
     """
     cargs = bianca_cluster_stats_cargs(params, execution)
     ret = bianca_cluster_stats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

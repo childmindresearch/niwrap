@@ -154,6 +154,7 @@ def mri_mark_temporal_lobe_execute(
     """
     cargs = mri_mark_temporal_lobe_cargs(params, execution)
     ret = mri_mark_temporal_lobe_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

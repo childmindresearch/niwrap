@@ -159,6 +159,7 @@ def map_all_labels_lh_execute(
     """
     cargs = map_all_labels_lh_cargs(params, execution)
     ret = map_all_labels_lh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -157,6 +157,7 @@ def antsintegrate_vector_field_execute(
     """
     cargs = antsintegrate_vector_field_cargs(params, execution)
     ret = antsintegrate_vector_field_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

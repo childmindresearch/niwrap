@@ -298,6 +298,7 @@ def v__atlasize_execute(
     """
     cargs = v__atlasize_cargs(params, execution)
     ret = v__atlasize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

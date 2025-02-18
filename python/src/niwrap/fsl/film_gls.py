@@ -346,6 +346,7 @@ def film_gls_execute(
     """
     cargs = film_gls_cargs(params, execution)
     ret = film_gls_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

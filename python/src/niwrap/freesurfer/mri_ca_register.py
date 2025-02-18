@@ -459,6 +459,7 @@ def mri_ca_register_execute(
     """
     cargs = mri_ca_register_cargs(params, execution)
     ret = mri_ca_register_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

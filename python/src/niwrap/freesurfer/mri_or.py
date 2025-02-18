@@ -139,6 +139,7 @@ def mri_or_execute(
     """
     cargs = mri_or_cargs(params, execution)
     ret = mri_or_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

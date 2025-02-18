@@ -387,6 +387,7 @@ def mris_fwhm_execute(
     """
     cargs = mris_fwhm_cargs(params, execution)
     ret = mris_fwhm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

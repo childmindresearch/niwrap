@@ -185,6 +185,7 @@ def mris_thickness_execute(
     """
     cargs = mris_thickness_cargs(params, execution)
     ret = mris_thickness_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

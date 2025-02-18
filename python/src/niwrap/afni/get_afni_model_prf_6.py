@@ -162,6 +162,7 @@ def get_afni_model_prf_6_execute(
     """
     cargs = get_afni_model_prf_6_cargs(params, execution)
     ret = get_afni_model_prf_6_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

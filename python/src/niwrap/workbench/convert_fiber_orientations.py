@@ -259,6 +259,7 @@ def convert_fiber_orientations_execute(
     """
     cargs = convert_fiber_orientations_cargs(params, execution)
     ret = convert_fiber_orientations_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

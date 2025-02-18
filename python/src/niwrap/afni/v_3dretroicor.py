@@ -226,6 +226,7 @@ def v_3dretroicor_execute(
     """
     cargs = v_3dretroicor_cargs(params, execution)
     ret = v_3dretroicor_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

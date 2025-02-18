@@ -183,6 +183,7 @@ def v_1ddot_execute(
     """
     cargs = v_1ddot_cargs(params, execution)
     ret = v_1ddot_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

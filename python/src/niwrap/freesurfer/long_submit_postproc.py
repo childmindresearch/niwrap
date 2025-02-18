@@ -199,6 +199,7 @@ def long_submit_postproc_execute(
     """
     cargs = long_submit_postproc_cargs(params, execution)
     ret = long_submit_postproc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

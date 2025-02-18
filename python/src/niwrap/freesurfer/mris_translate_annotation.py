@@ -155,6 +155,7 @@ def mris_translate_annotation_execute(
     """
     cargs = mris_translate_annotation_cargs(params, execution)
     ret = mris_translate_annotation_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

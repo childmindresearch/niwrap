@@ -146,6 +146,7 @@ def quotize_execute(
     """
     cargs = quotize_cargs(params, execution)
     ret = quotize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -510,6 +510,7 @@ def reg_f3d_execute(
     """
     cargs = reg_f3d_cargs(params, execution)
     ret = reg_f3d_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

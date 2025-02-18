@@ -134,6 +134,7 @@ def segment_bs_sh_execute(
     """
     cargs = segment_bs_sh_cargs(params, execution)
     ret = segment_bs_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

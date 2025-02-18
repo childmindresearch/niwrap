@@ -258,6 +258,7 @@ def gems_compute_atlas_probs_execute(
     """
     cargs = gems_compute_atlas_probs_cargs(params, execution)
     ret = gems_compute_atlas_probs_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

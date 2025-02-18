@@ -652,6 +652,7 @@ def fixelcfestats_execute(
     """
     cargs = fixelcfestats_cargs(params, execution)
     ret = fixelcfestats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

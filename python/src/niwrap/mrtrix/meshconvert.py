@@ -316,6 +316,7 @@ def meshconvert_execute(
     """
     cargs = meshconvert_cargs(params, execution)
     ret = meshconvert_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

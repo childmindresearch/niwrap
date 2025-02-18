@@ -283,6 +283,7 @@ def mrcat_execute(
     """
     cargs = mrcat_cargs(params, execution)
     ret = mrcat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -185,6 +185,7 @@ def rbox_execute(
     """
     cargs = rbox_cargs(params, execution)
     ret = rbox_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

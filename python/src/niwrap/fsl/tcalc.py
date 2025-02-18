@@ -276,6 +276,7 @@ def tcalc_execute(
     """
     cargs = tcalc_cargs(params, execution)
     ret = tcalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

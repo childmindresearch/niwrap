@@ -309,6 +309,7 @@ def trr_execute(
     """
     cargs = trr_cargs(params, execution)
     ret = trr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

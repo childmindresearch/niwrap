@@ -279,6 +279,7 @@ def aparcstats2table_execute(
     """
     cargs = aparcstats2table_cargs(params, execution)
     ret = aparcstats2table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

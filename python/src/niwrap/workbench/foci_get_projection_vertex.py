@@ -160,6 +160,7 @@ def foci_get_projection_vertex_execute(
     """
     cargs = foci_get_projection_vertex_cargs(params, execution)
     ret = foci_get_projection_vertex_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

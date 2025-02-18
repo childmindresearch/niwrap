@@ -225,6 +225,7 @@ def estimate_fiber_binghams_execute(
     """
     cargs = estimate_fiber_binghams_cargs(params, execution)
     ret = estimate_fiber_binghams_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

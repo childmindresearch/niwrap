@@ -248,6 +248,7 @@ def ants_intermodality_intrasubject_sh_execute(
     """
     cargs = ants_intermodality_intrasubject_sh_cargs(params, execution)
     ret = ants_intermodality_intrasubject_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

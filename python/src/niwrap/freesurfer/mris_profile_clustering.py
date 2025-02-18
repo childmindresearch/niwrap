@@ -147,6 +147,7 @@ def mris_profile_clustering_execute(
     """
     cargs = mris_profile_clustering_cargs(params, execution)
     ret = mris_profile_clustering_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

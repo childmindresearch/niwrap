@@ -171,6 +171,7 @@ def gcaprepone_execute(
     """
     cargs = gcaprepone_cargs(params, execution)
     ret = gcaprepone_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

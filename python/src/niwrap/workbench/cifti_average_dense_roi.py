@@ -324,6 +324,7 @@ def cifti_average_dense_roi_execute(
     """
     cargs = cifti_average_dense_roi_cargs(params, execution)
     ret = cifti_average_dense_roi_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

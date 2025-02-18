@@ -1256,6 +1256,7 @@ def mrregister_execute(
     """
     cargs = mrregister_cargs(params, execution)
     ret = mrregister_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

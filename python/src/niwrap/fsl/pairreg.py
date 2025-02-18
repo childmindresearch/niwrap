@@ -162,6 +162,7 @@ def pairreg_execute(
     """
     cargs = pairreg_cargs(params, execution)
     ret = pairreg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

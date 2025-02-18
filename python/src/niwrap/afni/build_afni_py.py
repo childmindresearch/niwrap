@@ -253,6 +253,7 @@ def build_afni_py_execute(
     """
     cargs = build_afni_py_cargs(params, execution)
     ret = build_afni_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

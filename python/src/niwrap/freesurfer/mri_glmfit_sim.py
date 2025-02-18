@@ -402,6 +402,7 @@ def mri_glmfit_sim_execute(
     """
     cargs = mri_glmfit_sim_cargs(params, execution)
     ret = mri_glmfit_sim_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

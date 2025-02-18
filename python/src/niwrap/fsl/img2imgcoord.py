@@ -200,6 +200,7 @@ def img2imgcoord_execute(
     """
     cargs = img2imgcoord_cargs(params, execution)
     ret = img2imgcoord_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

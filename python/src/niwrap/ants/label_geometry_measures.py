@@ -158,6 +158,7 @@ def label_geometry_measures_execute(
     """
     cargs = label_geometry_measures_cargs(params, execution)
     ret = label_geometry_measures_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

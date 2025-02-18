@@ -140,6 +140,7 @@ def talairach_mgh_execute(
     """
     cargs = talairach_mgh_cargs(params, execution)
     ret = talairach_mgh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

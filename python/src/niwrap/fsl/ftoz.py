@@ -155,6 +155,7 @@ def ftoz_execute(
     """
     cargs = ftoz_cargs(params, execution)
     ret = ftoz_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

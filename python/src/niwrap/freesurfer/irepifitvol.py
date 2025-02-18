@@ -140,6 +140,7 @@ def irepifitvol_execute(
     """
     cargs = irepifitvol_cargs(params, execution)
     ret = irepifitvol_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

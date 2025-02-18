@@ -140,6 +140,7 @@ def cor_to_minc_execute(
     """
     cargs = cor_to_minc_cargs(params, execution)
     ret = cor_to_minc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

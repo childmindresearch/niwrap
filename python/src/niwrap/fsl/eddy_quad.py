@@ -215,6 +215,7 @@ def eddy_quad_execute(
     """
     cargs = eddy_quad_cargs(params, execution)
     ret = eddy_quad_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

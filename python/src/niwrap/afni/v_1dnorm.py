@@ -166,6 +166,7 @@ def v_1dnorm_execute(
     """
     cargs = v_1dnorm_cargs(params, execution)
     ret = v_1dnorm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

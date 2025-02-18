@@ -324,6 +324,7 @@ def volume_dilate_execute(
     """
     cargs = volume_dilate_cargs(params, execution)
     ret = volume_dilate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

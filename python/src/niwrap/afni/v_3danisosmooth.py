@@ -327,6 +327,7 @@ def v_3danisosmooth_execute(
     """
     cargs = v_3danisosmooth_cargs(params, execution)
     ret = v_3danisosmooth_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

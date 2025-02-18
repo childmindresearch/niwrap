@@ -157,6 +157,7 @@ def surf_dist_execute(
     """
     cargs = surf_dist_cargs(params, execution)
     ret = surf_dist_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -133,6 +133,7 @@ def mri_rf_long_label_execute(
     """
     cargs = mri_rf_long_label_cargs(params, execution)
     ret = mri_rf_long_label_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

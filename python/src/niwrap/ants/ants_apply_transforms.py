@@ -1148,6 +1148,7 @@ def ants_apply_transforms_execute(
     """
     cargs = ants_apply_transforms_cargs(params, execution)
     ret = ants_apply_transforms_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

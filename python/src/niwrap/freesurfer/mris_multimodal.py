@@ -211,6 +211,7 @@ def mris_multimodal_execute(
     """
     cargs = mris_multimodal_cargs(params, execution)
     ret = mris_multimodal_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

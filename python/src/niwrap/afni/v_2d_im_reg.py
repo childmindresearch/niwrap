@@ -230,6 +230,7 @@ def v_2d_im_reg_execute(
     """
     cargs = v_2d_im_reg_cargs(params, execution)
     ret = v_2d_im_reg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

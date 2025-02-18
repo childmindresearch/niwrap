@@ -140,6 +140,7 @@ def mri_topologycorrection_execute(
     """
     cargs = mri_topologycorrection_cargs(params, execution)
     ret = mri_topologycorrection_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -230,6 +230,7 @@ def sfa2fieldsign_execute(
     """
     cargs = sfa2fieldsign_cargs(params, execution)
     ret = sfa2fieldsign_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

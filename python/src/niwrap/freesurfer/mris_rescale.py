@@ -140,6 +140,7 @@ def mris_rescale_execute(
     """
     cargs = mris_rescale_cargs(params, execution)
     ret = mris_rescale_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

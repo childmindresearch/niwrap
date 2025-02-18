@@ -174,6 +174,7 @@ def convert_xfm_execute(
     """
     cargs = convert_xfm_cargs(params, execution)
     ret = convert_xfm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

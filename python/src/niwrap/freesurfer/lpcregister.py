@@ -241,6 +241,7 @@ def lpcregister_execute(
     """
     cargs = lpcregister_cargs(params, execution)
     ret = lpcregister_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

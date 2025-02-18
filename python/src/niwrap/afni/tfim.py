@@ -203,6 +203,7 @@ def tfim_execute(
     """
     cargs = tfim_cargs(params, execution)
     ret = tfim_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

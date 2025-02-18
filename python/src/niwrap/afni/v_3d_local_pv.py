@@ -238,6 +238,7 @@ def v_3d_local_pv_execute(
     """
     cargs = v_3d_local_pv_cargs(params, execution)
     ret = v_3d_local_pv_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

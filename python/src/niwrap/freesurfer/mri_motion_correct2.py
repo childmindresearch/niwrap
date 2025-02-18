@@ -208,6 +208,7 @@ def mri_motion_correct2_execute(
     """
     cargs = mri_motion_correct2_cargs(params, execution)
     ret = mri_motion_correct2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

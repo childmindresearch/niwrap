@@ -151,6 +151,7 @@ def foci_list_coords_execute(
     """
     cargs = foci_list_coords_cargs(params, execution)
     ret = foci_list_coords_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

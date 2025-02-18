@@ -500,6 +500,7 @@ def samseg_execute(
     """
     cargs = samseg_cargs(params, execution)
     ret = samseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

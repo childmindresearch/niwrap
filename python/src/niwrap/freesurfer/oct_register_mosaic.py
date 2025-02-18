@@ -162,6 +162,7 @@ def oct_register_mosaic_execute(
     """
     cargs = oct_register_mosaic_cargs(params, execution)
     ret = oct_register_mosaic_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

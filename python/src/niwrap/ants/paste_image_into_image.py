@@ -183,6 +183,7 @@ def paste_image_into_image_execute(
     """
     cargs = paste_image_into_image_cargs(params, execution)
     ret = paste_image_into_image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

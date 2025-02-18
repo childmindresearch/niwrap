@@ -423,6 +423,7 @@ def mri_segment_execute(
     """
     cargs = mri_segment_cargs(params, execution)
     ret = mri_segment_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

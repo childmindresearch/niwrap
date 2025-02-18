@@ -143,6 +143,7 @@ def surface_coordinates_to_metric_execute(
     """
     cargs = surface_coordinates_to_metric_cargs(params, execution)
     ret = surface_coordinates_to_metric_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

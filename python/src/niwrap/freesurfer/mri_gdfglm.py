@@ -131,6 +131,7 @@ def mri_gdfglm_execute(
     """
     cargs = mri_gdfglm_cargs(params, execution)
     ret = mri_gdfglm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

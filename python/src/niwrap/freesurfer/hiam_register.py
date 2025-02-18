@@ -146,6 +146,7 @@ def hiam_register_execute(
     """
     cargs = hiam_register_cargs(params, execution)
     ret = hiam_register_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

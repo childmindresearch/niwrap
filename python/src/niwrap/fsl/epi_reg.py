@@ -254,6 +254,7 @@ def epi_reg_execute(
     """
     cargs = epi_reg_cargs(params, execution)
     ret = epi_reg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

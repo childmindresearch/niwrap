@@ -155,6 +155,7 @@ def mris_make_face_parcellation_execute(
     """
     cargs = mris_make_face_parcellation_cargs(params, execution)
     ret = mris_make_face_parcellation_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

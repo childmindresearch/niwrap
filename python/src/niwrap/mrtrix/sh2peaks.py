@@ -381,6 +381,7 @@ def sh2peaks_execute(
     """
     cargs = sh2peaks_cargs(params, execution)
     ret = sh2peaks_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

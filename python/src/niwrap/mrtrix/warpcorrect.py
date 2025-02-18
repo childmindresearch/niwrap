@@ -275,6 +275,7 @@ def warpcorrect_execute(
     """
     cargs = warpcorrect_cargs(params, execution)
     ret = warpcorrect_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

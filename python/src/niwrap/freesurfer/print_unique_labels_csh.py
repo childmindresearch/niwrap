@@ -144,6 +144,7 @@ def print_unique_labels_csh_execute(
     """
     cargs = print_unique_labels_csh_cargs(params, execution)
     ret = print_unique_labels_csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

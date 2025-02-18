@@ -135,6 +135,7 @@ def create_lut_execute(
     """
     cargs = create_lut_cargs(params, execution)
     ret = create_lut_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

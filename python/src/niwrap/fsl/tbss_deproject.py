@@ -151,6 +151,7 @@ def tbss_deproject_execute(
     """
     cargs = tbss_deproject_cargs(params, execution)
     ret = tbss_deproject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -270,6 +270,7 @@ def dirflip_execute(
     """
     cargs = dirflip_cargs(params, execution)
     ret = dirflip_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -222,6 +222,7 @@ def volume_capture_plane_execute(
     """
     cargs = volume_capture_plane_cargs(params, execution)
     ret = volume_capture_plane_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

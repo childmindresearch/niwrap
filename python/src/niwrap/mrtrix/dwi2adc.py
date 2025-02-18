@@ -328,6 +328,7 @@ def dwi2adc_execute(
     """
     cargs = dwi2adc_cargs(params, execution)
     ret = dwi2adc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

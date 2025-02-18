@@ -163,6 +163,7 @@ def cifti_pairwise_correlation_execute(
     """
     cargs = cifti_pairwise_correlation_cargs(params, execution)
     ret = cifti_pairwise_correlation_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

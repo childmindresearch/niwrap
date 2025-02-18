@@ -185,6 +185,7 @@ def cblumwmgyri_execute(
     """
     cargs = cblumwmgyri_cargs(params, execution)
     ret = cblumwmgyri_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

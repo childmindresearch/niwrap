@@ -220,6 +220,7 @@ def xcerebralseg_execute(
     """
     cargs = xcerebralseg_cargs(params, execution)
     ret = xcerebralseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

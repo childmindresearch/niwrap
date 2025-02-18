@@ -169,6 +169,7 @@ def fs_check_version_execute(
     """
     cargs = fs_check_version_cargs(params, execution)
     ret = fs_check_version_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

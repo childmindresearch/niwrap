@@ -147,6 +147,7 @@ def make_upright_execute(
     """
     cargs = make_upright_cargs(params, execution)
     ret = make_upright_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

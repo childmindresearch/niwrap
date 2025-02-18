@@ -139,6 +139,7 @@ def run_segment_subject_t1_auto_estimate_alveus_ml_sh_execute(
     """
     cargs = run_segment_subject_t1_auto_estimate_alveus_ml_sh_cargs(params, execution)
     ret = run_segment_subject_t1_auto_estimate_alveus_ml_sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

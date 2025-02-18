@@ -150,6 +150,7 @@ def vno_match_check_execute(
     """
     cargs = vno_match_check_cargs(params, execution)
     ret = vno_match_check_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

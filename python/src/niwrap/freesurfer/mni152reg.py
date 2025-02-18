@@ -170,6 +170,7 @@ def mni152reg_execute(
     """
     cargs = mni152reg_cargs(params, execution)
     ret = mni152reg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

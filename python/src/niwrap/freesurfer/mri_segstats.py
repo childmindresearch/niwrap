@@ -663,6 +663,7 @@ def mri_segstats_execute(
     """
     cargs = mri_segstats_cargs(params, execution)
     ret = mri_segstats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

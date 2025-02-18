@@ -448,6 +448,7 @@ def v_3d_track_id_execute(
     """
     cargs = v_3d_track_id_cargs(params, execution)
     ret = v_3d_track_id_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

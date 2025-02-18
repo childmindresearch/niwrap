@@ -143,6 +143,7 @@ def old_betall_execute(
     """
     cargs = old_betall_cargs(params, execution)
     ret = old_betall_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

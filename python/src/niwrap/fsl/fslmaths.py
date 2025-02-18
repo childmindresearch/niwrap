@@ -953,6 +953,7 @@ def fslmaths_execute(
     """
     cargs = fslmaths_cargs(params, execution)
     ret = fslmaths_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

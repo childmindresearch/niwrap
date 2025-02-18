@@ -216,6 +216,7 @@ def examine_xmat_execute(
     """
     cargs = examine_xmat_cargs(params, execution)
     ret = examine_xmat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

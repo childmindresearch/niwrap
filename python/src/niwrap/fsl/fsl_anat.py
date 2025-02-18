@@ -274,6 +274,7 @@ def fsl_anat_execute(
     """
     cargs = fsl_anat_cargs(params, execution)
     ret = fsl_anat_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

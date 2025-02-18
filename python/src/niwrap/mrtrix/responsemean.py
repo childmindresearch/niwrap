@@ -232,6 +232,7 @@ def responsemean_execute(
     """
     cargs = responsemean_cargs(params, execution)
     ret = responsemean_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

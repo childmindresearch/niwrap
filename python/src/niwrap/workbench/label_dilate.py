@@ -192,6 +192,7 @@ def label_dilate_execute(
     """
     cargs = label_dilate_cargs(params, execution)
     ret = label_dilate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

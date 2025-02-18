@@ -145,6 +145,7 @@ def mris_euler_number_execute(
     """
     cargs = mris_euler_number_cargs(params, execution)
     ret = mris_euler_number_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -211,6 +211,7 @@ def spharm_deco_execute(
     """
     cargs = spharm_deco_cargs(params, execution)
     ret = spharm_deco_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

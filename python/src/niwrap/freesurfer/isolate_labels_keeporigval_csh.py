@@ -170,6 +170,7 @@ def isolate_labels_keeporigval_csh_execute(
     """
     cargs = isolate_labels_keeporigval_csh_cargs(params, execution)
     ret = isolate_labels_keeporigval_csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

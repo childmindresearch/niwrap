@@ -294,6 +294,7 @@ def make_average_surface_execute(
     """
     cargs = make_average_surface_cargs(params, execution)
     ret = make_average_surface_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

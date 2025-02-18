@@ -163,6 +163,7 @@ def multiply_images_execute(
     """
     cargs = multiply_images_cargs(params, execution)
     ret = multiply_images_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

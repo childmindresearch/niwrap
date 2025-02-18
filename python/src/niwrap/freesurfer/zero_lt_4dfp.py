@@ -161,6 +161,7 @@ def zero_lt_4dfp_execute(
     """
     cargs = zero_lt_4dfp_cargs(params, execution)
     ret = zero_lt_4dfp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

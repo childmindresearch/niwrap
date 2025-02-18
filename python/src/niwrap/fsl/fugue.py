@@ -361,6 +361,7 @@ def fugue_execute(
     """
     cargs = fugue_cargs(params, execution)
     ret = fugue_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -167,6 +167,7 @@ def mris_remove_intersection_execute(
     """
     cargs = mris_remove_intersection_cargs(params, execution)
     ret = mris_remove_intersection_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

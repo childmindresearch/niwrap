@@ -213,6 +213,7 @@ def set_map_names_execute(
     """
     cargs = set_map_names_cargs(params, execution)
     ret = set_map_names_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

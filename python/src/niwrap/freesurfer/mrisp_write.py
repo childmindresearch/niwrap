@@ -220,6 +220,7 @@ def mrisp_write_execute(
     """
     cargs = mrisp_write_cargs(params, execution)
     ret = mrisp_write_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

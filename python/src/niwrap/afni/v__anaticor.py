@@ -238,6 +238,7 @@ def v__anaticor_execute(
     """
     cargs = v__anaticor_cargs(params, execution)
     ret = v__anaticor_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

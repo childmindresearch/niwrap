@@ -145,6 +145,7 @@ def mri_nl_align_binary_execute(
     """
     cargs = mri_nl_align_binary_cargs(params, execution)
     ret = mri_nl_align_binary_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -171,6 +171,7 @@ def first_mult_bcorr_execute(
     """
     cargs = first_mult_bcorr_cargs(params, execution)
     ret = first_mult_bcorr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

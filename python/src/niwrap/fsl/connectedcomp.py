@@ -149,6 +149,7 @@ def connectedcomp_execute(
     """
     cargs = connectedcomp_cargs(params, execution)
     ret = connectedcomp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

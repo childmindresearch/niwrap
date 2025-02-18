@@ -289,6 +289,7 @@ def v_3d_retino_phase_execute(
     """
     cargs = v_3d_retino_phase_cargs(params, execution)
     ret = v_3d_retino_phase_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

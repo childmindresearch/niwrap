@@ -131,6 +131,7 @@ def fslinfo_execute(
     """
     cargs = fslinfo_cargs(params, execution)
     ret = fslinfo_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

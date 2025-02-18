@@ -133,6 +133,7 @@ def rca_config2csh_execute(
     """
     cargs = rca_config2csh_cargs(params, execution)
     ret = rca_config2csh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

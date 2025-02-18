@@ -158,6 +158,7 @@ def volume_copy_extensions_execute(
     """
     cargs = volume_copy_extensions_cargs(params, execution)
     ret = volume_copy_extensions_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

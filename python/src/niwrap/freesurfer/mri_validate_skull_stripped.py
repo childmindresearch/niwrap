@@ -141,6 +141,7 @@ def mri_validate_skull_stripped_execute(
     """
     cargs = mri_validate_skull_stripped_cargs(params, execution)
     ret = mri_validate_skull_stripped_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

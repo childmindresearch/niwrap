@@ -260,6 +260,7 @@ def init_user_dotfiles_py_execute(
     """
     cargs = init_user_dotfiles_py_cargs(params, execution)
     ret = init_user_dotfiles_py_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

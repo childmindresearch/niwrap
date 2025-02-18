@@ -225,6 +225,7 @@ def ap_run_simple_rest_execute(
     """
     cargs = ap_run_simple_rest_cargs(params, execution)
     ret = ap_run_simple_rest_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

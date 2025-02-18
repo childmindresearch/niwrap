@@ -295,6 +295,7 @@ def mri_aparc2aseg_execute(
     """
     cargs = mri_aparc2aseg_cargs(params, execution)
     ret = mri_aparc2aseg_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -259,6 +259,7 @@ def fixelcrop_execute(
     """
     cargs = fixelcrop_cargs(params, execution)
     ret = fixelcrop_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

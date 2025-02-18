@@ -142,6 +142,7 @@ def unpack_ima1_tcl_execute(
     """
     cargs = unpack_ima1_tcl_cargs(params, execution)
     ret = unpack_ima1_tcl_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

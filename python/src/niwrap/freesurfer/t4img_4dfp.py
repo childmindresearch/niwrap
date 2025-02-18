@@ -148,6 +148,7 @@ def t4img_4dfp_execute(
     """
     cargs = t4img_4dfp_cargs(params, execution)
     ret = t4img_4dfp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

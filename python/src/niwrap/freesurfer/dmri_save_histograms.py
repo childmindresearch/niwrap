@@ -165,6 +165,7 @@ def dmri_save_histograms_execute(
     """
     cargs = dmri_save_histograms_cargs(params, execution)
     ret = dmri_save_histograms_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

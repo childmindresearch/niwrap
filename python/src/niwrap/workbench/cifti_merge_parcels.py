@@ -195,6 +195,7 @@ def cifti_merge_parcels_execute(
     """
     cargs = cifti_merge_parcels_cargs(params, execution)
     ret = cifti_merge_parcels_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

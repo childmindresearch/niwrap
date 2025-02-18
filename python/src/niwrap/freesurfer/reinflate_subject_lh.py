@@ -137,6 +137,7 @@ def reinflate_subject_lh_execute(
     """
     cargs = reinflate_subject_lh_cargs(params, execution)
     ret = reinflate_subject_lh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

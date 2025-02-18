@@ -149,6 +149,7 @@ def match_smoothing_execute(
     """
     cargs = match_smoothing_cargs(params, execution)
     ret = match_smoothing_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

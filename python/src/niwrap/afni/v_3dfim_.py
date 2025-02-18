@@ -264,6 +264,7 @@ def v_3dfim__execute(
     """
     cargs = v_3dfim__cargs(params, execution)
     ret = v_3dfim__outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

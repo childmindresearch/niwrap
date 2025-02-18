@@ -222,6 +222,7 @@ def featquery_execute(
     """
     cargs = featquery_cargs(params, execution)
     ret = featquery_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

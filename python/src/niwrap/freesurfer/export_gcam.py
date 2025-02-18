@@ -201,6 +201,7 @@ def export_gcam_execute(
     """
     cargs = export_gcam_cargs(params, execution)
     ret = export_gcam_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

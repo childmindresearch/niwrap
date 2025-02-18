@@ -164,6 +164,7 @@ def mri_morphology_execute(
     """
     cargs = mri_morphology_cargs(params, execution)
     ret = mri_morphology_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

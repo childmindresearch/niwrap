@@ -147,6 +147,7 @@ def tokens_execute(
     """
     cargs = tokens_cargs(params, execution)
     ret = tokens_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

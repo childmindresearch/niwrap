@@ -152,6 +152,7 @@ def mri_ca_tissue_parms_execute(
     """
     cargs = mri_ca_tissue_parms_cargs(params, execution)
     ret = mri_ca_tissue_parms_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

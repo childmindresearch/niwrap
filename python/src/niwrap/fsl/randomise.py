@@ -377,6 +377,7 @@ def randomise_execute(
     """
     cargs = randomise_cargs(params, execution)
     ret = randomise_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

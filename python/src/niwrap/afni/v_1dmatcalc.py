@@ -138,6 +138,7 @@ def v_1dmatcalc_execute(
     """
     cargs = v_1dmatcalc_cargs(params, execution)
     ret = v_1dmatcalc_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -332,6 +332,7 @@ def dcmedit_execute(
     """
     cargs = dcmedit_cargs(params, execution)
     ret = dcmedit_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

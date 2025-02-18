@@ -170,6 +170,7 @@ def surf_retino_map_execute(
     """
     cargs = surf_retino_map_cargs(params, execution)
     ret = surf_retino_map_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

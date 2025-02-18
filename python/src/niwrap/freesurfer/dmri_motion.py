@@ -225,6 +225,7 @@ def dmri_motion_execute(
     """
     cargs = dmri_motion_cargs(params, execution)
     ret = dmri_motion_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

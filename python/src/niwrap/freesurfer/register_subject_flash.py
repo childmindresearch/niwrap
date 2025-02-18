@@ -135,6 +135,7 @@ def register_subject_flash_execute(
     """
     cargs = register_subject_flash_cargs(params, execution)
     ret = register_subject_flash_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

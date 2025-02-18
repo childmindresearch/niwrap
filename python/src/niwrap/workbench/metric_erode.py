@@ -192,6 +192,7 @@ def metric_erode_execute(
     """
     cargs = metric_erode_cargs(params, execution)
     ret = metric_erode_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

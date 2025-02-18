@@ -135,6 +135,7 @@ def mris2rgb_execute(
     """
     cargs = mris2rgb_cargs(params, execution)
     ret = mris2rgb_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

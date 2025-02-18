@@ -183,6 +183,7 @@ def mris_expand_execute(
     """
     cargs = mris_expand_cargs(params, execution)
     ret = mris_expand_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

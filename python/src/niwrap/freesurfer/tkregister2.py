@@ -175,6 +175,7 @@ def tkregister2_execute(
     """
     cargs = tkregister2_cargs(params, execution)
     ret = tkregister2_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

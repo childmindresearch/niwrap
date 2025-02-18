@@ -266,6 +266,7 @@ def fixel2sh_execute(
     """
     cargs = fixel2sh_cargs(params, execution)
     ret = fixel2sh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

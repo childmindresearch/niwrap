@@ -145,6 +145,7 @@ def volume_label_export_table_execute(
     """
     cargs = volume_label_export_table_cargs(params, execution)
     ret = volume_label_export_table_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

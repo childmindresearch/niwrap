@@ -136,6 +136,7 @@ def v__time_diff_execute(
     """
     cargs = v__time_diff_cargs(params, execution)
     ret = v__time_diff_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

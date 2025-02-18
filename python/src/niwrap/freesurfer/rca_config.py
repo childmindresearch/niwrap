@@ -151,6 +151,7 @@ def rca_config_execute(
     """
     cargs = rca_config_cargs(params, execution)
     ret = rca_config_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

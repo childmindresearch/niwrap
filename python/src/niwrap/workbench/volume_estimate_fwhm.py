@@ -210,6 +210,7 @@ def volume_estimate_fwhm_execute(
     """
     cargs = volume_estimate_fwhm_cargs(params, execution)
     ret = volume_estimate_fwhm_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

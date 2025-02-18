@@ -146,6 +146,7 @@ def mri_compute_volume_intensities_execute(
     """
     cargs = mri_compute_volume_intensities_cargs(params, execution)
     ret = mri_compute_volume_intensities_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

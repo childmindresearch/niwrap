@@ -198,6 +198,7 @@ def mri_func2sph_execute(
     """
     cargs = mri_func2sph_cargs(params, execution)
     ret = mri_func2sph_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

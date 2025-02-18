@@ -195,6 +195,7 @@ def long_stats_tps_execute(
     """
     cargs = long_stats_tps_cargs(params, execution)
     ret = long_stats_tps_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

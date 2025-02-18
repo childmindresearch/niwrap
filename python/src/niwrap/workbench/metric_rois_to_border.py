@@ -176,6 +176,7 @@ def metric_rois_to_border_execute(
     """
     cargs = metric_rois_to_border_cargs(params, execution)
     ret = metric_rois_to_border_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -217,6 +217,7 @@ def mri_vol2surf_execute(
     """
     cargs = mri_vol2surf_cargs(params, execution)
     ret = mri_vol2surf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

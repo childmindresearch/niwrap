@@ -140,6 +140,7 @@ def zeropad_execute(
     """
     cargs = zeropad_cargs(params, execution)
     ret = zeropad_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

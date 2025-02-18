@@ -206,6 +206,7 @@ def vol2symsurf_execute(
     """
     cargs = vol2symsurf_cargs(params, execution)
     ret = vol2symsurf_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

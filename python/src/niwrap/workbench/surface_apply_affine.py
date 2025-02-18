@@ -206,6 +206,7 @@ def surface_apply_affine_execute(
     """
     cargs = surface_apply_affine_cargs(params, execution)
     ret = surface_apply_affine_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

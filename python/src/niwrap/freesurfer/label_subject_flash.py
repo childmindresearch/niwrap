@@ -159,6 +159,7 @@ def label_subject_flash_execute(
     """
     cargs = label_subject_flash_cargs(params, execution)
     ret = label_subject_flash_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

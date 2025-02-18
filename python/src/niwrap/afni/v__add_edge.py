@@ -259,6 +259,7 @@ def v__add_edge_execute(
     """
     cargs = v__add_edge_cargs(params, execution)
     ret = v__add_edge_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

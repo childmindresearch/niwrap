@@ -336,6 +336,7 @@ def v_3d_clusterize_execute(
     """
     cargs = v_3d_clusterize_cargs(params, execution)
     ret = v_3d_clusterize_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

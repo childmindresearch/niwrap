@@ -198,6 +198,7 @@ def mri_synthsr_execute(
     """
     cargs = mri_synthsr_cargs(params, execution)
     ret = mri_synthsr_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

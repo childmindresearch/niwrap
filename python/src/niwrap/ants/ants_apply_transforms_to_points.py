@@ -271,6 +271,7 @@ def ants_apply_transforms_to_points_execute(
     """
     cargs = ants_apply_transforms_to_points_cargs(params, execution)
     ret = ants_apply_transforms_to_points_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

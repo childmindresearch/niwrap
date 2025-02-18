@@ -352,6 +352,7 @@ def fixel2peaks_execute(
     """
     cargs = fixel2peaks_cargs(params, execution)
     ret = fixel2peaks_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

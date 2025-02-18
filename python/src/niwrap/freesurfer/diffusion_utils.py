@@ -133,6 +133,7 @@ def diffusion_utils_execute(
     """
     cargs = diffusion_utils_cargs(params, execution)
     ret = diffusion_utils_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

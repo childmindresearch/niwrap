@@ -136,6 +136,7 @@ def imdump_execute(
     """
     cargs = imdump_cargs(params, execution)
     ret = imdump_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

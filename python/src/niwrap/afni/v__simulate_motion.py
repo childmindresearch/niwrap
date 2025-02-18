@@ -261,6 +261,7 @@ def v__simulate_motion_execute(
     """
     cargs = v__simulate_motion_cargs(params, execution)
     ret = v__simulate_motion_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -568,6 +568,7 @@ def volume_palette_execute(
     """
     cargs = volume_palette_cargs(params, execution)
     ret = volume_palette_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

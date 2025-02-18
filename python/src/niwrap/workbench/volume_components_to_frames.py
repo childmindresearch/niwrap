@@ -144,6 +144,7 @@ def volume_components_to_frames_execute(
     """
     cargs = volume_components_to_frames_cargs(params, execution)
     ret = volume_components_to_frames_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

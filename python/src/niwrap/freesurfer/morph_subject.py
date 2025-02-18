@@ -132,6 +132,7 @@ def morph_subject_execute(
     """
     cargs = morph_subject_cargs(params, execution)
     ret = morph_subject_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

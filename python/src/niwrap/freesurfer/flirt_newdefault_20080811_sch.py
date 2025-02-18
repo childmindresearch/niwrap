@@ -148,6 +148,7 @@ def flirt_newdefault_20080811_sch_execute(
     """
     cargs = flirt_newdefault_20080811_sch_cargs(params, execution)
     ret = flirt_newdefault_20080811_sch_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

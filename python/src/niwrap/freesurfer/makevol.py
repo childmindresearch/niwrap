@@ -211,6 +211,7 @@ def makevol_execute(
     """
     cargs = makevol_cargs(params, execution)
     ret = makevol_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

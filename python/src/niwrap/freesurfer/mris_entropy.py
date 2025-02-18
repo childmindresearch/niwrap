@@ -167,6 +167,7 @@ def mris_entropy_execute(
     """
     cargs = mris_entropy_cargs(params, execution)
     ret = mris_entropy_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

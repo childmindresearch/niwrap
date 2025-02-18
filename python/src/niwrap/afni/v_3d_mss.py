@@ -294,6 +294,7 @@ def v_3d_mss_execute(
     """
     cargs = v_3d_mss_cargs(params, execution)
     ret = v_3d_mss_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

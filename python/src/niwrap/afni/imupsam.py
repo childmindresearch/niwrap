@@ -153,6 +153,7 @@ def imupsam_execute(
     """
     cargs = imupsam_cargs(params, execution)
     ret = imupsam_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

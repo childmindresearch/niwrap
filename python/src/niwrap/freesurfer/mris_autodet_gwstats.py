@@ -270,6 +270,7 @@ def mris_autodet_gwstats_execute(
     """
     cargs = mris_autodet_gwstats_cargs(params, execution)
     ret = mris_autodet_gwstats_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

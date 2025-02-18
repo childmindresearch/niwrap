@@ -140,6 +140,7 @@ def dmri_neighboring_regions_execute(
     """
     cargs = dmri_neighboring_regions_cargs(params, execution)
     ret = dmri_neighboring_regions_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

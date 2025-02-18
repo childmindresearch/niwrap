@@ -387,6 +387,7 @@ def cifti_dilate_execute(
     """
     cargs = cifti_dilate_cargs(params, execution)
     ret = cifti_dilate_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

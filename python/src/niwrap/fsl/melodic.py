@@ -556,6 +556,7 @@ def melodic_execute(
     """
     cargs = melodic_cargs(params, execution)
     ret = melodic_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

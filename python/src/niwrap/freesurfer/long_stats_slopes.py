@@ -368,6 +368,7 @@ def long_stats_slopes_execute(
     """
     cargs = long_stats_slopes_cargs(params, execution)
     ret = long_stats_slopes_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

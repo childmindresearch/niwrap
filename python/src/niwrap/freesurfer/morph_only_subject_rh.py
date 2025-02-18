@@ -140,6 +140,7 @@ def morph_only_subject_rh_execute(
     """
     cargs = morph_only_subject_rh_cargs(params, execution)
     ret = morph_only_subject_rh_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

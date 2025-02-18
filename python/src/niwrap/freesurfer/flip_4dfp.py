@@ -172,6 +172,7 @@ def flip_4dfp_execute(
     """
     cargs = flip_4dfp_cargs(params, execution)
     ret = flip_4dfp_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

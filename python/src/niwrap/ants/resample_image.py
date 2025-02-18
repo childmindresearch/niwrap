@@ -169,6 +169,7 @@ def resample_image_execute(
     """
     cargs = resample_image_cargs(params, execution)
     ret = resample_image_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -169,6 +169,7 @@ def fs_time_execute(
     """
     cargs = fs_time_cargs(params, execution)
     ret = fs_time_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

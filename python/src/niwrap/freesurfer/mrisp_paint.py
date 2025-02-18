@@ -255,6 +255,7 @@ def mrisp_paint_execute(
     """
     cargs = mrisp_paint_cargs(params, execution)
     ret = mrisp_paint_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

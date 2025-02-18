@@ -195,6 +195,7 @@ def cifti_label_import_execute(
     """
     cargs = cifti_label_import_cargs(params, execution)
     ret = cifti_label_import_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

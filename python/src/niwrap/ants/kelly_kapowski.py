@@ -337,6 +337,7 @@ def kelly_kapowski_execute(
     """
     cargs = kelly_kapowski_cargs(params, execution)
     ret = kelly_kapowski_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

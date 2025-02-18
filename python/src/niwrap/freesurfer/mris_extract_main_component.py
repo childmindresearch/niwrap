@@ -140,6 +140,7 @@ def mris_extract_main_component_execute(
     """
     cargs = mris_extract_main_component_cargs(params, execution)
     ret = mris_extract_main_component_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

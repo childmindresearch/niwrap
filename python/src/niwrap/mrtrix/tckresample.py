@@ -451,6 +451,7 @@ def tckresample_execute(
     """
     cargs = tckresample_cargs(params, execution)
     ret = tckresample_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -175,6 +175,7 @@ def mris_aa_shrinkwrap_execute(
     """
     cargs = mris_aa_shrinkwrap_cargs(params, execution)
     ret = mris_aa_shrinkwrap_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

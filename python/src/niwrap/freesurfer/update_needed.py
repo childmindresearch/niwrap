@@ -137,6 +137,7 @@ def update_needed_execute(
     """
     cargs = update_needed_cargs(params, execution)
     ret = update_needed_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -153,6 +153,7 @@ def siena_flow2std_execute(
     """
     cargs = siena_flow2std_cargs(params, execution)
     ret = siena_flow2std_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 

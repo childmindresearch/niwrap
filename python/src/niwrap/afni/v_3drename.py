@@ -136,6 +136,7 @@ def v_3drename_execute(
     """
     cargs = v_3drename_cargs(params, execution)
     ret = v_3drename_outputs(params, execution)
+    params = execution.params(params)
     execution.run(cargs)
     return ret
 
