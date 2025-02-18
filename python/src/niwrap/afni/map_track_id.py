@@ -187,9 +187,9 @@ def map_track_id_execute(
     Returns:
         NamedTuple of outputs (described in `MapTrackIdOutputs`).
     """
+    params = execution.params(params)
     cargs = map_track_id_cargs(params, execution)
     ret = map_track_id_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

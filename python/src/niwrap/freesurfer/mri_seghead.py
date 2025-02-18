@@ -262,9 +262,9 @@ def mri_seghead_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegheadOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_seghead_cargs(params, execution)
     ret = mri_seghead_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

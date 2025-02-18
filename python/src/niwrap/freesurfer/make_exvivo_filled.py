@@ -144,9 +144,9 @@ def make_exvivo_filled_execute(
     Returns:
         NamedTuple of outputs (described in `MakeExvivoFilledOutputs`).
     """
+    params = execution.params(params)
     cargs = make_exvivo_filled_cargs(params, execution)
     ret = make_exvivo_filled_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

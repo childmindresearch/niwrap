@@ -265,9 +265,9 @@ def v_5tt2gmwmi_execute(
     Returns:
         NamedTuple of outputs (described in `V5tt2gmwmiOutputs`).
     """
+    params = execution.params(params)
     cargs = v_5tt2gmwmi_cargs(params, execution)
     ret = v_5tt2gmwmi_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

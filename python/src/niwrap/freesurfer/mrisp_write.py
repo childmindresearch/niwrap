@@ -218,9 +218,9 @@ def mrisp_write_execute(
     Returns:
         NamedTuple of outputs (described in `MrispWriteOutputs`).
     """
+    params = execution.params(params)
     cargs = mrisp_write_cargs(params, execution)
     ret = mrisp_write_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -157,9 +157,9 @@ def fslcomplex_execute(
     Returns:
         NamedTuple of outputs (described in `FslcomplexOutputs`).
     """
+    params = execution.params(params)
     cargs = fslcomplex_cargs(params, execution)
     ret = fslcomplex_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

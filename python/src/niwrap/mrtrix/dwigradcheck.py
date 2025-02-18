@@ -422,9 +422,9 @@ def dwigradcheck_execute(
     Returns:
         NamedTuple of outputs (described in `DwigradcheckOutputs`).
     """
+    params = execution.params(params)
     cargs = dwigradcheck_cargs(params, execution)
     ret = dwigradcheck_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -146,9 +146,9 @@ def border_export_color_table_execute(
     Returns:
         NamedTuple of outputs (described in `BorderExportColorTableOutputs`).
     """
+    params = execution.params(params)
     cargs = border_export_color_table_cargs(params, execution)
     ret = border_export_color_table_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

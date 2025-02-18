@@ -144,9 +144,9 @@ def mri_compute_volume_intensities_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeVolumeIntensitiesOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_compute_volume_intensities_cargs(params, execution)
     ret = mri_compute_volume_intensities_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -269,9 +269,9 @@ def v_3d_undump_execute(
     Returns:
         NamedTuple of outputs (described in `V3dUndumpOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_undump_cargs(params, execution)
     ret = v_3d_undump_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

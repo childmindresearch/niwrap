@@ -142,9 +142,9 @@ def surface_vertex_areas_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceVertexAreasOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_vertex_areas_cargs(params, execution)
     ret = surface_vertex_areas_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

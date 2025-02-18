@@ -338,9 +338,9 @@ def connectome2tck_execute(
     Returns:
         NamedTuple of outputs (described in `Connectome2tckOutputs`).
     """
+    params = execution.params(params)
     cargs = connectome2tck_cargs(params, execution)
     ret = connectome2tck_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

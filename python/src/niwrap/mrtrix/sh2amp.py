@@ -479,9 +479,9 @@ def sh2amp_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2ampOutputs`).
     """
+    params = execution.params(params)
     cargs = sh2amp_cargs(params, execution)
     ret = sh2amp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

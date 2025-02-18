@@ -240,9 +240,9 @@ def dmri_extract_surface_measurements_execute(
     Returns:
         NamedTuple of outputs (described in `DmriExtractSurfaceMeasurementsOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_extract_surface_measurements_cargs(params, execution)
     ret = dmri_extract_surface_measurements_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

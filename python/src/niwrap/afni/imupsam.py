@@ -151,9 +151,9 @@ def imupsam_execute(
     Returns:
         NamedTuple of outputs (described in `ImupsamOutputs`).
     """
+    params = execution.params(params)
     cargs = imupsam_cargs(params, execution)
     ret = imupsam_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

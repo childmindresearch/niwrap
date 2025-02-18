@@ -324,9 +324,9 @@ def cifti_merge_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiMergeOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_merge_cargs(params, execution)
     ret = cifti_merge_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

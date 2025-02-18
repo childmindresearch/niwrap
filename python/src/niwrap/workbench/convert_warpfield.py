@@ -342,9 +342,9 @@ def convert_warpfield_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertWarpfieldOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_warpfield_cargs(params, execution)
     ret = convert_warpfield_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

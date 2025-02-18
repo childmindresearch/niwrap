@@ -155,9 +155,9 @@ def border_resample_execute(
     Returns:
         NamedTuple of outputs (described in `BorderResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = border_resample_cargs(params, execution)
     ret = border_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -208,9 +208,9 @@ def pta_execute(
     Returns:
         NamedTuple of outputs (described in `PtaOutputs`).
     """
+    params = execution.params(params)
     cargs = pta_cargs(params, execution)
     ret = pta_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

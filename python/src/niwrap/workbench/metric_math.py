@@ -290,9 +290,9 @@ def metric_math_execute(
     Returns:
         NamedTuple of outputs (described in `MetricMathOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_math_cargs(params, execution)
     ret = metric_math_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

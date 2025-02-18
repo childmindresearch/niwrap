@@ -138,9 +138,9 @@ def mri_motion_correct_execute(
     Returns:
         NamedTuple of outputs (described in `MriMotionCorrectOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_motion_correct_cargs(params, execution)
     ret = mri_motion_correct_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -288,9 +288,9 @@ def imreg_execute(
     Returns:
         NamedTuple of outputs (described in `ImregOutputs`).
     """
+    params = execution.params(params)
     cargs = imreg_cargs(params, execution)
     ret = imreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

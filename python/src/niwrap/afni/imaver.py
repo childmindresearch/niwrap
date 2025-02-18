@@ -151,9 +151,9 @@ def imaver_execute(
     Returns:
         NamedTuple of outputs (described in `ImaverOutputs`).
     """
+    params = execution.params(params)
     cargs = imaver_cargs(params, execution)
     ret = imaver_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

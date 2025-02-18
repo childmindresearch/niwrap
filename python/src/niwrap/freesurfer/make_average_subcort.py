@@ -142,9 +142,9 @@ def make_average_subcort_execute(
     Returns:
         NamedTuple of outputs (described in `MakeAverageSubcortOutputs`).
     """
+    params = execution.params(params)
     cargs = make_average_subcort_cargs(params, execution)
     ret = make_average_subcort_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

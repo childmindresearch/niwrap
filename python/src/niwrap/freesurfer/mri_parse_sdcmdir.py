@@ -162,9 +162,9 @@ def mri_parse_sdcmdir_execute(
     Returns:
         NamedTuple of outputs (described in `MriParseSdcmdirOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_parse_sdcmdir_cargs(params, execution)
     ret = mri_parse_sdcmdir_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

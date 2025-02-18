@@ -132,9 +132,9 @@ def sphere_subject_rh_execute(
     Returns:
         NamedTuple of outputs (described in `SphereSubjectRhOutputs`).
     """
+    params = execution.params(params)
     cargs = sphere_subject_rh_cargs(params, execution)
     ret = sphere_subject_rh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -274,9 +274,9 @@ def brain_skin_execute(
     Returns:
         NamedTuple of outputs (described in `BrainSkinOutputs`).
     """
+    params = execution.params(params)
     cargs = brain_skin_cargs(params, execution)
     ret = brain_skin_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -209,9 +209,9 @@ def betsurf_execute(
     Returns:
         NamedTuple of outputs (described in `BetsurfOutputs`).
     """
+    params = execution.params(params)
     cargs = betsurf_cargs(params, execution)
     ret = betsurf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

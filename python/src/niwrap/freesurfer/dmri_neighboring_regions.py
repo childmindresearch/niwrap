@@ -138,9 +138,9 @@ def dmri_neighboring_regions_execute(
     Returns:
         NamedTuple of outputs (described in `DmriNeighboringRegionsOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_neighboring_regions_cargs(params, execution)
     ret = dmri_neighboring_regions_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

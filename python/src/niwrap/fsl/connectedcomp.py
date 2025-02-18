@@ -147,9 +147,9 @@ def connectedcomp_execute(
     Returns:
         NamedTuple of outputs (described in `ConnectedcompOutputs`).
     """
+    params = execution.params(params)
     cargs = connectedcomp_cargs(params, execution)
     ret = connectedcomp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

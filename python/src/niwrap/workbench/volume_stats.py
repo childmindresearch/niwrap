@@ -252,9 +252,9 @@ def volume_stats_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_stats_cargs(params, execution)
     ret = volume_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

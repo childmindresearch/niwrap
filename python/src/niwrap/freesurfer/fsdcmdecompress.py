@@ -168,9 +168,9 @@ def fsdcmdecompress_execute(
     Returns:
         NamedTuple of outputs (described in `FsdcmdecompressOutputs`).
     """
+    params = execution.params(params)
     cargs = fsdcmdecompress_cargs(params, execution)
     ret = fsdcmdecompress_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

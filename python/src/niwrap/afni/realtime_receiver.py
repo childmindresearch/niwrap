@@ -233,9 +233,9 @@ def realtime_receiver_execute(
     Returns:
         NamedTuple of outputs (described in `RealtimeReceiverOutputs`).
     """
+    params = execution.params(params)
     cargs = realtime_receiver_cargs(params, execution)
     ret = realtime_receiver_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

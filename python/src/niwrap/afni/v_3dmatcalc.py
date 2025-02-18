@@ -167,9 +167,9 @@ def v_3dmatcalc_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmatcalcOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dmatcalc_cargs(params, execution)
     ret = v_3dmatcalc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

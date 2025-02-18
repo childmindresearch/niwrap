@@ -252,9 +252,9 @@ def epi_reg_execute(
     Returns:
         NamedTuple of outputs (described in `EpiRegOutputs`).
     """
+    params = execution.params(params)
     cargs = epi_reg_cargs(params, execution)
     ret = epi_reg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

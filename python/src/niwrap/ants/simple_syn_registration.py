@@ -151,9 +151,9 @@ def simple_syn_registration_execute(
     Returns:
         NamedTuple of outputs (described in `SimpleSynRegistrationOutputs`).
     """
+    params = execution.params(params)
     cargs = simple_syn_registration_cargs(params, execution)
     ret = simple_syn_registration_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

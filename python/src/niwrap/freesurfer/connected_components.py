@@ -128,9 +128,9 @@ def connected_components_execute(
     Returns:
         NamedTuple of outputs (described in `ConnectedComponentsOutputs`).
     """
+    params = execution.params(params)
     cargs = connected_components_cargs(params, execution)
     ret = connected_components_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

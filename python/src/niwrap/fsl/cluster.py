@@ -328,9 +328,9 @@ def cluster_execute(
     Returns:
         NamedTuple of outputs (described in `ClusterOutputs`).
     """
+    params = execution.params(params)
     cargs = cluster_cargs(params, execution)
     ret = cluster_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

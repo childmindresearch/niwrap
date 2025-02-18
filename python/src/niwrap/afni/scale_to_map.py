@@ -348,9 +348,9 @@ def scale_to_map_execute(
     Returns:
         NamedTuple of outputs (described in `ScaleToMapOutputs`).
     """
+    params = execution.params(params)
     cargs = scale_to_map_cargs(params, execution)
     ret = scale_to_map_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

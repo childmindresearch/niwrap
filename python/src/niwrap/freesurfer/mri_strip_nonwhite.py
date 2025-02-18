@@ -150,9 +150,9 @@ def mri_strip_nonwhite_execute(
     Returns:
         NamedTuple of outputs (described in `MriStripNonwhiteOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_strip_nonwhite_cargs(params, execution)
     ret = mri_strip_nonwhite_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

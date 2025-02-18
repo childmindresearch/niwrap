@@ -328,9 +328,9 @@ def metric_resample_execute(
     Returns:
         NamedTuple of outputs (described in `MetricResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_resample_cargs(params, execution)
     ret = metric_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

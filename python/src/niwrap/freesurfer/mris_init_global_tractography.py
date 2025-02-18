@@ -139,9 +139,9 @@ def mris_init_global_tractography_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInitGlobalTractographyOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_init_global_tractography_cargs(params, execution)
     ret = mris_init_global_tractography_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -178,9 +178,9 @@ def dmri_group_execute(
     Returns:
         NamedTuple of outputs (described in `DmriGroupOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_group_cargs(params, execution)
     ret = dmri_group_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

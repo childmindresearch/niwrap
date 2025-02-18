@@ -195,9 +195,9 @@ def v_3d_automask_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAutomaskOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_automask_cargs(params, execution)
     ret = v_3d_automask_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

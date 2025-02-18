@@ -134,9 +134,9 @@ def inflate_subject3_execute(
     Returns:
         NamedTuple of outputs (described in `InflateSubject3Outputs`).
     """
+    params = execution.params(params)
     cargs = inflate_subject3_cargs(params, execution)
     ret = inflate_subject3_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

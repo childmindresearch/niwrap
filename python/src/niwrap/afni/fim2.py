@@ -348,9 +348,9 @@ def fim2_execute(
     Returns:
         NamedTuple of outputs (described in `Fim2Outputs`).
     """
+    params = execution.params(params)
     cargs = fim2_cargs(params, execution)
     ret = fim2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

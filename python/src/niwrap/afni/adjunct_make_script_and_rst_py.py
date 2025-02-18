@@ -177,9 +177,9 @@ def adjunct_make_script_and_rst_py_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctMakeScriptAndRstPyOutputs`).
     """
+    params = execution.params(params)
     cargs = adjunct_make_script_and_rst_py_cargs(params, execution)
     ret = adjunct_make_script_and_rst_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

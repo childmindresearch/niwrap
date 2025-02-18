@@ -228,9 +228,9 @@ def roi2dataset_execute(
     Returns:
         NamedTuple of outputs (described in `Roi2datasetOutputs`).
     """
+    params = execution.params(params)
     cargs = roi2dataset_cargs(params, execution)
     ret = roi2dataset_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

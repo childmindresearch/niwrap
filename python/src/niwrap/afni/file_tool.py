@@ -414,9 +414,9 @@ def file_tool_execute(
     Returns:
         NamedTuple of outputs (described in `FileToolOutputs`).
     """
+    params = execution.params(params)
     cargs = file_tool_cargs(params, execution)
     ret = file_tool_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

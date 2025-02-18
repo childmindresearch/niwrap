@@ -181,9 +181,9 @@ def robustfov_execute(
     Returns:
         NamedTuple of outputs (described in `RobustfovOutputs`).
     """
+    params = execution.params(params)
     cargs = robustfov_cargs(params, execution)
     ret = robustfov_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

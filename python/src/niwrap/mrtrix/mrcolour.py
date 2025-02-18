@@ -294,9 +294,9 @@ def mrcolour_execute(
     Returns:
         NamedTuple of outputs (described in `MrcolourOutputs`).
     """
+    params = execution.params(params)
     cargs = mrcolour_cargs(params, execution)
     ret = mrcolour_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

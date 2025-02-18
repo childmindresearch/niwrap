@@ -606,9 +606,9 @@ def v_1dplot_execute(
     Returns:
         NamedTuple of outputs (described in `V1dplotOutputs`).
     """
+    params = execution.params(params)
     cargs = v_1dplot_cargs(params, execution)
     ret = v_1dplot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

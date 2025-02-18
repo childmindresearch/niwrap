@@ -483,9 +483,9 @@ def fixelfilter_execute(
     Returns:
         NamedTuple of outputs (described in `FixelfilterOutputs`).
     """
+    params = execution.params(params)
     cargs = fixelfilter_cargs(params, execution)
     ret = fixelfilter_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

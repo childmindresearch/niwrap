@@ -144,9 +144,9 @@ def quotize_execute(
     Returns:
         NamedTuple of outputs (described in `QuotizeOutputs`).
     """
+    params = execution.params(params)
     cargs = quotize_cargs(params, execution)
     ret = quotize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

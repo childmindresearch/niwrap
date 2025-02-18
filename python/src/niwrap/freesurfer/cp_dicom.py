@@ -147,9 +147,9 @@ def cp_dicom_execute(
     Returns:
         NamedTuple of outputs (described in `CpDicomOutputs`).
     """
+    params = execution.params(params)
     cargs = cp_dicom_cargs(params, execution)
     ret = cp_dicom_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

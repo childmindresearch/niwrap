@@ -311,9 +311,9 @@ def mri_label2vol_execute(
     Returns:
         NamedTuple of outputs (described in `MriLabel2volOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_label2vol_cargs(params, execution)
     ret = mri_label2vol_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -170,9 +170,9 @@ def volume_erode_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeErodeOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_erode_cargs(params, execution)
     ret = volume_erode_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

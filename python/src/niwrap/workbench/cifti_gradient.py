@@ -385,9 +385,9 @@ def cifti_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiGradientOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_gradient_cargs(params, execution)
     ret = cifti_gradient_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

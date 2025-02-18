@@ -129,9 +129,9 @@ def tal_qc_azs_execute(
     Returns:
         NamedTuple of outputs (described in `TalQcAzsOutputs`).
     """
+    params = execution.params(params)
     cargs = tal_qc_azs_cargs(params, execution)
     ret = tal_qc_azs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -132,9 +132,9 @@ def list_otl_labels_execute(
     Returns:
         NamedTuple of outputs (described in `ListOtlLabelsOutputs`).
     """
+    params = execution.params(params)
     cargs = list_otl_labels_cargs(params, execution)
     ret = list_otl_labels_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

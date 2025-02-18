@@ -189,9 +189,9 @@ def v_3d_diff_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDiffOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_diff_cargs(params, execution)
     ret = v_3d_diff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

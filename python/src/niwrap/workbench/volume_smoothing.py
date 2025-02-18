@@ -191,9 +191,9 @@ def volume_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeSmoothingOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_smoothing_cargs(params, execution)
     ret = volume_smoothing_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

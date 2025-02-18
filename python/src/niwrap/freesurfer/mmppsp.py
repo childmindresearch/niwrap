@@ -212,9 +212,9 @@ def mmppsp_execute(
     Returns:
         NamedTuple of outputs (described in `MmppspOutputs`).
     """
+    params = execution.params(params)
     cargs = mmppsp_cargs(params, execution)
     ret = mmppsp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

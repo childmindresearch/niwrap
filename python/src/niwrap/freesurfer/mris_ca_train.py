@@ -333,9 +333,9 @@ def mris_ca_train_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCaTrainOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_ca_train_cargs(params, execution)
     ret = mris_ca_train_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

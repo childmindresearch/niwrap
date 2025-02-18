@@ -149,9 +149,9 @@ def ico_supersample_execute(
     Returns:
         NamedTuple of outputs (described in `IcoSupersampleOutputs`).
     """
+    params = execution.params(params)
     cargs = ico_supersample_cargs(params, execution)
     ret = ico_supersample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

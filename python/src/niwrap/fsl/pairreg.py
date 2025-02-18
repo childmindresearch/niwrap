@@ -160,9 +160,9 @@ def pairreg_execute(
     Returns:
         NamedTuple of outputs (described in `PairregOutputs`).
     """
+    params = execution.params(params)
     cargs = pairreg_cargs(params, execution)
     ret = pairreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

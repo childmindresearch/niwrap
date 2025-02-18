@@ -142,9 +142,9 @@ def print_header_execute(
     Returns:
         NamedTuple of outputs (described in `PrintHeaderOutputs`).
     """
+    params = execution.params(params)
     cargs = print_header_cargs(params, execution)
     ret = print_header_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

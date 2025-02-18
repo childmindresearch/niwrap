@@ -177,9 +177,9 @@ def imcutup_execute(
     Returns:
         NamedTuple of outputs (described in `ImcutupOutputs`).
     """
+    params = execution.params(params)
     cargs = imcutup_cargs(params, execution)
     ret = imcutup_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

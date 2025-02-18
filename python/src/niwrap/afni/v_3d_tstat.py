@@ -534,9 +534,9 @@ def v_3d_tstat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTstatOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_tstat_cargs(params, execution)
     ret = v_3d_tstat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -218,9 +218,9 @@ def xcerebralseg_execute(
     Returns:
         NamedTuple of outputs (described in `XcerebralsegOutputs`).
     """
+    params = execution.params(params)
     cargs = xcerebralseg_cargs(params, execution)
     ret = xcerebralseg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

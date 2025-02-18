@@ -220,9 +220,9 @@ def map_icosahedron_execute(
     Returns:
         NamedTuple of outputs (described in `MapIcosahedronOutputs`).
     """
+    params = execution.params(params)
     cargs = map_icosahedron_cargs(params, execution)
     ret = map_icosahedron_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

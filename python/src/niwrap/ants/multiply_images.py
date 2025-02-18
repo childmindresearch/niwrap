@@ -161,9 +161,9 @@ def multiply_images_execute(
     Returns:
         NamedTuple of outputs (described in `MultiplyImagesOutputs`).
     """
+    params = execution.params(params)
     cargs = multiply_images_cargs(params, execution)
     ret = multiply_images_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

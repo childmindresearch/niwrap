@@ -197,9 +197,9 @@ def mris_flatten_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFlattenOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_flatten_cargs(params, execution)
     ret = mris_flatten_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

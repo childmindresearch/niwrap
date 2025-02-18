@@ -144,9 +144,9 @@ def get_afni_model_prf_execute(
     Returns:
         NamedTuple of outputs (described in `GetAfniModelPrfOutputs`).
     """
+    params = execution.params(params)
     cargs = get_afni_model_prf_cargs(params, execution)
     ret = get_afni_model_prf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

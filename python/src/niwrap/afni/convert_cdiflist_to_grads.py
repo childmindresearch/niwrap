@@ -186,9 +186,9 @@ def convert_cdiflist_to_grads_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertCdiflistToGradsOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_cdiflist_to_grads_cargs(params, execution)
     ret = convert_cdiflist_to_grads_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

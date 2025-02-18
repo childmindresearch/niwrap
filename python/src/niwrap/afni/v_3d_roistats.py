@@ -267,9 +267,9 @@ def v_3d_roistats_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRoistatsOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_roistats_cargs(params, execution)
     ret = v_3d_roistats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs, handle_stdout=lambda s: ret.stats.append(s))
     return ret
 

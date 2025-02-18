@@ -150,9 +150,9 @@ def fsladd_execute(
     Returns:
         NamedTuple of outputs (described in `FsladdOutputs`).
     """
+    params = execution.params(params)
     cargs = fsladd_cargs(params, execution)
     ret = fsladd_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

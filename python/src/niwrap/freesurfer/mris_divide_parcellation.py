@@ -175,9 +175,9 @@ def mris_divide_parcellation_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDivideParcellationOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_divide_parcellation_cargs(params, execution)
     ret = mris_divide_parcellation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

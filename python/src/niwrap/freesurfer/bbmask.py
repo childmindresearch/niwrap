@@ -200,9 +200,9 @@ def bbmask_execute(
     Returns:
         NamedTuple of outputs (described in `BbmaskOutputs`).
     """
+    params = execution.params(params)
     cargs = bbmask_cargs(params, execution)
     ret = bbmask_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

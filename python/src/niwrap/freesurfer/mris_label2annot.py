@@ -248,9 +248,9 @@ def mris_label2annot_execute(
     Returns:
         NamedTuple of outputs (described in `MrisLabel2annotOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_label2annot_cargs(params, execution)
     ret = mris_label2annot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

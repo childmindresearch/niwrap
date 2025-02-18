@@ -193,9 +193,9 @@ def rcbf_prep_execute(
     Returns:
         NamedTuple of outputs (described in `RcbfPrepOutputs`).
     """
+    params = execution.params(params)
     cargs = rcbf_prep_cargs(params, execution)
     ret = rcbf_prep_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

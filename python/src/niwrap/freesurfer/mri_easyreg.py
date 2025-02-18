@@ -233,9 +233,9 @@ def mri_easyreg_execute(
     Returns:
         NamedTuple of outputs (described in `MriEasyregOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_easyreg_cargs(params, execution)
     ret = mri_easyreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

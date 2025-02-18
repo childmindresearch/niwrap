@@ -321,9 +321,9 @@ def foci_resample_execute(
     Returns:
         NamedTuple of outputs (described in `FociResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = foci_resample_cargs(params, execution)
     ret = foci_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -130,9 +130,9 @@ def imrm_execute(
     Returns:
         NamedTuple of outputs (described in `ImrmOutputs`).
     """
+    params = execution.params(params)
     cargs = imrm_cargs(params, execution)
     ret = imrm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

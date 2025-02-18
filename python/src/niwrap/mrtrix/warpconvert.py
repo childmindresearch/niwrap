@@ -297,9 +297,9 @@ def warpconvert_execute(
     Returns:
         NamedTuple of outputs (described in `WarpconvertOutputs`).
     """
+    params = execution.params(params)
     cargs = warpconvert_cargs(params, execution)
     ret = warpconvert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

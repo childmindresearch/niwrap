@@ -256,9 +256,9 @@ def tsfinfo_execute(
     Returns:
         NamedTuple of outputs (described in `TsfinfoOutputs`).
     """
+    params = execution.params(params)
     cargs = tsfinfo_cargs(params, execution)
     ret = tsfinfo_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

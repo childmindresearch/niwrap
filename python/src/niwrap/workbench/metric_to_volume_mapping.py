@@ -247,9 +247,9 @@ def metric_to_volume_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `MetricToVolumeMappingOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_to_volume_mapping_cargs(params, execution)
     ret = metric_to_volume_mapping_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -204,9 +204,9 @@ def std2imgcoord_execute(
     Returns:
         NamedTuple of outputs (described in `Std2imgcoordOutputs`).
     """
+    params = execution.params(params)
     cargs = std2imgcoord_cargs(params, execution)
     ret = std2imgcoord_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

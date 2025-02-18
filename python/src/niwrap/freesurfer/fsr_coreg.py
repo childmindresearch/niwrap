@@ -184,9 +184,9 @@ def fsr_coreg_execute(
     Returns:
         NamedTuple of outputs (described in `FsrCoregOutputs`).
     """
+    params = execution.params(params)
     cargs = fsr_coreg_cargs(params, execution)
     ret = fsr_coreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

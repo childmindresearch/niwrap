@@ -136,9 +136,9 @@ def aff2rigid_execute(
     Returns:
         NamedTuple of outputs (described in `Aff2rigidOutputs`).
     """
+    params = execution.params(params)
     cargs = aff2rigid_cargs(params, execution)
     ret = aff2rigid_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -312,9 +312,9 @@ def cifti_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiExtremaOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_extrema_cargs(params, execution)
     ret = cifti_extrema_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

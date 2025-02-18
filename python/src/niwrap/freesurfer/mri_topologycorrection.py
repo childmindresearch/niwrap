@@ -138,9 +138,9 @@ def mri_topologycorrection_execute(
     Returns:
         NamedTuple of outputs (described in `MriTopologycorrectionOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_topologycorrection_cargs(params, execution)
     ret = mri_topologycorrection_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

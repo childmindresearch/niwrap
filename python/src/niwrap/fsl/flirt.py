@@ -546,9 +546,9 @@ def flirt_execute(
     Returns:
         NamedTuple of outputs (described in `FlirtOutputs`).
     """
+    params = execution.params(params)
     cargs = flirt_cargs(params, execution)
     ret = flirt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

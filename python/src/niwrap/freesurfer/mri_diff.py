@@ -358,9 +358,9 @@ def mri_diff_execute(
     Returns:
         NamedTuple of outputs (described in `MriDiffOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_diff_cargs(params, execution)
     ret = mri_diff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

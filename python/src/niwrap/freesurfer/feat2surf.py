@@ -229,9 +229,9 @@ def feat2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Feat2surfOutputs`).
     """
+    params = execution.params(params)
     cargs = feat2surf_cargs(params, execution)
     ret = feat2surf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

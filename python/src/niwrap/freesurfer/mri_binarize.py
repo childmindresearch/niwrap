@@ -413,9 +413,9 @@ def mri_binarize_execute(
     Returns:
         NamedTuple of outputs (described in `MriBinarizeOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_binarize_cargs(params, execution)
     ret = mri_binarize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -450,9 +450,9 @@ def flirt_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `FlirtFslOutputs`).
     """
+    params = execution.params(params)
     cargs = flirt_fsl_cargs(params, execution)
     ret = flirt_fsl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

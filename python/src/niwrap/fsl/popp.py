@@ -433,9 +433,9 @@ def popp_execute(
     Returns:
         NamedTuple of outputs (described in `PoppOutputs`).
     """
+    params = execution.params(params)
     cargs = popp_cargs(params, execution)
     ret = popp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

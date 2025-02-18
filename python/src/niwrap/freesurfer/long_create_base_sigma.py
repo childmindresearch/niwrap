@@ -136,9 +136,9 @@ def long_create_base_sigma_execute(
     Returns:
         NamedTuple of outputs (described in `LongCreateBaseSigmaOutputs`).
     """
+    params = execution.params(params)
     cargs = long_create_base_sigma_cargs(params, execution)
     ret = long_create_base_sigma_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

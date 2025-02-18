@@ -292,9 +292,9 @@ def mraverageheader_execute(
     Returns:
         NamedTuple of outputs (described in `MraverageheaderOutputs`).
     """
+    params = execution.params(params)
     cargs = mraverageheader_cargs(params, execution)
     ret = mraverageheader_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

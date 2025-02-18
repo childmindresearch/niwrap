@@ -390,9 +390,9 @@ def qdelaunay_execute(
     Returns:
         NamedTuple of outputs (described in `QdelaunayOutputs`).
     """
+    params = execution.params(params)
     cargs = qdelaunay_cargs(params, execution)
     ret = qdelaunay_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

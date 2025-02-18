@@ -451,9 +451,9 @@ def n4_bias_field_correction_execute(
     Returns:
         NamedTuple of outputs (described in `N4BiasFieldCorrectionOutputs`).
     """
+    params = execution.params(params)
     cargs = n4_bias_field_correction_cargs(params, execution)
     ret = n4_bias_field_correction_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

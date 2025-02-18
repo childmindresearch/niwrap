@@ -194,9 +194,9 @@ def mkxsubjreg_execute(
     Returns:
         NamedTuple of outputs (described in `MkxsubjregOutputs`).
     """
+    params = execution.params(params)
     cargs = mkxsubjreg_cargs(params, execution)
     ret = mkxsubjreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

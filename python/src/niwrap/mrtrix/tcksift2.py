@@ -522,9 +522,9 @@ def tcksift2_execute(
     Returns:
         NamedTuple of outputs (described in `Tcksift2Outputs`).
     """
+    params = execution.params(params)
     cargs = tcksift2_cargs(params, execution)
     ret = tcksift2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

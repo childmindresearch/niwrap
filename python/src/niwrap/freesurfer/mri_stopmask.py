@@ -224,9 +224,9 @@ def mri_stopmask_execute(
     Returns:
         NamedTuple of outputs (described in `MriStopmaskOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_stopmask_cargs(params, execution)
     ret = mri_stopmask_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

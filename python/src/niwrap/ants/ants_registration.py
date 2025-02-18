@@ -2139,9 +2139,9 @@ def ants_registration_execute(
     Returns:
         NamedTuple of outputs (described in `AntsRegistrationOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_registration_cargs(params, execution)
     ret = ants_registration_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

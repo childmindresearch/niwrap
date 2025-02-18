@@ -130,9 +130,9 @@ def tbss_4_prestats_execute(
     Returns:
         NamedTuple of outputs (described in `Tbss4PrestatsOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_4_prestats_cargs(params, execution)
     ret = tbss_4_prestats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

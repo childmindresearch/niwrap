@@ -324,9 +324,9 @@ def volume_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeExtremaOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_extrema_cargs(params, execution)
     ret = volume_extrema_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

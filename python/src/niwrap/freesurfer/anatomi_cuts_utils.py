@@ -132,9 +132,9 @@ def anatomi_cuts_utils_execute(
     Returns:
         NamedTuple of outputs (described in `AnatomiCutsUtilsOutputs`).
     """
+    params = execution.params(params)
     cargs = anatomi_cuts_utils_cargs(params, execution)
     ret = anatomi_cuts_utils_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

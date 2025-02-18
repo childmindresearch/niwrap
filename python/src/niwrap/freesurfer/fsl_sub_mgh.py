@@ -252,9 +252,9 @@ def fsl_sub_mgh_execute(
     Returns:
         NamedTuple of outputs (described in `FslSubMghOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_sub_mgh_cargs(params, execution)
     ret = fsl_sub_mgh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

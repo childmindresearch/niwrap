@@ -187,9 +187,9 @@ def adjunct_tort_plot_dp_align_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctTortPlotDpAlignOutputs`).
     """
+    params = execution.params(params)
     cargs = adjunct_tort_plot_dp_align_cargs(params, execution)
     ret = adjunct_tort_plot_dp_align_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

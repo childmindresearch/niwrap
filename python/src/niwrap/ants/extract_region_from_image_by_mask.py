@@ -161,9 +161,9 @@ def extract_region_from_image_by_mask_execute(
     Returns:
         NamedTuple of outputs (described in `ExtractRegionFromImageByMaskOutputs`).
     """
+    params = execution.params(params)
     cargs = extract_region_from_image_by_mask_cargs(params, execution)
     ret = extract_region_from_image_by_mask_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -164,9 +164,9 @@ def easythresh_execute(
     Returns:
         NamedTuple of outputs (described in `EasythreshOutputs`).
     """
+    params = execution.params(params)
     cargs = easythresh_cargs(params, execution)
     ret = easythresh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

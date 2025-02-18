@@ -223,9 +223,9 @@ def applywarp_execute(
     Returns:
         NamedTuple of outputs (described in `ApplywarpOutputs`).
     """
+    params = execution.params(params)
     cargs = applywarp_cargs(params, execution)
     ret = applywarp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

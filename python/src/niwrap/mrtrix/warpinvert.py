@@ -272,9 +272,9 @@ def warpinvert_execute(
     Returns:
         NamedTuple of outputs (described in `WarpinvertOutputs`).
     """
+    params = execution.params(params)
     cargs = warpinvert_cargs(params, execution)
     ret = warpinvert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -253,9 +253,9 @@ def mris_volsmooth_execute(
     Returns:
         NamedTuple of outputs (described in `MrisVolsmoothOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_volsmooth_cargs(params, execution)
     ret = mris_volsmooth_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

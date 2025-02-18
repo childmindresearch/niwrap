@@ -146,9 +146,9 @@ def tksurfer_execute(
     Returns:
         NamedTuple of outputs (described in `TksurferOutputs`).
     """
+    params = execution.params(params)
     cargs = tksurfer_cargs(params, execution)
     ret = tksurfer_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

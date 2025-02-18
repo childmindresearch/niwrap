@@ -227,9 +227,9 @@ def metric_reduce_execute(
     Returns:
         NamedTuple of outputs (described in `MetricReduceOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_reduce_cargs(params, execution)
     ret = metric_reduce_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

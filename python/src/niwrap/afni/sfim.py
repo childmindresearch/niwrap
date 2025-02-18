@@ -171,9 +171,9 @@ def sfim_execute(
     Returns:
         NamedTuple of outputs (described in `SfimOutputs`).
     """
+    params = execution.params(params)
     cargs = sfim_cargs(params, execution)
     ret = sfim_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

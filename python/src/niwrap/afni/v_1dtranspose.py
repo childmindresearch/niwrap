@@ -141,9 +141,9 @@ def v_1dtranspose_execute(
     Returns:
         NamedTuple of outputs (described in `V1dtransposeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_1dtranspose_cargs(params, execution)
     ret = v_1dtranspose_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -175,9 +175,9 @@ def fdrval_execute(
     Returns:
         NamedTuple of outputs (described in `FdrvalOutputs`).
     """
+    params = execution.params(params)
     cargs = fdrval_cargs(params, execution)
     ret = fdrval_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

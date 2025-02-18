@@ -257,9 +257,9 @@ def fixelcrop_execute(
     Returns:
         NamedTuple of outputs (described in `FixelcropOutputs`).
     """
+    params = execution.params(params)
     cargs = fixelcrop_cargs(params, execution)
     ret = fixelcrop_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

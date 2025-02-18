@@ -138,9 +138,9 @@ def mris_rescale_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRescaleOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_rescale_cargs(params, execution)
     ret = mris_rescale_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

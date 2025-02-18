@@ -163,9 +163,9 @@ def dicom_hinfo_execute(
     Returns:
         NamedTuple of outputs (described in `DicomHinfoOutputs`).
     """
+    params = execution.params(params)
     cargs = dicom_hinfo_cargs(params, execution)
     ret = dicom_hinfo_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

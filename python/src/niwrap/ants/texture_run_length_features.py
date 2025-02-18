@@ -186,9 +186,9 @@ def texture_run_length_features_execute(
     Returns:
         NamedTuple of outputs (described in `TextureRunLengthFeaturesOutputs`).
     """
+    params = execution.params(params)
     cargs = texture_run_length_features_cargs(params, execution)
     ret = texture_run_length_features_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

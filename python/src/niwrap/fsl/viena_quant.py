@@ -143,9 +143,9 @@ def viena_quant_execute(
     Returns:
         NamedTuple of outputs (described in `VienaQuantOutputs`).
     """
+    params = execution.params(params)
     cargs = viena_quant_cargs(params, execution)
     ret = viena_quant_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

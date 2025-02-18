@@ -261,9 +261,9 @@ def bianca_execute(
     Returns:
         NamedTuple of outputs (described in `BiancaOutputs`).
     """
+    params = execution.params(params)
     cargs = bianca_cargs(params, execution)
     ret = bianca_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

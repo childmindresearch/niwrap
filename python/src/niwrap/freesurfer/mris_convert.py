@@ -435,9 +435,9 @@ def mris_convert_execute(
     Returns:
         NamedTuple of outputs (described in `MrisConvertOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_convert_cargs(params, execution)
     ret = mris_convert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

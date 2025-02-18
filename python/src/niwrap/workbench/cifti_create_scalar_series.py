@@ -227,9 +227,9 @@ def cifti_create_scalar_series_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateScalarSeriesOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_create_scalar_series_cargs(params, execution)
     ret = cifti_create_scalar_series_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

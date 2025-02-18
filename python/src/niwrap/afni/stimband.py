@@ -172,9 +172,9 @@ def stimband_execute(
     Returns:
         NamedTuple of outputs (described in `StimbandOutputs`).
     """
+    params = execution.params(params)
     cargs = stimband_cargs(params, execution)
     ret = stimband_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

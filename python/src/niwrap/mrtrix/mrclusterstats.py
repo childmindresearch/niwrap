@@ -530,9 +530,9 @@ def mrclusterstats_execute(
     Returns:
         NamedTuple of outputs (described in `MrclusterstatsOutputs`).
     """
+    params = execution.params(params)
     cargs = mrclusterstats_cargs(params, execution)
     ret = mrclusterstats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

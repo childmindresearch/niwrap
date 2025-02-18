@@ -178,9 +178,9 @@ def volume_parcel_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeParcelSmoothingOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_parcel_smoothing_cargs(params, execution)
     ret = volume_parcel_smoothing_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

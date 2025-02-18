@@ -162,9 +162,9 @@ def imstat_execute(
     Returns:
         NamedTuple of outputs (described in `ImstatOutputs`).
     """
+    params = execution.params(params)
     cargs = imstat_cargs(params, execution)
     ret = imstat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

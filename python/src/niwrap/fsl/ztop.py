@@ -149,9 +149,9 @@ def ztop_execute(
     Returns:
         NamedTuple of outputs (described in `ZtopOutputs`).
     """
+    params = execution.params(params)
     cargs = ztop_cargs(params, execution)
     ret = ztop_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

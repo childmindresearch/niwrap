@@ -314,9 +314,9 @@ def meshconvert_execute(
     Returns:
         NamedTuple of outputs (described in `MeshconvertOutputs`).
     """
+    params = execution.params(params)
     cargs = meshconvert_cargs(params, execution)
     ret = meshconvert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

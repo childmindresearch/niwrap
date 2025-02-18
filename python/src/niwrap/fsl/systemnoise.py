@@ -175,9 +175,9 @@ def systemnoise_execute(
     Returns:
         NamedTuple of outputs (described in `SystemnoiseOutputs`).
     """
+    params = execution.params(params)
     cargs = systemnoise_cargs(params, execution)
     ret = systemnoise_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

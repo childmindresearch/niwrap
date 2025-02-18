@@ -259,9 +259,9 @@ def v__simulate_motion_execute(
     Returns:
         NamedTuple of outputs (described in `VSimulateMotionOutputs`).
     """
+    params = execution.params(params)
     cargs = v__simulate_motion_cargs(params, execution)
     ret = v__simulate_motion_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -234,9 +234,9 @@ def fslmeants_execute(
     Returns:
         NamedTuple of outputs (described in `FslmeantsOutputs`).
     """
+    params = execution.params(params)
     cargs = fslmeants_cargs(params, execution)
     ret = fslmeants_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

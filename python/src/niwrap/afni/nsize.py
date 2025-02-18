@@ -138,9 +138,9 @@ def nsize_execute(
     Returns:
         NamedTuple of outputs (described in `NsizeOutputs`).
     """
+    params = execution.params(params)
     cargs = nsize_cargs(params, execution)
     ret = nsize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

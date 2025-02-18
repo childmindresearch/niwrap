@@ -339,9 +339,9 @@ def mri_sclimbic_seg_execute(
     Returns:
         NamedTuple of outputs (described in `MriSclimbicSegOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_sclimbic_seg_cargs(params, execution)
     ret = mri_sclimbic_seg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

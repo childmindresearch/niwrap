@@ -194,9 +194,9 @@ def cifti_roi_average_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiRoiAverageOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_roi_average_cargs(params, execution)
     ret = cifti_roi_average_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -202,9 +202,9 @@ def xsanatreg_execute(
     Returns:
         NamedTuple of outputs (described in `XsanatregOutputs`).
     """
+    params = execution.params(params)
     cargs = xsanatreg_cargs(params, execution)
     ret = xsanatreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

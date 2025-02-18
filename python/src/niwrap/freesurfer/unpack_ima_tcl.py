@@ -129,9 +129,9 @@ def unpack_ima_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackImaTclOutputs`).
     """
+    params = execution.params(params)
     cargs = unpack_ima_tcl_cargs(params, execution)
     ret = unpack_ima_tcl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

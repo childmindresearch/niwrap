@@ -159,9 +159,9 @@ def ttologp_execute(
     Returns:
         NamedTuple of outputs (described in `TtologpOutputs`).
     """
+    params = execution.params(params)
     cargs = ttologp_cargs(params, execution)
     ret = ttologp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

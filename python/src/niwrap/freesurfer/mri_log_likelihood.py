@@ -139,9 +139,9 @@ def mri_log_likelihood_execute(
     Returns:
         NamedTuple of outputs (described in `MriLogLikelihoodOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_log_likelihood_cargs(params, execution)
     ret = mri_log_likelihood_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

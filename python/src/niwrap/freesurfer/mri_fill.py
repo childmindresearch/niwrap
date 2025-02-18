@@ -291,9 +291,9 @@ def mri_fill_execute(
     Returns:
         NamedTuple of outputs (described in `MriFillOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_fill_cargs(params, execution)
     ret = mri_fill_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

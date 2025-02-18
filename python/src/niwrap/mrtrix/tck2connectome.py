@@ -413,9 +413,9 @@ def tck2connectome_execute(
     Returns:
         NamedTuple of outputs (described in `Tck2connectomeOutputs`).
     """
+    params = execution.params(params)
     cargs = tck2connectome_cargs(params, execution)
     ret = tck2connectome_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

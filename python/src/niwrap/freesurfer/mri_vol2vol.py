@@ -506,9 +506,9 @@ def mri_vol2vol_execute(
     Returns:
         NamedTuple of outputs (described in `MriVol2volOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_vol2vol_cargs(params, execution)
     ret = mri_vol2vol_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

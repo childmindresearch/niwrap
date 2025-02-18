@@ -194,9 +194,9 @@ def unpackmincdir_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackmincdirOutputs`).
     """
+    params = execution.params(params)
     cargs = unpackmincdir_cargs(params, execution)
     ret = unpackmincdir_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

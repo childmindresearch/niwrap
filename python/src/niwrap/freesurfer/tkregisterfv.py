@@ -385,9 +385,9 @@ def tkregisterfv_execute(
     Returns:
         NamedTuple of outputs (described in `TkregisterfvOutputs`).
     """
+    params = execution.params(params)
     cargs = tkregisterfv_cargs(params, execution)
     ret = tkregisterfv_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

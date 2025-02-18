@@ -160,9 +160,9 @@ def deface_subject_execute(
     Returns:
         NamedTuple of outputs (described in `DefaceSubjectOutputs`).
     """
+    params = execution.params(params)
     cargs = deface_subject_cargs(params, execution)
     ret = deface_subject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

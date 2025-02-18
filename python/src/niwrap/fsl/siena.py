@@ -238,9 +238,9 @@ def siena_execute(
     Returns:
         NamedTuple of outputs (described in `SienaOutputs`).
     """
+    params = execution.params(params)
     cargs = siena_cargs(params, execution)
     ret = siena_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

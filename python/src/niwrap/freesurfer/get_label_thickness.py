@@ -130,9 +130,9 @@ def get_label_thickness_execute(
     Returns:
         NamedTuple of outputs (described in `GetLabelThicknessOutputs`).
     """
+    params = execution.params(params)
     cargs = get_label_thickness_cargs(params, execution)
     ret = get_label_thickness_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -177,9 +177,9 @@ def cifti_label_adjacency_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelAdjacencyOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_label_adjacency_cargs(params, execution)
     ret = cifti_label_adjacency_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -203,9 +203,9 @@ def uber_skel_execute(
     Returns:
         NamedTuple of outputs (described in `UberSkelOutputs`).
     """
+    params = execution.params(params)
     cargs = uber_skel_cargs(params, execution)
     ret = uber_skel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

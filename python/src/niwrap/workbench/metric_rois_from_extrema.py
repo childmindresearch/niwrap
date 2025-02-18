@@ -202,9 +202,9 @@ def metric_rois_from_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `MetricRoisFromExtremaOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_rois_from_extrema_cargs(params, execution)
     ret = metric_rois_from_extrema_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

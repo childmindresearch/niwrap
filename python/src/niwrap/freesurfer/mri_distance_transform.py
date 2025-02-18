@@ -156,9 +156,9 @@ def mri_distance_transform_execute(
     Returns:
         NamedTuple of outputs (described in `MriDistanceTransformOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_distance_transform_cargs(params, execution)
     ret = mri_distance_transform_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -248,9 +248,9 @@ def vol2subfield_execute(
     Returns:
         NamedTuple of outputs (described in `Vol2subfieldOutputs`).
     """
+    params = execution.params(params)
     cargs = vol2subfield_cargs(params, execution)
     ret = vol2subfield_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

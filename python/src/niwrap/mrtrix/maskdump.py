@@ -251,9 +251,9 @@ def maskdump_execute(
     Returns:
         NamedTuple of outputs (described in `MaskdumpOutputs`).
     """
+    params = execution.params(params)
     cargs = maskdump_cargs(params, execution)
     ret = maskdump_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

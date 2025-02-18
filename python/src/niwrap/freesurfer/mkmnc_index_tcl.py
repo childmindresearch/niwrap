@@ -138,9 +138,9 @@ def mkmnc_index_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `MkmncIndexTclOutputs`).
     """
+    params = execution.params(params)
     cargs = mkmnc_index_tcl_cargs(params, execution)
     ret = mkmnc_index_tcl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -309,9 +309,9 @@ def v_5tt2vis_execute(
     Returns:
         NamedTuple of outputs (described in `V5tt2visOutputs`).
     """
+    params = execution.params(params)
     cargs = v_5tt2vis_cargs(params, execution)
     ret = v_5tt2vis_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

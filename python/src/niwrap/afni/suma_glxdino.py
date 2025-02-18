@@ -131,9 +131,9 @@ def suma_glxdino_execute(
     Returns:
         NamedTuple of outputs (described in `SumaGlxdinoOutputs`).
     """
+    params = execution.params(params)
     cargs = suma_glxdino_cargs(params, execution)
     ret = suma_glxdino_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

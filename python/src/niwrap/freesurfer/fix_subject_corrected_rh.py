@@ -135,9 +135,9 @@ def fix_subject_corrected_rh_execute(
     Returns:
         NamedTuple of outputs (described in `FixSubjectCorrectedRhOutputs`).
     """
+    params = execution.params(params)
     cargs = fix_subject_corrected_rh_cargs(params, execution)
     ret = fix_subject_corrected_rh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -226,9 +226,9 @@ def rtfeedme_execute(
     Returns:
         NamedTuple of outputs (described in `RtfeedmeOutputs`).
     """
+    params = execution.params(params)
     cargs = rtfeedme_cargs(params, execution)
     ret = rtfeedme_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -183,9 +183,9 @@ def v__electro_grid_execute(
     Returns:
         NamedTuple of outputs (described in `VElectroGridOutputs`).
     """
+    params = execution.params(params)
     cargs = v__electro_grid_cargs(params, execution)
     ret = v__electro_grid_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

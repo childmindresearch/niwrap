@@ -224,9 +224,9 @@ def samseg2recon_execute(
     Returns:
         NamedTuple of outputs (described in `Samseg2reconOutputs`).
     """
+    params = execution.params(params)
     cargs = samseg2recon_cargs(params, execution)
     ret = samseg2recon_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

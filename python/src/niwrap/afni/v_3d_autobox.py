@@ -242,9 +242,9 @@ def v_3d_autobox_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAutoboxOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_autobox_cargs(params, execution)
     ret = v_3d_autobox_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

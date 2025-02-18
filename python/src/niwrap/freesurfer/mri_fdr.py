@@ -204,9 +204,9 @@ def mri_fdr_execute(
     Returns:
         NamedTuple of outputs (described in `MriFdrOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_fdr_cargs(params, execution)
     ret = mri_fdr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

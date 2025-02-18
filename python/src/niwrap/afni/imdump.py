@@ -134,9 +134,9 @@ def imdump_execute(
     Returns:
         NamedTuple of outputs (described in `ImdumpOutputs`).
     """
+    params = execution.params(params)
     cargs = imdump_cargs(params, execution)
     ret = imdump_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

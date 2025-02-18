@@ -303,9 +303,9 @@ def fat_mat2d_plot_py_execute(
     Returns:
         NamedTuple of outputs (described in `FatMat2dPlotPyOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_mat2d_plot_py_cargs(params, execution)
     ret = fat_mat2d_plot_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

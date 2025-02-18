@@ -259,9 +259,9 @@ def tsfthreshold_execute(
     Returns:
         NamedTuple of outputs (described in `TsfthresholdOutputs`).
     """
+    params = execution.params(params)
     cargs = tsfthreshold_cargs(params, execution)
     ret = tsfthreshold_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

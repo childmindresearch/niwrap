@@ -168,9 +168,9 @@ def mni152reg_execute(
     Returns:
         NamedTuple of outputs (described in `Mni152regOutputs`).
     """
+    params = execution.params(params)
     cargs = mni152reg_cargs(params, execution)
     ret = mni152reg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

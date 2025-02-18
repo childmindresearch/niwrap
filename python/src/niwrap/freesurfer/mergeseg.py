@@ -189,9 +189,9 @@ def mergeseg_execute(
     Returns:
         NamedTuple of outputs (described in `MergesegOutputs`).
     """
+    params = execution.params(params)
     cargs = mergeseg_cargs(params, execution)
     ret = mergeseg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

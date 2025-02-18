@@ -417,9 +417,9 @@ def cifti_create_label_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateLabelOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_create_label_cargs(params, execution)
     ret = cifti_create_label_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

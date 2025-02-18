@@ -158,9 +158,9 @@ def foci_get_projection_vertex_execute(
     Returns:
         NamedTuple of outputs (described in `FociGetProjectionVertexOutputs`).
     """
+    params = execution.params(params)
     cargs = foci_get_projection_vertex_cargs(params, execution)
     ret = foci_get_projection_vertex_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -253,9 +253,9 @@ def volume_label_to_surface_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeLabelToSurfaceMappingOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_label_to_surface_mapping_cargs(params, execution)
     ret = volume_label_to_surface_mapping_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

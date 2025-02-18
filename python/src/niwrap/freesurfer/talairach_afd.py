@@ -171,9 +171,9 @@ def talairach_afd_execute(
     Returns:
         NamedTuple of outputs (described in `TalairachAfdOutputs`).
     """
+    params = execution.params(params)
     cargs = talairach_afd_cargs(params, execution)
     ret = talairach_afd_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

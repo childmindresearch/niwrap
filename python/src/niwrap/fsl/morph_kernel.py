@@ -138,9 +138,9 @@ def morph_kernel_execute(
     Returns:
         NamedTuple of outputs (described in `MorphKernelOutputs`).
     """
+    params = execution.params(params)
     cargs = morph_kernel_cargs(params, execution)
     ret = morph_kernel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

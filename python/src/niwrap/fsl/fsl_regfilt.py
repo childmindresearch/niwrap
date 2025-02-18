@@ -284,9 +284,9 @@ def fsl_regfilt_execute(
     Returns:
         NamedTuple of outputs (described in `FslRegfiltOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_regfilt_cargs(params, execution)
     ret = fsl_regfilt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

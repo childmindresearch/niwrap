@@ -139,9 +139,9 @@ def possum_plot_execute(
     Returns:
         NamedTuple of outputs (described in `PossumPlotOutputs`).
     """
+    params = execution.params(params)
     cargs = possum_plot_cargs(params, execution)
     ret = possum_plot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

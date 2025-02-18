@@ -223,9 +223,9 @@ def v__afni_refacer_run_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRefacerRunOutputs`).
     """
+    params = execution.params(params)
     cargs = v__afni_refacer_run_cargs(params, execution)
     ret = v__afni_refacer_run_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

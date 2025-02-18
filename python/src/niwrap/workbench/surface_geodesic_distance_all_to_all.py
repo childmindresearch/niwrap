@@ -199,9 +199,9 @@ def surface_geodesic_distance_all_to_all_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceGeodesicDistanceAllToAllOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_geodesic_distance_all_to_all_cargs(params, execution)
     ret = surface_geodesic_distance_all_to_all_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

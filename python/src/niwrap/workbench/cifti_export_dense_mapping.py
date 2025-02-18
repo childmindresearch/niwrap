@@ -363,9 +363,9 @@ def cifti_export_dense_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiExportDenseMappingOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_export_dense_mapping_cargs(params, execution)
     ret = cifti_export_dense_mapping_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

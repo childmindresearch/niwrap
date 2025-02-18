@@ -195,9 +195,9 @@ def vecwarp_execute(
     Returns:
         NamedTuple of outputs (described in `VecwarpOutputs`).
     """
+    params = execution.params(params)
     cargs = vecwarp_cargs(params, execution)
     ret = vecwarp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

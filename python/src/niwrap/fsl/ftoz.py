@@ -153,9 +153,9 @@ def ftoz_execute(
     Returns:
         NamedTuple of outputs (described in `FtozOutputs`).
     """
+    params = execution.params(params)
     cargs = ftoz_cargs(params, execution)
     ret = ftoz_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

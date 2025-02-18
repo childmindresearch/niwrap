@@ -219,9 +219,9 @@ def dimon_execute(
     Returns:
         NamedTuple of outputs (described in `DimonOutputs`).
     """
+    params = execution.params(params)
     cargs = dimon_cargs(params, execution)
     ret = dimon_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

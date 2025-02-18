@@ -191,9 +191,9 @@ def inspec_execute(
     Returns:
         NamedTuple of outputs (described in `InspecOutputs`).
     """
+    params = execution.params(params)
     cargs = inspec_cargs(params, execution)
     ret = inspec_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

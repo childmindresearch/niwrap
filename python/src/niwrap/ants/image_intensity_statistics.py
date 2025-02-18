@@ -147,9 +147,9 @@ def image_intensity_statistics_execute(
     Returns:
         NamedTuple of outputs (described in `ImageIntensityStatisticsOutputs`).
     """
+    params = execution.params(params)
     cargs = image_intensity_statistics_cargs(params, execution)
     ret = image_intensity_statistics_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -403,9 +403,9 @@ def fabber_dualecho_execute(
     Returns:
         NamedTuple of outputs (described in `FabberDualechoOutputs`).
     """
+    params = execution.params(params)
     cargs = fabber_dualecho_cargs(params, execution)
     ret = fabber_dualecho_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

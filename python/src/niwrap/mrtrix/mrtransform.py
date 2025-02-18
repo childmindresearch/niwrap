@@ -786,9 +786,9 @@ def mrtransform_execute(
     Returns:
         NamedTuple of outputs (described in `MrtransformOutputs`).
     """
+    params = execution.params(params)
     cargs = mrtransform_cargs(params, execution)
     ret = mrtransform_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

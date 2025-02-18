@@ -211,9 +211,9 @@ def set_map_names_execute(
     Returns:
         NamedTuple of outputs (described in `SetMapNamesOutputs`).
     """
+    params = execution.params(params)
     cargs = set_map_names_cargs(params, execution)
     ret = set_map_names_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

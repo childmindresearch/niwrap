@@ -172,9 +172,9 @@ def djpeg_execute(
     Returns:
         NamedTuple of outputs (described in `DjpegOutputs`).
     """
+    params = execution.params(params)
     cargs = djpeg_cargs(params, execution)
     ret = djpeg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

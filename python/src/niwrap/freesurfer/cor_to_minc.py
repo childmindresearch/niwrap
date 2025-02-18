@@ -138,9 +138,9 @@ def cor_to_minc_execute(
     Returns:
         NamedTuple of outputs (described in `CorToMincOutputs`).
     """
+    params = execution.params(params)
     cargs = cor_to_minc_cargs(params, execution)
     ret = cor_to_minc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

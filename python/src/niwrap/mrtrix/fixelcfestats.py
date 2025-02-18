@@ -650,9 +650,9 @@ def fixelcfestats_execute(
     Returns:
         NamedTuple of outputs (described in `FixelcfestatsOutputs`).
     """
+    params = execution.params(params)
     cargs = fixelcfestats_cargs(params, execution)
     ret = fixelcfestats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

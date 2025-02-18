@@ -135,9 +135,9 @@ def v_4swap_execute(
     Returns:
         NamedTuple of outputs (described in `V4swapOutputs`).
     """
+    params = execution.params(params)
     cargs = v_4swap_cargs(params, execution)
     ret = v_4swap_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -184,9 +184,9 @@ def convert_surface_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertSurfaceOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_surface_cargs(params, execution)
     ret = convert_surface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

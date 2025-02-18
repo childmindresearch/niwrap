@@ -1142,9 +1142,9 @@ def dwi2response_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2responseOutputs`).
     """
+    params = execution.params(params)
     cargs = dwi2response_cargs(params, execution)
     ret = dwi2response_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -860,9 +860,9 @@ def v_3dinfo_execute(
     Returns:
         NamedTuple of outputs (described in `V3dinfoOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dinfo_cargs(params, execution)
     ret = v_3dinfo_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs, handle_stdout=lambda s: ret.info.append(s))
     return ret
 

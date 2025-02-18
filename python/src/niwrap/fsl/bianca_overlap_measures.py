@@ -164,9 +164,9 @@ def bianca_overlap_measures_execute(
     Returns:
         NamedTuple of outputs (described in `BiancaOverlapMeasuresOutputs`).
     """
+    params = execution.params(params)
     cargs = bianca_overlap_measures_cargs(params, execution)
     ret = bianca_overlap_measures_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

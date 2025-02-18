@@ -268,9 +268,9 @@ def dirflip_execute(
     Returns:
         NamedTuple of outputs (described in `DirflipOutputs`).
     """
+    params = execution.params(params)
     cargs = dirflip_cargs(params, execution)
     ret = dirflip_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

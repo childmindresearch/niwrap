@@ -338,9 +338,9 @@ def adjunct_apqc_tsnr_general_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctApqcTsnrGeneralOutputs`).
     """
+    params = execution.params(params)
     cargs = adjunct_apqc_tsnr_general_cargs(params, execution)
     ret = adjunct_apqc_tsnr_general_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -197,9 +197,9 @@ def volume_rois_from_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeRoisFromExtremaOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_rois_from_extrema_cargs(params, execution)
     ret = volume_rois_from_extrema_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

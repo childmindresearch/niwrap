@@ -241,9 +241,9 @@ def v_3d_remlfit_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRemlfitOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_remlfit_cargs(params, execution)
     ret = v_3d_remlfit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

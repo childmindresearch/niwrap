@@ -297,9 +297,9 @@ def volume_merge_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeMergeOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_merge_cargs(params, execution)
     ret = volume_merge_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

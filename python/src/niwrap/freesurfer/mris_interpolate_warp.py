@@ -139,9 +139,9 @@ def mris_interpolate_warp_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInterpolateWarpOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_interpolate_warp_cargs(params, execution)
     ret = mris_interpolate_warp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

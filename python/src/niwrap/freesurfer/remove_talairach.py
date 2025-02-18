@@ -140,9 +140,9 @@ def remove_talairach_execute(
     Returns:
         NamedTuple of outputs (described in `RemoveTalairachOutputs`).
     """
+    params = execution.params(params)
     cargs = remove_talairach_cargs(params, execution)
     ret = remove_talairach_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

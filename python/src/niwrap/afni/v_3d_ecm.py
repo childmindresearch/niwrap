@@ -268,9 +268,9 @@ def v_3d_ecm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dEcmOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_ecm_cargs(params, execution)
     ret = v_3d_ecm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -257,9 +257,9 @@ def seg2recon_execute(
     Returns:
         NamedTuple of outputs (described in `Seg2reconOutputs`).
     """
+    params = execution.params(params)
     cargs = seg2recon_cargs(params, execution)
     ret = seg2recon_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

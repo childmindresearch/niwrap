@@ -186,9 +186,9 @@ def dual_regression_execute(
     Returns:
         NamedTuple of outputs (described in `DualRegressionOutputs`).
     """
+    params = execution.params(params)
     cargs = dual_regression_cargs(params, execution)
     ret = dual_regression_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

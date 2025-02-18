@@ -375,9 +375,9 @@ def shconv_execute(
     Returns:
         NamedTuple of outputs (described in `ShconvOutputs`).
     """
+    params = execution.params(params)
     cargs = shconv_cargs(params, execution)
     ret = shconv_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

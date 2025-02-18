@@ -170,9 +170,9 @@ def warp_time_series_image_multi_transform_execute(
     Returns:
         NamedTuple of outputs (described in `WarpTimeSeriesImageMultiTransformOutputs`).
     """
+    params = execution.params(params)
     cargs = warp_time_series_image_multi_transform_cargs(params, execution)
     ret = warp_time_series_image_multi_transform_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

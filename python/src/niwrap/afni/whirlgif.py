@@ -191,9 +191,9 @@ def whirlgif_execute(
     Returns:
         NamedTuple of outputs (described in `WhirlgifOutputs`).
     """
+    params = execution.params(params)
     cargs = whirlgif_cargs(params, execution)
     ret = whirlgif_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

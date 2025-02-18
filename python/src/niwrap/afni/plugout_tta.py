@@ -212,9 +212,9 @@ def plugout_tta_execute(
     Returns:
         NamedTuple of outputs (described in `PlugoutTtaOutputs`).
     """
+    params = execution.params(params)
     cargs = plugout_tta_cargs(params, execution)
     ret = plugout_tta_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

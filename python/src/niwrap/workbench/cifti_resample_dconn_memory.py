@@ -1097,9 +1097,9 @@ def cifti_resample_dconn_memory_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiResampleDconnMemoryOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_resample_dconn_memory_cargs(params, execution)
     ret = cifti_resample_dconn_memory_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

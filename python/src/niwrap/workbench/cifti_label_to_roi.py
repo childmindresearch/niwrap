@@ -176,9 +176,9 @@ def cifti_label_to_roi_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelToRoiOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_label_to_roi_cargs(params, execution)
     ret = cifti_label_to_roi_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

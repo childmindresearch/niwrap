@@ -137,9 +137,9 @@ def cat_matvec_execute(
     Returns:
         NamedTuple of outputs (described in `CatMatvecOutputs`).
     """
+    params = execution.params(params)
     cargs = cat_matvec_cargs(params, execution)
     ret = cat_matvec_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

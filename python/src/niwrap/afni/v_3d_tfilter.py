@@ -153,9 +153,9 @@ def v_3d_tfilter_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTfilterOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_tfilter_cargs(params, execution)
     ret = v_3d_tfilter_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -131,9 +131,9 @@ def freeview_execute(
     Returns:
         NamedTuple of outputs (described in `FreeviewOutputs`).
     """
+    params = execution.params(params)
     cargs = freeview_cargs(params, execution)
     ret = freeview_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

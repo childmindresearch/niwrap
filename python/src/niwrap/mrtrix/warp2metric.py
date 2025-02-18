@@ -347,9 +347,9 @@ def warp2metric_execute(
     Returns:
         NamedTuple of outputs (described in `Warp2metricOutputs`).
     """
+    params = execution.params(params)
     cargs = warp2metric_cargs(params, execution)
     ret = warp2metric_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

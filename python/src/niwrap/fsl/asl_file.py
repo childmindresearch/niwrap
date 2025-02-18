@@ -354,9 +354,9 @@ def asl_file_execute(
     Returns:
         NamedTuple of outputs (described in `AslFileOutputs`).
     """
+    params = execution.params(params)
     cargs = asl_file_cargs(params, execution)
     ret = asl_file_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

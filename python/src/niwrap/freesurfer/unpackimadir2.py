@@ -129,9 +129,9 @@ def unpackimadir2_execute(
     Returns:
         NamedTuple of outputs (described in `Unpackimadir2Outputs`).
     """
+    params = execution.params(params)
     cargs = unpackimadir2_cargs(params, execution)
     ret = unpackimadir2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

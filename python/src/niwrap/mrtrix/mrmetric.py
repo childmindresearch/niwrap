@@ -313,9 +313,9 @@ def mrmetric_execute(
     Returns:
         NamedTuple of outputs (described in `MrmetricOutputs`).
     """
+    params = execution.params(params)
     cargs = mrmetric_cargs(params, execution)
     ret = mrmetric_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

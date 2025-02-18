@@ -255,9 +255,9 @@ def surf_dset_info_execute(
     Returns:
         NamedTuple of outputs (described in `SurfDsetInfoOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_dset_info_cargs(params, execution)
     ret = surf_dset_info_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

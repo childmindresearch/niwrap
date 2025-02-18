@@ -238,9 +238,9 @@ def cifti_reduce_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiReduceOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_reduce_cargs(params, execution)
     ret = cifti_reduce_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

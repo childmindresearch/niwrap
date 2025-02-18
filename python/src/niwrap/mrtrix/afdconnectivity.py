@@ -313,9 +313,9 @@ def afdconnectivity_execute(
     Returns:
         NamedTuple of outputs (described in `AfdconnectivityOutputs`).
     """
+    params = execution.params(params)
     cargs = afdconnectivity_cargs(params, execution)
     ret = afdconnectivity_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

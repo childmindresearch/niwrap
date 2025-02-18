@@ -135,9 +135,9 @@ def imglob_execute(
     Returns:
         NamedTuple of outputs (described in `ImglobOutputs`).
     """
+    params = execution.params(params)
     cargs = imglob_cargs(params, execution)
     ret = imglob_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

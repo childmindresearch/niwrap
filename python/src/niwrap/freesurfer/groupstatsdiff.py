@@ -271,9 +271,9 @@ def groupstatsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `GroupstatsdiffOutputs`).
     """
+    params = execution.params(params)
     cargs = groupstatsdiff_cargs(params, execution)
     ret = groupstatsdiff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

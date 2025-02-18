@@ -186,9 +186,9 @@ def v_3d_synthesize_execute(
     Returns:
         NamedTuple of outputs (described in `V3dSynthesizeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_synthesize_cargs(params, execution)
     ret = v_3d_synthesize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

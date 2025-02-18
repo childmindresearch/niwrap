@@ -317,9 +317,9 @@ def mideface_execute(
     Returns:
         NamedTuple of outputs (described in `MidefaceOutputs`).
     """
+    params = execution.params(params)
     cargs = mideface_cargs(params, execution)
     ret = mideface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

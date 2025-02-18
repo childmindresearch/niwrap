@@ -139,9 +139,9 @@ def medianfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MedianfilterOutputs`).
     """
+    params = execution.params(params)
     cargs = medianfilter_cargs(params, execution)
     ret = medianfilter_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

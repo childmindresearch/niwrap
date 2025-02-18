@@ -423,9 +423,9 @@ def cifti_replace_structure_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiReplaceStructureOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_replace_structure_cargs(params, execution)
     ret = cifti_replace_structure_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

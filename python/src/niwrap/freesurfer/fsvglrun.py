@@ -160,9 +160,9 @@ def fsvglrun_execute(
     Returns:
         NamedTuple of outputs (described in `FsvglrunOutputs`).
     """
+    params = execution.params(params)
     cargs = fsvglrun_cargs(params, execution)
     ret = fsvglrun_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -172,9 +172,9 @@ def mris_compute_volume_fractions_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeVolumeFractionsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_compute_volume_fractions_cargs(params, execution)
     ret = mris_compute_volume_fractions_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

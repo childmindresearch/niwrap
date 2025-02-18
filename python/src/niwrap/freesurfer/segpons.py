@@ -174,9 +174,9 @@ def segpons_execute(
     Returns:
         NamedTuple of outputs (described in `SegponsOutputs`).
     """
+    params = execution.params(params)
     cargs = segpons_cargs(params, execution)
     ret = segpons_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -199,9 +199,9 @@ def mri_edit_segmentation_with_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `MriEditSegmentationWithSurfacesOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_edit_segmentation_with_surfaces_cargs(params, execution)
     ret = mri_edit_segmentation_with_surfaces_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -262,9 +262,9 @@ def align_epi_anat_execute(
     Returns:
         NamedTuple of outputs (described in `AlignEpiAnatOutputs`).
     """
+    params = execution.params(params)
     cargs = align_epi_anat_cargs(params, execution)
     ret = align_epi_anat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

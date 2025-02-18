@@ -223,9 +223,9 @@ def niccc_execute(
     Returns:
         NamedTuple of outputs (described in `NicccOutputs`).
     """
+    params = execution.params(params)
     cargs = niccc_cargs(params, execution)
     ret = niccc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -164,9 +164,9 @@ def mri_stats2seg_execute(
     Returns:
         NamedTuple of outputs (described in `MriStats2segOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_stats2seg_cargs(params, execution)
     ret = mri_stats2seg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

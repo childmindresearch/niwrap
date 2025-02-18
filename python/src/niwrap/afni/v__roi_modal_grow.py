@@ -191,9 +191,9 @@ def v__roi_modal_grow_execute(
     Returns:
         NamedTuple of outputs (described in `VRoiModalGrowOutputs`).
     """
+    params = execution.params(params)
     cargs = v__roi_modal_grow_cargs(params, execution)
     ret = v__roi_modal_grow_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

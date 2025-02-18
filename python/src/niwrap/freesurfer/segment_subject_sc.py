@@ -161,9 +161,9 @@ def segment_subject_sc_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubjectScOutputs`).
     """
+    params = execution.params(params)
     cargs = segment_subject_sc_cargs(params, execution)
     ret = segment_subject_sc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

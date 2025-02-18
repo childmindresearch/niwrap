@@ -387,9 +387,9 @@ def convert_affine_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertAffineOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_affine_cargs(params, execution)
     ret = convert_affine_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

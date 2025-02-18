@@ -143,9 +143,9 @@ def mri_dist_surf_label_execute(
     Returns:
         NamedTuple of outputs (described in `MriDistSurfLabelOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_dist_surf_label_cargs(params, execution)
     ret = mri_dist_surf_label_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

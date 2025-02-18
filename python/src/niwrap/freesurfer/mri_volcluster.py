@@ -580,9 +580,9 @@ def mri_volcluster_execute(
     Returns:
         NamedTuple of outputs (described in `MriVolclusterOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_volcluster_cargs(params, execution)
     ret = mri_volcluster_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

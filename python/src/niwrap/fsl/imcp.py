@@ -138,9 +138,9 @@ def imcp_execute(
     Returns:
         NamedTuple of outputs (described in `ImcpOutputs`).
     """
+    params = execution.params(params)
     cargs = imcp_cargs(params, execution)
     ret = imcp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

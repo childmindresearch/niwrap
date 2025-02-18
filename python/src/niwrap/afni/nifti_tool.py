@@ -234,9 +234,9 @@ def nifti_tool_execute(
     Returns:
         NamedTuple of outputs (described in `NiftiToolOutputs`).
     """
+    params = execution.params(params)
     cargs = nifti_tool_cargs(params, execution)
     ret = nifti_tool_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

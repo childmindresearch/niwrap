@@ -163,9 +163,9 @@ def mris_segment_vals_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSegmentValsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_segment_vals_cargs(params, execution)
     ret = mris_segment_vals_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

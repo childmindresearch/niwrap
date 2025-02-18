@@ -159,9 +159,9 @@ def setlabelstat_execute(
     Returns:
         NamedTuple of outputs (described in `SetlabelstatOutputs`).
     """
+    params = execution.params(params)
     cargs = setlabelstat_cargs(params, execution)
     ret = setlabelstat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

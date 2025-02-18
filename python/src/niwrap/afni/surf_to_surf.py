@@ -246,9 +246,9 @@ def surf_to_surf_execute(
     Returns:
         NamedTuple of outputs (described in `SurfToSurfOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_to_surf_cargs(params, execution)
     ret = surf_to_surf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

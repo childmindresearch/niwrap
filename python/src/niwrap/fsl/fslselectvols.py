@@ -165,9 +165,9 @@ def fslselectvols_execute(
     Returns:
         NamedTuple of outputs (described in `FslselectvolsOutputs`).
     """
+    params = execution.params(params)
     cargs = fslselectvols_cargs(params, execution)
     ret = fslselectvols_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

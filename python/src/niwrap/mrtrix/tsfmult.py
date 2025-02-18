@@ -253,9 +253,9 @@ def tsfmult_execute(
     Returns:
         NamedTuple of outputs (described in `TsfmultOutputs`).
     """
+    params = execution.params(params)
     cargs = tsfmult_cargs(params, execution)
     ret = tsfmult_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

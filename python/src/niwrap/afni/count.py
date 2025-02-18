@@ -244,9 +244,9 @@ def count_execute(
     Returns:
         NamedTuple of outputs (described in `CountOutputs`).
     """
+    params = execution.params(params)
     cargs = count_cargs(params, execution)
     ret = count_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

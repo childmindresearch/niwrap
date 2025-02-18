@@ -205,9 +205,9 @@ def surface_sphere_project_unproject_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceSphereProjectUnprojectOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_sphere_project_unproject_cargs(params, execution)
     ret = surface_sphere_project_unproject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

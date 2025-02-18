@@ -142,9 +142,9 @@ def v__vol_center_execute(
     Returns:
         NamedTuple of outputs (described in `VVolCenterOutputs`).
     """
+    params = execution.params(params)
     cargs = v__vol_center_cargs(params, execution)
     ret = v__vol_center_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

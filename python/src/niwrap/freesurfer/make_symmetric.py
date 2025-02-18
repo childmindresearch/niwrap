@@ -155,9 +155,9 @@ def make_symmetric_execute(
     Returns:
         NamedTuple of outputs (described in `MakeSymmetricOutputs`).
     """
+    params = execution.params(params)
     cargs = make_symmetric_cargs(params, execution)
     ret = make_symmetric_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

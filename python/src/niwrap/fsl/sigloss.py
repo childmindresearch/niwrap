@@ -176,9 +176,9 @@ def sigloss_execute(
     Returns:
         NamedTuple of outputs (described in `SiglossOutputs`).
     """
+    params = execution.params(params)
     cargs = sigloss_cargs(params, execution)
     ret = sigloss_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

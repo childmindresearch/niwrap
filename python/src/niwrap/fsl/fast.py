@@ -341,9 +341,9 @@ def fast_execute(
     Returns:
         NamedTuple of outputs (described in `FastOutputs`).
     """
+    params = execution.params(params)
     cargs = fast_cargs(params, execution)
     ret = fast_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

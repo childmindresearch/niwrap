@@ -185,9 +185,9 @@ def smooth_displacement_field_execute(
     Returns:
         NamedTuple of outputs (described in `SmoothDisplacementFieldOutputs`).
     """
+    params = execution.params(params)
     cargs = smooth_displacement_field_cargs(params, execution)
     ret = smooth_displacement_field_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -152,9 +152,9 @@ def cifti_label_probability_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelProbabilityOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_label_probability_cargs(params, execution)
     ret = cifti_label_probability_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

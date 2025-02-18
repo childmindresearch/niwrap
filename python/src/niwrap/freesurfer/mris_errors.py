@@ -130,9 +130,9 @@ def mris_errors_execute(
     Returns:
         NamedTuple of outputs (described in `MrisErrorsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_errors_cargs(params, execution)
     ret = mris_errors_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

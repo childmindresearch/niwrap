@@ -211,9 +211,9 @@ def segment_subregions_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubregionsOutputs`).
     """
+    params = execution.params(params)
     cargs = segment_subregions_cargs(params, execution)
     ret = segment_subregions_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

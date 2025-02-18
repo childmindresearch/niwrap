@@ -307,9 +307,9 @@ def dirgen_execute(
     Returns:
         NamedTuple of outputs (described in `DirgenOutputs`).
     """
+    params = execution.params(params)
     cargs = dirgen_cargs(params, execution)
     ret = dirgen_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

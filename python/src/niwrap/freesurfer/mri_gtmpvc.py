@@ -631,9 +631,9 @@ def mri_gtmpvc_execute(
     Returns:
         NamedTuple of outputs (described in `MriGtmpvcOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_gtmpvc_cargs(params, execution)
     ret = mri_gtmpvc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

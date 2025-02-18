@@ -133,9 +133,9 @@ def v__demo_prompt_execute(
     Returns:
         NamedTuple of outputs (described in `VDemoPromptOutputs`).
     """
+    params = execution.params(params)
     cargs = v__demo_prompt_cargs(params, execution)
     ret = v__demo_prompt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -271,9 +271,9 @@ def fixelcorrespondence_execute(
     Returns:
         NamedTuple of outputs (described in `FixelcorrespondenceOutputs`).
     """
+    params = execution.params(params)
     cargs = fixelcorrespondence_cargs(params, execution)
     ret = fixelcorrespondence_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

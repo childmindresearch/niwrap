@@ -152,9 +152,9 @@ def balloon_execute(
     Returns:
         NamedTuple of outputs (described in `BalloonOutputs`).
     """
+    params = execution.params(params)
     cargs = balloon_cargs(params, execution)
     ret = balloon_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -266,9 +266,9 @@ def cifti_average_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiAverageOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_average_cargs(params, execution)
     ret = cifti_average_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

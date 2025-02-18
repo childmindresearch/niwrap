@@ -201,9 +201,9 @@ def mksurfatlas_execute(
     Returns:
         NamedTuple of outputs (described in `MksurfatlasOutputs`).
     """
+    params = execution.params(params)
     cargs = mksurfatlas_cargs(params, execution)
     ret = mksurfatlas_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

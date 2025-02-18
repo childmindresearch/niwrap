@@ -144,9 +144,9 @@ def v_3d_detrend_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDetrendOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_detrend_cargs(params, execution)
     ret = v_3d_detrend_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

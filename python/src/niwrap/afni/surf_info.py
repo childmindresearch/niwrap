@@ -217,9 +217,9 @@ def surf_info_execute(
     Returns:
         NamedTuple of outputs (described in `SurfInfoOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_info_cargs(params, execution)
     ret = surf_info_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

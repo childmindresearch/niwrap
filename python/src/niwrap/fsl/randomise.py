@@ -375,9 +375,9 @@ def randomise_execute(
     Returns:
         NamedTuple of outputs (described in `RandomiseOutputs`).
     """
+    params = execution.params(params)
     cargs = randomise_cargs(params, execution)
     ret = randomise_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -231,9 +231,9 @@ def fat_proc_map_to_dti_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcMapToDtiOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_proc_map_to_dti_cargs(params, execution)
     ret = fat_proc_map_to_dti_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

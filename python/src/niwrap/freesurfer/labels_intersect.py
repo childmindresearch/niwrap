@@ -143,9 +143,9 @@ def labels_intersect_execute(
     Returns:
         NamedTuple of outputs (described in `LabelsIntersectOutputs`).
     """
+    params = execution.params(params)
     cargs = labels_intersect_cargs(params, execution)
     ret = labels_intersect_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

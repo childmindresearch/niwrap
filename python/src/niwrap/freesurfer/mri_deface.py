@@ -149,9 +149,9 @@ def mri_deface_execute(
     Returns:
         NamedTuple of outputs (described in `MriDefaceOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_deface_cargs(params, execution)
     ret = mri_deface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -141,9 +141,9 @@ def mri_brain_volume_execute(
     Returns:
         NamedTuple of outputs (described in `MriBrainVolumeOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_brain_volume_cargs(params, execution)
     ret = mri_brain_volume_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

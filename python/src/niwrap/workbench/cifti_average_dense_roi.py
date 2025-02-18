@@ -322,9 +322,9 @@ def cifti_average_dense_roi_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiAverageDenseRoiOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_average_dense_roi_cargs(params, execution)
     ret = cifti_average_dense_roi_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -350,9 +350,9 @@ def fixel2peaks_execute(
     Returns:
         NamedTuple of outputs (described in `Fixel2peaksOutputs`).
     """
+    params = execution.params(params)
     cargs = fixel2peaks_cargs(params, execution)
     ret = fixel2peaks_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

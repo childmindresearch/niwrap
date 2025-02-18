@@ -165,9 +165,9 @@ def v__suma_renumber_fs_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaRenumberFsOutputs`).
     """
+    params = execution.params(params)
     cargs = v__suma_renumber_fs_cargs(params, execution)
     ret = v__suma_renumber_fs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

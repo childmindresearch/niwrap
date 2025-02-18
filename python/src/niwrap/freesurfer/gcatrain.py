@@ -269,9 +269,9 @@ def gcatrain_execute(
     Returns:
         NamedTuple of outputs (described in `GcatrainOutputs`).
     """
+    params = execution.params(params)
     cargs = gcatrain_cargs(params, execution)
     ret = gcatrain_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

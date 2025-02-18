@@ -195,9 +195,9 @@ def ants_landmark_based_transform_initializer_execute(
     Returns:
         NamedTuple of outputs (described in `AntsLandmarkBasedTransformInitializerOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_landmark_based_transform_initializer_cargs(params, execution)
     ret = ants_landmark_based_transform_initializer_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

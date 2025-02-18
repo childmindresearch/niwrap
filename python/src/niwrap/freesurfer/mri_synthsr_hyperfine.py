@@ -174,9 +174,9 @@ def mri_synthsr_hyperfine_execute(
     Returns:
         NamedTuple of outputs (described in `MriSynthsrHyperfineOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_synthsr_hyperfine_cargs(params, execution)
     ret = mri_synthsr_hyperfine_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

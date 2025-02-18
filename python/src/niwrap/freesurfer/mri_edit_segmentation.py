@@ -143,9 +143,9 @@ def mri_edit_segmentation_execute(
     Returns:
         NamedTuple of outputs (described in `MriEditSegmentationOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_edit_segmentation_cargs(params, execution)
     ret = mri_edit_segmentation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

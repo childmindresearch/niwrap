@@ -138,9 +138,9 @@ def tbss_3_postreg_execute(
     Returns:
         NamedTuple of outputs (described in `Tbss3PostregOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_3_postreg_cargs(params, execution)
     ret = tbss_3_postreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -225,9 +225,9 @@ def v_3dmerge_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmergeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dmerge_cargs(params, execution)
     ret = v_3dmerge_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

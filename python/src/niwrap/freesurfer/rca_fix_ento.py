@@ -177,9 +177,9 @@ def rca_fix_ento_execute(
     Returns:
         NamedTuple of outputs (described in `RcaFixEntoOutputs`).
     """
+    params = execution.params(params)
     cargs = rca_fix_ento_cargs(params, execution)
     ret = rca_fix_ento_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

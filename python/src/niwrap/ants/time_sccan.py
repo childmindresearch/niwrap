@@ -410,9 +410,9 @@ def time_sccan_execute(
     Returns:
         NamedTuple of outputs (described in `TimeSccanOutputs`).
     """
+    params = execution.params(params)
     cargs = time_sccan_cargs(params, execution)
     ret = time_sccan_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

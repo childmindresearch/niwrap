@@ -762,9 +762,9 @@ def mrinfo_execute(
     Returns:
         NamedTuple of outputs (described in `MrinfoOutputs`).
     """
+    params = execution.params(params)
     cargs = mrinfo_cargs(params, execution)
     ret = mrinfo_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

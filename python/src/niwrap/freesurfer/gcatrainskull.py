@@ -132,9 +132,9 @@ def gcatrainskull_execute(
     Returns:
         NamedTuple of outputs (described in `GcatrainskullOutputs`).
     """
+    params = execution.params(params)
     cargs = gcatrainskull_cargs(params, execution)
     ret = gcatrainskull_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -143,9 +143,9 @@ def mri_relabel_hypointensities_execute(
     Returns:
         NamedTuple of outputs (described in `MriRelabelHypointensitiesOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_relabel_hypointensities_cargs(params, execution)
     ret = mri_relabel_hypointensities_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -149,9 +149,9 @@ def mri_head_execute(
     Returns:
         NamedTuple of outputs (described in `MriHeadOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_head_cargs(params, execution)
     ret = mri_head_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

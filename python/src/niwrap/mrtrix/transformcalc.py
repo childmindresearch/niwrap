@@ -255,9 +255,9 @@ def transformcalc_execute(
     Returns:
         NamedTuple of outputs (described in `TransformcalcOutputs`).
     """
+    params = execution.params(params)
     cargs = transformcalc_cargs(params, execution)
     ret = transformcalc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

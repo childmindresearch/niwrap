@@ -140,9 +140,9 @@ def scene_file_relocate_execute(
     Returns:
         NamedTuple of outputs (described in `SceneFileRelocateOutputs`).
     """
+    params = execution.params(params)
     cargs = scene_file_relocate_cargs(params, execution)
     ret = scene_file_relocate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

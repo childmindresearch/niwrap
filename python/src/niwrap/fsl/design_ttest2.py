@@ -145,9 +145,9 @@ def design_ttest2_execute(
     Returns:
         NamedTuple of outputs (described in `DesignTtest2Outputs`).
     """
+    params = execution.params(params)
     cargs = design_ttest2_cargs(params, execution)
     ret = design_ttest2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

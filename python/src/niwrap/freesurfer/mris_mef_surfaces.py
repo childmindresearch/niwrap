@@ -168,9 +168,9 @@ def mris_mef_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMefSurfacesOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_mef_surfaces_cargs(params, execution)
     ret = mris_mef_surfaces_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

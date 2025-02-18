@@ -156,9 +156,9 @@ def volume_copy_extensions_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeCopyExtensionsOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_copy_extensions_cargs(params, execution)
     ret = volume_copy_extensions_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

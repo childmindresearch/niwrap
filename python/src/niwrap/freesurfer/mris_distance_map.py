@@ -140,9 +140,9 @@ def mris_distance_map_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDistanceMapOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_distance_map_cargs(params, execution)
     ret = mris_distance_map_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

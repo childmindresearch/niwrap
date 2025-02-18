@@ -250,9 +250,9 @@ def connectomeedit_execute(
     Returns:
         NamedTuple of outputs (described in `ConnectomeeditOutputs`).
     """
+    params = execution.params(params)
     cargs = connectomeedit_cargs(params, execution)
     ret = connectomeedit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

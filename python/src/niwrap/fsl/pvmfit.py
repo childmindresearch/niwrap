@@ -247,9 +247,9 @@ def pvmfit_execute(
     Returns:
         NamedTuple of outputs (described in `PvmfitOutputs`).
     """
+    params = execution.params(params)
     cargs = pvmfit_cargs(params, execution)
     ret = pvmfit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

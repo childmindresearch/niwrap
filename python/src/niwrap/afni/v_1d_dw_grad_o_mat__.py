@@ -311,9 +311,9 @@ def v_1d_dw_grad_o_mat___execute(
     Returns:
         NamedTuple of outputs (described in `V1dDwGradOMatOutputs`).
     """
+    params = execution.params(params)
     cargs = v_1d_dw_grad_o_mat___cargs(params, execution)
     ret = v_1d_dw_grad_o_mat___outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

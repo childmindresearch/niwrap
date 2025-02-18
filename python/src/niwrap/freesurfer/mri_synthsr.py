@@ -196,9 +196,9 @@ def mri_synthsr_execute(
     Returns:
         NamedTuple of outputs (described in `MriSynthsrOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_synthsr_cargs(params, execution)
     ret = mri_synthsr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

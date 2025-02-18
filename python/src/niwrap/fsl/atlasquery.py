@@ -172,9 +172,9 @@ def atlasquery_execute(
     Returns:
         NamedTuple of outputs (described in `AtlasqueryOutputs`).
     """
+    params = execution.params(params)
     cargs = atlasquery_cargs(params, execution)
     ret = atlasquery_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -145,9 +145,9 @@ def mris_copy_header_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCopyHeaderOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_copy_header_cargs(params, execution)
     ret = mris_copy_header_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

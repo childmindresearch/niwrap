@@ -332,9 +332,9 @@ def epidewarp_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `EpidewarpFslOutputs`).
     """
+    params = execution.params(params)
     cargs = epidewarp_fsl_cargs(params, execution)
     ret = epidewarp_fsl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

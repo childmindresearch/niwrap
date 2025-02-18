@@ -297,9 +297,9 @@ def v__update_afni_binaries_execute(
     Returns:
         NamedTuple of outputs (described in `VUpdateAfniBinariesOutputs`).
     """
+    params = execution.params(params)
     cargs = v__update_afni_binaries_cargs(params, execution)
     ret = v__update_afni_binaries_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

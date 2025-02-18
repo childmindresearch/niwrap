@@ -239,9 +239,9 @@ def lpcregister_execute(
     Returns:
         NamedTuple of outputs (described in `LpcregisterOutputs`).
     """
+    params = execution.params(params)
     cargs = lpcregister_cargs(params, execution)
     ret = lpcregister_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

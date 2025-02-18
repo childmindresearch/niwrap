@@ -188,9 +188,9 @@ def makerot_execute(
     Returns:
         NamedTuple of outputs (described in `MakerotOutputs`).
     """
+    params = execution.params(params)
     cargs = makerot_cargs(params, execution)
     ret = makerot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

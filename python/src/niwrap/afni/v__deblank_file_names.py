@@ -155,9 +155,9 @@ def v__deblank_file_names_execute(
     Returns:
         NamedTuple of outputs (described in `VDeblankFileNamesOutputs`).
     """
+    params = execution.params(params)
     cargs = v__deblank_file_names_cargs(params, execution)
     ret = v__deblank_file_names_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

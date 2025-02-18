@@ -187,9 +187,9 @@ def mri_cnr_execute(
     Returns:
         NamedTuple of outputs (described in `MriCnrOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_cnr_cargs(params, execution)
     ret = mri_cnr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

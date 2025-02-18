@@ -255,9 +255,9 @@ def mris_compute_parc_overlap_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeParcOverlapOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_compute_parc_overlap_cargs(params, execution)
     ret = mris_compute_parc_overlap_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

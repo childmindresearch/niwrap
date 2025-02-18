@@ -181,9 +181,9 @@ def xcorr_execute(
     Returns:
         NamedTuple of outputs (described in `XcorrOutputs`).
     """
+    params = execution.params(params)
     cargs = xcorr_cargs(params, execution)
     ret = xcorr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

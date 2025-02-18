@@ -219,9 +219,9 @@ def rtview_execute(
     Returns:
         NamedTuple of outputs (described in `RtviewOutputs`).
     """
+    params = execution.params(params)
     cargs = rtview_cargs(params, execution)
     ret = rtview_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

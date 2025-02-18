@@ -133,9 +133,9 @@ def xhemi_tal_execute(
     Returns:
         NamedTuple of outputs (described in `XhemiTalOutputs`).
     """
+    params = execution.params(params)
     cargs = xhemi_tal_cargs(params, execution)
     ret = xhemi_tal_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

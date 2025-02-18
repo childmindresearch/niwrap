@@ -313,9 +313,9 @@ def v_5ttedit_execute(
     Returns:
         NamedTuple of outputs (described in `V5tteditOutputs`).
     """
+    params = execution.params(params)
     cargs = v_5ttedit_cargs(params, execution)
     ret = v_5ttedit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

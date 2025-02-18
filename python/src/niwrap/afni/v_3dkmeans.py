@@ -337,9 +337,9 @@ def v_3dkmeans_execute(
     Returns:
         NamedTuple of outputs (described in `V3dkmeansOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dkmeans_cargs(params, execution)
     ret = v_3dkmeans_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

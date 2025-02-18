@@ -192,9 +192,9 @@ def ants_cortical_thickness_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsCorticalThicknessShOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_cortical_thickness_sh_cargs(params, execution)
     ret = ants_cortical_thickness_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

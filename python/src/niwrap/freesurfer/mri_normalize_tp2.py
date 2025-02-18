@@ -224,9 +224,9 @@ def mri_normalize_tp2_execute(
     Returns:
         NamedTuple of outputs (described in `MriNormalizeTp2Outputs`).
     """
+    params = execution.params(params)
     cargs = mri_normalize_tp2_cargs(params, execution)
     ret = mri_normalize_tp2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

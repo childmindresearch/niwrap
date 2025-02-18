@@ -149,9 +149,9 @@ def v_3d_afnito_raw_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAfnitoRawOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_afnito_raw_cargs(params, execution)
     ret = v_3d_afnito_raw_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

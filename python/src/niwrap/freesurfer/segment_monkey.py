@@ -129,9 +129,9 @@ def segment_monkey_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentMonkeyOutputs`).
     """
+    params = execution.params(params)
     cargs = segment_monkey_cargs(params, execution)
     ret = segment_monkey_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

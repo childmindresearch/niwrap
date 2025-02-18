@@ -216,9 +216,9 @@ def mri_path2label_execute(
     Returns:
         NamedTuple of outputs (described in `MriPath2labelOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_path2label_cargs(params, execution)
     ret = mri_path2label_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

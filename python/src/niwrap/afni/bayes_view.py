@@ -146,9 +146,9 @@ def bayes_view_execute(
     Returns:
         NamedTuple of outputs (described in `BayesViewOutputs`).
     """
+    params = execution.params(params)
     cargs = bayes_view_cargs(params, execution)
     ret = bayes_view_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -385,9 +385,9 @@ def cifti_dilate_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiDilateOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_dilate_cargs(params, execution)
     ret = cifti_dilate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

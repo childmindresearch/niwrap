@@ -166,9 +166,9 @@ def v__suma_reprefixize_spec_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaReprefixizeSpecOutputs`).
     """
+    params = execution.params(params)
     cargs = v__suma_reprefixize_spec_cargs(params, execution)
     ret = v__suma_reprefixize_spec_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -158,9 +158,9 @@ def map_all_labels_execute(
     Returns:
         NamedTuple of outputs (described in `MapAllLabelsOutputs`).
     """
+    params = execution.params(params)
     cargs = map_all_labels_cargs(params, execution)
     ret = map_all_labels_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

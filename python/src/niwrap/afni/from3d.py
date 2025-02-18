@@ -215,9 +215,9 @@ def from3d_execute(
     Returns:
         NamedTuple of outputs (described in `From3dOutputs`).
     """
+    params = execution.params(params)
     cargs = from3d_cargs(params, execution)
     ret = from3d_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -146,9 +146,9 @@ def surfmaths_execute(
     Returns:
         NamedTuple of outputs (described in `SurfmathsOutputs`).
     """
+    params = execution.params(params)
     cargs = surfmaths_cargs(params, execution)
     ret = surfmaths_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

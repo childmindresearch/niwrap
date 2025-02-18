@@ -138,9 +138,9 @@ def fsl2ascii_execute(
     Returns:
         NamedTuple of outputs (described in `Fsl2asciiOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl2ascii_cargs(params, execution)
     ret = fsl2ascii_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

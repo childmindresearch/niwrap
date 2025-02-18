@@ -190,9 +190,9 @@ def v__roi_decluster_execute(
     Returns:
         NamedTuple of outputs (described in `VRoiDeclusterOutputs`).
     """
+    params = execution.params(params)
     cargs = v__roi_decluster_cargs(params, execution)
     ret = v__roi_decluster_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

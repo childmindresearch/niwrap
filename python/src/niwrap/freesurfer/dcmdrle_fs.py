@@ -331,9 +331,9 @@ def dcmdrle_fs_execute(
     Returns:
         NamedTuple of outputs (described in `DcmdrleFsOutputs`).
     """
+    params = execution.params(params)
     cargs = dcmdrle_fs_cargs(params, execution)
     ret = dcmdrle_fs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

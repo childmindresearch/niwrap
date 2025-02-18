@@ -149,9 +149,9 @@ def tbss_2_reg_execute(
     Returns:
         NamedTuple of outputs (described in `Tbss2RegOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_2_reg_cargs(params, execution)
     ret = tbss_2_reg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -228,9 +228,9 @@ def tedana_wrapper_py_execute(
     Returns:
         NamedTuple of outputs (described in `TedanaWrapperPyOutputs`).
     """
+    params = execution.params(params)
     cargs = tedana_wrapper_py_cargs(params, execution)
     ret = tedana_wrapper_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

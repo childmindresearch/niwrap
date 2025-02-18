@@ -608,9 +608,9 @@ def mri_coreg_execute(
     Returns:
         NamedTuple of outputs (described in `MriCoregOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_coreg_cargs(params, execution)
     ret = mri_coreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

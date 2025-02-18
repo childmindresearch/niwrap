@@ -246,9 +246,9 @@ def v_3dmask_tool_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmaskToolOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dmask_tool_cargs(params, execution)
     ret = v_3dmask_tool_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

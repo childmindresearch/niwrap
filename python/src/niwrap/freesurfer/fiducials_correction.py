@@ -137,9 +137,9 @@ def fiducials_correction_execute(
     Returns:
         NamedTuple of outputs (described in `FiducialsCorrectionOutputs`).
     """
+    params = execution.params(params)
     cargs = fiducials_correction_cargs(params, execution)
     ret = fiducials_correction_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

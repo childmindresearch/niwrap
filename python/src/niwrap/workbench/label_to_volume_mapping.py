@@ -245,9 +245,9 @@ def label_to_volume_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `LabelToVolumeMappingOutputs`).
     """
+    params = execution.params(params)
     cargs = label_to_volume_mapping_cargs(params, execution)
     ret = label_to_volume_mapping_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

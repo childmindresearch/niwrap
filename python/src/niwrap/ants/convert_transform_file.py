@@ -143,9 +143,9 @@ def convert_transform_file_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertTransformFileOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_transform_file_cargs(params, execution)
     ret = convert_transform_file_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

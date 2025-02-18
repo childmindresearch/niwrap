@@ -144,9 +144,9 @@ def maskdyads_execute(
     Returns:
         NamedTuple of outputs (described in `MaskdyadsOutputs`).
     """
+    params = execution.params(params)
     cargs = maskdyads_cargs(params, execution)
     ret = maskdyads_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

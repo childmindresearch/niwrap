@@ -222,9 +222,9 @@ def mri_maps2csd_execute(
     Returns:
         NamedTuple of outputs (described in `MriMaps2csdOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_maps2csd_cargs(params, execution)
     ret = mri_maps2csd_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

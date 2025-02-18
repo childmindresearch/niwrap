@@ -158,9 +158,9 @@ def imstack_execute(
     Returns:
         NamedTuple of outputs (described in `ImstackOutputs`).
     """
+    params = execution.params(params)
     cargs = imstack_cargs(params, execution)
     ret = imstack_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

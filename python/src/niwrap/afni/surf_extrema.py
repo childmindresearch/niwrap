@@ -212,9 +212,9 @@ def surf_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `SurfExtremaOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_extrema_cargs(params, execution)
     ret = surf_extrema_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

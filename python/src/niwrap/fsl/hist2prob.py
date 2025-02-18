@@ -148,9 +148,9 @@ def hist2prob_execute(
     Returns:
         NamedTuple of outputs (described in `Hist2probOutputs`).
     """
+    params = execution.params(params)
     cargs = hist2prob_cargs(params, execution)
     ret = hist2prob_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

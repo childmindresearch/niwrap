@@ -235,9 +235,9 @@ def swi_process_execute(
     Returns:
         NamedTuple of outputs (described in `SwiProcessOutputs`).
     """
+    params = execution.params(params)
     cargs = swi_process_cargs(params, execution)
     ret = swi_process_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

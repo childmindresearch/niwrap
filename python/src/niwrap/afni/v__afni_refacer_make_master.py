@@ -135,9 +135,9 @@ def v__afni_refacer_make_master_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRefacerMakeMasterOutputs`).
     """
+    params = execution.params(params)
     cargs = v__afni_refacer_make_master_cargs(params, execution)
     ret = v__afni_refacer_make_master_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

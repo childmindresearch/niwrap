@@ -139,9 +139,9 @@ def myget_execute(
     Returns:
         NamedTuple of outputs (described in `MygetOutputs`).
     """
+    params = execution.params(params)
     cargs = myget_cargs(params, execution)
     ret = myget_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -143,9 +143,9 @@ def mri_rigid_register_execute(
     Returns:
         NamedTuple of outputs (described in `MriRigidRegisterOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_rigid_register_cargs(params, execution)
     ret = mri_rigid_register_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

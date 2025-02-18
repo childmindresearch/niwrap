@@ -142,9 +142,9 @@ def surface_normals_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceNormalsOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_normals_cargs(params, execution)
     ret = surface_normals_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

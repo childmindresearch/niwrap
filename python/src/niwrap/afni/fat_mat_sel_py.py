@@ -345,9 +345,9 @@ def fat_mat_sel_py_execute(
     Returns:
         NamedTuple of outputs (described in `FatMatSelPyOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_mat_sel_py_cargs(params, execution)
     ret = fat_mat_sel_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

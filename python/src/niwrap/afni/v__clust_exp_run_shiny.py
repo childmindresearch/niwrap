@@ -135,9 +135,9 @@ def v__clust_exp_run_shiny_execute(
     Returns:
         NamedTuple of outputs (described in `VClustExpRunShinyOutputs`).
     """
+    params = execution.params(params)
     cargs = v__clust_exp_run_shiny_cargs(params, execution)
     ret = v__clust_exp_run_shiny_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

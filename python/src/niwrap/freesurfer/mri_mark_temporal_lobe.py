@@ -152,9 +152,9 @@ def mri_mark_temporal_lobe_execute(
     Returns:
         NamedTuple of outputs (described in `MriMarkTemporalLobeOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_mark_temporal_lobe_cargs(params, execution)
     ret = mri_mark_temporal_lobe_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -151,9 +151,9 @@ def imand_execute(
     Returns:
         NamedTuple of outputs (described in `ImandOutputs`).
     """
+    params = execution.params(params)
     cargs = imand_cargs(params, execution)
     ret = imand_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

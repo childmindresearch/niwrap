@@ -334,9 +334,9 @@ def metric_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `MetricExtremaOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_extrema_cargs(params, execution)
     ret = metric_extrema_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

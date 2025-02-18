@@ -148,9 +148,9 @@ def mris_segmentation_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSegmentationStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_segmentation_stats_cargs(params, execution)
     ret = mris_segmentation_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

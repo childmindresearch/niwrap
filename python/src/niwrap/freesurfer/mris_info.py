@@ -330,9 +330,9 @@ def mris_info_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInfoOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_info_cargs(params, execution)
     ret = mris_info_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

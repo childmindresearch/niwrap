@@ -167,9 +167,9 @@ def surface_inflation_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceInflationOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_inflation_cargs(params, execution)
     ret = surface_inflation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -198,9 +198,9 @@ def annotation_resample_execute(
     Returns:
         NamedTuple of outputs (described in `AnnotationResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = annotation_resample_cargs(params, execution)
     ret = annotation_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

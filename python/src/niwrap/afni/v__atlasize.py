@@ -296,9 +296,9 @@ def v__atlasize_execute(
     Returns:
         NamedTuple of outputs (described in `VAtlasizeOutputs`).
     """
+    params = execution.params(params)
     cargs = v__atlasize_cargs(params, execution)
     ret = v__atlasize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

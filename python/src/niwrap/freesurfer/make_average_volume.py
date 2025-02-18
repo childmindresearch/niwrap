@@ -229,9 +229,9 @@ def make_average_volume_execute(
     Returns:
         NamedTuple of outputs (described in `MakeAverageVolumeOutputs`).
     """
+    params = execution.params(params)
     cargs = make_average_volume_cargs(params, execution)
     ret = make_average_volume_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

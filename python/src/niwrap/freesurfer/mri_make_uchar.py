@@ -195,9 +195,9 @@ def mri_make_uchar_execute(
     Returns:
         NamedTuple of outputs (described in `MriMakeUcharOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_make_uchar_cargs(params, execution)
     ret = mri_make_uchar_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

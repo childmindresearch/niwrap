@@ -143,9 +143,9 @@ def mri_dct_align_binary_execute(
     Returns:
         NamedTuple of outputs (described in `MriDctAlignBinaryOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_dct_align_binary_cargs(params, execution)
     ret = mri_dct_align_binary_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

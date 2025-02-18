@@ -196,9 +196,9 @@ def v_3d_mepfm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMepfmOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_mepfm_cargs(params, execution)
     ret = v_3d_mepfm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -156,9 +156,9 @@ def rebase_tensor_image_execute(
     Returns:
         NamedTuple of outputs (described in `RebaseTensorImageOutputs`).
     """
+    params = execution.params(params)
     cargs = rebase_tensor_image_cargs(params, execution)
     ret = rebase_tensor_image_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

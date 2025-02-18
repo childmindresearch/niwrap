@@ -164,9 +164,9 @@ def v_3d_nwarp_adjust_execute(
     Returns:
         NamedTuple of outputs (described in `V3dNwarpAdjustOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_nwarp_adjust_cargs(params, execution)
     ret = v_3d_nwarp_adjust_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

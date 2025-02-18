@@ -433,9 +433,9 @@ def probtrackx_execute(
     Returns:
         NamedTuple of outputs (described in `ProbtrackxOutputs`).
     """
+    params = execution.params(params)
     cargs = probtrackx_cargs(params, execution)
     ret = probtrackx_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

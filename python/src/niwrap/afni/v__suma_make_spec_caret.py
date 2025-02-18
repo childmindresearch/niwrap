@@ -140,9 +140,9 @@ def v__suma_make_spec_caret_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaMakeSpecCaretOutputs`).
     """
+    params = execution.params(params)
     cargs = v__suma_make_spec_caret_cargs(params, execution)
     ret = v__suma_make_spec_caret_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -133,9 +133,9 @@ def help_format_execute(
     Returns:
         NamedTuple of outputs (described in `HelpFormatOutputs`).
     """
+    params = execution.params(params)
     cargs = help_format_cargs(params, execution)
     ret = help_format_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

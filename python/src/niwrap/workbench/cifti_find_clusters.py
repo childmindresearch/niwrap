@@ -506,9 +506,9 @@ def cifti_find_clusters_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiFindClustersOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_find_clusters_cargs(params, execution)
     ret = cifti_find_clusters_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

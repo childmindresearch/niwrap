@@ -176,9 +176,9 @@ def segment_subject_old_skull_strip_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubjectOldSkullStripOutputs`).
     """
+    params = execution.params(params)
     cargs = segment_subject_old_skull_strip_cargs(params, execution)
     ret = segment_subject_old_skull_strip_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

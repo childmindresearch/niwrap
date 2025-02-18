@@ -151,9 +151,9 @@ def mri_refine_seg_execute(
     Returns:
         NamedTuple of outputs (described in `MriRefineSegOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_refine_seg_cargs(params, execution)
     ret = mri_refine_seg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

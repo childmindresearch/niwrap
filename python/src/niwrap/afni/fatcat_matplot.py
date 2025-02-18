@@ -135,9 +135,9 @@ def fatcat_matplot_execute(
     Returns:
         NamedTuple of outputs (described in `FatcatMatplotOutputs`).
     """
+    params = execution.params(params)
     cargs = fatcat_matplot_cargs(params, execution)
     ret = fatcat_matplot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

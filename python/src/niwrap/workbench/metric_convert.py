@@ -311,9 +311,9 @@ def metric_convert_execute(
     Returns:
         NamedTuple of outputs (described in `MetricConvertOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_convert_cargs(params, execution)
     ret = metric_convert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

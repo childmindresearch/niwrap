@@ -259,9 +259,9 @@ def tsfsmooth_execute(
     Returns:
         NamedTuple of outputs (described in `TsfsmoothOutputs`).
     """
+    params = execution.params(params)
     cargs = tsfsmooth_cargs(params, execution)
     ret = tsfsmooth_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

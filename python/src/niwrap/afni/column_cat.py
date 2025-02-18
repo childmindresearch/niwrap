@@ -156,9 +156,9 @@ def column_cat_execute(
     Returns:
         NamedTuple of outputs (described in `ColumnCatOutputs`).
     """
+    params = execution.params(params)
     cargs = column_cat_cargs(params, execution)
     ret = column_cat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

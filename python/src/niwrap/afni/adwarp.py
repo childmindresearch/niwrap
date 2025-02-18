@@ -219,9 +219,9 @@ def adwarp_execute(
     Returns:
         NamedTuple of outputs (described in `AdwarpOutputs`).
     """
+    params = execution.params(params)
     cargs = adwarp_cargs(params, execution)
     ret = adwarp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

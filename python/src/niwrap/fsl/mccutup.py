@@ -163,9 +163,9 @@ def mccutup_execute(
     Returns:
         NamedTuple of outputs (described in `MccutupOutputs`).
     """
+    params = execution.params(params)
     cargs = mccutup_cargs(params, execution)
     ret = mccutup_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

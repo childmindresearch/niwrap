@@ -301,9 +301,9 @@ def fat_proc_axialize_anat_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcAxializeAnatOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_proc_axialize_anat_cargs(params, execution)
     ret = fat_proc_axialize_anat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

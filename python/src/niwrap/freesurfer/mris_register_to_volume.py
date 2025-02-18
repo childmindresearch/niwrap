@@ -384,9 +384,9 @@ def mris_register_to_volume_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRegisterToVolumeOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_register_to_volume_cargs(params, execution)
     ret = mris_register_to_volume_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

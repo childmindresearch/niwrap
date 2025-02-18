@@ -234,9 +234,9 @@ def mri_nu_correct_mni_execute(
     Returns:
         NamedTuple of outputs (described in `MriNuCorrectMniOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_nu_correct_mni_cargs(params, execution)
     ret = mri_nu_correct_mni_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

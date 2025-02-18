@@ -249,9 +249,9 @@ def fsl_mvlm_execute(
     Returns:
         NamedTuple of outputs (described in `FslMvlmOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_mvlm_cargs(params, execution)
     ret = fsl_mvlm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

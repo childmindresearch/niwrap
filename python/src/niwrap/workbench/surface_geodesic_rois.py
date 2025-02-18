@@ -208,9 +208,9 @@ def surface_geodesic_rois_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceGeodesicRoisOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_geodesic_rois_cargs(params, execution)
     ret = surface_geodesic_rois_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

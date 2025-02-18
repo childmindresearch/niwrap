@@ -173,9 +173,9 @@ def firdesign_execute(
     Returns:
         NamedTuple of outputs (described in `FirdesignOutputs`).
     """
+    params = execution.params(params)
     cargs = firdesign_cargs(params, execution)
     ret = firdesign_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

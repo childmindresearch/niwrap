@@ -193,9 +193,9 @@ def first_flirt_execute(
     Returns:
         NamedTuple of outputs (described in `FirstFlirtOutputs`).
     """
+    params = execution.params(params)
     cargs = first_flirt_cargs(params, execution)
     ret = first_flirt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

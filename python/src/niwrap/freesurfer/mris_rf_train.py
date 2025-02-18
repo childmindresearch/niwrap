@@ -155,9 +155,9 @@ def mris_rf_train_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRfTrainOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_rf_train_cargs(params, execution)
     ret = mris_rf_train_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

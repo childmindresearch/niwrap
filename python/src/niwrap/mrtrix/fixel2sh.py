@@ -264,9 +264,9 @@ def fixel2sh_execute(
     Returns:
         NamedTuple of outputs (described in `Fixel2shOutputs`).
     """
+    params = execution.params(params)
     cargs = fixel2sh_cargs(params, execution)
     ret = fixel2sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

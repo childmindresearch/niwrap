@@ -141,9 +141,9 @@ def unpackimadir_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackimadirOutputs`).
     """
+    params = execution.params(params)
     cargs = unpackimadir_cargs(params, execution)
     ret = unpackimadir_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -345,9 +345,9 @@ def asegstats2table_execute(
     Returns:
         NamedTuple of outputs (described in `Asegstats2tableOutputs`).
     """
+    params = execution.params(params)
     cargs = asegstats2table_cargs(params, execution)
     ret = asegstats2table_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

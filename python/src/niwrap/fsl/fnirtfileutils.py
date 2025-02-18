@@ -235,9 +235,9 @@ def fnirtfileutils_execute(
     Returns:
         NamedTuple of outputs (described in `FnirtfileutilsOutputs`).
     """
+    params = execution.params(params)
     cargs = fnirtfileutils_cargs(params, execution)
     ret = fnirtfileutils_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -243,9 +243,9 @@ def nifti_information_execute(
     Returns:
         NamedTuple of outputs (described in `NiftiInformationOutputs`).
     """
+    params = execution.params(params)
     cargs = nifti_information_cargs(params, execution)
     ret = nifti_information_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

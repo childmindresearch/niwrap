@@ -147,9 +147,9 @@ def gifti_convert_execute(
     Returns:
         NamedTuple of outputs (described in `GiftiConvertOutputs`).
     """
+    params = execution.params(params)
     cargs = gifti_convert_cargs(params, execution)
     ret = gifti_convert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

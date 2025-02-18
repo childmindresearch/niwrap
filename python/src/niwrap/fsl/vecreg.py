@@ -228,9 +228,9 @@ def vecreg_execute(
     Returns:
         NamedTuple of outputs (described in `VecregOutputs`).
     """
+    params = execution.params(params)
     cargs = vecreg_cargs(params, execution)
     ret = vecreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -190,9 +190,9 @@ def extract_seg_waveform_execute(
     Returns:
         NamedTuple of outputs (described in `ExtractSegWaveformOutputs`).
     """
+    params = execution.params(params)
     cargs = extract_seg_waveform_cargs(params, execution)
     ret = extract_seg_waveform_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

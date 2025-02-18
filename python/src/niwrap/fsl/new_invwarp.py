@@ -203,9 +203,9 @@ def new_invwarp_execute(
     Returns:
         NamedTuple of outputs (described in `NewInvwarpOutputs`).
     """
+    params = execution.params(params)
     cargs = new_invwarp_cargs(params, execution)
     ret = new_invwarp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

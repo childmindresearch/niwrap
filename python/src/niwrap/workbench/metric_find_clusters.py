@@ -236,9 +236,9 @@ def metric_find_clusters_execute(
     Returns:
         NamedTuple of outputs (described in `MetricFindClustersOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_find_clusters_cargs(params, execution)
     ret = metric_find_clusters_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

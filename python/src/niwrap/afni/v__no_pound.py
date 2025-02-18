@@ -130,9 +130,9 @@ def v__no_pound_execute(
     Returns:
         NamedTuple of outputs (described in `VNoPoundOutputs`).
     """
+    params = execution.params(params)
     cargs = v__no_pound_cargs(params, execution)
     ret = v__no_pound_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

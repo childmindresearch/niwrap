@@ -148,9 +148,9 @@ def fsl_label2voxel_execute(
     Returns:
         NamedTuple of outputs (described in `FslLabel2voxelOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_label2voxel_cargs(params, execution)
     ret = fsl_label2voxel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

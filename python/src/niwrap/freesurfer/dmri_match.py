@@ -209,9 +209,9 @@ def dmri_match_execute(
     Returns:
         NamedTuple of outputs (described in `DmriMatchOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_match_cargs(params, execution)
     ret = dmri_match_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

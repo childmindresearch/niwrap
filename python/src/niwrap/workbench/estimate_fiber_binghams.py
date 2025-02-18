@@ -223,9 +223,9 @@ def estimate_fiber_binghams_execute(
     Returns:
         NamedTuple of outputs (described in `EstimateFiberBinghamsOutputs`).
     """
+    params = execution.params(params)
     cargs = estimate_fiber_binghams_cargs(params, execution)
     ret = estimate_fiber_binghams_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

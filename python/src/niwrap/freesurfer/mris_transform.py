@@ -172,9 +172,9 @@ def mris_transform_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTransformOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_transform_cargs(params, execution)
     ret = mris_transform_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

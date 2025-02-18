@@ -428,9 +428,9 @@ def volume_resample_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_resample_cargs(params, execution)
     ret = volume_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

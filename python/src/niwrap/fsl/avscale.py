@@ -154,9 +154,9 @@ def avscale_execute(
     Returns:
         NamedTuple of outputs (described in `AvscaleOutputs`).
     """
+    params = execution.params(params)
     cargs = avscale_cargs(params, execution)
     ret = avscale_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

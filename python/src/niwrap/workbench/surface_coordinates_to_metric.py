@@ -141,9 +141,9 @@ def surface_coordinates_to_metric_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceCoordinatesToMetricOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_coordinates_to_metric_cargs(params, execution)
     ret = surface_coordinates_to_metric_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -198,9 +198,9 @@ def aseg2feat_execute(
     Returns:
         NamedTuple of outputs (described in `Aseg2featOutputs`).
     """
+    params = execution.params(params)
     cargs = aseg2feat_cargs(params, execution)
     ret = aseg2feat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

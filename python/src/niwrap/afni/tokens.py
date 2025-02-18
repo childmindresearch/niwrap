@@ -145,9 +145,9 @@ def tokens_execute(
     Returns:
         NamedTuple of outputs (described in `TokensOutputs`).
     """
+    params = execution.params(params)
     cargs = tokens_cargs(params, execution)
     ret = tokens_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

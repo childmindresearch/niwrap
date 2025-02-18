@@ -154,9 +154,9 @@ def pointset2label_execute(
     Returns:
         NamedTuple of outputs (described in `Pointset2labelOutputs`).
     """
+    params = execution.params(params)
     cargs = pointset2label_cargs(params, execution)
     ret = pointset2label_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

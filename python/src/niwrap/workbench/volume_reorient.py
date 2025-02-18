@@ -152,9 +152,9 @@ def volume_reorient_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeReorientOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_reorient_cargs(params, execution)
     ret = volume_reorient_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

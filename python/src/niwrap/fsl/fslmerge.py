@@ -158,9 +158,9 @@ def fslmerge_execute(
     Returns:
         NamedTuple of outputs (described in `FslmergeOutputs`).
     """
+    params = execution.params(params)
     cargs = fslmerge_cargs(params, execution)
     ret = fslmerge_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

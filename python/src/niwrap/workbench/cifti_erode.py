@@ -353,9 +353,9 @@ def cifti_erode_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiErodeOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_erode_cargs(params, execution)
     ret = cifti_erode_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

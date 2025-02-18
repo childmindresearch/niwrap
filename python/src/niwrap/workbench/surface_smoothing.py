@@ -152,9 +152,9 @@ def surface_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceSmoothingOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_smoothing_cargs(params, execution)
     ret = surface_smoothing_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

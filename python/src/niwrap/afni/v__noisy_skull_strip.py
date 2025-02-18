@@ -162,9 +162,9 @@ def v__noisy_skull_strip_execute(
     Returns:
         NamedTuple of outputs (described in `VNoisySkullStripOutputs`).
     """
+    params = execution.params(params)
     cargs = v__noisy_skull_strip_cargs(params, execution)
     ret = v__noisy_skull_strip_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

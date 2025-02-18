@@ -164,9 +164,9 @@ def mri_paint_execute(
     Returns:
         NamedTuple of outputs (described in `MriPaintOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_paint_cargs(params, execution)
     ret = mri_paint_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

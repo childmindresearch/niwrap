@@ -256,9 +256,9 @@ def labelstats_execute(
     Returns:
         NamedTuple of outputs (described in `LabelstatsOutputs`).
     """
+    params = execution.params(params)
     cargs = labelstats_cargs(params, execution)
     ret = labelstats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

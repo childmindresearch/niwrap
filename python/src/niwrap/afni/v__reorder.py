@@ -166,9 +166,9 @@ def v__reorder_execute(
     Returns:
         NamedTuple of outputs (described in `VReorderOutputs`).
     """
+    params = execution.params(params)
     cargs = v__reorder_cargs(params, execution)
     ret = v__reorder_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

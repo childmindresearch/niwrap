@@ -131,9 +131,9 @@ def reinflate_subject_execute(
     Returns:
         NamedTuple of outputs (described in `ReinflateSubjectOutputs`).
     """
+    params = execution.params(params)
     cargs = reinflate_subject_cargs(params, execution)
     ret = reinflate_subject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

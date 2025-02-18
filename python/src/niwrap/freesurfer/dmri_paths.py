@@ -480,9 +480,9 @@ def dmri_paths_execute(
     Returns:
         NamedTuple of outputs (described in `DmriPathsOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_paths_cargs(params, execution)
     ret = dmri_paths_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

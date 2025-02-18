@@ -151,9 +151,9 @@ def v_3dsvm_linpredict_execute(
     Returns:
         NamedTuple of outputs (described in `V3dsvmLinpredictOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dsvm_linpredict_cargs(params, execution)
     ret = v_3dsvm_linpredict_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

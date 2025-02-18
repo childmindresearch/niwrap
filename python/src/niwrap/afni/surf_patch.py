@@ -297,9 +297,9 @@ def surf_patch_execute(
     Returns:
         NamedTuple of outputs (described in `SurfPatchOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_patch_cargs(params, execution)
     ret = surf_patch_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

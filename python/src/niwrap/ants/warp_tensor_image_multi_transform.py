@@ -183,9 +183,9 @@ def warp_tensor_image_multi_transform_execute(
     Returns:
         NamedTuple of outputs (described in `WarpTensorImageMultiTransformOutputs`).
     """
+    params = execution.params(params)
     cargs = warp_tensor_image_multi_transform_cargs(params, execution)
     ret = warp_tensor_image_multi_transform_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

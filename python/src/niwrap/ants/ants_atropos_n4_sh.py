@@ -442,9 +442,9 @@ def ants_atropos_n4_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsAtroposN4ShOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_atropos_n4_sh_cargs(params, execution)
     ret = ants_atropos_n4_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

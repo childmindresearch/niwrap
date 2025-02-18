@@ -345,9 +345,9 @@ def long_submit_jobs_execute(
     Returns:
         NamedTuple of outputs (described in `LongSubmitJobsOutputs`).
     """
+    params = execution.params(params)
     cargs = long_submit_jobs_cargs(params, execution)
     ret = long_submit_jobs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

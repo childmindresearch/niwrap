@@ -455,9 +455,9 @@ def mri_robust_template_execute(
     Returns:
         NamedTuple of outputs (described in `MriRobustTemplateOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_robust_template_cargs(params, execution)
     ret = mri_robust_template_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

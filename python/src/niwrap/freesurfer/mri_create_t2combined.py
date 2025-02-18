@@ -171,9 +171,9 @@ def mri_create_t2combined_execute(
     Returns:
         NamedTuple of outputs (described in `MriCreateT2combinedOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_create_t2combined_cargs(params, execution)
     ret = mri_create_t2combined_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

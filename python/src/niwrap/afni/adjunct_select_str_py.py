@@ -139,9 +139,9 @@ def adjunct_select_str_py_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctSelectStrPyOutputs`).
     """
+    params = execution.params(params)
     cargs = adjunct_select_str_py_cargs(params, execution)
     ret = adjunct_select_str_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

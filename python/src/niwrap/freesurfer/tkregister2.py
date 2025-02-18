@@ -173,9 +173,9 @@ def tkregister2_execute(
     Returns:
         NamedTuple of outputs (described in `Tkregister2Outputs`).
     """
+    params = execution.params(params)
     cargs = tkregister2_cargs(params, execution)
     ret = tkregister2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

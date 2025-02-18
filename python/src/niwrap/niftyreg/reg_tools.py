@@ -243,9 +243,9 @@ def reg_tools_execute(
     Returns:
         NamedTuple of outputs (described in `RegToolsOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_tools_cargs(params, execution)
     ret = reg_tools_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

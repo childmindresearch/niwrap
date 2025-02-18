@@ -207,9 +207,9 @@ def bedpostx_execute(
     Returns:
         NamedTuple of outputs (described in `BedpostxOutputs`).
     """
+    params = execution.params(params)
     cargs = bedpostx_cargs(params, execution)
     ret = bedpostx_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

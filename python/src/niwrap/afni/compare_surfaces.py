@@ -252,9 +252,9 @@ def compare_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `CompareSurfacesOutputs`).
     """
+    params = execution.params(params)
     cargs = compare_surfaces_cargs(params, execution)
     ret = compare_surfaces_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -256,9 +256,9 @@ def mrcentroid_execute(
     Returns:
         NamedTuple of outputs (described in `MrcentroidOutputs`).
     """
+    params = execution.params(params)
     cargs = mrcentroid_cargs(params, execution)
     ret = mrcentroid_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

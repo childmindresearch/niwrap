@@ -139,9 +139,9 @@ def mri_gca_ambiguous_execute(
     Returns:
         NamedTuple of outputs (described in `MriGcaAmbiguousOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_gca_ambiguous_cargs(params, execution)
     ret = mri_gca_ambiguous_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

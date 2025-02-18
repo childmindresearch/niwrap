@@ -139,9 +139,9 @@ def mkima_index_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `MkimaIndexTclOutputs`).
     """
+    params = execution.params(params)
     cargs = mkima_index_tcl_cargs(params, execution)
     ret = mkima_index_tcl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -204,9 +204,9 @@ def surface_apply_affine_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceApplyAffineOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_apply_affine_cargs(params, execution)
     ret = surface_apply_affine_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

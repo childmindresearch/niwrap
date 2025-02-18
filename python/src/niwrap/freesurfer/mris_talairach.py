@@ -129,9 +129,9 @@ def mris_talairach_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTalairachOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_talairach_cargs(params, execution)
     ret = mris_talairach_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

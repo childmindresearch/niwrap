@@ -816,9 +816,9 @@ def tckedit_execute(
     Returns:
         NamedTuple of outputs (described in `TckeditOutputs`).
     """
+    params = execution.params(params)
     cargs = tckedit_cargs(params, execution)
     ret = tckedit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

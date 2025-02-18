@@ -270,9 +270,9 @@ def mrcheckerboardmask_execute(
     Returns:
         NamedTuple of outputs (described in `MrcheckerboardmaskOutputs`).
     """
+    params = execution.params(params)
     cargs = mrcheckerboardmask_cargs(params, execution)
     ret = mrcheckerboardmask_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

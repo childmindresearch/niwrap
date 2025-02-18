@@ -190,9 +190,9 @@ def niml_feedme_execute(
     Returns:
         NamedTuple of outputs (described in `NimlFeedmeOutputs`).
     """
+    params = execution.params(params)
     cargs = niml_feedme_cargs(params, execution)
     ret = niml_feedme_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

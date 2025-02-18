@@ -134,9 +134,9 @@ def im2niml_execute(
     Returns:
         NamedTuple of outputs (described in `Im2nimlOutputs`).
     """
+    params = execution.params(params)
     cargs = im2niml_cargs(params, execution)
     ret = im2niml_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -207,9 +207,9 @@ def v_3d_nwarp_cat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dNwarpCatOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_nwarp_cat_cargs(params, execution)
     ret = v_3d_nwarp_cat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

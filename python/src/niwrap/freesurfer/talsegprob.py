@@ -282,9 +282,9 @@ def talsegprob_execute(
     Returns:
         NamedTuple of outputs (described in `TalsegprobOutputs`).
     """
+    params = execution.params(params)
     cargs = talsegprob_cargs(params, execution)
     ret = talsegprob_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

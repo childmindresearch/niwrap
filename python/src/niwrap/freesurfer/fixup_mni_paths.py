@@ -170,9 +170,9 @@ def fixup_mni_paths_execute(
     Returns:
         NamedTuple of outputs (described in `FixupMniPathsOutputs`).
     """
+    params = execution.params(params)
     cargs = fixup_mni_paths_cargs(params, execution)
     ret = fixup_mni_paths_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

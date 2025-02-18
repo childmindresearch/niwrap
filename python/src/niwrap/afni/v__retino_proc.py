@@ -504,9 +504,9 @@ def v__retino_proc_execute(
     Returns:
         NamedTuple of outputs (described in `VRetinoProcOutputs`).
     """
+    params = execution.params(params)
     cargs = v__retino_proc_cargs(params, execution)
     ret = v__retino_proc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

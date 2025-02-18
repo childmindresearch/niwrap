@@ -626,9 +626,9 @@ def recon_all_execute(
     Returns:
         NamedTuple of outputs (described in `ReconAllOutputs`).
     """
+    params = execution.params(params)
     cargs = recon_all_cargs(params, execution)
     ret = recon_all_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

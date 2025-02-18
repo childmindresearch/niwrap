@@ -146,9 +146,9 @@ def asegstatsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `AsegstatsdiffOutputs`).
     """
+    params = execution.params(params)
     cargs = asegstatsdiff_cargs(params, execution)
     ret = asegstatsdiff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

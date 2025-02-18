@@ -167,9 +167,9 @@ def mri_compute_change_map_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeChangeMapOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_compute_change_map_cargs(params, execution)
     ret = mri_compute_change_map_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

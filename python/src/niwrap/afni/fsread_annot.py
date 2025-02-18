@@ -243,9 +243,9 @@ def fsread_annot_execute(
     Returns:
         NamedTuple of outputs (described in `FsreadAnnotOutputs`).
     """
+    params = execution.params(params)
     cargs = fsread_annot_cargs(params, execution)
     ret = fsread_annot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

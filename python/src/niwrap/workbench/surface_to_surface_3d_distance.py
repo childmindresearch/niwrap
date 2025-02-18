@@ -162,9 +162,9 @@ def surface_to_surface_3d_distance_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceToSurface3dDistanceOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_to_surface_3d_distance_cargs(params, execution)
     ret = surface_to_surface_3d_distance_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

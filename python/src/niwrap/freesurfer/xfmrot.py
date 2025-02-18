@@ -149,9 +149,9 @@ def xfmrot_execute(
     Returns:
         NamedTuple of outputs (described in `XfmrotOutputs`).
     """
+    params = execution.params(params)
     cargs = xfmrot_cargs(params, execution)
     ret = xfmrot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

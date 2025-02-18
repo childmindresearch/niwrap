@@ -130,9 +130,9 @@ def adjunct_calc_mont_dims_py_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctCalcMontDimsPyOutputs`).
     """
+    params = execution.params(params)
     cargs = adjunct_calc_mont_dims_py_cargs(params, execution)
     ret = adjunct_calc_mont_dims_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

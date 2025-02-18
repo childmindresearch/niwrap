@@ -149,9 +149,9 @@ def mris_label_calc_execute(
     Returns:
         NamedTuple of outputs (described in `MrisLabelCalcOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_label_calc_cargs(params, execution)
     ret = mris_label_calc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

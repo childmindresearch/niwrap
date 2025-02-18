@@ -246,9 +246,9 @@ def metric_dilate_execute(
     Returns:
         NamedTuple of outputs (described in `MetricDilateOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_dilate_cargs(params, execution)
     ret = metric_dilate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

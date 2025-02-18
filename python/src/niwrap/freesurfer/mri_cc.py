@@ -236,9 +236,9 @@ def mri_cc_execute(
     Returns:
         NamedTuple of outputs (described in `MriCcOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_cc_cargs(params, execution)
     ret = mri_cc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

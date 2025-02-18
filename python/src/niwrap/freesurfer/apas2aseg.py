@@ -160,9 +160,9 @@ def apas2aseg_execute(
     Returns:
         NamedTuple of outputs (described in `Apas2asegOutputs`).
     """
+    params = execution.params(params)
     cargs = apas2aseg_cargs(params, execution)
     ret = apas2aseg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

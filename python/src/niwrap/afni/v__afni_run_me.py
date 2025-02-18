@@ -142,9 +142,9 @@ def v__afni_run_me_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRunMeOutputs`).
     """
+    params = execution.params(params)
     cargs = v__afni_run_me_cargs(params, execution)
     ret = v__afni_run_me_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

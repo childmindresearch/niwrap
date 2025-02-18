@@ -141,9 +141,9 @@ def v_3dnvals_execute(
     Returns:
         NamedTuple of outputs (described in `V3dnvalsOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dnvals_cargs(params, execution)
     ret = v_3dnvals_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

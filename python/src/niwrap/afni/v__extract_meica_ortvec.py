@@ -188,9 +188,9 @@ def v__extract_meica_ortvec_execute(
     Returns:
         NamedTuple of outputs (described in `VExtractMeicaOrtvecOutputs`).
     """
+    params = execution.params(params)
     cargs = v__extract_meica_ortvec_cargs(params, execution)
     ret = v__extract_meica_ortvec_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

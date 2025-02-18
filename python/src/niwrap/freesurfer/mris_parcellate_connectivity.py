@@ -154,9 +154,9 @@ def mris_parcellate_connectivity_execute(
     Returns:
         NamedTuple of outputs (described in `MrisParcellateConnectivityOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_parcellate_connectivity_cargs(params, execution)
     ret = mris_parcellate_connectivity_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -254,9 +254,9 @@ def bayesian_group_ana_py_execute(
     Returns:
         NamedTuple of outputs (described in `BayesianGroupAnaPyOutputs`).
     """
+    params = execution.params(params)
     cargs = bayesian_group_ana_py_cargs(params, execution)
     ret = bayesian_group_ana_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

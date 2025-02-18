@@ -576,9 +576,9 @@ def cifti_palette_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiPaletteOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_palette_cargs(params, execution)
     ret = cifti_palette_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

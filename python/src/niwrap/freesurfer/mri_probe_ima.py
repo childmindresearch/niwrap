@@ -197,9 +197,9 @@ def mri_probe_ima_execute(
     Returns:
         NamedTuple of outputs (described in `MriProbeImaOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_probe_ima_cargs(params, execution)
     ret = mri_probe_ima_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

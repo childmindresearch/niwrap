@@ -260,9 +260,9 @@ def ants_brain_extraction_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsBrainExtractionShOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_brain_extraction_sh_cargs(params, execution)
     ret = ants_brain_extraction_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -200,9 +200,9 @@ def defect2seg_execute(
     Returns:
         NamedTuple of outputs (described in `Defect2segOutputs`).
     """
+    params = execution.params(params)
     cargs = defect2seg_cargs(params, execution)
     ret = defect2seg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

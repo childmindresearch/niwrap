@@ -292,9 +292,9 @@ def mrhistogram_execute(
     Returns:
         NamedTuple of outputs (described in `MrhistogramOutputs`).
     """
+    params = execution.params(params)
     cargs = mrhistogram_cargs(params, execution)
     ret = mrhistogram_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

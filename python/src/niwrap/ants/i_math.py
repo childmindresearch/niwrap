@@ -157,9 +157,9 @@ def i_math_execute(
     Returns:
         NamedTuple of outputs (described in `IMathOutputs`).
     """
+    params = execution.params(params)
     cargs = i_math_cargs(params, execution)
     ret = i_math_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -254,9 +254,9 @@ def mri_3d_photo_recon_execute(
     Returns:
         NamedTuple of outputs (described in `Mri3dPhotoReconOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_3d_photo_recon_cargs(params, execution)
     ret = mri_3d_photo_recon_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -205,9 +205,9 @@ def tractstats2table_execute(
     Returns:
         NamedTuple of outputs (described in `Tractstats2tableOutputs`).
     """
+    params = execution.params(params)
     cargs = tractstats2table_cargs(params, execution)
     ret = tractstats2table_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

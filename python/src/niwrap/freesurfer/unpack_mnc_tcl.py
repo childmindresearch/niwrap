@@ -154,9 +154,9 @@ def unpack_mnc_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackMncTclOutputs`).
     """
+    params = execution.params(params)
     cargs = unpack_mnc_tcl_cargs(params, execution)
     ret = unpack_mnc_tcl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

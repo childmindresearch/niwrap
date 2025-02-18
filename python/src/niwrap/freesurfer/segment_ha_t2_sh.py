@@ -142,9 +142,9 @@ def segment_ha_t2_sh_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentHaT2ShOutputs`).
     """
+    params = execution.params(params)
     cargs = segment_ha_t2_sh_cargs(params, execution)
     ret = segment_ha_t2_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

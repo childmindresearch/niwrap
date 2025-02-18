@@ -155,9 +155,9 @@ def mri_add_xform_to_header_execute(
     Returns:
         NamedTuple of outputs (described in `MriAddXformToHeaderOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_add_xform_to_header_cargs(params, execution)
     ret = mri_add_xform_to_header_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

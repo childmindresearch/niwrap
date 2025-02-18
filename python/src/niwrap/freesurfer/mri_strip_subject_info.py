@@ -134,9 +134,9 @@ def mri_strip_subject_info_execute(
     Returns:
         NamedTuple of outputs (described in `MriStripSubjectInfoOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_strip_subject_info_cargs(params, execution)
     ret = mri_strip_subject_info_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -353,9 +353,9 @@ def v_3d_group_in_corr_execute(
     Returns:
         NamedTuple of outputs (described in `V3dGroupInCorrOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_group_in_corr_cargs(params, execution)
     ret = v_3d_group_in_corr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

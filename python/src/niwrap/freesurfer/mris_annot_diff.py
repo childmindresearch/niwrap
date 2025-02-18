@@ -146,9 +146,9 @@ def mris_annot_diff_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAnnotDiffOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_annot_diff_cargs(params, execution)
     ret = mris_annot_diff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

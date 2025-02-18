@@ -273,9 +273,9 @@ def warpcorrect_execute(
     Returns:
         NamedTuple of outputs (described in `WarpcorrectOutputs`).
     """
+    params = execution.params(params)
     cargs = warpcorrect_cargs(params, execution)
     ret = warpcorrect_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

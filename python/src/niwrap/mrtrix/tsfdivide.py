@@ -253,9 +253,9 @@ def tsfdivide_execute(
     Returns:
         NamedTuple of outputs (described in `TsfdivideOutputs`).
     """
+    params = execution.params(params)
     cargs = tsfdivide_cargs(params, execution)
     ret = tsfdivide_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

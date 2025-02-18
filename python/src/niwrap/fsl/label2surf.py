@@ -164,9 +164,9 @@ def label2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Label2surfOutputs`).
     """
+    params = execution.params(params)
     cargs = label2surf_cargs(params, execution)
     ret = label2surf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

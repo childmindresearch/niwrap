@@ -204,9 +204,9 @@ def tsplot_execute(
     Returns:
         NamedTuple of outputs (described in `TsplotOutputs`).
     """
+    params = execution.params(params)
     cargs = tsplot_cargs(params, execution)
     ret = tsplot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -170,9 +170,9 @@ def mris_rotate_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRotateOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_rotate_cargs(params, execution)
     ret = mris_rotate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

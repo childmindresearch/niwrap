@@ -257,9 +257,9 @@ def v__add_edge_execute(
     Returns:
         NamedTuple of outputs (described in `VAddEdgeOutputs`).
     """
+    params = execution.params(params)
     cargs = v__add_edge_cargs(params, execution)
     ret = v__add_edge_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

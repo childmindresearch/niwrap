@@ -240,9 +240,9 @@ def mri_compute_layer_fractions_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeLayerFractionsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_compute_layer_fractions_cargs(params, execution)
     ret = mri_compute_layer_fractions_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

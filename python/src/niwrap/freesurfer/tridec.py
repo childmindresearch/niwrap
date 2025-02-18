@@ -148,9 +148,9 @@ def tridec_execute(
     Returns:
         NamedTuple of outputs (described in `TridecOutputs`).
     """
+    params = execution.params(params)
     cargs = tridec_cargs(params, execution)
     ret = tridec_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

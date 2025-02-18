@@ -201,9 +201,9 @@ def ants_n4_bias_field_correction_fs_execute(
     Returns:
         NamedTuple of outputs (described in `AntsN4BiasFieldCorrectionFsOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_n4_bias_field_correction_fs_cargs(params, execution)
     ret = ants_n4_bias_field_correction_fs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -565,9 +565,9 @@ def metric_palette_execute(
     Returns:
         NamedTuple of outputs (described in `MetricPaletteOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_palette_cargs(params, execution)
     ret = metric_palette_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

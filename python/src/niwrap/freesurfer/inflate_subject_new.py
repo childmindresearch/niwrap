@@ -129,9 +129,9 @@ def inflate_subject_new_execute(
     Returns:
         NamedTuple of outputs (described in `InflateSubjectNewOutputs`).
     """
+    params = execution.params(params)
     cargs = inflate_subject_new_cargs(params, execution)
     ret = inflate_subject_new_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

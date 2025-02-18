@@ -185,9 +185,9 @@ def v__compute_gcor_execute(
     Returns:
         NamedTuple of outputs (described in `VComputeGcorOutputs`).
     """
+    params = execution.params(params)
     cargs = v__compute_gcor_cargs(params, execution)
     ret = v__compute_gcor_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

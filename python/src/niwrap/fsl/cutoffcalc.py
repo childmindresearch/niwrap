@@ -176,9 +176,9 @@ def cutoffcalc_execute(
     Returns:
         NamedTuple of outputs (described in `CutoffcalcOutputs`).
     """
+    params = execution.params(params)
     cargs = cutoffcalc_cargs(params, execution)
     ret = cutoffcalc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -124,9 +124,9 @@ def fiducials_calibration_execute(
     Returns:
         NamedTuple of outputs (described in `FiducialsCalibrationOutputs`).
     """
+    params = execution.params(params)
     cargs = fiducials_calibration_cargs(params, execution)
     ret = fiducials_calibration_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

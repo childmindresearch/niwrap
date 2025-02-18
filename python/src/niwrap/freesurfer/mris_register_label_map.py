@@ -208,9 +208,9 @@ def mris_register_label_map_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRegisterLabelMapOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_register_label_map_cargs(params, execution)
     ret = mris_register_label_map_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

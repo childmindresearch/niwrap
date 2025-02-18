@@ -165,9 +165,9 @@ def v_3d_afnito_analyze_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAfnitoAnalyzeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_afnito_analyze_cargs(params, execution)
     ret = v_3d_afnito_analyze_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -296,9 +296,9 @@ def gca_apply_execute(
     Returns:
         NamedTuple of outputs (described in `GcaApplyOutputs`).
     """
+    params = execution.params(params)
     cargs = gca_apply_cargs(params, execution)
     ret = gca_apply_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

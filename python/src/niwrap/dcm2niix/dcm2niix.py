@@ -405,9 +405,9 @@ def dcm2niix_execute(
     Returns:
         NamedTuple of outputs (described in `Dcm2niixOutputs`).
     """
+    params = execution.params(params)
     cargs = dcm2niix_cargs(params, execution)
     ret = dcm2niix_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

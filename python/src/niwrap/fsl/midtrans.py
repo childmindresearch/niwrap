@@ -174,9 +174,9 @@ def midtrans_execute(
     Returns:
         NamedTuple of outputs (described in `MidtransOutputs`).
     """
+    params = execution.params(params)
     cargs = midtrans_cargs(params, execution)
     ret = midtrans_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

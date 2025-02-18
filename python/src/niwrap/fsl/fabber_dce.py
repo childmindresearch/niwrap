@@ -413,9 +413,9 @@ def fabber_dce_execute(
     Returns:
         NamedTuple of outputs (described in `FabberDceOutputs`).
     """
+    params = execution.params(params)
     cargs = fabber_dce_cargs(params, execution)
     ret = fabber_dce_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

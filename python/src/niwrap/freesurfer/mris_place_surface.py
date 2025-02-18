@@ -516,9 +516,9 @@ def mris_place_surface_execute(
     Returns:
         NamedTuple of outputs (described in `MrisPlaceSurfaceOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_place_surface_cargs(params, execution)
     ret = mris_place_surface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -178,9 +178,9 @@ def samseg_long_execute(
     Returns:
         NamedTuple of outputs (described in `SamsegLongOutputs`).
     """
+    params = execution.params(params)
     cargs = samseg_long_cargs(params, execution)
     ret = samseg_long_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

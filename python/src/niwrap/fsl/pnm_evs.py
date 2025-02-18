@@ -319,9 +319,9 @@ def pnm_evs_execute(
     Returns:
         NamedTuple of outputs (described in `PnmEvsOutputs`).
     """
+    params = execution.params(params)
     cargs = pnm_evs_cargs(params, execution)
     ret = pnm_evs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

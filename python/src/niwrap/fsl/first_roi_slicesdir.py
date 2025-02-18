@@ -143,9 +143,9 @@ def first_roi_slicesdir_execute(
     Returns:
         NamedTuple of outputs (described in `FirstRoiSlicesdirOutputs`).
     """
+    params = execution.params(params)
     cargs = first_roi_slicesdir_cargs(params, execution)
     ret = first_roi_slicesdir_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

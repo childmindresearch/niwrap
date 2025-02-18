@@ -316,9 +316,9 @@ def file_convert_execute(
     Returns:
         NamedTuple of outputs (described in `FileConvertOutputs`).
     """
+    params = execution.params(params)
     cargs = file_convert_cargs(params, execution)
     ret = file_convert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -153,9 +153,9 @@ def nicat_execute(
     Returns:
         NamedTuple of outputs (described in `NicatOutputs`).
     """
+    params = execution.params(params)
     cargs = nicat_cargs(params, execution)
     ret = nicat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

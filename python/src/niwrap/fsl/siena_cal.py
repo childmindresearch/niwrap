@@ -151,9 +151,9 @@ def siena_cal_execute(
     Returns:
         NamedTuple of outputs (described in `SienaCalOutputs`).
     """
+    params = execution.params(params)
     cargs = siena_cal_cargs(params, execution)
     ret = siena_cal_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

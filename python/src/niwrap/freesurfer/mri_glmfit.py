@@ -744,9 +744,9 @@ def mri_glmfit_execute(
     Returns:
         NamedTuple of outputs (described in `MriGlmfitOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_glmfit_cargs(params, execution)
     ret = mri_glmfit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

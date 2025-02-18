@@ -166,9 +166,9 @@ def vsm_smooth_execute(
     Returns:
         NamedTuple of outputs (described in `VsmSmoothOutputs`).
     """
+    params = execution.params(params)
     cargs = vsm_smooth_cargs(params, execution)
     ret = vsm_smooth_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -290,9 +290,9 @@ def volume_tfce_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeTfceOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_tfce_cargs(params, execution)
     ret = volume_tfce_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

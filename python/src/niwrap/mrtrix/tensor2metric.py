@@ -410,9 +410,9 @@ def tensor2metric_execute(
     Returns:
         NamedTuple of outputs (described in `Tensor2metricOutputs`).
     """
+    params = execution.params(params)
     cargs = tensor2metric_cargs(params, execution)
     ret = tensor2metric_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

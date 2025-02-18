@@ -162,9 +162,9 @@ def dcmdir_info_mgh_execute(
     Returns:
         NamedTuple of outputs (described in `DcmdirInfoMghOutputs`).
     """
+    params = execution.params(params)
     cargs = dcmdir_info_mgh_cargs(params, execution)
     ret = dcmdir_info_mgh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -139,9 +139,9 @@ def mri_validate_skull_stripped_execute(
     Returns:
         NamedTuple of outputs (described in `MriValidateSkullStrippedOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_validate_skull_stripped_cargs(params, execution)
     ret = mri_validate_skull_stripped_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

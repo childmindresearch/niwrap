@@ -132,9 +132,9 @@ def uber_proc_py_execute(
     Returns:
         NamedTuple of outputs (described in `UberProcPyOutputs`).
     """
+    params = execution.params(params)
     cargs = uber_proc_py_cargs(params, execution)
     ret = uber_proc_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

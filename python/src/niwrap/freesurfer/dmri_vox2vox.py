@@ -226,9 +226,9 @@ def dmri_vox2vox_execute(
     Returns:
         NamedTuple of outputs (described in `DmriVox2voxOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_vox2vox_cargs(params, execution)
     ret = dmri_vox2vox_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

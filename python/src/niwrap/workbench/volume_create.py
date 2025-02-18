@@ -336,9 +336,9 @@ def volume_create_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeCreateOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_create_cargs(params, execution)
     ret = volume_create_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

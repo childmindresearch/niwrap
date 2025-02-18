@@ -140,9 +140,9 @@ def spec_file_relocate_execute(
     Returns:
         NamedTuple of outputs (described in `SpecFileRelocateOutputs`).
     """
+    params = execution.params(params)
     cargs = spec_file_relocate_cargs(params, execution)
     ret = spec_file_relocate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

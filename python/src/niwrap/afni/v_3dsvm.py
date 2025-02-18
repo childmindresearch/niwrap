@@ -385,9 +385,9 @@ def v_3dsvm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dsvmOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dsvm_cargs(params, execution)
     ret = v_3dsvm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

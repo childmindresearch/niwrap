@@ -173,9 +173,9 @@ def rca_long_tp_init_execute(
     Returns:
         NamedTuple of outputs (described in `RcaLongTpInitOutputs`).
     """
+    params = execution.params(params)
     cargs = rca_long_tp_init_cargs(params, execution)
     ret = rca_long_tp_init_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -176,9 +176,9 @@ def gifti_label_to_roi_execute(
     Returns:
         NamedTuple of outputs (described in `GiftiLabelToRoiOutputs`).
     """
+    params = execution.params(params)
     cargs = gifti_label_to_roi_cargs(params, execution)
     ret = gifti_label_to_roi_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

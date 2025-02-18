@@ -293,9 +293,9 @@ def mri_aparc2aseg_execute(
     Returns:
         NamedTuple of outputs (described in `MriAparc2asegOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_aparc2aseg_cargs(params, execution)
     ret = mri_aparc2aseg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

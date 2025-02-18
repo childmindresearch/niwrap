@@ -168,9 +168,9 @@ def mri_gcut_execute(
     Returns:
         NamedTuple of outputs (described in `MriGcutOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_gcut_cargs(params, execution)
     ret = mri_gcut_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

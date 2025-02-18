@@ -266,9 +266,9 @@ def dirsplit_execute(
     Returns:
         NamedTuple of outputs (described in `DirsplitOutputs`).
     """
+    params = execution.params(params)
     cargs = dirsplit_cargs(params, execution)
     ret = dirsplit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

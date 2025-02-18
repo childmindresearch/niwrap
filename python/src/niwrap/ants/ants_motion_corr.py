@@ -299,9 +299,9 @@ def ants_motion_corr_execute(
     Returns:
         NamedTuple of outputs (described in `AntsMotionCorrOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_motion_corr_cargs(params, execution)
     ret = ants_motion_corr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

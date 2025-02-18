@@ -183,9 +183,9 @@ def applytopup_execute(
     Returns:
         NamedTuple of outputs (described in `ApplytopupOutputs`).
     """
+    params = execution.params(params)
     cargs = applytopup_cargs(params, execution)
     ret = applytopup_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -154,9 +154,9 @@ def estnoise_execute(
     Returns:
         NamedTuple of outputs (described in `EstnoiseOutputs`).
     """
+    params = execution.params(params)
     cargs = estnoise_cargs(params, execution)
     ret = estnoise_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

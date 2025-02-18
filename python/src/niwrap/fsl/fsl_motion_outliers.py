@@ -258,9 +258,9 @@ def fsl_motion_outliers_execute(
     Returns:
         NamedTuple of outputs (described in `FslMotionOutliersOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_motion_outliers_cargs(params, execution)
     ret = fsl_motion_outliers_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

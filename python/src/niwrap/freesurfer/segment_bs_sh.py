@@ -132,9 +132,9 @@ def segment_bs_sh_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentBsShOutputs`).
     """
+    params = execution.params(params)
     cargs = segment_bs_sh_cargs(params, execution)
     ret = segment_bs_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

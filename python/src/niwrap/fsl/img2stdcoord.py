@@ -211,9 +211,9 @@ def img2stdcoord_execute(
     Returns:
         NamedTuple of outputs (described in `Img2stdcoordOutputs`).
     """
+    params = execution.params(params)
     cargs = img2stdcoord_cargs(params, execution)
     ret = img2stdcoord_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

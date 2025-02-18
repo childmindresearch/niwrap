@@ -431,9 +431,9 @@ def dcmunpack_execute(
     Returns:
         NamedTuple of outputs (described in `DcmunpackOutputs`).
     """
+    params = execution.params(params)
     cargs = dcmunpack_cargs(params, execution)
     ret = dcmunpack_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

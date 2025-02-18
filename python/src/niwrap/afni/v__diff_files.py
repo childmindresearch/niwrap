@@ -200,9 +200,9 @@ def v__diff_files_execute(
     Returns:
         NamedTuple of outputs (described in `VDiffFilesOutputs`).
     """
+    params = execution.params(params)
     cargs = v__diff_files_cargs(params, execution)
     ret = v__diff_files_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

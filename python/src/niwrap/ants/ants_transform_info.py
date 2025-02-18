@@ -137,9 +137,9 @@ def ants_transform_info_execute(
     Returns:
         NamedTuple of outputs (described in `AntsTransformInfoOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_transform_info_cargs(params, execution)
     ret = ants_transform_info_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

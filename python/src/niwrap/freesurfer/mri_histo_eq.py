@@ -134,9 +134,9 @@ def mri_histo_eq_execute(
     Returns:
         NamedTuple of outputs (described in `MriHistoEqOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_histo_eq_cargs(params, execution)
     ret = mri_histo_eq_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

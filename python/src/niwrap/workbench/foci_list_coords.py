@@ -149,9 +149,9 @@ def foci_list_coords_execute(
     Returns:
         NamedTuple of outputs (described in `FociListCoordsOutputs`).
     """
+    params = execution.params(params)
     cargs = foci_list_coords_cargs(params, execution)
     ret = foci_list_coords_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 
