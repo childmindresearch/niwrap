@@ -769,157 +769,158 @@
 </span><span id="L-568"><a href="#L-568"><span class="linenos">568</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-569"><a href="#L-569"><span class="linenos">569</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_palette_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-570"><a href="#L-570"><span class="linenos">570</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_palette_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a>
+</span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a>
-</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_palette</span><span class="p">(</span>
-</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a>    <span class="n">pos_percent</span><span class="p">:</span> <span class="n">VolumePalettePosPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a>    <span class="n">neg_percent</span><span class="p">:</span> <span class="n">VolumePaletteNegPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-581"><a href="#L-581"><span class="linenos">581</span></a>    <span class="n">pos_user</span><span class="p">:</span> <span class="n">VolumePalettePosUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-582"><a href="#L-582"><span class="linenos">582</span></a>    <span class="n">neg_user</span><span class="p">:</span> <span class="n">VolumePaletteNegUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-583"><a href="#L-583"><span class="linenos">583</span></a>    <span class="n">opt_interpolate_interpolate</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-584"><a href="#L-584"><span class="linenos">584</span></a>    <span class="n">opt_disp_pos_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-585"><a href="#L-585"><span class="linenos">585</span></a>    <span class="n">opt_disp_neg_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-586"><a href="#L-586"><span class="linenos">586</span></a>    <span class="n">opt_disp_zero_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a>    <span class="n">opt_palette_name_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a>    <span class="n">thresholding</span><span class="p">:</span> <span class="n">VolumePaletteThresholdingParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-589"><a href="#L-589"><span class="linenos">589</span></a>    <span class="n">opt_inversion_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-590"><a href="#L-590"><span class="linenos">590</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-591"><a href="#L-591"><span class="linenos">591</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumePaletteOutputs</span><span class="p">:</span>
-</span><span id="L-592"><a href="#L-592"><span class="linenos">592</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-593"><a href="#L-593"><span class="linenos">593</span></a><span class="sd">    Set the palette of a volume file.</span>
-</span><span id="L-594"><a href="#L-594"><span class="linenos">594</span></a><span class="sd">    </span>
-</span><span id="L-595"><a href="#L-595"><span class="linenos">595</span></a><span class="sd">    The original volume file is overwritten with the modified version. By</span>
-</span><span id="L-596"><a href="#L-596"><span class="linenos">596</span></a><span class="sd">    default, all columns of the volume file are adjusted to the new settings,</span>
-</span><span id="L-597"><a href="#L-597"><span class="linenos">597</span></a><span class="sd">    use the -subvolume option to change only one subvolume. Mapping settings not</span>
-</span><span id="L-598"><a href="#L-598"><span class="linenos">598</span></a><span class="sd">    specified in options will be taken from the first subvolume. The &lt;mode&gt;</span>
-</span><span id="L-599"><a href="#L-599"><span class="linenos">599</span></a><span class="sd">    argument must be one of the following:</span>
-</span><span id="L-600"><a href="#L-600"><span class="linenos">600</span></a><span class="sd">    </span>
-</span><span id="L-601"><a href="#L-601"><span class="linenos">601</span></a><span class="sd">    MODE_AUTO_SCALE</span>
-</span><span id="L-602"><a href="#L-602"><span class="linenos">602</span></a><span class="sd">    MODE_AUTO_SCALE_ABSOLUTE_PERCENTAGE</span>
-</span><span id="L-603"><a href="#L-603"><span class="linenos">603</span></a><span class="sd">    MODE_AUTO_SCALE_PERCENTAGE</span>
-</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a><span class="sd">    MODE_USER_SCALE</span>
-</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a><span class="sd">    </span>
-</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a><span class="sd">    The &lt;name&gt; argument to -palette-name must be one of the following:</span>
-</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a><span class="sd">    </span>
-</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a><span class="sd">    ROY-BIG-BL</span>
-</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a><span class="sd">    videen_style</span>
-</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a><span class="sd">    Gray_Interp_Positive</span>
-</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a><span class="sd">    Gray_Interp</span>
-</span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a><span class="sd">    PSYCH-FIXED</span>
-</span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a><span class="sd">    RBGYR20</span>
-</span><span id="L-614"><a href="#L-614"><span class="linenos">614</span></a><span class="sd">    RBGYR20P</span>
-</span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a><span class="sd">    RYGBR4_positive</span>
-</span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a><span class="sd">    RGRBR_mirror90_pos</span>
-</span><span id="L-617"><a href="#L-617"><span class="linenos">617</span></a><span class="sd">    Orange-Yellow</span>
-</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a><span class="sd">    POS_NEG_ZERO</span>
-</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a><span class="sd">    red-yellow</span>
-</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a><span class="sd">    blue-lightblue</span>
-</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a><span class="sd">    FSL</span>
-</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a><span class="sd">    power_surf</span>
-</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a><span class="sd">    black-red</span>
-</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a><span class="sd">    black-green</span>
-</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a><span class="sd">    black-blue</span>
-</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a><span class="sd">    black-red-positive</span>
-</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a><span class="sd">    black-green-positive</span>
-</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a><span class="sd">    black-blue-positive</span>
-</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a><span class="sd">    blue-black-green</span>
-</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a><span class="sd">    blue-black-red</span>
-</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a><span class="sd">    red-black-green</span>
-</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a><span class="sd">    fsl_red</span>
-</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a><span class="sd">    fsl_green</span>
-</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a><span class="sd">    fsl_blue</span>
-</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a><span class="sd">    fsl_yellow</span>
-</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a><span class="sd">    RedWhiteBlue</span>
-</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a><span class="sd">    cool-warm</span>
-</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a><span class="sd">    spectral</span>
-</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a><span class="sd">    RY-BC-BL</span>
-</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a><span class="sd">    magma</span>
-</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a><span class="sd">    JET256</span>
-</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="sd">    PSYCH</span>
-</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="sd">    PSYCH-NO-NONE</span>
-</span><span id="L-644"><a href="#L-644"><span class="linenos">644</span></a><span class="sd">    ROY-BIG</span>
-</span><span id="L-645"><a href="#L-645"><span class="linenos">645</span></a><span class="sd">    clear_brain</span>
-</span><span id="L-646"><a href="#L-646"><span class="linenos">646</span></a><span class="sd">    fidl</span>
-</span><span id="L-647"><a href="#L-647"><span class="linenos">647</span></a><span class="sd">    raich4_clrmid</span>
-</span><span id="L-648"><a href="#L-648"><span class="linenos">648</span></a><span class="sd">    raich6_clrmid</span>
-</span><span id="L-649"><a href="#L-649"><span class="linenos">649</span></a><span class="sd">    HSB8_clrmid</span>
-</span><span id="L-650"><a href="#L-650"><span class="linenos">650</span></a><span class="sd">    POS_NEG</span>
-</span><span id="L-651"><a href="#L-651"><span class="linenos">651</span></a><span class="sd">    Special-RGB-Volume</span>
-</span><span id="L-652"><a href="#L-652"><span class="linenos">652</span></a><span class="sd">    </span>
-</span><span id="L-653"><a href="#L-653"><span class="linenos">653</span></a><span class="sd">    The &lt;type&gt; argument to -thresholding must be one of the following:</span>
-</span><span id="L-654"><a href="#L-654"><span class="linenos">654</span></a><span class="sd">    </span>
-</span><span id="L-655"><a href="#L-655"><span class="linenos">655</span></a><span class="sd">    THRESHOLD_TYPE_OFF</span>
-</span><span id="L-656"><a href="#L-656"><span class="linenos">656</span></a><span class="sd">    THRESHOLD_TYPE_NORMAL</span>
-</span><span id="L-657"><a href="#L-657"><span class="linenos">657</span></a><span class="sd">    THRESHOLD_TYPE_FILE</span>
-</span><span id="L-658"><a href="#L-658"><span class="linenos">658</span></a><span class="sd">    </span>
-</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a><span class="sd">    The &lt;test&gt; argument to -thresholding must be one of the following:</span>
-</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a><span class="sd">    </span>
-</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a><span class="sd">    THRESHOLD_TEST_SHOW_OUTSIDE</span>
-</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a><span class="sd">    THRESHOLD_TEST_SHOW_INSIDE</span>
-</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a><span class="sd">    </span>
-</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a><span class="sd">    The &lt;type&gt; argument to -inversion must be one of the following:</span>
-</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a><span class="sd">    </span>
-</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a><span class="sd">    OFF</span>
-</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a><span class="sd">    POSITIVE_WITH_NEGATIVE</span>
-</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a><span class="sd">    POSITIVE_NEGATIVE_SEPARATE</span>
-</span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a><span class="sd">    .</span>
-</span><span id="L-670"><a href="#L-670"><span class="linenos">670</span></a><span class="sd">    </span>
-</span><span id="L-671"><a href="#L-671"><span class="linenos">671</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-672"><a href="#L-672"><span class="linenos">672</span></a><span class="sd">    </span>
-</span><span id="L-673"><a href="#L-673"><span class="linenos">673</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-674"><a href="#L-674"><span class="linenos">674</span></a><span class="sd">    </span>
-</span><span id="L-675"><a href="#L-675"><span class="linenos">675</span></a><span class="sd">    Args:</span>
-</span><span id="L-676"><a href="#L-676"><span class="linenos">676</span></a><span class="sd">        volume: the volume file to modify.</span>
-</span><span id="L-677"><a href="#L-677"><span class="linenos">677</span></a><span class="sd">        mode: the mapping mode.</span>
-</span><span id="L-678"><a href="#L-678"><span class="linenos">678</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
-</span><span id="L-679"><a href="#L-679"><span class="linenos">679</span></a><span class="sd">            number or name.</span>
-</span><span id="L-680"><a href="#L-680"><span class="linenos">680</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
-</span><span id="L-681"><a href="#L-681"><span class="linenos">681</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
-</span><span id="L-682"><a href="#L-682"><span class="linenos">682</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
-</span><span id="L-683"><a href="#L-683"><span class="linenos">683</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
-</span><span id="L-684"><a href="#L-684"><span class="linenos">684</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
-</span><span id="L-685"><a href="#L-685"><span class="linenos">685</span></a><span class="sd">            interpolate.</span>
-</span><span id="L-686"><a href="#L-686"><span class="linenos">686</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
-</span><span id="L-687"><a href="#L-687"><span class="linenos">687</span></a><span class="sd">            display.</span>
-</span><span id="L-688"><a href="#L-688"><span class="linenos">688</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
-</span><span id="L-689"><a href="#L-689"><span class="linenos">689</span></a><span class="sd">            display.</span>
-</span><span id="L-690"><a href="#L-690"><span class="linenos">690</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
-</span><span id="L-691"><a href="#L-691"><span class="linenos">691</span></a><span class="sd">            boolean, whether to display.</span>
-</span><span id="L-692"><a href="#L-692"><span class="linenos">692</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
-</span><span id="L-693"><a href="#L-693"><span class="linenos">693</span></a><span class="sd">        thresholding: set the thresholding.</span>
-</span><span id="L-694"><a href="#L-694"><span class="linenos">694</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
-</span><span id="L-695"><a href="#L-695"><span class="linenos">695</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-696"><a href="#L-696"><span class="linenos">696</span></a><span class="sd">    Returns:</span>
-</span><span id="L-697"><a href="#L-697"><span class="linenos">697</span></a><span class="sd">        NamedTuple of outputs (described in `VolumePaletteOutputs`).</span>
-</span><span id="L-698"><a href="#L-698"><span class="linenos">698</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-699"><a href="#L-699"><span class="linenos">699</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-700"><a href="#L-700"><span class="linenos">700</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_PALETTE_METADATA</span><span class="p">)</span>
-</span><span id="L-701"><a href="#L-701"><span class="linenos">701</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_palette_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">,</span> <span class="n">pos_percent</span><span class="o">=</span><span class="n">pos_percent</span><span class="p">,</span> <span class="n">neg_percent</span><span class="o">=</span><span class="n">neg_percent</span><span class="p">,</span> <span class="n">pos_user</span><span class="o">=</span><span class="n">pos_user</span><span class="p">,</span> <span class="n">neg_user</span><span class="o">=</span><span class="n">neg_user</span><span class="p">,</span> <span class="n">opt_interpolate_interpolate</span><span class="o">=</span><span class="n">opt_interpolate_interpolate</span><span class="p">,</span> <span class="n">opt_disp_pos_display</span><span class="o">=</span><span class="n">opt_disp_pos_display</span><span class="p">,</span> <span class="n">opt_disp_neg_display</span><span class="o">=</span><span class="n">opt_disp_neg_display</span><span class="p">,</span> <span class="n">opt_disp_zero_display</span><span class="o">=</span><span class="n">opt_disp_zero_display</span><span class="p">,</span> <span class="n">opt_palette_name_name</span><span class="o">=</span><span class="n">opt_palette_name_name</span><span class="p">,</span> <span class="n">thresholding</span><span class="o">=</span><span class="n">thresholding</span><span class="p">,</span> <span class="n">opt_inversion_type</span><span class="o">=</span><span class="n">opt_inversion_type</span><span class="p">)</span>
-</span><span id="L-702"><a href="#L-702"><span class="linenos">702</span></a>    <span class="k">return</span> <span class="n">volume_palette_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-703"><a href="#L-703"><span class="linenos">703</span></a>
+</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a>
+</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_palette</span><span class="p">(</span>
+</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a>    <span class="n">pos_percent</span><span class="p">:</span> <span class="n">VolumePalettePosPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-581"><a href="#L-581"><span class="linenos">581</span></a>    <span class="n">neg_percent</span><span class="p">:</span> <span class="n">VolumePaletteNegPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-582"><a href="#L-582"><span class="linenos">582</span></a>    <span class="n">pos_user</span><span class="p">:</span> <span class="n">VolumePalettePosUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-583"><a href="#L-583"><span class="linenos">583</span></a>    <span class="n">neg_user</span><span class="p">:</span> <span class="n">VolumePaletteNegUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-584"><a href="#L-584"><span class="linenos">584</span></a>    <span class="n">opt_interpolate_interpolate</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-585"><a href="#L-585"><span class="linenos">585</span></a>    <span class="n">opt_disp_pos_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-586"><a href="#L-586"><span class="linenos">586</span></a>    <span class="n">opt_disp_neg_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a>    <span class="n">opt_disp_zero_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a>    <span class="n">opt_palette_name_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-589"><a href="#L-589"><span class="linenos">589</span></a>    <span class="n">thresholding</span><span class="p">:</span> <span class="n">VolumePaletteThresholdingParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-590"><a href="#L-590"><span class="linenos">590</span></a>    <span class="n">opt_inversion_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-591"><a href="#L-591"><span class="linenos">591</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-592"><a href="#L-592"><span class="linenos">592</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumePaletteOutputs</span><span class="p">:</span>
+</span><span id="L-593"><a href="#L-593"><span class="linenos">593</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-594"><a href="#L-594"><span class="linenos">594</span></a><span class="sd">    Set the palette of a volume file.</span>
+</span><span id="L-595"><a href="#L-595"><span class="linenos">595</span></a><span class="sd">    </span>
+</span><span id="L-596"><a href="#L-596"><span class="linenos">596</span></a><span class="sd">    The original volume file is overwritten with the modified version. By</span>
+</span><span id="L-597"><a href="#L-597"><span class="linenos">597</span></a><span class="sd">    default, all columns of the volume file are adjusted to the new settings,</span>
+</span><span id="L-598"><a href="#L-598"><span class="linenos">598</span></a><span class="sd">    use the -subvolume option to change only one subvolume. Mapping settings not</span>
+</span><span id="L-599"><a href="#L-599"><span class="linenos">599</span></a><span class="sd">    specified in options will be taken from the first subvolume. The &lt;mode&gt;</span>
+</span><span id="L-600"><a href="#L-600"><span class="linenos">600</span></a><span class="sd">    argument must be one of the following:</span>
+</span><span id="L-601"><a href="#L-601"><span class="linenos">601</span></a><span class="sd">    </span>
+</span><span id="L-602"><a href="#L-602"><span class="linenos">602</span></a><span class="sd">    MODE_AUTO_SCALE</span>
+</span><span id="L-603"><a href="#L-603"><span class="linenos">603</span></a><span class="sd">    MODE_AUTO_SCALE_ABSOLUTE_PERCENTAGE</span>
+</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a><span class="sd">    MODE_AUTO_SCALE_PERCENTAGE</span>
+</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a><span class="sd">    MODE_USER_SCALE</span>
+</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a><span class="sd">    </span>
+</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a><span class="sd">    The &lt;name&gt; argument to -palette-name must be one of the following:</span>
+</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a><span class="sd">    </span>
+</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a><span class="sd">    ROY-BIG-BL</span>
+</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a><span class="sd">    videen_style</span>
+</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a><span class="sd">    Gray_Interp_Positive</span>
+</span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a><span class="sd">    Gray_Interp</span>
+</span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a><span class="sd">    PSYCH-FIXED</span>
+</span><span id="L-614"><a href="#L-614"><span class="linenos">614</span></a><span class="sd">    RBGYR20</span>
+</span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a><span class="sd">    RBGYR20P</span>
+</span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a><span class="sd">    RYGBR4_positive</span>
+</span><span id="L-617"><a href="#L-617"><span class="linenos">617</span></a><span class="sd">    RGRBR_mirror90_pos</span>
+</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a><span class="sd">    Orange-Yellow</span>
+</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a><span class="sd">    POS_NEG_ZERO</span>
+</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a><span class="sd">    red-yellow</span>
+</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a><span class="sd">    blue-lightblue</span>
+</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a><span class="sd">    FSL</span>
+</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a><span class="sd">    power_surf</span>
+</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a><span class="sd">    black-red</span>
+</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a><span class="sd">    black-green</span>
+</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a><span class="sd">    black-blue</span>
+</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a><span class="sd">    black-red-positive</span>
+</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a><span class="sd">    black-green-positive</span>
+</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a><span class="sd">    black-blue-positive</span>
+</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a><span class="sd">    blue-black-green</span>
+</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a><span class="sd">    blue-black-red</span>
+</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a><span class="sd">    red-black-green</span>
+</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a><span class="sd">    fsl_red</span>
+</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a><span class="sd">    fsl_green</span>
+</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a><span class="sd">    fsl_blue</span>
+</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a><span class="sd">    fsl_yellow</span>
+</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a><span class="sd">    RedWhiteBlue</span>
+</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a><span class="sd">    cool-warm</span>
+</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a><span class="sd">    spectral</span>
+</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a><span class="sd">    RY-BC-BL</span>
+</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a><span class="sd">    magma</span>
+</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="sd">    JET256</span>
+</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="sd">    PSYCH</span>
+</span><span id="L-644"><a href="#L-644"><span class="linenos">644</span></a><span class="sd">    PSYCH-NO-NONE</span>
+</span><span id="L-645"><a href="#L-645"><span class="linenos">645</span></a><span class="sd">    ROY-BIG</span>
+</span><span id="L-646"><a href="#L-646"><span class="linenos">646</span></a><span class="sd">    clear_brain</span>
+</span><span id="L-647"><a href="#L-647"><span class="linenos">647</span></a><span class="sd">    fidl</span>
+</span><span id="L-648"><a href="#L-648"><span class="linenos">648</span></a><span class="sd">    raich4_clrmid</span>
+</span><span id="L-649"><a href="#L-649"><span class="linenos">649</span></a><span class="sd">    raich6_clrmid</span>
+</span><span id="L-650"><a href="#L-650"><span class="linenos">650</span></a><span class="sd">    HSB8_clrmid</span>
+</span><span id="L-651"><a href="#L-651"><span class="linenos">651</span></a><span class="sd">    POS_NEG</span>
+</span><span id="L-652"><a href="#L-652"><span class="linenos">652</span></a><span class="sd">    Special-RGB-Volume</span>
+</span><span id="L-653"><a href="#L-653"><span class="linenos">653</span></a><span class="sd">    </span>
+</span><span id="L-654"><a href="#L-654"><span class="linenos">654</span></a><span class="sd">    The &lt;type&gt; argument to -thresholding must be one of the following:</span>
+</span><span id="L-655"><a href="#L-655"><span class="linenos">655</span></a><span class="sd">    </span>
+</span><span id="L-656"><a href="#L-656"><span class="linenos">656</span></a><span class="sd">    THRESHOLD_TYPE_OFF</span>
+</span><span id="L-657"><a href="#L-657"><span class="linenos">657</span></a><span class="sd">    THRESHOLD_TYPE_NORMAL</span>
+</span><span id="L-658"><a href="#L-658"><span class="linenos">658</span></a><span class="sd">    THRESHOLD_TYPE_FILE</span>
+</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a><span class="sd">    </span>
+</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a><span class="sd">    The &lt;test&gt; argument to -thresholding must be one of the following:</span>
+</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a><span class="sd">    </span>
+</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a><span class="sd">    THRESHOLD_TEST_SHOW_OUTSIDE</span>
+</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a><span class="sd">    THRESHOLD_TEST_SHOW_INSIDE</span>
+</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a><span class="sd">    </span>
+</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a><span class="sd">    The &lt;type&gt; argument to -inversion must be one of the following:</span>
+</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a><span class="sd">    </span>
+</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a><span class="sd">    OFF</span>
+</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a><span class="sd">    POSITIVE_WITH_NEGATIVE</span>
+</span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a><span class="sd">    POSITIVE_NEGATIVE_SEPARATE</span>
+</span><span id="L-670"><a href="#L-670"><span class="linenos">670</span></a><span class="sd">    .</span>
+</span><span id="L-671"><a href="#L-671"><span class="linenos">671</span></a><span class="sd">    </span>
+</span><span id="L-672"><a href="#L-672"><span class="linenos">672</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-673"><a href="#L-673"><span class="linenos">673</span></a><span class="sd">    </span>
+</span><span id="L-674"><a href="#L-674"><span class="linenos">674</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-675"><a href="#L-675"><span class="linenos">675</span></a><span class="sd">    </span>
+</span><span id="L-676"><a href="#L-676"><span class="linenos">676</span></a><span class="sd">    Args:</span>
+</span><span id="L-677"><a href="#L-677"><span class="linenos">677</span></a><span class="sd">        volume: the volume file to modify.</span>
+</span><span id="L-678"><a href="#L-678"><span class="linenos">678</span></a><span class="sd">        mode: the mapping mode.</span>
+</span><span id="L-679"><a href="#L-679"><span class="linenos">679</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
+</span><span id="L-680"><a href="#L-680"><span class="linenos">680</span></a><span class="sd">            number or name.</span>
+</span><span id="L-681"><a href="#L-681"><span class="linenos">681</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
+</span><span id="L-682"><a href="#L-682"><span class="linenos">682</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
+</span><span id="L-683"><a href="#L-683"><span class="linenos">683</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
+</span><span id="L-684"><a href="#L-684"><span class="linenos">684</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
+</span><span id="L-685"><a href="#L-685"><span class="linenos">685</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
+</span><span id="L-686"><a href="#L-686"><span class="linenos">686</span></a><span class="sd">            interpolate.</span>
+</span><span id="L-687"><a href="#L-687"><span class="linenos">687</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
+</span><span id="L-688"><a href="#L-688"><span class="linenos">688</span></a><span class="sd">            display.</span>
+</span><span id="L-689"><a href="#L-689"><span class="linenos">689</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
+</span><span id="L-690"><a href="#L-690"><span class="linenos">690</span></a><span class="sd">            display.</span>
+</span><span id="L-691"><a href="#L-691"><span class="linenos">691</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
+</span><span id="L-692"><a href="#L-692"><span class="linenos">692</span></a><span class="sd">            boolean, whether to display.</span>
+</span><span id="L-693"><a href="#L-693"><span class="linenos">693</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
+</span><span id="L-694"><a href="#L-694"><span class="linenos">694</span></a><span class="sd">        thresholding: set the thresholding.</span>
+</span><span id="L-695"><a href="#L-695"><span class="linenos">695</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
+</span><span id="L-696"><a href="#L-696"><span class="linenos">696</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-697"><a href="#L-697"><span class="linenos">697</span></a><span class="sd">    Returns:</span>
+</span><span id="L-698"><a href="#L-698"><span class="linenos">698</span></a><span class="sd">        NamedTuple of outputs (described in `VolumePaletteOutputs`).</span>
+</span><span id="L-699"><a href="#L-699"><span class="linenos">699</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-700"><a href="#L-700"><span class="linenos">700</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-701"><a href="#L-701"><span class="linenos">701</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_PALETTE_METADATA</span><span class="p">)</span>
+</span><span id="L-702"><a href="#L-702"><span class="linenos">702</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_palette_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">,</span> <span class="n">pos_percent</span><span class="o">=</span><span class="n">pos_percent</span><span class="p">,</span> <span class="n">neg_percent</span><span class="o">=</span><span class="n">neg_percent</span><span class="p">,</span> <span class="n">pos_user</span><span class="o">=</span><span class="n">pos_user</span><span class="p">,</span> <span class="n">neg_user</span><span class="o">=</span><span class="n">neg_user</span><span class="p">,</span> <span class="n">opt_interpolate_interpolate</span><span class="o">=</span><span class="n">opt_interpolate_interpolate</span><span class="p">,</span> <span class="n">opt_disp_pos_display</span><span class="o">=</span><span class="n">opt_disp_pos_display</span><span class="p">,</span> <span class="n">opt_disp_neg_display</span><span class="o">=</span><span class="n">opt_disp_neg_display</span><span class="p">,</span> <span class="n">opt_disp_zero_display</span><span class="o">=</span><span class="n">opt_disp_zero_display</span><span class="p">,</span> <span class="n">opt_palette_name_name</span><span class="o">=</span><span class="n">opt_palette_name_name</span><span class="p">,</span> <span class="n">thresholding</span><span class="o">=</span><span class="n">thresholding</span><span class="p">,</span> <span class="n">opt_inversion_type</span><span class="o">=</span><span class="n">opt_inversion_type</span><span class="p">)</span>
+</span><span id="L-703"><a href="#L-703"><span class="linenos">703</span></a>    <span class="k">return</span> <span class="n">volume_palette_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-704"><a href="#L-704"><span class="linenos">704</span></a>
-</span><span id="L-705"><a href="#L-705"><span class="linenos">705</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-706"><a href="#L-706"><span class="linenos">706</span></a>    <span class="s2">&quot;VOLUME_PALETTE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-707"><a href="#L-707"><span class="linenos">707</span></a>    <span class="s2">&quot;VolumePaletteNegPercentParameters&quot;</span><span class="p">,</span>
-</span><span id="L-708"><a href="#L-708"><span class="linenos">708</span></a>    <span class="s2">&quot;VolumePaletteNegUserParameters&quot;</span><span class="p">,</span>
-</span><span id="L-709"><a href="#L-709"><span class="linenos">709</span></a>    <span class="s2">&quot;VolumePaletteOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-710"><a href="#L-710"><span class="linenos">710</span></a>    <span class="s2">&quot;VolumePaletteParameters&quot;</span><span class="p">,</span>
-</span><span id="L-711"><a href="#L-711"><span class="linenos">711</span></a>    <span class="s2">&quot;VolumePalettePosPercentParameters&quot;</span><span class="p">,</span>
-</span><span id="L-712"><a href="#L-712"><span class="linenos">712</span></a>    <span class="s2">&quot;VolumePalettePosUserParameters&quot;</span><span class="p">,</span>
-</span><span id="L-713"><a href="#L-713"><span class="linenos">713</span></a>    <span class="s2">&quot;VolumePaletteThresholdingParameters&quot;</span><span class="p">,</span>
-</span><span id="L-714"><a href="#L-714"><span class="linenos">714</span></a>    <span class="s2">&quot;volume_palette&quot;</span><span class="p">,</span>
-</span><span id="L-715"><a href="#L-715"><span class="linenos">715</span></a>    <span class="s2">&quot;volume_palette_neg_percent_params&quot;</span><span class="p">,</span>
-</span><span id="L-716"><a href="#L-716"><span class="linenos">716</span></a>    <span class="s2">&quot;volume_palette_neg_user_params&quot;</span><span class="p">,</span>
-</span><span id="L-717"><a href="#L-717"><span class="linenos">717</span></a>    <span class="s2">&quot;volume_palette_params&quot;</span><span class="p">,</span>
-</span><span id="L-718"><a href="#L-718"><span class="linenos">718</span></a>    <span class="s2">&quot;volume_palette_pos_percent_params&quot;</span><span class="p">,</span>
-</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a>    <span class="s2">&quot;volume_palette_pos_user_params&quot;</span><span class="p">,</span>
-</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a>    <span class="s2">&quot;volume_palette_thresholding_params&quot;</span><span class="p">,</span>
-</span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a><span class="p">]</span>
+</span><span id="L-705"><a href="#L-705"><span class="linenos">705</span></a>
+</span><span id="L-706"><a href="#L-706"><span class="linenos">706</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-707"><a href="#L-707"><span class="linenos">707</span></a>    <span class="s2">&quot;VOLUME_PALETTE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-708"><a href="#L-708"><span class="linenos">708</span></a>    <span class="s2">&quot;VolumePaletteNegPercentParameters&quot;</span><span class="p">,</span>
+</span><span id="L-709"><a href="#L-709"><span class="linenos">709</span></a>    <span class="s2">&quot;VolumePaletteNegUserParameters&quot;</span><span class="p">,</span>
+</span><span id="L-710"><a href="#L-710"><span class="linenos">710</span></a>    <span class="s2">&quot;VolumePaletteOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-711"><a href="#L-711"><span class="linenos">711</span></a>    <span class="s2">&quot;VolumePaletteParameters&quot;</span><span class="p">,</span>
+</span><span id="L-712"><a href="#L-712"><span class="linenos">712</span></a>    <span class="s2">&quot;VolumePalettePosPercentParameters&quot;</span><span class="p">,</span>
+</span><span id="L-713"><a href="#L-713"><span class="linenos">713</span></a>    <span class="s2">&quot;VolumePalettePosUserParameters&quot;</span><span class="p">,</span>
+</span><span id="L-714"><a href="#L-714"><span class="linenos">714</span></a>    <span class="s2">&quot;VolumePaletteThresholdingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-715"><a href="#L-715"><span class="linenos">715</span></a>    <span class="s2">&quot;volume_palette&quot;</span><span class="p">,</span>
+</span><span id="L-716"><a href="#L-716"><span class="linenos">716</span></a>    <span class="s2">&quot;volume_palette_neg_percent_params&quot;</span><span class="p">,</span>
+</span><span id="L-717"><a href="#L-717"><span class="linenos">717</span></a>    <span class="s2">&quot;volume_palette_neg_user_params&quot;</span><span class="p">,</span>
+</span><span id="L-718"><a href="#L-718"><span class="linenos">718</span></a>    <span class="s2">&quot;volume_palette_params&quot;</span><span class="p">,</span>
+</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a>    <span class="s2">&quot;volume_palette_pos_percent_params&quot;</span><span class="p">,</span>
+</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a>    <span class="s2">&quot;volume_palette_pos_user_params&quot;</span><span class="p">,</span>
+</span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a>    <span class="s2">&quot;volume_palette_thresholding_params&quot;</span><span class="p">,</span>
+</span><span id="L-722"><a href="#L-722"><span class="linenos">722</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1364,134 +1365,134 @@
 
     </div>
     <a class="headerlink" href="#volume_palette"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_palette-576"><a href="#volume_palette-576"><span class="linenos">576</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_palette</span><span class="p">(</span>
-</span><span id="volume_palette-577"><a href="#volume_palette-577"><span class="linenos">577</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_palette-578"><a href="#volume_palette-578"><span class="linenos">578</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_palette-579"><a href="#volume_palette-579"><span class="linenos">579</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-580"><a href="#volume_palette-580"><span class="linenos">580</span></a>    <span class="n">pos_percent</span><span class="p">:</span> <span class="n">VolumePalettePosPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-581"><a href="#volume_palette-581"><span class="linenos">581</span></a>    <span class="n">neg_percent</span><span class="p">:</span> <span class="n">VolumePaletteNegPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-582"><a href="#volume_palette-582"><span class="linenos">582</span></a>    <span class="n">pos_user</span><span class="p">:</span> <span class="n">VolumePalettePosUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-583"><a href="#volume_palette-583"><span class="linenos">583</span></a>    <span class="n">neg_user</span><span class="p">:</span> <span class="n">VolumePaletteNegUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-584"><a href="#volume_palette-584"><span class="linenos">584</span></a>    <span class="n">opt_interpolate_interpolate</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-585"><a href="#volume_palette-585"><span class="linenos">585</span></a>    <span class="n">opt_disp_pos_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-586"><a href="#volume_palette-586"><span class="linenos">586</span></a>    <span class="n">opt_disp_neg_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-587"><a href="#volume_palette-587"><span class="linenos">587</span></a>    <span class="n">opt_disp_zero_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-588"><a href="#volume_palette-588"><span class="linenos">588</span></a>    <span class="n">opt_palette_name_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-589"><a href="#volume_palette-589"><span class="linenos">589</span></a>    <span class="n">thresholding</span><span class="p">:</span> <span class="n">VolumePaletteThresholdingParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-590"><a href="#volume_palette-590"><span class="linenos">590</span></a>    <span class="n">opt_inversion_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-591"><a href="#volume_palette-591"><span class="linenos">591</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_palette-592"><a href="#volume_palette-592"><span class="linenos">592</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumePaletteOutputs</span><span class="p">:</span>
-</span><span id="volume_palette-593"><a href="#volume_palette-593"><span class="linenos">593</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_palette-594"><a href="#volume_palette-594"><span class="linenos">594</span></a><span class="sd">    Set the palette of a volume file.</span>
-</span><span id="volume_palette-595"><a href="#volume_palette-595"><span class="linenos">595</span></a><span class="sd">    </span>
-</span><span id="volume_palette-596"><a href="#volume_palette-596"><span class="linenos">596</span></a><span class="sd">    The original volume file is overwritten with the modified version. By</span>
-</span><span id="volume_palette-597"><a href="#volume_palette-597"><span class="linenos">597</span></a><span class="sd">    default, all columns of the volume file are adjusted to the new settings,</span>
-</span><span id="volume_palette-598"><a href="#volume_palette-598"><span class="linenos">598</span></a><span class="sd">    use the -subvolume option to change only one subvolume. Mapping settings not</span>
-</span><span id="volume_palette-599"><a href="#volume_palette-599"><span class="linenos">599</span></a><span class="sd">    specified in options will be taken from the first subvolume. The &lt;mode&gt;</span>
-</span><span id="volume_palette-600"><a href="#volume_palette-600"><span class="linenos">600</span></a><span class="sd">    argument must be one of the following:</span>
-</span><span id="volume_palette-601"><a href="#volume_palette-601"><span class="linenos">601</span></a><span class="sd">    </span>
-</span><span id="volume_palette-602"><a href="#volume_palette-602"><span class="linenos">602</span></a><span class="sd">    MODE_AUTO_SCALE</span>
-</span><span id="volume_palette-603"><a href="#volume_palette-603"><span class="linenos">603</span></a><span class="sd">    MODE_AUTO_SCALE_ABSOLUTE_PERCENTAGE</span>
-</span><span id="volume_palette-604"><a href="#volume_palette-604"><span class="linenos">604</span></a><span class="sd">    MODE_AUTO_SCALE_PERCENTAGE</span>
-</span><span id="volume_palette-605"><a href="#volume_palette-605"><span class="linenos">605</span></a><span class="sd">    MODE_USER_SCALE</span>
-</span><span id="volume_palette-606"><a href="#volume_palette-606"><span class="linenos">606</span></a><span class="sd">    </span>
-</span><span id="volume_palette-607"><a href="#volume_palette-607"><span class="linenos">607</span></a><span class="sd">    The &lt;name&gt; argument to -palette-name must be one of the following:</span>
-</span><span id="volume_palette-608"><a href="#volume_palette-608"><span class="linenos">608</span></a><span class="sd">    </span>
-</span><span id="volume_palette-609"><a href="#volume_palette-609"><span class="linenos">609</span></a><span class="sd">    ROY-BIG-BL</span>
-</span><span id="volume_palette-610"><a href="#volume_palette-610"><span class="linenos">610</span></a><span class="sd">    videen_style</span>
-</span><span id="volume_palette-611"><a href="#volume_palette-611"><span class="linenos">611</span></a><span class="sd">    Gray_Interp_Positive</span>
-</span><span id="volume_palette-612"><a href="#volume_palette-612"><span class="linenos">612</span></a><span class="sd">    Gray_Interp</span>
-</span><span id="volume_palette-613"><a href="#volume_palette-613"><span class="linenos">613</span></a><span class="sd">    PSYCH-FIXED</span>
-</span><span id="volume_palette-614"><a href="#volume_palette-614"><span class="linenos">614</span></a><span class="sd">    RBGYR20</span>
-</span><span id="volume_palette-615"><a href="#volume_palette-615"><span class="linenos">615</span></a><span class="sd">    RBGYR20P</span>
-</span><span id="volume_palette-616"><a href="#volume_palette-616"><span class="linenos">616</span></a><span class="sd">    RYGBR4_positive</span>
-</span><span id="volume_palette-617"><a href="#volume_palette-617"><span class="linenos">617</span></a><span class="sd">    RGRBR_mirror90_pos</span>
-</span><span id="volume_palette-618"><a href="#volume_palette-618"><span class="linenos">618</span></a><span class="sd">    Orange-Yellow</span>
-</span><span id="volume_palette-619"><a href="#volume_palette-619"><span class="linenos">619</span></a><span class="sd">    POS_NEG_ZERO</span>
-</span><span id="volume_palette-620"><a href="#volume_palette-620"><span class="linenos">620</span></a><span class="sd">    red-yellow</span>
-</span><span id="volume_palette-621"><a href="#volume_palette-621"><span class="linenos">621</span></a><span class="sd">    blue-lightblue</span>
-</span><span id="volume_palette-622"><a href="#volume_palette-622"><span class="linenos">622</span></a><span class="sd">    FSL</span>
-</span><span id="volume_palette-623"><a href="#volume_palette-623"><span class="linenos">623</span></a><span class="sd">    power_surf</span>
-</span><span id="volume_palette-624"><a href="#volume_palette-624"><span class="linenos">624</span></a><span class="sd">    black-red</span>
-</span><span id="volume_palette-625"><a href="#volume_palette-625"><span class="linenos">625</span></a><span class="sd">    black-green</span>
-</span><span id="volume_palette-626"><a href="#volume_palette-626"><span class="linenos">626</span></a><span class="sd">    black-blue</span>
-</span><span id="volume_palette-627"><a href="#volume_palette-627"><span class="linenos">627</span></a><span class="sd">    black-red-positive</span>
-</span><span id="volume_palette-628"><a href="#volume_palette-628"><span class="linenos">628</span></a><span class="sd">    black-green-positive</span>
-</span><span id="volume_palette-629"><a href="#volume_palette-629"><span class="linenos">629</span></a><span class="sd">    black-blue-positive</span>
-</span><span id="volume_palette-630"><a href="#volume_palette-630"><span class="linenos">630</span></a><span class="sd">    blue-black-green</span>
-</span><span id="volume_palette-631"><a href="#volume_palette-631"><span class="linenos">631</span></a><span class="sd">    blue-black-red</span>
-</span><span id="volume_palette-632"><a href="#volume_palette-632"><span class="linenos">632</span></a><span class="sd">    red-black-green</span>
-</span><span id="volume_palette-633"><a href="#volume_palette-633"><span class="linenos">633</span></a><span class="sd">    fsl_red</span>
-</span><span id="volume_palette-634"><a href="#volume_palette-634"><span class="linenos">634</span></a><span class="sd">    fsl_green</span>
-</span><span id="volume_palette-635"><a href="#volume_palette-635"><span class="linenos">635</span></a><span class="sd">    fsl_blue</span>
-</span><span id="volume_palette-636"><a href="#volume_palette-636"><span class="linenos">636</span></a><span class="sd">    fsl_yellow</span>
-</span><span id="volume_palette-637"><a href="#volume_palette-637"><span class="linenos">637</span></a><span class="sd">    RedWhiteBlue</span>
-</span><span id="volume_palette-638"><a href="#volume_palette-638"><span class="linenos">638</span></a><span class="sd">    cool-warm</span>
-</span><span id="volume_palette-639"><a href="#volume_palette-639"><span class="linenos">639</span></a><span class="sd">    spectral</span>
-</span><span id="volume_palette-640"><a href="#volume_palette-640"><span class="linenos">640</span></a><span class="sd">    RY-BC-BL</span>
-</span><span id="volume_palette-641"><a href="#volume_palette-641"><span class="linenos">641</span></a><span class="sd">    magma</span>
-</span><span id="volume_palette-642"><a href="#volume_palette-642"><span class="linenos">642</span></a><span class="sd">    JET256</span>
-</span><span id="volume_palette-643"><a href="#volume_palette-643"><span class="linenos">643</span></a><span class="sd">    PSYCH</span>
-</span><span id="volume_palette-644"><a href="#volume_palette-644"><span class="linenos">644</span></a><span class="sd">    PSYCH-NO-NONE</span>
-</span><span id="volume_palette-645"><a href="#volume_palette-645"><span class="linenos">645</span></a><span class="sd">    ROY-BIG</span>
-</span><span id="volume_palette-646"><a href="#volume_palette-646"><span class="linenos">646</span></a><span class="sd">    clear_brain</span>
-</span><span id="volume_palette-647"><a href="#volume_palette-647"><span class="linenos">647</span></a><span class="sd">    fidl</span>
-</span><span id="volume_palette-648"><a href="#volume_palette-648"><span class="linenos">648</span></a><span class="sd">    raich4_clrmid</span>
-</span><span id="volume_palette-649"><a href="#volume_palette-649"><span class="linenos">649</span></a><span class="sd">    raich6_clrmid</span>
-</span><span id="volume_palette-650"><a href="#volume_palette-650"><span class="linenos">650</span></a><span class="sd">    HSB8_clrmid</span>
-</span><span id="volume_palette-651"><a href="#volume_palette-651"><span class="linenos">651</span></a><span class="sd">    POS_NEG</span>
-</span><span id="volume_palette-652"><a href="#volume_palette-652"><span class="linenos">652</span></a><span class="sd">    Special-RGB-Volume</span>
-</span><span id="volume_palette-653"><a href="#volume_palette-653"><span class="linenos">653</span></a><span class="sd">    </span>
-</span><span id="volume_palette-654"><a href="#volume_palette-654"><span class="linenos">654</span></a><span class="sd">    The &lt;type&gt; argument to -thresholding must be one of the following:</span>
-</span><span id="volume_palette-655"><a href="#volume_palette-655"><span class="linenos">655</span></a><span class="sd">    </span>
-</span><span id="volume_palette-656"><a href="#volume_palette-656"><span class="linenos">656</span></a><span class="sd">    THRESHOLD_TYPE_OFF</span>
-</span><span id="volume_palette-657"><a href="#volume_palette-657"><span class="linenos">657</span></a><span class="sd">    THRESHOLD_TYPE_NORMAL</span>
-</span><span id="volume_palette-658"><a href="#volume_palette-658"><span class="linenos">658</span></a><span class="sd">    THRESHOLD_TYPE_FILE</span>
-</span><span id="volume_palette-659"><a href="#volume_palette-659"><span class="linenos">659</span></a><span class="sd">    </span>
-</span><span id="volume_palette-660"><a href="#volume_palette-660"><span class="linenos">660</span></a><span class="sd">    The &lt;test&gt; argument to -thresholding must be one of the following:</span>
-</span><span id="volume_palette-661"><a href="#volume_palette-661"><span class="linenos">661</span></a><span class="sd">    </span>
-</span><span id="volume_palette-662"><a href="#volume_palette-662"><span class="linenos">662</span></a><span class="sd">    THRESHOLD_TEST_SHOW_OUTSIDE</span>
-</span><span id="volume_palette-663"><a href="#volume_palette-663"><span class="linenos">663</span></a><span class="sd">    THRESHOLD_TEST_SHOW_INSIDE</span>
-</span><span id="volume_palette-664"><a href="#volume_palette-664"><span class="linenos">664</span></a><span class="sd">    </span>
-</span><span id="volume_palette-665"><a href="#volume_palette-665"><span class="linenos">665</span></a><span class="sd">    The &lt;type&gt; argument to -inversion must be one of the following:</span>
-</span><span id="volume_palette-666"><a href="#volume_palette-666"><span class="linenos">666</span></a><span class="sd">    </span>
-</span><span id="volume_palette-667"><a href="#volume_palette-667"><span class="linenos">667</span></a><span class="sd">    OFF</span>
-</span><span id="volume_palette-668"><a href="#volume_palette-668"><span class="linenos">668</span></a><span class="sd">    POSITIVE_WITH_NEGATIVE</span>
-</span><span id="volume_palette-669"><a href="#volume_palette-669"><span class="linenos">669</span></a><span class="sd">    POSITIVE_NEGATIVE_SEPARATE</span>
-</span><span id="volume_palette-670"><a href="#volume_palette-670"><span class="linenos">670</span></a><span class="sd">    .</span>
-</span><span id="volume_palette-671"><a href="#volume_palette-671"><span class="linenos">671</span></a><span class="sd">    </span>
-</span><span id="volume_palette-672"><a href="#volume_palette-672"><span class="linenos">672</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_palette-673"><a href="#volume_palette-673"><span class="linenos">673</span></a><span class="sd">    </span>
-</span><span id="volume_palette-674"><a href="#volume_palette-674"><span class="linenos">674</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_palette-675"><a href="#volume_palette-675"><span class="linenos">675</span></a><span class="sd">    </span>
-</span><span id="volume_palette-676"><a href="#volume_palette-676"><span class="linenos">676</span></a><span class="sd">    Args:</span>
-</span><span id="volume_palette-677"><a href="#volume_palette-677"><span class="linenos">677</span></a><span class="sd">        volume: the volume file to modify.</span>
-</span><span id="volume_palette-678"><a href="#volume_palette-678"><span class="linenos">678</span></a><span class="sd">        mode: the mapping mode.</span>
-</span><span id="volume_palette-679"><a href="#volume_palette-679"><span class="linenos">679</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
-</span><span id="volume_palette-680"><a href="#volume_palette-680"><span class="linenos">680</span></a><span class="sd">            number or name.</span>
-</span><span id="volume_palette-681"><a href="#volume_palette-681"><span class="linenos">681</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
-</span><span id="volume_palette-682"><a href="#volume_palette-682"><span class="linenos">682</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
-</span><span id="volume_palette-683"><a href="#volume_palette-683"><span class="linenos">683</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
-</span><span id="volume_palette-684"><a href="#volume_palette-684"><span class="linenos">684</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
-</span><span id="volume_palette-685"><a href="#volume_palette-685"><span class="linenos">685</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
-</span><span id="volume_palette-686"><a href="#volume_palette-686"><span class="linenos">686</span></a><span class="sd">            interpolate.</span>
-</span><span id="volume_palette-687"><a href="#volume_palette-687"><span class="linenos">687</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
-</span><span id="volume_palette-688"><a href="#volume_palette-688"><span class="linenos">688</span></a><span class="sd">            display.</span>
-</span><span id="volume_palette-689"><a href="#volume_palette-689"><span class="linenos">689</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
-</span><span id="volume_palette-690"><a href="#volume_palette-690"><span class="linenos">690</span></a><span class="sd">            display.</span>
-</span><span id="volume_palette-691"><a href="#volume_palette-691"><span class="linenos">691</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
-</span><span id="volume_palette-692"><a href="#volume_palette-692"><span class="linenos">692</span></a><span class="sd">            boolean, whether to display.</span>
-</span><span id="volume_palette-693"><a href="#volume_palette-693"><span class="linenos">693</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
-</span><span id="volume_palette-694"><a href="#volume_palette-694"><span class="linenos">694</span></a><span class="sd">        thresholding: set the thresholding.</span>
-</span><span id="volume_palette-695"><a href="#volume_palette-695"><span class="linenos">695</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
-</span><span id="volume_palette-696"><a href="#volume_palette-696"><span class="linenos">696</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_palette-697"><a href="#volume_palette-697"><span class="linenos">697</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_palette-698"><a href="#volume_palette-698"><span class="linenos">698</span></a><span class="sd">        NamedTuple of outputs (described in `VolumePaletteOutputs`).</span>
-</span><span id="volume_palette-699"><a href="#volume_palette-699"><span class="linenos">699</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_palette-700"><a href="#volume_palette-700"><span class="linenos">700</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_palette-701"><a href="#volume_palette-701"><span class="linenos">701</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_PALETTE_METADATA</span><span class="p">)</span>
-</span><span id="volume_palette-702"><a href="#volume_palette-702"><span class="linenos">702</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_palette_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">,</span> <span class="n">pos_percent</span><span class="o">=</span><span class="n">pos_percent</span><span class="p">,</span> <span class="n">neg_percent</span><span class="o">=</span><span class="n">neg_percent</span><span class="p">,</span> <span class="n">pos_user</span><span class="o">=</span><span class="n">pos_user</span><span class="p">,</span> <span class="n">neg_user</span><span class="o">=</span><span class="n">neg_user</span><span class="p">,</span> <span class="n">opt_interpolate_interpolate</span><span class="o">=</span><span class="n">opt_interpolate_interpolate</span><span class="p">,</span> <span class="n">opt_disp_pos_display</span><span class="o">=</span><span class="n">opt_disp_pos_display</span><span class="p">,</span> <span class="n">opt_disp_neg_display</span><span class="o">=</span><span class="n">opt_disp_neg_display</span><span class="p">,</span> <span class="n">opt_disp_zero_display</span><span class="o">=</span><span class="n">opt_disp_zero_display</span><span class="p">,</span> <span class="n">opt_palette_name_name</span><span class="o">=</span><span class="n">opt_palette_name_name</span><span class="p">,</span> <span class="n">thresholding</span><span class="o">=</span><span class="n">thresholding</span><span class="p">,</span> <span class="n">opt_inversion_type</span><span class="o">=</span><span class="n">opt_inversion_type</span><span class="p">)</span>
-</span><span id="volume_palette-703"><a href="#volume_palette-703"><span class="linenos">703</span></a>    <span class="k">return</span> <span class="n">volume_palette_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_palette-577"><a href="#volume_palette-577"><span class="linenos">577</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_palette</span><span class="p">(</span>
+</span><span id="volume_palette-578"><a href="#volume_palette-578"><span class="linenos">578</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_palette-579"><a href="#volume_palette-579"><span class="linenos">579</span></a>    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_palette-580"><a href="#volume_palette-580"><span class="linenos">580</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-581"><a href="#volume_palette-581"><span class="linenos">581</span></a>    <span class="n">pos_percent</span><span class="p">:</span> <span class="n">VolumePalettePosPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-582"><a href="#volume_palette-582"><span class="linenos">582</span></a>    <span class="n">neg_percent</span><span class="p">:</span> <span class="n">VolumePaletteNegPercentParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-583"><a href="#volume_palette-583"><span class="linenos">583</span></a>    <span class="n">pos_user</span><span class="p">:</span> <span class="n">VolumePalettePosUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-584"><a href="#volume_palette-584"><span class="linenos">584</span></a>    <span class="n">neg_user</span><span class="p">:</span> <span class="n">VolumePaletteNegUserParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-585"><a href="#volume_palette-585"><span class="linenos">585</span></a>    <span class="n">opt_interpolate_interpolate</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-586"><a href="#volume_palette-586"><span class="linenos">586</span></a>    <span class="n">opt_disp_pos_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-587"><a href="#volume_palette-587"><span class="linenos">587</span></a>    <span class="n">opt_disp_neg_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-588"><a href="#volume_palette-588"><span class="linenos">588</span></a>    <span class="n">opt_disp_zero_display</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-589"><a href="#volume_palette-589"><span class="linenos">589</span></a>    <span class="n">opt_palette_name_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-590"><a href="#volume_palette-590"><span class="linenos">590</span></a>    <span class="n">thresholding</span><span class="p">:</span> <span class="n">VolumePaletteThresholdingParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-591"><a href="#volume_palette-591"><span class="linenos">591</span></a>    <span class="n">opt_inversion_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-592"><a href="#volume_palette-592"><span class="linenos">592</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_palette-593"><a href="#volume_palette-593"><span class="linenos">593</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumePaletteOutputs</span><span class="p">:</span>
+</span><span id="volume_palette-594"><a href="#volume_palette-594"><span class="linenos">594</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_palette-595"><a href="#volume_palette-595"><span class="linenos">595</span></a><span class="sd">    Set the palette of a volume file.</span>
+</span><span id="volume_palette-596"><a href="#volume_palette-596"><span class="linenos">596</span></a><span class="sd">    </span>
+</span><span id="volume_palette-597"><a href="#volume_palette-597"><span class="linenos">597</span></a><span class="sd">    The original volume file is overwritten with the modified version. By</span>
+</span><span id="volume_palette-598"><a href="#volume_palette-598"><span class="linenos">598</span></a><span class="sd">    default, all columns of the volume file are adjusted to the new settings,</span>
+</span><span id="volume_palette-599"><a href="#volume_palette-599"><span class="linenos">599</span></a><span class="sd">    use the -subvolume option to change only one subvolume. Mapping settings not</span>
+</span><span id="volume_palette-600"><a href="#volume_palette-600"><span class="linenos">600</span></a><span class="sd">    specified in options will be taken from the first subvolume. The &lt;mode&gt;</span>
+</span><span id="volume_palette-601"><a href="#volume_palette-601"><span class="linenos">601</span></a><span class="sd">    argument must be one of the following:</span>
+</span><span id="volume_palette-602"><a href="#volume_palette-602"><span class="linenos">602</span></a><span class="sd">    </span>
+</span><span id="volume_palette-603"><a href="#volume_palette-603"><span class="linenos">603</span></a><span class="sd">    MODE_AUTO_SCALE</span>
+</span><span id="volume_palette-604"><a href="#volume_palette-604"><span class="linenos">604</span></a><span class="sd">    MODE_AUTO_SCALE_ABSOLUTE_PERCENTAGE</span>
+</span><span id="volume_palette-605"><a href="#volume_palette-605"><span class="linenos">605</span></a><span class="sd">    MODE_AUTO_SCALE_PERCENTAGE</span>
+</span><span id="volume_palette-606"><a href="#volume_palette-606"><span class="linenos">606</span></a><span class="sd">    MODE_USER_SCALE</span>
+</span><span id="volume_palette-607"><a href="#volume_palette-607"><span class="linenos">607</span></a><span class="sd">    </span>
+</span><span id="volume_palette-608"><a href="#volume_palette-608"><span class="linenos">608</span></a><span class="sd">    The &lt;name&gt; argument to -palette-name must be one of the following:</span>
+</span><span id="volume_palette-609"><a href="#volume_palette-609"><span class="linenos">609</span></a><span class="sd">    </span>
+</span><span id="volume_palette-610"><a href="#volume_palette-610"><span class="linenos">610</span></a><span class="sd">    ROY-BIG-BL</span>
+</span><span id="volume_palette-611"><a href="#volume_palette-611"><span class="linenos">611</span></a><span class="sd">    videen_style</span>
+</span><span id="volume_palette-612"><a href="#volume_palette-612"><span class="linenos">612</span></a><span class="sd">    Gray_Interp_Positive</span>
+</span><span id="volume_palette-613"><a href="#volume_palette-613"><span class="linenos">613</span></a><span class="sd">    Gray_Interp</span>
+</span><span id="volume_palette-614"><a href="#volume_palette-614"><span class="linenos">614</span></a><span class="sd">    PSYCH-FIXED</span>
+</span><span id="volume_palette-615"><a href="#volume_palette-615"><span class="linenos">615</span></a><span class="sd">    RBGYR20</span>
+</span><span id="volume_palette-616"><a href="#volume_palette-616"><span class="linenos">616</span></a><span class="sd">    RBGYR20P</span>
+</span><span id="volume_palette-617"><a href="#volume_palette-617"><span class="linenos">617</span></a><span class="sd">    RYGBR4_positive</span>
+</span><span id="volume_palette-618"><a href="#volume_palette-618"><span class="linenos">618</span></a><span class="sd">    RGRBR_mirror90_pos</span>
+</span><span id="volume_palette-619"><a href="#volume_palette-619"><span class="linenos">619</span></a><span class="sd">    Orange-Yellow</span>
+</span><span id="volume_palette-620"><a href="#volume_palette-620"><span class="linenos">620</span></a><span class="sd">    POS_NEG_ZERO</span>
+</span><span id="volume_palette-621"><a href="#volume_palette-621"><span class="linenos">621</span></a><span class="sd">    red-yellow</span>
+</span><span id="volume_palette-622"><a href="#volume_palette-622"><span class="linenos">622</span></a><span class="sd">    blue-lightblue</span>
+</span><span id="volume_palette-623"><a href="#volume_palette-623"><span class="linenos">623</span></a><span class="sd">    FSL</span>
+</span><span id="volume_palette-624"><a href="#volume_palette-624"><span class="linenos">624</span></a><span class="sd">    power_surf</span>
+</span><span id="volume_palette-625"><a href="#volume_palette-625"><span class="linenos">625</span></a><span class="sd">    black-red</span>
+</span><span id="volume_palette-626"><a href="#volume_palette-626"><span class="linenos">626</span></a><span class="sd">    black-green</span>
+</span><span id="volume_palette-627"><a href="#volume_palette-627"><span class="linenos">627</span></a><span class="sd">    black-blue</span>
+</span><span id="volume_palette-628"><a href="#volume_palette-628"><span class="linenos">628</span></a><span class="sd">    black-red-positive</span>
+</span><span id="volume_palette-629"><a href="#volume_palette-629"><span class="linenos">629</span></a><span class="sd">    black-green-positive</span>
+</span><span id="volume_palette-630"><a href="#volume_palette-630"><span class="linenos">630</span></a><span class="sd">    black-blue-positive</span>
+</span><span id="volume_palette-631"><a href="#volume_palette-631"><span class="linenos">631</span></a><span class="sd">    blue-black-green</span>
+</span><span id="volume_palette-632"><a href="#volume_palette-632"><span class="linenos">632</span></a><span class="sd">    blue-black-red</span>
+</span><span id="volume_palette-633"><a href="#volume_palette-633"><span class="linenos">633</span></a><span class="sd">    red-black-green</span>
+</span><span id="volume_palette-634"><a href="#volume_palette-634"><span class="linenos">634</span></a><span class="sd">    fsl_red</span>
+</span><span id="volume_palette-635"><a href="#volume_palette-635"><span class="linenos">635</span></a><span class="sd">    fsl_green</span>
+</span><span id="volume_palette-636"><a href="#volume_palette-636"><span class="linenos">636</span></a><span class="sd">    fsl_blue</span>
+</span><span id="volume_palette-637"><a href="#volume_palette-637"><span class="linenos">637</span></a><span class="sd">    fsl_yellow</span>
+</span><span id="volume_palette-638"><a href="#volume_palette-638"><span class="linenos">638</span></a><span class="sd">    RedWhiteBlue</span>
+</span><span id="volume_palette-639"><a href="#volume_palette-639"><span class="linenos">639</span></a><span class="sd">    cool-warm</span>
+</span><span id="volume_palette-640"><a href="#volume_palette-640"><span class="linenos">640</span></a><span class="sd">    spectral</span>
+</span><span id="volume_palette-641"><a href="#volume_palette-641"><span class="linenos">641</span></a><span class="sd">    RY-BC-BL</span>
+</span><span id="volume_palette-642"><a href="#volume_palette-642"><span class="linenos">642</span></a><span class="sd">    magma</span>
+</span><span id="volume_palette-643"><a href="#volume_palette-643"><span class="linenos">643</span></a><span class="sd">    JET256</span>
+</span><span id="volume_palette-644"><a href="#volume_palette-644"><span class="linenos">644</span></a><span class="sd">    PSYCH</span>
+</span><span id="volume_palette-645"><a href="#volume_palette-645"><span class="linenos">645</span></a><span class="sd">    PSYCH-NO-NONE</span>
+</span><span id="volume_palette-646"><a href="#volume_palette-646"><span class="linenos">646</span></a><span class="sd">    ROY-BIG</span>
+</span><span id="volume_palette-647"><a href="#volume_palette-647"><span class="linenos">647</span></a><span class="sd">    clear_brain</span>
+</span><span id="volume_palette-648"><a href="#volume_palette-648"><span class="linenos">648</span></a><span class="sd">    fidl</span>
+</span><span id="volume_palette-649"><a href="#volume_palette-649"><span class="linenos">649</span></a><span class="sd">    raich4_clrmid</span>
+</span><span id="volume_palette-650"><a href="#volume_palette-650"><span class="linenos">650</span></a><span class="sd">    raich6_clrmid</span>
+</span><span id="volume_palette-651"><a href="#volume_palette-651"><span class="linenos">651</span></a><span class="sd">    HSB8_clrmid</span>
+</span><span id="volume_palette-652"><a href="#volume_palette-652"><span class="linenos">652</span></a><span class="sd">    POS_NEG</span>
+</span><span id="volume_palette-653"><a href="#volume_palette-653"><span class="linenos">653</span></a><span class="sd">    Special-RGB-Volume</span>
+</span><span id="volume_palette-654"><a href="#volume_palette-654"><span class="linenos">654</span></a><span class="sd">    </span>
+</span><span id="volume_palette-655"><a href="#volume_palette-655"><span class="linenos">655</span></a><span class="sd">    The &lt;type&gt; argument to -thresholding must be one of the following:</span>
+</span><span id="volume_palette-656"><a href="#volume_palette-656"><span class="linenos">656</span></a><span class="sd">    </span>
+</span><span id="volume_palette-657"><a href="#volume_palette-657"><span class="linenos">657</span></a><span class="sd">    THRESHOLD_TYPE_OFF</span>
+</span><span id="volume_palette-658"><a href="#volume_palette-658"><span class="linenos">658</span></a><span class="sd">    THRESHOLD_TYPE_NORMAL</span>
+</span><span id="volume_palette-659"><a href="#volume_palette-659"><span class="linenos">659</span></a><span class="sd">    THRESHOLD_TYPE_FILE</span>
+</span><span id="volume_palette-660"><a href="#volume_palette-660"><span class="linenos">660</span></a><span class="sd">    </span>
+</span><span id="volume_palette-661"><a href="#volume_palette-661"><span class="linenos">661</span></a><span class="sd">    The &lt;test&gt; argument to -thresholding must be one of the following:</span>
+</span><span id="volume_palette-662"><a href="#volume_palette-662"><span class="linenos">662</span></a><span class="sd">    </span>
+</span><span id="volume_palette-663"><a href="#volume_palette-663"><span class="linenos">663</span></a><span class="sd">    THRESHOLD_TEST_SHOW_OUTSIDE</span>
+</span><span id="volume_palette-664"><a href="#volume_palette-664"><span class="linenos">664</span></a><span class="sd">    THRESHOLD_TEST_SHOW_INSIDE</span>
+</span><span id="volume_palette-665"><a href="#volume_palette-665"><span class="linenos">665</span></a><span class="sd">    </span>
+</span><span id="volume_palette-666"><a href="#volume_palette-666"><span class="linenos">666</span></a><span class="sd">    The &lt;type&gt; argument to -inversion must be one of the following:</span>
+</span><span id="volume_palette-667"><a href="#volume_palette-667"><span class="linenos">667</span></a><span class="sd">    </span>
+</span><span id="volume_palette-668"><a href="#volume_palette-668"><span class="linenos">668</span></a><span class="sd">    OFF</span>
+</span><span id="volume_palette-669"><a href="#volume_palette-669"><span class="linenos">669</span></a><span class="sd">    POSITIVE_WITH_NEGATIVE</span>
+</span><span id="volume_palette-670"><a href="#volume_palette-670"><span class="linenos">670</span></a><span class="sd">    POSITIVE_NEGATIVE_SEPARATE</span>
+</span><span id="volume_palette-671"><a href="#volume_palette-671"><span class="linenos">671</span></a><span class="sd">    .</span>
+</span><span id="volume_palette-672"><a href="#volume_palette-672"><span class="linenos">672</span></a><span class="sd">    </span>
+</span><span id="volume_palette-673"><a href="#volume_palette-673"><span class="linenos">673</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_palette-674"><a href="#volume_palette-674"><span class="linenos">674</span></a><span class="sd">    </span>
+</span><span id="volume_palette-675"><a href="#volume_palette-675"><span class="linenos">675</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_palette-676"><a href="#volume_palette-676"><span class="linenos">676</span></a><span class="sd">    </span>
+</span><span id="volume_palette-677"><a href="#volume_palette-677"><span class="linenos">677</span></a><span class="sd">    Args:</span>
+</span><span id="volume_palette-678"><a href="#volume_palette-678"><span class="linenos">678</span></a><span class="sd">        volume: the volume file to modify.</span>
+</span><span id="volume_palette-679"><a href="#volume_palette-679"><span class="linenos">679</span></a><span class="sd">        mode: the mapping mode.</span>
+</span><span id="volume_palette-680"><a href="#volume_palette-680"><span class="linenos">680</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
+</span><span id="volume_palette-681"><a href="#volume_palette-681"><span class="linenos">681</span></a><span class="sd">            number or name.</span>
+</span><span id="volume_palette-682"><a href="#volume_palette-682"><span class="linenos">682</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
+</span><span id="volume_palette-683"><a href="#volume_palette-683"><span class="linenos">683</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
+</span><span id="volume_palette-684"><a href="#volume_palette-684"><span class="linenos">684</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
+</span><span id="volume_palette-685"><a href="#volume_palette-685"><span class="linenos">685</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
+</span><span id="volume_palette-686"><a href="#volume_palette-686"><span class="linenos">686</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
+</span><span id="volume_palette-687"><a href="#volume_palette-687"><span class="linenos">687</span></a><span class="sd">            interpolate.</span>
+</span><span id="volume_palette-688"><a href="#volume_palette-688"><span class="linenos">688</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
+</span><span id="volume_palette-689"><a href="#volume_palette-689"><span class="linenos">689</span></a><span class="sd">            display.</span>
+</span><span id="volume_palette-690"><a href="#volume_palette-690"><span class="linenos">690</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
+</span><span id="volume_palette-691"><a href="#volume_palette-691"><span class="linenos">691</span></a><span class="sd">            display.</span>
+</span><span id="volume_palette-692"><a href="#volume_palette-692"><span class="linenos">692</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
+</span><span id="volume_palette-693"><a href="#volume_palette-693"><span class="linenos">693</span></a><span class="sd">            boolean, whether to display.</span>
+</span><span id="volume_palette-694"><a href="#volume_palette-694"><span class="linenos">694</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
+</span><span id="volume_palette-695"><a href="#volume_palette-695"><span class="linenos">695</span></a><span class="sd">        thresholding: set the thresholding.</span>
+</span><span id="volume_palette-696"><a href="#volume_palette-696"><span class="linenos">696</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
+</span><span id="volume_palette-697"><a href="#volume_palette-697"><span class="linenos">697</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_palette-698"><a href="#volume_palette-698"><span class="linenos">698</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_palette-699"><a href="#volume_palette-699"><span class="linenos">699</span></a><span class="sd">        NamedTuple of outputs (described in `VolumePaletteOutputs`).</span>
+</span><span id="volume_palette-700"><a href="#volume_palette-700"><span class="linenos">700</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_palette-701"><a href="#volume_palette-701"><span class="linenos">701</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_palette-702"><a href="#volume_palette-702"><span class="linenos">702</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_PALETTE_METADATA</span><span class="p">)</span>
+</span><span id="volume_palette-703"><a href="#volume_palette-703"><span class="linenos">703</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_palette_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">,</span> <span class="n">pos_percent</span><span class="o">=</span><span class="n">pos_percent</span><span class="p">,</span> <span class="n">neg_percent</span><span class="o">=</span><span class="n">neg_percent</span><span class="p">,</span> <span class="n">pos_user</span><span class="o">=</span><span class="n">pos_user</span><span class="p">,</span> <span class="n">neg_user</span><span class="o">=</span><span class="n">neg_user</span><span class="p">,</span> <span class="n">opt_interpolate_interpolate</span><span class="o">=</span><span class="n">opt_interpolate_interpolate</span><span class="p">,</span> <span class="n">opt_disp_pos_display</span><span class="o">=</span><span class="n">opt_disp_pos_display</span><span class="p">,</span> <span class="n">opt_disp_neg_display</span><span class="o">=</span><span class="n">opt_disp_neg_display</span><span class="p">,</span> <span class="n">opt_disp_zero_display</span><span class="o">=</span><span class="n">opt_disp_zero_display</span><span class="p">,</span> <span class="n">opt_palette_name_name</span><span class="o">=</span><span class="n">opt_palette_name_name</span><span class="p">,</span> <span class="n">thresholding</span><span class="o">=</span><span class="n">thresholding</span><span class="p">,</span> <span class="n">opt_inversion_type</span><span class="o">=</span><span class="n">opt_inversion_type</span><span class="p">)</span>
+</span><span id="volume_palette-704"><a href="#volume_palette-704"><span class="linenos">704</span></a>    <span class="k">return</span> <span class="n">volume_palette_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

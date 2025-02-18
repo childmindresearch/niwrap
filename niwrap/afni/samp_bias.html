@@ -290,51 +290,52 @@
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">samp_bias_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">samp_bias_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="k">def</span><span class="w"> </span><span class="nf">samp_bias</span><span class="p">(</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">specfile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">surfname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">plimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">dlimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SampBiasOutputs</span><span class="p">:</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    SampBias is a tool for sampling bias resultant segments between paired nodes on</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    anatomical surfaces.</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    </span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    </span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    </span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    Args:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        specfile: Spec file containing input surfaces.</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        surfname: Name of input surface.</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        outfile: Output results in .1D format.</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        plimit: Maximum length of path along surface in mm. Default is 50 mm.</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        dlimit: Maximum length of euclidean distance in mm. Default is 1000 mm.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        prefix: Output results into a proper surface-based dataset.</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Returns:</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        NamedTuple of outputs (described in `SampBiasOutputs`).</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SAMP_BIAS_METADATA</span><span class="p">)</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">samp_bias_params</span><span class="p">(</span><span class="n">specfile</span><span class="o">=</span><span class="n">specfile</span><span class="p">,</span> <span class="n">surfname</span><span class="o">=</span><span class="n">surfname</span><span class="p">,</span> <span class="n">plimit</span><span class="o">=</span><span class="n">plimit</span><span class="p">,</span> <span class="n">dlimit</span><span class="o">=</span><span class="n">dlimit</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">return</span> <span class="n">samp_bias_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="k">def</span><span class="w"> </span><span class="nf">samp_bias</span><span class="p">(</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">specfile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">surfname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">plimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">dlimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SampBiasOutputs</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    SampBias is a tool for sampling bias resultant segments between paired nodes on</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    anatomical surfaces.</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    </span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    </span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    Args:</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        specfile: Spec file containing input surfaces.</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        surfname: Name of input surface.</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        outfile: Output results in .1D format.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        plimit: Maximum length of path along surface in mm. Default is 50 mm.</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        dlimit: Maximum length of euclidean distance in mm. Default is 1000 mm.</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        prefix: Output results into a proper surface-based dataset.</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Returns:</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        NamedTuple of outputs (described in `SampBiasOutputs`).</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SAMP_BIAS_METADATA</span><span class="p">)</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">samp_bias_params</span><span class="p">(</span><span class="n">specfile</span><span class="o">=</span><span class="n">specfile</span><span class="p">,</span> <span class="n">surfname</span><span class="o">=</span><span class="n">surfname</span><span class="p">,</span> <span class="n">plimit</span><span class="o">=</span><span class="n">plimit</span><span class="p">,</span> <span class="n">dlimit</span><span class="o">=</span><span class="n">dlimit</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">return</span> <span class="n">samp_bias_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="s2">&quot;SAMP_BIAS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="s2">&quot;SampBiasOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="s2">&quot;SampBiasParameters&quot;</span><span class="p">,</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;samp_bias&quot;</span><span class="p">,</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;samp_bias_params&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="p">]</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="s2">&quot;SAMP_BIAS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="s2">&quot;SampBiasOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;SampBiasParameters&quot;</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;samp_bias&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;samp_bias_params&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -524,38 +525,38 @@
 
     </div>
     <a class="headerlink" href="#samp_bias"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="samp_bias-196"><a href="#samp_bias-196"><span class="linenos">196</span></a><span class="k">def</span><span class="w"> </span><span class="nf">samp_bias</span><span class="p">(</span>
-</span><span id="samp_bias-197"><a href="#samp_bias-197"><span class="linenos">197</span></a>    <span class="n">specfile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="samp_bias-198"><a href="#samp_bias-198"><span class="linenos">198</span></a>    <span class="n">surfname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="samp_bias-199"><a href="#samp_bias-199"><span class="linenos">199</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="samp_bias-200"><a href="#samp_bias-200"><span class="linenos">200</span></a>    <span class="n">plimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="samp_bias-201"><a href="#samp_bias-201"><span class="linenos">201</span></a>    <span class="n">dlimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="samp_bias-202"><a href="#samp_bias-202"><span class="linenos">202</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="samp_bias-203"><a href="#samp_bias-203"><span class="linenos">203</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="samp_bias-204"><a href="#samp_bias-204"><span class="linenos">204</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SampBiasOutputs</span><span class="p">:</span>
-</span><span id="samp_bias-205"><a href="#samp_bias-205"><span class="linenos">205</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="samp_bias-206"><a href="#samp_bias-206"><span class="linenos">206</span></a><span class="sd">    SampBias is a tool for sampling bias resultant segments between paired nodes on</span>
-</span><span id="samp_bias-207"><a href="#samp_bias-207"><span class="linenos">207</span></a><span class="sd">    anatomical surfaces.</span>
-</span><span id="samp_bias-208"><a href="#samp_bias-208"><span class="linenos">208</span></a><span class="sd">    </span>
-</span><span id="samp_bias-209"><a href="#samp_bias-209"><span class="linenos">209</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="samp_bias-210"><a href="#samp_bias-210"><span class="linenos">210</span></a><span class="sd">    </span>
-</span><span id="samp_bias-211"><a href="#samp_bias-211"><span class="linenos">211</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="samp_bias-212"><a href="#samp_bias-212"><span class="linenos">212</span></a><span class="sd">    </span>
-</span><span id="samp_bias-213"><a href="#samp_bias-213"><span class="linenos">213</span></a><span class="sd">    Args:</span>
-</span><span id="samp_bias-214"><a href="#samp_bias-214"><span class="linenos">214</span></a><span class="sd">        specfile: Spec file containing input surfaces.</span>
-</span><span id="samp_bias-215"><a href="#samp_bias-215"><span class="linenos">215</span></a><span class="sd">        surfname: Name of input surface.</span>
-</span><span id="samp_bias-216"><a href="#samp_bias-216"><span class="linenos">216</span></a><span class="sd">        outfile: Output results in .1D format.</span>
-</span><span id="samp_bias-217"><a href="#samp_bias-217"><span class="linenos">217</span></a><span class="sd">        plimit: Maximum length of path along surface in mm. Default is 50 mm.</span>
-</span><span id="samp_bias-218"><a href="#samp_bias-218"><span class="linenos">218</span></a><span class="sd">        dlimit: Maximum length of euclidean distance in mm. Default is 1000 mm.</span>
-</span><span id="samp_bias-219"><a href="#samp_bias-219"><span class="linenos">219</span></a><span class="sd">        prefix: Output results into a proper surface-based dataset.</span>
-</span><span id="samp_bias-220"><a href="#samp_bias-220"><span class="linenos">220</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="samp_bias-221"><a href="#samp_bias-221"><span class="linenos">221</span></a><span class="sd">    Returns:</span>
-</span><span id="samp_bias-222"><a href="#samp_bias-222"><span class="linenos">222</span></a><span class="sd">        NamedTuple of outputs (described in `SampBiasOutputs`).</span>
-</span><span id="samp_bias-223"><a href="#samp_bias-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="samp_bias-224"><a href="#samp_bias-224"><span class="linenos">224</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="samp_bias-225"><a href="#samp_bias-225"><span class="linenos">225</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SAMP_BIAS_METADATA</span><span class="p">)</span>
-</span><span id="samp_bias-226"><a href="#samp_bias-226"><span class="linenos">226</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">samp_bias_params</span><span class="p">(</span><span class="n">specfile</span><span class="o">=</span><span class="n">specfile</span><span class="p">,</span> <span class="n">surfname</span><span class="o">=</span><span class="n">surfname</span><span class="p">,</span> <span class="n">plimit</span><span class="o">=</span><span class="n">plimit</span><span class="p">,</span> <span class="n">dlimit</span><span class="o">=</span><span class="n">dlimit</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
-</span><span id="samp_bias-227"><a href="#samp_bias-227"><span class="linenos">227</span></a>    <span class="k">return</span> <span class="n">samp_bias_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="samp_bias-197"><a href="#samp_bias-197"><span class="linenos">197</span></a><span class="k">def</span><span class="w"> </span><span class="nf">samp_bias</span><span class="p">(</span>
+</span><span id="samp_bias-198"><a href="#samp_bias-198"><span class="linenos">198</span></a>    <span class="n">specfile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="samp_bias-199"><a href="#samp_bias-199"><span class="linenos">199</span></a>    <span class="n">surfname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="samp_bias-200"><a href="#samp_bias-200"><span class="linenos">200</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="samp_bias-201"><a href="#samp_bias-201"><span class="linenos">201</span></a>    <span class="n">plimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="samp_bias-202"><a href="#samp_bias-202"><span class="linenos">202</span></a>    <span class="n">dlimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="samp_bias-203"><a href="#samp_bias-203"><span class="linenos">203</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="samp_bias-204"><a href="#samp_bias-204"><span class="linenos">204</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="samp_bias-205"><a href="#samp_bias-205"><span class="linenos">205</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SampBiasOutputs</span><span class="p">:</span>
+</span><span id="samp_bias-206"><a href="#samp_bias-206"><span class="linenos">206</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="samp_bias-207"><a href="#samp_bias-207"><span class="linenos">207</span></a><span class="sd">    SampBias is a tool for sampling bias resultant segments between paired nodes on</span>
+</span><span id="samp_bias-208"><a href="#samp_bias-208"><span class="linenos">208</span></a><span class="sd">    anatomical surfaces.</span>
+</span><span id="samp_bias-209"><a href="#samp_bias-209"><span class="linenos">209</span></a><span class="sd">    </span>
+</span><span id="samp_bias-210"><a href="#samp_bias-210"><span class="linenos">210</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="samp_bias-211"><a href="#samp_bias-211"><span class="linenos">211</span></a><span class="sd">    </span>
+</span><span id="samp_bias-212"><a href="#samp_bias-212"><span class="linenos">212</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="samp_bias-213"><a href="#samp_bias-213"><span class="linenos">213</span></a><span class="sd">    </span>
+</span><span id="samp_bias-214"><a href="#samp_bias-214"><span class="linenos">214</span></a><span class="sd">    Args:</span>
+</span><span id="samp_bias-215"><a href="#samp_bias-215"><span class="linenos">215</span></a><span class="sd">        specfile: Spec file containing input surfaces.</span>
+</span><span id="samp_bias-216"><a href="#samp_bias-216"><span class="linenos">216</span></a><span class="sd">        surfname: Name of input surface.</span>
+</span><span id="samp_bias-217"><a href="#samp_bias-217"><span class="linenos">217</span></a><span class="sd">        outfile: Output results in .1D format.</span>
+</span><span id="samp_bias-218"><a href="#samp_bias-218"><span class="linenos">218</span></a><span class="sd">        plimit: Maximum length of path along surface in mm. Default is 50 mm.</span>
+</span><span id="samp_bias-219"><a href="#samp_bias-219"><span class="linenos">219</span></a><span class="sd">        dlimit: Maximum length of euclidean distance in mm. Default is 1000 mm.</span>
+</span><span id="samp_bias-220"><a href="#samp_bias-220"><span class="linenos">220</span></a><span class="sd">        prefix: Output results into a proper surface-based dataset.</span>
+</span><span id="samp_bias-221"><a href="#samp_bias-221"><span class="linenos">221</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="samp_bias-222"><a href="#samp_bias-222"><span class="linenos">222</span></a><span class="sd">    Returns:</span>
+</span><span id="samp_bias-223"><a href="#samp_bias-223"><span class="linenos">223</span></a><span class="sd">        NamedTuple of outputs (described in `SampBiasOutputs`).</span>
+</span><span id="samp_bias-224"><a href="#samp_bias-224"><span class="linenos">224</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="samp_bias-225"><a href="#samp_bias-225"><span class="linenos">225</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="samp_bias-226"><a href="#samp_bias-226"><span class="linenos">226</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SAMP_BIAS_METADATA</span><span class="p">)</span>
+</span><span id="samp_bias-227"><a href="#samp_bias-227"><span class="linenos">227</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">samp_bias_params</span><span class="p">(</span><span class="n">specfile</span><span class="o">=</span><span class="n">specfile</span><span class="p">,</span> <span class="n">surfname</span><span class="o">=</span><span class="n">surfname</span><span class="p">,</span> <span class="n">plimit</span><span class="o">=</span><span class="n">plimit</span><span class="p">,</span> <span class="n">dlimit</span><span class="o">=</span><span class="n">dlimit</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
+</span><span id="samp_bias-228"><a href="#samp_bias-228"><span class="linenos">228</span></a>    <span class="k">return</span> <span class="n">samp_bias_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

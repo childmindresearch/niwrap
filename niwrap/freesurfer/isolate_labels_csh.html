@@ -268,52 +268,53 @@
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">isolate_labels_csh_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">isolate_labels_csh_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="k">def</span><span class="w"> </span><span class="nf">isolate_labels_csh</span><span class="p">(</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">label_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">lowercase_label_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">keepval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IsolateLabelsCshOutputs</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    Tool to separate out a particular or all labels into individual binary files for</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    subsequent shape analysis.</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    </span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    </span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    </span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    Args:</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        label_volume: Label volume to be analyzed.</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        output_prefix: Prefix of binary label file(s).</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        lowercase_label_option: The particular label to be analyzed; default is\</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            all labels.</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        version: Print version and exit.</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        keepval: Keeps original label values.</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        help_: Print help and exit.</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    Returns:</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        NamedTuple of outputs (described in `IsolateLabelsCshOutputs`).</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ISOLATE_LABELS_CSH_METADATA</span><span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">isolate_labels_csh_params</span><span class="p">(</span><span class="n">label_volume</span><span class="o">=</span><span class="n">label_volume</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">lowercase_label_option</span><span class="o">=</span><span class="n">lowercase_label_option</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">keepval</span><span class="o">=</span><span class="n">keepval</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">return</span> <span class="n">isolate_labels_csh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="k">def</span><span class="w"> </span><span class="nf">isolate_labels_csh</span><span class="p">(</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">label_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">lowercase_label_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">keepval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IsolateLabelsCshOutputs</span><span class="p">:</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    Tool to separate out a particular or all labels into individual binary files for</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    subsequent shape analysis.</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    </span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    </span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    </span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    Args:</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        label_volume: Label volume to be analyzed.</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        output_prefix: Prefix of binary label file(s).</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        lowercase_label_option: The particular label to be analyzed; default is\</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            all labels.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        version: Print version and exit.</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        keepval: Keeps original label values.</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        help_: Print help and exit.</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    Returns:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        NamedTuple of outputs (described in `IsolateLabelsCshOutputs`).</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ISOLATE_LABELS_CSH_METADATA</span><span class="p">)</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">isolate_labels_csh_params</span><span class="p">(</span><span class="n">label_volume</span><span class="o">=</span><span class="n">label_volume</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">lowercase_label_option</span><span class="o">=</span><span class="n">lowercase_label_option</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">keepval</span><span class="o">=</span><span class="n">keepval</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">return</span> <span class="n">isolate_labels_csh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="s2">&quot;ISOLATE_LABELS_CSH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;IsolateLabelsCshOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;IsolateLabelsCshParameters&quot;</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;isolate_labels_csh&quot;</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;isolate_labels_csh_params&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="p">]</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;ISOLATE_LABELS_CSH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;IsolateLabelsCshOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;IsolateLabelsCshParameters&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;isolate_labels_csh&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;isolate_labels_csh_params&quot;</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -473,39 +474,39 @@
 
     </div>
     <a class="headerlink" href="#isolate_labels_csh"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="isolate_labels_csh-180"><a href="#isolate_labels_csh-180"><span class="linenos">180</span></a><span class="k">def</span><span class="w"> </span><span class="nf">isolate_labels_csh</span><span class="p">(</span>
-</span><span id="isolate_labels_csh-181"><a href="#isolate_labels_csh-181"><span class="linenos">181</span></a>    <span class="n">label_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="isolate_labels_csh-182"><a href="#isolate_labels_csh-182"><span class="linenos">182</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="isolate_labels_csh-183"><a href="#isolate_labels_csh-183"><span class="linenos">183</span></a>    <span class="n">lowercase_label_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="isolate_labels_csh-184"><a href="#isolate_labels_csh-184"><span class="linenos">184</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="isolate_labels_csh-185"><a href="#isolate_labels_csh-185"><span class="linenos">185</span></a>    <span class="n">keepval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="isolate_labels_csh-186"><a href="#isolate_labels_csh-186"><span class="linenos">186</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="isolate_labels_csh-187"><a href="#isolate_labels_csh-187"><span class="linenos">187</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="isolate_labels_csh-188"><a href="#isolate_labels_csh-188"><span class="linenos">188</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IsolateLabelsCshOutputs</span><span class="p">:</span>
-</span><span id="isolate_labels_csh-189"><a href="#isolate_labels_csh-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="isolate_labels_csh-190"><a href="#isolate_labels_csh-190"><span class="linenos">190</span></a><span class="sd">    Tool to separate out a particular or all labels into individual binary files for</span>
-</span><span id="isolate_labels_csh-191"><a href="#isolate_labels_csh-191"><span class="linenos">191</span></a><span class="sd">    subsequent shape analysis.</span>
-</span><span id="isolate_labels_csh-192"><a href="#isolate_labels_csh-192"><span class="linenos">192</span></a><span class="sd">    </span>
-</span><span id="isolate_labels_csh-193"><a href="#isolate_labels_csh-193"><span class="linenos">193</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="isolate_labels_csh-194"><a href="#isolate_labels_csh-194"><span class="linenos">194</span></a><span class="sd">    </span>
-</span><span id="isolate_labels_csh-195"><a href="#isolate_labels_csh-195"><span class="linenos">195</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="isolate_labels_csh-196"><a href="#isolate_labels_csh-196"><span class="linenos">196</span></a><span class="sd">    </span>
-</span><span id="isolate_labels_csh-197"><a href="#isolate_labels_csh-197"><span class="linenos">197</span></a><span class="sd">    Args:</span>
-</span><span id="isolate_labels_csh-198"><a href="#isolate_labels_csh-198"><span class="linenos">198</span></a><span class="sd">        label_volume: Label volume to be analyzed.</span>
-</span><span id="isolate_labels_csh-199"><a href="#isolate_labels_csh-199"><span class="linenos">199</span></a><span class="sd">        output_prefix: Prefix of binary label file(s).</span>
-</span><span id="isolate_labels_csh-200"><a href="#isolate_labels_csh-200"><span class="linenos">200</span></a><span class="sd">        lowercase_label_option: The particular label to be analyzed; default is\</span>
-</span><span id="isolate_labels_csh-201"><a href="#isolate_labels_csh-201"><span class="linenos">201</span></a><span class="sd">            all labels.</span>
-</span><span id="isolate_labels_csh-202"><a href="#isolate_labels_csh-202"><span class="linenos">202</span></a><span class="sd">        version: Print version and exit.</span>
-</span><span id="isolate_labels_csh-203"><a href="#isolate_labels_csh-203"><span class="linenos">203</span></a><span class="sd">        keepval: Keeps original label values.</span>
-</span><span id="isolate_labels_csh-204"><a href="#isolate_labels_csh-204"><span class="linenos">204</span></a><span class="sd">        help_: Print help and exit.</span>
-</span><span id="isolate_labels_csh-205"><a href="#isolate_labels_csh-205"><span class="linenos">205</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="isolate_labels_csh-206"><a href="#isolate_labels_csh-206"><span class="linenos">206</span></a><span class="sd">    Returns:</span>
-</span><span id="isolate_labels_csh-207"><a href="#isolate_labels_csh-207"><span class="linenos">207</span></a><span class="sd">        NamedTuple of outputs (described in `IsolateLabelsCshOutputs`).</span>
-</span><span id="isolate_labels_csh-208"><a href="#isolate_labels_csh-208"><span class="linenos">208</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="isolate_labels_csh-209"><a href="#isolate_labels_csh-209"><span class="linenos">209</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="isolate_labels_csh-210"><a href="#isolate_labels_csh-210"><span class="linenos">210</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ISOLATE_LABELS_CSH_METADATA</span><span class="p">)</span>
-</span><span id="isolate_labels_csh-211"><a href="#isolate_labels_csh-211"><span class="linenos">211</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">isolate_labels_csh_params</span><span class="p">(</span><span class="n">label_volume</span><span class="o">=</span><span class="n">label_volume</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">lowercase_label_option</span><span class="o">=</span><span class="n">lowercase_label_option</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">keepval</span><span class="o">=</span><span class="n">keepval</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="isolate_labels_csh-212"><a href="#isolate_labels_csh-212"><span class="linenos">212</span></a>    <span class="k">return</span> <span class="n">isolate_labels_csh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="isolate_labels_csh-181"><a href="#isolate_labels_csh-181"><span class="linenos">181</span></a><span class="k">def</span><span class="w"> </span><span class="nf">isolate_labels_csh</span><span class="p">(</span>
+</span><span id="isolate_labels_csh-182"><a href="#isolate_labels_csh-182"><span class="linenos">182</span></a>    <span class="n">label_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="isolate_labels_csh-183"><a href="#isolate_labels_csh-183"><span class="linenos">183</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="isolate_labels_csh-184"><a href="#isolate_labels_csh-184"><span class="linenos">184</span></a>    <span class="n">lowercase_label_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="isolate_labels_csh-185"><a href="#isolate_labels_csh-185"><span class="linenos">185</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="isolate_labels_csh-186"><a href="#isolate_labels_csh-186"><span class="linenos">186</span></a>    <span class="n">keepval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="isolate_labels_csh-187"><a href="#isolate_labels_csh-187"><span class="linenos">187</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="isolate_labels_csh-188"><a href="#isolate_labels_csh-188"><span class="linenos">188</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="isolate_labels_csh-189"><a href="#isolate_labels_csh-189"><span class="linenos">189</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IsolateLabelsCshOutputs</span><span class="p">:</span>
+</span><span id="isolate_labels_csh-190"><a href="#isolate_labels_csh-190"><span class="linenos">190</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="isolate_labels_csh-191"><a href="#isolate_labels_csh-191"><span class="linenos">191</span></a><span class="sd">    Tool to separate out a particular or all labels into individual binary files for</span>
+</span><span id="isolate_labels_csh-192"><a href="#isolate_labels_csh-192"><span class="linenos">192</span></a><span class="sd">    subsequent shape analysis.</span>
+</span><span id="isolate_labels_csh-193"><a href="#isolate_labels_csh-193"><span class="linenos">193</span></a><span class="sd">    </span>
+</span><span id="isolate_labels_csh-194"><a href="#isolate_labels_csh-194"><span class="linenos">194</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="isolate_labels_csh-195"><a href="#isolate_labels_csh-195"><span class="linenos">195</span></a><span class="sd">    </span>
+</span><span id="isolate_labels_csh-196"><a href="#isolate_labels_csh-196"><span class="linenos">196</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="isolate_labels_csh-197"><a href="#isolate_labels_csh-197"><span class="linenos">197</span></a><span class="sd">    </span>
+</span><span id="isolate_labels_csh-198"><a href="#isolate_labels_csh-198"><span class="linenos">198</span></a><span class="sd">    Args:</span>
+</span><span id="isolate_labels_csh-199"><a href="#isolate_labels_csh-199"><span class="linenos">199</span></a><span class="sd">        label_volume: Label volume to be analyzed.</span>
+</span><span id="isolate_labels_csh-200"><a href="#isolate_labels_csh-200"><span class="linenos">200</span></a><span class="sd">        output_prefix: Prefix of binary label file(s).</span>
+</span><span id="isolate_labels_csh-201"><a href="#isolate_labels_csh-201"><span class="linenos">201</span></a><span class="sd">        lowercase_label_option: The particular label to be analyzed; default is\</span>
+</span><span id="isolate_labels_csh-202"><a href="#isolate_labels_csh-202"><span class="linenos">202</span></a><span class="sd">            all labels.</span>
+</span><span id="isolate_labels_csh-203"><a href="#isolate_labels_csh-203"><span class="linenos">203</span></a><span class="sd">        version: Print version and exit.</span>
+</span><span id="isolate_labels_csh-204"><a href="#isolate_labels_csh-204"><span class="linenos">204</span></a><span class="sd">        keepval: Keeps original label values.</span>
+</span><span id="isolate_labels_csh-205"><a href="#isolate_labels_csh-205"><span class="linenos">205</span></a><span class="sd">        help_: Print help and exit.</span>
+</span><span id="isolate_labels_csh-206"><a href="#isolate_labels_csh-206"><span class="linenos">206</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="isolate_labels_csh-207"><a href="#isolate_labels_csh-207"><span class="linenos">207</span></a><span class="sd">    Returns:</span>
+</span><span id="isolate_labels_csh-208"><a href="#isolate_labels_csh-208"><span class="linenos">208</span></a><span class="sd">        NamedTuple of outputs (described in `IsolateLabelsCshOutputs`).</span>
+</span><span id="isolate_labels_csh-209"><a href="#isolate_labels_csh-209"><span class="linenos">209</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="isolate_labels_csh-210"><a href="#isolate_labels_csh-210"><span class="linenos">210</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="isolate_labels_csh-211"><a href="#isolate_labels_csh-211"><span class="linenos">211</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ISOLATE_LABELS_CSH_METADATA</span><span class="p">)</span>
+</span><span id="isolate_labels_csh-212"><a href="#isolate_labels_csh-212"><span class="linenos">212</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">isolate_labels_csh_params</span><span class="p">(</span><span class="n">label_volume</span><span class="o">=</span><span class="n">label_volume</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">lowercase_label_option</span><span class="o">=</span><span class="n">lowercase_label_option</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">keepval</span><span class="o">=</span><span class="n">keepval</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="isolate_labels_csh-213"><a href="#isolate_labels_csh-213"><span class="linenos">213</span></a>    <span class="k">return</span> <span class="n">isolate_labels_csh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

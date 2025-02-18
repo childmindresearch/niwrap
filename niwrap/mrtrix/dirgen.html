@@ -450,97 +450,98 @@
 </span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">dirgen_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">dirgen_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirgen</span><span class="p">(</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirgenConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirgenOutputs</span><span class="p">:</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    Generate a set of uniformly distributed directions using a bipolar electrostatic</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    repulsion model.</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    </span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    Directions are distributed by analogy to an electrostatic repulsion system,</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    with each direction corresponding to a single electrostatic charge (for</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    -unipolar), or a pair of diametrically opposed charges (for the default</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    bipolar case). The energy of the system is determined based on the Coulomb</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    repulsion, which assumes the form 1/r^power, where r is the distance between</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    any pair of charges, and p is the power assumed for the repulsion law</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    (default: 1). The minimum energy state is obtained by gradient descent.</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    </span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    References:</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    </span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    Jones, D.; Horsfield, M. &amp; Simmons, A. Optimal strategies for measuring</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    diffusion in anisotropic systems by magnetic resonance imaging. Magnetic</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    Resonance in Medicine, 1999, 42: 515-525</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    </span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    Papadakis, N. G.; Murrills, C. D.; Hall, L. D.; Huang, C. L.-H. &amp; Adrian</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    Carpenter, T. Minimal gradient encoding for robust estimation of diffusion</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    </span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">    </span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">    </span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">    Args:</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">        ndir: the number of directions to generate.</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">        dirs: the text file to write the directions to, as [ az el ] pairs.</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">        power: specify exponent to use for repulsion power law (default: 1).\</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">            This must be a power of 2 (i.e. 1, 2, 4, 8, 16, ...).</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">        niter: specify the maximum number of iterations to perform (default:\</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">            10000).</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">        restarts: specify the number of restarts to perform (default: 10).</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">        unipolar: optimise assuming a unipolar electrostatic repulsion model\</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">            rather than the bipolar model normally assumed in DWI.</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">        cartesian: Output the directions in Cartesian coordinates [x y z]\</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">            instead of [az el].</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    Returns:</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">        NamedTuple of outputs (described in `DirgenOutputs`).</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRGEN_METADATA</span><span class="p">)</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirgen_params</span><span class="p">(</span><span class="n">power</span><span class="o">=</span><span class="n">power</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="n">niter</span><span class="p">,</span> <span class="n">restarts</span><span class="o">=</span><span class="n">restarts</span><span class="p">,</span> <span class="n">unipolar</span><span class="o">=</span><span class="n">unipolar</span><span class="p">,</span> <span class="n">cartesian</span><span class="o">=</span><span class="n">cartesian</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">ndir</span><span class="o">=</span><span class="n">ndir</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="k">return</span> <span class="n">dirgen_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirgen</span><span class="p">(</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirgenConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirgenOutputs</span><span class="p">:</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    Generate a set of uniformly distributed directions using a bipolar electrostatic</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    repulsion model.</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    </span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    Directions are distributed by analogy to an electrostatic repulsion system,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    with each direction corresponding to a single electrostatic charge (for</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    -unipolar), or a pair of diametrically opposed charges (for the default</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    bipolar case). The energy of the system is determined based on the Coulomb</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    repulsion, which assumes the form 1/r^power, where r is the distance between</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    any pair of charges, and p is the power assumed for the repulsion law</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    (default: 1). The minimum energy state is obtained by gradient descent.</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    </span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    References:</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    </span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    Jones, D.; Horsfield, M. &amp; Simmons, A. Optimal strategies for measuring</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    diffusion in anisotropic systems by magnetic resonance imaging. Magnetic</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    Resonance in Medicine, 1999, 42: 515-525</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    </span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    Papadakis, N. G.; Murrills, C. D.; Hall, L. D.; Huang, C. L.-H. &amp; Adrian</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    Carpenter, T. Minimal gradient encoding for robust estimation of diffusion</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">    </span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">    </span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">    </span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">    Args:</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">        ndir: the number of directions to generate.</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">        dirs: the text file to write the directions to, as [ az el ] pairs.</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">        power: specify exponent to use for repulsion power law (default: 1).\</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">            This must be a power of 2 (i.e. 1, 2, 4, 8, 16, ...).</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">        niter: specify the maximum number of iterations to perform (default:\</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">            10000).</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">        restarts: specify the number of restarts to perform (default: 10).</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">        unipolar: optimise assuming a unipolar electrostatic repulsion model\</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">            rather than the bipolar model normally assumed in DWI.</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">        cartesian: Output the directions in Cartesian coordinates [x y z]\</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">            instead of [az el].</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    Returns:</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">        NamedTuple of outputs (described in `DirgenOutputs`).</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRGEN_METADATA</span><span class="p">)</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirgen_params</span><span class="p">(</span><span class="n">power</span><span class="o">=</span><span class="n">power</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="n">niter</span><span class="p">,</span> <span class="n">restarts</span><span class="o">=</span><span class="n">restarts</span><span class="p">,</span> <span class="n">unipolar</span><span class="o">=</span><span class="n">unipolar</span><span class="p">,</span> <span class="n">cartesian</span><span class="o">=</span><span class="n">cartesian</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">ndir</span><span class="o">=</span><span class="n">ndir</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="k">return</span> <span class="n">dirgen_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="s2">&quot;DIRGEN_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="s2">&quot;DirgenConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="s2">&quot;DirgenOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="s2">&quot;DirgenParameters&quot;</span><span class="p">,</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;dirgen&quot;</span><span class="p">,</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;dirgen_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;dirgen_params&quot;</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="p">]</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="s2">&quot;DIRGEN_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="s2">&quot;DirgenConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="s2">&quot;DirgenOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;DirgenParameters&quot;</span><span class="p">,</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;dirgen&quot;</span><span class="p">,</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;dirgen_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;dirgen_params&quot;</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -849,82 +850,82 @@
 
     </div>
     <a class="headerlink" href="#dirgen"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dirgen-317"><a href="#dirgen-317"><span class="linenos">317</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirgen</span><span class="p">(</span>
-</span><span id="dirgen-318"><a href="#dirgen-318"><span class="linenos">318</span></a>    <span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="dirgen-319"><a href="#dirgen-319"><span class="linenos">319</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="dirgen-320"><a href="#dirgen-320"><span class="linenos">320</span></a>    <span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirgen-321"><a href="#dirgen-321"><span class="linenos">321</span></a>    <span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirgen-322"><a href="#dirgen-322"><span class="linenos">322</span></a>    <span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirgen-323"><a href="#dirgen-323"><span class="linenos">323</span></a>    <span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-324"><a href="#dirgen-324"><span class="linenos">324</span></a>    <span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-325"><a href="#dirgen-325"><span class="linenos">325</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-326"><a href="#dirgen-326"><span class="linenos">326</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-327"><a href="#dirgen-327"><span class="linenos">327</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-328"><a href="#dirgen-328"><span class="linenos">328</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-329"><a href="#dirgen-329"><span class="linenos">329</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirgen-330"><a href="#dirgen-330"><span class="linenos">330</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirgenConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirgen-331"><a href="#dirgen-331"><span class="linenos">331</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-332"><a href="#dirgen-332"><span class="linenos">332</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirgen-333"><a href="#dirgen-333"><span class="linenos">333</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirgen-334"><a href="#dirgen-334"><span class="linenos">334</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirgenOutputs</span><span class="p">:</span>
-</span><span id="dirgen-335"><a href="#dirgen-335"><span class="linenos">335</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dirgen-336"><a href="#dirgen-336"><span class="linenos">336</span></a><span class="sd">    Generate a set of uniformly distributed directions using a bipolar electrostatic</span>
-</span><span id="dirgen-337"><a href="#dirgen-337"><span class="linenos">337</span></a><span class="sd">    repulsion model.</span>
-</span><span id="dirgen-338"><a href="#dirgen-338"><span class="linenos">338</span></a><span class="sd">    </span>
-</span><span id="dirgen-339"><a href="#dirgen-339"><span class="linenos">339</span></a><span class="sd">    Directions are distributed by analogy to an electrostatic repulsion system,</span>
-</span><span id="dirgen-340"><a href="#dirgen-340"><span class="linenos">340</span></a><span class="sd">    with each direction corresponding to a single electrostatic charge (for</span>
-</span><span id="dirgen-341"><a href="#dirgen-341"><span class="linenos">341</span></a><span class="sd">    -unipolar), or a pair of diametrically opposed charges (for the default</span>
-</span><span id="dirgen-342"><a href="#dirgen-342"><span class="linenos">342</span></a><span class="sd">    bipolar case). The energy of the system is determined based on the Coulomb</span>
-</span><span id="dirgen-343"><a href="#dirgen-343"><span class="linenos">343</span></a><span class="sd">    repulsion, which assumes the form 1/r^power, where r is the distance between</span>
-</span><span id="dirgen-344"><a href="#dirgen-344"><span class="linenos">344</span></a><span class="sd">    any pair of charges, and p is the power assumed for the repulsion law</span>
-</span><span id="dirgen-345"><a href="#dirgen-345"><span class="linenos">345</span></a><span class="sd">    (default: 1). The minimum energy state is obtained by gradient descent.</span>
-</span><span id="dirgen-346"><a href="#dirgen-346"><span class="linenos">346</span></a><span class="sd">    </span>
-</span><span id="dirgen-347"><a href="#dirgen-347"><span class="linenos">347</span></a><span class="sd">    References:</span>
-</span><span id="dirgen-348"><a href="#dirgen-348"><span class="linenos">348</span></a><span class="sd">    </span>
-</span><span id="dirgen-349"><a href="#dirgen-349"><span class="linenos">349</span></a><span class="sd">    Jones, D.; Horsfield, M. &amp; Simmons, A. Optimal strategies for measuring</span>
-</span><span id="dirgen-350"><a href="#dirgen-350"><span class="linenos">350</span></a><span class="sd">    diffusion in anisotropic systems by magnetic resonance imaging. Magnetic</span>
-</span><span id="dirgen-351"><a href="#dirgen-351"><span class="linenos">351</span></a><span class="sd">    Resonance in Medicine, 1999, 42: 515-525</span>
-</span><span id="dirgen-352"><a href="#dirgen-352"><span class="linenos">352</span></a><span class="sd">    </span>
-</span><span id="dirgen-353"><a href="#dirgen-353"><span class="linenos">353</span></a><span class="sd">    Papadakis, N. G.; Murrills, C. D.; Hall, L. D.; Huang, C. L.-H. &amp; Adrian</span>
-</span><span id="dirgen-354"><a href="#dirgen-354"><span class="linenos">354</span></a><span class="sd">    Carpenter, T. Minimal gradient encoding for robust estimation of diffusion</span>
-</span><span id="dirgen-355"><a href="#dirgen-355"><span class="linenos">355</span></a><span class="sd">    anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.</span>
-</span><span id="dirgen-356"><a href="#dirgen-356"><span class="linenos">356</span></a><span class="sd">    </span>
-</span><span id="dirgen-357"><a href="#dirgen-357"><span class="linenos">357</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="dirgen-358"><a href="#dirgen-358"><span class="linenos">358</span></a><span class="sd">    </span>
-</span><span id="dirgen-359"><a href="#dirgen-359"><span class="linenos">359</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="dirgen-360"><a href="#dirgen-360"><span class="linenos">360</span></a><span class="sd">    </span>
-</span><span id="dirgen-361"><a href="#dirgen-361"><span class="linenos">361</span></a><span class="sd">    Args:</span>
-</span><span id="dirgen-362"><a href="#dirgen-362"><span class="linenos">362</span></a><span class="sd">        ndir: the number of directions to generate.</span>
-</span><span id="dirgen-363"><a href="#dirgen-363"><span class="linenos">363</span></a><span class="sd">        dirs: the text file to write the directions to, as [ az el ] pairs.</span>
-</span><span id="dirgen-364"><a href="#dirgen-364"><span class="linenos">364</span></a><span class="sd">        power: specify exponent to use for repulsion power law (default: 1).\</span>
-</span><span id="dirgen-365"><a href="#dirgen-365"><span class="linenos">365</span></a><span class="sd">            This must be a power of 2 (i.e. 1, 2, 4, 8, 16, ...).</span>
-</span><span id="dirgen-366"><a href="#dirgen-366"><span class="linenos">366</span></a><span class="sd">        niter: specify the maximum number of iterations to perform (default:\</span>
-</span><span id="dirgen-367"><a href="#dirgen-367"><span class="linenos">367</span></a><span class="sd">            10000).</span>
-</span><span id="dirgen-368"><a href="#dirgen-368"><span class="linenos">368</span></a><span class="sd">        restarts: specify the number of restarts to perform (default: 10).</span>
-</span><span id="dirgen-369"><a href="#dirgen-369"><span class="linenos">369</span></a><span class="sd">        unipolar: optimise assuming a unipolar electrostatic repulsion model\</span>
-</span><span id="dirgen-370"><a href="#dirgen-370"><span class="linenos">370</span></a><span class="sd">            rather than the bipolar model normally assumed in DWI.</span>
-</span><span id="dirgen-371"><a href="#dirgen-371"><span class="linenos">371</span></a><span class="sd">        cartesian: Output the directions in Cartesian coordinates [x y z]\</span>
-</span><span id="dirgen-372"><a href="#dirgen-372"><span class="linenos">372</span></a><span class="sd">            instead of [az el].</span>
-</span><span id="dirgen-373"><a href="#dirgen-373"><span class="linenos">373</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="dirgen-374"><a href="#dirgen-374"><span class="linenos">374</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="dirgen-375"><a href="#dirgen-375"><span class="linenos">375</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="dirgen-376"><a href="#dirgen-376"><span class="linenos">376</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="dirgen-377"><a href="#dirgen-377"><span class="linenos">377</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="dirgen-378"><a href="#dirgen-378"><span class="linenos">378</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="dirgen-379"><a href="#dirgen-379"><span class="linenos">379</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="dirgen-380"><a href="#dirgen-380"><span class="linenos">380</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="dirgen-381"><a href="#dirgen-381"><span class="linenos">381</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="dirgen-382"><a href="#dirgen-382"><span class="linenos">382</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="dirgen-383"><a href="#dirgen-383"><span class="linenos">383</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="dirgen-384"><a href="#dirgen-384"><span class="linenos">384</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="dirgen-385"><a href="#dirgen-385"><span class="linenos">385</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dirgen-386"><a href="#dirgen-386"><span class="linenos">386</span></a><span class="sd">    Returns:</span>
-</span><span id="dirgen-387"><a href="#dirgen-387"><span class="linenos">387</span></a><span class="sd">        NamedTuple of outputs (described in `DirgenOutputs`).</span>
-</span><span id="dirgen-388"><a href="#dirgen-388"><span class="linenos">388</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dirgen-389"><a href="#dirgen-389"><span class="linenos">389</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dirgen-390"><a href="#dirgen-390"><span class="linenos">390</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRGEN_METADATA</span><span class="p">)</span>
-</span><span id="dirgen-391"><a href="#dirgen-391"><span class="linenos">391</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirgen_params</span><span class="p">(</span><span class="n">power</span><span class="o">=</span><span class="n">power</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="n">niter</span><span class="p">,</span> <span class="n">restarts</span><span class="o">=</span><span class="n">restarts</span><span class="p">,</span> <span class="n">unipolar</span><span class="o">=</span><span class="n">unipolar</span><span class="p">,</span> <span class="n">cartesian</span><span class="o">=</span><span class="n">cartesian</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">ndir</span><span class="o">=</span><span class="n">ndir</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
-</span><span id="dirgen-392"><a href="#dirgen-392"><span class="linenos">392</span></a>    <span class="k">return</span> <span class="n">dirgen_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dirgen-318"><a href="#dirgen-318"><span class="linenos">318</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirgen</span><span class="p">(</span>
+</span><span id="dirgen-319"><a href="#dirgen-319"><span class="linenos">319</span></a>    <span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="dirgen-320"><a href="#dirgen-320"><span class="linenos">320</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="dirgen-321"><a href="#dirgen-321"><span class="linenos">321</span></a>    <span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirgen-322"><a href="#dirgen-322"><span class="linenos">322</span></a>    <span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirgen-323"><a href="#dirgen-323"><span class="linenos">323</span></a>    <span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirgen-324"><a href="#dirgen-324"><span class="linenos">324</span></a>    <span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-325"><a href="#dirgen-325"><span class="linenos">325</span></a>    <span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-326"><a href="#dirgen-326"><span class="linenos">326</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-327"><a href="#dirgen-327"><span class="linenos">327</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-328"><a href="#dirgen-328"><span class="linenos">328</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-329"><a href="#dirgen-329"><span class="linenos">329</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-330"><a href="#dirgen-330"><span class="linenos">330</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirgen-331"><a href="#dirgen-331"><span class="linenos">331</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirgenConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirgen-332"><a href="#dirgen-332"><span class="linenos">332</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-333"><a href="#dirgen-333"><span class="linenos">333</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirgen-334"><a href="#dirgen-334"><span class="linenos">334</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirgen-335"><a href="#dirgen-335"><span class="linenos">335</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirgenOutputs</span><span class="p">:</span>
+</span><span id="dirgen-336"><a href="#dirgen-336"><span class="linenos">336</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dirgen-337"><a href="#dirgen-337"><span class="linenos">337</span></a><span class="sd">    Generate a set of uniformly distributed directions using a bipolar electrostatic</span>
+</span><span id="dirgen-338"><a href="#dirgen-338"><span class="linenos">338</span></a><span class="sd">    repulsion model.</span>
+</span><span id="dirgen-339"><a href="#dirgen-339"><span class="linenos">339</span></a><span class="sd">    </span>
+</span><span id="dirgen-340"><a href="#dirgen-340"><span class="linenos">340</span></a><span class="sd">    Directions are distributed by analogy to an electrostatic repulsion system,</span>
+</span><span id="dirgen-341"><a href="#dirgen-341"><span class="linenos">341</span></a><span class="sd">    with each direction corresponding to a single electrostatic charge (for</span>
+</span><span id="dirgen-342"><a href="#dirgen-342"><span class="linenos">342</span></a><span class="sd">    -unipolar), or a pair of diametrically opposed charges (for the default</span>
+</span><span id="dirgen-343"><a href="#dirgen-343"><span class="linenos">343</span></a><span class="sd">    bipolar case). The energy of the system is determined based on the Coulomb</span>
+</span><span id="dirgen-344"><a href="#dirgen-344"><span class="linenos">344</span></a><span class="sd">    repulsion, which assumes the form 1/r^power, where r is the distance between</span>
+</span><span id="dirgen-345"><a href="#dirgen-345"><span class="linenos">345</span></a><span class="sd">    any pair of charges, and p is the power assumed for the repulsion law</span>
+</span><span id="dirgen-346"><a href="#dirgen-346"><span class="linenos">346</span></a><span class="sd">    (default: 1). The minimum energy state is obtained by gradient descent.</span>
+</span><span id="dirgen-347"><a href="#dirgen-347"><span class="linenos">347</span></a><span class="sd">    </span>
+</span><span id="dirgen-348"><a href="#dirgen-348"><span class="linenos">348</span></a><span class="sd">    References:</span>
+</span><span id="dirgen-349"><a href="#dirgen-349"><span class="linenos">349</span></a><span class="sd">    </span>
+</span><span id="dirgen-350"><a href="#dirgen-350"><span class="linenos">350</span></a><span class="sd">    Jones, D.; Horsfield, M. &amp; Simmons, A. Optimal strategies for measuring</span>
+</span><span id="dirgen-351"><a href="#dirgen-351"><span class="linenos">351</span></a><span class="sd">    diffusion in anisotropic systems by magnetic resonance imaging. Magnetic</span>
+</span><span id="dirgen-352"><a href="#dirgen-352"><span class="linenos">352</span></a><span class="sd">    Resonance in Medicine, 1999, 42: 515-525</span>
+</span><span id="dirgen-353"><a href="#dirgen-353"><span class="linenos">353</span></a><span class="sd">    </span>
+</span><span id="dirgen-354"><a href="#dirgen-354"><span class="linenos">354</span></a><span class="sd">    Papadakis, N. G.; Murrills, C. D.; Hall, L. D.; Huang, C. L.-H. &amp; Adrian</span>
+</span><span id="dirgen-355"><a href="#dirgen-355"><span class="linenos">355</span></a><span class="sd">    Carpenter, T. Minimal gradient encoding for robust estimation of diffusion</span>
+</span><span id="dirgen-356"><a href="#dirgen-356"><span class="linenos">356</span></a><span class="sd">    anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.</span>
+</span><span id="dirgen-357"><a href="#dirgen-357"><span class="linenos">357</span></a><span class="sd">    </span>
+</span><span id="dirgen-358"><a href="#dirgen-358"><span class="linenos">358</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="dirgen-359"><a href="#dirgen-359"><span class="linenos">359</span></a><span class="sd">    </span>
+</span><span id="dirgen-360"><a href="#dirgen-360"><span class="linenos">360</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="dirgen-361"><a href="#dirgen-361"><span class="linenos">361</span></a><span class="sd">    </span>
+</span><span id="dirgen-362"><a href="#dirgen-362"><span class="linenos">362</span></a><span class="sd">    Args:</span>
+</span><span id="dirgen-363"><a href="#dirgen-363"><span class="linenos">363</span></a><span class="sd">        ndir: the number of directions to generate.</span>
+</span><span id="dirgen-364"><a href="#dirgen-364"><span class="linenos">364</span></a><span class="sd">        dirs: the text file to write the directions to, as [ az el ] pairs.</span>
+</span><span id="dirgen-365"><a href="#dirgen-365"><span class="linenos">365</span></a><span class="sd">        power: specify exponent to use for repulsion power law (default: 1).\</span>
+</span><span id="dirgen-366"><a href="#dirgen-366"><span class="linenos">366</span></a><span class="sd">            This must be a power of 2 (i.e. 1, 2, 4, 8, 16, ...).</span>
+</span><span id="dirgen-367"><a href="#dirgen-367"><span class="linenos">367</span></a><span class="sd">        niter: specify the maximum number of iterations to perform (default:\</span>
+</span><span id="dirgen-368"><a href="#dirgen-368"><span class="linenos">368</span></a><span class="sd">            10000).</span>
+</span><span id="dirgen-369"><a href="#dirgen-369"><span class="linenos">369</span></a><span class="sd">        restarts: specify the number of restarts to perform (default: 10).</span>
+</span><span id="dirgen-370"><a href="#dirgen-370"><span class="linenos">370</span></a><span class="sd">        unipolar: optimise assuming a unipolar electrostatic repulsion model\</span>
+</span><span id="dirgen-371"><a href="#dirgen-371"><span class="linenos">371</span></a><span class="sd">            rather than the bipolar model normally assumed in DWI.</span>
+</span><span id="dirgen-372"><a href="#dirgen-372"><span class="linenos">372</span></a><span class="sd">        cartesian: Output the directions in Cartesian coordinates [x y z]\</span>
+</span><span id="dirgen-373"><a href="#dirgen-373"><span class="linenos">373</span></a><span class="sd">            instead of [az el].</span>
+</span><span id="dirgen-374"><a href="#dirgen-374"><span class="linenos">374</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="dirgen-375"><a href="#dirgen-375"><span class="linenos">375</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="dirgen-376"><a href="#dirgen-376"><span class="linenos">376</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="dirgen-377"><a href="#dirgen-377"><span class="linenos">377</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="dirgen-378"><a href="#dirgen-378"><span class="linenos">378</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="dirgen-379"><a href="#dirgen-379"><span class="linenos">379</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="dirgen-380"><a href="#dirgen-380"><span class="linenos">380</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="dirgen-381"><a href="#dirgen-381"><span class="linenos">381</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="dirgen-382"><a href="#dirgen-382"><span class="linenos">382</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="dirgen-383"><a href="#dirgen-383"><span class="linenos">383</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="dirgen-384"><a href="#dirgen-384"><span class="linenos">384</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="dirgen-385"><a href="#dirgen-385"><span class="linenos">385</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="dirgen-386"><a href="#dirgen-386"><span class="linenos">386</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dirgen-387"><a href="#dirgen-387"><span class="linenos">387</span></a><span class="sd">    Returns:</span>
+</span><span id="dirgen-388"><a href="#dirgen-388"><span class="linenos">388</span></a><span class="sd">        NamedTuple of outputs (described in `DirgenOutputs`).</span>
+</span><span id="dirgen-389"><a href="#dirgen-389"><span class="linenos">389</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dirgen-390"><a href="#dirgen-390"><span class="linenos">390</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dirgen-391"><a href="#dirgen-391"><span class="linenos">391</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRGEN_METADATA</span><span class="p">)</span>
+</span><span id="dirgen-392"><a href="#dirgen-392"><span class="linenos">392</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirgen_params</span><span class="p">(</span><span class="n">power</span><span class="o">=</span><span class="n">power</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="n">niter</span><span class="p">,</span> <span class="n">restarts</span><span class="o">=</span><span class="n">restarts</span><span class="p">,</span> <span class="n">unipolar</span><span class="o">=</span><span class="n">unipolar</span><span class="p">,</span> <span class="n">cartesian</span><span class="o">=</span><span class="n">cartesian</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">ndir</span><span class="o">=</span><span class="n">ndir</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
+</span><span id="dirgen-393"><a href="#dirgen-393"><span class="linenos">393</span></a>    <span class="k">return</span> <span class="n">dirgen_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

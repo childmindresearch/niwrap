@@ -312,56 +312,57 @@
 </span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_estimate_fwhm_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_estimate_fwhm_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_estimate_fwhm</span><span class="p">(</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">opt_roi_roivol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">VolumeEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeEstimateFwhmOutputs</span><span class="p">:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    Estimate fwhm smoothness of a volume.</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Estimates the smoothness of the input volume in X, Y, and Z directions</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    separately, printing the estimates to standard output, in mm as FWHM. If</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    -subvolume or -whole-file are not specified, each subvolume is estimated and</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    displayed separately.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    </span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    </span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    </span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    Args:</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        volume: the input volume.</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        opt_roi_roivol: use only data within an ROI: the volume to use as an\</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">            ROI.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to estimate smoothness\</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">            of: the subvolume number or name.</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each subvolume\</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">            separately.</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    Returns:</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_estimate_fwhm_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">opt_roi_roivol</span><span class="o">=</span><span class="n">opt_roi_roivol</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">return</span> <span class="n">volume_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_estimate_fwhm</span><span class="p">(</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">opt_roi_roivol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">VolumeEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeEstimateFwhmOutputs</span><span class="p">:</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Estimate fwhm smoothness of a volume.</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    </span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    Estimates the smoothness of the input volume in X, Y, and Z directions</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    separately, printing the estimates to standard output, in mm as FWHM. If</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    -subvolume or -whole-file are not specified, each subvolume is estimated and</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    displayed separately.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    </span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    </span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    </span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    Args:</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        volume: the input volume.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        opt_roi_roivol: use only data within an ROI: the volume to use as an\</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">            ROI.</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to estimate smoothness\</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">            of: the subvolume number or name.</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each subvolume\</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">            separately.</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    Returns:</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_estimate_fwhm_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">opt_roi_roivol</span><span class="o">=</span><span class="n">opt_roi_roivol</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="k">return</span> <span class="n">volume_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;VOLUME_ESTIMATE_FWHM_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;VolumeEstimateFwhmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;VolumeEstimateFwhmParameters&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;VolumeEstimateFwhmWholeFileParameters&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;volume_estimate_fwhm&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;volume_estimate_fwhm_params&quot;</span><span class="p">,</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;volume_estimate_fwhm_whole_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="p">]</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;VOLUME_ESTIMATE_FWHM_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;VolumeEstimateFwhmOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;VolumeEstimateFwhmParameters&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;VolumeEstimateFwhmWholeFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;volume_estimate_fwhm&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;volume_estimate_fwhm_params&quot;</span><span class="p">,</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;volume_estimate_fwhm_whole_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -523,41 +524,41 @@
 
     </div>
     <a class="headerlink" href="#volume_estimate_fwhm"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_estimate_fwhm-218"><a href="#volume_estimate_fwhm-218"><span class="linenos">218</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_estimate_fwhm</span><span class="p">(</span>
-</span><span id="volume_estimate_fwhm-219"><a href="#volume_estimate_fwhm-219"><span class="linenos">219</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_estimate_fwhm-220"><a href="#volume_estimate_fwhm-220"><span class="linenos">220</span></a>    <span class="n">opt_roi_roivol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_estimate_fwhm-221"><a href="#volume_estimate_fwhm-221"><span class="linenos">221</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_estimate_fwhm-222"><a href="#volume_estimate_fwhm-222"><span class="linenos">222</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">VolumeEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_estimate_fwhm-223"><a href="#volume_estimate_fwhm-223"><span class="linenos">223</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_estimate_fwhm-224"><a href="#volume_estimate_fwhm-224"><span class="linenos">224</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeEstimateFwhmOutputs</span><span class="p">:</span>
-</span><span id="volume_estimate_fwhm-225"><a href="#volume_estimate_fwhm-225"><span class="linenos">225</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_estimate_fwhm-226"><a href="#volume_estimate_fwhm-226"><span class="linenos">226</span></a><span class="sd">    Estimate fwhm smoothness of a volume.</span>
-</span><span id="volume_estimate_fwhm-227"><a href="#volume_estimate_fwhm-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="volume_estimate_fwhm-228"><a href="#volume_estimate_fwhm-228"><span class="linenos">228</span></a><span class="sd">    Estimates the smoothness of the input volume in X, Y, and Z directions</span>
-</span><span id="volume_estimate_fwhm-229"><a href="#volume_estimate_fwhm-229"><span class="linenos">229</span></a><span class="sd">    separately, printing the estimates to standard output, in mm as FWHM. If</span>
-</span><span id="volume_estimate_fwhm-230"><a href="#volume_estimate_fwhm-230"><span class="linenos">230</span></a><span class="sd">    -subvolume or -whole-file are not specified, each subvolume is estimated and</span>
-</span><span id="volume_estimate_fwhm-231"><a href="#volume_estimate_fwhm-231"><span class="linenos">231</span></a><span class="sd">    displayed separately.</span>
-</span><span id="volume_estimate_fwhm-232"><a href="#volume_estimate_fwhm-232"><span class="linenos">232</span></a><span class="sd">    </span>
-</span><span id="volume_estimate_fwhm-233"><a href="#volume_estimate_fwhm-233"><span class="linenos">233</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_estimate_fwhm-234"><a href="#volume_estimate_fwhm-234"><span class="linenos">234</span></a><span class="sd">    </span>
-</span><span id="volume_estimate_fwhm-235"><a href="#volume_estimate_fwhm-235"><span class="linenos">235</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_estimate_fwhm-236"><a href="#volume_estimate_fwhm-236"><span class="linenos">236</span></a><span class="sd">    </span>
-</span><span id="volume_estimate_fwhm-237"><a href="#volume_estimate_fwhm-237"><span class="linenos">237</span></a><span class="sd">    Args:</span>
-</span><span id="volume_estimate_fwhm-238"><a href="#volume_estimate_fwhm-238"><span class="linenos">238</span></a><span class="sd">        volume: the input volume.</span>
-</span><span id="volume_estimate_fwhm-239"><a href="#volume_estimate_fwhm-239"><span class="linenos">239</span></a><span class="sd">        opt_roi_roivol: use only data within an ROI: the volume to use as an\</span>
-</span><span id="volume_estimate_fwhm-240"><a href="#volume_estimate_fwhm-240"><span class="linenos">240</span></a><span class="sd">            ROI.</span>
-</span><span id="volume_estimate_fwhm-241"><a href="#volume_estimate_fwhm-241"><span class="linenos">241</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to estimate smoothness\</span>
-</span><span id="volume_estimate_fwhm-242"><a href="#volume_estimate_fwhm-242"><span class="linenos">242</span></a><span class="sd">            of: the subvolume number or name.</span>
-</span><span id="volume_estimate_fwhm-243"><a href="#volume_estimate_fwhm-243"><span class="linenos">243</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each subvolume\</span>
-</span><span id="volume_estimate_fwhm-244"><a href="#volume_estimate_fwhm-244"><span class="linenos">244</span></a><span class="sd">            separately.</span>
-</span><span id="volume_estimate_fwhm-245"><a href="#volume_estimate_fwhm-245"><span class="linenos">245</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_estimate_fwhm-246"><a href="#volume_estimate_fwhm-246"><span class="linenos">246</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_estimate_fwhm-247"><a href="#volume_estimate_fwhm-247"><span class="linenos">247</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).</span>
-</span><span id="volume_estimate_fwhm-248"><a href="#volume_estimate_fwhm-248"><span class="linenos">248</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_estimate_fwhm-249"><a href="#volume_estimate_fwhm-249"><span class="linenos">249</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_estimate_fwhm-250"><a href="#volume_estimate_fwhm-250"><span class="linenos">250</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
-</span><span id="volume_estimate_fwhm-251"><a href="#volume_estimate_fwhm-251"><span class="linenos">251</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_estimate_fwhm_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">opt_roi_roivol</span><span class="o">=</span><span class="n">opt_roi_roivol</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
-</span><span id="volume_estimate_fwhm-252"><a href="#volume_estimate_fwhm-252"><span class="linenos">252</span></a>    <span class="k">return</span> <span class="n">volume_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_estimate_fwhm-219"><a href="#volume_estimate_fwhm-219"><span class="linenos">219</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_estimate_fwhm</span><span class="p">(</span>
+</span><span id="volume_estimate_fwhm-220"><a href="#volume_estimate_fwhm-220"><span class="linenos">220</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_estimate_fwhm-221"><a href="#volume_estimate_fwhm-221"><span class="linenos">221</span></a>    <span class="n">opt_roi_roivol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_estimate_fwhm-222"><a href="#volume_estimate_fwhm-222"><span class="linenos">222</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_estimate_fwhm-223"><a href="#volume_estimate_fwhm-223"><span class="linenos">223</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">VolumeEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_estimate_fwhm-224"><a href="#volume_estimate_fwhm-224"><span class="linenos">224</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_estimate_fwhm-225"><a href="#volume_estimate_fwhm-225"><span class="linenos">225</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeEstimateFwhmOutputs</span><span class="p">:</span>
+</span><span id="volume_estimate_fwhm-226"><a href="#volume_estimate_fwhm-226"><span class="linenos">226</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_estimate_fwhm-227"><a href="#volume_estimate_fwhm-227"><span class="linenos">227</span></a><span class="sd">    Estimate fwhm smoothness of a volume.</span>
+</span><span id="volume_estimate_fwhm-228"><a href="#volume_estimate_fwhm-228"><span class="linenos">228</span></a><span class="sd">    </span>
+</span><span id="volume_estimate_fwhm-229"><a href="#volume_estimate_fwhm-229"><span class="linenos">229</span></a><span class="sd">    Estimates the smoothness of the input volume in X, Y, and Z directions</span>
+</span><span id="volume_estimate_fwhm-230"><a href="#volume_estimate_fwhm-230"><span class="linenos">230</span></a><span class="sd">    separately, printing the estimates to standard output, in mm as FWHM. If</span>
+</span><span id="volume_estimate_fwhm-231"><a href="#volume_estimate_fwhm-231"><span class="linenos">231</span></a><span class="sd">    -subvolume or -whole-file are not specified, each subvolume is estimated and</span>
+</span><span id="volume_estimate_fwhm-232"><a href="#volume_estimate_fwhm-232"><span class="linenos">232</span></a><span class="sd">    displayed separately.</span>
+</span><span id="volume_estimate_fwhm-233"><a href="#volume_estimate_fwhm-233"><span class="linenos">233</span></a><span class="sd">    </span>
+</span><span id="volume_estimate_fwhm-234"><a href="#volume_estimate_fwhm-234"><span class="linenos">234</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_estimate_fwhm-235"><a href="#volume_estimate_fwhm-235"><span class="linenos">235</span></a><span class="sd">    </span>
+</span><span id="volume_estimate_fwhm-236"><a href="#volume_estimate_fwhm-236"><span class="linenos">236</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_estimate_fwhm-237"><a href="#volume_estimate_fwhm-237"><span class="linenos">237</span></a><span class="sd">    </span>
+</span><span id="volume_estimate_fwhm-238"><a href="#volume_estimate_fwhm-238"><span class="linenos">238</span></a><span class="sd">    Args:</span>
+</span><span id="volume_estimate_fwhm-239"><a href="#volume_estimate_fwhm-239"><span class="linenos">239</span></a><span class="sd">        volume: the input volume.</span>
+</span><span id="volume_estimate_fwhm-240"><a href="#volume_estimate_fwhm-240"><span class="linenos">240</span></a><span class="sd">        opt_roi_roivol: use only data within an ROI: the volume to use as an\</span>
+</span><span id="volume_estimate_fwhm-241"><a href="#volume_estimate_fwhm-241"><span class="linenos">241</span></a><span class="sd">            ROI.</span>
+</span><span id="volume_estimate_fwhm-242"><a href="#volume_estimate_fwhm-242"><span class="linenos">242</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to estimate smoothness\</span>
+</span><span id="volume_estimate_fwhm-243"><a href="#volume_estimate_fwhm-243"><span class="linenos">243</span></a><span class="sd">            of: the subvolume number or name.</span>
+</span><span id="volume_estimate_fwhm-244"><a href="#volume_estimate_fwhm-244"><span class="linenos">244</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each subvolume\</span>
+</span><span id="volume_estimate_fwhm-245"><a href="#volume_estimate_fwhm-245"><span class="linenos">245</span></a><span class="sd">            separately.</span>
+</span><span id="volume_estimate_fwhm-246"><a href="#volume_estimate_fwhm-246"><span class="linenos">246</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_estimate_fwhm-247"><a href="#volume_estimate_fwhm-247"><span class="linenos">247</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_estimate_fwhm-248"><a href="#volume_estimate_fwhm-248"><span class="linenos">248</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).</span>
+</span><span id="volume_estimate_fwhm-249"><a href="#volume_estimate_fwhm-249"><span class="linenos">249</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_estimate_fwhm-250"><a href="#volume_estimate_fwhm-250"><span class="linenos">250</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_estimate_fwhm-251"><a href="#volume_estimate_fwhm-251"><span class="linenos">251</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
+</span><span id="volume_estimate_fwhm-252"><a href="#volume_estimate_fwhm-252"><span class="linenos">252</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_estimate_fwhm_params</span><span class="p">(</span><span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span> <span class="n">opt_roi_roivol</span><span class="o">=</span><span class="n">opt_roi_roivol</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
+</span><span id="volume_estimate_fwhm-253"><a href="#volume_estimate_fwhm-253"><span class="linenos">253</span></a>    <span class="k">return</span> <span class="n">volume_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

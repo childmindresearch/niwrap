@@ -311,66 +311,67 @@
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">eddy_combine_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">eddy_combine_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="k">def</span><span class="w"> </span><span class="nf">eddy_combine</span><span class="p">(</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">pos_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">pos_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">pos_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">pos_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">neg_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">neg_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">neg_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">neg_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">only_matched_flag</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EddyCombineOutputs</span><span class="p">:</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Combines diffusion data sets with opposite phase encoding directions for use</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    with FSL&#39;s EDDY.</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    </span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Args:</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        pos_data: Path to the positive phase-encoded data file (e.g.\</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            PosData.nii.gz).</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        pos_bvals: Path to the positive phase-encoded b-values file (e.g.\</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">            Posbvals).</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        pos_bvecs: Path to the positive phase-encoded b-vectors file (e.g.\</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">            Posbvecs).</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        pos_series_vol: Positive series volume count.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        neg_data: Path to the negative phase-encoded data file (e.g.\</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            NegData.nii.gz).</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        neg_bvals: Path to the negative phase-encoded b-values file (e.g.\</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">            Negbvals).</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        neg_bvecs: Path to the negative phase-encoded b-vectors file (e.g.\</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            Negbvecs).</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        neg_series_vol: Negative series volume count.</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        output_path: Output directory path.</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        only_matched_flag: Flag to include only matched volumes (set to 1 to\</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">            include only matched volumes, otherwise 0).</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    Returns:</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        NamedTuple of outputs (described in `EddyCombineOutputs`).</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EDDY_COMBINE_METADATA</span><span class="p">)</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">eddy_combine_params</span><span class="p">(</span><span class="n">pos_data</span><span class="o">=</span><span class="n">pos_data</span><span class="p">,</span> <span class="n">pos_bvals</span><span class="o">=</span><span class="n">pos_bvals</span><span class="p">,</span> <span class="n">pos_bvecs</span><span class="o">=</span><span class="n">pos_bvecs</span><span class="p">,</span> <span class="n">pos_series_vol</span><span class="o">=</span><span class="n">pos_series_vol</span><span class="p">,</span> <span class="n">neg_data</span><span class="o">=</span><span class="n">neg_data</span><span class="p">,</span> <span class="n">neg_bvals</span><span class="o">=</span><span class="n">neg_bvals</span><span class="p">,</span> <span class="n">neg_bvecs</span><span class="o">=</span><span class="n">neg_bvecs</span><span class="p">,</span> <span class="n">neg_series_vol</span><span class="o">=</span><span class="n">neg_series_vol</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">,</span> <span class="n">only_matched_flag</span><span class="o">=</span><span class="n">only_matched_flag</span><span class="p">)</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">return</span> <span class="n">eddy_combine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="k">def</span><span class="w"> </span><span class="nf">eddy_combine</span><span class="p">(</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">pos_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">pos_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">pos_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">pos_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">neg_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">neg_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">neg_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">neg_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">only_matched_flag</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EddyCombineOutputs</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    Combines diffusion data sets with opposite phase encoding directions for use</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    with FSL&#39;s EDDY.</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    </span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Args:</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        pos_data: Path to the positive phase-encoded data file (e.g.\</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            PosData.nii.gz).</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        pos_bvals: Path to the positive phase-encoded b-values file (e.g.\</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">            Posbvals).</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        pos_bvecs: Path to the positive phase-encoded b-vectors file (e.g.\</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">            Posbvecs).</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        pos_series_vol: Positive series volume count.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        neg_data: Path to the negative phase-encoded data file (e.g.\</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">            NegData.nii.gz).</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        neg_bvals: Path to the negative phase-encoded b-values file (e.g.\</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            Negbvals).</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        neg_bvecs: Path to the negative phase-encoded b-vectors file (e.g.\</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            Negbvecs).</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        neg_series_vol: Negative series volume count.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        output_path: Output directory path.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        only_matched_flag: Flag to include only matched volumes (set to 1 to\</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">            include only matched volumes, otherwise 0).</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    Returns:</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        NamedTuple of outputs (described in `EddyCombineOutputs`).</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EDDY_COMBINE_METADATA</span><span class="p">)</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">eddy_combine_params</span><span class="p">(</span><span class="n">pos_data</span><span class="o">=</span><span class="n">pos_data</span><span class="p">,</span> <span class="n">pos_bvals</span><span class="o">=</span><span class="n">pos_bvals</span><span class="p">,</span> <span class="n">pos_bvecs</span><span class="o">=</span><span class="n">pos_bvecs</span><span class="p">,</span> <span class="n">pos_series_vol</span><span class="o">=</span><span class="n">pos_series_vol</span><span class="p">,</span> <span class="n">neg_data</span><span class="o">=</span><span class="n">neg_data</span><span class="p">,</span> <span class="n">neg_bvals</span><span class="o">=</span><span class="n">neg_bvals</span><span class="p">,</span> <span class="n">neg_bvecs</span><span class="o">=</span><span class="n">neg_bvecs</span><span class="p">,</span> <span class="n">neg_series_vol</span><span class="o">=</span><span class="n">neg_series_vol</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">,</span> <span class="n">only_matched_flag</span><span class="o">=</span><span class="n">only_matched_flag</span><span class="p">)</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">return</span> <span class="n">eddy_combine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;EDDY_COMBINE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;EddyCombineOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;EddyCombineParameters&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;eddy_combine&quot;</span><span class="p">,</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;eddy_combine_params&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="p">]</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;EDDY_COMBINE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;EddyCombineOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;EddyCombineParameters&quot;</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;eddy_combine&quot;</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;eddy_combine_params&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -619,53 +620,53 @@
 
     </div>
     <a class="headerlink" href="#eddy_combine"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="eddy_combine-202"><a href="#eddy_combine-202"><span class="linenos">202</span></a><span class="k">def</span><span class="w"> </span><span class="nf">eddy_combine</span><span class="p">(</span>
-</span><span id="eddy_combine-203"><a href="#eddy_combine-203"><span class="linenos">203</span></a>    <span class="n">pos_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="eddy_combine-204"><a href="#eddy_combine-204"><span class="linenos">204</span></a>    <span class="n">pos_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="eddy_combine-205"><a href="#eddy_combine-205"><span class="linenos">205</span></a>    <span class="n">pos_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="eddy_combine-206"><a href="#eddy_combine-206"><span class="linenos">206</span></a>    <span class="n">pos_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="eddy_combine-207"><a href="#eddy_combine-207"><span class="linenos">207</span></a>    <span class="n">neg_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="eddy_combine-208"><a href="#eddy_combine-208"><span class="linenos">208</span></a>    <span class="n">neg_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="eddy_combine-209"><a href="#eddy_combine-209"><span class="linenos">209</span></a>    <span class="n">neg_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="eddy_combine-210"><a href="#eddy_combine-210"><span class="linenos">210</span></a>    <span class="n">neg_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="eddy_combine-211"><a href="#eddy_combine-211"><span class="linenos">211</span></a>    <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="eddy_combine-212"><a href="#eddy_combine-212"><span class="linenos">212</span></a>    <span class="n">only_matched_flag</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="eddy_combine-213"><a href="#eddy_combine-213"><span class="linenos">213</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="eddy_combine-214"><a href="#eddy_combine-214"><span class="linenos">214</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EddyCombineOutputs</span><span class="p">:</span>
-</span><span id="eddy_combine-215"><a href="#eddy_combine-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="eddy_combine-216"><a href="#eddy_combine-216"><span class="linenos">216</span></a><span class="sd">    Combines diffusion data sets with opposite phase encoding directions for use</span>
-</span><span id="eddy_combine-217"><a href="#eddy_combine-217"><span class="linenos">217</span></a><span class="sd">    with FSL&#39;s EDDY.</span>
-</span><span id="eddy_combine-218"><a href="#eddy_combine-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="eddy_combine-219"><a href="#eddy_combine-219"><span class="linenos">219</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="eddy_combine-220"><a href="#eddy_combine-220"><span class="linenos">220</span></a><span class="sd">    </span>
-</span><span id="eddy_combine-221"><a href="#eddy_combine-221"><span class="linenos">221</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="eddy_combine-222"><a href="#eddy_combine-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="eddy_combine-223"><a href="#eddy_combine-223"><span class="linenos">223</span></a><span class="sd">    Args:</span>
-</span><span id="eddy_combine-224"><a href="#eddy_combine-224"><span class="linenos">224</span></a><span class="sd">        pos_data: Path to the positive phase-encoded data file (e.g.\</span>
-</span><span id="eddy_combine-225"><a href="#eddy_combine-225"><span class="linenos">225</span></a><span class="sd">            PosData.nii.gz).</span>
-</span><span id="eddy_combine-226"><a href="#eddy_combine-226"><span class="linenos">226</span></a><span class="sd">        pos_bvals: Path to the positive phase-encoded b-values file (e.g.\</span>
-</span><span id="eddy_combine-227"><a href="#eddy_combine-227"><span class="linenos">227</span></a><span class="sd">            Posbvals).</span>
-</span><span id="eddy_combine-228"><a href="#eddy_combine-228"><span class="linenos">228</span></a><span class="sd">        pos_bvecs: Path to the positive phase-encoded b-vectors file (e.g.\</span>
-</span><span id="eddy_combine-229"><a href="#eddy_combine-229"><span class="linenos">229</span></a><span class="sd">            Posbvecs).</span>
-</span><span id="eddy_combine-230"><a href="#eddy_combine-230"><span class="linenos">230</span></a><span class="sd">        pos_series_vol: Positive series volume count.</span>
-</span><span id="eddy_combine-231"><a href="#eddy_combine-231"><span class="linenos">231</span></a><span class="sd">        neg_data: Path to the negative phase-encoded data file (e.g.\</span>
-</span><span id="eddy_combine-232"><a href="#eddy_combine-232"><span class="linenos">232</span></a><span class="sd">            NegData.nii.gz).</span>
-</span><span id="eddy_combine-233"><a href="#eddy_combine-233"><span class="linenos">233</span></a><span class="sd">        neg_bvals: Path to the negative phase-encoded b-values file (e.g.\</span>
-</span><span id="eddy_combine-234"><a href="#eddy_combine-234"><span class="linenos">234</span></a><span class="sd">            Negbvals).</span>
-</span><span id="eddy_combine-235"><a href="#eddy_combine-235"><span class="linenos">235</span></a><span class="sd">        neg_bvecs: Path to the negative phase-encoded b-vectors file (e.g.\</span>
-</span><span id="eddy_combine-236"><a href="#eddy_combine-236"><span class="linenos">236</span></a><span class="sd">            Negbvecs).</span>
-</span><span id="eddy_combine-237"><a href="#eddy_combine-237"><span class="linenos">237</span></a><span class="sd">        neg_series_vol: Negative series volume count.</span>
-</span><span id="eddy_combine-238"><a href="#eddy_combine-238"><span class="linenos">238</span></a><span class="sd">        output_path: Output directory path.</span>
-</span><span id="eddy_combine-239"><a href="#eddy_combine-239"><span class="linenos">239</span></a><span class="sd">        only_matched_flag: Flag to include only matched volumes (set to 1 to\</span>
-</span><span id="eddy_combine-240"><a href="#eddy_combine-240"><span class="linenos">240</span></a><span class="sd">            include only matched volumes, otherwise 0).</span>
-</span><span id="eddy_combine-241"><a href="#eddy_combine-241"><span class="linenos">241</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="eddy_combine-242"><a href="#eddy_combine-242"><span class="linenos">242</span></a><span class="sd">    Returns:</span>
-</span><span id="eddy_combine-243"><a href="#eddy_combine-243"><span class="linenos">243</span></a><span class="sd">        NamedTuple of outputs (described in `EddyCombineOutputs`).</span>
-</span><span id="eddy_combine-244"><a href="#eddy_combine-244"><span class="linenos">244</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="eddy_combine-245"><a href="#eddy_combine-245"><span class="linenos">245</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="eddy_combine-246"><a href="#eddy_combine-246"><span class="linenos">246</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EDDY_COMBINE_METADATA</span><span class="p">)</span>
-</span><span id="eddy_combine-247"><a href="#eddy_combine-247"><span class="linenos">247</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">eddy_combine_params</span><span class="p">(</span><span class="n">pos_data</span><span class="o">=</span><span class="n">pos_data</span><span class="p">,</span> <span class="n">pos_bvals</span><span class="o">=</span><span class="n">pos_bvals</span><span class="p">,</span> <span class="n">pos_bvecs</span><span class="o">=</span><span class="n">pos_bvecs</span><span class="p">,</span> <span class="n">pos_series_vol</span><span class="o">=</span><span class="n">pos_series_vol</span><span class="p">,</span> <span class="n">neg_data</span><span class="o">=</span><span class="n">neg_data</span><span class="p">,</span> <span class="n">neg_bvals</span><span class="o">=</span><span class="n">neg_bvals</span><span class="p">,</span> <span class="n">neg_bvecs</span><span class="o">=</span><span class="n">neg_bvecs</span><span class="p">,</span> <span class="n">neg_series_vol</span><span class="o">=</span><span class="n">neg_series_vol</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">,</span> <span class="n">only_matched_flag</span><span class="o">=</span><span class="n">only_matched_flag</span><span class="p">)</span>
-</span><span id="eddy_combine-248"><a href="#eddy_combine-248"><span class="linenos">248</span></a>    <span class="k">return</span> <span class="n">eddy_combine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="eddy_combine-203"><a href="#eddy_combine-203"><span class="linenos">203</span></a><span class="k">def</span><span class="w"> </span><span class="nf">eddy_combine</span><span class="p">(</span>
+</span><span id="eddy_combine-204"><a href="#eddy_combine-204"><span class="linenos">204</span></a>    <span class="n">pos_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="eddy_combine-205"><a href="#eddy_combine-205"><span class="linenos">205</span></a>    <span class="n">pos_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="eddy_combine-206"><a href="#eddy_combine-206"><span class="linenos">206</span></a>    <span class="n">pos_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="eddy_combine-207"><a href="#eddy_combine-207"><span class="linenos">207</span></a>    <span class="n">pos_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="eddy_combine-208"><a href="#eddy_combine-208"><span class="linenos">208</span></a>    <span class="n">neg_data</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="eddy_combine-209"><a href="#eddy_combine-209"><span class="linenos">209</span></a>    <span class="n">neg_bvals</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="eddy_combine-210"><a href="#eddy_combine-210"><span class="linenos">210</span></a>    <span class="n">neg_bvecs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="eddy_combine-211"><a href="#eddy_combine-211"><span class="linenos">211</span></a>    <span class="n">neg_series_vol</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="eddy_combine-212"><a href="#eddy_combine-212"><span class="linenos">212</span></a>    <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="eddy_combine-213"><a href="#eddy_combine-213"><span class="linenos">213</span></a>    <span class="n">only_matched_flag</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="eddy_combine-214"><a href="#eddy_combine-214"><span class="linenos">214</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="eddy_combine-215"><a href="#eddy_combine-215"><span class="linenos">215</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EddyCombineOutputs</span><span class="p">:</span>
+</span><span id="eddy_combine-216"><a href="#eddy_combine-216"><span class="linenos">216</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="eddy_combine-217"><a href="#eddy_combine-217"><span class="linenos">217</span></a><span class="sd">    Combines diffusion data sets with opposite phase encoding directions for use</span>
+</span><span id="eddy_combine-218"><a href="#eddy_combine-218"><span class="linenos">218</span></a><span class="sd">    with FSL&#39;s EDDY.</span>
+</span><span id="eddy_combine-219"><a href="#eddy_combine-219"><span class="linenos">219</span></a><span class="sd">    </span>
+</span><span id="eddy_combine-220"><a href="#eddy_combine-220"><span class="linenos">220</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="eddy_combine-221"><a href="#eddy_combine-221"><span class="linenos">221</span></a><span class="sd">    </span>
+</span><span id="eddy_combine-222"><a href="#eddy_combine-222"><span class="linenos">222</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="eddy_combine-223"><a href="#eddy_combine-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="eddy_combine-224"><a href="#eddy_combine-224"><span class="linenos">224</span></a><span class="sd">    Args:</span>
+</span><span id="eddy_combine-225"><a href="#eddy_combine-225"><span class="linenos">225</span></a><span class="sd">        pos_data: Path to the positive phase-encoded data file (e.g.\</span>
+</span><span id="eddy_combine-226"><a href="#eddy_combine-226"><span class="linenos">226</span></a><span class="sd">            PosData.nii.gz).</span>
+</span><span id="eddy_combine-227"><a href="#eddy_combine-227"><span class="linenos">227</span></a><span class="sd">        pos_bvals: Path to the positive phase-encoded b-values file (e.g.\</span>
+</span><span id="eddy_combine-228"><a href="#eddy_combine-228"><span class="linenos">228</span></a><span class="sd">            Posbvals).</span>
+</span><span id="eddy_combine-229"><a href="#eddy_combine-229"><span class="linenos">229</span></a><span class="sd">        pos_bvecs: Path to the positive phase-encoded b-vectors file (e.g.\</span>
+</span><span id="eddy_combine-230"><a href="#eddy_combine-230"><span class="linenos">230</span></a><span class="sd">            Posbvecs).</span>
+</span><span id="eddy_combine-231"><a href="#eddy_combine-231"><span class="linenos">231</span></a><span class="sd">        pos_series_vol: Positive series volume count.</span>
+</span><span id="eddy_combine-232"><a href="#eddy_combine-232"><span class="linenos">232</span></a><span class="sd">        neg_data: Path to the negative phase-encoded data file (e.g.\</span>
+</span><span id="eddy_combine-233"><a href="#eddy_combine-233"><span class="linenos">233</span></a><span class="sd">            NegData.nii.gz).</span>
+</span><span id="eddy_combine-234"><a href="#eddy_combine-234"><span class="linenos">234</span></a><span class="sd">        neg_bvals: Path to the negative phase-encoded b-values file (e.g.\</span>
+</span><span id="eddy_combine-235"><a href="#eddy_combine-235"><span class="linenos">235</span></a><span class="sd">            Negbvals).</span>
+</span><span id="eddy_combine-236"><a href="#eddy_combine-236"><span class="linenos">236</span></a><span class="sd">        neg_bvecs: Path to the negative phase-encoded b-vectors file (e.g.\</span>
+</span><span id="eddy_combine-237"><a href="#eddy_combine-237"><span class="linenos">237</span></a><span class="sd">            Negbvecs).</span>
+</span><span id="eddy_combine-238"><a href="#eddy_combine-238"><span class="linenos">238</span></a><span class="sd">        neg_series_vol: Negative series volume count.</span>
+</span><span id="eddy_combine-239"><a href="#eddy_combine-239"><span class="linenos">239</span></a><span class="sd">        output_path: Output directory path.</span>
+</span><span id="eddy_combine-240"><a href="#eddy_combine-240"><span class="linenos">240</span></a><span class="sd">        only_matched_flag: Flag to include only matched volumes (set to 1 to\</span>
+</span><span id="eddy_combine-241"><a href="#eddy_combine-241"><span class="linenos">241</span></a><span class="sd">            include only matched volumes, otherwise 0).</span>
+</span><span id="eddy_combine-242"><a href="#eddy_combine-242"><span class="linenos">242</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="eddy_combine-243"><a href="#eddy_combine-243"><span class="linenos">243</span></a><span class="sd">    Returns:</span>
+</span><span id="eddy_combine-244"><a href="#eddy_combine-244"><span class="linenos">244</span></a><span class="sd">        NamedTuple of outputs (described in `EddyCombineOutputs`).</span>
+</span><span id="eddy_combine-245"><a href="#eddy_combine-245"><span class="linenos">245</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="eddy_combine-246"><a href="#eddy_combine-246"><span class="linenos">246</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="eddy_combine-247"><a href="#eddy_combine-247"><span class="linenos">247</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">EDDY_COMBINE_METADATA</span><span class="p">)</span>
+</span><span id="eddy_combine-248"><a href="#eddy_combine-248"><span class="linenos">248</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">eddy_combine_params</span><span class="p">(</span><span class="n">pos_data</span><span class="o">=</span><span class="n">pos_data</span><span class="p">,</span> <span class="n">pos_bvals</span><span class="o">=</span><span class="n">pos_bvals</span><span class="p">,</span> <span class="n">pos_bvecs</span><span class="o">=</span><span class="n">pos_bvecs</span><span class="p">,</span> <span class="n">pos_series_vol</span><span class="o">=</span><span class="n">pos_series_vol</span><span class="p">,</span> <span class="n">neg_data</span><span class="o">=</span><span class="n">neg_data</span><span class="p">,</span> <span class="n">neg_bvals</span><span class="o">=</span><span class="n">neg_bvals</span><span class="p">,</span> <span class="n">neg_bvecs</span><span class="o">=</span><span class="n">neg_bvecs</span><span class="p">,</span> <span class="n">neg_series_vol</span><span class="o">=</span><span class="n">neg_series_vol</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">,</span> <span class="n">only_matched_flag</span><span class="o">=</span><span class="n">only_matched_flag</span><span class="p">)</span>
+</span><span id="eddy_combine-249"><a href="#eddy_combine-249"><span class="linenos">249</span></a>    <span class="k">return</span> <span class="n">eddy_combine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

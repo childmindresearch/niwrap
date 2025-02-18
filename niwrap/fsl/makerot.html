@@ -292,52 +292,53 @@
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">makerot_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">makerot_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="k">def</span><span class="w"> </span><span class="nf">makerot</span><span class="p">(</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">cov</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">center</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MakerotOutputs</span><span class="p">:</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    Tool to create a rotation matrix for a given angle and axis of rotation.</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    </span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    </span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    </span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    Args:</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        theta: Angle of rotation (in degrees).</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        axis: Unnormalized axis vector (comma separated).</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        cov: Image filename used for center of volume.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        center: Center of rotation in mm (comma separated).</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        output_file: Output filename for matrix.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        help_flag: Display help message.</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Returns:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        NamedTuple of outputs (described in `MakerotOutputs`).</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MAKEROT_METADATA</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">makerot_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">help_flag</span><span class="o">=</span><span class="n">help_flag</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">return</span> <span class="n">makerot_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="k">def</span><span class="w"> </span><span class="nf">makerot</span><span class="p">(</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">cov</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">center</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MakerotOutputs</span><span class="p">:</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Tool to create a rotation matrix for a given angle and axis of rotation.</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    </span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    </span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Args:</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        theta: Angle of rotation (in degrees).</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        axis: Unnormalized axis vector (comma separated).</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        cov: Image filename used for center of volume.</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        center: Center of rotation in mm (comma separated).</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        output_file: Output filename for matrix.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        help_flag: Display help message.</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    Returns:</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        NamedTuple of outputs (described in `MakerotOutputs`).</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MAKEROT_METADATA</span><span class="p">)</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">makerot_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">help_flag</span><span class="o">=</span><span class="n">help_flag</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="k">return</span> <span class="n">makerot_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;MAKEROT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;MakerotOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;MakerotParameters&quot;</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;makerot&quot;</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="s2">&quot;makerot_params&quot;</span><span class="p">,</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="p">]</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;MAKEROT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;MakerotOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;MakerotParameters&quot;</span><span class="p">,</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="s2">&quot;makerot&quot;</span><span class="p">,</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="s2">&quot;makerot_params&quot;</span><span class="p">,</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -523,39 +524,39 @@
 
     </div>
     <a class="headerlink" href="#makerot"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="makerot-198"><a href="#makerot-198"><span class="linenos">198</span></a><span class="k">def</span><span class="w"> </span><span class="nf">makerot</span><span class="p">(</span>
-</span><span id="makerot-199"><a href="#makerot-199"><span class="linenos">199</span></a>    <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="makerot-200"><a href="#makerot-200"><span class="linenos">200</span></a>    <span class="n">axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="makerot-201"><a href="#makerot-201"><span class="linenos">201</span></a>    <span class="n">cov</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="makerot-202"><a href="#makerot-202"><span class="linenos">202</span></a>    <span class="n">center</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="makerot-203"><a href="#makerot-203"><span class="linenos">203</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="makerot-204"><a href="#makerot-204"><span class="linenos">204</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="makerot-205"><a href="#makerot-205"><span class="linenos">205</span></a>    <span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="makerot-206"><a href="#makerot-206"><span class="linenos">206</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="makerot-207"><a href="#makerot-207"><span class="linenos">207</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MakerotOutputs</span><span class="p">:</span>
-</span><span id="makerot-208"><a href="#makerot-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="makerot-209"><a href="#makerot-209"><span class="linenos">209</span></a><span class="sd">    Tool to create a rotation matrix for a given angle and axis of rotation.</span>
-</span><span id="makerot-210"><a href="#makerot-210"><span class="linenos">210</span></a><span class="sd">    </span>
-</span><span id="makerot-211"><a href="#makerot-211"><span class="linenos">211</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="makerot-212"><a href="#makerot-212"><span class="linenos">212</span></a><span class="sd">    </span>
-</span><span id="makerot-213"><a href="#makerot-213"><span class="linenos">213</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="makerot-214"><a href="#makerot-214"><span class="linenos">214</span></a><span class="sd">    </span>
-</span><span id="makerot-215"><a href="#makerot-215"><span class="linenos">215</span></a><span class="sd">    Args:</span>
-</span><span id="makerot-216"><a href="#makerot-216"><span class="linenos">216</span></a><span class="sd">        theta: Angle of rotation (in degrees).</span>
-</span><span id="makerot-217"><a href="#makerot-217"><span class="linenos">217</span></a><span class="sd">        axis: Unnormalized axis vector (comma separated).</span>
-</span><span id="makerot-218"><a href="#makerot-218"><span class="linenos">218</span></a><span class="sd">        cov: Image filename used for center of volume.</span>
-</span><span id="makerot-219"><a href="#makerot-219"><span class="linenos">219</span></a><span class="sd">        center: Center of rotation in mm (comma separated).</span>
-</span><span id="makerot-220"><a href="#makerot-220"><span class="linenos">220</span></a><span class="sd">        output_file: Output filename for matrix.</span>
-</span><span id="makerot-221"><a href="#makerot-221"><span class="linenos">221</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
-</span><span id="makerot-222"><a href="#makerot-222"><span class="linenos">222</span></a><span class="sd">        help_flag: Display help message.</span>
-</span><span id="makerot-223"><a href="#makerot-223"><span class="linenos">223</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="makerot-224"><a href="#makerot-224"><span class="linenos">224</span></a><span class="sd">    Returns:</span>
-</span><span id="makerot-225"><a href="#makerot-225"><span class="linenos">225</span></a><span class="sd">        NamedTuple of outputs (described in `MakerotOutputs`).</span>
-</span><span id="makerot-226"><a href="#makerot-226"><span class="linenos">226</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="makerot-227"><a href="#makerot-227"><span class="linenos">227</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="makerot-228"><a href="#makerot-228"><span class="linenos">228</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MAKEROT_METADATA</span><span class="p">)</span>
-</span><span id="makerot-229"><a href="#makerot-229"><span class="linenos">229</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">makerot_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">help_flag</span><span class="o">=</span><span class="n">help_flag</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
-</span><span id="makerot-230"><a href="#makerot-230"><span class="linenos">230</span></a>    <span class="k">return</span> <span class="n">makerot_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="makerot-199"><a href="#makerot-199"><span class="linenos">199</span></a><span class="k">def</span><span class="w"> </span><span class="nf">makerot</span><span class="p">(</span>
+</span><span id="makerot-200"><a href="#makerot-200"><span class="linenos">200</span></a>    <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="makerot-201"><a href="#makerot-201"><span class="linenos">201</span></a>    <span class="n">axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="makerot-202"><a href="#makerot-202"><span class="linenos">202</span></a>    <span class="n">cov</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="makerot-203"><a href="#makerot-203"><span class="linenos">203</span></a>    <span class="n">center</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="makerot-204"><a href="#makerot-204"><span class="linenos">204</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="makerot-205"><a href="#makerot-205"><span class="linenos">205</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="makerot-206"><a href="#makerot-206"><span class="linenos">206</span></a>    <span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="makerot-207"><a href="#makerot-207"><span class="linenos">207</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="makerot-208"><a href="#makerot-208"><span class="linenos">208</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MakerotOutputs</span><span class="p">:</span>
+</span><span id="makerot-209"><a href="#makerot-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="makerot-210"><a href="#makerot-210"><span class="linenos">210</span></a><span class="sd">    Tool to create a rotation matrix for a given angle and axis of rotation.</span>
+</span><span id="makerot-211"><a href="#makerot-211"><span class="linenos">211</span></a><span class="sd">    </span>
+</span><span id="makerot-212"><a href="#makerot-212"><span class="linenos">212</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="makerot-213"><a href="#makerot-213"><span class="linenos">213</span></a><span class="sd">    </span>
+</span><span id="makerot-214"><a href="#makerot-214"><span class="linenos">214</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="makerot-215"><a href="#makerot-215"><span class="linenos">215</span></a><span class="sd">    </span>
+</span><span id="makerot-216"><a href="#makerot-216"><span class="linenos">216</span></a><span class="sd">    Args:</span>
+</span><span id="makerot-217"><a href="#makerot-217"><span class="linenos">217</span></a><span class="sd">        theta: Angle of rotation (in degrees).</span>
+</span><span id="makerot-218"><a href="#makerot-218"><span class="linenos">218</span></a><span class="sd">        axis: Unnormalized axis vector (comma separated).</span>
+</span><span id="makerot-219"><a href="#makerot-219"><span class="linenos">219</span></a><span class="sd">        cov: Image filename used for center of volume.</span>
+</span><span id="makerot-220"><a href="#makerot-220"><span class="linenos">220</span></a><span class="sd">        center: Center of rotation in mm (comma separated).</span>
+</span><span id="makerot-221"><a href="#makerot-221"><span class="linenos">221</span></a><span class="sd">        output_file: Output filename for matrix.</span>
+</span><span id="makerot-222"><a href="#makerot-222"><span class="linenos">222</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
+</span><span id="makerot-223"><a href="#makerot-223"><span class="linenos">223</span></a><span class="sd">        help_flag: Display help message.</span>
+</span><span id="makerot-224"><a href="#makerot-224"><span class="linenos">224</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="makerot-225"><a href="#makerot-225"><span class="linenos">225</span></a><span class="sd">    Returns:</span>
+</span><span id="makerot-226"><a href="#makerot-226"><span class="linenos">226</span></a><span class="sd">        NamedTuple of outputs (described in `MakerotOutputs`).</span>
+</span><span id="makerot-227"><a href="#makerot-227"><span class="linenos">227</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="makerot-228"><a href="#makerot-228"><span class="linenos">228</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="makerot-229"><a href="#makerot-229"><span class="linenos">229</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MAKEROT_METADATA</span><span class="p">)</span>
+</span><span id="makerot-230"><a href="#makerot-230"><span class="linenos">230</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">makerot_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">help_flag</span><span class="o">=</span><span class="n">help_flag</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+</span><span id="makerot-231"><a href="#makerot-231"><span class="linenos">231</span></a>    <span class="k">return</span> <span class="n">makerot_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

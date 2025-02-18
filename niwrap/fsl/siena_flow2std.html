@@ -243,47 +243,48 @@
 </span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">siena_flow2std_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">siena_flow2std_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="k">def</span><span class="w"> </span><span class="nf">siena_flow2std</span><span class="p">(</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">fileroot1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">fileroot2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SienaFlow2stdOutputs</span><span class="p">:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    Convert edge flow to standard space.</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    </span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    </span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    </span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    Args:</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        fileroot1: Input file root 1.</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        fileroot2: Input file root 2.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        sigma: Spatial smoothing of standard-space edge-flow image, sigma\</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            (HWHM) in mm (default=5).</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        debug_flag: Debug (don&#39;t delete intermediate files).</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    Returns:</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        NamedTuple of outputs (described in `SienaFlow2stdOutputs`).</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SIENA_FLOW2STD_METADATA</span><span class="p">)</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">siena_flow2std_params</span><span class="p">(</span><span class="n">fileroot1</span><span class="o">=</span><span class="n">fileroot1</span><span class="p">,</span> <span class="n">fileroot2</span><span class="o">=</span><span class="n">fileroot2</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">return</span> <span class="n">siena_flow2std_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="k">def</span><span class="w"> </span><span class="nf">siena_flow2std</span><span class="p">(</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">fileroot1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">fileroot2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SienaFlow2stdOutputs</span><span class="p">:</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    Convert edge flow to standard space.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    </span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Args:</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        fileroot1: Input file root 1.</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        fileroot2: Input file root 2.</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        sigma: Spatial smoothing of standard-space edge-flow image, sigma\</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            (HWHM) in mm (default=5).</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        debug_flag: Debug (don&#39;t delete intermediate files).</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    Returns:</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        NamedTuple of outputs (described in `SienaFlow2stdOutputs`).</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SIENA_FLOW2STD_METADATA</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">siena_flow2std_params</span><span class="p">(</span><span class="n">fileroot1</span><span class="o">=</span><span class="n">fileroot1</span><span class="p">,</span> <span class="n">fileroot2</span><span class="o">=</span><span class="n">fileroot2</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">return</span> <span class="n">siena_flow2std_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="s2">&quot;SIENA_FLOW2STD_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;SienaFlow2stdOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="s2">&quot;SienaFlow2stdParameters&quot;</span><span class="p">,</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="s2">&quot;siena_flow2std&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="s2">&quot;siena_flow2std_params&quot;</span><span class="p">,</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="p">]</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;SIENA_FLOW2STD_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="s2">&quot;SienaFlow2stdOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="s2">&quot;SienaFlow2stdParameters&quot;</span><span class="p">,</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="s2">&quot;siena_flow2std&quot;</span><span class="p">,</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="s2">&quot;siena_flow2std_params&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -421,34 +422,34 @@
 
     </div>
     <a class="headerlink" href="#siena_flow2std"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="siena_flow2std-161"><a href="#siena_flow2std-161"><span class="linenos">161</span></a><span class="k">def</span><span class="w"> </span><span class="nf">siena_flow2std</span><span class="p">(</span>
-</span><span id="siena_flow2std-162"><a href="#siena_flow2std-162"><span class="linenos">162</span></a>    <span class="n">fileroot1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="siena_flow2std-163"><a href="#siena_flow2std-163"><span class="linenos">163</span></a>    <span class="n">fileroot2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="siena_flow2std-164"><a href="#siena_flow2std-164"><span class="linenos">164</span></a>    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-</span><span id="siena_flow2std-165"><a href="#siena_flow2std-165"><span class="linenos">165</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="siena_flow2std-166"><a href="#siena_flow2std-166"><span class="linenos">166</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="siena_flow2std-167"><a href="#siena_flow2std-167"><span class="linenos">167</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SienaFlow2stdOutputs</span><span class="p">:</span>
-</span><span id="siena_flow2std-168"><a href="#siena_flow2std-168"><span class="linenos">168</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="siena_flow2std-169"><a href="#siena_flow2std-169"><span class="linenos">169</span></a><span class="sd">    Convert edge flow to standard space.</span>
-</span><span id="siena_flow2std-170"><a href="#siena_flow2std-170"><span class="linenos">170</span></a><span class="sd">    </span>
-</span><span id="siena_flow2std-171"><a href="#siena_flow2std-171"><span class="linenos">171</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="siena_flow2std-172"><a href="#siena_flow2std-172"><span class="linenos">172</span></a><span class="sd">    </span>
-</span><span id="siena_flow2std-173"><a href="#siena_flow2std-173"><span class="linenos">173</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="siena_flow2std-174"><a href="#siena_flow2std-174"><span class="linenos">174</span></a><span class="sd">    </span>
-</span><span id="siena_flow2std-175"><a href="#siena_flow2std-175"><span class="linenos">175</span></a><span class="sd">    Args:</span>
-</span><span id="siena_flow2std-176"><a href="#siena_flow2std-176"><span class="linenos">176</span></a><span class="sd">        fileroot1: Input file root 1.</span>
-</span><span id="siena_flow2std-177"><a href="#siena_flow2std-177"><span class="linenos">177</span></a><span class="sd">        fileroot2: Input file root 2.</span>
-</span><span id="siena_flow2std-178"><a href="#siena_flow2std-178"><span class="linenos">178</span></a><span class="sd">        sigma: Spatial smoothing of standard-space edge-flow image, sigma\</span>
-</span><span id="siena_flow2std-179"><a href="#siena_flow2std-179"><span class="linenos">179</span></a><span class="sd">            (HWHM) in mm (default=5).</span>
-</span><span id="siena_flow2std-180"><a href="#siena_flow2std-180"><span class="linenos">180</span></a><span class="sd">        debug_flag: Debug (don&#39;t delete intermediate files).</span>
-</span><span id="siena_flow2std-181"><a href="#siena_flow2std-181"><span class="linenos">181</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="siena_flow2std-182"><a href="#siena_flow2std-182"><span class="linenos">182</span></a><span class="sd">    Returns:</span>
-</span><span id="siena_flow2std-183"><a href="#siena_flow2std-183"><span class="linenos">183</span></a><span class="sd">        NamedTuple of outputs (described in `SienaFlow2stdOutputs`).</span>
-</span><span id="siena_flow2std-184"><a href="#siena_flow2std-184"><span class="linenos">184</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="siena_flow2std-185"><a href="#siena_flow2std-185"><span class="linenos">185</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="siena_flow2std-186"><a href="#siena_flow2std-186"><span class="linenos">186</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SIENA_FLOW2STD_METADATA</span><span class="p">)</span>
-</span><span id="siena_flow2std-187"><a href="#siena_flow2std-187"><span class="linenos">187</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">siena_flow2std_params</span><span class="p">(</span><span class="n">fileroot1</span><span class="o">=</span><span class="n">fileroot1</span><span class="p">,</span> <span class="n">fileroot2</span><span class="o">=</span><span class="n">fileroot2</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
-</span><span id="siena_flow2std-188"><a href="#siena_flow2std-188"><span class="linenos">188</span></a>    <span class="k">return</span> <span class="n">siena_flow2std_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="siena_flow2std-162"><a href="#siena_flow2std-162"><span class="linenos">162</span></a><span class="k">def</span><span class="w"> </span><span class="nf">siena_flow2std</span><span class="p">(</span>
+</span><span id="siena_flow2std-163"><a href="#siena_flow2std-163"><span class="linenos">163</span></a>    <span class="n">fileroot1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="siena_flow2std-164"><a href="#siena_flow2std-164"><span class="linenos">164</span></a>    <span class="n">fileroot2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="siena_flow2std-165"><a href="#siena_flow2std-165"><span class="linenos">165</span></a>    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+</span><span id="siena_flow2std-166"><a href="#siena_flow2std-166"><span class="linenos">166</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="siena_flow2std-167"><a href="#siena_flow2std-167"><span class="linenos">167</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="siena_flow2std-168"><a href="#siena_flow2std-168"><span class="linenos">168</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SienaFlow2stdOutputs</span><span class="p">:</span>
+</span><span id="siena_flow2std-169"><a href="#siena_flow2std-169"><span class="linenos">169</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="siena_flow2std-170"><a href="#siena_flow2std-170"><span class="linenos">170</span></a><span class="sd">    Convert edge flow to standard space.</span>
+</span><span id="siena_flow2std-171"><a href="#siena_flow2std-171"><span class="linenos">171</span></a><span class="sd">    </span>
+</span><span id="siena_flow2std-172"><a href="#siena_flow2std-172"><span class="linenos">172</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="siena_flow2std-173"><a href="#siena_flow2std-173"><span class="linenos">173</span></a><span class="sd">    </span>
+</span><span id="siena_flow2std-174"><a href="#siena_flow2std-174"><span class="linenos">174</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="siena_flow2std-175"><a href="#siena_flow2std-175"><span class="linenos">175</span></a><span class="sd">    </span>
+</span><span id="siena_flow2std-176"><a href="#siena_flow2std-176"><span class="linenos">176</span></a><span class="sd">    Args:</span>
+</span><span id="siena_flow2std-177"><a href="#siena_flow2std-177"><span class="linenos">177</span></a><span class="sd">        fileroot1: Input file root 1.</span>
+</span><span id="siena_flow2std-178"><a href="#siena_flow2std-178"><span class="linenos">178</span></a><span class="sd">        fileroot2: Input file root 2.</span>
+</span><span id="siena_flow2std-179"><a href="#siena_flow2std-179"><span class="linenos">179</span></a><span class="sd">        sigma: Spatial smoothing of standard-space edge-flow image, sigma\</span>
+</span><span id="siena_flow2std-180"><a href="#siena_flow2std-180"><span class="linenos">180</span></a><span class="sd">            (HWHM) in mm (default=5).</span>
+</span><span id="siena_flow2std-181"><a href="#siena_flow2std-181"><span class="linenos">181</span></a><span class="sd">        debug_flag: Debug (don&#39;t delete intermediate files).</span>
+</span><span id="siena_flow2std-182"><a href="#siena_flow2std-182"><span class="linenos">182</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="siena_flow2std-183"><a href="#siena_flow2std-183"><span class="linenos">183</span></a><span class="sd">    Returns:</span>
+</span><span id="siena_flow2std-184"><a href="#siena_flow2std-184"><span class="linenos">184</span></a><span class="sd">        NamedTuple of outputs (described in `SienaFlow2stdOutputs`).</span>
+</span><span id="siena_flow2std-185"><a href="#siena_flow2std-185"><span class="linenos">185</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="siena_flow2std-186"><a href="#siena_flow2std-186"><span class="linenos">186</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="siena_flow2std-187"><a href="#siena_flow2std-187"><span class="linenos">187</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SIENA_FLOW2STD_METADATA</span><span class="p">)</span>
+</span><span id="siena_flow2std-188"><a href="#siena_flow2std-188"><span class="linenos">188</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">siena_flow2std_params</span><span class="p">(</span><span class="n">fileroot1</span><span class="o">=</span><span class="n">fileroot1</span><span class="p">,</span> <span class="n">fileroot2</span><span class="o">=</span><span class="n">fileroot2</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
+</span><span id="siena_flow2std-189"><a href="#siena_flow2std-189"><span class="linenos">189</span></a>    <span class="k">return</span> <span class="n">siena_flow2std_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

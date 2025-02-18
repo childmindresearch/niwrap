@@ -231,44 +231,45 @@
 </span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">rotcom_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">rotcom_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="k">def</span><span class="w"> </span><span class="nf">rotcom</span><span class="p">(</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">rotate_ashift</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">dataset</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RotcomOutputs</span><span class="p">:</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Prints to stdout the 4x3 transformation matrix+vector that would be applied by</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    3drotate to the given dataset.</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    </span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    </span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    </span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    Args:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        rotate_ashift: Combination of rotate and ashift options in a single\</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">            quoted string (e.g., &#39;-rotate 10I 0R 0A -ashift 5S 0 0&#39;).</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        dataset: Input dataset for determining coordinate order.</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    Returns:</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        NamedTuple of outputs (described in `RotcomOutputs`).</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROTCOM_METADATA</span><span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">rotcom_params</span><span class="p">(</span><span class="n">rotate_ashift</span><span class="o">=</span><span class="n">rotate_ashift</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">return</span> <span class="n">rotcom_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="k">def</span><span class="w"> </span><span class="nf">rotcom</span><span class="p">(</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">rotate_ashift</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">dataset</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RotcomOutputs</span><span class="p">:</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Prints to stdout the 4x3 transformation matrix+vector that would be applied by</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    3drotate to the given dataset.</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    </span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    </span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    </span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    Args:</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        rotate_ashift: Combination of rotate and ashift options in a single\</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">            quoted string (e.g., &#39;-rotate 10I 0R 0A -ashift 5S 0 0&#39;).</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        dataset: Input dataset for determining coordinate order.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    Returns:</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        NamedTuple of outputs (described in `RotcomOutputs`).</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROTCOM_METADATA</span><span class="p">)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">rotcom_params</span><span class="p">(</span><span class="n">rotate_ashift</span><span class="o">=</span><span class="n">rotate_ashift</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">rotcom_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="s2">&quot;ROTCOM_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;RotcomOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;RotcomParameters&quot;</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;rotcom&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;rotcom_params&quot;</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="p">]</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;ROTCOM_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;RotcomOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;RotcomParameters&quot;</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;rotcom&quot;</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;rotcom_params&quot;</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -399,31 +400,31 @@
 
     </div>
     <a class="headerlink" href="#rotcom"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="rotcom-152"><a href="#rotcom-152"><span class="linenos">152</span></a><span class="k">def</span><span class="w"> </span><span class="nf">rotcom</span><span class="p">(</span>
-</span><span id="rotcom-153"><a href="#rotcom-153"><span class="linenos">153</span></a>    <span class="n">rotate_ashift</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="rotcom-154"><a href="#rotcom-154"><span class="linenos">154</span></a>    <span class="n">dataset</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="rotcom-155"><a href="#rotcom-155"><span class="linenos">155</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="rotcom-156"><a href="#rotcom-156"><span class="linenos">156</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RotcomOutputs</span><span class="p">:</span>
-</span><span id="rotcom-157"><a href="#rotcom-157"><span class="linenos">157</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="rotcom-158"><a href="#rotcom-158"><span class="linenos">158</span></a><span class="sd">    Prints to stdout the 4x3 transformation matrix+vector that would be applied by</span>
-</span><span id="rotcom-159"><a href="#rotcom-159"><span class="linenos">159</span></a><span class="sd">    3drotate to the given dataset.</span>
-</span><span id="rotcom-160"><a href="#rotcom-160"><span class="linenos">160</span></a><span class="sd">    </span>
-</span><span id="rotcom-161"><a href="#rotcom-161"><span class="linenos">161</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="rotcom-162"><a href="#rotcom-162"><span class="linenos">162</span></a><span class="sd">    </span>
-</span><span id="rotcom-163"><a href="#rotcom-163"><span class="linenos">163</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="rotcom-164"><a href="#rotcom-164"><span class="linenos">164</span></a><span class="sd">    </span>
-</span><span id="rotcom-165"><a href="#rotcom-165"><span class="linenos">165</span></a><span class="sd">    Args:</span>
-</span><span id="rotcom-166"><a href="#rotcom-166"><span class="linenos">166</span></a><span class="sd">        rotate_ashift: Combination of rotate and ashift options in a single\</span>
-</span><span id="rotcom-167"><a href="#rotcom-167"><span class="linenos">167</span></a><span class="sd">            quoted string (e.g., &#39;-rotate 10I 0R 0A -ashift 5S 0 0&#39;).</span>
-</span><span id="rotcom-168"><a href="#rotcom-168"><span class="linenos">168</span></a><span class="sd">        dataset: Input dataset for determining coordinate order.</span>
-</span><span id="rotcom-169"><a href="#rotcom-169"><span class="linenos">169</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="rotcom-170"><a href="#rotcom-170"><span class="linenos">170</span></a><span class="sd">    Returns:</span>
-</span><span id="rotcom-171"><a href="#rotcom-171"><span class="linenos">171</span></a><span class="sd">        NamedTuple of outputs (described in `RotcomOutputs`).</span>
-</span><span id="rotcom-172"><a href="#rotcom-172"><span class="linenos">172</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="rotcom-173"><a href="#rotcom-173"><span class="linenos">173</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="rotcom-174"><a href="#rotcom-174"><span class="linenos">174</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROTCOM_METADATA</span><span class="p">)</span>
-</span><span id="rotcom-175"><a href="#rotcom-175"><span class="linenos">175</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">rotcom_params</span><span class="p">(</span><span class="n">rotate_ashift</span><span class="o">=</span><span class="n">rotate_ashift</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span>
-</span><span id="rotcom-176"><a href="#rotcom-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">rotcom_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="rotcom-153"><a href="#rotcom-153"><span class="linenos">153</span></a><span class="k">def</span><span class="w"> </span><span class="nf">rotcom</span><span class="p">(</span>
+</span><span id="rotcom-154"><a href="#rotcom-154"><span class="linenos">154</span></a>    <span class="n">rotate_ashift</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="rotcom-155"><a href="#rotcom-155"><span class="linenos">155</span></a>    <span class="n">dataset</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="rotcom-156"><a href="#rotcom-156"><span class="linenos">156</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="rotcom-157"><a href="#rotcom-157"><span class="linenos">157</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RotcomOutputs</span><span class="p">:</span>
+</span><span id="rotcom-158"><a href="#rotcom-158"><span class="linenos">158</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="rotcom-159"><a href="#rotcom-159"><span class="linenos">159</span></a><span class="sd">    Prints to stdout the 4x3 transformation matrix+vector that would be applied by</span>
+</span><span id="rotcom-160"><a href="#rotcom-160"><span class="linenos">160</span></a><span class="sd">    3drotate to the given dataset.</span>
+</span><span id="rotcom-161"><a href="#rotcom-161"><span class="linenos">161</span></a><span class="sd">    </span>
+</span><span id="rotcom-162"><a href="#rotcom-162"><span class="linenos">162</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="rotcom-163"><a href="#rotcom-163"><span class="linenos">163</span></a><span class="sd">    </span>
+</span><span id="rotcom-164"><a href="#rotcom-164"><span class="linenos">164</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="rotcom-165"><a href="#rotcom-165"><span class="linenos">165</span></a><span class="sd">    </span>
+</span><span id="rotcom-166"><a href="#rotcom-166"><span class="linenos">166</span></a><span class="sd">    Args:</span>
+</span><span id="rotcom-167"><a href="#rotcom-167"><span class="linenos">167</span></a><span class="sd">        rotate_ashift: Combination of rotate and ashift options in a single\</span>
+</span><span id="rotcom-168"><a href="#rotcom-168"><span class="linenos">168</span></a><span class="sd">            quoted string (e.g., &#39;-rotate 10I 0R 0A -ashift 5S 0 0&#39;).</span>
+</span><span id="rotcom-169"><a href="#rotcom-169"><span class="linenos">169</span></a><span class="sd">        dataset: Input dataset for determining coordinate order.</span>
+</span><span id="rotcom-170"><a href="#rotcom-170"><span class="linenos">170</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="rotcom-171"><a href="#rotcom-171"><span class="linenos">171</span></a><span class="sd">    Returns:</span>
+</span><span id="rotcom-172"><a href="#rotcom-172"><span class="linenos">172</span></a><span class="sd">        NamedTuple of outputs (described in `RotcomOutputs`).</span>
+</span><span id="rotcom-173"><a href="#rotcom-173"><span class="linenos">173</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="rotcom-174"><a href="#rotcom-174"><span class="linenos">174</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="rotcom-175"><a href="#rotcom-175"><span class="linenos">175</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROTCOM_METADATA</span><span class="p">)</span>
+</span><span id="rotcom-176"><a href="#rotcom-176"><span class="linenos">176</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">rotcom_params</span><span class="p">(</span><span class="n">rotate_ashift</span><span class="o">=</span><span class="n">rotate_ashift</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span>
+</span><span id="rotcom-177"><a href="#rotcom-177"><span class="linenos">177</span></a>    <span class="k">return</span> <span class="n">rotcom_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

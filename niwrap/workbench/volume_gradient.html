@@ -357,62 +357,63 @@
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_gradient_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_gradient_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_gradient</span><span class="p">(</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeGradientPresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">opt_vectors_vector_volume_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeGradientOutputs</span><span class="p">:</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    Gradient of a volume file.</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    </span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    Computes the gradient of the volume by doing linear regressions for each</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">    voxel, considering only its face neighbors unless too few face neighbors</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    exist. The gradient vector is constructed from the partial derivatives of</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    the resulting linear function, and the magnitude of this vector is the</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    output. If specified, the volume vector output is arranged with the x, y,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    and z components from a subvolume as consecutive subvolumes.</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">    </span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">    </span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">    </span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="sd">    Args:</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">        volume_in: the input volume.</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">        volume_out: the output gradient magnitude volume.</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">        presmooth: smooth the volume before computing the gradient.</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to take the gradient\</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">            of: the region to take the gradient within.</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">        opt_vectors_vector_volume_out: output vectors: the vectors as a volume\</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">            file.</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to take the gradient\</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">            of: the subvolume number or name.</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">    Returns:</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeGradientOutputs`).</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_GRADIENT_METADATA</span><span class="p">)</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_gradient_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">opt_vectors_vector_volume_out</span><span class="o">=</span><span class="n">opt_vectors_vector_volume_out</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">)</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="k">return</span> <span class="n">volume_gradient_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_gradient</span><span class="p">(</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeGradientPresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">opt_vectors_vector_volume_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeGradientOutputs</span><span class="p">:</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    Gradient of a volume file.</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    </span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">    Computes the gradient of the volume by doing linear regressions for each</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    voxel, considering only its face neighbors unless too few face neighbors</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    exist. The gradient vector is constructed from the partial derivatives of</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    the resulting linear function, and the magnitude of this vector is the</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    output. If specified, the volume vector output is arranged with the x, y,</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">    and z components from a subvolume as consecutive subvolumes.</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    </span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">    </span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="sd">    </span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">    Args:</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">        volume_in: the input volume.</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">        volume_out: the output gradient magnitude volume.</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">        presmooth: smooth the volume before computing the gradient.</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to take the gradient\</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">            of: the region to take the gradient within.</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">        opt_vectors_vector_volume_out: output vectors: the vectors as a volume\</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">            file.</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to take the gradient\</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">            of: the subvolume number or name.</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">    Returns:</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeGradientOutputs`).</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_GRADIENT_METADATA</span><span class="p">)</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_gradient_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">opt_vectors_vector_volume_out</span><span class="o">=</span><span class="n">opt_vectors_vector_volume_out</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">)</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="k">return</span> <span class="n">volume_gradient_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;VOLUME_GRADIENT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;VolumeGradientOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;VolumeGradientParameters&quot;</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;VolumeGradientPresmoothParameters&quot;</span><span class="p">,</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;volume_gradient&quot;</span><span class="p">,</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;volume_gradient_params&quot;</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;volume_gradient_presmooth_params&quot;</span><span class="p">,</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="p">]</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;VOLUME_GRADIENT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;VolumeGradientOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;VolumeGradientParameters&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;VolumeGradientPresmoothParameters&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;volume_gradient&quot;</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;volume_gradient_params&quot;</span><span class="p">,</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;volume_gradient_presmooth_params&quot;</span><span class="p">,</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -637,47 +638,47 @@
 
     </div>
     <a class="headerlink" href="#volume_gradient"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_gradient-248"><a href="#volume_gradient-248"><span class="linenos">248</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_gradient</span><span class="p">(</span>
-</span><span id="volume_gradient-249"><a href="#volume_gradient-249"><span class="linenos">249</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_gradient-250"><a href="#volume_gradient-250"><span class="linenos">250</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_gradient-251"><a href="#volume_gradient-251"><span class="linenos">251</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeGradientPresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_gradient-252"><a href="#volume_gradient-252"><span class="linenos">252</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_gradient-253"><a href="#volume_gradient-253"><span class="linenos">253</span></a>    <span class="n">opt_vectors_vector_volume_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_gradient-254"><a href="#volume_gradient-254"><span class="linenos">254</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_gradient-255"><a href="#volume_gradient-255"><span class="linenos">255</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_gradient-256"><a href="#volume_gradient-256"><span class="linenos">256</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeGradientOutputs</span><span class="p">:</span>
-</span><span id="volume_gradient-257"><a href="#volume_gradient-257"><span class="linenos">257</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_gradient-258"><a href="#volume_gradient-258"><span class="linenos">258</span></a><span class="sd">    Gradient of a volume file.</span>
-</span><span id="volume_gradient-259"><a href="#volume_gradient-259"><span class="linenos">259</span></a><span class="sd">    </span>
-</span><span id="volume_gradient-260"><a href="#volume_gradient-260"><span class="linenos">260</span></a><span class="sd">    Computes the gradient of the volume by doing linear regressions for each</span>
-</span><span id="volume_gradient-261"><a href="#volume_gradient-261"><span class="linenos">261</span></a><span class="sd">    voxel, considering only its face neighbors unless too few face neighbors</span>
-</span><span id="volume_gradient-262"><a href="#volume_gradient-262"><span class="linenos">262</span></a><span class="sd">    exist. The gradient vector is constructed from the partial derivatives of</span>
-</span><span id="volume_gradient-263"><a href="#volume_gradient-263"><span class="linenos">263</span></a><span class="sd">    the resulting linear function, and the magnitude of this vector is the</span>
-</span><span id="volume_gradient-264"><a href="#volume_gradient-264"><span class="linenos">264</span></a><span class="sd">    output. If specified, the volume vector output is arranged with the x, y,</span>
-</span><span id="volume_gradient-265"><a href="#volume_gradient-265"><span class="linenos">265</span></a><span class="sd">    and z components from a subvolume as consecutive subvolumes.</span>
-</span><span id="volume_gradient-266"><a href="#volume_gradient-266"><span class="linenos">266</span></a><span class="sd">    </span>
-</span><span id="volume_gradient-267"><a href="#volume_gradient-267"><span class="linenos">267</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_gradient-268"><a href="#volume_gradient-268"><span class="linenos">268</span></a><span class="sd">    </span>
-</span><span id="volume_gradient-269"><a href="#volume_gradient-269"><span class="linenos">269</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_gradient-270"><a href="#volume_gradient-270"><span class="linenos">270</span></a><span class="sd">    </span>
-</span><span id="volume_gradient-271"><a href="#volume_gradient-271"><span class="linenos">271</span></a><span class="sd">    Args:</span>
-</span><span id="volume_gradient-272"><a href="#volume_gradient-272"><span class="linenos">272</span></a><span class="sd">        volume_in: the input volume.</span>
-</span><span id="volume_gradient-273"><a href="#volume_gradient-273"><span class="linenos">273</span></a><span class="sd">        volume_out: the output gradient magnitude volume.</span>
-</span><span id="volume_gradient-274"><a href="#volume_gradient-274"><span class="linenos">274</span></a><span class="sd">        presmooth: smooth the volume before computing the gradient.</span>
-</span><span id="volume_gradient-275"><a href="#volume_gradient-275"><span class="linenos">275</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to take the gradient\</span>
-</span><span id="volume_gradient-276"><a href="#volume_gradient-276"><span class="linenos">276</span></a><span class="sd">            of: the region to take the gradient within.</span>
-</span><span id="volume_gradient-277"><a href="#volume_gradient-277"><span class="linenos">277</span></a><span class="sd">        opt_vectors_vector_volume_out: output vectors: the vectors as a volume\</span>
-</span><span id="volume_gradient-278"><a href="#volume_gradient-278"><span class="linenos">278</span></a><span class="sd">            file.</span>
-</span><span id="volume_gradient-279"><a href="#volume_gradient-279"><span class="linenos">279</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to take the gradient\</span>
-</span><span id="volume_gradient-280"><a href="#volume_gradient-280"><span class="linenos">280</span></a><span class="sd">            of: the subvolume number or name.</span>
-</span><span id="volume_gradient-281"><a href="#volume_gradient-281"><span class="linenos">281</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_gradient-282"><a href="#volume_gradient-282"><span class="linenos">282</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_gradient-283"><a href="#volume_gradient-283"><span class="linenos">283</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeGradientOutputs`).</span>
-</span><span id="volume_gradient-284"><a href="#volume_gradient-284"><span class="linenos">284</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_gradient-285"><a href="#volume_gradient-285"><span class="linenos">285</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_gradient-286"><a href="#volume_gradient-286"><span class="linenos">286</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_GRADIENT_METADATA</span><span class="p">)</span>
-</span><span id="volume_gradient-287"><a href="#volume_gradient-287"><span class="linenos">287</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_gradient_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">opt_vectors_vector_volume_out</span><span class="o">=</span><span class="n">opt_vectors_vector_volume_out</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">)</span>
-</span><span id="volume_gradient-288"><a href="#volume_gradient-288"><span class="linenos">288</span></a>    <span class="k">return</span> <span class="n">volume_gradient_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_gradient-249"><a href="#volume_gradient-249"><span class="linenos">249</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_gradient</span><span class="p">(</span>
+</span><span id="volume_gradient-250"><a href="#volume_gradient-250"><span class="linenos">250</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_gradient-251"><a href="#volume_gradient-251"><span class="linenos">251</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_gradient-252"><a href="#volume_gradient-252"><span class="linenos">252</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeGradientPresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_gradient-253"><a href="#volume_gradient-253"><span class="linenos">253</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_gradient-254"><a href="#volume_gradient-254"><span class="linenos">254</span></a>    <span class="n">opt_vectors_vector_volume_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_gradient-255"><a href="#volume_gradient-255"><span class="linenos">255</span></a>    <span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_gradient-256"><a href="#volume_gradient-256"><span class="linenos">256</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_gradient-257"><a href="#volume_gradient-257"><span class="linenos">257</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeGradientOutputs</span><span class="p">:</span>
+</span><span id="volume_gradient-258"><a href="#volume_gradient-258"><span class="linenos">258</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_gradient-259"><a href="#volume_gradient-259"><span class="linenos">259</span></a><span class="sd">    Gradient of a volume file.</span>
+</span><span id="volume_gradient-260"><a href="#volume_gradient-260"><span class="linenos">260</span></a><span class="sd">    </span>
+</span><span id="volume_gradient-261"><a href="#volume_gradient-261"><span class="linenos">261</span></a><span class="sd">    Computes the gradient of the volume by doing linear regressions for each</span>
+</span><span id="volume_gradient-262"><a href="#volume_gradient-262"><span class="linenos">262</span></a><span class="sd">    voxel, considering only its face neighbors unless too few face neighbors</span>
+</span><span id="volume_gradient-263"><a href="#volume_gradient-263"><span class="linenos">263</span></a><span class="sd">    exist. The gradient vector is constructed from the partial derivatives of</span>
+</span><span id="volume_gradient-264"><a href="#volume_gradient-264"><span class="linenos">264</span></a><span class="sd">    the resulting linear function, and the magnitude of this vector is the</span>
+</span><span id="volume_gradient-265"><a href="#volume_gradient-265"><span class="linenos">265</span></a><span class="sd">    output. If specified, the volume vector output is arranged with the x, y,</span>
+</span><span id="volume_gradient-266"><a href="#volume_gradient-266"><span class="linenos">266</span></a><span class="sd">    and z components from a subvolume as consecutive subvolumes.</span>
+</span><span id="volume_gradient-267"><a href="#volume_gradient-267"><span class="linenos">267</span></a><span class="sd">    </span>
+</span><span id="volume_gradient-268"><a href="#volume_gradient-268"><span class="linenos">268</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_gradient-269"><a href="#volume_gradient-269"><span class="linenos">269</span></a><span class="sd">    </span>
+</span><span id="volume_gradient-270"><a href="#volume_gradient-270"><span class="linenos">270</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_gradient-271"><a href="#volume_gradient-271"><span class="linenos">271</span></a><span class="sd">    </span>
+</span><span id="volume_gradient-272"><a href="#volume_gradient-272"><span class="linenos">272</span></a><span class="sd">    Args:</span>
+</span><span id="volume_gradient-273"><a href="#volume_gradient-273"><span class="linenos">273</span></a><span class="sd">        volume_in: the input volume.</span>
+</span><span id="volume_gradient-274"><a href="#volume_gradient-274"><span class="linenos">274</span></a><span class="sd">        volume_out: the output gradient magnitude volume.</span>
+</span><span id="volume_gradient-275"><a href="#volume_gradient-275"><span class="linenos">275</span></a><span class="sd">        presmooth: smooth the volume before computing the gradient.</span>
+</span><span id="volume_gradient-276"><a href="#volume_gradient-276"><span class="linenos">276</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to take the gradient\</span>
+</span><span id="volume_gradient-277"><a href="#volume_gradient-277"><span class="linenos">277</span></a><span class="sd">            of: the region to take the gradient within.</span>
+</span><span id="volume_gradient-278"><a href="#volume_gradient-278"><span class="linenos">278</span></a><span class="sd">        opt_vectors_vector_volume_out: output vectors: the vectors as a volume\</span>
+</span><span id="volume_gradient-279"><a href="#volume_gradient-279"><span class="linenos">279</span></a><span class="sd">            file.</span>
+</span><span id="volume_gradient-280"><a href="#volume_gradient-280"><span class="linenos">280</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to take the gradient\</span>
+</span><span id="volume_gradient-281"><a href="#volume_gradient-281"><span class="linenos">281</span></a><span class="sd">            of: the subvolume number or name.</span>
+</span><span id="volume_gradient-282"><a href="#volume_gradient-282"><span class="linenos">282</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_gradient-283"><a href="#volume_gradient-283"><span class="linenos">283</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_gradient-284"><a href="#volume_gradient-284"><span class="linenos">284</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeGradientOutputs`).</span>
+</span><span id="volume_gradient-285"><a href="#volume_gradient-285"><span class="linenos">285</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_gradient-286"><a href="#volume_gradient-286"><span class="linenos">286</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_gradient-287"><a href="#volume_gradient-287"><span class="linenos">287</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_GRADIENT_METADATA</span><span class="p">)</span>
+</span><span id="volume_gradient-288"><a href="#volume_gradient-288"><span class="linenos">288</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_gradient_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">opt_vectors_vector_volume_out</span><span class="o">=</span><span class="n">opt_vectors_vector_volume_out</span><span class="p">,</span> <span class="n">opt_subvolume_subvol</span><span class="o">=</span><span class="n">opt_subvolume_subvol</span><span class="p">)</span>
+</span><span id="volume_gradient-289"><a href="#volume_gradient-289"><span class="linenos">289</span></a>    <span class="k">return</span> <span class="n">volume_gradient_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

@@ -267,51 +267,52 @@
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">gcaprepone_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">gcaprepone_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="k">def</span><span class="w"> </span><span class="nf">gcaprepone</span><span class="p">(</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">gcadir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">source_subjects_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">init_subject</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">no_emreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GcapreponeOutputs</span><span class="p">:</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    Tool for preparing FreeSurfer subjects for use with group-wise template</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    generation.</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    </span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    </span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    </span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    Args:</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">        gcadir: Directory to be the new SUBJECTS_DIR.</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        subject: Subject for the process.</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        source_subjects_dir: SUBJECTS_DIR for source data.</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        done_file: File to indicate completion.</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        init_subject: Flag indicating the initial subject.</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        no_emreg: Flag to skip EM registration.</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    Returns:</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        NamedTuple of outputs (described in `GcapreponeOutputs`).</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GCAPREPONE_METADATA</span><span class="p">)</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">gcaprepone_params</span><span class="p">(</span><span class="n">gcadir</span><span class="o">=</span><span class="n">gcadir</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">init_subject</span><span class="o">=</span><span class="n">init_subject</span><span class="p">,</span> <span class="n">source_subjects_dir</span><span class="o">=</span><span class="n">source_subjects_dir</span><span class="p">,</span> <span class="n">done_file</span><span class="o">=</span><span class="n">done_file</span><span class="p">,</span> <span class="n">no_emreg</span><span class="o">=</span><span class="n">no_emreg</span><span class="p">)</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">return</span> <span class="n">gcaprepone_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="k">def</span><span class="w"> </span><span class="nf">gcaprepone</span><span class="p">(</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">gcadir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">source_subjects_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">init_subject</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">no_emreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GcapreponeOutputs</span><span class="p">:</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    Tool for preparing FreeSurfer subjects for use with group-wise template</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    generation.</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    </span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    </span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    </span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    Args:</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        gcadir: Directory to be the new SUBJECTS_DIR.</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        subject: Subject for the process.</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        source_subjects_dir: SUBJECTS_DIR for source data.</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        done_file: File to indicate completion.</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        init_subject: Flag indicating the initial subject.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        no_emreg: Flag to skip EM registration.</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    Returns:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        NamedTuple of outputs (described in `GcapreponeOutputs`).</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GCAPREPONE_METADATA</span><span class="p">)</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">gcaprepone_params</span><span class="p">(</span><span class="n">gcadir</span><span class="o">=</span><span class="n">gcadir</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">init_subject</span><span class="o">=</span><span class="n">init_subject</span><span class="p">,</span> <span class="n">source_subjects_dir</span><span class="o">=</span><span class="n">source_subjects_dir</span><span class="p">,</span> <span class="n">done_file</span><span class="o">=</span><span class="n">done_file</span><span class="p">,</span> <span class="n">no_emreg</span><span class="o">=</span><span class="n">no_emreg</span><span class="p">)</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">return</span> <span class="n">gcaprepone_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="s2">&quot;GCAPREPONE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="s2">&quot;GcapreponeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="s2">&quot;GcapreponeParameters&quot;</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;gcaprepone&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;gcaprepone_params&quot;</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="p">]</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="s2">&quot;GCAPREPONE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="s2">&quot;GcapreponeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;GcapreponeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;gcaprepone&quot;</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;gcaprepone_params&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -471,38 +472,38 @@
 
     </div>
     <a class="headerlink" href="#gcaprepone"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="gcaprepone-179"><a href="#gcaprepone-179"><span class="linenos">179</span></a><span class="k">def</span><span class="w"> </span><span class="nf">gcaprepone</span><span class="p">(</span>
-</span><span id="gcaprepone-180"><a href="#gcaprepone-180"><span class="linenos">180</span></a>    <span class="n">gcadir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="gcaprepone-181"><a href="#gcaprepone-181"><span class="linenos">181</span></a>    <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="gcaprepone-182"><a href="#gcaprepone-182"><span class="linenos">182</span></a>    <span class="n">source_subjects_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="gcaprepone-183"><a href="#gcaprepone-183"><span class="linenos">183</span></a>    <span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="gcaprepone-184"><a href="#gcaprepone-184"><span class="linenos">184</span></a>    <span class="n">init_subject</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="gcaprepone-185"><a href="#gcaprepone-185"><span class="linenos">185</span></a>    <span class="n">no_emreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="gcaprepone-186"><a href="#gcaprepone-186"><span class="linenos">186</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="gcaprepone-187"><a href="#gcaprepone-187"><span class="linenos">187</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GcapreponeOutputs</span><span class="p">:</span>
-</span><span id="gcaprepone-188"><a href="#gcaprepone-188"><span class="linenos">188</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="gcaprepone-189"><a href="#gcaprepone-189"><span class="linenos">189</span></a><span class="sd">    Tool for preparing FreeSurfer subjects for use with group-wise template</span>
-</span><span id="gcaprepone-190"><a href="#gcaprepone-190"><span class="linenos">190</span></a><span class="sd">    generation.</span>
-</span><span id="gcaprepone-191"><a href="#gcaprepone-191"><span class="linenos">191</span></a><span class="sd">    </span>
-</span><span id="gcaprepone-192"><a href="#gcaprepone-192"><span class="linenos">192</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="gcaprepone-193"><a href="#gcaprepone-193"><span class="linenos">193</span></a><span class="sd">    </span>
-</span><span id="gcaprepone-194"><a href="#gcaprepone-194"><span class="linenos">194</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="gcaprepone-195"><a href="#gcaprepone-195"><span class="linenos">195</span></a><span class="sd">    </span>
-</span><span id="gcaprepone-196"><a href="#gcaprepone-196"><span class="linenos">196</span></a><span class="sd">    Args:</span>
-</span><span id="gcaprepone-197"><a href="#gcaprepone-197"><span class="linenos">197</span></a><span class="sd">        gcadir: Directory to be the new SUBJECTS_DIR.</span>
-</span><span id="gcaprepone-198"><a href="#gcaprepone-198"><span class="linenos">198</span></a><span class="sd">        subject: Subject for the process.</span>
-</span><span id="gcaprepone-199"><a href="#gcaprepone-199"><span class="linenos">199</span></a><span class="sd">        source_subjects_dir: SUBJECTS_DIR for source data.</span>
-</span><span id="gcaprepone-200"><a href="#gcaprepone-200"><span class="linenos">200</span></a><span class="sd">        done_file: File to indicate completion.</span>
-</span><span id="gcaprepone-201"><a href="#gcaprepone-201"><span class="linenos">201</span></a><span class="sd">        init_subject: Flag indicating the initial subject.</span>
-</span><span id="gcaprepone-202"><a href="#gcaprepone-202"><span class="linenos">202</span></a><span class="sd">        no_emreg: Flag to skip EM registration.</span>
-</span><span id="gcaprepone-203"><a href="#gcaprepone-203"><span class="linenos">203</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="gcaprepone-204"><a href="#gcaprepone-204"><span class="linenos">204</span></a><span class="sd">    Returns:</span>
-</span><span id="gcaprepone-205"><a href="#gcaprepone-205"><span class="linenos">205</span></a><span class="sd">        NamedTuple of outputs (described in `GcapreponeOutputs`).</span>
-</span><span id="gcaprepone-206"><a href="#gcaprepone-206"><span class="linenos">206</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="gcaprepone-207"><a href="#gcaprepone-207"><span class="linenos">207</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="gcaprepone-208"><a href="#gcaprepone-208"><span class="linenos">208</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GCAPREPONE_METADATA</span><span class="p">)</span>
-</span><span id="gcaprepone-209"><a href="#gcaprepone-209"><span class="linenos">209</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">gcaprepone_params</span><span class="p">(</span><span class="n">gcadir</span><span class="o">=</span><span class="n">gcadir</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">init_subject</span><span class="o">=</span><span class="n">init_subject</span><span class="p">,</span> <span class="n">source_subjects_dir</span><span class="o">=</span><span class="n">source_subjects_dir</span><span class="p">,</span> <span class="n">done_file</span><span class="o">=</span><span class="n">done_file</span><span class="p">,</span> <span class="n">no_emreg</span><span class="o">=</span><span class="n">no_emreg</span><span class="p">)</span>
-</span><span id="gcaprepone-210"><a href="#gcaprepone-210"><span class="linenos">210</span></a>    <span class="k">return</span> <span class="n">gcaprepone_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="gcaprepone-180"><a href="#gcaprepone-180"><span class="linenos">180</span></a><span class="k">def</span><span class="w"> </span><span class="nf">gcaprepone</span><span class="p">(</span>
+</span><span id="gcaprepone-181"><a href="#gcaprepone-181"><span class="linenos">181</span></a>    <span class="n">gcadir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="gcaprepone-182"><a href="#gcaprepone-182"><span class="linenos">182</span></a>    <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="gcaprepone-183"><a href="#gcaprepone-183"><span class="linenos">183</span></a>    <span class="n">source_subjects_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="gcaprepone-184"><a href="#gcaprepone-184"><span class="linenos">184</span></a>    <span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="gcaprepone-185"><a href="#gcaprepone-185"><span class="linenos">185</span></a>    <span class="n">init_subject</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="gcaprepone-186"><a href="#gcaprepone-186"><span class="linenos">186</span></a>    <span class="n">no_emreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="gcaprepone-187"><a href="#gcaprepone-187"><span class="linenos">187</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="gcaprepone-188"><a href="#gcaprepone-188"><span class="linenos">188</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GcapreponeOutputs</span><span class="p">:</span>
+</span><span id="gcaprepone-189"><a href="#gcaprepone-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="gcaprepone-190"><a href="#gcaprepone-190"><span class="linenos">190</span></a><span class="sd">    Tool for preparing FreeSurfer subjects for use with group-wise template</span>
+</span><span id="gcaprepone-191"><a href="#gcaprepone-191"><span class="linenos">191</span></a><span class="sd">    generation.</span>
+</span><span id="gcaprepone-192"><a href="#gcaprepone-192"><span class="linenos">192</span></a><span class="sd">    </span>
+</span><span id="gcaprepone-193"><a href="#gcaprepone-193"><span class="linenos">193</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="gcaprepone-194"><a href="#gcaprepone-194"><span class="linenos">194</span></a><span class="sd">    </span>
+</span><span id="gcaprepone-195"><a href="#gcaprepone-195"><span class="linenos">195</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="gcaprepone-196"><a href="#gcaprepone-196"><span class="linenos">196</span></a><span class="sd">    </span>
+</span><span id="gcaprepone-197"><a href="#gcaprepone-197"><span class="linenos">197</span></a><span class="sd">    Args:</span>
+</span><span id="gcaprepone-198"><a href="#gcaprepone-198"><span class="linenos">198</span></a><span class="sd">        gcadir: Directory to be the new SUBJECTS_DIR.</span>
+</span><span id="gcaprepone-199"><a href="#gcaprepone-199"><span class="linenos">199</span></a><span class="sd">        subject: Subject for the process.</span>
+</span><span id="gcaprepone-200"><a href="#gcaprepone-200"><span class="linenos">200</span></a><span class="sd">        source_subjects_dir: SUBJECTS_DIR for source data.</span>
+</span><span id="gcaprepone-201"><a href="#gcaprepone-201"><span class="linenos">201</span></a><span class="sd">        done_file: File to indicate completion.</span>
+</span><span id="gcaprepone-202"><a href="#gcaprepone-202"><span class="linenos">202</span></a><span class="sd">        init_subject: Flag indicating the initial subject.</span>
+</span><span id="gcaprepone-203"><a href="#gcaprepone-203"><span class="linenos">203</span></a><span class="sd">        no_emreg: Flag to skip EM registration.</span>
+</span><span id="gcaprepone-204"><a href="#gcaprepone-204"><span class="linenos">204</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="gcaprepone-205"><a href="#gcaprepone-205"><span class="linenos">205</span></a><span class="sd">    Returns:</span>
+</span><span id="gcaprepone-206"><a href="#gcaprepone-206"><span class="linenos">206</span></a><span class="sd">        NamedTuple of outputs (described in `GcapreponeOutputs`).</span>
+</span><span id="gcaprepone-207"><a href="#gcaprepone-207"><span class="linenos">207</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="gcaprepone-208"><a href="#gcaprepone-208"><span class="linenos">208</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="gcaprepone-209"><a href="#gcaprepone-209"><span class="linenos">209</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GCAPREPONE_METADATA</span><span class="p">)</span>
+</span><span id="gcaprepone-210"><a href="#gcaprepone-210"><span class="linenos">210</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">gcaprepone_params</span><span class="p">(</span><span class="n">gcadir</span><span class="o">=</span><span class="n">gcadir</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">init_subject</span><span class="o">=</span><span class="n">init_subject</span><span class="p">,</span> <span class="n">source_subjects_dir</span><span class="o">=</span><span class="n">source_subjects_dir</span><span class="p">,</span> <span class="n">done_file</span><span class="o">=</span><span class="n">done_file</span><span class="p">,</span> <span class="n">no_emreg</span><span class="o">=</span><span class="n">no_emreg</span><span class="p">)</span>
+</span><span id="gcaprepone-211"><a href="#gcaprepone-211"><span class="linenos">211</span></a>    <span class="k">return</span> <span class="n">gcaprepone_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

@@ -462,52 +462,53 @@
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">file_convert_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">file_convert_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_convert</span><span class="p">(</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">border_version_convert</span><span class="p">:</span> <span class="n">FileConvertBorderVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">nifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertNiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">cifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertCiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileConvertOutputs</span><span class="p">:</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">    Change version of file format.</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    </span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    You may only specify one top-level option.</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    </span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    </span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    </span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    Args:</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">        border_version_convert: write a border file with a different version.</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">        nifti_version_convert: write a nifti file with a different version.</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">        cifti_version_convert: write a cifti file with a different version.</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    Returns:</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">        NamedTuple of outputs (described in `FileConvertOutputs`).</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_CONVERT_METADATA</span><span class="p">)</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_convert_params</span><span class="p">(</span><span class="n">border_version_convert</span><span class="o">=</span><span class="n">border_version_convert</span><span class="p">,</span> <span class="n">nifti_version_convert</span><span class="o">=</span><span class="n">nifti_version_convert</span><span class="p">,</span> <span class="n">cifti_version_convert</span><span class="o">=</span><span class="n">cifti_version_convert</span><span class="p">)</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="k">return</span> <span class="n">file_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_convert</span><span class="p">(</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">border_version_convert</span><span class="p">:</span> <span class="n">FileConvertBorderVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">nifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertNiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">cifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertCiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileConvertOutputs</span><span class="p">:</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    Change version of file format.</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    </span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    You may only specify one top-level option.</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    </span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    </span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    </span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    Args:</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">        border_version_convert: write a border file with a different version.</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">        nifti_version_convert: write a nifti file with a different version.</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">        cifti_version_convert: write a cifti file with a different version.</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    Returns:</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">        NamedTuple of outputs (described in `FileConvertOutputs`).</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_CONVERT_METADATA</span><span class="p">)</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_convert_params</span><span class="p">(</span><span class="n">border_version_convert</span><span class="o">=</span><span class="n">border_version_convert</span><span class="p">,</span> <span class="n">nifti_version_convert</span><span class="o">=</span><span class="n">nifti_version_convert</span><span class="p">,</span> <span class="n">cifti_version_convert</span><span class="o">=</span><span class="n">cifti_version_convert</span><span class="p">)</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="k">return</span> <span class="n">file_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="s2">&quot;FILE_CONVERT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="s2">&quot;FileConvertBorderVersionConvertParameters&quot;</span><span class="p">,</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;FileConvertCiftiVersionConvertParameters&quot;</span><span class="p">,</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;FileConvertNiftiVersionConvertParameters&quot;</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;FileConvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;FileConvertParameters&quot;</span><span class="p">,</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;file_convert&quot;</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;file_convert_border_version_convert_params&quot;</span><span class="p">,</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="s2">&quot;file_convert_cifti_version_convert_params&quot;</span><span class="p">,</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="s2">&quot;file_convert_nifti_version_convert_params&quot;</span><span class="p">,</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="s2">&quot;file_convert_params&quot;</span><span class="p">,</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="p">]</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="s2">&quot;FILE_CONVERT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;FileConvertBorderVersionConvertParameters&quot;</span><span class="p">,</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;FileConvertCiftiVersionConvertParameters&quot;</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;FileConvertNiftiVersionConvertParameters&quot;</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;FileConvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;FileConvertParameters&quot;</span><span class="p">,</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;file_convert&quot;</span><span class="p">,</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="s2">&quot;file_convert_border_version_convert_params&quot;</span><span class="p">,</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="s2">&quot;file_convert_cifti_version_convert_params&quot;</span><span class="p">,</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="s2">&quot;file_convert_nifti_version_convert_params&quot;</span><span class="p">,</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="s2">&quot;file_convert_params&quot;</span><span class="p">,</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -783,33 +784,33 @@
 
     </div>
     <a class="headerlink" href="#file_convert"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="file_convert-326"><a href="#file_convert-326"><span class="linenos">326</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_convert</span><span class="p">(</span>
-</span><span id="file_convert-327"><a href="#file_convert-327"><span class="linenos">327</span></a>    <span class="n">border_version_convert</span><span class="p">:</span> <span class="n">FileConvertBorderVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="file_convert-328"><a href="#file_convert-328"><span class="linenos">328</span></a>    <span class="n">nifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertNiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="file_convert-329"><a href="#file_convert-329"><span class="linenos">329</span></a>    <span class="n">cifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertCiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="file_convert-330"><a href="#file_convert-330"><span class="linenos">330</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="file_convert-331"><a href="#file_convert-331"><span class="linenos">331</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileConvertOutputs</span><span class="p">:</span>
-</span><span id="file_convert-332"><a href="#file_convert-332"><span class="linenos">332</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="file_convert-333"><a href="#file_convert-333"><span class="linenos">333</span></a><span class="sd">    Change version of file format.</span>
-</span><span id="file_convert-334"><a href="#file_convert-334"><span class="linenos">334</span></a><span class="sd">    </span>
-</span><span id="file_convert-335"><a href="#file_convert-335"><span class="linenos">335</span></a><span class="sd">    You may only specify one top-level option.</span>
-</span><span id="file_convert-336"><a href="#file_convert-336"><span class="linenos">336</span></a><span class="sd">    </span>
-</span><span id="file_convert-337"><a href="#file_convert-337"><span class="linenos">337</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="file_convert-338"><a href="#file_convert-338"><span class="linenos">338</span></a><span class="sd">    </span>
-</span><span id="file_convert-339"><a href="#file_convert-339"><span class="linenos">339</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="file_convert-340"><a href="#file_convert-340"><span class="linenos">340</span></a><span class="sd">    </span>
-</span><span id="file_convert-341"><a href="#file_convert-341"><span class="linenos">341</span></a><span class="sd">    Args:</span>
-</span><span id="file_convert-342"><a href="#file_convert-342"><span class="linenos">342</span></a><span class="sd">        border_version_convert: write a border file with a different version.</span>
-</span><span id="file_convert-343"><a href="#file_convert-343"><span class="linenos">343</span></a><span class="sd">        nifti_version_convert: write a nifti file with a different version.</span>
-</span><span id="file_convert-344"><a href="#file_convert-344"><span class="linenos">344</span></a><span class="sd">        cifti_version_convert: write a cifti file with a different version.</span>
-</span><span id="file_convert-345"><a href="#file_convert-345"><span class="linenos">345</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="file_convert-346"><a href="#file_convert-346"><span class="linenos">346</span></a><span class="sd">    Returns:</span>
-</span><span id="file_convert-347"><a href="#file_convert-347"><span class="linenos">347</span></a><span class="sd">        NamedTuple of outputs (described in `FileConvertOutputs`).</span>
-</span><span id="file_convert-348"><a href="#file_convert-348"><span class="linenos">348</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="file_convert-349"><a href="#file_convert-349"><span class="linenos">349</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="file_convert-350"><a href="#file_convert-350"><span class="linenos">350</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_CONVERT_METADATA</span><span class="p">)</span>
-</span><span id="file_convert-351"><a href="#file_convert-351"><span class="linenos">351</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_convert_params</span><span class="p">(</span><span class="n">border_version_convert</span><span class="o">=</span><span class="n">border_version_convert</span><span class="p">,</span> <span class="n">nifti_version_convert</span><span class="o">=</span><span class="n">nifti_version_convert</span><span class="p">,</span> <span class="n">cifti_version_convert</span><span class="o">=</span><span class="n">cifti_version_convert</span><span class="p">)</span>
-</span><span id="file_convert-352"><a href="#file_convert-352"><span class="linenos">352</span></a>    <span class="k">return</span> <span class="n">file_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="file_convert-327"><a href="#file_convert-327"><span class="linenos">327</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_convert</span><span class="p">(</span>
+</span><span id="file_convert-328"><a href="#file_convert-328"><span class="linenos">328</span></a>    <span class="n">border_version_convert</span><span class="p">:</span> <span class="n">FileConvertBorderVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="file_convert-329"><a href="#file_convert-329"><span class="linenos">329</span></a>    <span class="n">nifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertNiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="file_convert-330"><a href="#file_convert-330"><span class="linenos">330</span></a>    <span class="n">cifti_version_convert</span><span class="p">:</span> <span class="n">FileConvertCiftiVersionConvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="file_convert-331"><a href="#file_convert-331"><span class="linenos">331</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="file_convert-332"><a href="#file_convert-332"><span class="linenos">332</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileConvertOutputs</span><span class="p">:</span>
+</span><span id="file_convert-333"><a href="#file_convert-333"><span class="linenos">333</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="file_convert-334"><a href="#file_convert-334"><span class="linenos">334</span></a><span class="sd">    Change version of file format.</span>
+</span><span id="file_convert-335"><a href="#file_convert-335"><span class="linenos">335</span></a><span class="sd">    </span>
+</span><span id="file_convert-336"><a href="#file_convert-336"><span class="linenos">336</span></a><span class="sd">    You may only specify one top-level option.</span>
+</span><span id="file_convert-337"><a href="#file_convert-337"><span class="linenos">337</span></a><span class="sd">    </span>
+</span><span id="file_convert-338"><a href="#file_convert-338"><span class="linenos">338</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="file_convert-339"><a href="#file_convert-339"><span class="linenos">339</span></a><span class="sd">    </span>
+</span><span id="file_convert-340"><a href="#file_convert-340"><span class="linenos">340</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="file_convert-341"><a href="#file_convert-341"><span class="linenos">341</span></a><span class="sd">    </span>
+</span><span id="file_convert-342"><a href="#file_convert-342"><span class="linenos">342</span></a><span class="sd">    Args:</span>
+</span><span id="file_convert-343"><a href="#file_convert-343"><span class="linenos">343</span></a><span class="sd">        border_version_convert: write a border file with a different version.</span>
+</span><span id="file_convert-344"><a href="#file_convert-344"><span class="linenos">344</span></a><span class="sd">        nifti_version_convert: write a nifti file with a different version.</span>
+</span><span id="file_convert-345"><a href="#file_convert-345"><span class="linenos">345</span></a><span class="sd">        cifti_version_convert: write a cifti file with a different version.</span>
+</span><span id="file_convert-346"><a href="#file_convert-346"><span class="linenos">346</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="file_convert-347"><a href="#file_convert-347"><span class="linenos">347</span></a><span class="sd">    Returns:</span>
+</span><span id="file_convert-348"><a href="#file_convert-348"><span class="linenos">348</span></a><span class="sd">        NamedTuple of outputs (described in `FileConvertOutputs`).</span>
+</span><span id="file_convert-349"><a href="#file_convert-349"><span class="linenos">349</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="file_convert-350"><a href="#file_convert-350"><span class="linenos">350</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="file_convert-351"><a href="#file_convert-351"><span class="linenos">351</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_CONVERT_METADATA</span><span class="p">)</span>
+</span><span id="file_convert-352"><a href="#file_convert-352"><span class="linenos">352</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_convert_params</span><span class="p">(</span><span class="n">border_version_convert</span><span class="o">=</span><span class="n">border_version_convert</span><span class="p">,</span> <span class="n">nifti_version_convert</span><span class="o">=</span><span class="n">nifti_version_convert</span><span class="p">,</span> <span class="n">cifti_version_convert</span><span class="o">=</span><span class="n">cifti_version_convert</span><span class="p">)</span>
+</span><span id="file_convert-353"><a href="#file_convert-353"><span class="linenos">353</span></a>    <span class="k">return</span> <span class="n">file_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

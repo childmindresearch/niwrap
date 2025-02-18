@@ -749,127 +749,128 @@
 </span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_create_dense_from_template_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_create_dense_from_template_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>
+</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>
-</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_create_dense_from_template</span><span class="p">(</span>
-</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="n">series</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateSeriesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-563"><a href="#L-563"><span class="linenos">563</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-564"><a href="#L-564"><span class="linenos">564</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-565"><a href="#L-565"><span class="linenos">565</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-566"><a href="#L-566"><span class="linenos">566</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiCreateDenseFromTemplateOutputs</span><span class="p">:</span>
-</span><span id="L-567"><a href="#L-567"><span class="linenos">567</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-568"><a href="#L-568"><span class="linenos">568</span></a><span class="sd">    Create cifti with matching dense map.</span>
-</span><span id="L-569"><a href="#L-569"><span class="linenos">569</span></a><span class="sd">    </span>
-</span><span id="L-570"><a href="#L-570"><span class="linenos">570</span></a><span class="sd">    This command helps you make a new dscalar, dtseries, or dlabel cifti file</span>
-</span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a><span class="sd">    that matches the brainordinate space used in another cifti file. The</span>
-</span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a><span class="sd">    template file must have the desired brainordinate space in the mapping along</span>
-</span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a><span class="sd">    the column direction (for dtseries, dscalar, dlabel, and symmetric dconn</span>
-</span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a><span class="sd">    this is always the case). All input cifti files must have a brain models</span>
-</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a><span class="sd">    mapping along column and use the same volume space and/or surface vertex</span>
-</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a><span class="sd">    count as the template for structures that they contain. If any input files</span>
-</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a><span class="sd">    contain label data, then input files with non-label data are not allowed,</span>
-</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a><span class="sd">    and the -series option may not be used.</span>
-</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a><span class="sd">    </span>
-</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a><span class="sd">    Any structure that isn&#39;t covered by an input is filled with zeros or the</span>
-</span><span id="L-581"><a href="#L-581"><span class="linenos">581</span></a><span class="sd">    unlabeled key.</span>
-</span><span id="L-582"><a href="#L-582"><span class="linenos">582</span></a><span class="sd">    </span>
-</span><span id="L-583"><a href="#L-583"><span class="linenos">583</span></a><span class="sd">    The &lt;structure&gt; argument of -metric, -label or -volume must be one of the</span>
-</span><span id="L-584"><a href="#L-584"><span class="linenos">584</span></a><span class="sd">    following:</span>
-</span><span id="L-585"><a href="#L-585"><span class="linenos">585</span></a><span class="sd">    </span>
-</span><span id="L-586"><a href="#L-586"><span class="linenos">586</span></a><span class="sd">    CORTEX_LEFT</span>
-</span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a><span class="sd">    CORTEX_RIGHT</span>
-</span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a><span class="sd">    CEREBELLUM</span>
-</span><span id="L-589"><a href="#L-589"><span class="linenos">589</span></a><span class="sd">    ACCUMBENS_LEFT</span>
-</span><span id="L-590"><a href="#L-590"><span class="linenos">590</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
-</span><span id="L-591"><a href="#L-591"><span class="linenos">591</span></a><span class="sd">    ALL_GREY_MATTER</span>
-</span><span id="L-592"><a href="#L-592"><span class="linenos">592</span></a><span class="sd">    ALL_WHITE_MATTER</span>
-</span><span id="L-593"><a href="#L-593"><span class="linenos">593</span></a><span class="sd">    AMYGDALA_LEFT</span>
-</span><span id="L-594"><a href="#L-594"><span class="linenos">594</span></a><span class="sd">    AMYGDALA_RIGHT</span>
-</span><span id="L-595"><a href="#L-595"><span class="linenos">595</span></a><span class="sd">    BRAIN_STEM</span>
-</span><span id="L-596"><a href="#L-596"><span class="linenos">596</span></a><span class="sd">    CAUDATE_LEFT</span>
-</span><span id="L-597"><a href="#L-597"><span class="linenos">597</span></a><span class="sd">    CAUDATE_RIGHT</span>
-</span><span id="L-598"><a href="#L-598"><span class="linenos">598</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
-</span><span id="L-599"><a href="#L-599"><span class="linenos">599</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
-</span><span id="L-600"><a href="#L-600"><span class="linenos">600</span></a><span class="sd">    CEREBELLUM_LEFT</span>
-</span><span id="L-601"><a href="#L-601"><span class="linenos">601</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
-</span><span id="L-602"><a href="#L-602"><span class="linenos">602</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
-</span><span id="L-603"><a href="#L-603"><span class="linenos">603</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
-</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a><span class="sd">    CORTEX</span>
-</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
-</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
-</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
-</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
-</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a><span class="sd">    INVALID</span>
-</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a><span class="sd">    OTHER</span>
-</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a><span class="sd">    OTHER_GREY_MATTER</span>
-</span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
-</span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a><span class="sd">    PALLIDUM_LEFT</span>
-</span><span id="L-614"><a href="#L-614"><span class="linenos">614</span></a><span class="sd">    PALLIDUM_RIGHT</span>
-</span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a><span class="sd">    PUTAMEN_LEFT</span>
-</span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a><span class="sd">    PUTAMEN_RIGHT</span>
-</span><span id="L-617"><a href="#L-617"><span class="linenos">617</span></a><span class="sd">    THALAMUS_LEFT</span>
-</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a><span class="sd">    THALAMUS_RIGHT</span>
-</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a><span class="sd">    </span>
-</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a><span class="sd">    The argument to -unit must be one of the following:</span>
-</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a><span class="sd">    </span>
-</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a><span class="sd">    SECOND</span>
-</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a><span class="sd">    HERTZ</span>
-</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a><span class="sd">    METER</span>
-</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a><span class="sd">    RADIAN.</span>
-</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a><span class="sd">    </span>
-</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a><span class="sd">    </span>
-</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a><span class="sd">    </span>
-</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a><span class="sd">    Args:</span>
-</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a><span class="sd">        template_cifti: file to match brainordinates of.</span>
-</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a><span class="sd">        series: make a dtseries file instead of a dscalar.</span>
-</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a><span class="sd">        volume_all: specify an input volume file for all voxel data.</span>
-</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a><span class="sd">        opt_label_collision_action: how to handle conflicts between label keys:\</span>
-</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a><span class="sd">            &#39;ERROR&#39;, &#39;SURFACES_FIRST&#39;, or &#39;LEGACY&#39;, default &#39;ERROR&#39;, use &#39;LEGACY&#39;\</span>
-</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a><span class="sd">            to match v1.4.2 and earlier.</span>
-</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a><span class="sd">        cifti: use input data from a cifti file.</span>
-</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a><span class="sd">        metric: use input data from a metric file.</span>
-</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a><span class="sd">        label: use input data from surface label files.</span>
-</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="sd">        volume: use a volume file for a single volume structure&#39;s data.</span>
-</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-644"><a href="#L-644"><span class="linenos">644</span></a><span class="sd">    Returns:</span>
-</span><span id="L-645"><a href="#L-645"><span class="linenos">645</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateOutputs`).</span>
-</span><span id="L-646"><a href="#L-646"><span class="linenos">646</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-647"><a href="#L-647"><span class="linenos">647</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-648"><a href="#L-648"><span class="linenos">648</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA</span><span class="p">)</span>
-</span><span id="L-649"><a href="#L-649"><span class="linenos">649</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_create_dense_from_template_params</span><span class="p">(</span><span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="n">series</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">opt_label_collision_action</span><span class="o">=</span><span class="n">opt_label_collision_action</span><span class="p">,</span> <span class="n">cifti</span><span class="o">=</span><span class="n">cifti</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
-</span><span id="L-650"><a href="#L-650"><span class="linenos">650</span></a>    <span class="k">return</span> <span class="n">cifti_create_dense_from_template_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-651"><a href="#L-651"><span class="linenos">651</span></a>
+</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>
+</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_create_dense_from_template</span><span class="p">(</span>
+</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="n">series</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateSeriesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a>    <span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-563"><a href="#L-563"><span class="linenos">563</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-564"><a href="#L-564"><span class="linenos">564</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-565"><a href="#L-565"><span class="linenos">565</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-566"><a href="#L-566"><span class="linenos">566</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-567"><a href="#L-567"><span class="linenos">567</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiCreateDenseFromTemplateOutputs</span><span class="p">:</span>
+</span><span id="L-568"><a href="#L-568"><span class="linenos">568</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-569"><a href="#L-569"><span class="linenos">569</span></a><span class="sd">    Create cifti with matching dense map.</span>
+</span><span id="L-570"><a href="#L-570"><span class="linenos">570</span></a><span class="sd">    </span>
+</span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a><span class="sd">    This command helps you make a new dscalar, dtseries, or dlabel cifti file</span>
+</span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a><span class="sd">    that matches the brainordinate space used in another cifti file. The</span>
+</span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a><span class="sd">    template file must have the desired brainordinate space in the mapping along</span>
+</span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a><span class="sd">    the column direction (for dtseries, dscalar, dlabel, and symmetric dconn</span>
+</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a><span class="sd">    this is always the case). All input cifti files must have a brain models</span>
+</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a><span class="sd">    mapping along column and use the same volume space and/or surface vertex</span>
+</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a><span class="sd">    count as the template for structures that they contain. If any input files</span>
+</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a><span class="sd">    contain label data, then input files with non-label data are not allowed,</span>
+</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a><span class="sd">    and the -series option may not be used.</span>
+</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a><span class="sd">    </span>
+</span><span id="L-581"><a href="#L-581"><span class="linenos">581</span></a><span class="sd">    Any structure that isn&#39;t covered by an input is filled with zeros or the</span>
+</span><span id="L-582"><a href="#L-582"><span class="linenos">582</span></a><span class="sd">    unlabeled key.</span>
+</span><span id="L-583"><a href="#L-583"><span class="linenos">583</span></a><span class="sd">    </span>
+</span><span id="L-584"><a href="#L-584"><span class="linenos">584</span></a><span class="sd">    The &lt;structure&gt; argument of -metric, -label or -volume must be one of the</span>
+</span><span id="L-585"><a href="#L-585"><span class="linenos">585</span></a><span class="sd">    following:</span>
+</span><span id="L-586"><a href="#L-586"><span class="linenos">586</span></a><span class="sd">    </span>
+</span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a><span class="sd">    CORTEX_LEFT</span>
+</span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a><span class="sd">    CORTEX_RIGHT</span>
+</span><span id="L-589"><a href="#L-589"><span class="linenos">589</span></a><span class="sd">    CEREBELLUM</span>
+</span><span id="L-590"><a href="#L-590"><span class="linenos">590</span></a><span class="sd">    ACCUMBENS_LEFT</span>
+</span><span id="L-591"><a href="#L-591"><span class="linenos">591</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
+</span><span id="L-592"><a href="#L-592"><span class="linenos">592</span></a><span class="sd">    ALL_GREY_MATTER</span>
+</span><span id="L-593"><a href="#L-593"><span class="linenos">593</span></a><span class="sd">    ALL_WHITE_MATTER</span>
+</span><span id="L-594"><a href="#L-594"><span class="linenos">594</span></a><span class="sd">    AMYGDALA_LEFT</span>
+</span><span id="L-595"><a href="#L-595"><span class="linenos">595</span></a><span class="sd">    AMYGDALA_RIGHT</span>
+</span><span id="L-596"><a href="#L-596"><span class="linenos">596</span></a><span class="sd">    BRAIN_STEM</span>
+</span><span id="L-597"><a href="#L-597"><span class="linenos">597</span></a><span class="sd">    CAUDATE_LEFT</span>
+</span><span id="L-598"><a href="#L-598"><span class="linenos">598</span></a><span class="sd">    CAUDATE_RIGHT</span>
+</span><span id="L-599"><a href="#L-599"><span class="linenos">599</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
+</span><span id="L-600"><a href="#L-600"><span class="linenos">600</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
+</span><span id="L-601"><a href="#L-601"><span class="linenos">601</span></a><span class="sd">    CEREBELLUM_LEFT</span>
+</span><span id="L-602"><a href="#L-602"><span class="linenos">602</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
+</span><span id="L-603"><a href="#L-603"><span class="linenos">603</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
+</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
+</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a><span class="sd">    CORTEX</span>
+</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
+</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
+</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
+</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
+</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a><span class="sd">    INVALID</span>
+</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a><span class="sd">    OTHER</span>
+</span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a><span class="sd">    OTHER_GREY_MATTER</span>
+</span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
+</span><span id="L-614"><a href="#L-614"><span class="linenos">614</span></a><span class="sd">    PALLIDUM_LEFT</span>
+</span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a><span class="sd">    PALLIDUM_RIGHT</span>
+</span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a><span class="sd">    PUTAMEN_LEFT</span>
+</span><span id="L-617"><a href="#L-617"><span class="linenos">617</span></a><span class="sd">    PUTAMEN_RIGHT</span>
+</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a><span class="sd">    THALAMUS_LEFT</span>
+</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a><span class="sd">    THALAMUS_RIGHT</span>
+</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a><span class="sd">    </span>
+</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a><span class="sd">    The argument to -unit must be one of the following:</span>
+</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a><span class="sd">    </span>
+</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a><span class="sd">    SECOND</span>
+</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a><span class="sd">    HERTZ</span>
+</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a><span class="sd">    METER</span>
+</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a><span class="sd">    RADIAN.</span>
+</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a><span class="sd">    </span>
+</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a><span class="sd">    </span>
+</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a><span class="sd">    </span>
+</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a><span class="sd">    Args:</span>
+</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a><span class="sd">        template_cifti: file to match brainordinates of.</span>
+</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a><span class="sd">        series: make a dtseries file instead of a dscalar.</span>
+</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a><span class="sd">        volume_all: specify an input volume file for all voxel data.</span>
+</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a><span class="sd">        opt_label_collision_action: how to handle conflicts between label keys:\</span>
+</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a><span class="sd">            &#39;ERROR&#39;, &#39;SURFACES_FIRST&#39;, or &#39;LEGACY&#39;, default &#39;ERROR&#39;, use &#39;LEGACY&#39;\</span>
+</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a><span class="sd">            to match v1.4.2 and earlier.</span>
+</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a><span class="sd">        cifti: use input data from a cifti file.</span>
+</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a><span class="sd">        metric: use input data from a metric file.</span>
+</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="sd">        label: use input data from surface label files.</span>
+</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="sd">        volume: use a volume file for a single volume structure&#39;s data.</span>
+</span><span id="L-644"><a href="#L-644"><span class="linenos">644</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-645"><a href="#L-645"><span class="linenos">645</span></a><span class="sd">    Returns:</span>
+</span><span id="L-646"><a href="#L-646"><span class="linenos">646</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateOutputs`).</span>
+</span><span id="L-647"><a href="#L-647"><span class="linenos">647</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-648"><a href="#L-648"><span class="linenos">648</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-649"><a href="#L-649"><span class="linenos">649</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA</span><span class="p">)</span>
+</span><span id="L-650"><a href="#L-650"><span class="linenos">650</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_create_dense_from_template_params</span><span class="p">(</span><span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="n">series</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">opt_label_collision_action</span><span class="o">=</span><span class="n">opt_label_collision_action</span><span class="p">,</span> <span class="n">cifti</span><span class="o">=</span><span class="n">cifti</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
+</span><span id="L-651"><a href="#L-651"><span class="linenos">651</span></a>    <span class="k">return</span> <span class="n">cifti_create_dense_from_template_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-652"><a href="#L-652"><span class="linenos">652</span></a>
-</span><span id="L-653"><a href="#L-653"><span class="linenos">653</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-654"><a href="#L-654"><span class="linenos">654</span></a>    <span class="s2">&quot;CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-655"><a href="#L-655"><span class="linenos">655</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateCiftiParameters&quot;</span><span class="p">,</span>
-</span><span id="L-656"><a href="#L-656"><span class="linenos">656</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateLabelParameters&quot;</span><span class="p">,</span>
-</span><span id="L-657"><a href="#L-657"><span class="linenos">657</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateMetricParameters&quot;</span><span class="p">,</span>
-</span><span id="L-658"><a href="#L-658"><span class="linenos">658</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateParameters&quot;</span><span class="p">,</span>
-</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateSeriesParameters&quot;</span><span class="p">,</span>
-</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateVolumeAllParameters&quot;</span><span class="p">,</span>
-</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateVolumeParameters&quot;</span><span class="p">,</span>
-</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a>    <span class="s2">&quot;cifti_create_dense_from_template&quot;</span><span class="p">,</span>
-</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_cifti_params&quot;</span><span class="p">,</span>
-</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_params&quot;</span><span class="p">,</span>
-</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_series_params&quot;</span><span class="p">,</span>
-</span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_all_params&quot;</span><span class="p">,</span>
-</span><span id="L-670"><a href="#L-670"><span class="linenos">670</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-671"><a href="#L-671"><span class="linenos">671</span></a><span class="p">]</span>
+</span><span id="L-653"><a href="#L-653"><span class="linenos">653</span></a>
+</span><span id="L-654"><a href="#L-654"><span class="linenos">654</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-655"><a href="#L-655"><span class="linenos">655</span></a>    <span class="s2">&quot;CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-656"><a href="#L-656"><span class="linenos">656</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateCiftiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-657"><a href="#L-657"><span class="linenos">657</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-658"><a href="#L-658"><span class="linenos">658</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateSeriesParameters&quot;</span><span class="p">,</span>
+</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateVolumeAllParameters&quot;</span><span class="p">,</span>
+</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a>    <span class="s2">&quot;cifti_create_dense_from_template&quot;</span><span class="p">,</span>
+</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_cifti_params&quot;</span><span class="p">,</span>
+</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_params&quot;</span><span class="p">,</span>
+</span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_series_params&quot;</span><span class="p">,</span>
+</span><span id="L-670"><a href="#L-670"><span class="linenos">670</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_all_params&quot;</span><span class="p">,</span>
+</span><span id="L-671"><a href="#L-671"><span class="linenos">671</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-672"><a href="#L-672"><span class="linenos">672</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1298,102 +1299,102 @@
 
     </div>
     <a class="headerlink" href="#cifti_create_dense_from_template"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_create_dense_from_template-556"><a href="#cifti_create_dense_from_template-556"><span class="linenos">556</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_create_dense_from_template</span><span class="p">(</span>
-</span><span id="cifti_create_dense_from_template-557"><a href="#cifti_create_dense_from_template-557"><span class="linenos">557</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-558"><a href="#cifti_create_dense_from_template-558"><span class="linenos">558</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-559"><a href="#cifti_create_dense_from_template-559"><span class="linenos">559</span></a>    <span class="n">series</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateSeriesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-560"><a href="#cifti_create_dense_from_template-560"><span class="linenos">560</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-561"><a href="#cifti_create_dense_from_template-561"><span class="linenos">561</span></a>    <span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-562"><a href="#cifti_create_dense_from_template-562"><span class="linenos">562</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-563"><a href="#cifti_create_dense_from_template-563"><span class="linenos">563</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-564"><a href="#cifti_create_dense_from_template-564"><span class="linenos">564</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-565"><a href="#cifti_create_dense_from_template-565"><span class="linenos">565</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-566"><a href="#cifti_create_dense_from_template-566"><span class="linenos">566</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_create_dense_from_template-567"><a href="#cifti_create_dense_from_template-567"><span class="linenos">567</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiCreateDenseFromTemplateOutputs</span><span class="p">:</span>
-</span><span id="cifti_create_dense_from_template-568"><a href="#cifti_create_dense_from_template-568"><span class="linenos">568</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_create_dense_from_template-569"><a href="#cifti_create_dense_from_template-569"><span class="linenos">569</span></a><span class="sd">    Create cifti with matching dense map.</span>
-</span><span id="cifti_create_dense_from_template-570"><a href="#cifti_create_dense_from_template-570"><span class="linenos">570</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-571"><a href="#cifti_create_dense_from_template-571"><span class="linenos">571</span></a><span class="sd">    This command helps you make a new dscalar, dtseries, or dlabel cifti file</span>
-</span><span id="cifti_create_dense_from_template-572"><a href="#cifti_create_dense_from_template-572"><span class="linenos">572</span></a><span class="sd">    that matches the brainordinate space used in another cifti file. The</span>
-</span><span id="cifti_create_dense_from_template-573"><a href="#cifti_create_dense_from_template-573"><span class="linenos">573</span></a><span class="sd">    template file must have the desired brainordinate space in the mapping along</span>
-</span><span id="cifti_create_dense_from_template-574"><a href="#cifti_create_dense_from_template-574"><span class="linenos">574</span></a><span class="sd">    the column direction (for dtseries, dscalar, dlabel, and symmetric dconn</span>
-</span><span id="cifti_create_dense_from_template-575"><a href="#cifti_create_dense_from_template-575"><span class="linenos">575</span></a><span class="sd">    this is always the case). All input cifti files must have a brain models</span>
-</span><span id="cifti_create_dense_from_template-576"><a href="#cifti_create_dense_from_template-576"><span class="linenos">576</span></a><span class="sd">    mapping along column and use the same volume space and/or surface vertex</span>
-</span><span id="cifti_create_dense_from_template-577"><a href="#cifti_create_dense_from_template-577"><span class="linenos">577</span></a><span class="sd">    count as the template for structures that they contain. If any input files</span>
-</span><span id="cifti_create_dense_from_template-578"><a href="#cifti_create_dense_from_template-578"><span class="linenos">578</span></a><span class="sd">    contain label data, then input files with non-label data are not allowed,</span>
-</span><span id="cifti_create_dense_from_template-579"><a href="#cifti_create_dense_from_template-579"><span class="linenos">579</span></a><span class="sd">    and the -series option may not be used.</span>
-</span><span id="cifti_create_dense_from_template-580"><a href="#cifti_create_dense_from_template-580"><span class="linenos">580</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-581"><a href="#cifti_create_dense_from_template-581"><span class="linenos">581</span></a><span class="sd">    Any structure that isn&#39;t covered by an input is filled with zeros or the</span>
-</span><span id="cifti_create_dense_from_template-582"><a href="#cifti_create_dense_from_template-582"><span class="linenos">582</span></a><span class="sd">    unlabeled key.</span>
-</span><span id="cifti_create_dense_from_template-583"><a href="#cifti_create_dense_from_template-583"><span class="linenos">583</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-584"><a href="#cifti_create_dense_from_template-584"><span class="linenos">584</span></a><span class="sd">    The &lt;structure&gt; argument of -metric, -label or -volume must be one of the</span>
-</span><span id="cifti_create_dense_from_template-585"><a href="#cifti_create_dense_from_template-585"><span class="linenos">585</span></a><span class="sd">    following:</span>
-</span><span id="cifti_create_dense_from_template-586"><a href="#cifti_create_dense_from_template-586"><span class="linenos">586</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-587"><a href="#cifti_create_dense_from_template-587"><span class="linenos">587</span></a><span class="sd">    CORTEX_LEFT</span>
-</span><span id="cifti_create_dense_from_template-588"><a href="#cifti_create_dense_from_template-588"><span class="linenos">588</span></a><span class="sd">    CORTEX_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-589"><a href="#cifti_create_dense_from_template-589"><span class="linenos">589</span></a><span class="sd">    CEREBELLUM</span>
-</span><span id="cifti_create_dense_from_template-590"><a href="#cifti_create_dense_from_template-590"><span class="linenos">590</span></a><span class="sd">    ACCUMBENS_LEFT</span>
-</span><span id="cifti_create_dense_from_template-591"><a href="#cifti_create_dense_from_template-591"><span class="linenos">591</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-592"><a href="#cifti_create_dense_from_template-592"><span class="linenos">592</span></a><span class="sd">    ALL_GREY_MATTER</span>
-</span><span id="cifti_create_dense_from_template-593"><a href="#cifti_create_dense_from_template-593"><span class="linenos">593</span></a><span class="sd">    ALL_WHITE_MATTER</span>
-</span><span id="cifti_create_dense_from_template-594"><a href="#cifti_create_dense_from_template-594"><span class="linenos">594</span></a><span class="sd">    AMYGDALA_LEFT</span>
-</span><span id="cifti_create_dense_from_template-595"><a href="#cifti_create_dense_from_template-595"><span class="linenos">595</span></a><span class="sd">    AMYGDALA_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-596"><a href="#cifti_create_dense_from_template-596"><span class="linenos">596</span></a><span class="sd">    BRAIN_STEM</span>
-</span><span id="cifti_create_dense_from_template-597"><a href="#cifti_create_dense_from_template-597"><span class="linenos">597</span></a><span class="sd">    CAUDATE_LEFT</span>
-</span><span id="cifti_create_dense_from_template-598"><a href="#cifti_create_dense_from_template-598"><span class="linenos">598</span></a><span class="sd">    CAUDATE_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-599"><a href="#cifti_create_dense_from_template-599"><span class="linenos">599</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
-</span><span id="cifti_create_dense_from_template-600"><a href="#cifti_create_dense_from_template-600"><span class="linenos">600</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-601"><a href="#cifti_create_dense_from_template-601"><span class="linenos">601</span></a><span class="sd">    CEREBELLUM_LEFT</span>
-</span><span id="cifti_create_dense_from_template-602"><a href="#cifti_create_dense_from_template-602"><span class="linenos">602</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-603"><a href="#cifti_create_dense_from_template-603"><span class="linenos">603</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
-</span><span id="cifti_create_dense_from_template-604"><a href="#cifti_create_dense_from_template-604"><span class="linenos">604</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-605"><a href="#cifti_create_dense_from_template-605"><span class="linenos">605</span></a><span class="sd">    CORTEX</span>
-</span><span id="cifti_create_dense_from_template-606"><a href="#cifti_create_dense_from_template-606"><span class="linenos">606</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
-</span><span id="cifti_create_dense_from_template-607"><a href="#cifti_create_dense_from_template-607"><span class="linenos">607</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-608"><a href="#cifti_create_dense_from_template-608"><span class="linenos">608</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
-</span><span id="cifti_create_dense_from_template-609"><a href="#cifti_create_dense_from_template-609"><span class="linenos">609</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-610"><a href="#cifti_create_dense_from_template-610"><span class="linenos">610</span></a><span class="sd">    INVALID</span>
-</span><span id="cifti_create_dense_from_template-611"><a href="#cifti_create_dense_from_template-611"><span class="linenos">611</span></a><span class="sd">    OTHER</span>
-</span><span id="cifti_create_dense_from_template-612"><a href="#cifti_create_dense_from_template-612"><span class="linenos">612</span></a><span class="sd">    OTHER_GREY_MATTER</span>
-</span><span id="cifti_create_dense_from_template-613"><a href="#cifti_create_dense_from_template-613"><span class="linenos">613</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
-</span><span id="cifti_create_dense_from_template-614"><a href="#cifti_create_dense_from_template-614"><span class="linenos">614</span></a><span class="sd">    PALLIDUM_LEFT</span>
-</span><span id="cifti_create_dense_from_template-615"><a href="#cifti_create_dense_from_template-615"><span class="linenos">615</span></a><span class="sd">    PALLIDUM_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-616"><a href="#cifti_create_dense_from_template-616"><span class="linenos">616</span></a><span class="sd">    PUTAMEN_LEFT</span>
-</span><span id="cifti_create_dense_from_template-617"><a href="#cifti_create_dense_from_template-617"><span class="linenos">617</span></a><span class="sd">    PUTAMEN_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-618"><a href="#cifti_create_dense_from_template-618"><span class="linenos">618</span></a><span class="sd">    THALAMUS_LEFT</span>
-</span><span id="cifti_create_dense_from_template-619"><a href="#cifti_create_dense_from_template-619"><span class="linenos">619</span></a><span class="sd">    THALAMUS_RIGHT</span>
-</span><span id="cifti_create_dense_from_template-620"><a href="#cifti_create_dense_from_template-620"><span class="linenos">620</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-621"><a href="#cifti_create_dense_from_template-621"><span class="linenos">621</span></a><span class="sd">    The argument to -unit must be one of the following:</span>
-</span><span id="cifti_create_dense_from_template-622"><a href="#cifti_create_dense_from_template-622"><span class="linenos">622</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-623"><a href="#cifti_create_dense_from_template-623"><span class="linenos">623</span></a><span class="sd">    SECOND</span>
-</span><span id="cifti_create_dense_from_template-624"><a href="#cifti_create_dense_from_template-624"><span class="linenos">624</span></a><span class="sd">    HERTZ</span>
-</span><span id="cifti_create_dense_from_template-625"><a href="#cifti_create_dense_from_template-625"><span class="linenos">625</span></a><span class="sd">    METER</span>
-</span><span id="cifti_create_dense_from_template-626"><a href="#cifti_create_dense_from_template-626"><span class="linenos">626</span></a><span class="sd">    RADIAN.</span>
-</span><span id="cifti_create_dense_from_template-627"><a href="#cifti_create_dense_from_template-627"><span class="linenos">627</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-628"><a href="#cifti_create_dense_from_template-628"><span class="linenos">628</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="cifti_create_dense_from_template-629"><a href="#cifti_create_dense_from_template-629"><span class="linenos">629</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-630"><a href="#cifti_create_dense_from_template-630"><span class="linenos">630</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="cifti_create_dense_from_template-631"><a href="#cifti_create_dense_from_template-631"><span class="linenos">631</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_from_template-632"><a href="#cifti_create_dense_from_template-632"><span class="linenos">632</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_create_dense_from_template-633"><a href="#cifti_create_dense_from_template-633"><span class="linenos">633</span></a><span class="sd">        template_cifti: file to match brainordinates of.</span>
-</span><span id="cifti_create_dense_from_template-634"><a href="#cifti_create_dense_from_template-634"><span class="linenos">634</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_create_dense_from_template-635"><a href="#cifti_create_dense_from_template-635"><span class="linenos">635</span></a><span class="sd">        series: make a dtseries file instead of a dscalar.</span>
-</span><span id="cifti_create_dense_from_template-636"><a href="#cifti_create_dense_from_template-636"><span class="linenos">636</span></a><span class="sd">        volume_all: specify an input volume file for all voxel data.</span>
-</span><span id="cifti_create_dense_from_template-637"><a href="#cifti_create_dense_from_template-637"><span class="linenos">637</span></a><span class="sd">        opt_label_collision_action: how to handle conflicts between label keys:\</span>
-</span><span id="cifti_create_dense_from_template-638"><a href="#cifti_create_dense_from_template-638"><span class="linenos">638</span></a><span class="sd">            &#39;ERROR&#39;, &#39;SURFACES_FIRST&#39;, or &#39;LEGACY&#39;, default &#39;ERROR&#39;, use &#39;LEGACY&#39;\</span>
-</span><span id="cifti_create_dense_from_template-639"><a href="#cifti_create_dense_from_template-639"><span class="linenos">639</span></a><span class="sd">            to match v1.4.2 and earlier.</span>
-</span><span id="cifti_create_dense_from_template-640"><a href="#cifti_create_dense_from_template-640"><span class="linenos">640</span></a><span class="sd">        cifti: use input data from a cifti file.</span>
-</span><span id="cifti_create_dense_from_template-641"><a href="#cifti_create_dense_from_template-641"><span class="linenos">641</span></a><span class="sd">        metric: use input data from a metric file.</span>
-</span><span id="cifti_create_dense_from_template-642"><a href="#cifti_create_dense_from_template-642"><span class="linenos">642</span></a><span class="sd">        label: use input data from surface label files.</span>
-</span><span id="cifti_create_dense_from_template-643"><a href="#cifti_create_dense_from_template-643"><span class="linenos">643</span></a><span class="sd">        volume: use a volume file for a single volume structure&#39;s data.</span>
-</span><span id="cifti_create_dense_from_template-644"><a href="#cifti_create_dense_from_template-644"><span class="linenos">644</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_create_dense_from_template-645"><a href="#cifti_create_dense_from_template-645"><span class="linenos">645</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_create_dense_from_template-646"><a href="#cifti_create_dense_from_template-646"><span class="linenos">646</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateOutputs`).</span>
-</span><span id="cifti_create_dense_from_template-647"><a href="#cifti_create_dense_from_template-647"><span class="linenos">647</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_create_dense_from_template-648"><a href="#cifti_create_dense_from_template-648"><span class="linenos">648</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_create_dense_from_template-649"><a href="#cifti_create_dense_from_template-649"><span class="linenos">649</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_create_dense_from_template-650"><a href="#cifti_create_dense_from_template-650"><span class="linenos">650</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_create_dense_from_template_params</span><span class="p">(</span><span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="n">series</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">opt_label_collision_action</span><span class="o">=</span><span class="n">opt_label_collision_action</span><span class="p">,</span> <span class="n">cifti</span><span class="o">=</span><span class="n">cifti</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
-</span><span id="cifti_create_dense_from_template-651"><a href="#cifti_create_dense_from_template-651"><span class="linenos">651</span></a>    <span class="k">return</span> <span class="n">cifti_create_dense_from_template_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_create_dense_from_template-557"><a href="#cifti_create_dense_from_template-557"><span class="linenos">557</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_create_dense_from_template</span><span class="p">(</span>
+</span><span id="cifti_create_dense_from_template-558"><a href="#cifti_create_dense_from_template-558"><span class="linenos">558</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-559"><a href="#cifti_create_dense_from_template-559"><span class="linenos">559</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-560"><a href="#cifti_create_dense_from_template-560"><span class="linenos">560</span></a>    <span class="n">series</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateSeriesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-561"><a href="#cifti_create_dense_from_template-561"><span class="linenos">561</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiCreateDenseFromTemplateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-562"><a href="#cifti_create_dense_from_template-562"><span class="linenos">562</span></a>    <span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-563"><a href="#cifti_create_dense_from_template-563"><span class="linenos">563</span></a>    <span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-564"><a href="#cifti_create_dense_from_template-564"><span class="linenos">564</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-565"><a href="#cifti_create_dense_from_template-565"><span class="linenos">565</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-566"><a href="#cifti_create_dense_from_template-566"><span class="linenos">566</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiCreateDenseFromTemplateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-567"><a href="#cifti_create_dense_from_template-567"><span class="linenos">567</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_create_dense_from_template-568"><a href="#cifti_create_dense_from_template-568"><span class="linenos">568</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiCreateDenseFromTemplateOutputs</span><span class="p">:</span>
+</span><span id="cifti_create_dense_from_template-569"><a href="#cifti_create_dense_from_template-569"><span class="linenos">569</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_create_dense_from_template-570"><a href="#cifti_create_dense_from_template-570"><span class="linenos">570</span></a><span class="sd">    Create cifti with matching dense map.</span>
+</span><span id="cifti_create_dense_from_template-571"><a href="#cifti_create_dense_from_template-571"><span class="linenos">571</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-572"><a href="#cifti_create_dense_from_template-572"><span class="linenos">572</span></a><span class="sd">    This command helps you make a new dscalar, dtseries, or dlabel cifti file</span>
+</span><span id="cifti_create_dense_from_template-573"><a href="#cifti_create_dense_from_template-573"><span class="linenos">573</span></a><span class="sd">    that matches the brainordinate space used in another cifti file. The</span>
+</span><span id="cifti_create_dense_from_template-574"><a href="#cifti_create_dense_from_template-574"><span class="linenos">574</span></a><span class="sd">    template file must have the desired brainordinate space in the mapping along</span>
+</span><span id="cifti_create_dense_from_template-575"><a href="#cifti_create_dense_from_template-575"><span class="linenos">575</span></a><span class="sd">    the column direction (for dtseries, dscalar, dlabel, and symmetric dconn</span>
+</span><span id="cifti_create_dense_from_template-576"><a href="#cifti_create_dense_from_template-576"><span class="linenos">576</span></a><span class="sd">    this is always the case). All input cifti files must have a brain models</span>
+</span><span id="cifti_create_dense_from_template-577"><a href="#cifti_create_dense_from_template-577"><span class="linenos">577</span></a><span class="sd">    mapping along column and use the same volume space and/or surface vertex</span>
+</span><span id="cifti_create_dense_from_template-578"><a href="#cifti_create_dense_from_template-578"><span class="linenos">578</span></a><span class="sd">    count as the template for structures that they contain. If any input files</span>
+</span><span id="cifti_create_dense_from_template-579"><a href="#cifti_create_dense_from_template-579"><span class="linenos">579</span></a><span class="sd">    contain label data, then input files with non-label data are not allowed,</span>
+</span><span id="cifti_create_dense_from_template-580"><a href="#cifti_create_dense_from_template-580"><span class="linenos">580</span></a><span class="sd">    and the -series option may not be used.</span>
+</span><span id="cifti_create_dense_from_template-581"><a href="#cifti_create_dense_from_template-581"><span class="linenos">581</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-582"><a href="#cifti_create_dense_from_template-582"><span class="linenos">582</span></a><span class="sd">    Any structure that isn&#39;t covered by an input is filled with zeros or the</span>
+</span><span id="cifti_create_dense_from_template-583"><a href="#cifti_create_dense_from_template-583"><span class="linenos">583</span></a><span class="sd">    unlabeled key.</span>
+</span><span id="cifti_create_dense_from_template-584"><a href="#cifti_create_dense_from_template-584"><span class="linenos">584</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-585"><a href="#cifti_create_dense_from_template-585"><span class="linenos">585</span></a><span class="sd">    The &lt;structure&gt; argument of -metric, -label or -volume must be one of the</span>
+</span><span id="cifti_create_dense_from_template-586"><a href="#cifti_create_dense_from_template-586"><span class="linenos">586</span></a><span class="sd">    following:</span>
+</span><span id="cifti_create_dense_from_template-587"><a href="#cifti_create_dense_from_template-587"><span class="linenos">587</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-588"><a href="#cifti_create_dense_from_template-588"><span class="linenos">588</span></a><span class="sd">    CORTEX_LEFT</span>
+</span><span id="cifti_create_dense_from_template-589"><a href="#cifti_create_dense_from_template-589"><span class="linenos">589</span></a><span class="sd">    CORTEX_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-590"><a href="#cifti_create_dense_from_template-590"><span class="linenos">590</span></a><span class="sd">    CEREBELLUM</span>
+</span><span id="cifti_create_dense_from_template-591"><a href="#cifti_create_dense_from_template-591"><span class="linenos">591</span></a><span class="sd">    ACCUMBENS_LEFT</span>
+</span><span id="cifti_create_dense_from_template-592"><a href="#cifti_create_dense_from_template-592"><span class="linenos">592</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-593"><a href="#cifti_create_dense_from_template-593"><span class="linenos">593</span></a><span class="sd">    ALL_GREY_MATTER</span>
+</span><span id="cifti_create_dense_from_template-594"><a href="#cifti_create_dense_from_template-594"><span class="linenos">594</span></a><span class="sd">    ALL_WHITE_MATTER</span>
+</span><span id="cifti_create_dense_from_template-595"><a href="#cifti_create_dense_from_template-595"><span class="linenos">595</span></a><span class="sd">    AMYGDALA_LEFT</span>
+</span><span id="cifti_create_dense_from_template-596"><a href="#cifti_create_dense_from_template-596"><span class="linenos">596</span></a><span class="sd">    AMYGDALA_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-597"><a href="#cifti_create_dense_from_template-597"><span class="linenos">597</span></a><span class="sd">    BRAIN_STEM</span>
+</span><span id="cifti_create_dense_from_template-598"><a href="#cifti_create_dense_from_template-598"><span class="linenos">598</span></a><span class="sd">    CAUDATE_LEFT</span>
+</span><span id="cifti_create_dense_from_template-599"><a href="#cifti_create_dense_from_template-599"><span class="linenos">599</span></a><span class="sd">    CAUDATE_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-600"><a href="#cifti_create_dense_from_template-600"><span class="linenos">600</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
+</span><span id="cifti_create_dense_from_template-601"><a href="#cifti_create_dense_from_template-601"><span class="linenos">601</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-602"><a href="#cifti_create_dense_from_template-602"><span class="linenos">602</span></a><span class="sd">    CEREBELLUM_LEFT</span>
+</span><span id="cifti_create_dense_from_template-603"><a href="#cifti_create_dense_from_template-603"><span class="linenos">603</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-604"><a href="#cifti_create_dense_from_template-604"><span class="linenos">604</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
+</span><span id="cifti_create_dense_from_template-605"><a href="#cifti_create_dense_from_template-605"><span class="linenos">605</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-606"><a href="#cifti_create_dense_from_template-606"><span class="linenos">606</span></a><span class="sd">    CORTEX</span>
+</span><span id="cifti_create_dense_from_template-607"><a href="#cifti_create_dense_from_template-607"><span class="linenos">607</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
+</span><span id="cifti_create_dense_from_template-608"><a href="#cifti_create_dense_from_template-608"><span class="linenos">608</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-609"><a href="#cifti_create_dense_from_template-609"><span class="linenos">609</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
+</span><span id="cifti_create_dense_from_template-610"><a href="#cifti_create_dense_from_template-610"><span class="linenos">610</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-611"><a href="#cifti_create_dense_from_template-611"><span class="linenos">611</span></a><span class="sd">    INVALID</span>
+</span><span id="cifti_create_dense_from_template-612"><a href="#cifti_create_dense_from_template-612"><span class="linenos">612</span></a><span class="sd">    OTHER</span>
+</span><span id="cifti_create_dense_from_template-613"><a href="#cifti_create_dense_from_template-613"><span class="linenos">613</span></a><span class="sd">    OTHER_GREY_MATTER</span>
+</span><span id="cifti_create_dense_from_template-614"><a href="#cifti_create_dense_from_template-614"><span class="linenos">614</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
+</span><span id="cifti_create_dense_from_template-615"><a href="#cifti_create_dense_from_template-615"><span class="linenos">615</span></a><span class="sd">    PALLIDUM_LEFT</span>
+</span><span id="cifti_create_dense_from_template-616"><a href="#cifti_create_dense_from_template-616"><span class="linenos">616</span></a><span class="sd">    PALLIDUM_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-617"><a href="#cifti_create_dense_from_template-617"><span class="linenos">617</span></a><span class="sd">    PUTAMEN_LEFT</span>
+</span><span id="cifti_create_dense_from_template-618"><a href="#cifti_create_dense_from_template-618"><span class="linenos">618</span></a><span class="sd">    PUTAMEN_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-619"><a href="#cifti_create_dense_from_template-619"><span class="linenos">619</span></a><span class="sd">    THALAMUS_LEFT</span>
+</span><span id="cifti_create_dense_from_template-620"><a href="#cifti_create_dense_from_template-620"><span class="linenos">620</span></a><span class="sd">    THALAMUS_RIGHT</span>
+</span><span id="cifti_create_dense_from_template-621"><a href="#cifti_create_dense_from_template-621"><span class="linenos">621</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-622"><a href="#cifti_create_dense_from_template-622"><span class="linenos">622</span></a><span class="sd">    The argument to -unit must be one of the following:</span>
+</span><span id="cifti_create_dense_from_template-623"><a href="#cifti_create_dense_from_template-623"><span class="linenos">623</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-624"><a href="#cifti_create_dense_from_template-624"><span class="linenos">624</span></a><span class="sd">    SECOND</span>
+</span><span id="cifti_create_dense_from_template-625"><a href="#cifti_create_dense_from_template-625"><span class="linenos">625</span></a><span class="sd">    HERTZ</span>
+</span><span id="cifti_create_dense_from_template-626"><a href="#cifti_create_dense_from_template-626"><span class="linenos">626</span></a><span class="sd">    METER</span>
+</span><span id="cifti_create_dense_from_template-627"><a href="#cifti_create_dense_from_template-627"><span class="linenos">627</span></a><span class="sd">    RADIAN.</span>
+</span><span id="cifti_create_dense_from_template-628"><a href="#cifti_create_dense_from_template-628"><span class="linenos">628</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-629"><a href="#cifti_create_dense_from_template-629"><span class="linenos">629</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="cifti_create_dense_from_template-630"><a href="#cifti_create_dense_from_template-630"><span class="linenos">630</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-631"><a href="#cifti_create_dense_from_template-631"><span class="linenos">631</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_create_dense_from_template-632"><a href="#cifti_create_dense_from_template-632"><span class="linenos">632</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_from_template-633"><a href="#cifti_create_dense_from_template-633"><span class="linenos">633</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_create_dense_from_template-634"><a href="#cifti_create_dense_from_template-634"><span class="linenos">634</span></a><span class="sd">        template_cifti: file to match brainordinates of.</span>
+</span><span id="cifti_create_dense_from_template-635"><a href="#cifti_create_dense_from_template-635"><span class="linenos">635</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_create_dense_from_template-636"><a href="#cifti_create_dense_from_template-636"><span class="linenos">636</span></a><span class="sd">        series: make a dtseries file instead of a dscalar.</span>
+</span><span id="cifti_create_dense_from_template-637"><a href="#cifti_create_dense_from_template-637"><span class="linenos">637</span></a><span class="sd">        volume_all: specify an input volume file for all voxel data.</span>
+</span><span id="cifti_create_dense_from_template-638"><a href="#cifti_create_dense_from_template-638"><span class="linenos">638</span></a><span class="sd">        opt_label_collision_action: how to handle conflicts between label keys:\</span>
+</span><span id="cifti_create_dense_from_template-639"><a href="#cifti_create_dense_from_template-639"><span class="linenos">639</span></a><span class="sd">            &#39;ERROR&#39;, &#39;SURFACES_FIRST&#39;, or &#39;LEGACY&#39;, default &#39;ERROR&#39;, use &#39;LEGACY&#39;\</span>
+</span><span id="cifti_create_dense_from_template-640"><a href="#cifti_create_dense_from_template-640"><span class="linenos">640</span></a><span class="sd">            to match v1.4.2 and earlier.</span>
+</span><span id="cifti_create_dense_from_template-641"><a href="#cifti_create_dense_from_template-641"><span class="linenos">641</span></a><span class="sd">        cifti: use input data from a cifti file.</span>
+</span><span id="cifti_create_dense_from_template-642"><a href="#cifti_create_dense_from_template-642"><span class="linenos">642</span></a><span class="sd">        metric: use input data from a metric file.</span>
+</span><span id="cifti_create_dense_from_template-643"><a href="#cifti_create_dense_from_template-643"><span class="linenos">643</span></a><span class="sd">        label: use input data from surface label files.</span>
+</span><span id="cifti_create_dense_from_template-644"><a href="#cifti_create_dense_from_template-644"><span class="linenos">644</span></a><span class="sd">        volume: use a volume file for a single volume structure&#39;s data.</span>
+</span><span id="cifti_create_dense_from_template-645"><a href="#cifti_create_dense_from_template-645"><span class="linenos">645</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_create_dense_from_template-646"><a href="#cifti_create_dense_from_template-646"><span class="linenos">646</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_create_dense_from_template-647"><a href="#cifti_create_dense_from_template-647"><span class="linenos">647</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateOutputs`).</span>
+</span><span id="cifti_create_dense_from_template-648"><a href="#cifti_create_dense_from_template-648"><span class="linenos">648</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_create_dense_from_template-649"><a href="#cifti_create_dense_from_template-649"><span class="linenos">649</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_create_dense_from_template-650"><a href="#cifti_create_dense_from_template-650"><span class="linenos">650</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_create_dense_from_template-651"><a href="#cifti_create_dense_from_template-651"><span class="linenos">651</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_create_dense_from_template_params</span><span class="p">(</span><span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="n">series</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">opt_label_collision_action</span><span class="o">=</span><span class="n">opt_label_collision_action</span><span class="p">,</span> <span class="n">cifti</span><span class="o">=</span><span class="n">cifti</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
+</span><span id="cifti_create_dense_from_template-652"><a href="#cifti_create_dense_from_template-652"><span class="linenos">652</span></a>    <span class="k">return</span> <span class="n">cifti_create_dense_from_template_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

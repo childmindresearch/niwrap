@@ -508,72 +508,73 @@
 </span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_erode_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_erode_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_erode</span><span class="p">(</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="n">left_surface</span><span class="p">:</span> <span class="n">CiftiErodeLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="n">right_surface</span><span class="p">:</span> <span class="n">CiftiErodeRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">CiftiErodeCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiErodeOutputs</span><span class="p">:</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    Erode a cifti file.</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    </span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    For all data values that are empty (for label data, unlabeled, for other</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    data, zero), set the surrounding values to empty. The surrounding values are</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    defined as the immediate neighbors and all values in the same structure</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    within the specified distance (-merged-volume treats all voxels as one</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    structure).</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    </span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    The -*-corrected-areas options are intended for eroding on group average</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    surfaces, but it is only an approximate correction.</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    </span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    </span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    </span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">    Args:</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">        cifti_in: the input cifti file.</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">            component.</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">    Returns:</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_erode_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">surface_distance</span><span class="o">=</span><span class="n">surface_distance</span><span class="p">,</span> <span class="n">volume_distance</span><span class="o">=</span><span class="n">volume_distance</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">left_surface</span><span class="o">=</span><span class="n">left_surface</span><span class="p">,</span> <span class="n">right_surface</span><span class="o">=</span><span class="n">right_surface</span><span class="p">,</span> <span class="n">cerebellum_surface</span><span class="o">=</span><span class="n">cerebellum_surface</span><span class="p">,</span> <span class="n">opt_merged_volume</span><span class="o">=</span><span class="n">opt_merged_volume</span><span class="p">)</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="k">return</span> <span class="n">cifti_erode_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_erode</span><span class="p">(</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="n">left_surface</span><span class="p">:</span> <span class="n">CiftiErodeLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="n">right_surface</span><span class="p">:</span> <span class="n">CiftiErodeRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">CiftiErodeCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiErodeOutputs</span><span class="p">:</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    Erode a cifti file.</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    </span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    For all data values that are empty (for label data, unlabeled, for other</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    data, zero), set the surrounding values to empty. The surrounding values are</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    defined as the immediate neighbors and all values in the same structure</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    within the specified distance (-merged-volume treats all voxels as one</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    structure).</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    </span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    The -*-corrected-areas options are intended for eroding on group average</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    surfaces, but it is only an approximate correction.</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    </span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    </span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">    </span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">    Args:</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">        cifti_in: the input cifti file.</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">            component.</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">    Returns:</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_erode_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">surface_distance</span><span class="o">=</span><span class="n">surface_distance</span><span class="p">,</span> <span class="n">volume_distance</span><span class="o">=</span><span class="n">volume_distance</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">left_surface</span><span class="o">=</span><span class="n">left_surface</span><span class="p">,</span> <span class="n">right_surface</span><span class="o">=</span><span class="n">right_surface</span><span class="p">,</span> <span class="n">cerebellum_surface</span><span class="o">=</span><span class="n">cerebellum_surface</span><span class="p">,</span> <span class="n">opt_merged_volume</span><span class="o">=</span><span class="n">opt_merged_volume</span><span class="p">)</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="k">return</span> <span class="n">cifti_erode_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;CIFTI_ERODE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;CiftiErodeCerebellumSurfaceParameters&quot;</span><span class="p">,</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="s2">&quot;CiftiErodeLeftSurfaceParameters&quot;</span><span class="p">,</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="s2">&quot;CiftiErodeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;CiftiErodeParameters&quot;</span><span class="p">,</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;CiftiErodeRightSurfaceParameters&quot;</span><span class="p">,</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;cifti_erode&quot;</span><span class="p">,</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;cifti_erode_cerebellum_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;cifti_erode_left_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;cifti_erode_params&quot;</span><span class="p">,</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;cifti_erode_right_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="p">]</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;CIFTI_ERODE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="s2">&quot;CiftiErodeCerebellumSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="s2">&quot;CiftiErodeLeftSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;CiftiErodeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;CiftiErodeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;CiftiErodeRightSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;cifti_erode&quot;</span><span class="p">,</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;cifti_erode_cerebellum_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;cifti_erode_left_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;cifti_erode_params&quot;</span><span class="p">,</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;cifti_erode_right_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -886,53 +887,53 @@
 
     </div>
     <a class="headerlink" href="#cifti_erode"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_erode-363"><a href="#cifti_erode-363"><span class="linenos">363</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_erode</span><span class="p">(</span>
-</span><span id="cifti_erode-364"><a href="#cifti_erode-364"><span class="linenos">364</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_erode-365"><a href="#cifti_erode-365"><span class="linenos">365</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_erode-366"><a href="#cifti_erode-366"><span class="linenos">366</span></a>    <span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="cifti_erode-367"><a href="#cifti_erode-367"><span class="linenos">367</span></a>    <span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="cifti_erode-368"><a href="#cifti_erode-368"><span class="linenos">368</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_erode-369"><a href="#cifti_erode-369"><span class="linenos">369</span></a>    <span class="n">left_surface</span><span class="p">:</span> <span class="n">CiftiErodeLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_erode-370"><a href="#cifti_erode-370"><span class="linenos">370</span></a>    <span class="n">right_surface</span><span class="p">:</span> <span class="n">CiftiErodeRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_erode-371"><a href="#cifti_erode-371"><span class="linenos">371</span></a>    <span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">CiftiErodeCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_erode-372"><a href="#cifti_erode-372"><span class="linenos">372</span></a>    <span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cifti_erode-373"><a href="#cifti_erode-373"><span class="linenos">373</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_erode-374"><a href="#cifti_erode-374"><span class="linenos">374</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiErodeOutputs</span><span class="p">:</span>
-</span><span id="cifti_erode-375"><a href="#cifti_erode-375"><span class="linenos">375</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_erode-376"><a href="#cifti_erode-376"><span class="linenos">376</span></a><span class="sd">    Erode a cifti file.</span>
-</span><span id="cifti_erode-377"><a href="#cifti_erode-377"><span class="linenos">377</span></a><span class="sd">    </span>
-</span><span id="cifti_erode-378"><a href="#cifti_erode-378"><span class="linenos">378</span></a><span class="sd">    For all data values that are empty (for label data, unlabeled, for other</span>
-</span><span id="cifti_erode-379"><a href="#cifti_erode-379"><span class="linenos">379</span></a><span class="sd">    data, zero), set the surrounding values to empty. The surrounding values are</span>
-</span><span id="cifti_erode-380"><a href="#cifti_erode-380"><span class="linenos">380</span></a><span class="sd">    defined as the immediate neighbors and all values in the same structure</span>
-</span><span id="cifti_erode-381"><a href="#cifti_erode-381"><span class="linenos">381</span></a><span class="sd">    within the specified distance (-merged-volume treats all voxels as one</span>
-</span><span id="cifti_erode-382"><a href="#cifti_erode-382"><span class="linenos">382</span></a><span class="sd">    structure).</span>
-</span><span id="cifti_erode-383"><a href="#cifti_erode-383"><span class="linenos">383</span></a><span class="sd">    </span>
-</span><span id="cifti_erode-384"><a href="#cifti_erode-384"><span class="linenos">384</span></a><span class="sd">    The -*-corrected-areas options are intended for eroding on group average</span>
-</span><span id="cifti_erode-385"><a href="#cifti_erode-385"><span class="linenos">385</span></a><span class="sd">    surfaces, but it is only an approximate correction.</span>
-</span><span id="cifti_erode-386"><a href="#cifti_erode-386"><span class="linenos">386</span></a><span class="sd">    </span>
-</span><span id="cifti_erode-387"><a href="#cifti_erode-387"><span class="linenos">387</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="cifti_erode-388"><a href="#cifti_erode-388"><span class="linenos">388</span></a><span class="sd">    </span>
-</span><span id="cifti_erode-389"><a href="#cifti_erode-389"><span class="linenos">389</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="cifti_erode-390"><a href="#cifti_erode-390"><span class="linenos">390</span></a><span class="sd">    </span>
-</span><span id="cifti_erode-391"><a href="#cifti_erode-391"><span class="linenos">391</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_erode-392"><a href="#cifti_erode-392"><span class="linenos">392</span></a><span class="sd">        cifti_in: the input cifti file.</span>
-</span><span id="cifti_erode-393"><a href="#cifti_erode-393"><span class="linenos">393</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
-</span><span id="cifti_erode-394"><a href="#cifti_erode-394"><span class="linenos">394</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
-</span><span id="cifti_erode-395"><a href="#cifti_erode-395"><span class="linenos">395</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
-</span><span id="cifti_erode-396"><a href="#cifti_erode-396"><span class="linenos">396</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_erode-397"><a href="#cifti_erode-397"><span class="linenos">397</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
-</span><span id="cifti_erode-398"><a href="#cifti_erode-398"><span class="linenos">398</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
-</span><span id="cifti_erode-399"><a href="#cifti_erode-399"><span class="linenos">399</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
-</span><span id="cifti_erode-400"><a href="#cifti_erode-400"><span class="linenos">400</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="cifti_erode-401"><a href="#cifti_erode-401"><span class="linenos">401</span></a><span class="sd">            component.</span>
-</span><span id="cifti_erode-402"><a href="#cifti_erode-402"><span class="linenos">402</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_erode-403"><a href="#cifti_erode-403"><span class="linenos">403</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_erode-404"><a href="#cifti_erode-404"><span class="linenos">404</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
-</span><span id="cifti_erode-405"><a href="#cifti_erode-405"><span class="linenos">405</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_erode-406"><a href="#cifti_erode-406"><span class="linenos">406</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_erode-407"><a href="#cifti_erode-407"><span class="linenos">407</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_erode-408"><a href="#cifti_erode-408"><span class="linenos">408</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_erode_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">surface_distance</span><span class="o">=</span><span class="n">surface_distance</span><span class="p">,</span> <span class="n">volume_distance</span><span class="o">=</span><span class="n">volume_distance</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">left_surface</span><span class="o">=</span><span class="n">left_surface</span><span class="p">,</span> <span class="n">right_surface</span><span class="o">=</span><span class="n">right_surface</span><span class="p">,</span> <span class="n">cerebellum_surface</span><span class="o">=</span><span class="n">cerebellum_surface</span><span class="p">,</span> <span class="n">opt_merged_volume</span><span class="o">=</span><span class="n">opt_merged_volume</span><span class="p">)</span>
-</span><span id="cifti_erode-409"><a href="#cifti_erode-409"><span class="linenos">409</span></a>    <span class="k">return</span> <span class="n">cifti_erode_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_erode-364"><a href="#cifti_erode-364"><span class="linenos">364</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_erode</span><span class="p">(</span>
+</span><span id="cifti_erode-365"><a href="#cifti_erode-365"><span class="linenos">365</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_erode-366"><a href="#cifti_erode-366"><span class="linenos">366</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_erode-367"><a href="#cifti_erode-367"><span class="linenos">367</span></a>    <span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="cifti_erode-368"><a href="#cifti_erode-368"><span class="linenos">368</span></a>    <span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="cifti_erode-369"><a href="#cifti_erode-369"><span class="linenos">369</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_erode-370"><a href="#cifti_erode-370"><span class="linenos">370</span></a>    <span class="n">left_surface</span><span class="p">:</span> <span class="n">CiftiErodeLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_erode-371"><a href="#cifti_erode-371"><span class="linenos">371</span></a>    <span class="n">right_surface</span><span class="p">:</span> <span class="n">CiftiErodeRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_erode-372"><a href="#cifti_erode-372"><span class="linenos">372</span></a>    <span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">CiftiErodeCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_erode-373"><a href="#cifti_erode-373"><span class="linenos">373</span></a>    <span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cifti_erode-374"><a href="#cifti_erode-374"><span class="linenos">374</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_erode-375"><a href="#cifti_erode-375"><span class="linenos">375</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiErodeOutputs</span><span class="p">:</span>
+</span><span id="cifti_erode-376"><a href="#cifti_erode-376"><span class="linenos">376</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_erode-377"><a href="#cifti_erode-377"><span class="linenos">377</span></a><span class="sd">    Erode a cifti file.</span>
+</span><span id="cifti_erode-378"><a href="#cifti_erode-378"><span class="linenos">378</span></a><span class="sd">    </span>
+</span><span id="cifti_erode-379"><a href="#cifti_erode-379"><span class="linenos">379</span></a><span class="sd">    For all data values that are empty (for label data, unlabeled, for other</span>
+</span><span id="cifti_erode-380"><a href="#cifti_erode-380"><span class="linenos">380</span></a><span class="sd">    data, zero), set the surrounding values to empty. The surrounding values are</span>
+</span><span id="cifti_erode-381"><a href="#cifti_erode-381"><span class="linenos">381</span></a><span class="sd">    defined as the immediate neighbors and all values in the same structure</span>
+</span><span id="cifti_erode-382"><a href="#cifti_erode-382"><span class="linenos">382</span></a><span class="sd">    within the specified distance (-merged-volume treats all voxels as one</span>
+</span><span id="cifti_erode-383"><a href="#cifti_erode-383"><span class="linenos">383</span></a><span class="sd">    structure).</span>
+</span><span id="cifti_erode-384"><a href="#cifti_erode-384"><span class="linenos">384</span></a><span class="sd">    </span>
+</span><span id="cifti_erode-385"><a href="#cifti_erode-385"><span class="linenos">385</span></a><span class="sd">    The -*-corrected-areas options are intended for eroding on group average</span>
+</span><span id="cifti_erode-386"><a href="#cifti_erode-386"><span class="linenos">386</span></a><span class="sd">    surfaces, but it is only an approximate correction.</span>
+</span><span id="cifti_erode-387"><a href="#cifti_erode-387"><span class="linenos">387</span></a><span class="sd">    </span>
+</span><span id="cifti_erode-388"><a href="#cifti_erode-388"><span class="linenos">388</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="cifti_erode-389"><a href="#cifti_erode-389"><span class="linenos">389</span></a><span class="sd">    </span>
+</span><span id="cifti_erode-390"><a href="#cifti_erode-390"><span class="linenos">390</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_erode-391"><a href="#cifti_erode-391"><span class="linenos">391</span></a><span class="sd">    </span>
+</span><span id="cifti_erode-392"><a href="#cifti_erode-392"><span class="linenos">392</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_erode-393"><a href="#cifti_erode-393"><span class="linenos">393</span></a><span class="sd">        cifti_in: the input cifti file.</span>
+</span><span id="cifti_erode-394"><a href="#cifti_erode-394"><span class="linenos">394</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
+</span><span id="cifti_erode-395"><a href="#cifti_erode-395"><span class="linenos">395</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
+</span><span id="cifti_erode-396"><a href="#cifti_erode-396"><span class="linenos">396</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
+</span><span id="cifti_erode-397"><a href="#cifti_erode-397"><span class="linenos">397</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_erode-398"><a href="#cifti_erode-398"><span class="linenos">398</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
+</span><span id="cifti_erode-399"><a href="#cifti_erode-399"><span class="linenos">399</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
+</span><span id="cifti_erode-400"><a href="#cifti_erode-400"><span class="linenos">400</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
+</span><span id="cifti_erode-401"><a href="#cifti_erode-401"><span class="linenos">401</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="cifti_erode-402"><a href="#cifti_erode-402"><span class="linenos">402</span></a><span class="sd">            component.</span>
+</span><span id="cifti_erode-403"><a href="#cifti_erode-403"><span class="linenos">403</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_erode-404"><a href="#cifti_erode-404"><span class="linenos">404</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_erode-405"><a href="#cifti_erode-405"><span class="linenos">405</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
+</span><span id="cifti_erode-406"><a href="#cifti_erode-406"><span class="linenos">406</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_erode-407"><a href="#cifti_erode-407"><span class="linenos">407</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_erode-408"><a href="#cifti_erode-408"><span class="linenos">408</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_erode-409"><a href="#cifti_erode-409"><span class="linenos">409</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_erode_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">surface_distance</span><span class="o">=</span><span class="n">surface_distance</span><span class="p">,</span> <span class="n">volume_distance</span><span class="o">=</span><span class="n">volume_distance</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">left_surface</span><span class="o">=</span><span class="n">left_surface</span><span class="p">,</span> <span class="n">right_surface</span><span class="o">=</span><span class="n">right_surface</span><span class="p">,</span> <span class="n">cerebellum_surface</span><span class="o">=</span><span class="n">cerebellum_surface</span><span class="p">,</span> <span class="n">opt_merged_volume</span><span class="o">=</span><span class="n">opt_merged_volume</span><span class="p">)</span>
+</span><span id="cifti_erode-410"><a href="#cifti_erode-410"><span class="linenos">410</span></a>    <span class="k">return</span> <span class="n">cifti_erode_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

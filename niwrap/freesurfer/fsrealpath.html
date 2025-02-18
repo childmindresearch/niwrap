@@ -221,42 +221,43 @@
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">fsrealpath_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">fsrealpath_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fsrealpath</span><span class="p">(</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsrealpathOutputs</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    Resolve symbolic links in a path.</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    </span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    </span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    </span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    Args:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        path: The path to resolve.</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        help_: Show this help message and exit.</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    Returns:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">        NamedTuple of outputs (described in `FsrealpathOutputs`).</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSREALPATH_METADATA</span><span class="p">)</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fsrealpath_params</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">return</span> <span class="n">fsrealpath_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fsrealpath</span><span class="p">(</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsrealpathOutputs</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    Resolve symbolic links in a path.</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    </span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    </span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    </span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Args:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        path: The path to resolve.</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        help_: Show this help message and exit.</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    Returns:</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        NamedTuple of outputs (described in `FsrealpathOutputs`).</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSREALPATH_METADATA</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fsrealpath_params</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">return</span> <span class="n">fsrealpath_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;FSREALPATH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;FsrealpathOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="s2">&quot;FsrealpathParameters&quot;</span><span class="p">,</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="s2">&quot;fsrealpath&quot;</span><span class="p">,</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="s2">&quot;fsrealpath_params&quot;</span><span class="p">,</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="p">]</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;FSREALPATH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="s2">&quot;FsrealpathOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="s2">&quot;FsrealpathParameters&quot;</span><span class="p">,</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="s2">&quot;fsrealpath&quot;</span><span class="p">,</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="s2">&quot;fsrealpath_params&quot;</span><span class="p">,</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -372,29 +373,29 @@
 
     </div>
     <a class="headerlink" href="#fsrealpath"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fsrealpath-145"><a href="#fsrealpath-145"><span class="linenos">145</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fsrealpath</span><span class="p">(</span>
-</span><span id="fsrealpath-146"><a href="#fsrealpath-146"><span class="linenos">146</span></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="fsrealpath-147"><a href="#fsrealpath-147"><span class="linenos">147</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fsrealpath-148"><a href="#fsrealpath-148"><span class="linenos">148</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fsrealpath-149"><a href="#fsrealpath-149"><span class="linenos">149</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsrealpathOutputs</span><span class="p">:</span>
-</span><span id="fsrealpath-150"><a href="#fsrealpath-150"><span class="linenos">150</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="fsrealpath-151"><a href="#fsrealpath-151"><span class="linenos">151</span></a><span class="sd">    Resolve symbolic links in a path.</span>
-</span><span id="fsrealpath-152"><a href="#fsrealpath-152"><span class="linenos">152</span></a><span class="sd">    </span>
-</span><span id="fsrealpath-153"><a href="#fsrealpath-153"><span class="linenos">153</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="fsrealpath-154"><a href="#fsrealpath-154"><span class="linenos">154</span></a><span class="sd">    </span>
-</span><span id="fsrealpath-155"><a href="#fsrealpath-155"><span class="linenos">155</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="fsrealpath-156"><a href="#fsrealpath-156"><span class="linenos">156</span></a><span class="sd">    </span>
-</span><span id="fsrealpath-157"><a href="#fsrealpath-157"><span class="linenos">157</span></a><span class="sd">    Args:</span>
-</span><span id="fsrealpath-158"><a href="#fsrealpath-158"><span class="linenos">158</span></a><span class="sd">        path: The path to resolve.</span>
-</span><span id="fsrealpath-159"><a href="#fsrealpath-159"><span class="linenos">159</span></a><span class="sd">        help_: Show this help message and exit.</span>
-</span><span id="fsrealpath-160"><a href="#fsrealpath-160"><span class="linenos">160</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fsrealpath-161"><a href="#fsrealpath-161"><span class="linenos">161</span></a><span class="sd">    Returns:</span>
-</span><span id="fsrealpath-162"><a href="#fsrealpath-162"><span class="linenos">162</span></a><span class="sd">        NamedTuple of outputs (described in `FsrealpathOutputs`).</span>
-</span><span id="fsrealpath-163"><a href="#fsrealpath-163"><span class="linenos">163</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fsrealpath-164"><a href="#fsrealpath-164"><span class="linenos">164</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fsrealpath-165"><a href="#fsrealpath-165"><span class="linenos">165</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSREALPATH_METADATA</span><span class="p">)</span>
-</span><span id="fsrealpath-166"><a href="#fsrealpath-166"><span class="linenos">166</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fsrealpath_params</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="fsrealpath-167"><a href="#fsrealpath-167"><span class="linenos">167</span></a>    <span class="k">return</span> <span class="n">fsrealpath_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fsrealpath-146"><a href="#fsrealpath-146"><span class="linenos">146</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fsrealpath</span><span class="p">(</span>
+</span><span id="fsrealpath-147"><a href="#fsrealpath-147"><span class="linenos">147</span></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="fsrealpath-148"><a href="#fsrealpath-148"><span class="linenos">148</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fsrealpath-149"><a href="#fsrealpath-149"><span class="linenos">149</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fsrealpath-150"><a href="#fsrealpath-150"><span class="linenos">150</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsrealpathOutputs</span><span class="p">:</span>
+</span><span id="fsrealpath-151"><a href="#fsrealpath-151"><span class="linenos">151</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="fsrealpath-152"><a href="#fsrealpath-152"><span class="linenos">152</span></a><span class="sd">    Resolve symbolic links in a path.</span>
+</span><span id="fsrealpath-153"><a href="#fsrealpath-153"><span class="linenos">153</span></a><span class="sd">    </span>
+</span><span id="fsrealpath-154"><a href="#fsrealpath-154"><span class="linenos">154</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="fsrealpath-155"><a href="#fsrealpath-155"><span class="linenos">155</span></a><span class="sd">    </span>
+</span><span id="fsrealpath-156"><a href="#fsrealpath-156"><span class="linenos">156</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="fsrealpath-157"><a href="#fsrealpath-157"><span class="linenos">157</span></a><span class="sd">    </span>
+</span><span id="fsrealpath-158"><a href="#fsrealpath-158"><span class="linenos">158</span></a><span class="sd">    Args:</span>
+</span><span id="fsrealpath-159"><a href="#fsrealpath-159"><span class="linenos">159</span></a><span class="sd">        path: The path to resolve.</span>
+</span><span id="fsrealpath-160"><a href="#fsrealpath-160"><span class="linenos">160</span></a><span class="sd">        help_: Show this help message and exit.</span>
+</span><span id="fsrealpath-161"><a href="#fsrealpath-161"><span class="linenos">161</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fsrealpath-162"><a href="#fsrealpath-162"><span class="linenos">162</span></a><span class="sd">    Returns:</span>
+</span><span id="fsrealpath-163"><a href="#fsrealpath-163"><span class="linenos">163</span></a><span class="sd">        NamedTuple of outputs (described in `FsrealpathOutputs`).</span>
+</span><span id="fsrealpath-164"><a href="#fsrealpath-164"><span class="linenos">164</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fsrealpath-165"><a href="#fsrealpath-165"><span class="linenos">165</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fsrealpath-166"><a href="#fsrealpath-166"><span class="linenos">166</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSREALPATH_METADATA</span><span class="p">)</span>
+</span><span id="fsrealpath-167"><a href="#fsrealpath-167"><span class="linenos">167</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fsrealpath_params</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="fsrealpath-168"><a href="#fsrealpath-168"><span class="linenos">168</span></a>    <span class="k">return</span> <span class="n">fsrealpath_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

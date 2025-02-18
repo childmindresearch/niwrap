@@ -318,55 +318,56 @@
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">set_map_names_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">set_map_names_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_map_names</span><span class="p">(</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">opt_from_data_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">map_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SetMapNamesMapParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SetMapNamesOutputs</span><span class="p">:</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    Set the name of one or more maps in a file.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    </span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    Sets the name of one or more maps for metric, shape, label, volume, cifti</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    scalar or cifti label files. You must specify either -name-file, or</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    -from-data-file, or at least one -map option. The three option types are</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    mutually exclusive.</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    </span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    </span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    </span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    Args:</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        data_file: the file to set the map names of.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        opt_name_file_file: use a text file to replace all map names: text file\</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">            containing map names, one per line.</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        opt_from_data_file_file: use the map names from another data file: a\</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">            data file with the same number of maps.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        map_: specify a map to set the name of.</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    Returns:</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">        NamedTuple of outputs (described in `SetMapNamesOutputs`).</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_MAP_NAMES_METADATA</span><span class="p">)</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">set_map_names_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_name_file_file</span><span class="o">=</span><span class="n">opt_name_file_file</span><span class="p">,</span> <span class="n">opt_from_data_file_file</span><span class="o">=</span><span class="n">opt_from_data_file_file</span><span class="p">,</span> <span class="n">map_</span><span class="o">=</span><span class="n">map_</span><span class="p">)</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="k">return</span> <span class="n">set_map_names_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_map_names</span><span class="p">(</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">opt_from_data_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">map_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SetMapNamesMapParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SetMapNamesOutputs</span><span class="p">:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    Set the name of one or more maps in a file.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    </span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    Sets the name of one or more maps for metric, shape, label, volume, cifti</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    scalar or cifti label files. You must specify either -name-file, or</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    -from-data-file, or at least one -map option. The three option types are</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    mutually exclusive.</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    </span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    </span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    </span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    Args:</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        data_file: the file to set the map names of.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        opt_name_file_file: use a text file to replace all map names: text file\</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">            containing map names, one per line.</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        opt_from_data_file_file: use the map names from another data file: a\</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">            data file with the same number of maps.</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        map_: specify a map to set the name of.</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    Returns:</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">        NamedTuple of outputs (described in `SetMapNamesOutputs`).</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_MAP_NAMES_METADATA</span><span class="p">)</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">set_map_names_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_name_file_file</span><span class="o">=</span><span class="n">opt_name_file_file</span><span class="p">,</span> <span class="n">opt_from_data_file_file</span><span class="o">=</span><span class="n">opt_from_data_file_file</span><span class="p">,</span> <span class="n">map_</span><span class="o">=</span><span class="n">map_</span><span class="p">)</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="k">return</span> <span class="n">set_map_names_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;SET_MAP_NAMES_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;SetMapNamesMapParameters&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;SetMapNamesOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;SetMapNamesParameters&quot;</span><span class="p">,</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;set_map_names&quot;</span><span class="p">,</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;set_map_names_map_params&quot;</span><span class="p">,</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;set_map_names_params&quot;</span><span class="p">,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="p">]</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;SET_MAP_NAMES_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;SetMapNamesMapParameters&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;SetMapNamesOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;SetMapNamesParameters&quot;</span><span class="p">,</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;set_map_names&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;set_map_names_map_params&quot;</span><span class="p">,</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="s2">&quot;set_map_names_params&quot;</span><span class="p">,</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -539,40 +540,40 @@
 
     </div>
     <a class="headerlink" href="#set_map_names"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="set_map_names-221"><a href="#set_map_names-221"><span class="linenos">221</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_map_names</span><span class="p">(</span>
-</span><span id="set_map_names-222"><a href="#set_map_names-222"><span class="linenos">222</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="set_map_names-223"><a href="#set_map_names-223"><span class="linenos">223</span></a>    <span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="set_map_names-224"><a href="#set_map_names-224"><span class="linenos">224</span></a>    <span class="n">opt_from_data_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="set_map_names-225"><a href="#set_map_names-225"><span class="linenos">225</span></a>    <span class="n">map_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SetMapNamesMapParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="set_map_names-226"><a href="#set_map_names-226"><span class="linenos">226</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="set_map_names-227"><a href="#set_map_names-227"><span class="linenos">227</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SetMapNamesOutputs</span><span class="p">:</span>
-</span><span id="set_map_names-228"><a href="#set_map_names-228"><span class="linenos">228</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="set_map_names-229"><a href="#set_map_names-229"><span class="linenos">229</span></a><span class="sd">    Set the name of one or more maps in a file.</span>
-</span><span id="set_map_names-230"><a href="#set_map_names-230"><span class="linenos">230</span></a><span class="sd">    </span>
-</span><span id="set_map_names-231"><a href="#set_map_names-231"><span class="linenos">231</span></a><span class="sd">    Sets the name of one or more maps for metric, shape, label, volume, cifti</span>
-</span><span id="set_map_names-232"><a href="#set_map_names-232"><span class="linenos">232</span></a><span class="sd">    scalar or cifti label files. You must specify either -name-file, or</span>
-</span><span id="set_map_names-233"><a href="#set_map_names-233"><span class="linenos">233</span></a><span class="sd">    -from-data-file, or at least one -map option. The three option types are</span>
-</span><span id="set_map_names-234"><a href="#set_map_names-234"><span class="linenos">234</span></a><span class="sd">    mutually exclusive.</span>
-</span><span id="set_map_names-235"><a href="#set_map_names-235"><span class="linenos">235</span></a><span class="sd">    </span>
-</span><span id="set_map_names-236"><a href="#set_map_names-236"><span class="linenos">236</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="set_map_names-237"><a href="#set_map_names-237"><span class="linenos">237</span></a><span class="sd">    </span>
-</span><span id="set_map_names-238"><a href="#set_map_names-238"><span class="linenos">238</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="set_map_names-239"><a href="#set_map_names-239"><span class="linenos">239</span></a><span class="sd">    </span>
-</span><span id="set_map_names-240"><a href="#set_map_names-240"><span class="linenos">240</span></a><span class="sd">    Args:</span>
-</span><span id="set_map_names-241"><a href="#set_map_names-241"><span class="linenos">241</span></a><span class="sd">        data_file: the file to set the map names of.</span>
-</span><span id="set_map_names-242"><a href="#set_map_names-242"><span class="linenos">242</span></a><span class="sd">        opt_name_file_file: use a text file to replace all map names: text file\</span>
-</span><span id="set_map_names-243"><a href="#set_map_names-243"><span class="linenos">243</span></a><span class="sd">            containing map names, one per line.</span>
-</span><span id="set_map_names-244"><a href="#set_map_names-244"><span class="linenos">244</span></a><span class="sd">        opt_from_data_file_file: use the map names from another data file: a\</span>
-</span><span id="set_map_names-245"><a href="#set_map_names-245"><span class="linenos">245</span></a><span class="sd">            data file with the same number of maps.</span>
-</span><span id="set_map_names-246"><a href="#set_map_names-246"><span class="linenos">246</span></a><span class="sd">        map_: specify a map to set the name of.</span>
-</span><span id="set_map_names-247"><a href="#set_map_names-247"><span class="linenos">247</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="set_map_names-248"><a href="#set_map_names-248"><span class="linenos">248</span></a><span class="sd">    Returns:</span>
-</span><span id="set_map_names-249"><a href="#set_map_names-249"><span class="linenos">249</span></a><span class="sd">        NamedTuple of outputs (described in `SetMapNamesOutputs`).</span>
-</span><span id="set_map_names-250"><a href="#set_map_names-250"><span class="linenos">250</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="set_map_names-251"><a href="#set_map_names-251"><span class="linenos">251</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="set_map_names-252"><a href="#set_map_names-252"><span class="linenos">252</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_MAP_NAMES_METADATA</span><span class="p">)</span>
-</span><span id="set_map_names-253"><a href="#set_map_names-253"><span class="linenos">253</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">set_map_names_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_name_file_file</span><span class="o">=</span><span class="n">opt_name_file_file</span><span class="p">,</span> <span class="n">opt_from_data_file_file</span><span class="o">=</span><span class="n">opt_from_data_file_file</span><span class="p">,</span> <span class="n">map_</span><span class="o">=</span><span class="n">map_</span><span class="p">)</span>
-</span><span id="set_map_names-254"><a href="#set_map_names-254"><span class="linenos">254</span></a>    <span class="k">return</span> <span class="n">set_map_names_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="set_map_names-222"><a href="#set_map_names-222"><span class="linenos">222</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_map_names</span><span class="p">(</span>
+</span><span id="set_map_names-223"><a href="#set_map_names-223"><span class="linenos">223</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="set_map_names-224"><a href="#set_map_names-224"><span class="linenos">224</span></a>    <span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="set_map_names-225"><a href="#set_map_names-225"><span class="linenos">225</span></a>    <span class="n">opt_from_data_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="set_map_names-226"><a href="#set_map_names-226"><span class="linenos">226</span></a>    <span class="n">map_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SetMapNamesMapParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="set_map_names-227"><a href="#set_map_names-227"><span class="linenos">227</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="set_map_names-228"><a href="#set_map_names-228"><span class="linenos">228</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SetMapNamesOutputs</span><span class="p">:</span>
+</span><span id="set_map_names-229"><a href="#set_map_names-229"><span class="linenos">229</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="set_map_names-230"><a href="#set_map_names-230"><span class="linenos">230</span></a><span class="sd">    Set the name of one or more maps in a file.</span>
+</span><span id="set_map_names-231"><a href="#set_map_names-231"><span class="linenos">231</span></a><span class="sd">    </span>
+</span><span id="set_map_names-232"><a href="#set_map_names-232"><span class="linenos">232</span></a><span class="sd">    Sets the name of one or more maps for metric, shape, label, volume, cifti</span>
+</span><span id="set_map_names-233"><a href="#set_map_names-233"><span class="linenos">233</span></a><span class="sd">    scalar or cifti label files. You must specify either -name-file, or</span>
+</span><span id="set_map_names-234"><a href="#set_map_names-234"><span class="linenos">234</span></a><span class="sd">    -from-data-file, or at least one -map option. The three option types are</span>
+</span><span id="set_map_names-235"><a href="#set_map_names-235"><span class="linenos">235</span></a><span class="sd">    mutually exclusive.</span>
+</span><span id="set_map_names-236"><a href="#set_map_names-236"><span class="linenos">236</span></a><span class="sd">    </span>
+</span><span id="set_map_names-237"><a href="#set_map_names-237"><span class="linenos">237</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="set_map_names-238"><a href="#set_map_names-238"><span class="linenos">238</span></a><span class="sd">    </span>
+</span><span id="set_map_names-239"><a href="#set_map_names-239"><span class="linenos">239</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="set_map_names-240"><a href="#set_map_names-240"><span class="linenos">240</span></a><span class="sd">    </span>
+</span><span id="set_map_names-241"><a href="#set_map_names-241"><span class="linenos">241</span></a><span class="sd">    Args:</span>
+</span><span id="set_map_names-242"><a href="#set_map_names-242"><span class="linenos">242</span></a><span class="sd">        data_file: the file to set the map names of.</span>
+</span><span id="set_map_names-243"><a href="#set_map_names-243"><span class="linenos">243</span></a><span class="sd">        opt_name_file_file: use a text file to replace all map names: text file\</span>
+</span><span id="set_map_names-244"><a href="#set_map_names-244"><span class="linenos">244</span></a><span class="sd">            containing map names, one per line.</span>
+</span><span id="set_map_names-245"><a href="#set_map_names-245"><span class="linenos">245</span></a><span class="sd">        opt_from_data_file_file: use the map names from another data file: a\</span>
+</span><span id="set_map_names-246"><a href="#set_map_names-246"><span class="linenos">246</span></a><span class="sd">            data file with the same number of maps.</span>
+</span><span id="set_map_names-247"><a href="#set_map_names-247"><span class="linenos">247</span></a><span class="sd">        map_: specify a map to set the name of.</span>
+</span><span id="set_map_names-248"><a href="#set_map_names-248"><span class="linenos">248</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="set_map_names-249"><a href="#set_map_names-249"><span class="linenos">249</span></a><span class="sd">    Returns:</span>
+</span><span id="set_map_names-250"><a href="#set_map_names-250"><span class="linenos">250</span></a><span class="sd">        NamedTuple of outputs (described in `SetMapNamesOutputs`).</span>
+</span><span id="set_map_names-251"><a href="#set_map_names-251"><span class="linenos">251</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="set_map_names-252"><a href="#set_map_names-252"><span class="linenos">252</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="set_map_names-253"><a href="#set_map_names-253"><span class="linenos">253</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_MAP_NAMES_METADATA</span><span class="p">)</span>
+</span><span id="set_map_names-254"><a href="#set_map_names-254"><span class="linenos">254</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">set_map_names_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_name_file_file</span><span class="o">=</span><span class="n">opt_name_file_file</span><span class="p">,</span> <span class="n">opt_from_data_file_file</span><span class="o">=</span><span class="n">opt_from_data_file_file</span><span class="p">,</span> <span class="n">map_</span><span class="o">=</span><span class="n">map_</span><span class="p">)</span>
+</span><span id="set_map_names-255"><a href="#set_map_names-255"><span class="linenos">255</span></a>    <span class="k">return</span> <span class="n">set_map_names_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

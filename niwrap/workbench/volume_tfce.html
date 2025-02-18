@@ -421,75 +421,76 @@
 </span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_tfce_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_tfce_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_tfce</span><span class="p">(</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeTfcePresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="n">parameters</span><span class="p">:</span> <span class="n">VolumeTfceParametersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeTfceOutputs</span><span class="p">:</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">    Do tfce on a volume file.</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">    </span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">    This command does not do any statistical analysis. Please use something like</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">    PALM if you are just trying to do statistics on your data.</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">    </span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">    Threshold-free cluster enhancement is a method to increase the relative</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">    value of regions that would form clusters in a standard thresholding test.</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">    This is accomplished by evaluating the integral of:</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">    </span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">    e(h, p)^E * h^H * dh</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">    </span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">    at each voxel p, where h ranges from 0 to the maximum value in the data, and</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    e(h, p) is the extent of the cluster containing voxel p at threshold h.</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">    Negative values are similarly enhanced by negating the data, running the</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    same process, and negating the result.</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    </span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">    This method is explained in: Smith SM, Nichols TE., &quot;Threshold-free cluster</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">    enhancement: addressing problems of smoothing, threshold dependence and</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">    localisation in cluster inference.&quot; Neuroimage. 2009 Jan 1;44(1):83-98.</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">    PMID: 18501637.</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">    </span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">    </span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    </span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    Args:</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">        volume_in: the volume to run TFCE on.</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">        presmooth: smooth the volume before running TFCE.</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to run TFCE on: the\</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">            area to run TFCE on, as a volume.</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">        parameters: set parameters for TFCE integral.</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">            number or name.</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    Returns:</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeTfceOutputs`).</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_TFCE_METADATA</span><span class="p">)</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_tfce_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">)</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="k">return</span> <span class="n">volume_tfce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_tfce</span><span class="p">(</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeTfcePresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="n">parameters</span><span class="p">:</span> <span class="n">VolumeTfceParametersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeTfceOutputs</span><span class="p">:</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">    Do tfce on a volume file.</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">    </span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">    This command does not do any statistical analysis. Please use something like</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">    PALM if you are just trying to do statistics on your data.</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">    </span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">    Threshold-free cluster enhancement is a method to increase the relative</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">    value of regions that would form clusters in a standard thresholding test.</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">    This is accomplished by evaluating the integral of:</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">    </span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">    e(h, p)^E * h^H * dh</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">    </span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    at each voxel p, where h ranges from 0 to the maximum value in the data, and</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">    e(h, p) is the extent of the cluster containing voxel p at threshold h.</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    Negative values are similarly enhanced by negating the data, running the</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    same process, and negating the result.</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">    </span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">    This method is explained in: Smith SM, Nichols TE., &quot;Threshold-free cluster</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">    enhancement: addressing problems of smoothing, threshold dependence and</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">    localisation in cluster inference.&quot; Neuroimage. 2009 Jan 1;44(1):83-98.</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">    PMID: 18501637.</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">    </span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">    </span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    </span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    Args:</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">        volume_in: the volume to run TFCE on.</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">        presmooth: smooth the volume before running TFCE.</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to run TFCE on: the\</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">            area to run TFCE on, as a volume.</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">        parameters: set parameters for TFCE integral.</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">            number or name.</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    Returns:</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeTfceOutputs`).</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_TFCE_METADATA</span><span class="p">)</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_tfce_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">)</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="k">return</span> <span class="n">volume_tfce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="s2">&quot;VOLUME_TFCE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="s2">&quot;VolumeTfceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="s2">&quot;VolumeTfceParameters&quot;</span><span class="p">,</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;VolumeTfceParametersParameters&quot;</span><span class="p">,</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;VolumeTfcePresmoothParameters&quot;</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;volume_tfce&quot;</span><span class="p">,</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;volume_tfce_parameters_params&quot;</span><span class="p">,</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;volume_tfce_params&quot;</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;volume_tfce_presmooth_params&quot;</span><span class="p">,</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="p">]</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="s2">&quot;VOLUME_TFCE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="s2">&quot;VolumeTfceOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;VolumeTfceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;VolumeTfceParametersParameters&quot;</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;VolumeTfcePresmoothParameters&quot;</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;volume_tfce&quot;</span><span class="p">,</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;volume_tfce_parameters_params&quot;</span><span class="p">,</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;volume_tfce_params&quot;</span><span class="p">,</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="s2">&quot;volume_tfce_presmooth_params&quot;</span><span class="p">,</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -734,58 +735,58 @@
 
     </div>
     <a class="headerlink" href="#volume_tfce"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_tfce-300"><a href="#volume_tfce-300"><span class="linenos">300</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_tfce</span><span class="p">(</span>
-</span><span id="volume_tfce-301"><a href="#volume_tfce-301"><span class="linenos">301</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_tfce-302"><a href="#volume_tfce-302"><span class="linenos">302</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_tfce-303"><a href="#volume_tfce-303"><span class="linenos">303</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeTfcePresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_tfce-304"><a href="#volume_tfce-304"><span class="linenos">304</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_tfce-305"><a href="#volume_tfce-305"><span class="linenos">305</span></a>    <span class="n">parameters</span><span class="p">:</span> <span class="n">VolumeTfceParametersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_tfce-306"><a href="#volume_tfce-306"><span class="linenos">306</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_tfce-307"><a href="#volume_tfce-307"><span class="linenos">307</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_tfce-308"><a href="#volume_tfce-308"><span class="linenos">308</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeTfceOutputs</span><span class="p">:</span>
-</span><span id="volume_tfce-309"><a href="#volume_tfce-309"><span class="linenos">309</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_tfce-310"><a href="#volume_tfce-310"><span class="linenos">310</span></a><span class="sd">    Do tfce on a volume file.</span>
-</span><span id="volume_tfce-311"><a href="#volume_tfce-311"><span class="linenos">311</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-312"><a href="#volume_tfce-312"><span class="linenos">312</span></a><span class="sd">    This command does not do any statistical analysis. Please use something like</span>
-</span><span id="volume_tfce-313"><a href="#volume_tfce-313"><span class="linenos">313</span></a><span class="sd">    PALM if you are just trying to do statistics on your data.</span>
-</span><span id="volume_tfce-314"><a href="#volume_tfce-314"><span class="linenos">314</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-315"><a href="#volume_tfce-315"><span class="linenos">315</span></a><span class="sd">    Threshold-free cluster enhancement is a method to increase the relative</span>
-</span><span id="volume_tfce-316"><a href="#volume_tfce-316"><span class="linenos">316</span></a><span class="sd">    value of regions that would form clusters in a standard thresholding test.</span>
-</span><span id="volume_tfce-317"><a href="#volume_tfce-317"><span class="linenos">317</span></a><span class="sd">    This is accomplished by evaluating the integral of:</span>
-</span><span id="volume_tfce-318"><a href="#volume_tfce-318"><span class="linenos">318</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-319"><a href="#volume_tfce-319"><span class="linenos">319</span></a><span class="sd">    e(h, p)^E * h^H * dh</span>
-</span><span id="volume_tfce-320"><a href="#volume_tfce-320"><span class="linenos">320</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-321"><a href="#volume_tfce-321"><span class="linenos">321</span></a><span class="sd">    at each voxel p, where h ranges from 0 to the maximum value in the data, and</span>
-</span><span id="volume_tfce-322"><a href="#volume_tfce-322"><span class="linenos">322</span></a><span class="sd">    e(h, p) is the extent of the cluster containing voxel p at threshold h.</span>
-</span><span id="volume_tfce-323"><a href="#volume_tfce-323"><span class="linenos">323</span></a><span class="sd">    Negative values are similarly enhanced by negating the data, running the</span>
-</span><span id="volume_tfce-324"><a href="#volume_tfce-324"><span class="linenos">324</span></a><span class="sd">    same process, and negating the result.</span>
-</span><span id="volume_tfce-325"><a href="#volume_tfce-325"><span class="linenos">325</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-326"><a href="#volume_tfce-326"><span class="linenos">326</span></a><span class="sd">    This method is explained in: Smith SM, Nichols TE., &quot;Threshold-free cluster</span>
-</span><span id="volume_tfce-327"><a href="#volume_tfce-327"><span class="linenos">327</span></a><span class="sd">    enhancement: addressing problems of smoothing, threshold dependence and</span>
-</span><span id="volume_tfce-328"><a href="#volume_tfce-328"><span class="linenos">328</span></a><span class="sd">    localisation in cluster inference.&quot; Neuroimage. 2009 Jan 1;44(1):83-98.</span>
-</span><span id="volume_tfce-329"><a href="#volume_tfce-329"><span class="linenos">329</span></a><span class="sd">    PMID: 18501637.</span>
-</span><span id="volume_tfce-330"><a href="#volume_tfce-330"><span class="linenos">330</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-331"><a href="#volume_tfce-331"><span class="linenos">331</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_tfce-332"><a href="#volume_tfce-332"><span class="linenos">332</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-333"><a href="#volume_tfce-333"><span class="linenos">333</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_tfce-334"><a href="#volume_tfce-334"><span class="linenos">334</span></a><span class="sd">    </span>
-</span><span id="volume_tfce-335"><a href="#volume_tfce-335"><span class="linenos">335</span></a><span class="sd">    Args:</span>
-</span><span id="volume_tfce-336"><a href="#volume_tfce-336"><span class="linenos">336</span></a><span class="sd">        volume_in: the volume to run TFCE on.</span>
-</span><span id="volume_tfce-337"><a href="#volume_tfce-337"><span class="linenos">337</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="volume_tfce-338"><a href="#volume_tfce-338"><span class="linenos">338</span></a><span class="sd">        presmooth: smooth the volume before running TFCE.</span>
-</span><span id="volume_tfce-339"><a href="#volume_tfce-339"><span class="linenos">339</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to run TFCE on: the\</span>
-</span><span id="volume_tfce-340"><a href="#volume_tfce-340"><span class="linenos">340</span></a><span class="sd">            area to run TFCE on, as a volume.</span>
-</span><span id="volume_tfce-341"><a href="#volume_tfce-341"><span class="linenos">341</span></a><span class="sd">        parameters: set parameters for TFCE integral.</span>
-</span><span id="volume_tfce-342"><a href="#volume_tfce-342"><span class="linenos">342</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
-</span><span id="volume_tfce-343"><a href="#volume_tfce-343"><span class="linenos">343</span></a><span class="sd">            number or name.</span>
-</span><span id="volume_tfce-344"><a href="#volume_tfce-344"><span class="linenos">344</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_tfce-345"><a href="#volume_tfce-345"><span class="linenos">345</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_tfce-346"><a href="#volume_tfce-346"><span class="linenos">346</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeTfceOutputs`).</span>
-</span><span id="volume_tfce-347"><a href="#volume_tfce-347"><span class="linenos">347</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_tfce-348"><a href="#volume_tfce-348"><span class="linenos">348</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_tfce-349"><a href="#volume_tfce-349"><span class="linenos">349</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_TFCE_METADATA</span><span class="p">)</span>
-</span><span id="volume_tfce-350"><a href="#volume_tfce-350"><span class="linenos">350</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_tfce_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">)</span>
-</span><span id="volume_tfce-351"><a href="#volume_tfce-351"><span class="linenos">351</span></a>    <span class="k">return</span> <span class="n">volume_tfce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_tfce-301"><a href="#volume_tfce-301"><span class="linenos">301</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_tfce</span><span class="p">(</span>
+</span><span id="volume_tfce-302"><a href="#volume_tfce-302"><span class="linenos">302</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_tfce-303"><a href="#volume_tfce-303"><span class="linenos">303</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_tfce-304"><a href="#volume_tfce-304"><span class="linenos">304</span></a>    <span class="n">presmooth</span><span class="p">:</span> <span class="n">VolumeTfcePresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_tfce-305"><a href="#volume_tfce-305"><span class="linenos">305</span></a>    <span class="n">opt_roi_roi_volume</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_tfce-306"><a href="#volume_tfce-306"><span class="linenos">306</span></a>    <span class="n">parameters</span><span class="p">:</span> <span class="n">VolumeTfceParametersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_tfce-307"><a href="#volume_tfce-307"><span class="linenos">307</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_tfce-308"><a href="#volume_tfce-308"><span class="linenos">308</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_tfce-309"><a href="#volume_tfce-309"><span class="linenos">309</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeTfceOutputs</span><span class="p">:</span>
+</span><span id="volume_tfce-310"><a href="#volume_tfce-310"><span class="linenos">310</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_tfce-311"><a href="#volume_tfce-311"><span class="linenos">311</span></a><span class="sd">    Do tfce on a volume file.</span>
+</span><span id="volume_tfce-312"><a href="#volume_tfce-312"><span class="linenos">312</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-313"><a href="#volume_tfce-313"><span class="linenos">313</span></a><span class="sd">    This command does not do any statistical analysis. Please use something like</span>
+</span><span id="volume_tfce-314"><a href="#volume_tfce-314"><span class="linenos">314</span></a><span class="sd">    PALM if you are just trying to do statistics on your data.</span>
+</span><span id="volume_tfce-315"><a href="#volume_tfce-315"><span class="linenos">315</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-316"><a href="#volume_tfce-316"><span class="linenos">316</span></a><span class="sd">    Threshold-free cluster enhancement is a method to increase the relative</span>
+</span><span id="volume_tfce-317"><a href="#volume_tfce-317"><span class="linenos">317</span></a><span class="sd">    value of regions that would form clusters in a standard thresholding test.</span>
+</span><span id="volume_tfce-318"><a href="#volume_tfce-318"><span class="linenos">318</span></a><span class="sd">    This is accomplished by evaluating the integral of:</span>
+</span><span id="volume_tfce-319"><a href="#volume_tfce-319"><span class="linenos">319</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-320"><a href="#volume_tfce-320"><span class="linenos">320</span></a><span class="sd">    e(h, p)^E * h^H * dh</span>
+</span><span id="volume_tfce-321"><a href="#volume_tfce-321"><span class="linenos">321</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-322"><a href="#volume_tfce-322"><span class="linenos">322</span></a><span class="sd">    at each voxel p, where h ranges from 0 to the maximum value in the data, and</span>
+</span><span id="volume_tfce-323"><a href="#volume_tfce-323"><span class="linenos">323</span></a><span class="sd">    e(h, p) is the extent of the cluster containing voxel p at threshold h.</span>
+</span><span id="volume_tfce-324"><a href="#volume_tfce-324"><span class="linenos">324</span></a><span class="sd">    Negative values are similarly enhanced by negating the data, running the</span>
+</span><span id="volume_tfce-325"><a href="#volume_tfce-325"><span class="linenos">325</span></a><span class="sd">    same process, and negating the result.</span>
+</span><span id="volume_tfce-326"><a href="#volume_tfce-326"><span class="linenos">326</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-327"><a href="#volume_tfce-327"><span class="linenos">327</span></a><span class="sd">    This method is explained in: Smith SM, Nichols TE., &quot;Threshold-free cluster</span>
+</span><span id="volume_tfce-328"><a href="#volume_tfce-328"><span class="linenos">328</span></a><span class="sd">    enhancement: addressing problems of smoothing, threshold dependence and</span>
+</span><span id="volume_tfce-329"><a href="#volume_tfce-329"><span class="linenos">329</span></a><span class="sd">    localisation in cluster inference.&quot; Neuroimage. 2009 Jan 1;44(1):83-98.</span>
+</span><span id="volume_tfce-330"><a href="#volume_tfce-330"><span class="linenos">330</span></a><span class="sd">    PMID: 18501637.</span>
+</span><span id="volume_tfce-331"><a href="#volume_tfce-331"><span class="linenos">331</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-332"><a href="#volume_tfce-332"><span class="linenos">332</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_tfce-333"><a href="#volume_tfce-333"><span class="linenos">333</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-334"><a href="#volume_tfce-334"><span class="linenos">334</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_tfce-335"><a href="#volume_tfce-335"><span class="linenos">335</span></a><span class="sd">    </span>
+</span><span id="volume_tfce-336"><a href="#volume_tfce-336"><span class="linenos">336</span></a><span class="sd">    Args:</span>
+</span><span id="volume_tfce-337"><a href="#volume_tfce-337"><span class="linenos">337</span></a><span class="sd">        volume_in: the volume to run TFCE on.</span>
+</span><span id="volume_tfce-338"><a href="#volume_tfce-338"><span class="linenos">338</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="volume_tfce-339"><a href="#volume_tfce-339"><span class="linenos">339</span></a><span class="sd">        presmooth: smooth the volume before running TFCE.</span>
+</span><span id="volume_tfce-340"><a href="#volume_tfce-340"><span class="linenos">340</span></a><span class="sd">        opt_roi_roi_volume: select a region of interest to run TFCE on: the\</span>
+</span><span id="volume_tfce-341"><a href="#volume_tfce-341"><span class="linenos">341</span></a><span class="sd">            area to run TFCE on, as a volume.</span>
+</span><span id="volume_tfce-342"><a href="#volume_tfce-342"><span class="linenos">342</span></a><span class="sd">        parameters: set parameters for TFCE integral.</span>
+</span><span id="volume_tfce-343"><a href="#volume_tfce-343"><span class="linenos">343</span></a><span class="sd">        opt_subvolume_subvolume: select a single subvolume: the subvolume\</span>
+</span><span id="volume_tfce-344"><a href="#volume_tfce-344"><span class="linenos">344</span></a><span class="sd">            number or name.</span>
+</span><span id="volume_tfce-345"><a href="#volume_tfce-345"><span class="linenos">345</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_tfce-346"><a href="#volume_tfce-346"><span class="linenos">346</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_tfce-347"><a href="#volume_tfce-347"><span class="linenos">347</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeTfceOutputs`).</span>
+</span><span id="volume_tfce-348"><a href="#volume_tfce-348"><span class="linenos">348</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_tfce-349"><a href="#volume_tfce-349"><span class="linenos">349</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_tfce-350"><a href="#volume_tfce-350"><span class="linenos">350</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_TFCE_METADATA</span><span class="p">)</span>
+</span><span id="volume_tfce-351"><a href="#volume_tfce-351"><span class="linenos">351</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_tfce_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">presmooth</span><span class="o">=</span><span class="n">presmooth</span><span class="p">,</span> <span class="n">opt_roi_roi_volume</span><span class="o">=</span><span class="n">opt_roi_roi_volume</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">opt_subvolume_subvolume</span><span class="o">=</span><span class="n">opt_subvolume_subvolume</span><span class="p">)</span>
+</span><span id="volume_tfce-352"><a href="#volume_tfce-352"><span class="linenos">352</span></a>    <span class="k">return</span> <span class="n">volume_tfce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

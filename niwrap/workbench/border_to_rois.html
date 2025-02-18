@@ -270,53 +270,54 @@
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">border_to_rois_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">border_to_rois_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_to_rois</span><span class="p">(</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">opt_border_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">opt_include_border</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderToRoisOutputs</span><span class="p">:</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    Make metric rois from borders.</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    </span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    By default, draws ROIs inside all borders in the border file, as separate</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    metric columns.</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    </span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    </span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    </span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    Args:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        surface: the surface the borders are drawn on.</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        border_file: the border file.</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        metric_out: the output metric file.</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        opt_border_name: create ROI for only one border: the name of the border.</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        opt_inverse: use inverse selection (outside border).</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        opt_include_border: include vertices the border is closest to.</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    Returns:</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        NamedTuple of outputs (described in `BorderToRoisOutputs`).</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_TO_ROIS_METADATA</span><span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_to_rois_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_border_name</span><span class="o">=</span><span class="n">opt_border_name</span><span class="p">,</span> <span class="n">opt_inverse</span><span class="o">=</span><span class="n">opt_inverse</span><span class="p">,</span> <span class="n">opt_include_border</span><span class="o">=</span><span class="n">opt_include_border</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">return</span> <span class="n">border_to_rois_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_to_rois</span><span class="p">(</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">opt_border_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">opt_include_border</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderToRoisOutputs</span><span class="p">:</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    Make metric rois from borders.</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    </span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    By default, draws ROIs inside all borders in the border file, as separate</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    metric columns.</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    </span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    </span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    </span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    Args:</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        surface: the surface the borders are drawn on.</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        border_file: the border file.</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        metric_out: the output metric file.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        opt_border_name: create ROI for only one border: the name of the border.</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        opt_inverse: use inverse selection (outside border).</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        opt_include_border: include vertices the border is closest to.</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    Returns:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        NamedTuple of outputs (described in `BorderToRoisOutputs`).</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_TO_ROIS_METADATA</span><span class="p">)</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_to_rois_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_border_name</span><span class="o">=</span><span class="n">opt_border_name</span><span class="p">,</span> <span class="n">opt_inverse</span><span class="o">=</span><span class="n">opt_inverse</span><span class="p">,</span> <span class="n">opt_include_border</span><span class="o">=</span><span class="n">opt_include_border</span><span class="p">)</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">return</span> <span class="n">border_to_rois_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="s2">&quot;BORDER_TO_ROIS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;BorderToRoisOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;BorderToRoisParameters&quot;</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;border_to_rois&quot;</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;border_to_rois_params&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="p">]</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;BORDER_TO_ROIS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;BorderToRoisOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;BorderToRoisParameters&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;border_to_rois&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;border_to_rois_params&quot;</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -491,40 +492,40 @@
 
     </div>
     <a class="headerlink" href="#border_to_rois"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="border_to_rois-179"><a href="#border_to_rois-179"><span class="linenos">179</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_to_rois</span><span class="p">(</span>
-</span><span id="border_to_rois-180"><a href="#border_to_rois-180"><span class="linenos">180</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="border_to_rois-181"><a href="#border_to_rois-181"><span class="linenos">181</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="border_to_rois-182"><a href="#border_to_rois-182"><span class="linenos">182</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="border_to_rois-183"><a href="#border_to_rois-183"><span class="linenos">183</span></a>    <span class="n">opt_border_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="border_to_rois-184"><a href="#border_to_rois-184"><span class="linenos">184</span></a>    <span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="border_to_rois-185"><a href="#border_to_rois-185"><span class="linenos">185</span></a>    <span class="n">opt_include_border</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="border_to_rois-186"><a href="#border_to_rois-186"><span class="linenos">186</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="border_to_rois-187"><a href="#border_to_rois-187"><span class="linenos">187</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderToRoisOutputs</span><span class="p">:</span>
-</span><span id="border_to_rois-188"><a href="#border_to_rois-188"><span class="linenos">188</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="border_to_rois-189"><a href="#border_to_rois-189"><span class="linenos">189</span></a><span class="sd">    Make metric rois from borders.</span>
-</span><span id="border_to_rois-190"><a href="#border_to_rois-190"><span class="linenos">190</span></a><span class="sd">    </span>
-</span><span id="border_to_rois-191"><a href="#border_to_rois-191"><span class="linenos">191</span></a><span class="sd">    By default, draws ROIs inside all borders in the border file, as separate</span>
-</span><span id="border_to_rois-192"><a href="#border_to_rois-192"><span class="linenos">192</span></a><span class="sd">    metric columns.</span>
-</span><span id="border_to_rois-193"><a href="#border_to_rois-193"><span class="linenos">193</span></a><span class="sd">    </span>
-</span><span id="border_to_rois-194"><a href="#border_to_rois-194"><span class="linenos">194</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="border_to_rois-195"><a href="#border_to_rois-195"><span class="linenos">195</span></a><span class="sd">    </span>
-</span><span id="border_to_rois-196"><a href="#border_to_rois-196"><span class="linenos">196</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="border_to_rois-197"><a href="#border_to_rois-197"><span class="linenos">197</span></a><span class="sd">    </span>
-</span><span id="border_to_rois-198"><a href="#border_to_rois-198"><span class="linenos">198</span></a><span class="sd">    Args:</span>
-</span><span id="border_to_rois-199"><a href="#border_to_rois-199"><span class="linenos">199</span></a><span class="sd">        surface: the surface the borders are drawn on.</span>
-</span><span id="border_to_rois-200"><a href="#border_to_rois-200"><span class="linenos">200</span></a><span class="sd">        border_file: the border file.</span>
-</span><span id="border_to_rois-201"><a href="#border_to_rois-201"><span class="linenos">201</span></a><span class="sd">        metric_out: the output metric file.</span>
-</span><span id="border_to_rois-202"><a href="#border_to_rois-202"><span class="linenos">202</span></a><span class="sd">        opt_border_name: create ROI for only one border: the name of the border.</span>
-</span><span id="border_to_rois-203"><a href="#border_to_rois-203"><span class="linenos">203</span></a><span class="sd">        opt_inverse: use inverse selection (outside border).</span>
-</span><span id="border_to_rois-204"><a href="#border_to_rois-204"><span class="linenos">204</span></a><span class="sd">        opt_include_border: include vertices the border is closest to.</span>
-</span><span id="border_to_rois-205"><a href="#border_to_rois-205"><span class="linenos">205</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="border_to_rois-206"><a href="#border_to_rois-206"><span class="linenos">206</span></a><span class="sd">    Returns:</span>
-</span><span id="border_to_rois-207"><a href="#border_to_rois-207"><span class="linenos">207</span></a><span class="sd">        NamedTuple of outputs (described in `BorderToRoisOutputs`).</span>
-</span><span id="border_to_rois-208"><a href="#border_to_rois-208"><span class="linenos">208</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="border_to_rois-209"><a href="#border_to_rois-209"><span class="linenos">209</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="border_to_rois-210"><a href="#border_to_rois-210"><span class="linenos">210</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_TO_ROIS_METADATA</span><span class="p">)</span>
-</span><span id="border_to_rois-211"><a href="#border_to_rois-211"><span class="linenos">211</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_to_rois_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_border_name</span><span class="o">=</span><span class="n">opt_border_name</span><span class="p">,</span> <span class="n">opt_inverse</span><span class="o">=</span><span class="n">opt_inverse</span><span class="p">,</span> <span class="n">opt_include_border</span><span class="o">=</span><span class="n">opt_include_border</span><span class="p">)</span>
-</span><span id="border_to_rois-212"><a href="#border_to_rois-212"><span class="linenos">212</span></a>    <span class="k">return</span> <span class="n">border_to_rois_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="border_to_rois-180"><a href="#border_to_rois-180"><span class="linenos">180</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_to_rois</span><span class="p">(</span>
+</span><span id="border_to_rois-181"><a href="#border_to_rois-181"><span class="linenos">181</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="border_to_rois-182"><a href="#border_to_rois-182"><span class="linenos">182</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="border_to_rois-183"><a href="#border_to_rois-183"><span class="linenos">183</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="border_to_rois-184"><a href="#border_to_rois-184"><span class="linenos">184</span></a>    <span class="n">opt_border_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="border_to_rois-185"><a href="#border_to_rois-185"><span class="linenos">185</span></a>    <span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="border_to_rois-186"><a href="#border_to_rois-186"><span class="linenos">186</span></a>    <span class="n">opt_include_border</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="border_to_rois-187"><a href="#border_to_rois-187"><span class="linenos">187</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="border_to_rois-188"><a href="#border_to_rois-188"><span class="linenos">188</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderToRoisOutputs</span><span class="p">:</span>
+</span><span id="border_to_rois-189"><a href="#border_to_rois-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="border_to_rois-190"><a href="#border_to_rois-190"><span class="linenos">190</span></a><span class="sd">    Make metric rois from borders.</span>
+</span><span id="border_to_rois-191"><a href="#border_to_rois-191"><span class="linenos">191</span></a><span class="sd">    </span>
+</span><span id="border_to_rois-192"><a href="#border_to_rois-192"><span class="linenos">192</span></a><span class="sd">    By default, draws ROIs inside all borders in the border file, as separate</span>
+</span><span id="border_to_rois-193"><a href="#border_to_rois-193"><span class="linenos">193</span></a><span class="sd">    metric columns.</span>
+</span><span id="border_to_rois-194"><a href="#border_to_rois-194"><span class="linenos">194</span></a><span class="sd">    </span>
+</span><span id="border_to_rois-195"><a href="#border_to_rois-195"><span class="linenos">195</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="border_to_rois-196"><a href="#border_to_rois-196"><span class="linenos">196</span></a><span class="sd">    </span>
+</span><span id="border_to_rois-197"><a href="#border_to_rois-197"><span class="linenos">197</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="border_to_rois-198"><a href="#border_to_rois-198"><span class="linenos">198</span></a><span class="sd">    </span>
+</span><span id="border_to_rois-199"><a href="#border_to_rois-199"><span class="linenos">199</span></a><span class="sd">    Args:</span>
+</span><span id="border_to_rois-200"><a href="#border_to_rois-200"><span class="linenos">200</span></a><span class="sd">        surface: the surface the borders are drawn on.</span>
+</span><span id="border_to_rois-201"><a href="#border_to_rois-201"><span class="linenos">201</span></a><span class="sd">        border_file: the border file.</span>
+</span><span id="border_to_rois-202"><a href="#border_to_rois-202"><span class="linenos">202</span></a><span class="sd">        metric_out: the output metric file.</span>
+</span><span id="border_to_rois-203"><a href="#border_to_rois-203"><span class="linenos">203</span></a><span class="sd">        opt_border_name: create ROI for only one border: the name of the border.</span>
+</span><span id="border_to_rois-204"><a href="#border_to_rois-204"><span class="linenos">204</span></a><span class="sd">        opt_inverse: use inverse selection (outside border).</span>
+</span><span id="border_to_rois-205"><a href="#border_to_rois-205"><span class="linenos">205</span></a><span class="sd">        opt_include_border: include vertices the border is closest to.</span>
+</span><span id="border_to_rois-206"><a href="#border_to_rois-206"><span class="linenos">206</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="border_to_rois-207"><a href="#border_to_rois-207"><span class="linenos">207</span></a><span class="sd">    Returns:</span>
+</span><span id="border_to_rois-208"><a href="#border_to_rois-208"><span class="linenos">208</span></a><span class="sd">        NamedTuple of outputs (described in `BorderToRoisOutputs`).</span>
+</span><span id="border_to_rois-209"><a href="#border_to_rois-209"><span class="linenos">209</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="border_to_rois-210"><a href="#border_to_rois-210"><span class="linenos">210</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="border_to_rois-211"><a href="#border_to_rois-211"><span class="linenos">211</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_TO_ROIS_METADATA</span><span class="p">)</span>
+</span><span id="border_to_rois-212"><a href="#border_to_rois-212"><span class="linenos">212</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_to_rois_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_border_name</span><span class="o">=</span><span class="n">opt_border_name</span><span class="p">,</span> <span class="n">opt_inverse</span><span class="o">=</span><span class="n">opt_inverse</span><span class="p">,</span> <span class="n">opt_include_border</span><span class="o">=</span><span class="n">opt_include_border</span><span class="p">)</span>
+</span><span id="border_to_rois-213"><a href="#border_to_rois-213"><span class="linenos">213</span></a>    <span class="k">return</span> <span class="n">border_to_rois_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

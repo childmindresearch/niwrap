@@ -450,115 +450,116 @@
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">afdconnectivity_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">afdconnectivity_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="k">def</span><span class="w"> </span><span class="nf">afdconnectivity</span><span class="p">(</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="n">image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="n">wbft</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">afd_map</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">all_fixels</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AfdconnectivityConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AfdconnectivityOutputs</span><span class="p">:</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    Obtain an estimate of fibre connectivity between two regions using AFD and</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    streamlines tractography.</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    </span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    This estimate is obtained by determining a fibre volume (AFD) occupied by</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    the pathway of interest, and dividing by the streamline length.</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    </span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    If only the streamlines belonging to the pathway of interest are provided,</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    then ALL of the fibre volume within each fixel selected will contribute to</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    the result. If the -wbft option is used to provide whole-brain</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    fibre-tracking (of which the pathway of interest should contain a subset),</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    only the fraction of the fibre volume in each fixel estimated to belong to</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    the pathway of interest will contribute to the result.</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    </span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    Use -quiet to suppress progress messages and output fibre connectivity value</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    only.</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    </span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    For valid comparisons of AFD connectivity across scans, images MUST be</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">    intensity normalised and bias field corrected, and a common response</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">    function for all subjects must be used.</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">    </span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">    Note that the sum of the AFD is normalised by streamline length to account</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">    for subject differences in fibre bundle length. This normalisation results</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">    in a measure that is more related to the cross-sectional volume of the tract</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">    (and therefore &#39;connectivity&#39;). Note that SIFT-ed tract count is a superior</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">    measure because it is unaffected by tangential yet unrelated fibres.</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">    However, AFD connectivity may be used as a substitute when Anatomically</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">    Constrained Tractography is not possible due to uncorrectable EPI</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">    distortions, and SIFT may therefore not be as effective.</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">    </span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">    Longer discussion regarding this command can additionally be found at:</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/afd_connectivity.html (as</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">    well as in the relevant reference).</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">    </span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">    References:</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">    </span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">    Smith, R. E.; Raffelt, D.; Tournier, J.-D.; Connelly, A. Quantitative</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    Streamlines Tractography: Methods and Inter-Subject Normalisation. Open</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    Science Framework, https://doi.org/10.31219/osf.io/c67kn.</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    </span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    </span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    </span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    Args:</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">        image: the input FOD image.</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">        tracks: the input track file defining the bundle of interest.</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">        wbft: provide a whole-brain fibre-tracking data set (of which the input\</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">            track file should be a subset), to improve the estimate of fibre bundle\</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">            volume in the presence of partial volume.</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">        afd_map: output a 3D image containing the AFD estimated for each voxel.</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">        all_fixels: if whole-brain fibre-tracking is NOT provided, then if\</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">            multiple fixels within a voxel are traversed by the pathway of\</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">            interest, by default the fixel with the greatest streamlines density is\</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">            selected to contribute to the AFD in that voxel. If this option is\</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">            provided, then ALL fixels with non-zero streamlines density will\</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">            contribute to the result, even if multiple fixels per voxel are\</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">            selected.</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    Returns:</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">        NamedTuple of outputs (described in `AfdconnectivityOutputs`).</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFDCONNECTIVITY_METADATA</span><span class="p">)</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">afdconnectivity_params</span><span class="p">(</span><span class="n">wbft</span><span class="o">=</span><span class="n">wbft</span><span class="p">,</span> <span class="n">afd_map</span><span class="o">=</span><span class="n">afd_map</span><span class="p">,</span> <span class="n">all_fixels</span><span class="o">=</span><span class="n">all_fixels</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">)</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="k">return</span> <span class="n">afdconnectivity_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="k">def</span><span class="w"> </span><span class="nf">afdconnectivity</span><span class="p">(</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="n">image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">wbft</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">afd_map</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">all_fixels</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AfdconnectivityConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AfdconnectivityOutputs</span><span class="p">:</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    Obtain an estimate of fibre connectivity between two regions using AFD and</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    streamlines tractography.</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    </span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    This estimate is obtained by determining a fibre volume (AFD) occupied by</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    the pathway of interest, and dividing by the streamline length.</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    </span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    If only the streamlines belonging to the pathway of interest are provided,</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    then ALL of the fibre volume within each fixel selected will contribute to</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    the result. If the -wbft option is used to provide whole-brain</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    fibre-tracking (of which the pathway of interest should contain a subset),</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    only the fraction of the fibre volume in each fixel estimated to belong to</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    the pathway of interest will contribute to the result.</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    </span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    Use -quiet to suppress progress messages and output fibre connectivity value</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    only.</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    </span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">    For valid comparisons of AFD connectivity across scans, images MUST be</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">    intensity normalised and bias field corrected, and a common response</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">    function for all subjects must be used.</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">    </span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">    Note that the sum of the AFD is normalised by streamline length to account</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">    for subject differences in fibre bundle length. This normalisation results</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">    in a measure that is more related to the cross-sectional volume of the tract</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">    (and therefore &#39;connectivity&#39;). Note that SIFT-ed tract count is a superior</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">    measure because it is unaffected by tangential yet unrelated fibres.</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">    However, AFD connectivity may be used as a substitute when Anatomically</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">    Constrained Tractography is not possible due to uncorrectable EPI</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">    distortions, and SIFT may therefore not be as effective.</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">    </span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">    Longer discussion regarding this command can additionally be found at:</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/afd_connectivity.html (as</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">    well as in the relevant reference).</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">    </span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">    References:</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">    </span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    Smith, R. E.; Raffelt, D.; Tournier, J.-D.; Connelly, A. Quantitative</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    Streamlines Tractography: Methods and Inter-Subject Normalisation. Open</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    Science Framework, https://doi.org/10.31219/osf.io/c67kn.</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    </span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    </span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    </span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    Args:</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">        image: the input FOD image.</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">        tracks: the input track file defining the bundle of interest.</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">        wbft: provide a whole-brain fibre-tracking data set (of which the input\</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">            track file should be a subset), to improve the estimate of fibre bundle\</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">            volume in the presence of partial volume.</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">        afd_map: output a 3D image containing the AFD estimated for each voxel.</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">        all_fixels: if whole-brain fibre-tracking is NOT provided, then if\</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">            multiple fixels within a voxel are traversed by the pathway of\</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">            interest, by default the fixel with the greatest streamlines density is\</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">            selected to contribute to the AFD in that voxel. If this option is\</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">            provided, then ALL fixels with non-zero streamlines density will\</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">            contribute to the result, even if multiple fixels per voxel are\</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">            selected.</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    Returns:</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">        NamedTuple of outputs (described in `AfdconnectivityOutputs`).</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFDCONNECTIVITY_METADATA</span><span class="p">)</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">afdconnectivity_params</span><span class="p">(</span><span class="n">wbft</span><span class="o">=</span><span class="n">wbft</span><span class="p">,</span> <span class="n">afd_map</span><span class="o">=</span><span class="n">afd_map</span><span class="p">,</span> <span class="n">all_fixels</span><span class="o">=</span><span class="n">all_fixels</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">)</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="k">return</span> <span class="n">afdconnectivity_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;AFDCONNECTIVITY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;AfdconnectivityConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;AfdconnectivityOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;AfdconnectivityParameters&quot;</span><span class="p">,</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;afdconnectivity&quot;</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;afdconnectivity_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;afdconnectivity_params&quot;</span><span class="p">,</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="p">]</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;AFDCONNECTIVITY_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;AfdconnectivityConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;AfdconnectivityOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;AfdconnectivityParameters&quot;</span><span class="p">,</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;afdconnectivity&quot;</span><span class="p">,</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;afdconnectivity_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;afdconnectivity_params&quot;</span><span class="p">,</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -845,100 +846,100 @@
 
     </div>
     <a class="headerlink" href="#afdconnectivity"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="afdconnectivity-323"><a href="#afdconnectivity-323"><span class="linenos">323</span></a><span class="k">def</span><span class="w"> </span><span class="nf">afdconnectivity</span><span class="p">(</span>
-</span><span id="afdconnectivity-324"><a href="#afdconnectivity-324"><span class="linenos">324</span></a>    <span class="n">image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="afdconnectivity-325"><a href="#afdconnectivity-325"><span class="linenos">325</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="afdconnectivity-326"><a href="#afdconnectivity-326"><span class="linenos">326</span></a>    <span class="n">wbft</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="afdconnectivity-327"><a href="#afdconnectivity-327"><span class="linenos">327</span></a>    <span class="n">afd_map</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="afdconnectivity-328"><a href="#afdconnectivity-328"><span class="linenos">328</span></a>    <span class="n">all_fixels</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="afdconnectivity-329"><a href="#afdconnectivity-329"><span class="linenos">329</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="afdconnectivity-330"><a href="#afdconnectivity-330"><span class="linenos">330</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="afdconnectivity-331"><a href="#afdconnectivity-331"><span class="linenos">331</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="afdconnectivity-332"><a href="#afdconnectivity-332"><span class="linenos">332</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="afdconnectivity-333"><a href="#afdconnectivity-333"><span class="linenos">333</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="afdconnectivity-334"><a href="#afdconnectivity-334"><span class="linenos">334</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AfdconnectivityConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="afdconnectivity-335"><a href="#afdconnectivity-335"><span class="linenos">335</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="afdconnectivity-336"><a href="#afdconnectivity-336"><span class="linenos">336</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="afdconnectivity-337"><a href="#afdconnectivity-337"><span class="linenos">337</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="afdconnectivity-338"><a href="#afdconnectivity-338"><span class="linenos">338</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AfdconnectivityOutputs</span><span class="p">:</span>
-</span><span id="afdconnectivity-339"><a href="#afdconnectivity-339"><span class="linenos">339</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="afdconnectivity-340"><a href="#afdconnectivity-340"><span class="linenos">340</span></a><span class="sd">    Obtain an estimate of fibre connectivity between two regions using AFD and</span>
-</span><span id="afdconnectivity-341"><a href="#afdconnectivity-341"><span class="linenos">341</span></a><span class="sd">    streamlines tractography.</span>
-</span><span id="afdconnectivity-342"><a href="#afdconnectivity-342"><span class="linenos">342</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-343"><a href="#afdconnectivity-343"><span class="linenos">343</span></a><span class="sd">    This estimate is obtained by determining a fibre volume (AFD) occupied by</span>
-</span><span id="afdconnectivity-344"><a href="#afdconnectivity-344"><span class="linenos">344</span></a><span class="sd">    the pathway of interest, and dividing by the streamline length.</span>
-</span><span id="afdconnectivity-345"><a href="#afdconnectivity-345"><span class="linenos">345</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-346"><a href="#afdconnectivity-346"><span class="linenos">346</span></a><span class="sd">    If only the streamlines belonging to the pathway of interest are provided,</span>
-</span><span id="afdconnectivity-347"><a href="#afdconnectivity-347"><span class="linenos">347</span></a><span class="sd">    then ALL of the fibre volume within each fixel selected will contribute to</span>
-</span><span id="afdconnectivity-348"><a href="#afdconnectivity-348"><span class="linenos">348</span></a><span class="sd">    the result. If the -wbft option is used to provide whole-brain</span>
-</span><span id="afdconnectivity-349"><a href="#afdconnectivity-349"><span class="linenos">349</span></a><span class="sd">    fibre-tracking (of which the pathway of interest should contain a subset),</span>
-</span><span id="afdconnectivity-350"><a href="#afdconnectivity-350"><span class="linenos">350</span></a><span class="sd">    only the fraction of the fibre volume in each fixel estimated to belong to</span>
-</span><span id="afdconnectivity-351"><a href="#afdconnectivity-351"><span class="linenos">351</span></a><span class="sd">    the pathway of interest will contribute to the result.</span>
-</span><span id="afdconnectivity-352"><a href="#afdconnectivity-352"><span class="linenos">352</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-353"><a href="#afdconnectivity-353"><span class="linenos">353</span></a><span class="sd">    Use -quiet to suppress progress messages and output fibre connectivity value</span>
-</span><span id="afdconnectivity-354"><a href="#afdconnectivity-354"><span class="linenos">354</span></a><span class="sd">    only.</span>
-</span><span id="afdconnectivity-355"><a href="#afdconnectivity-355"><span class="linenos">355</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-356"><a href="#afdconnectivity-356"><span class="linenos">356</span></a><span class="sd">    For valid comparisons of AFD connectivity across scans, images MUST be</span>
-</span><span id="afdconnectivity-357"><a href="#afdconnectivity-357"><span class="linenos">357</span></a><span class="sd">    intensity normalised and bias field corrected, and a common response</span>
-</span><span id="afdconnectivity-358"><a href="#afdconnectivity-358"><span class="linenos">358</span></a><span class="sd">    function for all subjects must be used.</span>
-</span><span id="afdconnectivity-359"><a href="#afdconnectivity-359"><span class="linenos">359</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-360"><a href="#afdconnectivity-360"><span class="linenos">360</span></a><span class="sd">    Note that the sum of the AFD is normalised by streamline length to account</span>
-</span><span id="afdconnectivity-361"><a href="#afdconnectivity-361"><span class="linenos">361</span></a><span class="sd">    for subject differences in fibre bundle length. This normalisation results</span>
-</span><span id="afdconnectivity-362"><a href="#afdconnectivity-362"><span class="linenos">362</span></a><span class="sd">    in a measure that is more related to the cross-sectional volume of the tract</span>
-</span><span id="afdconnectivity-363"><a href="#afdconnectivity-363"><span class="linenos">363</span></a><span class="sd">    (and therefore &#39;connectivity&#39;). Note that SIFT-ed tract count is a superior</span>
-</span><span id="afdconnectivity-364"><a href="#afdconnectivity-364"><span class="linenos">364</span></a><span class="sd">    measure because it is unaffected by tangential yet unrelated fibres.</span>
-</span><span id="afdconnectivity-365"><a href="#afdconnectivity-365"><span class="linenos">365</span></a><span class="sd">    However, AFD connectivity may be used as a substitute when Anatomically</span>
-</span><span id="afdconnectivity-366"><a href="#afdconnectivity-366"><span class="linenos">366</span></a><span class="sd">    Constrained Tractography is not possible due to uncorrectable EPI</span>
-</span><span id="afdconnectivity-367"><a href="#afdconnectivity-367"><span class="linenos">367</span></a><span class="sd">    distortions, and SIFT may therefore not be as effective.</span>
-</span><span id="afdconnectivity-368"><a href="#afdconnectivity-368"><span class="linenos">368</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-369"><a href="#afdconnectivity-369"><span class="linenos">369</span></a><span class="sd">    Longer discussion regarding this command can additionally be found at:</span>
-</span><span id="afdconnectivity-370"><a href="#afdconnectivity-370"><span class="linenos">370</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/afd_connectivity.html (as</span>
-</span><span id="afdconnectivity-371"><a href="#afdconnectivity-371"><span class="linenos">371</span></a><span class="sd">    well as in the relevant reference).</span>
-</span><span id="afdconnectivity-372"><a href="#afdconnectivity-372"><span class="linenos">372</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-373"><a href="#afdconnectivity-373"><span class="linenos">373</span></a><span class="sd">    References:</span>
-</span><span id="afdconnectivity-374"><a href="#afdconnectivity-374"><span class="linenos">374</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-375"><a href="#afdconnectivity-375"><span class="linenos">375</span></a><span class="sd">    Smith, R. E.; Raffelt, D.; Tournier, J.-D.; Connelly, A. Quantitative</span>
-</span><span id="afdconnectivity-376"><a href="#afdconnectivity-376"><span class="linenos">376</span></a><span class="sd">    Streamlines Tractography: Methods and Inter-Subject Normalisation. Open</span>
-</span><span id="afdconnectivity-377"><a href="#afdconnectivity-377"><span class="linenos">377</span></a><span class="sd">    Science Framework, https://doi.org/10.31219/osf.io/c67kn.</span>
-</span><span id="afdconnectivity-378"><a href="#afdconnectivity-378"><span class="linenos">378</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-379"><a href="#afdconnectivity-379"><span class="linenos">379</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="afdconnectivity-380"><a href="#afdconnectivity-380"><span class="linenos">380</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-381"><a href="#afdconnectivity-381"><span class="linenos">381</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="afdconnectivity-382"><a href="#afdconnectivity-382"><span class="linenos">382</span></a><span class="sd">    </span>
-</span><span id="afdconnectivity-383"><a href="#afdconnectivity-383"><span class="linenos">383</span></a><span class="sd">    Args:</span>
-</span><span id="afdconnectivity-384"><a href="#afdconnectivity-384"><span class="linenos">384</span></a><span class="sd">        image: the input FOD image.</span>
-</span><span id="afdconnectivity-385"><a href="#afdconnectivity-385"><span class="linenos">385</span></a><span class="sd">        tracks: the input track file defining the bundle of interest.</span>
-</span><span id="afdconnectivity-386"><a href="#afdconnectivity-386"><span class="linenos">386</span></a><span class="sd">        wbft: provide a whole-brain fibre-tracking data set (of which the input\</span>
-</span><span id="afdconnectivity-387"><a href="#afdconnectivity-387"><span class="linenos">387</span></a><span class="sd">            track file should be a subset), to improve the estimate of fibre bundle\</span>
-</span><span id="afdconnectivity-388"><a href="#afdconnectivity-388"><span class="linenos">388</span></a><span class="sd">            volume in the presence of partial volume.</span>
-</span><span id="afdconnectivity-389"><a href="#afdconnectivity-389"><span class="linenos">389</span></a><span class="sd">        afd_map: output a 3D image containing the AFD estimated for each voxel.</span>
-</span><span id="afdconnectivity-390"><a href="#afdconnectivity-390"><span class="linenos">390</span></a><span class="sd">        all_fixels: if whole-brain fibre-tracking is NOT provided, then if\</span>
-</span><span id="afdconnectivity-391"><a href="#afdconnectivity-391"><span class="linenos">391</span></a><span class="sd">            multiple fixels within a voxel are traversed by the pathway of\</span>
-</span><span id="afdconnectivity-392"><a href="#afdconnectivity-392"><span class="linenos">392</span></a><span class="sd">            interest, by default the fixel with the greatest streamlines density is\</span>
-</span><span id="afdconnectivity-393"><a href="#afdconnectivity-393"><span class="linenos">393</span></a><span class="sd">            selected to contribute to the AFD in that voxel. If this option is\</span>
-</span><span id="afdconnectivity-394"><a href="#afdconnectivity-394"><span class="linenos">394</span></a><span class="sd">            provided, then ALL fixels with non-zero streamlines density will\</span>
-</span><span id="afdconnectivity-395"><a href="#afdconnectivity-395"><span class="linenos">395</span></a><span class="sd">            contribute to the result, even if multiple fixels per voxel are\</span>
-</span><span id="afdconnectivity-396"><a href="#afdconnectivity-396"><span class="linenos">396</span></a><span class="sd">            selected.</span>
-</span><span id="afdconnectivity-397"><a href="#afdconnectivity-397"><span class="linenos">397</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="afdconnectivity-398"><a href="#afdconnectivity-398"><span class="linenos">398</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="afdconnectivity-399"><a href="#afdconnectivity-399"><span class="linenos">399</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="afdconnectivity-400"><a href="#afdconnectivity-400"><span class="linenos">400</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="afdconnectivity-401"><a href="#afdconnectivity-401"><span class="linenos">401</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="afdconnectivity-402"><a href="#afdconnectivity-402"><span class="linenos">402</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="afdconnectivity-403"><a href="#afdconnectivity-403"><span class="linenos">403</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="afdconnectivity-404"><a href="#afdconnectivity-404"><span class="linenos">404</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="afdconnectivity-405"><a href="#afdconnectivity-405"><span class="linenos">405</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="afdconnectivity-406"><a href="#afdconnectivity-406"><span class="linenos">406</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="afdconnectivity-407"><a href="#afdconnectivity-407"><span class="linenos">407</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="afdconnectivity-408"><a href="#afdconnectivity-408"><span class="linenos">408</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="afdconnectivity-409"><a href="#afdconnectivity-409"><span class="linenos">409</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="afdconnectivity-410"><a href="#afdconnectivity-410"><span class="linenos">410</span></a><span class="sd">    Returns:</span>
-</span><span id="afdconnectivity-411"><a href="#afdconnectivity-411"><span class="linenos">411</span></a><span class="sd">        NamedTuple of outputs (described in `AfdconnectivityOutputs`).</span>
-</span><span id="afdconnectivity-412"><a href="#afdconnectivity-412"><span class="linenos">412</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="afdconnectivity-413"><a href="#afdconnectivity-413"><span class="linenos">413</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="afdconnectivity-414"><a href="#afdconnectivity-414"><span class="linenos">414</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFDCONNECTIVITY_METADATA</span><span class="p">)</span>
-</span><span id="afdconnectivity-415"><a href="#afdconnectivity-415"><span class="linenos">415</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">afdconnectivity_params</span><span class="p">(</span><span class="n">wbft</span><span class="o">=</span><span class="n">wbft</span><span class="p">,</span> <span class="n">afd_map</span><span class="o">=</span><span class="n">afd_map</span><span class="p">,</span> <span class="n">all_fixels</span><span class="o">=</span><span class="n">all_fixels</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">)</span>
-</span><span id="afdconnectivity-416"><a href="#afdconnectivity-416"><span class="linenos">416</span></a>    <span class="k">return</span> <span class="n">afdconnectivity_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="afdconnectivity-324"><a href="#afdconnectivity-324"><span class="linenos">324</span></a><span class="k">def</span><span class="w"> </span><span class="nf">afdconnectivity</span><span class="p">(</span>
+</span><span id="afdconnectivity-325"><a href="#afdconnectivity-325"><span class="linenos">325</span></a>    <span class="n">image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="afdconnectivity-326"><a href="#afdconnectivity-326"><span class="linenos">326</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="afdconnectivity-327"><a href="#afdconnectivity-327"><span class="linenos">327</span></a>    <span class="n">wbft</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="afdconnectivity-328"><a href="#afdconnectivity-328"><span class="linenos">328</span></a>    <span class="n">afd_map</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="afdconnectivity-329"><a href="#afdconnectivity-329"><span class="linenos">329</span></a>    <span class="n">all_fixels</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="afdconnectivity-330"><a href="#afdconnectivity-330"><span class="linenos">330</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="afdconnectivity-331"><a href="#afdconnectivity-331"><span class="linenos">331</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="afdconnectivity-332"><a href="#afdconnectivity-332"><span class="linenos">332</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="afdconnectivity-333"><a href="#afdconnectivity-333"><span class="linenos">333</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="afdconnectivity-334"><a href="#afdconnectivity-334"><span class="linenos">334</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="afdconnectivity-335"><a href="#afdconnectivity-335"><span class="linenos">335</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AfdconnectivityConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="afdconnectivity-336"><a href="#afdconnectivity-336"><span class="linenos">336</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="afdconnectivity-337"><a href="#afdconnectivity-337"><span class="linenos">337</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="afdconnectivity-338"><a href="#afdconnectivity-338"><span class="linenos">338</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="afdconnectivity-339"><a href="#afdconnectivity-339"><span class="linenos">339</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AfdconnectivityOutputs</span><span class="p">:</span>
+</span><span id="afdconnectivity-340"><a href="#afdconnectivity-340"><span class="linenos">340</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="afdconnectivity-341"><a href="#afdconnectivity-341"><span class="linenos">341</span></a><span class="sd">    Obtain an estimate of fibre connectivity between two regions using AFD and</span>
+</span><span id="afdconnectivity-342"><a href="#afdconnectivity-342"><span class="linenos">342</span></a><span class="sd">    streamlines tractography.</span>
+</span><span id="afdconnectivity-343"><a href="#afdconnectivity-343"><span class="linenos">343</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-344"><a href="#afdconnectivity-344"><span class="linenos">344</span></a><span class="sd">    This estimate is obtained by determining a fibre volume (AFD) occupied by</span>
+</span><span id="afdconnectivity-345"><a href="#afdconnectivity-345"><span class="linenos">345</span></a><span class="sd">    the pathway of interest, and dividing by the streamline length.</span>
+</span><span id="afdconnectivity-346"><a href="#afdconnectivity-346"><span class="linenos">346</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-347"><a href="#afdconnectivity-347"><span class="linenos">347</span></a><span class="sd">    If only the streamlines belonging to the pathway of interest are provided,</span>
+</span><span id="afdconnectivity-348"><a href="#afdconnectivity-348"><span class="linenos">348</span></a><span class="sd">    then ALL of the fibre volume within each fixel selected will contribute to</span>
+</span><span id="afdconnectivity-349"><a href="#afdconnectivity-349"><span class="linenos">349</span></a><span class="sd">    the result. If the -wbft option is used to provide whole-brain</span>
+</span><span id="afdconnectivity-350"><a href="#afdconnectivity-350"><span class="linenos">350</span></a><span class="sd">    fibre-tracking (of which the pathway of interest should contain a subset),</span>
+</span><span id="afdconnectivity-351"><a href="#afdconnectivity-351"><span class="linenos">351</span></a><span class="sd">    only the fraction of the fibre volume in each fixel estimated to belong to</span>
+</span><span id="afdconnectivity-352"><a href="#afdconnectivity-352"><span class="linenos">352</span></a><span class="sd">    the pathway of interest will contribute to the result.</span>
+</span><span id="afdconnectivity-353"><a href="#afdconnectivity-353"><span class="linenos">353</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-354"><a href="#afdconnectivity-354"><span class="linenos">354</span></a><span class="sd">    Use -quiet to suppress progress messages and output fibre connectivity value</span>
+</span><span id="afdconnectivity-355"><a href="#afdconnectivity-355"><span class="linenos">355</span></a><span class="sd">    only.</span>
+</span><span id="afdconnectivity-356"><a href="#afdconnectivity-356"><span class="linenos">356</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-357"><a href="#afdconnectivity-357"><span class="linenos">357</span></a><span class="sd">    For valid comparisons of AFD connectivity across scans, images MUST be</span>
+</span><span id="afdconnectivity-358"><a href="#afdconnectivity-358"><span class="linenos">358</span></a><span class="sd">    intensity normalised and bias field corrected, and a common response</span>
+</span><span id="afdconnectivity-359"><a href="#afdconnectivity-359"><span class="linenos">359</span></a><span class="sd">    function for all subjects must be used.</span>
+</span><span id="afdconnectivity-360"><a href="#afdconnectivity-360"><span class="linenos">360</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-361"><a href="#afdconnectivity-361"><span class="linenos">361</span></a><span class="sd">    Note that the sum of the AFD is normalised by streamline length to account</span>
+</span><span id="afdconnectivity-362"><a href="#afdconnectivity-362"><span class="linenos">362</span></a><span class="sd">    for subject differences in fibre bundle length. This normalisation results</span>
+</span><span id="afdconnectivity-363"><a href="#afdconnectivity-363"><span class="linenos">363</span></a><span class="sd">    in a measure that is more related to the cross-sectional volume of the tract</span>
+</span><span id="afdconnectivity-364"><a href="#afdconnectivity-364"><span class="linenos">364</span></a><span class="sd">    (and therefore &#39;connectivity&#39;). Note that SIFT-ed tract count is a superior</span>
+</span><span id="afdconnectivity-365"><a href="#afdconnectivity-365"><span class="linenos">365</span></a><span class="sd">    measure because it is unaffected by tangential yet unrelated fibres.</span>
+</span><span id="afdconnectivity-366"><a href="#afdconnectivity-366"><span class="linenos">366</span></a><span class="sd">    However, AFD connectivity may be used as a substitute when Anatomically</span>
+</span><span id="afdconnectivity-367"><a href="#afdconnectivity-367"><span class="linenos">367</span></a><span class="sd">    Constrained Tractography is not possible due to uncorrectable EPI</span>
+</span><span id="afdconnectivity-368"><a href="#afdconnectivity-368"><span class="linenos">368</span></a><span class="sd">    distortions, and SIFT may therefore not be as effective.</span>
+</span><span id="afdconnectivity-369"><a href="#afdconnectivity-369"><span class="linenos">369</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-370"><a href="#afdconnectivity-370"><span class="linenos">370</span></a><span class="sd">    Longer discussion regarding this command can additionally be found at:</span>
+</span><span id="afdconnectivity-371"><a href="#afdconnectivity-371"><span class="linenos">371</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/afd_connectivity.html (as</span>
+</span><span id="afdconnectivity-372"><a href="#afdconnectivity-372"><span class="linenos">372</span></a><span class="sd">    well as in the relevant reference).</span>
+</span><span id="afdconnectivity-373"><a href="#afdconnectivity-373"><span class="linenos">373</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-374"><a href="#afdconnectivity-374"><span class="linenos">374</span></a><span class="sd">    References:</span>
+</span><span id="afdconnectivity-375"><a href="#afdconnectivity-375"><span class="linenos">375</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-376"><a href="#afdconnectivity-376"><span class="linenos">376</span></a><span class="sd">    Smith, R. E.; Raffelt, D.; Tournier, J.-D.; Connelly, A. Quantitative</span>
+</span><span id="afdconnectivity-377"><a href="#afdconnectivity-377"><span class="linenos">377</span></a><span class="sd">    Streamlines Tractography: Methods and Inter-Subject Normalisation. Open</span>
+</span><span id="afdconnectivity-378"><a href="#afdconnectivity-378"><span class="linenos">378</span></a><span class="sd">    Science Framework, https://doi.org/10.31219/osf.io/c67kn.</span>
+</span><span id="afdconnectivity-379"><a href="#afdconnectivity-379"><span class="linenos">379</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-380"><a href="#afdconnectivity-380"><span class="linenos">380</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="afdconnectivity-381"><a href="#afdconnectivity-381"><span class="linenos">381</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-382"><a href="#afdconnectivity-382"><span class="linenos">382</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="afdconnectivity-383"><a href="#afdconnectivity-383"><span class="linenos">383</span></a><span class="sd">    </span>
+</span><span id="afdconnectivity-384"><a href="#afdconnectivity-384"><span class="linenos">384</span></a><span class="sd">    Args:</span>
+</span><span id="afdconnectivity-385"><a href="#afdconnectivity-385"><span class="linenos">385</span></a><span class="sd">        image: the input FOD image.</span>
+</span><span id="afdconnectivity-386"><a href="#afdconnectivity-386"><span class="linenos">386</span></a><span class="sd">        tracks: the input track file defining the bundle of interest.</span>
+</span><span id="afdconnectivity-387"><a href="#afdconnectivity-387"><span class="linenos">387</span></a><span class="sd">        wbft: provide a whole-brain fibre-tracking data set (of which the input\</span>
+</span><span id="afdconnectivity-388"><a href="#afdconnectivity-388"><span class="linenos">388</span></a><span class="sd">            track file should be a subset), to improve the estimate of fibre bundle\</span>
+</span><span id="afdconnectivity-389"><a href="#afdconnectivity-389"><span class="linenos">389</span></a><span class="sd">            volume in the presence of partial volume.</span>
+</span><span id="afdconnectivity-390"><a href="#afdconnectivity-390"><span class="linenos">390</span></a><span class="sd">        afd_map: output a 3D image containing the AFD estimated for each voxel.</span>
+</span><span id="afdconnectivity-391"><a href="#afdconnectivity-391"><span class="linenos">391</span></a><span class="sd">        all_fixels: if whole-brain fibre-tracking is NOT provided, then if\</span>
+</span><span id="afdconnectivity-392"><a href="#afdconnectivity-392"><span class="linenos">392</span></a><span class="sd">            multiple fixels within a voxel are traversed by the pathway of\</span>
+</span><span id="afdconnectivity-393"><a href="#afdconnectivity-393"><span class="linenos">393</span></a><span class="sd">            interest, by default the fixel with the greatest streamlines density is\</span>
+</span><span id="afdconnectivity-394"><a href="#afdconnectivity-394"><span class="linenos">394</span></a><span class="sd">            selected to contribute to the AFD in that voxel. If this option is\</span>
+</span><span id="afdconnectivity-395"><a href="#afdconnectivity-395"><span class="linenos">395</span></a><span class="sd">            provided, then ALL fixels with non-zero streamlines density will\</span>
+</span><span id="afdconnectivity-396"><a href="#afdconnectivity-396"><span class="linenos">396</span></a><span class="sd">            contribute to the result, even if multiple fixels per voxel are\</span>
+</span><span id="afdconnectivity-397"><a href="#afdconnectivity-397"><span class="linenos">397</span></a><span class="sd">            selected.</span>
+</span><span id="afdconnectivity-398"><a href="#afdconnectivity-398"><span class="linenos">398</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="afdconnectivity-399"><a href="#afdconnectivity-399"><span class="linenos">399</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="afdconnectivity-400"><a href="#afdconnectivity-400"><span class="linenos">400</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="afdconnectivity-401"><a href="#afdconnectivity-401"><span class="linenos">401</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="afdconnectivity-402"><a href="#afdconnectivity-402"><span class="linenos">402</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="afdconnectivity-403"><a href="#afdconnectivity-403"><span class="linenos">403</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="afdconnectivity-404"><a href="#afdconnectivity-404"><span class="linenos">404</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="afdconnectivity-405"><a href="#afdconnectivity-405"><span class="linenos">405</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="afdconnectivity-406"><a href="#afdconnectivity-406"><span class="linenos">406</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="afdconnectivity-407"><a href="#afdconnectivity-407"><span class="linenos">407</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="afdconnectivity-408"><a href="#afdconnectivity-408"><span class="linenos">408</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="afdconnectivity-409"><a href="#afdconnectivity-409"><span class="linenos">409</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="afdconnectivity-410"><a href="#afdconnectivity-410"><span class="linenos">410</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="afdconnectivity-411"><a href="#afdconnectivity-411"><span class="linenos">411</span></a><span class="sd">    Returns:</span>
+</span><span id="afdconnectivity-412"><a href="#afdconnectivity-412"><span class="linenos">412</span></a><span class="sd">        NamedTuple of outputs (described in `AfdconnectivityOutputs`).</span>
+</span><span id="afdconnectivity-413"><a href="#afdconnectivity-413"><span class="linenos">413</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="afdconnectivity-414"><a href="#afdconnectivity-414"><span class="linenos">414</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="afdconnectivity-415"><a href="#afdconnectivity-415"><span class="linenos">415</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFDCONNECTIVITY_METADATA</span><span class="p">)</span>
+</span><span id="afdconnectivity-416"><a href="#afdconnectivity-416"><span class="linenos">416</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">afdconnectivity_params</span><span class="p">(</span><span class="n">wbft</span><span class="o">=</span><span class="n">wbft</span><span class="p">,</span> <span class="n">afd_map</span><span class="o">=</span><span class="n">afd_map</span><span class="p">,</span> <span class="n">all_fixels</span><span class="o">=</span><span class="n">all_fixels</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">)</span>
+</span><span id="afdconnectivity-417"><a href="#afdconnectivity-417"><span class="linenos">417</span></a>    <span class="k">return</span> <span class="n">afdconnectivity_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

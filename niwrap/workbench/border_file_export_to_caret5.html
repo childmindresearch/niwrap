@@ -311,72 +311,73 @@
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">border_file_export_to_caret5_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">border_file_export_to_caret5_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_file_export_to_caret5</span><span class="p">(</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BorderFileExportToCaret5SurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderFileExportToCaret5Outputs</span><span class="p">:</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Export border file to caret5 file format.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    A Workbench border file may contain borders for multiple structures and</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    borders that are both projected and unprojected. It also contains a color</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    table for the borders.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    </span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    Caret5 has both border (unprojected) and border projection (projected)</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    files. In addition, each Caret5 border or border projection file typically</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    contains data for a single structure. Caret5 also uses a border color file</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    that associates colors with the names of the borders.</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    </span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    This command will try to output both Caret5 border and border projection</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    files. Each output border/border projection file will contains data for one</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    structure so there may be many files created. The structure name is included</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    in the name of each border or border projection file that is created.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    </span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    One Caret5 border color file will also be produced by this command.</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    </span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    Providing surface(s) as input parameters is optional, but recommended.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    Surfaces may be needed to create both projected and/or unprojected</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    coordinates of borders. If there is a failure to produce an output border or</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    border projection due to a missing surface with the matching structure, an</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    error message will be displayed and some output files will not be created.</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    </span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    When writing new files, this command will overwrite a file with the same</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">    name. .</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">    </span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">    </span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">    </span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    Args:</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">        border_file: workbench border file.</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">        output_file_prefix: prefix for name of output caret5\</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">            border/borderproj/bordercolor files.</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">        surface: specify an input surface.</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    Returns:</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">        NamedTuple of outputs (described in `BorderFileExportToCaret5Outputs`).</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_FILE_EXPORT_TO_CARET5_METADATA</span><span class="p">)</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_file_export_to_caret5_params</span><span class="p">(</span><span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">output_file_prefix</span><span class="o">=</span><span class="n">output_file_prefix</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">)</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="k">return</span> <span class="n">border_file_export_to_caret5_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_file_export_to_caret5</span><span class="p">(</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BorderFileExportToCaret5SurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderFileExportToCaret5Outputs</span><span class="p">:</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Export border file to caret5 file format.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    </span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    A Workbench border file may contain borders for multiple structures and</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    borders that are both projected and unprojected. It also contains a color</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    table for the borders.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    </span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    Caret5 has both border (unprojected) and border projection (projected)</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    files. In addition, each Caret5 border or border projection file typically</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    contains data for a single structure. Caret5 also uses a border color file</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    that associates colors with the names of the borders.</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    </span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    This command will try to output both Caret5 border and border projection</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    files. Each output border/border projection file will contains data for one</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    structure so there may be many files created. The structure name is included</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    in the name of each border or border projection file that is created.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    </span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    One Caret5 border color file will also be produced by this command.</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    </span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    Providing surface(s) as input parameters is optional, but recommended.</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    Surfaces may be needed to create both projected and/or unprojected</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    coordinates of borders. If there is a failure to produce an output border or</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    border projection due to a missing surface with the matching structure, an</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    error message will be displayed and some output files will not be created.</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    </span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">    When writing new files, this command will overwrite a file with the same</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">    name. .</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    </span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">    </span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    </span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    Args:</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">        border_file: workbench border file.</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">        output_file_prefix: prefix for name of output caret5\</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">            border/borderproj/bordercolor files.</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">        surface: specify an input surface.</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    Returns:</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">        NamedTuple of outputs (described in `BorderFileExportToCaret5Outputs`).</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_FILE_EXPORT_TO_CARET5_METADATA</span><span class="p">)</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_file_export_to_caret5_params</span><span class="p">(</span><span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">output_file_prefix</span><span class="o">=</span><span class="n">output_file_prefix</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">)</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="k">return</span> <span class="n">border_file_export_to_caret5_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;BORDER_FILE_EXPORT_TO_CARET5_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="s2">&quot;BorderFileExportToCaret5Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="s2">&quot;BorderFileExportToCaret5Parameters&quot;</span><span class="p">,</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;BorderFileExportToCaret5SurfaceParameters&quot;</span><span class="p">,</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;border_file_export_to_caret5&quot;</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;border_file_export_to_caret5_params&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;border_file_export_to_caret5_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="p">]</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="s2">&quot;BORDER_FILE_EXPORT_TO_CARET5_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="s2">&quot;BorderFileExportToCaret5Outputs&quot;</span><span class="p">,</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;BorderFileExportToCaret5Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;BorderFileExportToCaret5SurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;border_file_export_to_caret5&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;border_file_export_to_caret5_params&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;border_file_export_to_caret5_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -527,57 +528,57 @@
 
     </div>
     <a class="headerlink" href="#border_file_export_to_caret5"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="border_file_export_to_caret5-220"><a href="#border_file_export_to_caret5-220"><span class="linenos">220</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_file_export_to_caret5</span><span class="p">(</span>
-</span><span id="border_file_export_to_caret5-221"><a href="#border_file_export_to_caret5-221"><span class="linenos">221</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="border_file_export_to_caret5-222"><a href="#border_file_export_to_caret5-222"><span class="linenos">222</span></a>    <span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="border_file_export_to_caret5-223"><a href="#border_file_export_to_caret5-223"><span class="linenos">223</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BorderFileExportToCaret5SurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="border_file_export_to_caret5-224"><a href="#border_file_export_to_caret5-224"><span class="linenos">224</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="border_file_export_to_caret5-225"><a href="#border_file_export_to_caret5-225"><span class="linenos">225</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderFileExportToCaret5Outputs</span><span class="p">:</span>
-</span><span id="border_file_export_to_caret5-226"><a href="#border_file_export_to_caret5-226"><span class="linenos">226</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="border_file_export_to_caret5-227"><a href="#border_file_export_to_caret5-227"><span class="linenos">227</span></a><span class="sd">    Export border file to caret5 file format.</span>
-</span><span id="border_file_export_to_caret5-228"><a href="#border_file_export_to_caret5-228"><span class="linenos">228</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-229"><a href="#border_file_export_to_caret5-229"><span class="linenos">229</span></a><span class="sd">    A Workbench border file may contain borders for multiple structures and</span>
-</span><span id="border_file_export_to_caret5-230"><a href="#border_file_export_to_caret5-230"><span class="linenos">230</span></a><span class="sd">    borders that are both projected and unprojected. It also contains a color</span>
-</span><span id="border_file_export_to_caret5-231"><a href="#border_file_export_to_caret5-231"><span class="linenos">231</span></a><span class="sd">    table for the borders.</span>
-</span><span id="border_file_export_to_caret5-232"><a href="#border_file_export_to_caret5-232"><span class="linenos">232</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-233"><a href="#border_file_export_to_caret5-233"><span class="linenos">233</span></a><span class="sd">    Caret5 has both border (unprojected) and border projection (projected)</span>
-</span><span id="border_file_export_to_caret5-234"><a href="#border_file_export_to_caret5-234"><span class="linenos">234</span></a><span class="sd">    files. In addition, each Caret5 border or border projection file typically</span>
-</span><span id="border_file_export_to_caret5-235"><a href="#border_file_export_to_caret5-235"><span class="linenos">235</span></a><span class="sd">    contains data for a single structure. Caret5 also uses a border color file</span>
-</span><span id="border_file_export_to_caret5-236"><a href="#border_file_export_to_caret5-236"><span class="linenos">236</span></a><span class="sd">    that associates colors with the names of the borders.</span>
-</span><span id="border_file_export_to_caret5-237"><a href="#border_file_export_to_caret5-237"><span class="linenos">237</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-238"><a href="#border_file_export_to_caret5-238"><span class="linenos">238</span></a><span class="sd">    This command will try to output both Caret5 border and border projection</span>
-</span><span id="border_file_export_to_caret5-239"><a href="#border_file_export_to_caret5-239"><span class="linenos">239</span></a><span class="sd">    files. Each output border/border projection file will contains data for one</span>
-</span><span id="border_file_export_to_caret5-240"><a href="#border_file_export_to_caret5-240"><span class="linenos">240</span></a><span class="sd">    structure so there may be many files created. The structure name is included</span>
-</span><span id="border_file_export_to_caret5-241"><a href="#border_file_export_to_caret5-241"><span class="linenos">241</span></a><span class="sd">    in the name of each border or border projection file that is created.</span>
-</span><span id="border_file_export_to_caret5-242"><a href="#border_file_export_to_caret5-242"><span class="linenos">242</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-243"><a href="#border_file_export_to_caret5-243"><span class="linenos">243</span></a><span class="sd">    One Caret5 border color file will also be produced by this command.</span>
-</span><span id="border_file_export_to_caret5-244"><a href="#border_file_export_to_caret5-244"><span class="linenos">244</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-245"><a href="#border_file_export_to_caret5-245"><span class="linenos">245</span></a><span class="sd">    Providing surface(s) as input parameters is optional, but recommended.</span>
-</span><span id="border_file_export_to_caret5-246"><a href="#border_file_export_to_caret5-246"><span class="linenos">246</span></a><span class="sd">    Surfaces may be needed to create both projected and/or unprojected</span>
-</span><span id="border_file_export_to_caret5-247"><a href="#border_file_export_to_caret5-247"><span class="linenos">247</span></a><span class="sd">    coordinates of borders. If there is a failure to produce an output border or</span>
-</span><span id="border_file_export_to_caret5-248"><a href="#border_file_export_to_caret5-248"><span class="linenos">248</span></a><span class="sd">    border projection due to a missing surface with the matching structure, an</span>
-</span><span id="border_file_export_to_caret5-249"><a href="#border_file_export_to_caret5-249"><span class="linenos">249</span></a><span class="sd">    error message will be displayed and some output files will not be created.</span>
-</span><span id="border_file_export_to_caret5-250"><a href="#border_file_export_to_caret5-250"><span class="linenos">250</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-251"><a href="#border_file_export_to_caret5-251"><span class="linenos">251</span></a><span class="sd">    When writing new files, this command will overwrite a file with the same</span>
-</span><span id="border_file_export_to_caret5-252"><a href="#border_file_export_to_caret5-252"><span class="linenos">252</span></a><span class="sd">    name. .</span>
-</span><span id="border_file_export_to_caret5-253"><a href="#border_file_export_to_caret5-253"><span class="linenos">253</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-254"><a href="#border_file_export_to_caret5-254"><span class="linenos">254</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="border_file_export_to_caret5-255"><a href="#border_file_export_to_caret5-255"><span class="linenos">255</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-256"><a href="#border_file_export_to_caret5-256"><span class="linenos">256</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="border_file_export_to_caret5-257"><a href="#border_file_export_to_caret5-257"><span class="linenos">257</span></a><span class="sd">    </span>
-</span><span id="border_file_export_to_caret5-258"><a href="#border_file_export_to_caret5-258"><span class="linenos">258</span></a><span class="sd">    Args:</span>
-</span><span id="border_file_export_to_caret5-259"><a href="#border_file_export_to_caret5-259"><span class="linenos">259</span></a><span class="sd">        border_file: workbench border file.</span>
-</span><span id="border_file_export_to_caret5-260"><a href="#border_file_export_to_caret5-260"><span class="linenos">260</span></a><span class="sd">        output_file_prefix: prefix for name of output caret5\</span>
-</span><span id="border_file_export_to_caret5-261"><a href="#border_file_export_to_caret5-261"><span class="linenos">261</span></a><span class="sd">            border/borderproj/bordercolor files.</span>
-</span><span id="border_file_export_to_caret5-262"><a href="#border_file_export_to_caret5-262"><span class="linenos">262</span></a><span class="sd">        surface: specify an input surface.</span>
-</span><span id="border_file_export_to_caret5-263"><a href="#border_file_export_to_caret5-263"><span class="linenos">263</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="border_file_export_to_caret5-264"><a href="#border_file_export_to_caret5-264"><span class="linenos">264</span></a><span class="sd">    Returns:</span>
-</span><span id="border_file_export_to_caret5-265"><a href="#border_file_export_to_caret5-265"><span class="linenos">265</span></a><span class="sd">        NamedTuple of outputs (described in `BorderFileExportToCaret5Outputs`).</span>
-</span><span id="border_file_export_to_caret5-266"><a href="#border_file_export_to_caret5-266"><span class="linenos">266</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="border_file_export_to_caret5-267"><a href="#border_file_export_to_caret5-267"><span class="linenos">267</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="border_file_export_to_caret5-268"><a href="#border_file_export_to_caret5-268"><span class="linenos">268</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_FILE_EXPORT_TO_CARET5_METADATA</span><span class="p">)</span>
-</span><span id="border_file_export_to_caret5-269"><a href="#border_file_export_to_caret5-269"><span class="linenos">269</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_file_export_to_caret5_params</span><span class="p">(</span><span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">output_file_prefix</span><span class="o">=</span><span class="n">output_file_prefix</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">)</span>
-</span><span id="border_file_export_to_caret5-270"><a href="#border_file_export_to_caret5-270"><span class="linenos">270</span></a>    <span class="k">return</span> <span class="n">border_file_export_to_caret5_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="border_file_export_to_caret5-221"><a href="#border_file_export_to_caret5-221"><span class="linenos">221</span></a><span class="k">def</span><span class="w"> </span><span class="nf">border_file_export_to_caret5</span><span class="p">(</span>
+</span><span id="border_file_export_to_caret5-222"><a href="#border_file_export_to_caret5-222"><span class="linenos">222</span></a>    <span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="border_file_export_to_caret5-223"><a href="#border_file_export_to_caret5-223"><span class="linenos">223</span></a>    <span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="border_file_export_to_caret5-224"><a href="#border_file_export_to_caret5-224"><span class="linenos">224</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BorderFileExportToCaret5SurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="border_file_export_to_caret5-225"><a href="#border_file_export_to_caret5-225"><span class="linenos">225</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="border_file_export_to_caret5-226"><a href="#border_file_export_to_caret5-226"><span class="linenos">226</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BorderFileExportToCaret5Outputs</span><span class="p">:</span>
+</span><span id="border_file_export_to_caret5-227"><a href="#border_file_export_to_caret5-227"><span class="linenos">227</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="border_file_export_to_caret5-228"><a href="#border_file_export_to_caret5-228"><span class="linenos">228</span></a><span class="sd">    Export border file to caret5 file format.</span>
+</span><span id="border_file_export_to_caret5-229"><a href="#border_file_export_to_caret5-229"><span class="linenos">229</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-230"><a href="#border_file_export_to_caret5-230"><span class="linenos">230</span></a><span class="sd">    A Workbench border file may contain borders for multiple structures and</span>
+</span><span id="border_file_export_to_caret5-231"><a href="#border_file_export_to_caret5-231"><span class="linenos">231</span></a><span class="sd">    borders that are both projected and unprojected. It also contains a color</span>
+</span><span id="border_file_export_to_caret5-232"><a href="#border_file_export_to_caret5-232"><span class="linenos">232</span></a><span class="sd">    table for the borders.</span>
+</span><span id="border_file_export_to_caret5-233"><a href="#border_file_export_to_caret5-233"><span class="linenos">233</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-234"><a href="#border_file_export_to_caret5-234"><span class="linenos">234</span></a><span class="sd">    Caret5 has both border (unprojected) and border projection (projected)</span>
+</span><span id="border_file_export_to_caret5-235"><a href="#border_file_export_to_caret5-235"><span class="linenos">235</span></a><span class="sd">    files. In addition, each Caret5 border or border projection file typically</span>
+</span><span id="border_file_export_to_caret5-236"><a href="#border_file_export_to_caret5-236"><span class="linenos">236</span></a><span class="sd">    contains data for a single structure. Caret5 also uses a border color file</span>
+</span><span id="border_file_export_to_caret5-237"><a href="#border_file_export_to_caret5-237"><span class="linenos">237</span></a><span class="sd">    that associates colors with the names of the borders.</span>
+</span><span id="border_file_export_to_caret5-238"><a href="#border_file_export_to_caret5-238"><span class="linenos">238</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-239"><a href="#border_file_export_to_caret5-239"><span class="linenos">239</span></a><span class="sd">    This command will try to output both Caret5 border and border projection</span>
+</span><span id="border_file_export_to_caret5-240"><a href="#border_file_export_to_caret5-240"><span class="linenos">240</span></a><span class="sd">    files. Each output border/border projection file will contains data for one</span>
+</span><span id="border_file_export_to_caret5-241"><a href="#border_file_export_to_caret5-241"><span class="linenos">241</span></a><span class="sd">    structure so there may be many files created. The structure name is included</span>
+</span><span id="border_file_export_to_caret5-242"><a href="#border_file_export_to_caret5-242"><span class="linenos">242</span></a><span class="sd">    in the name of each border or border projection file that is created.</span>
+</span><span id="border_file_export_to_caret5-243"><a href="#border_file_export_to_caret5-243"><span class="linenos">243</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-244"><a href="#border_file_export_to_caret5-244"><span class="linenos">244</span></a><span class="sd">    One Caret5 border color file will also be produced by this command.</span>
+</span><span id="border_file_export_to_caret5-245"><a href="#border_file_export_to_caret5-245"><span class="linenos">245</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-246"><a href="#border_file_export_to_caret5-246"><span class="linenos">246</span></a><span class="sd">    Providing surface(s) as input parameters is optional, but recommended.</span>
+</span><span id="border_file_export_to_caret5-247"><a href="#border_file_export_to_caret5-247"><span class="linenos">247</span></a><span class="sd">    Surfaces may be needed to create both projected and/or unprojected</span>
+</span><span id="border_file_export_to_caret5-248"><a href="#border_file_export_to_caret5-248"><span class="linenos">248</span></a><span class="sd">    coordinates of borders. If there is a failure to produce an output border or</span>
+</span><span id="border_file_export_to_caret5-249"><a href="#border_file_export_to_caret5-249"><span class="linenos">249</span></a><span class="sd">    border projection due to a missing surface with the matching structure, an</span>
+</span><span id="border_file_export_to_caret5-250"><a href="#border_file_export_to_caret5-250"><span class="linenos">250</span></a><span class="sd">    error message will be displayed and some output files will not be created.</span>
+</span><span id="border_file_export_to_caret5-251"><a href="#border_file_export_to_caret5-251"><span class="linenos">251</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-252"><a href="#border_file_export_to_caret5-252"><span class="linenos">252</span></a><span class="sd">    When writing new files, this command will overwrite a file with the same</span>
+</span><span id="border_file_export_to_caret5-253"><a href="#border_file_export_to_caret5-253"><span class="linenos">253</span></a><span class="sd">    name. .</span>
+</span><span id="border_file_export_to_caret5-254"><a href="#border_file_export_to_caret5-254"><span class="linenos">254</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-255"><a href="#border_file_export_to_caret5-255"><span class="linenos">255</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="border_file_export_to_caret5-256"><a href="#border_file_export_to_caret5-256"><span class="linenos">256</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-257"><a href="#border_file_export_to_caret5-257"><span class="linenos">257</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="border_file_export_to_caret5-258"><a href="#border_file_export_to_caret5-258"><span class="linenos">258</span></a><span class="sd">    </span>
+</span><span id="border_file_export_to_caret5-259"><a href="#border_file_export_to_caret5-259"><span class="linenos">259</span></a><span class="sd">    Args:</span>
+</span><span id="border_file_export_to_caret5-260"><a href="#border_file_export_to_caret5-260"><span class="linenos">260</span></a><span class="sd">        border_file: workbench border file.</span>
+</span><span id="border_file_export_to_caret5-261"><a href="#border_file_export_to_caret5-261"><span class="linenos">261</span></a><span class="sd">        output_file_prefix: prefix for name of output caret5\</span>
+</span><span id="border_file_export_to_caret5-262"><a href="#border_file_export_to_caret5-262"><span class="linenos">262</span></a><span class="sd">            border/borderproj/bordercolor files.</span>
+</span><span id="border_file_export_to_caret5-263"><a href="#border_file_export_to_caret5-263"><span class="linenos">263</span></a><span class="sd">        surface: specify an input surface.</span>
+</span><span id="border_file_export_to_caret5-264"><a href="#border_file_export_to_caret5-264"><span class="linenos">264</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="border_file_export_to_caret5-265"><a href="#border_file_export_to_caret5-265"><span class="linenos">265</span></a><span class="sd">    Returns:</span>
+</span><span id="border_file_export_to_caret5-266"><a href="#border_file_export_to_caret5-266"><span class="linenos">266</span></a><span class="sd">        NamedTuple of outputs (described in `BorderFileExportToCaret5Outputs`).</span>
+</span><span id="border_file_export_to_caret5-267"><a href="#border_file_export_to_caret5-267"><span class="linenos">267</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="border_file_export_to_caret5-268"><a href="#border_file_export_to_caret5-268"><span class="linenos">268</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="border_file_export_to_caret5-269"><a href="#border_file_export_to_caret5-269"><span class="linenos">269</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BORDER_FILE_EXPORT_TO_CARET5_METADATA</span><span class="p">)</span>
+</span><span id="border_file_export_to_caret5-270"><a href="#border_file_export_to_caret5-270"><span class="linenos">270</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">border_file_export_to_caret5_params</span><span class="p">(</span><span class="n">border_file</span><span class="o">=</span><span class="n">border_file</span><span class="p">,</span> <span class="n">output_file_prefix</span><span class="o">=</span><span class="n">output_file_prefix</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">)</span>
+</span><span id="border_file_export_to_caret5-271"><a href="#border_file_export_to_caret5-271"><span class="linenos">271</span></a>    <span class="k">return</span> <span class="n">border_file_export_to_caret5_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

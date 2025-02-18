@@ -220,40 +220,41 @@
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">concat_bvars_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">concat_bvars_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="k">def</span><span class="w"> </span><span class="nf">concat_bvars</span><span class="p">(</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">output_bvars</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConcatBvarsOutputs</span><span class="p">:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    Concatenate multiple .bvars files into a single .bvars file.</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    </span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    </span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    </span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    Args:</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        output_bvars: Output .bvars file.</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Returns:</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        NamedTuple of outputs (described in `ConcatBvarsOutputs`).</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONCAT_BVARS_METADATA</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">concat_bvars_params</span><span class="p">(</span><span class="n">output_bvars</span><span class="o">=</span><span class="n">output_bvars</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">return</span> <span class="n">concat_bvars_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="k">def</span><span class="w"> </span><span class="nf">concat_bvars</span><span class="p">(</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">output_bvars</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConcatBvarsOutputs</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    Concatenate multiple .bvars files into a single .bvars file.</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    </span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    </span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    </span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    Args:</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        output_bvars: Output .bvars file.</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Returns:</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        NamedTuple of outputs (described in `ConcatBvarsOutputs`).</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONCAT_BVARS_METADATA</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">concat_bvars_params</span><span class="p">(</span><span class="n">output_bvars</span><span class="o">=</span><span class="n">output_bvars</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">return</span> <span class="n">concat_bvars_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="s2">&quot;CONCAT_BVARS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;ConcatBvarsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;ConcatBvarsParameters&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;concat_bvars&quot;</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;concat_bvars_params&quot;</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="p">]</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;CONCAT_BVARS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;ConcatBvarsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;ConcatBvarsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;concat_bvars&quot;</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="s2">&quot;concat_bvars_params&quot;</span><span class="p">,</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -373,27 +374,27 @@
 
     </div>
     <a class="headerlink" href="#concat_bvars"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="concat_bvars-144"><a href="#concat_bvars-144"><span class="linenos">144</span></a><span class="k">def</span><span class="w"> </span><span class="nf">concat_bvars</span><span class="p">(</span>
-</span><span id="concat_bvars-145"><a href="#concat_bvars-145"><span class="linenos">145</span></a>    <span class="n">output_bvars</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="concat_bvars-146"><a href="#concat_bvars-146"><span class="linenos">146</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="concat_bvars-147"><a href="#concat_bvars-147"><span class="linenos">147</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConcatBvarsOutputs</span><span class="p">:</span>
-</span><span id="concat_bvars-148"><a href="#concat_bvars-148"><span class="linenos">148</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="concat_bvars-149"><a href="#concat_bvars-149"><span class="linenos">149</span></a><span class="sd">    Concatenate multiple .bvars files into a single .bvars file.</span>
-</span><span id="concat_bvars-150"><a href="#concat_bvars-150"><span class="linenos">150</span></a><span class="sd">    </span>
-</span><span id="concat_bvars-151"><a href="#concat_bvars-151"><span class="linenos">151</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="concat_bvars-152"><a href="#concat_bvars-152"><span class="linenos">152</span></a><span class="sd">    </span>
-</span><span id="concat_bvars-153"><a href="#concat_bvars-153"><span class="linenos">153</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="concat_bvars-154"><a href="#concat_bvars-154"><span class="linenos">154</span></a><span class="sd">    </span>
-</span><span id="concat_bvars-155"><a href="#concat_bvars-155"><span class="linenos">155</span></a><span class="sd">    Args:</span>
-</span><span id="concat_bvars-156"><a href="#concat_bvars-156"><span class="linenos">156</span></a><span class="sd">        output_bvars: Output .bvars file.</span>
-</span><span id="concat_bvars-157"><a href="#concat_bvars-157"><span class="linenos">157</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="concat_bvars-158"><a href="#concat_bvars-158"><span class="linenos">158</span></a><span class="sd">    Returns:</span>
-</span><span id="concat_bvars-159"><a href="#concat_bvars-159"><span class="linenos">159</span></a><span class="sd">        NamedTuple of outputs (described in `ConcatBvarsOutputs`).</span>
-</span><span id="concat_bvars-160"><a href="#concat_bvars-160"><span class="linenos">160</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="concat_bvars-161"><a href="#concat_bvars-161"><span class="linenos">161</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="concat_bvars-162"><a href="#concat_bvars-162"><span class="linenos">162</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONCAT_BVARS_METADATA</span><span class="p">)</span>
-</span><span id="concat_bvars-163"><a href="#concat_bvars-163"><span class="linenos">163</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">concat_bvars_params</span><span class="p">(</span><span class="n">output_bvars</span><span class="o">=</span><span class="n">output_bvars</span><span class="p">)</span>
-</span><span id="concat_bvars-164"><a href="#concat_bvars-164"><span class="linenos">164</span></a>    <span class="k">return</span> <span class="n">concat_bvars_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="concat_bvars-145"><a href="#concat_bvars-145"><span class="linenos">145</span></a><span class="k">def</span><span class="w"> </span><span class="nf">concat_bvars</span><span class="p">(</span>
+</span><span id="concat_bvars-146"><a href="#concat_bvars-146"><span class="linenos">146</span></a>    <span class="n">output_bvars</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="concat_bvars-147"><a href="#concat_bvars-147"><span class="linenos">147</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="concat_bvars-148"><a href="#concat_bvars-148"><span class="linenos">148</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConcatBvarsOutputs</span><span class="p">:</span>
+</span><span id="concat_bvars-149"><a href="#concat_bvars-149"><span class="linenos">149</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="concat_bvars-150"><a href="#concat_bvars-150"><span class="linenos">150</span></a><span class="sd">    Concatenate multiple .bvars files into a single .bvars file.</span>
+</span><span id="concat_bvars-151"><a href="#concat_bvars-151"><span class="linenos">151</span></a><span class="sd">    </span>
+</span><span id="concat_bvars-152"><a href="#concat_bvars-152"><span class="linenos">152</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="concat_bvars-153"><a href="#concat_bvars-153"><span class="linenos">153</span></a><span class="sd">    </span>
+</span><span id="concat_bvars-154"><a href="#concat_bvars-154"><span class="linenos">154</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="concat_bvars-155"><a href="#concat_bvars-155"><span class="linenos">155</span></a><span class="sd">    </span>
+</span><span id="concat_bvars-156"><a href="#concat_bvars-156"><span class="linenos">156</span></a><span class="sd">    Args:</span>
+</span><span id="concat_bvars-157"><a href="#concat_bvars-157"><span class="linenos">157</span></a><span class="sd">        output_bvars: Output .bvars file.</span>
+</span><span id="concat_bvars-158"><a href="#concat_bvars-158"><span class="linenos">158</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="concat_bvars-159"><a href="#concat_bvars-159"><span class="linenos">159</span></a><span class="sd">    Returns:</span>
+</span><span id="concat_bvars-160"><a href="#concat_bvars-160"><span class="linenos">160</span></a><span class="sd">        NamedTuple of outputs (described in `ConcatBvarsOutputs`).</span>
+</span><span id="concat_bvars-161"><a href="#concat_bvars-161"><span class="linenos">161</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="concat_bvars-162"><a href="#concat_bvars-162"><span class="linenos">162</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="concat_bvars-163"><a href="#concat_bvars-163"><span class="linenos">163</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONCAT_BVARS_METADATA</span><span class="p">)</span>
+</span><span id="concat_bvars-164"><a href="#concat_bvars-164"><span class="linenos">164</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">concat_bvars_params</span><span class="p">(</span><span class="n">output_bvars</span><span class="o">=</span><span class="n">output_bvars</span><span class="p">)</span>
+</span><span id="concat_bvars-165"><a href="#concat_bvars-165"><span class="linenos">165</span></a>    <span class="k">return</span> <span class="n">concat_bvars_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

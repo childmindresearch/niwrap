@@ -395,78 +395,79 @@
 </span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">fixel2sh_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">fixel2sh_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fixel2sh</span><span class="p">(</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="n">fixel_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Fixel2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fixel2shOutputs</span><span class="p">:</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">    Convert a fixel-based sparse-data image into an spherical harmonic image.</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">    </span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">    This command generates spherical harmonic data from fixels that can be</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">    visualised using the ODF tool in MRview. The output ODF lobes are scaled</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">    according to the values in the input fixel image.</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">    </span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">    The spherical harmonic coefficients are stored according the conventions</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">    described the main documentation, which can be found at the following link:</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">    </span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    References:</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">    </span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">    .</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">    </span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">    </span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">    </span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">    Args:</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">        fixel_in: the input fixel data file.</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">        sh_out: the output sh image.</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series (Default: 8).</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    Returns:</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">        NamedTuple of outputs (described in `Fixel2shOutputs`).</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXEL2SH_METADATA</span><span class="p">)</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fixel2sh_params</span><span class="p">(</span><span class="n">lmax</span><span class="o">=</span><span class="n">lmax</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">fixel_in</span><span class="o">=</span><span class="n">fixel_in</span><span class="p">,</span> <span class="n">sh_out</span><span class="o">=</span><span class="n">sh_out</span><span class="p">)</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="k">return</span> <span class="n">fixel2sh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fixel2sh</span><span class="p">(</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="n">fixel_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Fixel2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fixel2shOutputs</span><span class="p">:</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">    Convert a fixel-based sparse-data image into an spherical harmonic image.</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">    </span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">    This command generates spherical harmonic data from fixels that can be</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">    visualised using the ODF tool in MRview. The output ODF lobes are scaled</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">    according to the values in the input fixel image.</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">    </span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">    The spherical harmonic coefficients are stored according the conventions</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">    described the main documentation, which can be found at the following link:</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    </span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">    References:</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">    </span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">    .</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">    </span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">    </span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">    </span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">    Args:</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">        fixel_in: the input fixel data file.</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">        sh_out: the output sh image.</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series (Default: 8).</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    Returns:</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">        NamedTuple of outputs (described in `Fixel2shOutputs`).</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXEL2SH_METADATA</span><span class="p">)</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fixel2sh_params</span><span class="p">(</span><span class="n">lmax</span><span class="o">=</span><span class="n">lmax</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">fixel_in</span><span class="o">=</span><span class="n">fixel_in</span><span class="p">,</span> <span class="n">sh_out</span><span class="o">=</span><span class="n">sh_out</span><span class="p">)</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="k">return</span> <span class="n">fixel2sh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;FIXEL2SH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;Fixel2shConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;Fixel2shOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;Fixel2shParameters&quot;</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;fixel2sh&quot;</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;fixel2sh_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;fixel2sh_params&quot;</span><span class="p">,</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="p">]</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;FIXEL2SH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;Fixel2shConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;Fixel2shOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;Fixel2shParameters&quot;</span><span class="p">,</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;fixel2sh&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;fixel2sh_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;fixel2sh_params&quot;</span><span class="p">,</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -731,63 +732,63 @@
 
     </div>
     <a class="headerlink" href="#fixel2sh"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fixel2sh-274"><a href="#fixel2sh-274"><span class="linenos">274</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fixel2sh</span><span class="p">(</span>
-</span><span id="fixel2sh-275"><a href="#fixel2sh-275"><span class="linenos">275</span></a>    <span class="n">fixel_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="fixel2sh-276"><a href="#fixel2sh-276"><span class="linenos">276</span></a>    <span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="fixel2sh-277"><a href="#fixel2sh-277"><span class="linenos">277</span></a>    <span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixel2sh-278"><a href="#fixel2sh-278"><span class="linenos">278</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixel2sh-279"><a href="#fixel2sh-279"><span class="linenos">279</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixel2sh-280"><a href="#fixel2sh-280"><span class="linenos">280</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixel2sh-281"><a href="#fixel2sh-281"><span class="linenos">281</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixel2sh-282"><a href="#fixel2sh-282"><span class="linenos">282</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixel2sh-283"><a href="#fixel2sh-283"><span class="linenos">283</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Fixel2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixel2sh-284"><a href="#fixel2sh-284"><span class="linenos">284</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixel2sh-285"><a href="#fixel2sh-285"><span class="linenos">285</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fixel2sh-286"><a href="#fixel2sh-286"><span class="linenos">286</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fixel2sh-287"><a href="#fixel2sh-287"><span class="linenos">287</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fixel2shOutputs</span><span class="p">:</span>
-</span><span id="fixel2sh-288"><a href="#fixel2sh-288"><span class="linenos">288</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="fixel2sh-289"><a href="#fixel2sh-289"><span class="linenos">289</span></a><span class="sd">    Convert a fixel-based sparse-data image into an spherical harmonic image.</span>
-</span><span id="fixel2sh-290"><a href="#fixel2sh-290"><span class="linenos">290</span></a><span class="sd">    </span>
-</span><span id="fixel2sh-291"><a href="#fixel2sh-291"><span class="linenos">291</span></a><span class="sd">    This command generates spherical harmonic data from fixels that can be</span>
-</span><span id="fixel2sh-292"><a href="#fixel2sh-292"><span class="linenos">292</span></a><span class="sd">    visualised using the ODF tool in MRview. The output ODF lobes are scaled</span>
-</span><span id="fixel2sh-293"><a href="#fixel2sh-293"><span class="linenos">293</span></a><span class="sd">    according to the values in the input fixel image.</span>
-</span><span id="fixel2sh-294"><a href="#fixel2sh-294"><span class="linenos">294</span></a><span class="sd">    </span>
-</span><span id="fixel2sh-295"><a href="#fixel2sh-295"><span class="linenos">295</span></a><span class="sd">    The spherical harmonic coefficients are stored according the conventions</span>
-</span><span id="fixel2sh-296"><a href="#fixel2sh-296"><span class="linenos">296</span></a><span class="sd">    described the main documentation, which can be found at the following link:</span>
-</span><span id="fixel2sh-297"><a href="#fixel2sh-297"><span class="linenos">297</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html</span>
-</span><span id="fixel2sh-298"><a href="#fixel2sh-298"><span class="linenos">298</span></a><span class="sd">    </span>
-</span><span id="fixel2sh-299"><a href="#fixel2sh-299"><span class="linenos">299</span></a><span class="sd">    References:</span>
-</span><span id="fixel2sh-300"><a href="#fixel2sh-300"><span class="linenos">300</span></a><span class="sd">    </span>
-</span><span id="fixel2sh-301"><a href="#fixel2sh-301"><span class="linenos">301</span></a><span class="sd">    .</span>
-</span><span id="fixel2sh-302"><a href="#fixel2sh-302"><span class="linenos">302</span></a><span class="sd">    </span>
-</span><span id="fixel2sh-303"><a href="#fixel2sh-303"><span class="linenos">303</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="fixel2sh-304"><a href="#fixel2sh-304"><span class="linenos">304</span></a><span class="sd">    </span>
-</span><span id="fixel2sh-305"><a href="#fixel2sh-305"><span class="linenos">305</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="fixel2sh-306"><a href="#fixel2sh-306"><span class="linenos">306</span></a><span class="sd">    </span>
-</span><span id="fixel2sh-307"><a href="#fixel2sh-307"><span class="linenos">307</span></a><span class="sd">    Args:</span>
-</span><span id="fixel2sh-308"><a href="#fixel2sh-308"><span class="linenos">308</span></a><span class="sd">        fixel_in: the input fixel data file.</span>
-</span><span id="fixel2sh-309"><a href="#fixel2sh-309"><span class="linenos">309</span></a><span class="sd">        sh_out: the output sh image.</span>
-</span><span id="fixel2sh-310"><a href="#fixel2sh-310"><span class="linenos">310</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series (Default: 8).</span>
-</span><span id="fixel2sh-311"><a href="#fixel2sh-311"><span class="linenos">311</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="fixel2sh-312"><a href="#fixel2sh-312"><span class="linenos">312</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="fixel2sh-313"><a href="#fixel2sh-313"><span class="linenos">313</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="fixel2sh-314"><a href="#fixel2sh-314"><span class="linenos">314</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="fixel2sh-315"><a href="#fixel2sh-315"><span class="linenos">315</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="fixel2sh-316"><a href="#fixel2sh-316"><span class="linenos">316</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="fixel2sh-317"><a href="#fixel2sh-317"><span class="linenos">317</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="fixel2sh-318"><a href="#fixel2sh-318"><span class="linenos">318</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="fixel2sh-319"><a href="#fixel2sh-319"><span class="linenos">319</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="fixel2sh-320"><a href="#fixel2sh-320"><span class="linenos">320</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="fixel2sh-321"><a href="#fixel2sh-321"><span class="linenos">321</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="fixel2sh-322"><a href="#fixel2sh-322"><span class="linenos">322</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="fixel2sh-323"><a href="#fixel2sh-323"><span class="linenos">323</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fixel2sh-324"><a href="#fixel2sh-324"><span class="linenos">324</span></a><span class="sd">    Returns:</span>
-</span><span id="fixel2sh-325"><a href="#fixel2sh-325"><span class="linenos">325</span></a><span class="sd">        NamedTuple of outputs (described in `Fixel2shOutputs`).</span>
-</span><span id="fixel2sh-326"><a href="#fixel2sh-326"><span class="linenos">326</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fixel2sh-327"><a href="#fixel2sh-327"><span class="linenos">327</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fixel2sh-328"><a href="#fixel2sh-328"><span class="linenos">328</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXEL2SH_METADATA</span><span class="p">)</span>
-</span><span id="fixel2sh-329"><a href="#fixel2sh-329"><span class="linenos">329</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fixel2sh_params</span><span class="p">(</span><span class="n">lmax</span><span class="o">=</span><span class="n">lmax</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">fixel_in</span><span class="o">=</span><span class="n">fixel_in</span><span class="p">,</span> <span class="n">sh_out</span><span class="o">=</span><span class="n">sh_out</span><span class="p">)</span>
-</span><span id="fixel2sh-330"><a href="#fixel2sh-330"><span class="linenos">330</span></a>    <span class="k">return</span> <span class="n">fixel2sh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fixel2sh-275"><a href="#fixel2sh-275"><span class="linenos">275</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fixel2sh</span><span class="p">(</span>
+</span><span id="fixel2sh-276"><a href="#fixel2sh-276"><span class="linenos">276</span></a>    <span class="n">fixel_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="fixel2sh-277"><a href="#fixel2sh-277"><span class="linenos">277</span></a>    <span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="fixel2sh-278"><a href="#fixel2sh-278"><span class="linenos">278</span></a>    <span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixel2sh-279"><a href="#fixel2sh-279"><span class="linenos">279</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixel2sh-280"><a href="#fixel2sh-280"><span class="linenos">280</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixel2sh-281"><a href="#fixel2sh-281"><span class="linenos">281</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixel2sh-282"><a href="#fixel2sh-282"><span class="linenos">282</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixel2sh-283"><a href="#fixel2sh-283"><span class="linenos">283</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixel2sh-284"><a href="#fixel2sh-284"><span class="linenos">284</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Fixel2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixel2sh-285"><a href="#fixel2sh-285"><span class="linenos">285</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixel2sh-286"><a href="#fixel2sh-286"><span class="linenos">286</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fixel2sh-287"><a href="#fixel2sh-287"><span class="linenos">287</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fixel2sh-288"><a href="#fixel2sh-288"><span class="linenos">288</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fixel2shOutputs</span><span class="p">:</span>
+</span><span id="fixel2sh-289"><a href="#fixel2sh-289"><span class="linenos">289</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="fixel2sh-290"><a href="#fixel2sh-290"><span class="linenos">290</span></a><span class="sd">    Convert a fixel-based sparse-data image into an spherical harmonic image.</span>
+</span><span id="fixel2sh-291"><a href="#fixel2sh-291"><span class="linenos">291</span></a><span class="sd">    </span>
+</span><span id="fixel2sh-292"><a href="#fixel2sh-292"><span class="linenos">292</span></a><span class="sd">    This command generates spherical harmonic data from fixels that can be</span>
+</span><span id="fixel2sh-293"><a href="#fixel2sh-293"><span class="linenos">293</span></a><span class="sd">    visualised using the ODF tool in MRview. The output ODF lobes are scaled</span>
+</span><span id="fixel2sh-294"><a href="#fixel2sh-294"><span class="linenos">294</span></a><span class="sd">    according to the values in the input fixel image.</span>
+</span><span id="fixel2sh-295"><a href="#fixel2sh-295"><span class="linenos">295</span></a><span class="sd">    </span>
+</span><span id="fixel2sh-296"><a href="#fixel2sh-296"><span class="linenos">296</span></a><span class="sd">    The spherical harmonic coefficients are stored according the conventions</span>
+</span><span id="fixel2sh-297"><a href="#fixel2sh-297"><span class="linenos">297</span></a><span class="sd">    described the main documentation, which can be found at the following link:</span>
+</span><span id="fixel2sh-298"><a href="#fixel2sh-298"><span class="linenos">298</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html</span>
+</span><span id="fixel2sh-299"><a href="#fixel2sh-299"><span class="linenos">299</span></a><span class="sd">    </span>
+</span><span id="fixel2sh-300"><a href="#fixel2sh-300"><span class="linenos">300</span></a><span class="sd">    References:</span>
+</span><span id="fixel2sh-301"><a href="#fixel2sh-301"><span class="linenos">301</span></a><span class="sd">    </span>
+</span><span id="fixel2sh-302"><a href="#fixel2sh-302"><span class="linenos">302</span></a><span class="sd">    .</span>
+</span><span id="fixel2sh-303"><a href="#fixel2sh-303"><span class="linenos">303</span></a><span class="sd">    </span>
+</span><span id="fixel2sh-304"><a href="#fixel2sh-304"><span class="linenos">304</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="fixel2sh-305"><a href="#fixel2sh-305"><span class="linenos">305</span></a><span class="sd">    </span>
+</span><span id="fixel2sh-306"><a href="#fixel2sh-306"><span class="linenos">306</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="fixel2sh-307"><a href="#fixel2sh-307"><span class="linenos">307</span></a><span class="sd">    </span>
+</span><span id="fixel2sh-308"><a href="#fixel2sh-308"><span class="linenos">308</span></a><span class="sd">    Args:</span>
+</span><span id="fixel2sh-309"><a href="#fixel2sh-309"><span class="linenos">309</span></a><span class="sd">        fixel_in: the input fixel data file.</span>
+</span><span id="fixel2sh-310"><a href="#fixel2sh-310"><span class="linenos">310</span></a><span class="sd">        sh_out: the output sh image.</span>
+</span><span id="fixel2sh-311"><a href="#fixel2sh-311"><span class="linenos">311</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series (Default: 8).</span>
+</span><span id="fixel2sh-312"><a href="#fixel2sh-312"><span class="linenos">312</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="fixel2sh-313"><a href="#fixel2sh-313"><span class="linenos">313</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="fixel2sh-314"><a href="#fixel2sh-314"><span class="linenos">314</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="fixel2sh-315"><a href="#fixel2sh-315"><span class="linenos">315</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="fixel2sh-316"><a href="#fixel2sh-316"><span class="linenos">316</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="fixel2sh-317"><a href="#fixel2sh-317"><span class="linenos">317</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="fixel2sh-318"><a href="#fixel2sh-318"><span class="linenos">318</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="fixel2sh-319"><a href="#fixel2sh-319"><span class="linenos">319</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="fixel2sh-320"><a href="#fixel2sh-320"><span class="linenos">320</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="fixel2sh-321"><a href="#fixel2sh-321"><span class="linenos">321</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="fixel2sh-322"><a href="#fixel2sh-322"><span class="linenos">322</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="fixel2sh-323"><a href="#fixel2sh-323"><span class="linenos">323</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="fixel2sh-324"><a href="#fixel2sh-324"><span class="linenos">324</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fixel2sh-325"><a href="#fixel2sh-325"><span class="linenos">325</span></a><span class="sd">    Returns:</span>
+</span><span id="fixel2sh-326"><a href="#fixel2sh-326"><span class="linenos">326</span></a><span class="sd">        NamedTuple of outputs (described in `Fixel2shOutputs`).</span>
+</span><span id="fixel2sh-327"><a href="#fixel2sh-327"><span class="linenos">327</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fixel2sh-328"><a href="#fixel2sh-328"><span class="linenos">328</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fixel2sh-329"><a href="#fixel2sh-329"><span class="linenos">329</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXEL2SH_METADATA</span><span class="p">)</span>
+</span><span id="fixel2sh-330"><a href="#fixel2sh-330"><span class="linenos">330</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fixel2sh_params</span><span class="p">(</span><span class="n">lmax</span><span class="o">=</span><span class="n">lmax</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">fixel_in</span><span class="o">=</span><span class="n">fixel_in</span><span class="p">,</span> <span class="n">sh_out</span><span class="o">=</span><span class="n">sh_out</span><span class="p">)</span>
+</span><span id="fixel2sh-331"><a href="#fixel2sh-331"><span class="linenos">331</span></a>    <span class="k">return</span> <span class="n">fixel2sh_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

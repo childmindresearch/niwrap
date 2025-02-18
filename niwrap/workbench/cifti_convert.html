@@ -1325,105 +1325,106 @@
 </span><span id="L-953"><a href="#L-953"><span class="linenos"> 953</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-954"><a href="#L-954"><span class="linenos"> 954</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_convert_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-955"><a href="#L-955"><span class="linenos"> 955</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_convert_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-956"><a href="#L-956"><span class="linenos"> 956</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-957"><a href="#L-957"><span class="linenos"> 957</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-958"><a href="#L-958"><span class="linenos"> 958</span></a>
+</span><span id="L-956"><a href="#L-956"><span class="linenos"> 956</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-957"><a href="#L-957"><span class="linenos"> 957</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-958"><a href="#L-958"><span class="linenos"> 958</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-959"><a href="#L-959"><span class="linenos"> 959</span></a>
-</span><span id="L-960"><a href="#L-960"><span class="linenos"> 960</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert</span><span class="p">(</span>
-</span><span id="L-961"><a href="#L-961"><span class="linenos"> 961</span></a>    <span class="n">to_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertToGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-962"><a href="#L-962"><span class="linenos"> 962</span></a>    <span class="n">from_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertFromGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-963"><a href="#L-963"><span class="linenos"> 963</span></a>    <span class="n">to_nifti</span><span class="p">:</span> <span class="n">CiftiConvertToNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-964"><a href="#L-964"><span class="linenos"> 964</span></a>    <span class="n">from_nifti</span><span class="p">:</span> <span class="n">CiftiConvertFromNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-965"><a href="#L-965"><span class="linenos"> 965</span></a>    <span class="n">to_text</span><span class="p">:</span> <span class="n">CiftiConvertToTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-966"><a href="#L-966"><span class="linenos"> 966</span></a>    <span class="n">from_text</span><span class="p">:</span> <span class="n">CiftiConvertFromTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-967"><a href="#L-967"><span class="linenos"> 967</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-968"><a href="#L-968"><span class="linenos"> 968</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertOutputs</span><span class="p">:</span>
-</span><span id="L-969"><a href="#L-969"><span class="linenos"> 969</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-970"><a href="#L-970"><span class="linenos"> 970</span></a><span class="sd">    Dump cifti matrix into other formats.</span>
-</span><span id="L-971"><a href="#L-971"><span class="linenos"> 971</span></a><span class="sd">    </span>
-</span><span id="L-972"><a href="#L-972"><span class="linenos"> 972</span></a><span class="sd">    This command is used to convert a full CIFTI matrix to/from formats that can</span>
-</span><span id="L-973"><a href="#L-973"><span class="linenos"> 973</span></a><span class="sd">    be used by programs that don&#39;t understand CIFTI. You must specify exactly</span>
-</span><span id="L-974"><a href="#L-974"><span class="linenos"> 974</span></a><span class="sd">    one of -to-gifti-ext, -from-gifti-ext, -to-nifti, -from-nifti, -to-text, or</span>
-</span><span id="L-975"><a href="#L-975"><span class="linenos"> 975</span></a><span class="sd">    -from-text.</span>
-</span><span id="L-976"><a href="#L-976"><span class="linenos"> 976</span></a><span class="sd">    </span>
-</span><span id="L-977"><a href="#L-977"><span class="linenos"> 977</span></a><span class="sd">    If you want to write an existing CIFTI file with a different CIFTI version,</span>
-</span><span id="L-978"><a href="#L-978"><span class="linenos"> 978</span></a><span class="sd">    see -file-convert, and its -cifti-version-convert option.</span>
-</span><span id="L-979"><a href="#L-979"><span class="linenos"> 979</span></a><span class="sd">    </span>
-</span><span id="L-980"><a href="#L-980"><span class="linenos"> 980</span></a><span class="sd">    If you want part of the CIFTI file as a metric, label, or volume file, see</span>
-</span><span id="L-981"><a href="#L-981"><span class="linenos"> 981</span></a><span class="sd">    -cifti-separate. If you want to create a CIFTI file from metric and/or</span>
-</span><span id="L-982"><a href="#L-982"><span class="linenos"> 982</span></a><span class="sd">    volume files, see the -cifti-create-* commands.</span>
-</span><span id="L-983"><a href="#L-983"><span class="linenos"> 983</span></a><span class="sd">    </span>
-</span><span id="L-984"><a href="#L-984"><span class="linenos"> 984</span></a><span class="sd">    If you want to import a matrix that is restricted to an ROI, first create a</span>
-</span><span id="L-985"><a href="#L-985"><span class="linenos"> 985</span></a><span class="sd">    template CIFTI file matching that ROI using a -cifti-create-* command. After</span>
-</span><span id="L-986"><a href="#L-986"><span class="linenos"> 986</span></a><span class="sd">    importing to CIFTI, you can then expand the file into a standard</span>
-</span><span id="L-987"><a href="#L-987"><span class="linenos"> 987</span></a><span class="sd">    brainordinates space with -cifti-create-dense-from-template. If you want to</span>
-</span><span id="L-988"><a href="#L-988"><span class="linenos"> 988</span></a><span class="sd">    export only part of a CIFTI file, first create an roi-restricted CIFTI file</span>
-</span><span id="L-989"><a href="#L-989"><span class="linenos"> 989</span></a><span class="sd">    with -cifti-restrict-dense-mapping.</span>
-</span><span id="L-990"><a href="#L-990"><span class="linenos"> 990</span></a><span class="sd">    </span>
-</span><span id="L-991"><a href="#L-991"><span class="linenos"> 991</span></a><span class="sd">    The -transpose option to -from-gifti-ext is needed if the replacement binary</span>
-</span><span id="L-992"><a href="#L-992"><span class="linenos"> 992</span></a><span class="sd">    file is in column-major order.</span>
-</span><span id="L-993"><a href="#L-993"><span class="linenos"> 993</span></a><span class="sd">    </span>
-</span><span id="L-994"><a href="#L-994"><span class="linenos"> 994</span></a><span class="sd">    The -unit options accept these values:</span>
-</span><span id="L-995"><a href="#L-995"><span class="linenos"> 995</span></a><span class="sd">    </span>
-</span><span id="L-996"><a href="#L-996"><span class="linenos"> 996</span></a><span class="sd">    SECOND</span>
-</span><span id="L-997"><a href="#L-997"><span class="linenos"> 997</span></a><span class="sd">    HERTZ</span>
-</span><span id="L-998"><a href="#L-998"><span class="linenos"> 998</span></a><span class="sd">    METER</span>
-</span><span id="L-999"><a href="#L-999"><span class="linenos"> 999</span></a><span class="sd">    RADIAN.</span>
-</span><span id="L-1000"><a href="#L-1000"><span class="linenos">1000</span></a><span class="sd">    </span>
-</span><span id="L-1001"><a href="#L-1001"><span class="linenos">1001</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-1002"><a href="#L-1002"><span class="linenos">1002</span></a><span class="sd">    </span>
-</span><span id="L-1003"><a href="#L-1003"><span class="linenos">1003</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-1004"><a href="#L-1004"><span class="linenos">1004</span></a><span class="sd">    </span>
-</span><span id="L-1005"><a href="#L-1005"><span class="linenos">1005</span></a><span class="sd">    Args:</span>
-</span><span id="L-1006"><a href="#L-1006"><span class="linenos">1006</span></a><span class="sd">        to_gifti_ext: convert to GIFTI external binary.</span>
-</span><span id="L-1007"><a href="#L-1007"><span class="linenos">1007</span></a><span class="sd">        from_gifti_ext: convert a GIFTI made with this command back into a\</span>
-</span><span id="L-1008"><a href="#L-1008"><span class="linenos">1008</span></a><span class="sd">            CIFTI.</span>
-</span><span id="L-1009"><a href="#L-1009"><span class="linenos">1009</span></a><span class="sd">        to_nifti: convert to NIFTI1.</span>
-</span><span id="L-1010"><a href="#L-1010"><span class="linenos">1010</span></a><span class="sd">        from_nifti: convert a NIFTI (1 or 2) file made with this command back\</span>
-</span><span id="L-1011"><a href="#L-1011"><span class="linenos">1011</span></a><span class="sd">            into CIFTI.</span>
-</span><span id="L-1012"><a href="#L-1012"><span class="linenos">1012</span></a><span class="sd">        to_text: convert to a plain text file.</span>
-</span><span id="L-1013"><a href="#L-1013"><span class="linenos">1013</span></a><span class="sd">        from_text: convert from plain text to cifti.</span>
-</span><span id="L-1014"><a href="#L-1014"><span class="linenos">1014</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-1015"><a href="#L-1015"><span class="linenos">1015</span></a><span class="sd">    Returns:</span>
-</span><span id="L-1016"><a href="#L-1016"><span class="linenos">1016</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiConvertOutputs`).</span>
-</span><span id="L-1017"><a href="#L-1017"><span class="linenos">1017</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-1018"><a href="#L-1018"><span class="linenos">1018</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-1019"><a href="#L-1019"><span class="linenos">1019</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CONVERT_METADATA</span><span class="p">)</span>
-</span><span id="L-1020"><a href="#L-1020"><span class="linenos">1020</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_convert_params</span><span class="p">(</span><span class="n">to_gifti_ext</span><span class="o">=</span><span class="n">to_gifti_ext</span><span class="p">,</span> <span class="n">from_gifti_ext</span><span class="o">=</span><span class="n">from_gifti_ext</span><span class="p">,</span> <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="p">,</span> <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="p">,</span> <span class="n">to_text</span><span class="o">=</span><span class="n">to_text</span><span class="p">,</span> <span class="n">from_text</span><span class="o">=</span><span class="n">from_text</span><span class="p">)</span>
-</span><span id="L-1021"><a href="#L-1021"><span class="linenos">1021</span></a>    <span class="k">return</span> <span class="n">cifti_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-1022"><a href="#L-1022"><span class="linenos">1022</span></a>
+</span><span id="L-960"><a href="#L-960"><span class="linenos"> 960</span></a>
+</span><span id="L-961"><a href="#L-961"><span class="linenos"> 961</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert</span><span class="p">(</span>
+</span><span id="L-962"><a href="#L-962"><span class="linenos"> 962</span></a>    <span class="n">to_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertToGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-963"><a href="#L-963"><span class="linenos"> 963</span></a>    <span class="n">from_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertFromGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-964"><a href="#L-964"><span class="linenos"> 964</span></a>    <span class="n">to_nifti</span><span class="p">:</span> <span class="n">CiftiConvertToNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-965"><a href="#L-965"><span class="linenos"> 965</span></a>    <span class="n">from_nifti</span><span class="p">:</span> <span class="n">CiftiConvertFromNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-966"><a href="#L-966"><span class="linenos"> 966</span></a>    <span class="n">to_text</span><span class="p">:</span> <span class="n">CiftiConvertToTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-967"><a href="#L-967"><span class="linenos"> 967</span></a>    <span class="n">from_text</span><span class="p">:</span> <span class="n">CiftiConvertFromTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-968"><a href="#L-968"><span class="linenos"> 968</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-969"><a href="#L-969"><span class="linenos"> 969</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertOutputs</span><span class="p">:</span>
+</span><span id="L-970"><a href="#L-970"><span class="linenos"> 970</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-971"><a href="#L-971"><span class="linenos"> 971</span></a><span class="sd">    Dump cifti matrix into other formats.</span>
+</span><span id="L-972"><a href="#L-972"><span class="linenos"> 972</span></a><span class="sd">    </span>
+</span><span id="L-973"><a href="#L-973"><span class="linenos"> 973</span></a><span class="sd">    This command is used to convert a full CIFTI matrix to/from formats that can</span>
+</span><span id="L-974"><a href="#L-974"><span class="linenos"> 974</span></a><span class="sd">    be used by programs that don&#39;t understand CIFTI. You must specify exactly</span>
+</span><span id="L-975"><a href="#L-975"><span class="linenos"> 975</span></a><span class="sd">    one of -to-gifti-ext, -from-gifti-ext, -to-nifti, -from-nifti, -to-text, or</span>
+</span><span id="L-976"><a href="#L-976"><span class="linenos"> 976</span></a><span class="sd">    -from-text.</span>
+</span><span id="L-977"><a href="#L-977"><span class="linenos"> 977</span></a><span class="sd">    </span>
+</span><span id="L-978"><a href="#L-978"><span class="linenos"> 978</span></a><span class="sd">    If you want to write an existing CIFTI file with a different CIFTI version,</span>
+</span><span id="L-979"><a href="#L-979"><span class="linenos"> 979</span></a><span class="sd">    see -file-convert, and its -cifti-version-convert option.</span>
+</span><span id="L-980"><a href="#L-980"><span class="linenos"> 980</span></a><span class="sd">    </span>
+</span><span id="L-981"><a href="#L-981"><span class="linenos"> 981</span></a><span class="sd">    If you want part of the CIFTI file as a metric, label, or volume file, see</span>
+</span><span id="L-982"><a href="#L-982"><span class="linenos"> 982</span></a><span class="sd">    -cifti-separate. If you want to create a CIFTI file from metric and/or</span>
+</span><span id="L-983"><a href="#L-983"><span class="linenos"> 983</span></a><span class="sd">    volume files, see the -cifti-create-* commands.</span>
+</span><span id="L-984"><a href="#L-984"><span class="linenos"> 984</span></a><span class="sd">    </span>
+</span><span id="L-985"><a href="#L-985"><span class="linenos"> 985</span></a><span class="sd">    If you want to import a matrix that is restricted to an ROI, first create a</span>
+</span><span id="L-986"><a href="#L-986"><span class="linenos"> 986</span></a><span class="sd">    template CIFTI file matching that ROI using a -cifti-create-* command. After</span>
+</span><span id="L-987"><a href="#L-987"><span class="linenos"> 987</span></a><span class="sd">    importing to CIFTI, you can then expand the file into a standard</span>
+</span><span id="L-988"><a href="#L-988"><span class="linenos"> 988</span></a><span class="sd">    brainordinates space with -cifti-create-dense-from-template. If you want to</span>
+</span><span id="L-989"><a href="#L-989"><span class="linenos"> 989</span></a><span class="sd">    export only part of a CIFTI file, first create an roi-restricted CIFTI file</span>
+</span><span id="L-990"><a href="#L-990"><span class="linenos"> 990</span></a><span class="sd">    with -cifti-restrict-dense-mapping.</span>
+</span><span id="L-991"><a href="#L-991"><span class="linenos"> 991</span></a><span class="sd">    </span>
+</span><span id="L-992"><a href="#L-992"><span class="linenos"> 992</span></a><span class="sd">    The -transpose option to -from-gifti-ext is needed if the replacement binary</span>
+</span><span id="L-993"><a href="#L-993"><span class="linenos"> 993</span></a><span class="sd">    file is in column-major order.</span>
+</span><span id="L-994"><a href="#L-994"><span class="linenos"> 994</span></a><span class="sd">    </span>
+</span><span id="L-995"><a href="#L-995"><span class="linenos"> 995</span></a><span class="sd">    The -unit options accept these values:</span>
+</span><span id="L-996"><a href="#L-996"><span class="linenos"> 996</span></a><span class="sd">    </span>
+</span><span id="L-997"><a href="#L-997"><span class="linenos"> 997</span></a><span class="sd">    SECOND</span>
+</span><span id="L-998"><a href="#L-998"><span class="linenos"> 998</span></a><span class="sd">    HERTZ</span>
+</span><span id="L-999"><a href="#L-999"><span class="linenos"> 999</span></a><span class="sd">    METER</span>
+</span><span id="L-1000"><a href="#L-1000"><span class="linenos">1000</span></a><span class="sd">    RADIAN.</span>
+</span><span id="L-1001"><a href="#L-1001"><span class="linenos">1001</span></a><span class="sd">    </span>
+</span><span id="L-1002"><a href="#L-1002"><span class="linenos">1002</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-1003"><a href="#L-1003"><span class="linenos">1003</span></a><span class="sd">    </span>
+</span><span id="L-1004"><a href="#L-1004"><span class="linenos">1004</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-1005"><a href="#L-1005"><span class="linenos">1005</span></a><span class="sd">    </span>
+</span><span id="L-1006"><a href="#L-1006"><span class="linenos">1006</span></a><span class="sd">    Args:</span>
+</span><span id="L-1007"><a href="#L-1007"><span class="linenos">1007</span></a><span class="sd">        to_gifti_ext: convert to GIFTI external binary.</span>
+</span><span id="L-1008"><a href="#L-1008"><span class="linenos">1008</span></a><span class="sd">        from_gifti_ext: convert a GIFTI made with this command back into a\</span>
+</span><span id="L-1009"><a href="#L-1009"><span class="linenos">1009</span></a><span class="sd">            CIFTI.</span>
+</span><span id="L-1010"><a href="#L-1010"><span class="linenos">1010</span></a><span class="sd">        to_nifti: convert to NIFTI1.</span>
+</span><span id="L-1011"><a href="#L-1011"><span class="linenos">1011</span></a><span class="sd">        from_nifti: convert a NIFTI (1 or 2) file made with this command back\</span>
+</span><span id="L-1012"><a href="#L-1012"><span class="linenos">1012</span></a><span class="sd">            into CIFTI.</span>
+</span><span id="L-1013"><a href="#L-1013"><span class="linenos">1013</span></a><span class="sd">        to_text: convert to a plain text file.</span>
+</span><span id="L-1014"><a href="#L-1014"><span class="linenos">1014</span></a><span class="sd">        from_text: convert from plain text to cifti.</span>
+</span><span id="L-1015"><a href="#L-1015"><span class="linenos">1015</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-1016"><a href="#L-1016"><span class="linenos">1016</span></a><span class="sd">    Returns:</span>
+</span><span id="L-1017"><a href="#L-1017"><span class="linenos">1017</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiConvertOutputs`).</span>
+</span><span id="L-1018"><a href="#L-1018"><span class="linenos">1018</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-1019"><a href="#L-1019"><span class="linenos">1019</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-1020"><a href="#L-1020"><span class="linenos">1020</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CONVERT_METADATA</span><span class="p">)</span>
+</span><span id="L-1021"><a href="#L-1021"><span class="linenos">1021</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_convert_params</span><span class="p">(</span><span class="n">to_gifti_ext</span><span class="o">=</span><span class="n">to_gifti_ext</span><span class="p">,</span> <span class="n">from_gifti_ext</span><span class="o">=</span><span class="n">from_gifti_ext</span><span class="p">,</span> <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="p">,</span> <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="p">,</span> <span class="n">to_text</span><span class="o">=</span><span class="n">to_text</span><span class="p">,</span> <span class="n">from_text</span><span class="o">=</span><span class="n">from_text</span><span class="p">)</span>
+</span><span id="L-1022"><a href="#L-1022"><span class="linenos">1022</span></a>    <span class="k">return</span> <span class="n">cifti_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-1023"><a href="#L-1023"><span class="linenos">1023</span></a>
-</span><span id="L-1024"><a href="#L-1024"><span class="linenos">1024</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-1025"><a href="#L-1025"><span class="linenos">1025</span></a>    <span class="s2">&quot;CIFTI_CONVERT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-1026"><a href="#L-1026"><span class="linenos">1026</span></a>    <span class="s2">&quot;CiftiConvertFromGiftiExtOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1027"><a href="#L-1027"><span class="linenos">1027</span></a>    <span class="s2">&quot;CiftiConvertFromGiftiExtParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1028"><a href="#L-1028"><span class="linenos">1028</span></a>    <span class="s2">&quot;CiftiConvertFromNiftiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1029"><a href="#L-1029"><span class="linenos">1029</span></a>    <span class="s2">&quot;CiftiConvertFromNiftiParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1030"><a href="#L-1030"><span class="linenos">1030</span></a>    <span class="s2">&quot;CiftiConvertFromTextOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1031"><a href="#L-1031"><span class="linenos">1031</span></a>    <span class="s2">&quot;CiftiConvertFromTextParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1032"><a href="#L-1032"><span class="linenos">1032</span></a>    <span class="s2">&quot;CiftiConvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1033"><a href="#L-1033"><span class="linenos">1033</span></a>    <span class="s2">&quot;CiftiConvertParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1034"><a href="#L-1034"><span class="linenos">1034</span></a>    <span class="s2">&quot;CiftiConvertReplaceBinaryParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1035"><a href="#L-1035"><span class="linenos">1035</span></a>    <span class="s2">&quot;CiftiConvertResetTimepoints1Parameters&quot;</span><span class="p">,</span>
-</span><span id="L-1036"><a href="#L-1036"><span class="linenos">1036</span></a>    <span class="s2">&quot;CiftiConvertResetTimepoints2Parameters&quot;</span><span class="p">,</span>
-</span><span id="L-1037"><a href="#L-1037"><span class="linenos">1037</span></a>    <span class="s2">&quot;CiftiConvertResetTimepointsParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1038"><a href="#L-1038"><span class="linenos">1038</span></a>    <span class="s2">&quot;CiftiConvertToGiftiExtParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1039"><a href="#L-1039"><span class="linenos">1039</span></a>    <span class="s2">&quot;CiftiConvertToNiftiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1040"><a href="#L-1040"><span class="linenos">1040</span></a>    <span class="s2">&quot;CiftiConvertToNiftiParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1041"><a href="#L-1041"><span class="linenos">1041</span></a>    <span class="s2">&quot;CiftiConvertToTextParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1042"><a href="#L-1042"><span class="linenos">1042</span></a>    <span class="s2">&quot;cifti_convert&quot;</span><span class="p">,</span>
-</span><span id="L-1043"><a href="#L-1043"><span class="linenos">1043</span></a>    <span class="s2">&quot;cifti_convert_from_gifti_ext_params&quot;</span><span class="p">,</span>
-</span><span id="L-1044"><a href="#L-1044"><span class="linenos">1044</span></a>    <span class="s2">&quot;cifti_convert_from_nifti_params&quot;</span><span class="p">,</span>
-</span><span id="L-1045"><a href="#L-1045"><span class="linenos">1045</span></a>    <span class="s2">&quot;cifti_convert_from_text_params&quot;</span><span class="p">,</span>
-</span><span id="L-1046"><a href="#L-1046"><span class="linenos">1046</span></a>    <span class="s2">&quot;cifti_convert_params&quot;</span><span class="p">,</span>
-</span><span id="L-1047"><a href="#L-1047"><span class="linenos">1047</span></a>    <span class="s2">&quot;cifti_convert_replace_binary_params&quot;</span><span class="p">,</span>
-</span><span id="L-1048"><a href="#L-1048"><span class="linenos">1048</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_1_params&quot;</span><span class="p">,</span>
-</span><span id="L-1049"><a href="#L-1049"><span class="linenos">1049</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_2_params&quot;</span><span class="p">,</span>
-</span><span id="L-1050"><a href="#L-1050"><span class="linenos">1050</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_params&quot;</span><span class="p">,</span>
-</span><span id="L-1051"><a href="#L-1051"><span class="linenos">1051</span></a>    <span class="s2">&quot;cifti_convert_to_gifti_ext_params&quot;</span><span class="p">,</span>
-</span><span id="L-1052"><a href="#L-1052"><span class="linenos">1052</span></a>    <span class="s2">&quot;cifti_convert_to_nifti_params&quot;</span><span class="p">,</span>
-</span><span id="L-1053"><a href="#L-1053"><span class="linenos">1053</span></a>    <span class="s2">&quot;cifti_convert_to_text_params&quot;</span><span class="p">,</span>
-</span><span id="L-1054"><a href="#L-1054"><span class="linenos">1054</span></a><span class="p">]</span>
+</span><span id="L-1024"><a href="#L-1024"><span class="linenos">1024</span></a>
+</span><span id="L-1025"><a href="#L-1025"><span class="linenos">1025</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-1026"><a href="#L-1026"><span class="linenos">1026</span></a>    <span class="s2">&quot;CIFTI_CONVERT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-1027"><a href="#L-1027"><span class="linenos">1027</span></a>    <span class="s2">&quot;CiftiConvertFromGiftiExtOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1028"><a href="#L-1028"><span class="linenos">1028</span></a>    <span class="s2">&quot;CiftiConvertFromGiftiExtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1029"><a href="#L-1029"><span class="linenos">1029</span></a>    <span class="s2">&quot;CiftiConvertFromNiftiOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1030"><a href="#L-1030"><span class="linenos">1030</span></a>    <span class="s2">&quot;CiftiConvertFromNiftiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1031"><a href="#L-1031"><span class="linenos">1031</span></a>    <span class="s2">&quot;CiftiConvertFromTextOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1032"><a href="#L-1032"><span class="linenos">1032</span></a>    <span class="s2">&quot;CiftiConvertFromTextParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1033"><a href="#L-1033"><span class="linenos">1033</span></a>    <span class="s2">&quot;CiftiConvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1034"><a href="#L-1034"><span class="linenos">1034</span></a>    <span class="s2">&quot;CiftiConvertParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1035"><a href="#L-1035"><span class="linenos">1035</span></a>    <span class="s2">&quot;CiftiConvertReplaceBinaryParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1036"><a href="#L-1036"><span class="linenos">1036</span></a>    <span class="s2">&quot;CiftiConvertResetTimepoints1Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-1037"><a href="#L-1037"><span class="linenos">1037</span></a>    <span class="s2">&quot;CiftiConvertResetTimepoints2Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-1038"><a href="#L-1038"><span class="linenos">1038</span></a>    <span class="s2">&quot;CiftiConvertResetTimepointsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1039"><a href="#L-1039"><span class="linenos">1039</span></a>    <span class="s2">&quot;CiftiConvertToGiftiExtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1040"><a href="#L-1040"><span class="linenos">1040</span></a>    <span class="s2">&quot;CiftiConvertToNiftiOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1041"><a href="#L-1041"><span class="linenos">1041</span></a>    <span class="s2">&quot;CiftiConvertToNiftiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1042"><a href="#L-1042"><span class="linenos">1042</span></a>    <span class="s2">&quot;CiftiConvertToTextParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1043"><a href="#L-1043"><span class="linenos">1043</span></a>    <span class="s2">&quot;cifti_convert&quot;</span><span class="p">,</span>
+</span><span id="L-1044"><a href="#L-1044"><span class="linenos">1044</span></a>    <span class="s2">&quot;cifti_convert_from_gifti_ext_params&quot;</span><span class="p">,</span>
+</span><span id="L-1045"><a href="#L-1045"><span class="linenos">1045</span></a>    <span class="s2">&quot;cifti_convert_from_nifti_params&quot;</span><span class="p">,</span>
+</span><span id="L-1046"><a href="#L-1046"><span class="linenos">1046</span></a>    <span class="s2">&quot;cifti_convert_from_text_params&quot;</span><span class="p">,</span>
+</span><span id="L-1047"><a href="#L-1047"><span class="linenos">1047</span></a>    <span class="s2">&quot;cifti_convert_params&quot;</span><span class="p">,</span>
+</span><span id="L-1048"><a href="#L-1048"><span class="linenos">1048</span></a>    <span class="s2">&quot;cifti_convert_replace_binary_params&quot;</span><span class="p">,</span>
+</span><span id="L-1049"><a href="#L-1049"><span class="linenos">1049</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_1_params&quot;</span><span class="p">,</span>
+</span><span id="L-1050"><a href="#L-1050"><span class="linenos">1050</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_2_params&quot;</span><span class="p">,</span>
+</span><span id="L-1051"><a href="#L-1051"><span class="linenos">1051</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_params&quot;</span><span class="p">,</span>
+</span><span id="L-1052"><a href="#L-1052"><span class="linenos">1052</span></a>    <span class="s2">&quot;cifti_convert_to_gifti_ext_params&quot;</span><span class="p">,</span>
+</span><span id="L-1053"><a href="#L-1053"><span class="linenos">1053</span></a>    <span class="s2">&quot;cifti_convert_to_nifti_params&quot;</span><span class="p">,</span>
+</span><span id="L-1054"><a href="#L-1054"><span class="linenos">1054</span></a>    <span class="s2">&quot;cifti_convert_to_text_params&quot;</span><span class="p">,</span>
+</span><span id="L-1055"><a href="#L-1055"><span class="linenos">1055</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -2459,68 +2460,68 @@
 
     </div>
     <a class="headerlink" href="#cifti_convert"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_convert-961"><a href="#cifti_convert-961"><span class="linenos"> 961</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert</span><span class="p">(</span>
-</span><span id="cifti_convert-962"><a href="#cifti_convert-962"><span class="linenos"> 962</span></a>    <span class="n">to_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertToGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert-963"><a href="#cifti_convert-963"><span class="linenos"> 963</span></a>    <span class="n">from_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertFromGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert-964"><a href="#cifti_convert-964"><span class="linenos"> 964</span></a>    <span class="n">to_nifti</span><span class="p">:</span> <span class="n">CiftiConvertToNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert-965"><a href="#cifti_convert-965"><span class="linenos"> 965</span></a>    <span class="n">from_nifti</span><span class="p">:</span> <span class="n">CiftiConvertFromNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert-966"><a href="#cifti_convert-966"><span class="linenos"> 966</span></a>    <span class="n">to_text</span><span class="p">:</span> <span class="n">CiftiConvertToTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert-967"><a href="#cifti_convert-967"><span class="linenos"> 967</span></a>    <span class="n">from_text</span><span class="p">:</span> <span class="n">CiftiConvertFromTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert-968"><a href="#cifti_convert-968"><span class="linenos"> 968</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert-969"><a href="#cifti_convert-969"><span class="linenos"> 969</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertOutputs</span><span class="p">:</span>
-</span><span id="cifti_convert-970"><a href="#cifti_convert-970"><span class="linenos"> 970</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_convert-971"><a href="#cifti_convert-971"><span class="linenos"> 971</span></a><span class="sd">    Dump cifti matrix into other formats.</span>
-</span><span id="cifti_convert-972"><a href="#cifti_convert-972"><span class="linenos"> 972</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-973"><a href="#cifti_convert-973"><span class="linenos"> 973</span></a><span class="sd">    This command is used to convert a full CIFTI matrix to/from formats that can</span>
-</span><span id="cifti_convert-974"><a href="#cifti_convert-974"><span class="linenos"> 974</span></a><span class="sd">    be used by programs that don&#39;t understand CIFTI. You must specify exactly</span>
-</span><span id="cifti_convert-975"><a href="#cifti_convert-975"><span class="linenos"> 975</span></a><span class="sd">    one of -to-gifti-ext, -from-gifti-ext, -to-nifti, -from-nifti, -to-text, or</span>
-</span><span id="cifti_convert-976"><a href="#cifti_convert-976"><span class="linenos"> 976</span></a><span class="sd">    -from-text.</span>
-</span><span id="cifti_convert-977"><a href="#cifti_convert-977"><span class="linenos"> 977</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-978"><a href="#cifti_convert-978"><span class="linenos"> 978</span></a><span class="sd">    If you want to write an existing CIFTI file with a different CIFTI version,</span>
-</span><span id="cifti_convert-979"><a href="#cifti_convert-979"><span class="linenos"> 979</span></a><span class="sd">    see -file-convert, and its -cifti-version-convert option.</span>
-</span><span id="cifti_convert-980"><a href="#cifti_convert-980"><span class="linenos"> 980</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-981"><a href="#cifti_convert-981"><span class="linenos"> 981</span></a><span class="sd">    If you want part of the CIFTI file as a metric, label, or volume file, see</span>
-</span><span id="cifti_convert-982"><a href="#cifti_convert-982"><span class="linenos"> 982</span></a><span class="sd">    -cifti-separate. If you want to create a CIFTI file from metric and/or</span>
-</span><span id="cifti_convert-983"><a href="#cifti_convert-983"><span class="linenos"> 983</span></a><span class="sd">    volume files, see the -cifti-create-* commands.</span>
-</span><span id="cifti_convert-984"><a href="#cifti_convert-984"><span class="linenos"> 984</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-985"><a href="#cifti_convert-985"><span class="linenos"> 985</span></a><span class="sd">    If you want to import a matrix that is restricted to an ROI, first create a</span>
-</span><span id="cifti_convert-986"><a href="#cifti_convert-986"><span class="linenos"> 986</span></a><span class="sd">    template CIFTI file matching that ROI using a -cifti-create-* command. After</span>
-</span><span id="cifti_convert-987"><a href="#cifti_convert-987"><span class="linenos"> 987</span></a><span class="sd">    importing to CIFTI, you can then expand the file into a standard</span>
-</span><span id="cifti_convert-988"><a href="#cifti_convert-988"><span class="linenos"> 988</span></a><span class="sd">    brainordinates space with -cifti-create-dense-from-template. If you want to</span>
-</span><span id="cifti_convert-989"><a href="#cifti_convert-989"><span class="linenos"> 989</span></a><span class="sd">    export only part of a CIFTI file, first create an roi-restricted CIFTI file</span>
-</span><span id="cifti_convert-990"><a href="#cifti_convert-990"><span class="linenos"> 990</span></a><span class="sd">    with -cifti-restrict-dense-mapping.</span>
-</span><span id="cifti_convert-991"><a href="#cifti_convert-991"><span class="linenos"> 991</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-992"><a href="#cifti_convert-992"><span class="linenos"> 992</span></a><span class="sd">    The -transpose option to -from-gifti-ext is needed if the replacement binary</span>
-</span><span id="cifti_convert-993"><a href="#cifti_convert-993"><span class="linenos"> 993</span></a><span class="sd">    file is in column-major order.</span>
-</span><span id="cifti_convert-994"><a href="#cifti_convert-994"><span class="linenos"> 994</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-995"><a href="#cifti_convert-995"><span class="linenos"> 995</span></a><span class="sd">    The -unit options accept these values:</span>
-</span><span id="cifti_convert-996"><a href="#cifti_convert-996"><span class="linenos"> 996</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-997"><a href="#cifti_convert-997"><span class="linenos"> 997</span></a><span class="sd">    SECOND</span>
-</span><span id="cifti_convert-998"><a href="#cifti_convert-998"><span class="linenos"> 998</span></a><span class="sd">    HERTZ</span>
-</span><span id="cifti_convert-999"><a href="#cifti_convert-999"><span class="linenos"> 999</span></a><span class="sd">    METER</span>
-</span><span id="cifti_convert-1000"><a href="#cifti_convert-1000"><span class="linenos">1000</span></a><span class="sd">    RADIAN.</span>
-</span><span id="cifti_convert-1001"><a href="#cifti_convert-1001"><span class="linenos">1001</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-1002"><a href="#cifti_convert-1002"><span class="linenos">1002</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="cifti_convert-1003"><a href="#cifti_convert-1003"><span class="linenos">1003</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-1004"><a href="#cifti_convert-1004"><span class="linenos">1004</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="cifti_convert-1005"><a href="#cifti_convert-1005"><span class="linenos">1005</span></a><span class="sd">    </span>
-</span><span id="cifti_convert-1006"><a href="#cifti_convert-1006"><span class="linenos">1006</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_convert-1007"><a href="#cifti_convert-1007"><span class="linenos">1007</span></a><span class="sd">        to_gifti_ext: convert to GIFTI external binary.</span>
-</span><span id="cifti_convert-1008"><a href="#cifti_convert-1008"><span class="linenos">1008</span></a><span class="sd">        from_gifti_ext: convert a GIFTI made with this command back into a\</span>
-</span><span id="cifti_convert-1009"><a href="#cifti_convert-1009"><span class="linenos">1009</span></a><span class="sd">            CIFTI.</span>
-</span><span id="cifti_convert-1010"><a href="#cifti_convert-1010"><span class="linenos">1010</span></a><span class="sd">        to_nifti: convert to NIFTI1.</span>
-</span><span id="cifti_convert-1011"><a href="#cifti_convert-1011"><span class="linenos">1011</span></a><span class="sd">        from_nifti: convert a NIFTI (1 or 2) file made with this command back\</span>
-</span><span id="cifti_convert-1012"><a href="#cifti_convert-1012"><span class="linenos">1012</span></a><span class="sd">            into CIFTI.</span>
-</span><span id="cifti_convert-1013"><a href="#cifti_convert-1013"><span class="linenos">1013</span></a><span class="sd">        to_text: convert to a plain text file.</span>
-</span><span id="cifti_convert-1014"><a href="#cifti_convert-1014"><span class="linenos">1014</span></a><span class="sd">        from_text: convert from plain text to cifti.</span>
-</span><span id="cifti_convert-1015"><a href="#cifti_convert-1015"><span class="linenos">1015</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_convert-1016"><a href="#cifti_convert-1016"><span class="linenos">1016</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_convert-1017"><a href="#cifti_convert-1017"><span class="linenos">1017</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiConvertOutputs`).</span>
-</span><span id="cifti_convert-1018"><a href="#cifti_convert-1018"><span class="linenos">1018</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_convert-1019"><a href="#cifti_convert-1019"><span class="linenos">1019</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_convert-1020"><a href="#cifti_convert-1020"><span class="linenos">1020</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CONVERT_METADATA</span><span class="p">)</span>
-</span><span id="cifti_convert-1021"><a href="#cifti_convert-1021"><span class="linenos">1021</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_convert_params</span><span class="p">(</span><span class="n">to_gifti_ext</span><span class="o">=</span><span class="n">to_gifti_ext</span><span class="p">,</span> <span class="n">from_gifti_ext</span><span class="o">=</span><span class="n">from_gifti_ext</span><span class="p">,</span> <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="p">,</span> <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="p">,</span> <span class="n">to_text</span><span class="o">=</span><span class="n">to_text</span><span class="p">,</span> <span class="n">from_text</span><span class="o">=</span><span class="n">from_text</span><span class="p">)</span>
-</span><span id="cifti_convert-1022"><a href="#cifti_convert-1022"><span class="linenos">1022</span></a>    <span class="k">return</span> <span class="n">cifti_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_convert-962"><a href="#cifti_convert-962"><span class="linenos"> 962</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert</span><span class="p">(</span>
+</span><span id="cifti_convert-963"><a href="#cifti_convert-963"><span class="linenos"> 963</span></a>    <span class="n">to_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertToGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert-964"><a href="#cifti_convert-964"><span class="linenos"> 964</span></a>    <span class="n">from_gifti_ext</span><span class="p">:</span> <span class="n">CiftiConvertFromGiftiExtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert-965"><a href="#cifti_convert-965"><span class="linenos"> 965</span></a>    <span class="n">to_nifti</span><span class="p">:</span> <span class="n">CiftiConvertToNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert-966"><a href="#cifti_convert-966"><span class="linenos"> 966</span></a>    <span class="n">from_nifti</span><span class="p">:</span> <span class="n">CiftiConvertFromNiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert-967"><a href="#cifti_convert-967"><span class="linenos"> 967</span></a>    <span class="n">to_text</span><span class="p">:</span> <span class="n">CiftiConvertToTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert-968"><a href="#cifti_convert-968"><span class="linenos"> 968</span></a>    <span class="n">from_text</span><span class="p">:</span> <span class="n">CiftiConvertFromTextParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert-969"><a href="#cifti_convert-969"><span class="linenos"> 969</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert-970"><a href="#cifti_convert-970"><span class="linenos"> 970</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertOutputs</span><span class="p">:</span>
+</span><span id="cifti_convert-971"><a href="#cifti_convert-971"><span class="linenos"> 971</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_convert-972"><a href="#cifti_convert-972"><span class="linenos"> 972</span></a><span class="sd">    Dump cifti matrix into other formats.</span>
+</span><span id="cifti_convert-973"><a href="#cifti_convert-973"><span class="linenos"> 973</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-974"><a href="#cifti_convert-974"><span class="linenos"> 974</span></a><span class="sd">    This command is used to convert a full CIFTI matrix to/from formats that can</span>
+</span><span id="cifti_convert-975"><a href="#cifti_convert-975"><span class="linenos"> 975</span></a><span class="sd">    be used by programs that don&#39;t understand CIFTI. You must specify exactly</span>
+</span><span id="cifti_convert-976"><a href="#cifti_convert-976"><span class="linenos"> 976</span></a><span class="sd">    one of -to-gifti-ext, -from-gifti-ext, -to-nifti, -from-nifti, -to-text, or</span>
+</span><span id="cifti_convert-977"><a href="#cifti_convert-977"><span class="linenos"> 977</span></a><span class="sd">    -from-text.</span>
+</span><span id="cifti_convert-978"><a href="#cifti_convert-978"><span class="linenos"> 978</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-979"><a href="#cifti_convert-979"><span class="linenos"> 979</span></a><span class="sd">    If you want to write an existing CIFTI file with a different CIFTI version,</span>
+</span><span id="cifti_convert-980"><a href="#cifti_convert-980"><span class="linenos"> 980</span></a><span class="sd">    see -file-convert, and its -cifti-version-convert option.</span>
+</span><span id="cifti_convert-981"><a href="#cifti_convert-981"><span class="linenos"> 981</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-982"><a href="#cifti_convert-982"><span class="linenos"> 982</span></a><span class="sd">    If you want part of the CIFTI file as a metric, label, or volume file, see</span>
+</span><span id="cifti_convert-983"><a href="#cifti_convert-983"><span class="linenos"> 983</span></a><span class="sd">    -cifti-separate. If you want to create a CIFTI file from metric and/or</span>
+</span><span id="cifti_convert-984"><a href="#cifti_convert-984"><span class="linenos"> 984</span></a><span class="sd">    volume files, see the -cifti-create-* commands.</span>
+</span><span id="cifti_convert-985"><a href="#cifti_convert-985"><span class="linenos"> 985</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-986"><a href="#cifti_convert-986"><span class="linenos"> 986</span></a><span class="sd">    If you want to import a matrix that is restricted to an ROI, first create a</span>
+</span><span id="cifti_convert-987"><a href="#cifti_convert-987"><span class="linenos"> 987</span></a><span class="sd">    template CIFTI file matching that ROI using a -cifti-create-* command. After</span>
+</span><span id="cifti_convert-988"><a href="#cifti_convert-988"><span class="linenos"> 988</span></a><span class="sd">    importing to CIFTI, you can then expand the file into a standard</span>
+</span><span id="cifti_convert-989"><a href="#cifti_convert-989"><span class="linenos"> 989</span></a><span class="sd">    brainordinates space with -cifti-create-dense-from-template. If you want to</span>
+</span><span id="cifti_convert-990"><a href="#cifti_convert-990"><span class="linenos"> 990</span></a><span class="sd">    export only part of a CIFTI file, first create an roi-restricted CIFTI file</span>
+</span><span id="cifti_convert-991"><a href="#cifti_convert-991"><span class="linenos"> 991</span></a><span class="sd">    with -cifti-restrict-dense-mapping.</span>
+</span><span id="cifti_convert-992"><a href="#cifti_convert-992"><span class="linenos"> 992</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-993"><a href="#cifti_convert-993"><span class="linenos"> 993</span></a><span class="sd">    The -transpose option to -from-gifti-ext is needed if the replacement binary</span>
+</span><span id="cifti_convert-994"><a href="#cifti_convert-994"><span class="linenos"> 994</span></a><span class="sd">    file is in column-major order.</span>
+</span><span id="cifti_convert-995"><a href="#cifti_convert-995"><span class="linenos"> 995</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-996"><a href="#cifti_convert-996"><span class="linenos"> 996</span></a><span class="sd">    The -unit options accept these values:</span>
+</span><span id="cifti_convert-997"><a href="#cifti_convert-997"><span class="linenos"> 997</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-998"><a href="#cifti_convert-998"><span class="linenos"> 998</span></a><span class="sd">    SECOND</span>
+</span><span id="cifti_convert-999"><a href="#cifti_convert-999"><span class="linenos"> 999</span></a><span class="sd">    HERTZ</span>
+</span><span id="cifti_convert-1000"><a href="#cifti_convert-1000"><span class="linenos">1000</span></a><span class="sd">    METER</span>
+</span><span id="cifti_convert-1001"><a href="#cifti_convert-1001"><span class="linenos">1001</span></a><span class="sd">    RADIAN.</span>
+</span><span id="cifti_convert-1002"><a href="#cifti_convert-1002"><span class="linenos">1002</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-1003"><a href="#cifti_convert-1003"><span class="linenos">1003</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="cifti_convert-1004"><a href="#cifti_convert-1004"><span class="linenos">1004</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-1005"><a href="#cifti_convert-1005"><span class="linenos">1005</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_convert-1006"><a href="#cifti_convert-1006"><span class="linenos">1006</span></a><span class="sd">    </span>
+</span><span id="cifti_convert-1007"><a href="#cifti_convert-1007"><span class="linenos">1007</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_convert-1008"><a href="#cifti_convert-1008"><span class="linenos">1008</span></a><span class="sd">        to_gifti_ext: convert to GIFTI external binary.</span>
+</span><span id="cifti_convert-1009"><a href="#cifti_convert-1009"><span class="linenos">1009</span></a><span class="sd">        from_gifti_ext: convert a GIFTI made with this command back into a\</span>
+</span><span id="cifti_convert-1010"><a href="#cifti_convert-1010"><span class="linenos">1010</span></a><span class="sd">            CIFTI.</span>
+</span><span id="cifti_convert-1011"><a href="#cifti_convert-1011"><span class="linenos">1011</span></a><span class="sd">        to_nifti: convert to NIFTI1.</span>
+</span><span id="cifti_convert-1012"><a href="#cifti_convert-1012"><span class="linenos">1012</span></a><span class="sd">        from_nifti: convert a NIFTI (1 or 2) file made with this command back\</span>
+</span><span id="cifti_convert-1013"><a href="#cifti_convert-1013"><span class="linenos">1013</span></a><span class="sd">            into CIFTI.</span>
+</span><span id="cifti_convert-1014"><a href="#cifti_convert-1014"><span class="linenos">1014</span></a><span class="sd">        to_text: convert to a plain text file.</span>
+</span><span id="cifti_convert-1015"><a href="#cifti_convert-1015"><span class="linenos">1015</span></a><span class="sd">        from_text: convert from plain text to cifti.</span>
+</span><span id="cifti_convert-1016"><a href="#cifti_convert-1016"><span class="linenos">1016</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_convert-1017"><a href="#cifti_convert-1017"><span class="linenos">1017</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_convert-1018"><a href="#cifti_convert-1018"><span class="linenos">1018</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiConvertOutputs`).</span>
+</span><span id="cifti_convert-1019"><a href="#cifti_convert-1019"><span class="linenos">1019</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_convert-1020"><a href="#cifti_convert-1020"><span class="linenos">1020</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_convert-1021"><a href="#cifti_convert-1021"><span class="linenos">1021</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CONVERT_METADATA</span><span class="p">)</span>
+</span><span id="cifti_convert-1022"><a href="#cifti_convert-1022"><span class="linenos">1022</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_convert_params</span><span class="p">(</span><span class="n">to_gifti_ext</span><span class="o">=</span><span class="n">to_gifti_ext</span><span class="p">,</span> <span class="n">from_gifti_ext</span><span class="o">=</span><span class="n">from_gifti_ext</span><span class="p">,</span> <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="p">,</span> <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="p">,</span> <span class="n">to_text</span><span class="o">=</span><span class="n">to_text</span><span class="p">,</span> <span class="n">from_text</span><span class="o">=</span><span class="n">from_text</span><span class="p">)</span>
+</span><span id="cifti_convert-1023"><a href="#cifti_convert-1023"><span class="linenos">1023</span></a>    <span class="k">return</span> <span class="n">cifti_convert_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

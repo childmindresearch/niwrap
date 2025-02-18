@@ -499,97 +499,98 @@
 </span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">dwi2mask_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">dwi2mask_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2mask</span><span class="p">(</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2maskFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2maskConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2maskOutputs</span><span class="p">:</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">    Generates a whole brain mask from a DWI image.</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">    </span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    All diffusion weighted and b=0 volumes are used to obtain a mask that</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    includes both brain tissue and CSF.</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    </span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    In a second step peninsula-like extensions, where the peninsula itself is</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    wider than the bridge connecting it to the mask, are removed. This may help</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    removing artefacts and non-brain parts, e.g. eyes, from the mask.</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    </span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    References:</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    </span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    Dhollander T, Raffelt D, Connelly A. Unsupervised 3-tissue response function</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    estimation from single-shell or multi-shell diffusion MR data without a</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    co-registered T1 image. ISMRM Workshop on Breaking the Barriers of Diffusion</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    MRI, 2016, 5.</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    </span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">    </span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">    </span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">    Args:</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">        input_: the input DWI image containing volumes that are both diffusion\</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">            weighted and b=0.</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">        output: the output whole-brain mask image.</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">        clean_scale: the maximum scale used to cut bridges. A certain maximum\</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">            scale cuts bridges up to a width (in voxels) of 2x the provided scale.\</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">            Setting this to 0 disables the mask cleaning step. (Default: 2).</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">    Returns:</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2maskOutputs`).</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2MASK_METADATA</span><span class="p">)</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2mask_params</span><span class="p">(</span><span class="n">clean_scale</span><span class="o">=</span><span class="n">clean_scale</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="k">return</span> <span class="n">dwi2mask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2mask</span><span class="p">(</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2maskFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2maskConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2maskOutputs</span><span class="p">:</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">    Generates a whole brain mask from a DWI image.</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    </span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    All diffusion weighted and b=0 volumes are used to obtain a mask that</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    includes both brain tissue and CSF.</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    </span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    In a second step peninsula-like extensions, where the peninsula itself is</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    wider than the bridge connecting it to the mask, are removed. This may help</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    removing artefacts and non-brain parts, e.g. eyes, from the mask.</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    </span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    References:</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    </span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    Dhollander T, Raffelt D, Connelly A. Unsupervised 3-tissue response function</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    estimation from single-shell or multi-shell diffusion MR data without a</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    co-registered T1 image. ISMRM Workshop on Breaking the Barriers of Diffusion</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    MRI, 2016, 5.</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    </span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">    </span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">    </span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">    Args:</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">        input_: the input DWI image containing volumes that are both diffusion\</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">            weighted and b=0.</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">        output: the output whole-brain mask image.</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">        clean_scale: the maximum scale used to cut bridges. A certain maximum\</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">            scale cuts bridges up to a width (in voxels) of 2x the provided scale.\</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">            Setting this to 0 disables the mask cleaning step. (Default: 2).</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">    Returns:</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2maskOutputs`).</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2MASK_METADATA</span><span class="p">)</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2mask_params</span><span class="p">(</span><span class="n">clean_scale</span><span class="o">=</span><span class="n">clean_scale</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="k">return</span> <span class="n">dwi2mask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;DWI2MASK_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;Dwi2maskConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;Dwi2maskFslgradParameters&quot;</span><span class="p">,</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;Dwi2maskOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;Dwi2maskParameters&quot;</span><span class="p">,</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;dwi2mask&quot;</span><span class="p">,</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;dwi2mask_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;dwi2mask_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;dwi2mask_params&quot;</span><span class="p">,</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="p">]</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;DWI2MASK_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;Dwi2maskConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;Dwi2maskFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;Dwi2maskOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;Dwi2maskParameters&quot;</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;dwi2mask&quot;</span><span class="p">,</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;dwi2mask_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;dwi2mask_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;dwi2mask_params&quot;</span><span class="p">,</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -911,80 +912,80 @@
 
     </div>
     <a class="headerlink" href="#dwi2mask"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dwi2mask-357"><a href="#dwi2mask-357"><span class="linenos">357</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2mask</span><span class="p">(</span>
-</span><span id="dwi2mask-358"><a href="#dwi2mask-358"><span class="linenos">358</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="dwi2mask-359"><a href="#dwi2mask-359"><span class="linenos">359</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="dwi2mask-360"><a href="#dwi2mask-360"><span class="linenos">360</span></a>    <span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2mask-361"><a href="#dwi2mask-361"><span class="linenos">361</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2mask-362"><a href="#dwi2mask-362"><span class="linenos">362</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2maskFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2mask-363"><a href="#dwi2mask-363"><span class="linenos">363</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2mask-364"><a href="#dwi2mask-364"><span class="linenos">364</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2mask-365"><a href="#dwi2mask-365"><span class="linenos">365</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2mask-366"><a href="#dwi2mask-366"><span class="linenos">366</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2mask-367"><a href="#dwi2mask-367"><span class="linenos">367</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2mask-368"><a href="#dwi2mask-368"><span class="linenos">368</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2maskConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2mask-369"><a href="#dwi2mask-369"><span class="linenos">369</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2mask-370"><a href="#dwi2mask-370"><span class="linenos">370</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2mask-371"><a href="#dwi2mask-371"><span class="linenos">371</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2mask-372"><a href="#dwi2mask-372"><span class="linenos">372</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2maskOutputs</span><span class="p">:</span>
-</span><span id="dwi2mask-373"><a href="#dwi2mask-373"><span class="linenos">373</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dwi2mask-374"><a href="#dwi2mask-374"><span class="linenos">374</span></a><span class="sd">    Generates a whole brain mask from a DWI image.</span>
-</span><span id="dwi2mask-375"><a href="#dwi2mask-375"><span class="linenos">375</span></a><span class="sd">    </span>
-</span><span id="dwi2mask-376"><a href="#dwi2mask-376"><span class="linenos">376</span></a><span class="sd">    All diffusion weighted and b=0 volumes are used to obtain a mask that</span>
-</span><span id="dwi2mask-377"><a href="#dwi2mask-377"><span class="linenos">377</span></a><span class="sd">    includes both brain tissue and CSF.</span>
-</span><span id="dwi2mask-378"><a href="#dwi2mask-378"><span class="linenos">378</span></a><span class="sd">    </span>
-</span><span id="dwi2mask-379"><a href="#dwi2mask-379"><span class="linenos">379</span></a><span class="sd">    In a second step peninsula-like extensions, where the peninsula itself is</span>
-</span><span id="dwi2mask-380"><a href="#dwi2mask-380"><span class="linenos">380</span></a><span class="sd">    wider than the bridge connecting it to the mask, are removed. This may help</span>
-</span><span id="dwi2mask-381"><a href="#dwi2mask-381"><span class="linenos">381</span></a><span class="sd">    removing artefacts and non-brain parts, e.g. eyes, from the mask.</span>
-</span><span id="dwi2mask-382"><a href="#dwi2mask-382"><span class="linenos">382</span></a><span class="sd">    </span>
-</span><span id="dwi2mask-383"><a href="#dwi2mask-383"><span class="linenos">383</span></a><span class="sd">    References:</span>
-</span><span id="dwi2mask-384"><a href="#dwi2mask-384"><span class="linenos">384</span></a><span class="sd">    </span>
-</span><span id="dwi2mask-385"><a href="#dwi2mask-385"><span class="linenos">385</span></a><span class="sd">    Dhollander T, Raffelt D, Connelly A. Unsupervised 3-tissue response function</span>
-</span><span id="dwi2mask-386"><a href="#dwi2mask-386"><span class="linenos">386</span></a><span class="sd">    estimation from single-shell or multi-shell diffusion MR data without a</span>
-</span><span id="dwi2mask-387"><a href="#dwi2mask-387"><span class="linenos">387</span></a><span class="sd">    co-registered T1 image. ISMRM Workshop on Breaking the Barriers of Diffusion</span>
-</span><span id="dwi2mask-388"><a href="#dwi2mask-388"><span class="linenos">388</span></a><span class="sd">    MRI, 2016, 5.</span>
-</span><span id="dwi2mask-389"><a href="#dwi2mask-389"><span class="linenos">389</span></a><span class="sd">    </span>
-</span><span id="dwi2mask-390"><a href="#dwi2mask-390"><span class="linenos">390</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="dwi2mask-391"><a href="#dwi2mask-391"><span class="linenos">391</span></a><span class="sd">    </span>
-</span><span id="dwi2mask-392"><a href="#dwi2mask-392"><span class="linenos">392</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="dwi2mask-393"><a href="#dwi2mask-393"><span class="linenos">393</span></a><span class="sd">    </span>
-</span><span id="dwi2mask-394"><a href="#dwi2mask-394"><span class="linenos">394</span></a><span class="sd">    Args:</span>
-</span><span id="dwi2mask-395"><a href="#dwi2mask-395"><span class="linenos">395</span></a><span class="sd">        input_: the input DWI image containing volumes that are both diffusion\</span>
-</span><span id="dwi2mask-396"><a href="#dwi2mask-396"><span class="linenos">396</span></a><span class="sd">            weighted and b=0.</span>
-</span><span id="dwi2mask-397"><a href="#dwi2mask-397"><span class="linenos">397</span></a><span class="sd">        output: the output whole-brain mask image.</span>
-</span><span id="dwi2mask-398"><a href="#dwi2mask-398"><span class="linenos">398</span></a><span class="sd">        clean_scale: the maximum scale used to cut bridges. A certain maximum\</span>
-</span><span id="dwi2mask-399"><a href="#dwi2mask-399"><span class="linenos">399</span></a><span class="sd">            scale cuts bridges up to a width (in voxels) of 2x the provided scale.\</span>
-</span><span id="dwi2mask-400"><a href="#dwi2mask-400"><span class="linenos">400</span></a><span class="sd">            Setting this to 0 disables the mask cleaning step. (Default: 2).</span>
-</span><span id="dwi2mask-401"><a href="#dwi2mask-401"><span class="linenos">401</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dwi2mask-402"><a href="#dwi2mask-402"><span class="linenos">402</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="dwi2mask-403"><a href="#dwi2mask-403"><span class="linenos">403</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="dwi2mask-404"><a href="#dwi2mask-404"><span class="linenos">404</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="dwi2mask-405"><a href="#dwi2mask-405"><span class="linenos">405</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="dwi2mask-406"><a href="#dwi2mask-406"><span class="linenos">406</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="dwi2mask-407"><a href="#dwi2mask-407"><span class="linenos">407</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dwi2mask-408"><a href="#dwi2mask-408"><span class="linenos">408</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="dwi2mask-409"><a href="#dwi2mask-409"><span class="linenos">409</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="dwi2mask-410"><a href="#dwi2mask-410"><span class="linenos">410</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="dwi2mask-411"><a href="#dwi2mask-411"><span class="linenos">411</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="dwi2mask-412"><a href="#dwi2mask-412"><span class="linenos">412</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="dwi2mask-413"><a href="#dwi2mask-413"><span class="linenos">413</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="dwi2mask-414"><a href="#dwi2mask-414"><span class="linenos">414</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="dwi2mask-415"><a href="#dwi2mask-415"><span class="linenos">415</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="dwi2mask-416"><a href="#dwi2mask-416"><span class="linenos">416</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="dwi2mask-417"><a href="#dwi2mask-417"><span class="linenos">417</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="dwi2mask-418"><a href="#dwi2mask-418"><span class="linenos">418</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="dwi2mask-419"><a href="#dwi2mask-419"><span class="linenos">419</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="dwi2mask-420"><a href="#dwi2mask-420"><span class="linenos">420</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="dwi2mask-421"><a href="#dwi2mask-421"><span class="linenos">421</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="dwi2mask-422"><a href="#dwi2mask-422"><span class="linenos">422</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="dwi2mask-423"><a href="#dwi2mask-423"><span class="linenos">423</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dwi2mask-424"><a href="#dwi2mask-424"><span class="linenos">424</span></a><span class="sd">    Returns:</span>
-</span><span id="dwi2mask-425"><a href="#dwi2mask-425"><span class="linenos">425</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2maskOutputs`).</span>
-</span><span id="dwi2mask-426"><a href="#dwi2mask-426"><span class="linenos">426</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dwi2mask-427"><a href="#dwi2mask-427"><span class="linenos">427</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dwi2mask-428"><a href="#dwi2mask-428"><span class="linenos">428</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2MASK_METADATA</span><span class="p">)</span>
-</span><span id="dwi2mask-429"><a href="#dwi2mask-429"><span class="linenos">429</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2mask_params</span><span class="p">(</span><span class="n">clean_scale</span><span class="o">=</span><span class="n">clean_scale</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
-</span><span id="dwi2mask-430"><a href="#dwi2mask-430"><span class="linenos">430</span></a>    <span class="k">return</span> <span class="n">dwi2mask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dwi2mask-358"><a href="#dwi2mask-358"><span class="linenos">358</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2mask</span><span class="p">(</span>
+</span><span id="dwi2mask-359"><a href="#dwi2mask-359"><span class="linenos">359</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="dwi2mask-360"><a href="#dwi2mask-360"><span class="linenos">360</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="dwi2mask-361"><a href="#dwi2mask-361"><span class="linenos">361</span></a>    <span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2mask-362"><a href="#dwi2mask-362"><span class="linenos">362</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2mask-363"><a href="#dwi2mask-363"><span class="linenos">363</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2maskFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2mask-364"><a href="#dwi2mask-364"><span class="linenos">364</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2mask-365"><a href="#dwi2mask-365"><span class="linenos">365</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2mask-366"><a href="#dwi2mask-366"><span class="linenos">366</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2mask-367"><a href="#dwi2mask-367"><span class="linenos">367</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2mask-368"><a href="#dwi2mask-368"><span class="linenos">368</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2mask-369"><a href="#dwi2mask-369"><span class="linenos">369</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2maskConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2mask-370"><a href="#dwi2mask-370"><span class="linenos">370</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2mask-371"><a href="#dwi2mask-371"><span class="linenos">371</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2mask-372"><a href="#dwi2mask-372"><span class="linenos">372</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2mask-373"><a href="#dwi2mask-373"><span class="linenos">373</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2maskOutputs</span><span class="p">:</span>
+</span><span id="dwi2mask-374"><a href="#dwi2mask-374"><span class="linenos">374</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dwi2mask-375"><a href="#dwi2mask-375"><span class="linenos">375</span></a><span class="sd">    Generates a whole brain mask from a DWI image.</span>
+</span><span id="dwi2mask-376"><a href="#dwi2mask-376"><span class="linenos">376</span></a><span class="sd">    </span>
+</span><span id="dwi2mask-377"><a href="#dwi2mask-377"><span class="linenos">377</span></a><span class="sd">    All diffusion weighted and b=0 volumes are used to obtain a mask that</span>
+</span><span id="dwi2mask-378"><a href="#dwi2mask-378"><span class="linenos">378</span></a><span class="sd">    includes both brain tissue and CSF.</span>
+</span><span id="dwi2mask-379"><a href="#dwi2mask-379"><span class="linenos">379</span></a><span class="sd">    </span>
+</span><span id="dwi2mask-380"><a href="#dwi2mask-380"><span class="linenos">380</span></a><span class="sd">    In a second step peninsula-like extensions, where the peninsula itself is</span>
+</span><span id="dwi2mask-381"><a href="#dwi2mask-381"><span class="linenos">381</span></a><span class="sd">    wider than the bridge connecting it to the mask, are removed. This may help</span>
+</span><span id="dwi2mask-382"><a href="#dwi2mask-382"><span class="linenos">382</span></a><span class="sd">    removing artefacts and non-brain parts, e.g. eyes, from the mask.</span>
+</span><span id="dwi2mask-383"><a href="#dwi2mask-383"><span class="linenos">383</span></a><span class="sd">    </span>
+</span><span id="dwi2mask-384"><a href="#dwi2mask-384"><span class="linenos">384</span></a><span class="sd">    References:</span>
+</span><span id="dwi2mask-385"><a href="#dwi2mask-385"><span class="linenos">385</span></a><span class="sd">    </span>
+</span><span id="dwi2mask-386"><a href="#dwi2mask-386"><span class="linenos">386</span></a><span class="sd">    Dhollander T, Raffelt D, Connelly A. Unsupervised 3-tissue response function</span>
+</span><span id="dwi2mask-387"><a href="#dwi2mask-387"><span class="linenos">387</span></a><span class="sd">    estimation from single-shell or multi-shell diffusion MR data without a</span>
+</span><span id="dwi2mask-388"><a href="#dwi2mask-388"><span class="linenos">388</span></a><span class="sd">    co-registered T1 image. ISMRM Workshop on Breaking the Barriers of Diffusion</span>
+</span><span id="dwi2mask-389"><a href="#dwi2mask-389"><span class="linenos">389</span></a><span class="sd">    MRI, 2016, 5.</span>
+</span><span id="dwi2mask-390"><a href="#dwi2mask-390"><span class="linenos">390</span></a><span class="sd">    </span>
+</span><span id="dwi2mask-391"><a href="#dwi2mask-391"><span class="linenos">391</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="dwi2mask-392"><a href="#dwi2mask-392"><span class="linenos">392</span></a><span class="sd">    </span>
+</span><span id="dwi2mask-393"><a href="#dwi2mask-393"><span class="linenos">393</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="dwi2mask-394"><a href="#dwi2mask-394"><span class="linenos">394</span></a><span class="sd">    </span>
+</span><span id="dwi2mask-395"><a href="#dwi2mask-395"><span class="linenos">395</span></a><span class="sd">    Args:</span>
+</span><span id="dwi2mask-396"><a href="#dwi2mask-396"><span class="linenos">396</span></a><span class="sd">        input_: the input DWI image containing volumes that are both diffusion\</span>
+</span><span id="dwi2mask-397"><a href="#dwi2mask-397"><span class="linenos">397</span></a><span class="sd">            weighted and b=0.</span>
+</span><span id="dwi2mask-398"><a href="#dwi2mask-398"><span class="linenos">398</span></a><span class="sd">        output: the output whole-brain mask image.</span>
+</span><span id="dwi2mask-399"><a href="#dwi2mask-399"><span class="linenos">399</span></a><span class="sd">        clean_scale: the maximum scale used to cut bridges. A certain maximum\</span>
+</span><span id="dwi2mask-400"><a href="#dwi2mask-400"><span class="linenos">400</span></a><span class="sd">            scale cuts bridges up to a width (in voxels) of 2x the provided scale.\</span>
+</span><span id="dwi2mask-401"><a href="#dwi2mask-401"><span class="linenos">401</span></a><span class="sd">            Setting this to 0 disables the mask cleaning step. (Default: 2).</span>
+</span><span id="dwi2mask-402"><a href="#dwi2mask-402"><span class="linenos">402</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dwi2mask-403"><a href="#dwi2mask-403"><span class="linenos">403</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="dwi2mask-404"><a href="#dwi2mask-404"><span class="linenos">404</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="dwi2mask-405"><a href="#dwi2mask-405"><span class="linenos">405</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="dwi2mask-406"><a href="#dwi2mask-406"><span class="linenos">406</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="dwi2mask-407"><a href="#dwi2mask-407"><span class="linenos">407</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="dwi2mask-408"><a href="#dwi2mask-408"><span class="linenos">408</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dwi2mask-409"><a href="#dwi2mask-409"><span class="linenos">409</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="dwi2mask-410"><a href="#dwi2mask-410"><span class="linenos">410</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="dwi2mask-411"><a href="#dwi2mask-411"><span class="linenos">411</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="dwi2mask-412"><a href="#dwi2mask-412"><span class="linenos">412</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="dwi2mask-413"><a href="#dwi2mask-413"><span class="linenos">413</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="dwi2mask-414"><a href="#dwi2mask-414"><span class="linenos">414</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="dwi2mask-415"><a href="#dwi2mask-415"><span class="linenos">415</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="dwi2mask-416"><a href="#dwi2mask-416"><span class="linenos">416</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="dwi2mask-417"><a href="#dwi2mask-417"><span class="linenos">417</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="dwi2mask-418"><a href="#dwi2mask-418"><span class="linenos">418</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="dwi2mask-419"><a href="#dwi2mask-419"><span class="linenos">419</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="dwi2mask-420"><a href="#dwi2mask-420"><span class="linenos">420</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="dwi2mask-421"><a href="#dwi2mask-421"><span class="linenos">421</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="dwi2mask-422"><a href="#dwi2mask-422"><span class="linenos">422</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="dwi2mask-423"><a href="#dwi2mask-423"><span class="linenos">423</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="dwi2mask-424"><a href="#dwi2mask-424"><span class="linenos">424</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dwi2mask-425"><a href="#dwi2mask-425"><span class="linenos">425</span></a><span class="sd">    Returns:</span>
+</span><span id="dwi2mask-426"><a href="#dwi2mask-426"><span class="linenos">426</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2maskOutputs`).</span>
+</span><span id="dwi2mask-427"><a href="#dwi2mask-427"><span class="linenos">427</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dwi2mask-428"><a href="#dwi2mask-428"><span class="linenos">428</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dwi2mask-429"><a href="#dwi2mask-429"><span class="linenos">429</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2MASK_METADATA</span><span class="p">)</span>
+</span><span id="dwi2mask-430"><a href="#dwi2mask-430"><span class="linenos">430</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2mask_params</span><span class="p">(</span><span class="n">clean_scale</span><span class="o">=</span><span class="n">clean_scale</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+</span><span id="dwi2mask-431"><a href="#dwi2mask-431"><span class="linenos">431</span></a>    <span class="k">return</span> <span class="n">dwi2mask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

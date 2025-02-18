@@ -216,42 +216,43 @@
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">fix_subject_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">fix_subject_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_subject</span><span class="p">(</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">arguments</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixSubjectOutputs</span><span class="p">:</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    Tool to fix subjects in FreeSurfer, encountered errors due to incorrect path</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    handling.</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    </span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    </span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    </span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    Args:</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        arguments: Arguments for fix_subject command. Currently, help output\</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">            shows directory errors. Ensure the correct paths are used.</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Returns:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        NamedTuple of outputs (described in `FixSubjectOutputs`).</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIX_SUBJECT_METADATA</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fix_subject_params</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">return</span> <span class="n">fix_subject_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_subject</span><span class="p">(</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">arguments</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixSubjectOutputs</span><span class="p">:</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    Tool to fix subjects in FreeSurfer, encountered errors due to incorrect path</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    handling.</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    </span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    </span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    </span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    Args:</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        arguments: Arguments for fix_subject command. Currently, help output\</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">            shows directory errors. Ensure the correct paths are used.</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    Returns:</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        NamedTuple of outputs (described in `FixSubjectOutputs`).</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIX_SUBJECT_METADATA</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fix_subject_params</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">return</span> <span class="n">fix_subject_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;FIX_SUBJECT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;FixSubjectOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;FixSubjectParameters&quot;</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;fix_subject&quot;</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="s2">&quot;fix_subject_params&quot;</span><span class="p">,</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="p">]</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;FIX_SUBJECT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;FixSubjectOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;FixSubjectParameters&quot;</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="s2">&quot;fix_subject&quot;</span><span class="p">,</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="s2">&quot;fix_subject_params&quot;</span><span class="p">,</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -356,29 +357,29 @@
 
     </div>
     <a class="headerlink" href="#fix_subject"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fix_subject-143"><a href="#fix_subject-143"><span class="linenos">143</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_subject</span><span class="p">(</span>
-</span><span id="fix_subject-144"><a href="#fix_subject-144"><span class="linenos">144</span></a>    <span class="n">arguments</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fix_subject-145"><a href="#fix_subject-145"><span class="linenos">145</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fix_subject-146"><a href="#fix_subject-146"><span class="linenos">146</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixSubjectOutputs</span><span class="p">:</span>
-</span><span id="fix_subject-147"><a href="#fix_subject-147"><span class="linenos">147</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="fix_subject-148"><a href="#fix_subject-148"><span class="linenos">148</span></a><span class="sd">    Tool to fix subjects in FreeSurfer, encountered errors due to incorrect path</span>
-</span><span id="fix_subject-149"><a href="#fix_subject-149"><span class="linenos">149</span></a><span class="sd">    handling.</span>
-</span><span id="fix_subject-150"><a href="#fix_subject-150"><span class="linenos">150</span></a><span class="sd">    </span>
-</span><span id="fix_subject-151"><a href="#fix_subject-151"><span class="linenos">151</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="fix_subject-152"><a href="#fix_subject-152"><span class="linenos">152</span></a><span class="sd">    </span>
-</span><span id="fix_subject-153"><a href="#fix_subject-153"><span class="linenos">153</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="fix_subject-154"><a href="#fix_subject-154"><span class="linenos">154</span></a><span class="sd">    </span>
-</span><span id="fix_subject-155"><a href="#fix_subject-155"><span class="linenos">155</span></a><span class="sd">    Args:</span>
-</span><span id="fix_subject-156"><a href="#fix_subject-156"><span class="linenos">156</span></a><span class="sd">        arguments: Arguments for fix_subject command. Currently, help output\</span>
-</span><span id="fix_subject-157"><a href="#fix_subject-157"><span class="linenos">157</span></a><span class="sd">            shows directory errors. Ensure the correct paths are used.</span>
-</span><span id="fix_subject-158"><a href="#fix_subject-158"><span class="linenos">158</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fix_subject-159"><a href="#fix_subject-159"><span class="linenos">159</span></a><span class="sd">    Returns:</span>
-</span><span id="fix_subject-160"><a href="#fix_subject-160"><span class="linenos">160</span></a><span class="sd">        NamedTuple of outputs (described in `FixSubjectOutputs`).</span>
-</span><span id="fix_subject-161"><a href="#fix_subject-161"><span class="linenos">161</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fix_subject-162"><a href="#fix_subject-162"><span class="linenos">162</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fix_subject-163"><a href="#fix_subject-163"><span class="linenos">163</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIX_SUBJECT_METADATA</span><span class="p">)</span>
-</span><span id="fix_subject-164"><a href="#fix_subject-164"><span class="linenos">164</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fix_subject_params</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
-</span><span id="fix_subject-165"><a href="#fix_subject-165"><span class="linenos">165</span></a>    <span class="k">return</span> <span class="n">fix_subject_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fix_subject-144"><a href="#fix_subject-144"><span class="linenos">144</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_subject</span><span class="p">(</span>
+</span><span id="fix_subject-145"><a href="#fix_subject-145"><span class="linenos">145</span></a>    <span class="n">arguments</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fix_subject-146"><a href="#fix_subject-146"><span class="linenos">146</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fix_subject-147"><a href="#fix_subject-147"><span class="linenos">147</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FixSubjectOutputs</span><span class="p">:</span>
+</span><span id="fix_subject-148"><a href="#fix_subject-148"><span class="linenos">148</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="fix_subject-149"><a href="#fix_subject-149"><span class="linenos">149</span></a><span class="sd">    Tool to fix subjects in FreeSurfer, encountered errors due to incorrect path</span>
+</span><span id="fix_subject-150"><a href="#fix_subject-150"><span class="linenos">150</span></a><span class="sd">    handling.</span>
+</span><span id="fix_subject-151"><a href="#fix_subject-151"><span class="linenos">151</span></a><span class="sd">    </span>
+</span><span id="fix_subject-152"><a href="#fix_subject-152"><span class="linenos">152</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="fix_subject-153"><a href="#fix_subject-153"><span class="linenos">153</span></a><span class="sd">    </span>
+</span><span id="fix_subject-154"><a href="#fix_subject-154"><span class="linenos">154</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="fix_subject-155"><a href="#fix_subject-155"><span class="linenos">155</span></a><span class="sd">    </span>
+</span><span id="fix_subject-156"><a href="#fix_subject-156"><span class="linenos">156</span></a><span class="sd">    Args:</span>
+</span><span id="fix_subject-157"><a href="#fix_subject-157"><span class="linenos">157</span></a><span class="sd">        arguments: Arguments for fix_subject command. Currently, help output\</span>
+</span><span id="fix_subject-158"><a href="#fix_subject-158"><span class="linenos">158</span></a><span class="sd">            shows directory errors. Ensure the correct paths are used.</span>
+</span><span id="fix_subject-159"><a href="#fix_subject-159"><span class="linenos">159</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fix_subject-160"><a href="#fix_subject-160"><span class="linenos">160</span></a><span class="sd">    Returns:</span>
+</span><span id="fix_subject-161"><a href="#fix_subject-161"><span class="linenos">161</span></a><span class="sd">        NamedTuple of outputs (described in `FixSubjectOutputs`).</span>
+</span><span id="fix_subject-162"><a href="#fix_subject-162"><span class="linenos">162</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fix_subject-163"><a href="#fix_subject-163"><span class="linenos">163</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fix_subject-164"><a href="#fix_subject-164"><span class="linenos">164</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIX_SUBJECT_METADATA</span><span class="p">)</span>
+</span><span id="fix_subject-165"><a href="#fix_subject-165"><span class="linenos">165</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fix_subject_params</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
+</span><span id="fix_subject-166"><a href="#fix_subject-166"><span class="linenos">166</span></a>    <span class="k">return</span> <span class="n">fix_subject_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

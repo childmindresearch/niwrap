@@ -313,52 +313,53 @@
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">bbmask_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">bbmask_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="k">def</span><span class="w"> </span><span class="nf">bbmask</span><span class="p">(</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">src_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">npad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">registration</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">regheader</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">sub2src</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BbmaskOutputs</span><span class="p">:</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    Tool to create a volume with a smaller field of view by creating a bounding box</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    that encompasses a mask.</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    </span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    </span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Args:</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        mask: Input and output for the mask volume.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        src_volumes: Input and output volumes to be reduced to the bounding\</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">            box.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        npad: Number of voxels to expand the bounding box.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        registration: Input and output registration files.</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        regheader: Output registration file from header.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        sub2src: Output file for sub-source registration.</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    Returns:</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        NamedTuple of outputs (described in `BbmaskOutputs`).</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BBMASK_METADATA</span><span class="p">)</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">bbmask_params</span><span class="p">(</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">src_volumes</span><span class="o">=</span><span class="n">src_volumes</span><span class="p">,</span> <span class="n">npad</span><span class="o">=</span><span class="n">npad</span><span class="p">,</span> <span class="n">registration</span><span class="o">=</span><span class="n">registration</span><span class="p">,</span> <span class="n">regheader</span><span class="o">=</span><span class="n">regheader</span><span class="p">,</span> <span class="n">sub2src</span><span class="o">=</span><span class="n">sub2src</span><span class="p">)</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">return</span> <span class="n">bbmask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="k">def</span><span class="w"> </span><span class="nf">bbmask</span><span class="p">(</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">src_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">npad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">registration</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">regheader</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">sub2src</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BbmaskOutputs</span><span class="p">:</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Tool to create a volume with a smaller field of view by creating a bounding box</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    that encompasses a mask.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    </span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        mask: Input and output for the mask volume.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        src_volumes: Input and output volumes to be reduced to the bounding\</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            box.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        npad: Number of voxels to expand the bounding box.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        registration: Input and output registration files.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        regheader: Output registration file from header.</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        sub2src: Output file for sub-source registration.</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    Returns:</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        NamedTuple of outputs (described in `BbmaskOutputs`).</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BBMASK_METADATA</span><span class="p">)</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">bbmask_params</span><span class="p">(</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">src_volumes</span><span class="o">=</span><span class="n">src_volumes</span><span class="p">,</span> <span class="n">npad</span><span class="o">=</span><span class="n">npad</span><span class="p">,</span> <span class="n">registration</span><span class="o">=</span><span class="n">registration</span><span class="p">,</span> <span class="n">regheader</span><span class="o">=</span><span class="n">regheader</span><span class="p">,</span> <span class="n">sub2src</span><span class="o">=</span><span class="n">sub2src</span><span class="p">)</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="k">return</span> <span class="n">bbmask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;BBMASK_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;BbmaskOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;BbmaskParameters&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;bbmask&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;bbmask_params&quot;</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="p">]</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;BBMASK_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;BbmaskOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;BbmaskParameters&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;bbmask&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;bbmask_params&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -593,39 +594,39 @@
 
     </div>
     <a class="headerlink" href="#bbmask"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="bbmask-210"><a href="#bbmask-210"><span class="linenos">210</span></a><span class="k">def</span><span class="w"> </span><span class="nf">bbmask</span><span class="p">(</span>
-</span><span id="bbmask-211"><a href="#bbmask-211"><span class="linenos">211</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
-</span><span id="bbmask-212"><a href="#bbmask-212"><span class="linenos">212</span></a>    <span class="n">src_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="bbmask-213"><a href="#bbmask-213"><span class="linenos">213</span></a>    <span class="n">npad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="bbmask-214"><a href="#bbmask-214"><span class="linenos">214</span></a>    <span class="n">registration</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="bbmask-215"><a href="#bbmask-215"><span class="linenos">215</span></a>    <span class="n">regheader</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="bbmask-216"><a href="#bbmask-216"><span class="linenos">216</span></a>    <span class="n">sub2src</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="bbmask-217"><a href="#bbmask-217"><span class="linenos">217</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="bbmask-218"><a href="#bbmask-218"><span class="linenos">218</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BbmaskOutputs</span><span class="p">:</span>
-</span><span id="bbmask-219"><a href="#bbmask-219"><span class="linenos">219</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="bbmask-220"><a href="#bbmask-220"><span class="linenos">220</span></a><span class="sd">    Tool to create a volume with a smaller field of view by creating a bounding box</span>
-</span><span id="bbmask-221"><a href="#bbmask-221"><span class="linenos">221</span></a><span class="sd">    that encompasses a mask.</span>
-</span><span id="bbmask-222"><a href="#bbmask-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="bbmask-223"><a href="#bbmask-223"><span class="linenos">223</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="bbmask-224"><a href="#bbmask-224"><span class="linenos">224</span></a><span class="sd">    </span>
-</span><span id="bbmask-225"><a href="#bbmask-225"><span class="linenos">225</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="bbmask-226"><a href="#bbmask-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="bbmask-227"><a href="#bbmask-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
-</span><span id="bbmask-228"><a href="#bbmask-228"><span class="linenos">228</span></a><span class="sd">        mask: Input and output for the mask volume.</span>
-</span><span id="bbmask-229"><a href="#bbmask-229"><span class="linenos">229</span></a><span class="sd">        src_volumes: Input and output volumes to be reduced to the bounding\</span>
-</span><span id="bbmask-230"><a href="#bbmask-230"><span class="linenos">230</span></a><span class="sd">            box.</span>
-</span><span id="bbmask-231"><a href="#bbmask-231"><span class="linenos">231</span></a><span class="sd">        npad: Number of voxels to expand the bounding box.</span>
-</span><span id="bbmask-232"><a href="#bbmask-232"><span class="linenos">232</span></a><span class="sd">        registration: Input and output registration files.</span>
-</span><span id="bbmask-233"><a href="#bbmask-233"><span class="linenos">233</span></a><span class="sd">        regheader: Output registration file from header.</span>
-</span><span id="bbmask-234"><a href="#bbmask-234"><span class="linenos">234</span></a><span class="sd">        sub2src: Output file for sub-source registration.</span>
-</span><span id="bbmask-235"><a href="#bbmask-235"><span class="linenos">235</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="bbmask-236"><a href="#bbmask-236"><span class="linenos">236</span></a><span class="sd">    Returns:</span>
-</span><span id="bbmask-237"><a href="#bbmask-237"><span class="linenos">237</span></a><span class="sd">        NamedTuple of outputs (described in `BbmaskOutputs`).</span>
-</span><span id="bbmask-238"><a href="#bbmask-238"><span class="linenos">238</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="bbmask-239"><a href="#bbmask-239"><span class="linenos">239</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="bbmask-240"><a href="#bbmask-240"><span class="linenos">240</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BBMASK_METADATA</span><span class="p">)</span>
-</span><span id="bbmask-241"><a href="#bbmask-241"><span class="linenos">241</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">bbmask_params</span><span class="p">(</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">src_volumes</span><span class="o">=</span><span class="n">src_volumes</span><span class="p">,</span> <span class="n">npad</span><span class="o">=</span><span class="n">npad</span><span class="p">,</span> <span class="n">registration</span><span class="o">=</span><span class="n">registration</span><span class="p">,</span> <span class="n">regheader</span><span class="o">=</span><span class="n">regheader</span><span class="p">,</span> <span class="n">sub2src</span><span class="o">=</span><span class="n">sub2src</span><span class="p">)</span>
-</span><span id="bbmask-242"><a href="#bbmask-242"><span class="linenos">242</span></a>    <span class="k">return</span> <span class="n">bbmask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="bbmask-211"><a href="#bbmask-211"><span class="linenos">211</span></a><span class="k">def</span><span class="w"> </span><span class="nf">bbmask</span><span class="p">(</span>
+</span><span id="bbmask-212"><a href="#bbmask-212"><span class="linenos">212</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
+</span><span id="bbmask-213"><a href="#bbmask-213"><span class="linenos">213</span></a>    <span class="n">src_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="bbmask-214"><a href="#bbmask-214"><span class="linenos">214</span></a>    <span class="n">npad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="bbmask-215"><a href="#bbmask-215"><span class="linenos">215</span></a>    <span class="n">registration</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="bbmask-216"><a href="#bbmask-216"><span class="linenos">216</span></a>    <span class="n">regheader</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="bbmask-217"><a href="#bbmask-217"><span class="linenos">217</span></a>    <span class="n">sub2src</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="bbmask-218"><a href="#bbmask-218"><span class="linenos">218</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="bbmask-219"><a href="#bbmask-219"><span class="linenos">219</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BbmaskOutputs</span><span class="p">:</span>
+</span><span id="bbmask-220"><a href="#bbmask-220"><span class="linenos">220</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="bbmask-221"><a href="#bbmask-221"><span class="linenos">221</span></a><span class="sd">    Tool to create a volume with a smaller field of view by creating a bounding box</span>
+</span><span id="bbmask-222"><a href="#bbmask-222"><span class="linenos">222</span></a><span class="sd">    that encompasses a mask.</span>
+</span><span id="bbmask-223"><a href="#bbmask-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="bbmask-224"><a href="#bbmask-224"><span class="linenos">224</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="bbmask-225"><a href="#bbmask-225"><span class="linenos">225</span></a><span class="sd">    </span>
+</span><span id="bbmask-226"><a href="#bbmask-226"><span class="linenos">226</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="bbmask-227"><a href="#bbmask-227"><span class="linenos">227</span></a><span class="sd">    </span>
+</span><span id="bbmask-228"><a href="#bbmask-228"><span class="linenos">228</span></a><span class="sd">    Args:</span>
+</span><span id="bbmask-229"><a href="#bbmask-229"><span class="linenos">229</span></a><span class="sd">        mask: Input and output for the mask volume.</span>
+</span><span id="bbmask-230"><a href="#bbmask-230"><span class="linenos">230</span></a><span class="sd">        src_volumes: Input and output volumes to be reduced to the bounding\</span>
+</span><span id="bbmask-231"><a href="#bbmask-231"><span class="linenos">231</span></a><span class="sd">            box.</span>
+</span><span id="bbmask-232"><a href="#bbmask-232"><span class="linenos">232</span></a><span class="sd">        npad: Number of voxels to expand the bounding box.</span>
+</span><span id="bbmask-233"><a href="#bbmask-233"><span class="linenos">233</span></a><span class="sd">        registration: Input and output registration files.</span>
+</span><span id="bbmask-234"><a href="#bbmask-234"><span class="linenos">234</span></a><span class="sd">        regheader: Output registration file from header.</span>
+</span><span id="bbmask-235"><a href="#bbmask-235"><span class="linenos">235</span></a><span class="sd">        sub2src: Output file for sub-source registration.</span>
+</span><span id="bbmask-236"><a href="#bbmask-236"><span class="linenos">236</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="bbmask-237"><a href="#bbmask-237"><span class="linenos">237</span></a><span class="sd">    Returns:</span>
+</span><span id="bbmask-238"><a href="#bbmask-238"><span class="linenos">238</span></a><span class="sd">        NamedTuple of outputs (described in `BbmaskOutputs`).</span>
+</span><span id="bbmask-239"><a href="#bbmask-239"><span class="linenos">239</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="bbmask-240"><a href="#bbmask-240"><span class="linenos">240</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="bbmask-241"><a href="#bbmask-241"><span class="linenos">241</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">BBMASK_METADATA</span><span class="p">)</span>
+</span><span id="bbmask-242"><a href="#bbmask-242"><span class="linenos">242</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">bbmask_params</span><span class="p">(</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">src_volumes</span><span class="o">=</span><span class="n">src_volumes</span><span class="p">,</span> <span class="n">npad</span><span class="o">=</span><span class="n">npad</span><span class="p">,</span> <span class="n">registration</span><span class="o">=</span><span class="n">registration</span><span class="p">,</span> <span class="n">regheader</span><span class="o">=</span><span class="n">regheader</span><span class="p">,</span> <span class="n">sub2src</span><span class="o">=</span><span class="n">sub2src</span><span class="p">)</span>
+</span><span id="bbmask-243"><a href="#bbmask-243"><span class="linenos">243</span></a>    <span class="k">return</span> <span class="n">bbmask_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

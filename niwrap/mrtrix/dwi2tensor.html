@@ -605,134 +605,135 @@
 </span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">dwi2tensor_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">dwi2tensor_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2tensor</span><span class="p">(</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="n">dwi</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="n">dt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2tensorFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2tensorConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2tensorOutputs</span><span class="p">:</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="sd">    Diffusion (kurtosis) tensor estimation.</span>
-</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="sd">    </span>
-</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="sd">    By default, the diffusion tensor (and optionally its kurtosis) is fitted to</span>
-</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="sd">    the log-signal in two steps: firstly, using weighted least-squares (WLS)</span>
-</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="sd">    with weights based on the empirical signal intensities; secondly, by further</span>
-</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a><span class="sd">    iterated weighted least-squares (IWLS) with weights determined by the signal</span>
-</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a><span class="sd">    predictions from the previous iteration (by default, 2 iterations will be</span>
-</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a><span class="sd">    performed). This behaviour can be altered in two ways:</span>
-</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a><span class="sd">    </span>
-</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a><span class="sd">    * The -ols option will cause the first fitting step to be performed using</span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="sd">    ordinary least-squares (OLS); that is, all measurements contribute equally</span>
-</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="sd">    to the fit, instead of the default behaviour of weighting based on the</span>
-</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a><span class="sd">    empirical signal intensities.</span>
-</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a><span class="sd">    </span>
-</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a><span class="sd">    * The -iter option controls the number of iterations of the IWLS prodedure.</span>
-</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a><span class="sd">    If this is set to zero, then the output model parameters will be those</span>
-</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a><span class="sd">    resulting from the first fitting step only: either WLS by default, or OLS if</span>
-</span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a><span class="sd">    the -ols option is used in conjunction with -iter 0.</span>
-</span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a><span class="sd">    </span>
-</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a><span class="sd">    The tensor coefficients are stored in the output image as follows:</span>
-</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a><span class="sd">    volumes 0-5: D11, D22, D33, D12, D13, D23</span>
-</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a><span class="sd">    </span>
-</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a><span class="sd">    If diffusion kurtosis is estimated using the -dkt option, these are stored</span>
-</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a><span class="sd">    as follows:</span>
-</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a><span class="sd">    volumes 0-2: W1111, W2222, W3333</span>
-</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="sd">    volumes 3-8: W1112, W1113, W1222, W1333, W2223, W2333</span>
-</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a><span class="sd">    volumes 9-11: W1122, W1133, W2233</span>
-</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a><span class="sd">    volumes 12-14: W1123, W1223, W1233</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a><span class="sd">    </span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="sd">    References:</span>
-</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="sd">    </span>
-</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="sd">    References based on fitting algorithm used:</span>
-</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a><span class="sd">    </span>
-</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a><span class="sd">    * OLS, WLS:</span>
-</span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a><span class="sd">    Basser, P.J.; Mattiello, J.; LeBihan, D. Estimation of the effective</span>
-</span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a><span class="sd">    self-diffusion tensor from the NMR spin echo. J Magn Reson B., 1994, 103,</span>
-</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a><span class="sd">    247â€“254.</span>
-</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a><span class="sd">    </span>
-</span><span id="L-498"><a href="#L-498"><span class="linenos">498</span></a><span class="sd">    * IWLS:</span>
-</span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a><span class="sd">    Veraart, J.; Sijbers, J.; Sunaert, S.; Leemans, A. &amp; Jeurissen, B. Weighted</span>
-</span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a><span class="sd">    linear least squares estimation of diffusion MRI parameters: strengths,</span>
-</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a><span class="sd">    limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</span>
-</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a><span class="sd">    </span>
-</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a><span class="sd">    </span>
-</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a><span class="sd">    </span>
-</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a><span class="sd">    Args:</span>
-</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a><span class="sd">        dwi: the input dwi image.</span>
-</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a><span class="sd">        dt: the output dt image.</span>
-</span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a><span class="sd">        ols: perform initial fit using an ordinary least-squares (OLS) fit (see\</span>
-</span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a><span class="sd">            Description).</span>
-</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
-</span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a><span class="sd">            image.</span>
-</span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a><span class="sd">        b0: the output b0 image.</span>
-</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a><span class="sd">        dkt: the output dkt image.</span>
-</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a><span class="sd">        iter_: number of iterative reweightings for IWLS algorithm (default: 2)\</span>
-</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a><span class="sd">            (see Description).</span>
-</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a><span class="sd">        predicted_signal: the predicted dwi image.</span>
-</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="L-527"><a href="#L-527"><span class="linenos">527</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="L-528"><a href="#L-528"><span class="linenos">528</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="L-529"><a href="#L-529"><span class="linenos">529</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-530"><a href="#L-530"><span class="linenos">530</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-531"><a href="#L-531"><span class="linenos">531</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-532"><a href="#L-532"><span class="linenos">532</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-533"><a href="#L-533"><span class="linenos">533</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-534"><a href="#L-534"><span class="linenos">534</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-535"><a href="#L-535"><span class="linenos">535</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-536"><a href="#L-536"><span class="linenos">536</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-537"><a href="#L-537"><span class="linenos">537</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-538"><a href="#L-538"><span class="linenos">538</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-539"><a href="#L-539"><span class="linenos">539</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-540"><a href="#L-540"><span class="linenos">540</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-541"><a href="#L-541"><span class="linenos">541</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-542"><a href="#L-542"><span class="linenos">542</span></a><span class="sd">    Returns:</span>
-</span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2tensorOutputs`).</span>
-</span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2TENSOR_METADATA</span><span class="p">)</span>
-</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2tensor_params</span><span class="p">(</span><span class="n">ols</span><span class="o">=</span><span class="n">ols</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">b0</span><span class="o">=</span><span class="n">b0</span><span class="p">,</span> <span class="n">dkt</span><span class="o">=</span><span class="n">dkt</span><span class="p">,</span> <span class="n">iter_</span><span class="o">=</span><span class="n">iter_</span><span class="p">,</span> <span class="n">predicted_signal</span><span class="o">=</span><span class="n">predicted_signal</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dwi</span><span class="o">=</span><span class="n">dwi</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
-</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a>    <span class="k">return</span> <span class="n">dwi2tensor_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2tensor</span><span class="p">(</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="n">dwi</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="n">dt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2tensorFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2tensorConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2tensorOutputs</span><span class="p">:</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="sd">    Diffusion (kurtosis) tensor estimation.</span>
+</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="sd">    </span>
+</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="sd">    By default, the diffusion tensor (and optionally its kurtosis) is fitted to</span>
+</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="sd">    the log-signal in two steps: firstly, using weighted least-squares (WLS)</span>
+</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a><span class="sd">    with weights based on the empirical signal intensities; secondly, by further</span>
+</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a><span class="sd">    iterated weighted least-squares (IWLS) with weights determined by the signal</span>
+</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a><span class="sd">    predictions from the previous iteration (by default, 2 iterations will be</span>
+</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a><span class="sd">    performed). This behaviour can be altered in two ways:</span>
+</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a><span class="sd">    </span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="sd">    * The -ols option will cause the first fitting step to be performed using</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="sd">    ordinary least-squares (OLS); that is, all measurements contribute equally</span>
+</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a><span class="sd">    to the fit, instead of the default behaviour of weighting based on the</span>
+</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a><span class="sd">    empirical signal intensities.</span>
+</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a><span class="sd">    </span>
+</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a><span class="sd">    * The -iter option controls the number of iterations of the IWLS prodedure.</span>
+</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a><span class="sd">    If this is set to zero, then the output model parameters will be those</span>
+</span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a><span class="sd">    resulting from the first fitting step only: either WLS by default, or OLS if</span>
+</span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a><span class="sd">    the -ols option is used in conjunction with -iter 0.</span>
+</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a><span class="sd">    </span>
+</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a><span class="sd">    The tensor coefficients are stored in the output image as follows:</span>
+</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a><span class="sd">    volumes 0-5: D11, D22, D33, D12, D13, D23</span>
+</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a><span class="sd">    </span>
+</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a><span class="sd">    If diffusion kurtosis is estimated using the -dkt option, these are stored</span>
+</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a><span class="sd">    as follows:</span>
+</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="sd">    volumes 0-2: W1111, W2222, W3333</span>
+</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a><span class="sd">    volumes 3-8: W1112, W1113, W1222, W1333, W2223, W2333</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a><span class="sd">    volumes 9-11: W1122, W1133, W2233</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a><span class="sd">    volumes 12-14: W1123, W1223, W1233</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="sd">    </span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="sd">    References:</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="sd">    </span>
+</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a><span class="sd">    References based on fitting algorithm used:</span>
+</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a><span class="sd">    </span>
+</span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a><span class="sd">    * OLS, WLS:</span>
+</span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a><span class="sd">    Basser, P.J.; Mattiello, J.; LeBihan, D. Estimation of the effective</span>
+</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a><span class="sd">    self-diffusion tensor from the NMR spin echo. J Magn Reson B., 1994, 103,</span>
+</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a><span class="sd">    247â€“254.</span>
+</span><span id="L-498"><a href="#L-498"><span class="linenos">498</span></a><span class="sd">    </span>
+</span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a><span class="sd">    * IWLS:</span>
+</span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a><span class="sd">    Veraart, J.; Sijbers, J.; Sunaert, S.; Leemans, A. &amp; Jeurissen, B. Weighted</span>
+</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a><span class="sd">    linear least squares estimation of diffusion MRI parameters: strengths,</span>
+</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a><span class="sd">    limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</span>
+</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a><span class="sd">    </span>
+</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a><span class="sd">    </span>
+</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a><span class="sd">    </span>
+</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a><span class="sd">    Args:</span>
+</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a><span class="sd">        dwi: the input dwi image.</span>
+</span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a><span class="sd">        dt: the output dt image.</span>
+</span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a><span class="sd">        ols: perform initial fit using an ordinary least-squares (OLS) fit (see\</span>
+</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a><span class="sd">            Description).</span>
+</span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
+</span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a><span class="sd">            image.</span>
+</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a><span class="sd">        b0: the output b0 image.</span>
+</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a><span class="sd">        dkt: the output dkt image.</span>
+</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a><span class="sd">        iter_: number of iterative reweightings for IWLS algorithm (default: 2)\</span>
+</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a><span class="sd">            (see Description).</span>
+</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a><span class="sd">        predicted_signal: the predicted dwi image.</span>
+</span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-527"><a href="#L-527"><span class="linenos">527</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="L-528"><a href="#L-528"><span class="linenos">528</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="L-529"><a href="#L-529"><span class="linenos">529</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="L-530"><a href="#L-530"><span class="linenos">530</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-531"><a href="#L-531"><span class="linenos">531</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-532"><a href="#L-532"><span class="linenos">532</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-533"><a href="#L-533"><span class="linenos">533</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-534"><a href="#L-534"><span class="linenos">534</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-535"><a href="#L-535"><span class="linenos">535</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-536"><a href="#L-536"><span class="linenos">536</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-537"><a href="#L-537"><span class="linenos">537</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-538"><a href="#L-538"><span class="linenos">538</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-539"><a href="#L-539"><span class="linenos">539</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-540"><a href="#L-540"><span class="linenos">540</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-541"><a href="#L-541"><span class="linenos">541</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-542"><a href="#L-542"><span class="linenos">542</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a><span class="sd">    Returns:</span>
+</span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2tensorOutputs`).</span>
+</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2TENSOR_METADATA</span><span class="p">)</span>
+</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2tensor_params</span><span class="p">(</span><span class="n">ols</span><span class="o">=</span><span class="n">ols</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">b0</span><span class="o">=</span><span class="n">b0</span><span class="p">,</span> <span class="n">dkt</span><span class="o">=</span><span class="n">dkt</span><span class="p">,</span> <span class="n">iter_</span><span class="o">=</span><span class="n">iter_</span><span class="p">,</span> <span class="n">predicted_signal</span><span class="o">=</span><span class="n">predicted_signal</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dwi</span><span class="o">=</span><span class="n">dwi</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+</span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>    <span class="k">return</span> <span class="n">dwi2tensor_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a>
-</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>    <span class="s2">&quot;DWI2TENSOR_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>    <span class="s2">&quot;Dwi2tensorConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>    <span class="s2">&quot;Dwi2tensorFslgradParameters&quot;</span><span class="p">,</span>
-</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>    <span class="s2">&quot;Dwi2tensorOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="s2">&quot;Dwi2tensorParameters&quot;</span><span class="p">,</span>
-</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="s2">&quot;dwi2tensor&quot;</span><span class="p">,</span>
-</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="s2">&quot;dwi2tensor_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="s2">&quot;dwi2tensor_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="s2">&quot;dwi2tensor_params&quot;</span><span class="p">,</span>
-</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a><span class="p">]</span>
+</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>
+</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>    <span class="s2">&quot;DWI2TENSOR_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>    <span class="s2">&quot;Dwi2tensorConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>    <span class="s2">&quot;Dwi2tensorFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="s2">&quot;Dwi2tensorOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="s2">&quot;Dwi2tensorParameters&quot;</span><span class="p">,</span>
+</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="s2">&quot;dwi2tensor&quot;</span><span class="p">,</span>
+</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="s2">&quot;dwi2tensor_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="s2">&quot;dwi2tensor_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a>    <span class="s2">&quot;dwi2tensor_params&quot;</span><span class="p">,</span>
+</span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1154,117 +1155,117 @@
 
     </div>
     <a class="headerlink" href="#dwi2tensor"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dwi2tensor-439"><a href="#dwi2tensor-439"><span class="linenos">439</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2tensor</span><span class="p">(</span>
-</span><span id="dwi2tensor-440"><a href="#dwi2tensor-440"><span class="linenos">440</span></a>    <span class="n">dwi</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="dwi2tensor-441"><a href="#dwi2tensor-441"><span class="linenos">441</span></a>    <span class="n">dt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="dwi2tensor-442"><a href="#dwi2tensor-442"><span class="linenos">442</span></a>    <span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2tensor-443"><a href="#dwi2tensor-443"><span class="linenos">443</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-444"><a href="#dwi2tensor-444"><span class="linenos">444</span></a>    <span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-445"><a href="#dwi2tensor-445"><span class="linenos">445</span></a>    <span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-446"><a href="#dwi2tensor-446"><span class="linenos">446</span></a>    <span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-447"><a href="#dwi2tensor-447"><span class="linenos">447</span></a>    <span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-448"><a href="#dwi2tensor-448"><span class="linenos">448</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-449"><a href="#dwi2tensor-449"><span class="linenos">449</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2tensorFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-450"><a href="#dwi2tensor-450"><span class="linenos">450</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2tensor-451"><a href="#dwi2tensor-451"><span class="linenos">451</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2tensor-452"><a href="#dwi2tensor-452"><span class="linenos">452</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2tensor-453"><a href="#dwi2tensor-453"><span class="linenos">453</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2tensor-454"><a href="#dwi2tensor-454"><span class="linenos">454</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-455"><a href="#dwi2tensor-455"><span class="linenos">455</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2tensorConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-456"><a href="#dwi2tensor-456"><span class="linenos">456</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2tensor-457"><a href="#dwi2tensor-457"><span class="linenos">457</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dwi2tensor-458"><a href="#dwi2tensor-458"><span class="linenos">458</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwi2tensor-459"><a href="#dwi2tensor-459"><span class="linenos">459</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2tensorOutputs</span><span class="p">:</span>
-</span><span id="dwi2tensor-460"><a href="#dwi2tensor-460"><span class="linenos">460</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dwi2tensor-461"><a href="#dwi2tensor-461"><span class="linenos">461</span></a><span class="sd">    Diffusion (kurtosis) tensor estimation.</span>
-</span><span id="dwi2tensor-462"><a href="#dwi2tensor-462"><span class="linenos">462</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-463"><a href="#dwi2tensor-463"><span class="linenos">463</span></a><span class="sd">    By default, the diffusion tensor (and optionally its kurtosis) is fitted to</span>
-</span><span id="dwi2tensor-464"><a href="#dwi2tensor-464"><span class="linenos">464</span></a><span class="sd">    the log-signal in two steps: firstly, using weighted least-squares (WLS)</span>
-</span><span id="dwi2tensor-465"><a href="#dwi2tensor-465"><span class="linenos">465</span></a><span class="sd">    with weights based on the empirical signal intensities; secondly, by further</span>
-</span><span id="dwi2tensor-466"><a href="#dwi2tensor-466"><span class="linenos">466</span></a><span class="sd">    iterated weighted least-squares (IWLS) with weights determined by the signal</span>
-</span><span id="dwi2tensor-467"><a href="#dwi2tensor-467"><span class="linenos">467</span></a><span class="sd">    predictions from the previous iteration (by default, 2 iterations will be</span>
-</span><span id="dwi2tensor-468"><a href="#dwi2tensor-468"><span class="linenos">468</span></a><span class="sd">    performed). This behaviour can be altered in two ways:</span>
-</span><span id="dwi2tensor-469"><a href="#dwi2tensor-469"><span class="linenos">469</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-470"><a href="#dwi2tensor-470"><span class="linenos">470</span></a><span class="sd">    * The -ols option will cause the first fitting step to be performed using</span>
-</span><span id="dwi2tensor-471"><a href="#dwi2tensor-471"><span class="linenos">471</span></a><span class="sd">    ordinary least-squares (OLS); that is, all measurements contribute equally</span>
-</span><span id="dwi2tensor-472"><a href="#dwi2tensor-472"><span class="linenos">472</span></a><span class="sd">    to the fit, instead of the default behaviour of weighting based on the</span>
-</span><span id="dwi2tensor-473"><a href="#dwi2tensor-473"><span class="linenos">473</span></a><span class="sd">    empirical signal intensities.</span>
-</span><span id="dwi2tensor-474"><a href="#dwi2tensor-474"><span class="linenos">474</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-475"><a href="#dwi2tensor-475"><span class="linenos">475</span></a><span class="sd">    * The -iter option controls the number of iterations of the IWLS prodedure.</span>
-</span><span id="dwi2tensor-476"><a href="#dwi2tensor-476"><span class="linenos">476</span></a><span class="sd">    If this is set to zero, then the output model parameters will be those</span>
-</span><span id="dwi2tensor-477"><a href="#dwi2tensor-477"><span class="linenos">477</span></a><span class="sd">    resulting from the first fitting step only: either WLS by default, or OLS if</span>
-</span><span id="dwi2tensor-478"><a href="#dwi2tensor-478"><span class="linenos">478</span></a><span class="sd">    the -ols option is used in conjunction with -iter 0.</span>
-</span><span id="dwi2tensor-479"><a href="#dwi2tensor-479"><span class="linenos">479</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-480"><a href="#dwi2tensor-480"><span class="linenos">480</span></a><span class="sd">    The tensor coefficients are stored in the output image as follows:</span>
-</span><span id="dwi2tensor-481"><a href="#dwi2tensor-481"><span class="linenos">481</span></a><span class="sd">    volumes 0-5: D11, D22, D33, D12, D13, D23</span>
-</span><span id="dwi2tensor-482"><a href="#dwi2tensor-482"><span class="linenos">482</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-483"><a href="#dwi2tensor-483"><span class="linenos">483</span></a><span class="sd">    If diffusion kurtosis is estimated using the -dkt option, these are stored</span>
-</span><span id="dwi2tensor-484"><a href="#dwi2tensor-484"><span class="linenos">484</span></a><span class="sd">    as follows:</span>
-</span><span id="dwi2tensor-485"><a href="#dwi2tensor-485"><span class="linenos">485</span></a><span class="sd">    volumes 0-2: W1111, W2222, W3333</span>
-</span><span id="dwi2tensor-486"><a href="#dwi2tensor-486"><span class="linenos">486</span></a><span class="sd">    volumes 3-8: W1112, W1113, W1222, W1333, W2223, W2333</span>
-</span><span id="dwi2tensor-487"><a href="#dwi2tensor-487"><span class="linenos">487</span></a><span class="sd">    volumes 9-11: W1122, W1133, W2233</span>
-</span><span id="dwi2tensor-488"><a href="#dwi2tensor-488"><span class="linenos">488</span></a><span class="sd">    volumes 12-14: W1123, W1223, W1233</span>
-</span><span id="dwi2tensor-489"><a href="#dwi2tensor-489"><span class="linenos">489</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-490"><a href="#dwi2tensor-490"><span class="linenos">490</span></a><span class="sd">    References:</span>
-</span><span id="dwi2tensor-491"><a href="#dwi2tensor-491"><span class="linenos">491</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-492"><a href="#dwi2tensor-492"><span class="linenos">492</span></a><span class="sd">    References based on fitting algorithm used:</span>
-</span><span id="dwi2tensor-493"><a href="#dwi2tensor-493"><span class="linenos">493</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-494"><a href="#dwi2tensor-494"><span class="linenos">494</span></a><span class="sd">    * OLS, WLS:</span>
-</span><span id="dwi2tensor-495"><a href="#dwi2tensor-495"><span class="linenos">495</span></a><span class="sd">    Basser, P.J.; Mattiello, J.; LeBihan, D. Estimation of the effective</span>
-</span><span id="dwi2tensor-496"><a href="#dwi2tensor-496"><span class="linenos">496</span></a><span class="sd">    self-diffusion tensor from the NMR spin echo. J Magn Reson B., 1994, 103,</span>
-</span><span id="dwi2tensor-497"><a href="#dwi2tensor-497"><span class="linenos">497</span></a><span class="sd">    247â€“254.</span>
-</span><span id="dwi2tensor-498"><a href="#dwi2tensor-498"><span class="linenos">498</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-499"><a href="#dwi2tensor-499"><span class="linenos">499</span></a><span class="sd">    * IWLS:</span>
-</span><span id="dwi2tensor-500"><a href="#dwi2tensor-500"><span class="linenos">500</span></a><span class="sd">    Veraart, J.; Sijbers, J.; Sunaert, S.; Leemans, A. &amp; Jeurissen, B. Weighted</span>
-</span><span id="dwi2tensor-501"><a href="#dwi2tensor-501"><span class="linenos">501</span></a><span class="sd">    linear least squares estimation of diffusion MRI parameters: strengths,</span>
-</span><span id="dwi2tensor-502"><a href="#dwi2tensor-502"><span class="linenos">502</span></a><span class="sd">    limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</span>
-</span><span id="dwi2tensor-503"><a href="#dwi2tensor-503"><span class="linenos">503</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-504"><a href="#dwi2tensor-504"><span class="linenos">504</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="dwi2tensor-505"><a href="#dwi2tensor-505"><span class="linenos">505</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-506"><a href="#dwi2tensor-506"><span class="linenos">506</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="dwi2tensor-507"><a href="#dwi2tensor-507"><span class="linenos">507</span></a><span class="sd">    </span>
-</span><span id="dwi2tensor-508"><a href="#dwi2tensor-508"><span class="linenos">508</span></a><span class="sd">    Args:</span>
-</span><span id="dwi2tensor-509"><a href="#dwi2tensor-509"><span class="linenos">509</span></a><span class="sd">        dwi: the input dwi image.</span>
-</span><span id="dwi2tensor-510"><a href="#dwi2tensor-510"><span class="linenos">510</span></a><span class="sd">        dt: the output dt image.</span>
-</span><span id="dwi2tensor-511"><a href="#dwi2tensor-511"><span class="linenos">511</span></a><span class="sd">        ols: perform initial fit using an ordinary least-squares (OLS) fit (see\</span>
-</span><span id="dwi2tensor-512"><a href="#dwi2tensor-512"><span class="linenos">512</span></a><span class="sd">            Description).</span>
-</span><span id="dwi2tensor-513"><a href="#dwi2tensor-513"><span class="linenos">513</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
-</span><span id="dwi2tensor-514"><a href="#dwi2tensor-514"><span class="linenos">514</span></a><span class="sd">            image.</span>
-</span><span id="dwi2tensor-515"><a href="#dwi2tensor-515"><span class="linenos">515</span></a><span class="sd">        b0: the output b0 image.</span>
-</span><span id="dwi2tensor-516"><a href="#dwi2tensor-516"><span class="linenos">516</span></a><span class="sd">        dkt: the output dkt image.</span>
-</span><span id="dwi2tensor-517"><a href="#dwi2tensor-517"><span class="linenos">517</span></a><span class="sd">        iter_: number of iterative reweightings for IWLS algorithm (default: 2)\</span>
-</span><span id="dwi2tensor-518"><a href="#dwi2tensor-518"><span class="linenos">518</span></a><span class="sd">            (see Description).</span>
-</span><span id="dwi2tensor-519"><a href="#dwi2tensor-519"><span class="linenos">519</span></a><span class="sd">        predicted_signal: the predicted dwi image.</span>
-</span><span id="dwi2tensor-520"><a href="#dwi2tensor-520"><span class="linenos">520</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dwi2tensor-521"><a href="#dwi2tensor-521"><span class="linenos">521</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="dwi2tensor-522"><a href="#dwi2tensor-522"><span class="linenos">522</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="dwi2tensor-523"><a href="#dwi2tensor-523"><span class="linenos">523</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="dwi2tensor-524"><a href="#dwi2tensor-524"><span class="linenos">524</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="dwi2tensor-525"><a href="#dwi2tensor-525"><span class="linenos">525</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="dwi2tensor-526"><a href="#dwi2tensor-526"><span class="linenos">526</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dwi2tensor-527"><a href="#dwi2tensor-527"><span class="linenos">527</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="dwi2tensor-528"><a href="#dwi2tensor-528"><span class="linenos">528</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="dwi2tensor-529"><a href="#dwi2tensor-529"><span class="linenos">529</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="dwi2tensor-530"><a href="#dwi2tensor-530"><span class="linenos">530</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="dwi2tensor-531"><a href="#dwi2tensor-531"><span class="linenos">531</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="dwi2tensor-532"><a href="#dwi2tensor-532"><span class="linenos">532</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="dwi2tensor-533"><a href="#dwi2tensor-533"><span class="linenos">533</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="dwi2tensor-534"><a href="#dwi2tensor-534"><span class="linenos">534</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="dwi2tensor-535"><a href="#dwi2tensor-535"><span class="linenos">535</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="dwi2tensor-536"><a href="#dwi2tensor-536"><span class="linenos">536</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="dwi2tensor-537"><a href="#dwi2tensor-537"><span class="linenos">537</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="dwi2tensor-538"><a href="#dwi2tensor-538"><span class="linenos">538</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="dwi2tensor-539"><a href="#dwi2tensor-539"><span class="linenos">539</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="dwi2tensor-540"><a href="#dwi2tensor-540"><span class="linenos">540</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="dwi2tensor-541"><a href="#dwi2tensor-541"><span class="linenos">541</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="dwi2tensor-542"><a href="#dwi2tensor-542"><span class="linenos">542</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dwi2tensor-543"><a href="#dwi2tensor-543"><span class="linenos">543</span></a><span class="sd">    Returns:</span>
-</span><span id="dwi2tensor-544"><a href="#dwi2tensor-544"><span class="linenos">544</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2tensorOutputs`).</span>
-</span><span id="dwi2tensor-545"><a href="#dwi2tensor-545"><span class="linenos">545</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dwi2tensor-546"><a href="#dwi2tensor-546"><span class="linenos">546</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dwi2tensor-547"><a href="#dwi2tensor-547"><span class="linenos">547</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2TENSOR_METADATA</span><span class="p">)</span>
-</span><span id="dwi2tensor-548"><a href="#dwi2tensor-548"><span class="linenos">548</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2tensor_params</span><span class="p">(</span><span class="n">ols</span><span class="o">=</span><span class="n">ols</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">b0</span><span class="o">=</span><span class="n">b0</span><span class="p">,</span> <span class="n">dkt</span><span class="o">=</span><span class="n">dkt</span><span class="p">,</span> <span class="n">iter_</span><span class="o">=</span><span class="n">iter_</span><span class="p">,</span> <span class="n">predicted_signal</span><span class="o">=</span><span class="n">predicted_signal</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dwi</span><span class="o">=</span><span class="n">dwi</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
-</span><span id="dwi2tensor-549"><a href="#dwi2tensor-549"><span class="linenos">549</span></a>    <span class="k">return</span> <span class="n">dwi2tensor_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dwi2tensor-440"><a href="#dwi2tensor-440"><span class="linenos">440</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dwi2tensor</span><span class="p">(</span>
+</span><span id="dwi2tensor-441"><a href="#dwi2tensor-441"><span class="linenos">441</span></a>    <span class="n">dwi</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="dwi2tensor-442"><a href="#dwi2tensor-442"><span class="linenos">442</span></a>    <span class="n">dt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="dwi2tensor-443"><a href="#dwi2tensor-443"><span class="linenos">443</span></a>    <span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2tensor-444"><a href="#dwi2tensor-444"><span class="linenos">444</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-445"><a href="#dwi2tensor-445"><span class="linenos">445</span></a>    <span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-446"><a href="#dwi2tensor-446"><span class="linenos">446</span></a>    <span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-447"><a href="#dwi2tensor-447"><span class="linenos">447</span></a>    <span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-448"><a href="#dwi2tensor-448"><span class="linenos">448</span></a>    <span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-449"><a href="#dwi2tensor-449"><span class="linenos">449</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-450"><a href="#dwi2tensor-450"><span class="linenos">450</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">Dwi2tensorFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-451"><a href="#dwi2tensor-451"><span class="linenos">451</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2tensor-452"><a href="#dwi2tensor-452"><span class="linenos">452</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2tensor-453"><a href="#dwi2tensor-453"><span class="linenos">453</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2tensor-454"><a href="#dwi2tensor-454"><span class="linenos">454</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2tensor-455"><a href="#dwi2tensor-455"><span class="linenos">455</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-456"><a href="#dwi2tensor-456"><span class="linenos">456</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2tensorConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-457"><a href="#dwi2tensor-457"><span class="linenos">457</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2tensor-458"><a href="#dwi2tensor-458"><span class="linenos">458</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dwi2tensor-459"><a href="#dwi2tensor-459"><span class="linenos">459</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwi2tensor-460"><a href="#dwi2tensor-460"><span class="linenos">460</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dwi2tensorOutputs</span><span class="p">:</span>
+</span><span id="dwi2tensor-461"><a href="#dwi2tensor-461"><span class="linenos">461</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dwi2tensor-462"><a href="#dwi2tensor-462"><span class="linenos">462</span></a><span class="sd">    Diffusion (kurtosis) tensor estimation.</span>
+</span><span id="dwi2tensor-463"><a href="#dwi2tensor-463"><span class="linenos">463</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-464"><a href="#dwi2tensor-464"><span class="linenos">464</span></a><span class="sd">    By default, the diffusion tensor (and optionally its kurtosis) is fitted to</span>
+</span><span id="dwi2tensor-465"><a href="#dwi2tensor-465"><span class="linenos">465</span></a><span class="sd">    the log-signal in two steps: firstly, using weighted least-squares (WLS)</span>
+</span><span id="dwi2tensor-466"><a href="#dwi2tensor-466"><span class="linenos">466</span></a><span class="sd">    with weights based on the empirical signal intensities; secondly, by further</span>
+</span><span id="dwi2tensor-467"><a href="#dwi2tensor-467"><span class="linenos">467</span></a><span class="sd">    iterated weighted least-squares (IWLS) with weights determined by the signal</span>
+</span><span id="dwi2tensor-468"><a href="#dwi2tensor-468"><span class="linenos">468</span></a><span class="sd">    predictions from the previous iteration (by default, 2 iterations will be</span>
+</span><span id="dwi2tensor-469"><a href="#dwi2tensor-469"><span class="linenos">469</span></a><span class="sd">    performed). This behaviour can be altered in two ways:</span>
+</span><span id="dwi2tensor-470"><a href="#dwi2tensor-470"><span class="linenos">470</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-471"><a href="#dwi2tensor-471"><span class="linenos">471</span></a><span class="sd">    * The -ols option will cause the first fitting step to be performed using</span>
+</span><span id="dwi2tensor-472"><a href="#dwi2tensor-472"><span class="linenos">472</span></a><span class="sd">    ordinary least-squares (OLS); that is, all measurements contribute equally</span>
+</span><span id="dwi2tensor-473"><a href="#dwi2tensor-473"><span class="linenos">473</span></a><span class="sd">    to the fit, instead of the default behaviour of weighting based on the</span>
+</span><span id="dwi2tensor-474"><a href="#dwi2tensor-474"><span class="linenos">474</span></a><span class="sd">    empirical signal intensities.</span>
+</span><span id="dwi2tensor-475"><a href="#dwi2tensor-475"><span class="linenos">475</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-476"><a href="#dwi2tensor-476"><span class="linenos">476</span></a><span class="sd">    * The -iter option controls the number of iterations of the IWLS prodedure.</span>
+</span><span id="dwi2tensor-477"><a href="#dwi2tensor-477"><span class="linenos">477</span></a><span class="sd">    If this is set to zero, then the output model parameters will be those</span>
+</span><span id="dwi2tensor-478"><a href="#dwi2tensor-478"><span class="linenos">478</span></a><span class="sd">    resulting from the first fitting step only: either WLS by default, or OLS if</span>
+</span><span id="dwi2tensor-479"><a href="#dwi2tensor-479"><span class="linenos">479</span></a><span class="sd">    the -ols option is used in conjunction with -iter 0.</span>
+</span><span id="dwi2tensor-480"><a href="#dwi2tensor-480"><span class="linenos">480</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-481"><a href="#dwi2tensor-481"><span class="linenos">481</span></a><span class="sd">    The tensor coefficients are stored in the output image as follows:</span>
+</span><span id="dwi2tensor-482"><a href="#dwi2tensor-482"><span class="linenos">482</span></a><span class="sd">    volumes 0-5: D11, D22, D33, D12, D13, D23</span>
+</span><span id="dwi2tensor-483"><a href="#dwi2tensor-483"><span class="linenos">483</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-484"><a href="#dwi2tensor-484"><span class="linenos">484</span></a><span class="sd">    If diffusion kurtosis is estimated using the -dkt option, these are stored</span>
+</span><span id="dwi2tensor-485"><a href="#dwi2tensor-485"><span class="linenos">485</span></a><span class="sd">    as follows:</span>
+</span><span id="dwi2tensor-486"><a href="#dwi2tensor-486"><span class="linenos">486</span></a><span class="sd">    volumes 0-2: W1111, W2222, W3333</span>
+</span><span id="dwi2tensor-487"><a href="#dwi2tensor-487"><span class="linenos">487</span></a><span class="sd">    volumes 3-8: W1112, W1113, W1222, W1333, W2223, W2333</span>
+</span><span id="dwi2tensor-488"><a href="#dwi2tensor-488"><span class="linenos">488</span></a><span class="sd">    volumes 9-11: W1122, W1133, W2233</span>
+</span><span id="dwi2tensor-489"><a href="#dwi2tensor-489"><span class="linenos">489</span></a><span class="sd">    volumes 12-14: W1123, W1223, W1233</span>
+</span><span id="dwi2tensor-490"><a href="#dwi2tensor-490"><span class="linenos">490</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-491"><a href="#dwi2tensor-491"><span class="linenos">491</span></a><span class="sd">    References:</span>
+</span><span id="dwi2tensor-492"><a href="#dwi2tensor-492"><span class="linenos">492</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-493"><a href="#dwi2tensor-493"><span class="linenos">493</span></a><span class="sd">    References based on fitting algorithm used:</span>
+</span><span id="dwi2tensor-494"><a href="#dwi2tensor-494"><span class="linenos">494</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-495"><a href="#dwi2tensor-495"><span class="linenos">495</span></a><span class="sd">    * OLS, WLS:</span>
+</span><span id="dwi2tensor-496"><a href="#dwi2tensor-496"><span class="linenos">496</span></a><span class="sd">    Basser, P.J.; Mattiello, J.; LeBihan, D. Estimation of the effective</span>
+</span><span id="dwi2tensor-497"><a href="#dwi2tensor-497"><span class="linenos">497</span></a><span class="sd">    self-diffusion tensor from the NMR spin echo. J Magn Reson B., 1994, 103,</span>
+</span><span id="dwi2tensor-498"><a href="#dwi2tensor-498"><span class="linenos">498</span></a><span class="sd">    247â€“254.</span>
+</span><span id="dwi2tensor-499"><a href="#dwi2tensor-499"><span class="linenos">499</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-500"><a href="#dwi2tensor-500"><span class="linenos">500</span></a><span class="sd">    * IWLS:</span>
+</span><span id="dwi2tensor-501"><a href="#dwi2tensor-501"><span class="linenos">501</span></a><span class="sd">    Veraart, J.; Sijbers, J.; Sunaert, S.; Leemans, A. &amp; Jeurissen, B. Weighted</span>
+</span><span id="dwi2tensor-502"><a href="#dwi2tensor-502"><span class="linenos">502</span></a><span class="sd">    linear least squares estimation of diffusion MRI parameters: strengths,</span>
+</span><span id="dwi2tensor-503"><a href="#dwi2tensor-503"><span class="linenos">503</span></a><span class="sd">    limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</span>
+</span><span id="dwi2tensor-504"><a href="#dwi2tensor-504"><span class="linenos">504</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-505"><a href="#dwi2tensor-505"><span class="linenos">505</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="dwi2tensor-506"><a href="#dwi2tensor-506"><span class="linenos">506</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-507"><a href="#dwi2tensor-507"><span class="linenos">507</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="dwi2tensor-508"><a href="#dwi2tensor-508"><span class="linenos">508</span></a><span class="sd">    </span>
+</span><span id="dwi2tensor-509"><a href="#dwi2tensor-509"><span class="linenos">509</span></a><span class="sd">    Args:</span>
+</span><span id="dwi2tensor-510"><a href="#dwi2tensor-510"><span class="linenos">510</span></a><span class="sd">        dwi: the input dwi image.</span>
+</span><span id="dwi2tensor-511"><a href="#dwi2tensor-511"><span class="linenos">511</span></a><span class="sd">        dt: the output dt image.</span>
+</span><span id="dwi2tensor-512"><a href="#dwi2tensor-512"><span class="linenos">512</span></a><span class="sd">        ols: perform initial fit using an ordinary least-squares (OLS) fit (see\</span>
+</span><span id="dwi2tensor-513"><a href="#dwi2tensor-513"><span class="linenos">513</span></a><span class="sd">            Description).</span>
+</span><span id="dwi2tensor-514"><a href="#dwi2tensor-514"><span class="linenos">514</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
+</span><span id="dwi2tensor-515"><a href="#dwi2tensor-515"><span class="linenos">515</span></a><span class="sd">            image.</span>
+</span><span id="dwi2tensor-516"><a href="#dwi2tensor-516"><span class="linenos">516</span></a><span class="sd">        b0: the output b0 image.</span>
+</span><span id="dwi2tensor-517"><a href="#dwi2tensor-517"><span class="linenos">517</span></a><span class="sd">        dkt: the output dkt image.</span>
+</span><span id="dwi2tensor-518"><a href="#dwi2tensor-518"><span class="linenos">518</span></a><span class="sd">        iter_: number of iterative reweightings for IWLS algorithm (default: 2)\</span>
+</span><span id="dwi2tensor-519"><a href="#dwi2tensor-519"><span class="linenos">519</span></a><span class="sd">            (see Description).</span>
+</span><span id="dwi2tensor-520"><a href="#dwi2tensor-520"><span class="linenos">520</span></a><span class="sd">        predicted_signal: the predicted dwi image.</span>
+</span><span id="dwi2tensor-521"><a href="#dwi2tensor-521"><span class="linenos">521</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dwi2tensor-522"><a href="#dwi2tensor-522"><span class="linenos">522</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="dwi2tensor-523"><a href="#dwi2tensor-523"><span class="linenos">523</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="dwi2tensor-524"><a href="#dwi2tensor-524"><span class="linenos">524</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="dwi2tensor-525"><a href="#dwi2tensor-525"><span class="linenos">525</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="dwi2tensor-526"><a href="#dwi2tensor-526"><span class="linenos">526</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="dwi2tensor-527"><a href="#dwi2tensor-527"><span class="linenos">527</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dwi2tensor-528"><a href="#dwi2tensor-528"><span class="linenos">528</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="dwi2tensor-529"><a href="#dwi2tensor-529"><span class="linenos">529</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="dwi2tensor-530"><a href="#dwi2tensor-530"><span class="linenos">530</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="dwi2tensor-531"><a href="#dwi2tensor-531"><span class="linenos">531</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="dwi2tensor-532"><a href="#dwi2tensor-532"><span class="linenos">532</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="dwi2tensor-533"><a href="#dwi2tensor-533"><span class="linenos">533</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="dwi2tensor-534"><a href="#dwi2tensor-534"><span class="linenos">534</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="dwi2tensor-535"><a href="#dwi2tensor-535"><span class="linenos">535</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="dwi2tensor-536"><a href="#dwi2tensor-536"><span class="linenos">536</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="dwi2tensor-537"><a href="#dwi2tensor-537"><span class="linenos">537</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="dwi2tensor-538"><a href="#dwi2tensor-538"><span class="linenos">538</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="dwi2tensor-539"><a href="#dwi2tensor-539"><span class="linenos">539</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="dwi2tensor-540"><a href="#dwi2tensor-540"><span class="linenos">540</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="dwi2tensor-541"><a href="#dwi2tensor-541"><span class="linenos">541</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="dwi2tensor-542"><a href="#dwi2tensor-542"><span class="linenos">542</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="dwi2tensor-543"><a href="#dwi2tensor-543"><span class="linenos">543</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dwi2tensor-544"><a href="#dwi2tensor-544"><span class="linenos">544</span></a><span class="sd">    Returns:</span>
+</span><span id="dwi2tensor-545"><a href="#dwi2tensor-545"><span class="linenos">545</span></a><span class="sd">        NamedTuple of outputs (described in `Dwi2tensorOutputs`).</span>
+</span><span id="dwi2tensor-546"><a href="#dwi2tensor-546"><span class="linenos">546</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dwi2tensor-547"><a href="#dwi2tensor-547"><span class="linenos">547</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dwi2tensor-548"><a href="#dwi2tensor-548"><span class="linenos">548</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWI2TENSOR_METADATA</span><span class="p">)</span>
+</span><span id="dwi2tensor-549"><a href="#dwi2tensor-549"><span class="linenos">549</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dwi2tensor_params</span><span class="p">(</span><span class="n">ols</span><span class="o">=</span><span class="n">ols</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">b0</span><span class="o">=</span><span class="n">b0</span><span class="p">,</span> <span class="n">dkt</span><span class="o">=</span><span class="n">dkt</span><span class="p">,</span> <span class="n">iter_</span><span class="o">=</span><span class="n">iter_</span><span class="p">,</span> <span class="n">predicted_signal</span><span class="o">=</span><span class="n">predicted_signal</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dwi</span><span class="o">=</span><span class="n">dwi</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+</span><span id="dwi2tensor-550"><a href="#dwi2tensor-550"><span class="linenos">550</span></a>    <span class="k">return</span> <span class="n">dwi2tensor_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

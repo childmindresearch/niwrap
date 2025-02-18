@@ -565,59 +565,60 @@
 </span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_set_space_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_set_space_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_set_space</span><span class="p">(</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">plumb</span><span class="p">:</span> <span class="n">VolumeSetSpacePlumbParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="n">sform</span><span class="p">:</span> <span class="n">VolumeSetSpaceSformParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="n">file</span><span class="p">:</span> <span class="n">VolumeSetSpaceFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeSetSpaceOutputs</span><span class="p">:</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">    Change volume space information.</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">    </span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">    Writes a copy of the volume file, with the spacing information changed as</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">    specified. No reordering of the voxel data occurs, see -volume-reorient to</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">    change the volume indexing order and reorder the voxels to match. Exactly</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">    one of -plumb, -sform, or -file must be specified.</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">    </span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">    </span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    </span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    Args:</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">        volume_in: the input volume.</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">        volume_out: output - the output volume.</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">        sform: set via a nifti sform.</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">        file: copy spacing info from volume file with matching dimensions.</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">    Returns:</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSetSpaceOutputs`).</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SET_SPACE_METADATA</span><span class="p">)</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_set_space_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">plumb</span><span class="o">=</span><span class="n">plumb</span><span class="p">,</span> <span class="n">sform</span><span class="o">=</span><span class="n">sform</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="k">return</span> <span class="n">volume_set_space_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_set_space</span><span class="p">(</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="n">plumb</span><span class="p">:</span> <span class="n">VolumeSetSpacePlumbParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="n">sform</span><span class="p">:</span> <span class="n">VolumeSetSpaceSformParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="n">file</span><span class="p">:</span> <span class="n">VolumeSetSpaceFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeSetSpaceOutputs</span><span class="p">:</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">    Change volume space information.</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">    </span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">    Writes a copy of the volume file, with the spacing information changed as</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">    specified. No reordering of the voxel data occurs, see -volume-reorient to</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">    change the volume indexing order and reorder the voxels to match. Exactly</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">    one of -plumb, -sform, or -file must be specified.</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">    </span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">    </span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    </span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    Args:</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">        volume_in: the input volume.</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">        volume_out: output - the output volume.</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">        sform: set via a nifti sform.</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">        file: copy spacing info from volume file with matching dimensions.</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    Returns:</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSetSpaceOutputs`).</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SET_SPACE_METADATA</span><span class="p">)</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_set_space_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">plumb</span><span class="o">=</span><span class="n">plumb</span><span class="p">,</span> <span class="n">sform</span><span class="o">=</span><span class="n">sform</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="k">return</span> <span class="n">volume_set_space_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;VOLUME_SET_SPACE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;VolumeSetSpaceFileParameters&quot;</span><span class="p">,</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;VolumeSetSpaceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;VolumeSetSpaceParameters&quot;</span><span class="p">,</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;VolumeSetSpacePlumbParameters&quot;</span><span class="p">,</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;VolumeSetSpaceSformParameters&quot;</span><span class="p">,</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;volume_set_space&quot;</span><span class="p">,</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;volume_set_space_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;volume_set_space_params&quot;</span><span class="p">,</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;volume_set_space_plumb_params&quot;</span><span class="p">,</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;volume_set_space_sform_params&quot;</span><span class="p">,</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="p">]</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;VOLUME_SET_SPACE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;VolumeSetSpaceFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;VolumeSetSpaceOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;VolumeSetSpaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;VolumeSetSpacePlumbParameters&quot;</span><span class="p">,</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;VolumeSetSpaceSformParameters&quot;</span><span class="p">,</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;volume_set_space&quot;</span><span class="p">,</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;volume_set_space_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;volume_set_space_params&quot;</span><span class="p">,</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;volume_set_space_plumb_params&quot;</span><span class="p">,</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;volume_set_space_sform_params&quot;</span><span class="p">,</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1036,40 +1037,40 @@
 
     </div>
     <a class="headerlink" href="#volume_set_space"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_set_space-390"><a href="#volume_set_space-390"><span class="linenos">390</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_set_space</span><span class="p">(</span>
-</span><span id="volume_set_space-391"><a href="#volume_set_space-391"><span class="linenos">391</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_set_space-392"><a href="#volume_set_space-392"><span class="linenos">392</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_set_space-393"><a href="#volume_set_space-393"><span class="linenos">393</span></a>    <span class="n">plumb</span><span class="p">:</span> <span class="n">VolumeSetSpacePlumbParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_set_space-394"><a href="#volume_set_space-394"><span class="linenos">394</span></a>    <span class="n">sform</span><span class="p">:</span> <span class="n">VolumeSetSpaceSformParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_set_space-395"><a href="#volume_set_space-395"><span class="linenos">395</span></a>    <span class="n">file</span><span class="p">:</span> <span class="n">VolumeSetSpaceFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_set_space-396"><a href="#volume_set_space-396"><span class="linenos">396</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_set_space-397"><a href="#volume_set_space-397"><span class="linenos">397</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeSetSpaceOutputs</span><span class="p">:</span>
-</span><span id="volume_set_space-398"><a href="#volume_set_space-398"><span class="linenos">398</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_set_space-399"><a href="#volume_set_space-399"><span class="linenos">399</span></a><span class="sd">    Change volume space information.</span>
-</span><span id="volume_set_space-400"><a href="#volume_set_space-400"><span class="linenos">400</span></a><span class="sd">    </span>
-</span><span id="volume_set_space-401"><a href="#volume_set_space-401"><span class="linenos">401</span></a><span class="sd">    Writes a copy of the volume file, with the spacing information changed as</span>
-</span><span id="volume_set_space-402"><a href="#volume_set_space-402"><span class="linenos">402</span></a><span class="sd">    specified. No reordering of the voxel data occurs, see -volume-reorient to</span>
-</span><span id="volume_set_space-403"><a href="#volume_set_space-403"><span class="linenos">403</span></a><span class="sd">    change the volume indexing order and reorder the voxels to match. Exactly</span>
-</span><span id="volume_set_space-404"><a href="#volume_set_space-404"><span class="linenos">404</span></a><span class="sd">    one of -plumb, -sform, or -file must be specified.</span>
-</span><span id="volume_set_space-405"><a href="#volume_set_space-405"><span class="linenos">405</span></a><span class="sd">    </span>
-</span><span id="volume_set_space-406"><a href="#volume_set_space-406"><span class="linenos">406</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_set_space-407"><a href="#volume_set_space-407"><span class="linenos">407</span></a><span class="sd">    </span>
-</span><span id="volume_set_space-408"><a href="#volume_set_space-408"><span class="linenos">408</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_set_space-409"><a href="#volume_set_space-409"><span class="linenos">409</span></a><span class="sd">    </span>
-</span><span id="volume_set_space-410"><a href="#volume_set_space-410"><span class="linenos">410</span></a><span class="sd">    Args:</span>
-</span><span id="volume_set_space-411"><a href="#volume_set_space-411"><span class="linenos">411</span></a><span class="sd">        volume_in: the input volume.</span>
-</span><span id="volume_set_space-412"><a href="#volume_set_space-412"><span class="linenos">412</span></a><span class="sd">        volume_out: output - the output volume.</span>
-</span><span id="volume_set_space-413"><a href="#volume_set_space-413"><span class="linenos">413</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
-</span><span id="volume_set_space-414"><a href="#volume_set_space-414"><span class="linenos">414</span></a><span class="sd">        sform: set via a nifti sform.</span>
-</span><span id="volume_set_space-415"><a href="#volume_set_space-415"><span class="linenos">415</span></a><span class="sd">        file: copy spacing info from volume file with matching dimensions.</span>
-</span><span id="volume_set_space-416"><a href="#volume_set_space-416"><span class="linenos">416</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_set_space-417"><a href="#volume_set_space-417"><span class="linenos">417</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_set_space-418"><a href="#volume_set_space-418"><span class="linenos">418</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSetSpaceOutputs`).</span>
-</span><span id="volume_set_space-419"><a href="#volume_set_space-419"><span class="linenos">419</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_set_space-420"><a href="#volume_set_space-420"><span class="linenos">420</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_set_space-421"><a href="#volume_set_space-421"><span class="linenos">421</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SET_SPACE_METADATA</span><span class="p">)</span>
-</span><span id="volume_set_space-422"><a href="#volume_set_space-422"><span class="linenos">422</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_set_space_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">plumb</span><span class="o">=</span><span class="n">plumb</span><span class="p">,</span> <span class="n">sform</span><span class="o">=</span><span class="n">sform</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
-</span><span id="volume_set_space-423"><a href="#volume_set_space-423"><span class="linenos">423</span></a>    <span class="k">return</span> <span class="n">volume_set_space_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_set_space-391"><a href="#volume_set_space-391"><span class="linenos">391</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_set_space</span><span class="p">(</span>
+</span><span id="volume_set_space-392"><a href="#volume_set_space-392"><span class="linenos">392</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_set_space-393"><a href="#volume_set_space-393"><span class="linenos">393</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_set_space-394"><a href="#volume_set_space-394"><span class="linenos">394</span></a>    <span class="n">plumb</span><span class="p">:</span> <span class="n">VolumeSetSpacePlumbParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_set_space-395"><a href="#volume_set_space-395"><span class="linenos">395</span></a>    <span class="n">sform</span><span class="p">:</span> <span class="n">VolumeSetSpaceSformParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_set_space-396"><a href="#volume_set_space-396"><span class="linenos">396</span></a>    <span class="n">file</span><span class="p">:</span> <span class="n">VolumeSetSpaceFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_set_space-397"><a href="#volume_set_space-397"><span class="linenos">397</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_set_space-398"><a href="#volume_set_space-398"><span class="linenos">398</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeSetSpaceOutputs</span><span class="p">:</span>
+</span><span id="volume_set_space-399"><a href="#volume_set_space-399"><span class="linenos">399</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_set_space-400"><a href="#volume_set_space-400"><span class="linenos">400</span></a><span class="sd">    Change volume space information.</span>
+</span><span id="volume_set_space-401"><a href="#volume_set_space-401"><span class="linenos">401</span></a><span class="sd">    </span>
+</span><span id="volume_set_space-402"><a href="#volume_set_space-402"><span class="linenos">402</span></a><span class="sd">    Writes a copy of the volume file, with the spacing information changed as</span>
+</span><span id="volume_set_space-403"><a href="#volume_set_space-403"><span class="linenos">403</span></a><span class="sd">    specified. No reordering of the voxel data occurs, see -volume-reorient to</span>
+</span><span id="volume_set_space-404"><a href="#volume_set_space-404"><span class="linenos">404</span></a><span class="sd">    change the volume indexing order and reorder the voxels to match. Exactly</span>
+</span><span id="volume_set_space-405"><a href="#volume_set_space-405"><span class="linenos">405</span></a><span class="sd">    one of -plumb, -sform, or -file must be specified.</span>
+</span><span id="volume_set_space-406"><a href="#volume_set_space-406"><span class="linenos">406</span></a><span class="sd">    </span>
+</span><span id="volume_set_space-407"><a href="#volume_set_space-407"><span class="linenos">407</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_set_space-408"><a href="#volume_set_space-408"><span class="linenos">408</span></a><span class="sd">    </span>
+</span><span id="volume_set_space-409"><a href="#volume_set_space-409"><span class="linenos">409</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_set_space-410"><a href="#volume_set_space-410"><span class="linenos">410</span></a><span class="sd">    </span>
+</span><span id="volume_set_space-411"><a href="#volume_set_space-411"><span class="linenos">411</span></a><span class="sd">    Args:</span>
+</span><span id="volume_set_space-412"><a href="#volume_set_space-412"><span class="linenos">412</span></a><span class="sd">        volume_in: the input volume.</span>
+</span><span id="volume_set_space-413"><a href="#volume_set_space-413"><span class="linenos">413</span></a><span class="sd">        volume_out: output - the output volume.</span>
+</span><span id="volume_set_space-414"><a href="#volume_set_space-414"><span class="linenos">414</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
+</span><span id="volume_set_space-415"><a href="#volume_set_space-415"><span class="linenos">415</span></a><span class="sd">        sform: set via a nifti sform.</span>
+</span><span id="volume_set_space-416"><a href="#volume_set_space-416"><span class="linenos">416</span></a><span class="sd">        file: copy spacing info from volume file with matching dimensions.</span>
+</span><span id="volume_set_space-417"><a href="#volume_set_space-417"><span class="linenos">417</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_set_space-418"><a href="#volume_set_space-418"><span class="linenos">418</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_set_space-419"><a href="#volume_set_space-419"><span class="linenos">419</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSetSpaceOutputs`).</span>
+</span><span id="volume_set_space-420"><a href="#volume_set_space-420"><span class="linenos">420</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_set_space-421"><a href="#volume_set_space-421"><span class="linenos">421</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_set_space-422"><a href="#volume_set_space-422"><span class="linenos">422</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SET_SPACE_METADATA</span><span class="p">)</span>
+</span><span id="volume_set_space-423"><a href="#volume_set_space-423"><span class="linenos">423</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_set_space_params</span><span class="p">(</span><span class="n">volume_in</span><span class="o">=</span><span class="n">volume_in</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">plumb</span><span class="o">=</span><span class="n">plumb</span><span class="p">,</span> <span class="n">sform</span><span class="o">=</span><span class="n">sform</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+</span><span id="volume_set_space-424"><a href="#volume_set_space-424"><span class="linenos">424</span></a>    <span class="k">return</span> <span class="n">volume_set_space_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

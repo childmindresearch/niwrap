@@ -302,53 +302,54 @@
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">annotation_resample_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">annotation_resample_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">annotation_resample</span><span class="p">(</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">annotation_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">annotation_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">surface_pair</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnnotationResampleSurfacePairParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnnotationResampleOutputs</span><span class="p">:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    Resample an annotation file to different meshes.</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    </span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    Resample an annotation file from the source mesh to the target mesh.</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    Only annotations in surface space are modified, no changes are made to</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    annotations in other spaces. The -surface-pair option may be repeated for</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    additional structures used by surface space annotations.</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    </span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    </span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Args:</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        annotation_in: the annotation file to resample.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        annotation_out: name of resampled annotation file.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        surface_pair: pair of surfaces for resampling surface annotations for\</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            one structure.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    Returns:</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        NamedTuple of outputs (described in `AnnotationResampleOutputs`).</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ANNOTATION_RESAMPLE_METADATA</span><span class="p">)</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">annotation_resample_params</span><span class="p">(</span><span class="n">annotation_in</span><span class="o">=</span><span class="n">annotation_in</span><span class="p">,</span> <span class="n">annotation_out</span><span class="o">=</span><span class="n">annotation_out</span><span class="p">,</span> <span class="n">surface_pair</span><span class="o">=</span><span class="n">surface_pair</span><span class="p">)</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="k">return</span> <span class="n">annotation_resample_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="k">def</span><span class="w"> </span><span class="nf">annotation_resample</span><span class="p">(</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">annotation_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">annotation_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">surface_pair</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnnotationResampleSurfacePairParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnnotationResampleOutputs</span><span class="p">:</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Resample an annotation file to different meshes.</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    </span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    Resample an annotation file from the source mesh to the target mesh.</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    Only annotations in surface space are modified, no changes are made to</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    annotations in other spaces. The -surface-pair option may be repeated for</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    additional structures used by surface space annotations.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    </span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        annotation_in: the annotation file to resample.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        annotation_out: name of resampled annotation file.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        surface_pair: pair of surfaces for resampling surface annotations for\</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            one structure.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    Returns:</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        NamedTuple of outputs (described in `AnnotationResampleOutputs`).</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ANNOTATION_RESAMPLE_METADATA</span><span class="p">)</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">annotation_resample_params</span><span class="p">(</span><span class="n">annotation_in</span><span class="o">=</span><span class="n">annotation_in</span><span class="p">,</span> <span class="n">annotation_out</span><span class="o">=</span><span class="n">annotation_out</span><span class="p">,</span> <span class="n">surface_pair</span><span class="o">=</span><span class="n">surface_pair</span><span class="p">)</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">annotation_resample_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;ANNOTATION_RESAMPLE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;AnnotationResampleOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;AnnotationResampleParameters&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;AnnotationResampleSurfacePairParameters&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;annotation_resample&quot;</span><span class="p">,</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;annotation_resample_params&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;annotation_resample_surface_pair_params&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="p">]</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;ANNOTATION_RESAMPLE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;AnnotationResampleOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;AnnotationResampleParameters&quot;</span><span class="p">,</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;AnnotationResampleSurfacePairParameters&quot;</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;annotation_resample&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;annotation_resample_params&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;annotation_resample_surface_pair_params&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -510,38 +511,38 @@
 
     </div>
     <a class="headerlink" href="#annotation_resample"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="annotation_resample-208"><a href="#annotation_resample-208"><span class="linenos">208</span></a><span class="k">def</span><span class="w"> </span><span class="nf">annotation_resample</span><span class="p">(</span>
-</span><span id="annotation_resample-209"><a href="#annotation_resample-209"><span class="linenos">209</span></a>    <span class="n">annotation_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="annotation_resample-210"><a href="#annotation_resample-210"><span class="linenos">210</span></a>    <span class="n">annotation_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="annotation_resample-211"><a href="#annotation_resample-211"><span class="linenos">211</span></a>    <span class="n">surface_pair</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnnotationResampleSurfacePairParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="annotation_resample-212"><a href="#annotation_resample-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="annotation_resample-213"><a href="#annotation_resample-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnnotationResampleOutputs</span><span class="p">:</span>
-</span><span id="annotation_resample-214"><a href="#annotation_resample-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="annotation_resample-215"><a href="#annotation_resample-215"><span class="linenos">215</span></a><span class="sd">    Resample an annotation file to different meshes.</span>
-</span><span id="annotation_resample-216"><a href="#annotation_resample-216"><span class="linenos">216</span></a><span class="sd">    </span>
-</span><span id="annotation_resample-217"><a href="#annotation_resample-217"><span class="linenos">217</span></a><span class="sd">    Resample an annotation file from the source mesh to the target mesh.</span>
-</span><span id="annotation_resample-218"><a href="#annotation_resample-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="annotation_resample-219"><a href="#annotation_resample-219"><span class="linenos">219</span></a><span class="sd">    Only annotations in surface space are modified, no changes are made to</span>
-</span><span id="annotation_resample-220"><a href="#annotation_resample-220"><span class="linenos">220</span></a><span class="sd">    annotations in other spaces. The -surface-pair option may be repeated for</span>
-</span><span id="annotation_resample-221"><a href="#annotation_resample-221"><span class="linenos">221</span></a><span class="sd">    additional structures used by surface space annotations.</span>
-</span><span id="annotation_resample-222"><a href="#annotation_resample-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="annotation_resample-223"><a href="#annotation_resample-223"><span class="linenos">223</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="annotation_resample-224"><a href="#annotation_resample-224"><span class="linenos">224</span></a><span class="sd">    </span>
-</span><span id="annotation_resample-225"><a href="#annotation_resample-225"><span class="linenos">225</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="annotation_resample-226"><a href="#annotation_resample-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="annotation_resample-227"><a href="#annotation_resample-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
-</span><span id="annotation_resample-228"><a href="#annotation_resample-228"><span class="linenos">228</span></a><span class="sd">        annotation_in: the annotation file to resample.</span>
-</span><span id="annotation_resample-229"><a href="#annotation_resample-229"><span class="linenos">229</span></a><span class="sd">        annotation_out: name of resampled annotation file.</span>
-</span><span id="annotation_resample-230"><a href="#annotation_resample-230"><span class="linenos">230</span></a><span class="sd">        surface_pair: pair of surfaces for resampling surface annotations for\</span>
-</span><span id="annotation_resample-231"><a href="#annotation_resample-231"><span class="linenos">231</span></a><span class="sd">            one structure.</span>
-</span><span id="annotation_resample-232"><a href="#annotation_resample-232"><span class="linenos">232</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="annotation_resample-233"><a href="#annotation_resample-233"><span class="linenos">233</span></a><span class="sd">    Returns:</span>
-</span><span id="annotation_resample-234"><a href="#annotation_resample-234"><span class="linenos">234</span></a><span class="sd">        NamedTuple of outputs (described in `AnnotationResampleOutputs`).</span>
-</span><span id="annotation_resample-235"><a href="#annotation_resample-235"><span class="linenos">235</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="annotation_resample-236"><a href="#annotation_resample-236"><span class="linenos">236</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="annotation_resample-237"><a href="#annotation_resample-237"><span class="linenos">237</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ANNOTATION_RESAMPLE_METADATA</span><span class="p">)</span>
-</span><span id="annotation_resample-238"><a href="#annotation_resample-238"><span class="linenos">238</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">annotation_resample_params</span><span class="p">(</span><span class="n">annotation_in</span><span class="o">=</span><span class="n">annotation_in</span><span class="p">,</span> <span class="n">annotation_out</span><span class="o">=</span><span class="n">annotation_out</span><span class="p">,</span> <span class="n">surface_pair</span><span class="o">=</span><span class="n">surface_pair</span><span class="p">)</span>
-</span><span id="annotation_resample-239"><a href="#annotation_resample-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">annotation_resample_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="annotation_resample-209"><a href="#annotation_resample-209"><span class="linenos">209</span></a><span class="k">def</span><span class="w"> </span><span class="nf">annotation_resample</span><span class="p">(</span>
+</span><span id="annotation_resample-210"><a href="#annotation_resample-210"><span class="linenos">210</span></a>    <span class="n">annotation_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="annotation_resample-211"><a href="#annotation_resample-211"><span class="linenos">211</span></a>    <span class="n">annotation_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="annotation_resample-212"><a href="#annotation_resample-212"><span class="linenos">212</span></a>    <span class="n">surface_pair</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnnotationResampleSurfacePairParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="annotation_resample-213"><a href="#annotation_resample-213"><span class="linenos">213</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="annotation_resample-214"><a href="#annotation_resample-214"><span class="linenos">214</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnnotationResampleOutputs</span><span class="p">:</span>
+</span><span id="annotation_resample-215"><a href="#annotation_resample-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="annotation_resample-216"><a href="#annotation_resample-216"><span class="linenos">216</span></a><span class="sd">    Resample an annotation file to different meshes.</span>
+</span><span id="annotation_resample-217"><a href="#annotation_resample-217"><span class="linenos">217</span></a><span class="sd">    </span>
+</span><span id="annotation_resample-218"><a href="#annotation_resample-218"><span class="linenos">218</span></a><span class="sd">    Resample an annotation file from the source mesh to the target mesh.</span>
+</span><span id="annotation_resample-219"><a href="#annotation_resample-219"><span class="linenos">219</span></a><span class="sd">    </span>
+</span><span id="annotation_resample-220"><a href="#annotation_resample-220"><span class="linenos">220</span></a><span class="sd">    Only annotations in surface space are modified, no changes are made to</span>
+</span><span id="annotation_resample-221"><a href="#annotation_resample-221"><span class="linenos">221</span></a><span class="sd">    annotations in other spaces. The -surface-pair option may be repeated for</span>
+</span><span id="annotation_resample-222"><a href="#annotation_resample-222"><span class="linenos">222</span></a><span class="sd">    additional structures used by surface space annotations.</span>
+</span><span id="annotation_resample-223"><a href="#annotation_resample-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="annotation_resample-224"><a href="#annotation_resample-224"><span class="linenos">224</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="annotation_resample-225"><a href="#annotation_resample-225"><span class="linenos">225</span></a><span class="sd">    </span>
+</span><span id="annotation_resample-226"><a href="#annotation_resample-226"><span class="linenos">226</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="annotation_resample-227"><a href="#annotation_resample-227"><span class="linenos">227</span></a><span class="sd">    </span>
+</span><span id="annotation_resample-228"><a href="#annotation_resample-228"><span class="linenos">228</span></a><span class="sd">    Args:</span>
+</span><span id="annotation_resample-229"><a href="#annotation_resample-229"><span class="linenos">229</span></a><span class="sd">        annotation_in: the annotation file to resample.</span>
+</span><span id="annotation_resample-230"><a href="#annotation_resample-230"><span class="linenos">230</span></a><span class="sd">        annotation_out: name of resampled annotation file.</span>
+</span><span id="annotation_resample-231"><a href="#annotation_resample-231"><span class="linenos">231</span></a><span class="sd">        surface_pair: pair of surfaces for resampling surface annotations for\</span>
+</span><span id="annotation_resample-232"><a href="#annotation_resample-232"><span class="linenos">232</span></a><span class="sd">            one structure.</span>
+</span><span id="annotation_resample-233"><a href="#annotation_resample-233"><span class="linenos">233</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="annotation_resample-234"><a href="#annotation_resample-234"><span class="linenos">234</span></a><span class="sd">    Returns:</span>
+</span><span id="annotation_resample-235"><a href="#annotation_resample-235"><span class="linenos">235</span></a><span class="sd">        NamedTuple of outputs (described in `AnnotationResampleOutputs`).</span>
+</span><span id="annotation_resample-236"><a href="#annotation_resample-236"><span class="linenos">236</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="annotation_resample-237"><a href="#annotation_resample-237"><span class="linenos">237</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="annotation_resample-238"><a href="#annotation_resample-238"><span class="linenos">238</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ANNOTATION_RESAMPLE_METADATA</span><span class="p">)</span>
+</span><span id="annotation_resample-239"><a href="#annotation_resample-239"><span class="linenos">239</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">annotation_resample_params</span><span class="p">(</span><span class="n">annotation_in</span><span class="o">=</span><span class="n">annotation_in</span><span class="p">,</span> <span class="n">annotation_out</span><span class="o">=</span><span class="n">annotation_out</span><span class="p">,</span> <span class="n">surface_pair</span><span class="o">=</span><span class="n">surface_pair</span><span class="p">)</span>
+</span><span id="annotation_resample-240"><a href="#annotation_resample-240"><span class="linenos">240</span></a>    <span class="k">return</span> <span class="n">annotation_resample_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

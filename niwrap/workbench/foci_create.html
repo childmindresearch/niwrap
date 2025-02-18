@@ -320,63 +320,64 @@
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">foci_create_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">foci_create_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="k">def</span><span class="w"> </span><span class="nf">foci_create</span><span class="p">(</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">class_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FociCreateClassParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FociCreateOutputs</span><span class="p">:</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    Create a foci file.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    </span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    Creates a foci file from names, coordinates, and RGB values in a text file.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    The text file must have the following format (2 lines per focus):</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    </span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    &lt;focus-name&gt;</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    &lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    ...</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    </span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    Foci names are specified on a separate line from their coordinates and</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    color, in order to let foci names contain spaces. Whitespace is trimmed from</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    both ends of the foci name, but is kept if it is in the middle of a name.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    The values of &lt;red&gt;, &lt;green&gt;, &lt;blue&gt; and must be integers from 0 to 255, and</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    will specify the color the foci is drawn as.</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    </span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    Foci are grouped into classes and the name for the class is specified using</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    the &lt;class-name&gt; parameter.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    </span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    All foci within one text file must be associated with the structure</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    contained in the &lt;surface&gt; parameter and are projected to that surface.</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    </span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    </span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">    </span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    Args:</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">        output: the output foci file.</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">        class_: specify class input data.</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    Returns:</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">        NamedTuple of outputs (described in `FociCreateOutputs`).</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_CREATE_METADATA</span><span class="p">)</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">foci_create_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="n">class_</span><span class="p">)</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="k">return</span> <span class="n">foci_create_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="k">def</span><span class="w"> </span><span class="nf">foci_create</span><span class="p">(</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">class_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FociCreateClassParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FociCreateOutputs</span><span class="p">:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    Create a foci file.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    </span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    Creates a foci file from names, coordinates, and RGB values in a text file.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    The text file must have the following format (2 lines per focus):</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    </span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    &lt;focus-name&gt;</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    &lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    ...</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    </span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    Foci names are specified on a separate line from their coordinates and</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    color, in order to let foci names contain spaces. Whitespace is trimmed from</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    both ends of the foci name, but is kept if it is in the middle of a name.</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    The values of &lt;red&gt;, &lt;green&gt;, &lt;blue&gt; and must be integers from 0 to 255, and</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    will specify the color the foci is drawn as.</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    </span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    Foci are grouped into classes and the name for the class is specified using</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    the &lt;class-name&gt; parameter.</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    </span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    All foci within one text file must be associated with the structure</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    contained in the &lt;surface&gt; parameter and are projected to that surface.</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    </span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">    </span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    </span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">    Args:</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">        output: the output foci file.</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">        class_: specify class input data.</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    Returns:</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">        NamedTuple of outputs (described in `FociCreateOutputs`).</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_CREATE_METADATA</span><span class="p">)</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">foci_create_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="n">class_</span><span class="p">)</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="k">return</span> <span class="n">foci_create_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="s2">&quot;FOCI_CREATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="s2">&quot;FociCreateClassParameters&quot;</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;FociCreateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;FociCreateParameters&quot;</span><span class="p">,</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;foci_create&quot;</span><span class="p">,</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;foci_create_class_params&quot;</span><span class="p">,</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;foci_create_params&quot;</span><span class="p">,</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="p">]</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="s2">&quot;FOCI_CREATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;FociCreateClassParameters&quot;</span><span class="p">,</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;FociCreateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;FociCreateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;foci_create&quot;</span><span class="p">,</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;foci_create_class_params&quot;</span><span class="p">,</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="s2">&quot;foci_create_params&quot;</span><span class="p">,</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -553,48 +554,48 @@
 
     </div>
     <a class="headerlink" href="#foci_create"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="foci_create-223"><a href="#foci_create-223"><span class="linenos">223</span></a><span class="k">def</span><span class="w"> </span><span class="nf">foci_create</span><span class="p">(</span>
-</span><span id="foci_create-224"><a href="#foci_create-224"><span class="linenos">224</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="foci_create-225"><a href="#foci_create-225"><span class="linenos">225</span></a>    <span class="n">class_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FociCreateClassParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="foci_create-226"><a href="#foci_create-226"><span class="linenos">226</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="foci_create-227"><a href="#foci_create-227"><span class="linenos">227</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FociCreateOutputs</span><span class="p">:</span>
-</span><span id="foci_create-228"><a href="#foci_create-228"><span class="linenos">228</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="foci_create-229"><a href="#foci_create-229"><span class="linenos">229</span></a><span class="sd">    Create a foci file.</span>
-</span><span id="foci_create-230"><a href="#foci_create-230"><span class="linenos">230</span></a><span class="sd">    </span>
-</span><span id="foci_create-231"><a href="#foci_create-231"><span class="linenos">231</span></a><span class="sd">    Creates a foci file from names, coordinates, and RGB values in a text file.</span>
-</span><span id="foci_create-232"><a href="#foci_create-232"><span class="linenos">232</span></a><span class="sd">    The text file must have the following format (2 lines per focus):</span>
-</span><span id="foci_create-233"><a href="#foci_create-233"><span class="linenos">233</span></a><span class="sd">    </span>
-</span><span id="foci_create-234"><a href="#foci_create-234"><span class="linenos">234</span></a><span class="sd">    &lt;focus-name&gt;</span>
-</span><span id="foci_create-235"><a href="#foci_create-235"><span class="linenos">235</span></a><span class="sd">    &lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;</span>
-</span><span id="foci_create-236"><a href="#foci_create-236"><span class="linenos">236</span></a><span class="sd">    ...</span>
-</span><span id="foci_create-237"><a href="#foci_create-237"><span class="linenos">237</span></a><span class="sd">    </span>
-</span><span id="foci_create-238"><a href="#foci_create-238"><span class="linenos">238</span></a><span class="sd">    Foci names are specified on a separate line from their coordinates and</span>
-</span><span id="foci_create-239"><a href="#foci_create-239"><span class="linenos">239</span></a><span class="sd">    color, in order to let foci names contain spaces. Whitespace is trimmed from</span>
-</span><span id="foci_create-240"><a href="#foci_create-240"><span class="linenos">240</span></a><span class="sd">    both ends of the foci name, but is kept if it is in the middle of a name.</span>
-</span><span id="foci_create-241"><a href="#foci_create-241"><span class="linenos">241</span></a><span class="sd">    The values of &lt;red&gt;, &lt;green&gt;, &lt;blue&gt; and must be integers from 0 to 255, and</span>
-</span><span id="foci_create-242"><a href="#foci_create-242"><span class="linenos">242</span></a><span class="sd">    will specify the color the foci is drawn as.</span>
-</span><span id="foci_create-243"><a href="#foci_create-243"><span class="linenos">243</span></a><span class="sd">    </span>
-</span><span id="foci_create-244"><a href="#foci_create-244"><span class="linenos">244</span></a><span class="sd">    Foci are grouped into classes and the name for the class is specified using</span>
-</span><span id="foci_create-245"><a href="#foci_create-245"><span class="linenos">245</span></a><span class="sd">    the &lt;class-name&gt; parameter.</span>
-</span><span id="foci_create-246"><a href="#foci_create-246"><span class="linenos">246</span></a><span class="sd">    </span>
-</span><span id="foci_create-247"><a href="#foci_create-247"><span class="linenos">247</span></a><span class="sd">    All foci within one text file must be associated with the structure</span>
-</span><span id="foci_create-248"><a href="#foci_create-248"><span class="linenos">248</span></a><span class="sd">    contained in the &lt;surface&gt; parameter and are projected to that surface.</span>
-</span><span id="foci_create-249"><a href="#foci_create-249"><span class="linenos">249</span></a><span class="sd">    </span>
-</span><span id="foci_create-250"><a href="#foci_create-250"><span class="linenos">250</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="foci_create-251"><a href="#foci_create-251"><span class="linenos">251</span></a><span class="sd">    </span>
-</span><span id="foci_create-252"><a href="#foci_create-252"><span class="linenos">252</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="foci_create-253"><a href="#foci_create-253"><span class="linenos">253</span></a><span class="sd">    </span>
-</span><span id="foci_create-254"><a href="#foci_create-254"><span class="linenos">254</span></a><span class="sd">    Args:</span>
-</span><span id="foci_create-255"><a href="#foci_create-255"><span class="linenos">255</span></a><span class="sd">        output: the output foci file.</span>
-</span><span id="foci_create-256"><a href="#foci_create-256"><span class="linenos">256</span></a><span class="sd">        class_: specify class input data.</span>
-</span><span id="foci_create-257"><a href="#foci_create-257"><span class="linenos">257</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="foci_create-258"><a href="#foci_create-258"><span class="linenos">258</span></a><span class="sd">    Returns:</span>
-</span><span id="foci_create-259"><a href="#foci_create-259"><span class="linenos">259</span></a><span class="sd">        NamedTuple of outputs (described in `FociCreateOutputs`).</span>
-</span><span id="foci_create-260"><a href="#foci_create-260"><span class="linenos">260</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="foci_create-261"><a href="#foci_create-261"><span class="linenos">261</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="foci_create-262"><a href="#foci_create-262"><span class="linenos">262</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_CREATE_METADATA</span><span class="p">)</span>
-</span><span id="foci_create-263"><a href="#foci_create-263"><span class="linenos">263</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">foci_create_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="n">class_</span><span class="p">)</span>
-</span><span id="foci_create-264"><a href="#foci_create-264"><span class="linenos">264</span></a>    <span class="k">return</span> <span class="n">foci_create_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="foci_create-224"><a href="#foci_create-224"><span class="linenos">224</span></a><span class="k">def</span><span class="w"> </span><span class="nf">foci_create</span><span class="p">(</span>
+</span><span id="foci_create-225"><a href="#foci_create-225"><span class="linenos">225</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="foci_create-226"><a href="#foci_create-226"><span class="linenos">226</span></a>    <span class="n">class_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FociCreateClassParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="foci_create-227"><a href="#foci_create-227"><span class="linenos">227</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="foci_create-228"><a href="#foci_create-228"><span class="linenos">228</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FociCreateOutputs</span><span class="p">:</span>
+</span><span id="foci_create-229"><a href="#foci_create-229"><span class="linenos">229</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="foci_create-230"><a href="#foci_create-230"><span class="linenos">230</span></a><span class="sd">    Create a foci file.</span>
+</span><span id="foci_create-231"><a href="#foci_create-231"><span class="linenos">231</span></a><span class="sd">    </span>
+</span><span id="foci_create-232"><a href="#foci_create-232"><span class="linenos">232</span></a><span class="sd">    Creates a foci file from names, coordinates, and RGB values in a text file.</span>
+</span><span id="foci_create-233"><a href="#foci_create-233"><span class="linenos">233</span></a><span class="sd">    The text file must have the following format (2 lines per focus):</span>
+</span><span id="foci_create-234"><a href="#foci_create-234"><span class="linenos">234</span></a><span class="sd">    </span>
+</span><span id="foci_create-235"><a href="#foci_create-235"><span class="linenos">235</span></a><span class="sd">    &lt;focus-name&gt;</span>
+</span><span id="foci_create-236"><a href="#foci_create-236"><span class="linenos">236</span></a><span class="sd">    &lt;red&gt; &lt;green&gt; &lt;blue&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;</span>
+</span><span id="foci_create-237"><a href="#foci_create-237"><span class="linenos">237</span></a><span class="sd">    ...</span>
+</span><span id="foci_create-238"><a href="#foci_create-238"><span class="linenos">238</span></a><span class="sd">    </span>
+</span><span id="foci_create-239"><a href="#foci_create-239"><span class="linenos">239</span></a><span class="sd">    Foci names are specified on a separate line from their coordinates and</span>
+</span><span id="foci_create-240"><a href="#foci_create-240"><span class="linenos">240</span></a><span class="sd">    color, in order to let foci names contain spaces. Whitespace is trimmed from</span>
+</span><span id="foci_create-241"><a href="#foci_create-241"><span class="linenos">241</span></a><span class="sd">    both ends of the foci name, but is kept if it is in the middle of a name.</span>
+</span><span id="foci_create-242"><a href="#foci_create-242"><span class="linenos">242</span></a><span class="sd">    The values of &lt;red&gt;, &lt;green&gt;, &lt;blue&gt; and must be integers from 0 to 255, and</span>
+</span><span id="foci_create-243"><a href="#foci_create-243"><span class="linenos">243</span></a><span class="sd">    will specify the color the foci is drawn as.</span>
+</span><span id="foci_create-244"><a href="#foci_create-244"><span class="linenos">244</span></a><span class="sd">    </span>
+</span><span id="foci_create-245"><a href="#foci_create-245"><span class="linenos">245</span></a><span class="sd">    Foci are grouped into classes and the name for the class is specified using</span>
+</span><span id="foci_create-246"><a href="#foci_create-246"><span class="linenos">246</span></a><span class="sd">    the &lt;class-name&gt; parameter.</span>
+</span><span id="foci_create-247"><a href="#foci_create-247"><span class="linenos">247</span></a><span class="sd">    </span>
+</span><span id="foci_create-248"><a href="#foci_create-248"><span class="linenos">248</span></a><span class="sd">    All foci within one text file must be associated with the structure</span>
+</span><span id="foci_create-249"><a href="#foci_create-249"><span class="linenos">249</span></a><span class="sd">    contained in the &lt;surface&gt; parameter and are projected to that surface.</span>
+</span><span id="foci_create-250"><a href="#foci_create-250"><span class="linenos">250</span></a><span class="sd">    </span>
+</span><span id="foci_create-251"><a href="#foci_create-251"><span class="linenos">251</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="foci_create-252"><a href="#foci_create-252"><span class="linenos">252</span></a><span class="sd">    </span>
+</span><span id="foci_create-253"><a href="#foci_create-253"><span class="linenos">253</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="foci_create-254"><a href="#foci_create-254"><span class="linenos">254</span></a><span class="sd">    </span>
+</span><span id="foci_create-255"><a href="#foci_create-255"><span class="linenos">255</span></a><span class="sd">    Args:</span>
+</span><span id="foci_create-256"><a href="#foci_create-256"><span class="linenos">256</span></a><span class="sd">        output: the output foci file.</span>
+</span><span id="foci_create-257"><a href="#foci_create-257"><span class="linenos">257</span></a><span class="sd">        class_: specify class input data.</span>
+</span><span id="foci_create-258"><a href="#foci_create-258"><span class="linenos">258</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="foci_create-259"><a href="#foci_create-259"><span class="linenos">259</span></a><span class="sd">    Returns:</span>
+</span><span id="foci_create-260"><a href="#foci_create-260"><span class="linenos">260</span></a><span class="sd">        NamedTuple of outputs (described in `FociCreateOutputs`).</span>
+</span><span id="foci_create-261"><a href="#foci_create-261"><span class="linenos">261</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="foci_create-262"><a href="#foci_create-262"><span class="linenos">262</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="foci_create-263"><a href="#foci_create-263"><span class="linenos">263</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_CREATE_METADATA</span><span class="p">)</span>
+</span><span id="foci_create-264"><a href="#foci_create-264"><span class="linenos">264</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">foci_create_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="n">class_</span><span class="p">)</span>
+</span><span id="foci_create-265"><a href="#foci_create-265"><span class="linenos">265</span></a>    <span class="k">return</span> <span class="n">foci_create_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

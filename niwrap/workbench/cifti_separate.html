@@ -879,107 +879,108 @@
 </span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_separate_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_separate_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a>
+</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a>
-</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_separate</span><span class="p">(</span>
-</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiSeparateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiSeparateOutputs</span><span class="p">:</span>
-</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a><span class="sd">    Write a cifti structure as metric, label or volume.</span>
-</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a><span class="sd">    </span>
-</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a><span class="sd">    For dtseries, dscalar, and dlabel, use COLUMN for &lt;direction&gt;, and if you</span>
-</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a><span class="sd">    have a symmetric dconn, COLUMN is more efficient.</span>
-</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a><span class="sd">    </span>
-</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a><span class="sd">    You must specify at least one of -metric, -volume-all, -volume, or -label</span>
-</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a><span class="sd">    for this command to do anything. Output volumes will spatially line up with</span>
-</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="sd">    their original positions, whether or not they are cropped. Volume files</span>
-</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="sd">    produced by separating a dlabel file, or from the -label suboption of</span>
-</span><span id="L-644"><a href="#L-644"><span class="linenos">644</span></a><span class="sd">    -volume-all, will be label volumes, see -volume-help.</span>
-</span><span id="L-645"><a href="#L-645"><span class="linenos">645</span></a><span class="sd">    </span>
-</span><span id="L-646"><a href="#L-646"><span class="linenos">646</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
-</span><span id="L-647"><a href="#L-647"><span class="linenos">647</span></a><span class="sd">    </span>
-</span><span id="L-648"><a href="#L-648"><span class="linenos">648</span></a><span class="sd">    CORTEX_LEFT</span>
-</span><span id="L-649"><a href="#L-649"><span class="linenos">649</span></a><span class="sd">    CORTEX_RIGHT</span>
-</span><span id="L-650"><a href="#L-650"><span class="linenos">650</span></a><span class="sd">    CEREBELLUM</span>
-</span><span id="L-651"><a href="#L-651"><span class="linenos">651</span></a><span class="sd">    ACCUMBENS_LEFT</span>
-</span><span id="L-652"><a href="#L-652"><span class="linenos">652</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
-</span><span id="L-653"><a href="#L-653"><span class="linenos">653</span></a><span class="sd">    ALL_GREY_MATTER</span>
-</span><span id="L-654"><a href="#L-654"><span class="linenos">654</span></a><span class="sd">    ALL_WHITE_MATTER</span>
-</span><span id="L-655"><a href="#L-655"><span class="linenos">655</span></a><span class="sd">    AMYGDALA_LEFT</span>
-</span><span id="L-656"><a href="#L-656"><span class="linenos">656</span></a><span class="sd">    AMYGDALA_RIGHT</span>
-</span><span id="L-657"><a href="#L-657"><span class="linenos">657</span></a><span class="sd">    BRAIN_STEM</span>
-</span><span id="L-658"><a href="#L-658"><span class="linenos">658</span></a><span class="sd">    CAUDATE_LEFT</span>
-</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a><span class="sd">    CAUDATE_RIGHT</span>
-</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
-</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
-</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a><span class="sd">    CEREBELLUM_LEFT</span>
-</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
-</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
-</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
-</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a><span class="sd">    CORTEX</span>
-</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
-</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
-</span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
-</span><span id="L-670"><a href="#L-670"><span class="linenos">670</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
-</span><span id="L-671"><a href="#L-671"><span class="linenos">671</span></a><span class="sd">    INVALID</span>
-</span><span id="L-672"><a href="#L-672"><span class="linenos">672</span></a><span class="sd">    OTHER</span>
-</span><span id="L-673"><a href="#L-673"><span class="linenos">673</span></a><span class="sd">    OTHER_GREY_MATTER</span>
-</span><span id="L-674"><a href="#L-674"><span class="linenos">674</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
-</span><span id="L-675"><a href="#L-675"><span class="linenos">675</span></a><span class="sd">    PALLIDUM_LEFT</span>
-</span><span id="L-676"><a href="#L-676"><span class="linenos">676</span></a><span class="sd">    PALLIDUM_RIGHT</span>
-</span><span id="L-677"><a href="#L-677"><span class="linenos">677</span></a><span class="sd">    PUTAMEN_LEFT</span>
-</span><span id="L-678"><a href="#L-678"><span class="linenos">678</span></a><span class="sd">    PUTAMEN_RIGHT</span>
-</span><span id="L-679"><a href="#L-679"><span class="linenos">679</span></a><span class="sd">    THALAMUS_LEFT</span>
-</span><span id="L-680"><a href="#L-680"><span class="linenos">680</span></a><span class="sd">    THALAMUS_RIGHT.</span>
-</span><span id="L-681"><a href="#L-681"><span class="linenos">681</span></a><span class="sd">    </span>
-</span><span id="L-682"><a href="#L-682"><span class="linenos">682</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-683"><a href="#L-683"><span class="linenos">683</span></a><span class="sd">    </span>
-</span><span id="L-684"><a href="#L-684"><span class="linenos">684</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-685"><a href="#L-685"><span class="linenos">685</span></a><span class="sd">    </span>
-</span><span id="L-686"><a href="#L-686"><span class="linenos">686</span></a><span class="sd">    Args:</span>
-</span><span id="L-687"><a href="#L-687"><span class="linenos">687</span></a><span class="sd">        cifti_in: the cifti to separate a component of.</span>
-</span><span id="L-688"><a href="#L-688"><span class="linenos">688</span></a><span class="sd">        direction: which direction to separate into components, ROW or COLUMN.</span>
-</span><span id="L-689"><a href="#L-689"><span class="linenos">689</span></a><span class="sd">        volume_all: separate all volume structures into a volume file.</span>
-</span><span id="L-690"><a href="#L-690"><span class="linenos">690</span></a><span class="sd">        label: separate a surface model into a surface label file.</span>
-</span><span id="L-691"><a href="#L-691"><span class="linenos">691</span></a><span class="sd">        metric: separate a surface model into a metric file.</span>
-</span><span id="L-692"><a href="#L-692"><span class="linenos">692</span></a><span class="sd">        volume: separate a volume structure into a volume file.</span>
-</span><span id="L-693"><a href="#L-693"><span class="linenos">693</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-694"><a href="#L-694"><span class="linenos">694</span></a><span class="sd">    Returns:</span>
-</span><span id="L-695"><a href="#L-695"><span class="linenos">695</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiSeparateOutputs`).</span>
-</span><span id="L-696"><a href="#L-696"><span class="linenos">696</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-697"><a href="#L-697"><span class="linenos">697</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-698"><a href="#L-698"><span class="linenos">698</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_SEPARATE_METADATA</span><span class="p">)</span>
-</span><span id="L-699"><a href="#L-699"><span class="linenos">699</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_separate_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
-</span><span id="L-700"><a href="#L-700"><span class="linenos">700</span></a>    <span class="k">return</span> <span class="n">cifti_separate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-701"><a href="#L-701"><span class="linenos">701</span></a>
+</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a>
+</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_separate</span><span class="p">(</span>
+</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiSeparateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiSeparateOutputs</span><span class="p">:</span>
+</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a><span class="sd">    Write a cifti structure as metric, label or volume.</span>
+</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a><span class="sd">    </span>
+</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a><span class="sd">    For dtseries, dscalar, and dlabel, use COLUMN for &lt;direction&gt;, and if you</span>
+</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a><span class="sd">    have a symmetric dconn, COLUMN is more efficient.</span>
+</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a><span class="sd">    </span>
+</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a><span class="sd">    You must specify at least one of -metric, -volume-all, -volume, or -label</span>
+</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="sd">    for this command to do anything. Output volumes will spatially line up with</span>
+</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="sd">    their original positions, whether or not they are cropped. Volume files</span>
+</span><span id="L-644"><a href="#L-644"><span class="linenos">644</span></a><span class="sd">    produced by separating a dlabel file, or from the -label suboption of</span>
+</span><span id="L-645"><a href="#L-645"><span class="linenos">645</span></a><span class="sd">    -volume-all, will be label volumes, see -volume-help.</span>
+</span><span id="L-646"><a href="#L-646"><span class="linenos">646</span></a><span class="sd">    </span>
+</span><span id="L-647"><a href="#L-647"><span class="linenos">647</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
+</span><span id="L-648"><a href="#L-648"><span class="linenos">648</span></a><span class="sd">    </span>
+</span><span id="L-649"><a href="#L-649"><span class="linenos">649</span></a><span class="sd">    CORTEX_LEFT</span>
+</span><span id="L-650"><a href="#L-650"><span class="linenos">650</span></a><span class="sd">    CORTEX_RIGHT</span>
+</span><span id="L-651"><a href="#L-651"><span class="linenos">651</span></a><span class="sd">    CEREBELLUM</span>
+</span><span id="L-652"><a href="#L-652"><span class="linenos">652</span></a><span class="sd">    ACCUMBENS_LEFT</span>
+</span><span id="L-653"><a href="#L-653"><span class="linenos">653</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
+</span><span id="L-654"><a href="#L-654"><span class="linenos">654</span></a><span class="sd">    ALL_GREY_MATTER</span>
+</span><span id="L-655"><a href="#L-655"><span class="linenos">655</span></a><span class="sd">    ALL_WHITE_MATTER</span>
+</span><span id="L-656"><a href="#L-656"><span class="linenos">656</span></a><span class="sd">    AMYGDALA_LEFT</span>
+</span><span id="L-657"><a href="#L-657"><span class="linenos">657</span></a><span class="sd">    AMYGDALA_RIGHT</span>
+</span><span id="L-658"><a href="#L-658"><span class="linenos">658</span></a><span class="sd">    BRAIN_STEM</span>
+</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a><span class="sd">    CAUDATE_LEFT</span>
+</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a><span class="sd">    CAUDATE_RIGHT</span>
+</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
+</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
+</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a><span class="sd">    CEREBELLUM_LEFT</span>
+</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
+</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
+</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
+</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a><span class="sd">    CORTEX</span>
+</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
+</span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
+</span><span id="L-670"><a href="#L-670"><span class="linenos">670</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
+</span><span id="L-671"><a href="#L-671"><span class="linenos">671</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
+</span><span id="L-672"><a href="#L-672"><span class="linenos">672</span></a><span class="sd">    INVALID</span>
+</span><span id="L-673"><a href="#L-673"><span class="linenos">673</span></a><span class="sd">    OTHER</span>
+</span><span id="L-674"><a href="#L-674"><span class="linenos">674</span></a><span class="sd">    OTHER_GREY_MATTER</span>
+</span><span id="L-675"><a href="#L-675"><span class="linenos">675</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
+</span><span id="L-676"><a href="#L-676"><span class="linenos">676</span></a><span class="sd">    PALLIDUM_LEFT</span>
+</span><span id="L-677"><a href="#L-677"><span class="linenos">677</span></a><span class="sd">    PALLIDUM_RIGHT</span>
+</span><span id="L-678"><a href="#L-678"><span class="linenos">678</span></a><span class="sd">    PUTAMEN_LEFT</span>
+</span><span id="L-679"><a href="#L-679"><span class="linenos">679</span></a><span class="sd">    PUTAMEN_RIGHT</span>
+</span><span id="L-680"><a href="#L-680"><span class="linenos">680</span></a><span class="sd">    THALAMUS_LEFT</span>
+</span><span id="L-681"><a href="#L-681"><span class="linenos">681</span></a><span class="sd">    THALAMUS_RIGHT.</span>
+</span><span id="L-682"><a href="#L-682"><span class="linenos">682</span></a><span class="sd">    </span>
+</span><span id="L-683"><a href="#L-683"><span class="linenos">683</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-684"><a href="#L-684"><span class="linenos">684</span></a><span class="sd">    </span>
+</span><span id="L-685"><a href="#L-685"><span class="linenos">685</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-686"><a href="#L-686"><span class="linenos">686</span></a><span class="sd">    </span>
+</span><span id="L-687"><a href="#L-687"><span class="linenos">687</span></a><span class="sd">    Args:</span>
+</span><span id="L-688"><a href="#L-688"><span class="linenos">688</span></a><span class="sd">        cifti_in: the cifti to separate a component of.</span>
+</span><span id="L-689"><a href="#L-689"><span class="linenos">689</span></a><span class="sd">        direction: which direction to separate into components, ROW or COLUMN.</span>
+</span><span id="L-690"><a href="#L-690"><span class="linenos">690</span></a><span class="sd">        volume_all: separate all volume structures into a volume file.</span>
+</span><span id="L-691"><a href="#L-691"><span class="linenos">691</span></a><span class="sd">        label: separate a surface model into a surface label file.</span>
+</span><span id="L-692"><a href="#L-692"><span class="linenos">692</span></a><span class="sd">        metric: separate a surface model into a metric file.</span>
+</span><span id="L-693"><a href="#L-693"><span class="linenos">693</span></a><span class="sd">        volume: separate a volume structure into a volume file.</span>
+</span><span id="L-694"><a href="#L-694"><span class="linenos">694</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-695"><a href="#L-695"><span class="linenos">695</span></a><span class="sd">    Returns:</span>
+</span><span id="L-696"><a href="#L-696"><span class="linenos">696</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiSeparateOutputs`).</span>
+</span><span id="L-697"><a href="#L-697"><span class="linenos">697</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-698"><a href="#L-698"><span class="linenos">698</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-699"><a href="#L-699"><span class="linenos">699</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_SEPARATE_METADATA</span><span class="p">)</span>
+</span><span id="L-700"><a href="#L-700"><span class="linenos">700</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_separate_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
+</span><span id="L-701"><a href="#L-701"><span class="linenos">701</span></a>    <span class="k">return</span> <span class="n">cifti_separate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-702"><a href="#L-702"><span class="linenos">702</span></a>
-</span><span id="L-703"><a href="#L-703"><span class="linenos">703</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-704"><a href="#L-704"><span class="linenos">704</span></a>    <span class="s2">&quot;CIFTI_SEPARATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-705"><a href="#L-705"><span class="linenos">705</span></a>    <span class="s2">&quot;CiftiSeparateLabelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-706"><a href="#L-706"><span class="linenos">706</span></a>    <span class="s2">&quot;CiftiSeparateLabelParameters&quot;</span><span class="p">,</span>
-</span><span id="L-707"><a href="#L-707"><span class="linenos">707</span></a>    <span class="s2">&quot;CiftiSeparateMetricOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-708"><a href="#L-708"><span class="linenos">708</span></a>    <span class="s2">&quot;CiftiSeparateMetricParameters&quot;</span><span class="p">,</span>
-</span><span id="L-709"><a href="#L-709"><span class="linenos">709</span></a>    <span class="s2">&quot;CiftiSeparateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-710"><a href="#L-710"><span class="linenos">710</span></a>    <span class="s2">&quot;CiftiSeparateParameters&quot;</span><span class="p">,</span>
-</span><span id="L-711"><a href="#L-711"><span class="linenos">711</span></a>    <span class="s2">&quot;CiftiSeparateVolumeAllOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-712"><a href="#L-712"><span class="linenos">712</span></a>    <span class="s2">&quot;CiftiSeparateVolumeAllParameters&quot;</span><span class="p">,</span>
-</span><span id="L-713"><a href="#L-713"><span class="linenos">713</span></a>    <span class="s2">&quot;CiftiSeparateVolumeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-714"><a href="#L-714"><span class="linenos">714</span></a>    <span class="s2">&quot;CiftiSeparateVolumeParameters&quot;</span><span class="p">,</span>
-</span><span id="L-715"><a href="#L-715"><span class="linenos">715</span></a>    <span class="s2">&quot;cifti_separate&quot;</span><span class="p">,</span>
-</span><span id="L-716"><a href="#L-716"><span class="linenos">716</span></a>    <span class="s2">&quot;cifti_separate_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-717"><a href="#L-717"><span class="linenos">717</span></a>    <span class="s2">&quot;cifti_separate_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-718"><a href="#L-718"><span class="linenos">718</span></a>    <span class="s2">&quot;cifti_separate_params&quot;</span><span class="p">,</span>
-</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a>    <span class="s2">&quot;cifti_separate_volume_all_params&quot;</span><span class="p">,</span>
-</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a>    <span class="s2">&quot;cifti_separate_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a><span class="p">]</span>
+</span><span id="L-703"><a href="#L-703"><span class="linenos">703</span></a>
+</span><span id="L-704"><a href="#L-704"><span class="linenos">704</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-705"><a href="#L-705"><span class="linenos">705</span></a>    <span class="s2">&quot;CIFTI_SEPARATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-706"><a href="#L-706"><span class="linenos">706</span></a>    <span class="s2">&quot;CiftiSeparateLabelOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-707"><a href="#L-707"><span class="linenos">707</span></a>    <span class="s2">&quot;CiftiSeparateLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-708"><a href="#L-708"><span class="linenos">708</span></a>    <span class="s2">&quot;CiftiSeparateMetricOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-709"><a href="#L-709"><span class="linenos">709</span></a>    <span class="s2">&quot;CiftiSeparateMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-710"><a href="#L-710"><span class="linenos">710</span></a>    <span class="s2">&quot;CiftiSeparateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-711"><a href="#L-711"><span class="linenos">711</span></a>    <span class="s2">&quot;CiftiSeparateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-712"><a href="#L-712"><span class="linenos">712</span></a>    <span class="s2">&quot;CiftiSeparateVolumeAllOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-713"><a href="#L-713"><span class="linenos">713</span></a>    <span class="s2">&quot;CiftiSeparateVolumeAllParameters&quot;</span><span class="p">,</span>
+</span><span id="L-714"><a href="#L-714"><span class="linenos">714</span></a>    <span class="s2">&quot;CiftiSeparateVolumeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-715"><a href="#L-715"><span class="linenos">715</span></a>    <span class="s2">&quot;CiftiSeparateVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-716"><a href="#L-716"><span class="linenos">716</span></a>    <span class="s2">&quot;cifti_separate&quot;</span><span class="p">,</span>
+</span><span id="L-717"><a href="#L-717"><span class="linenos">717</span></a>    <span class="s2">&quot;cifti_separate_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-718"><a href="#L-718"><span class="linenos">718</span></a>    <span class="s2">&quot;cifti_separate_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a>    <span class="s2">&quot;cifti_separate_params&quot;</span><span class="p">,</span>
+</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a>    <span class="s2">&quot;cifti_separate_volume_all_params&quot;</span><span class="p">,</span>
+</span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a>    <span class="s2">&quot;cifti_separate_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-722"><a href="#L-722"><span class="linenos">722</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1756,82 +1757,82 @@ label output volume</p>
 
     </div>
     <a class="headerlink" href="#cifti_separate"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_separate-626"><a href="#cifti_separate-626"><span class="linenos">626</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_separate</span><span class="p">(</span>
-</span><span id="cifti_separate-627"><a href="#cifti_separate-627"><span class="linenos">627</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_separate-628"><a href="#cifti_separate-628"><span class="linenos">628</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_separate-629"><a href="#cifti_separate-629"><span class="linenos">629</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiSeparateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_separate-630"><a href="#cifti_separate-630"><span class="linenos">630</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_separate-631"><a href="#cifti_separate-631"><span class="linenos">631</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_separate-632"><a href="#cifti_separate-632"><span class="linenos">632</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_separate-633"><a href="#cifti_separate-633"><span class="linenos">633</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_separate-634"><a href="#cifti_separate-634"><span class="linenos">634</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiSeparateOutputs</span><span class="p">:</span>
-</span><span id="cifti_separate-635"><a href="#cifti_separate-635"><span class="linenos">635</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_separate-636"><a href="#cifti_separate-636"><span class="linenos">636</span></a><span class="sd">    Write a cifti structure as metric, label or volume.</span>
-</span><span id="cifti_separate-637"><a href="#cifti_separate-637"><span class="linenos">637</span></a><span class="sd">    </span>
-</span><span id="cifti_separate-638"><a href="#cifti_separate-638"><span class="linenos">638</span></a><span class="sd">    For dtseries, dscalar, and dlabel, use COLUMN for &lt;direction&gt;, and if you</span>
-</span><span id="cifti_separate-639"><a href="#cifti_separate-639"><span class="linenos">639</span></a><span class="sd">    have a symmetric dconn, COLUMN is more efficient.</span>
-</span><span id="cifti_separate-640"><a href="#cifti_separate-640"><span class="linenos">640</span></a><span class="sd">    </span>
-</span><span id="cifti_separate-641"><a href="#cifti_separate-641"><span class="linenos">641</span></a><span class="sd">    You must specify at least one of -metric, -volume-all, -volume, or -label</span>
-</span><span id="cifti_separate-642"><a href="#cifti_separate-642"><span class="linenos">642</span></a><span class="sd">    for this command to do anything. Output volumes will spatially line up with</span>
-</span><span id="cifti_separate-643"><a href="#cifti_separate-643"><span class="linenos">643</span></a><span class="sd">    their original positions, whether or not they are cropped. Volume files</span>
-</span><span id="cifti_separate-644"><a href="#cifti_separate-644"><span class="linenos">644</span></a><span class="sd">    produced by separating a dlabel file, or from the -label suboption of</span>
-</span><span id="cifti_separate-645"><a href="#cifti_separate-645"><span class="linenos">645</span></a><span class="sd">    -volume-all, will be label volumes, see -volume-help.</span>
-</span><span id="cifti_separate-646"><a href="#cifti_separate-646"><span class="linenos">646</span></a><span class="sd">    </span>
-</span><span id="cifti_separate-647"><a href="#cifti_separate-647"><span class="linenos">647</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
-</span><span id="cifti_separate-648"><a href="#cifti_separate-648"><span class="linenos">648</span></a><span class="sd">    </span>
-</span><span id="cifti_separate-649"><a href="#cifti_separate-649"><span class="linenos">649</span></a><span class="sd">    CORTEX_LEFT</span>
-</span><span id="cifti_separate-650"><a href="#cifti_separate-650"><span class="linenos">650</span></a><span class="sd">    CORTEX_RIGHT</span>
-</span><span id="cifti_separate-651"><a href="#cifti_separate-651"><span class="linenos">651</span></a><span class="sd">    CEREBELLUM</span>
-</span><span id="cifti_separate-652"><a href="#cifti_separate-652"><span class="linenos">652</span></a><span class="sd">    ACCUMBENS_LEFT</span>
-</span><span id="cifti_separate-653"><a href="#cifti_separate-653"><span class="linenos">653</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
-</span><span id="cifti_separate-654"><a href="#cifti_separate-654"><span class="linenos">654</span></a><span class="sd">    ALL_GREY_MATTER</span>
-</span><span id="cifti_separate-655"><a href="#cifti_separate-655"><span class="linenos">655</span></a><span class="sd">    ALL_WHITE_MATTER</span>
-</span><span id="cifti_separate-656"><a href="#cifti_separate-656"><span class="linenos">656</span></a><span class="sd">    AMYGDALA_LEFT</span>
-</span><span id="cifti_separate-657"><a href="#cifti_separate-657"><span class="linenos">657</span></a><span class="sd">    AMYGDALA_RIGHT</span>
-</span><span id="cifti_separate-658"><a href="#cifti_separate-658"><span class="linenos">658</span></a><span class="sd">    BRAIN_STEM</span>
-</span><span id="cifti_separate-659"><a href="#cifti_separate-659"><span class="linenos">659</span></a><span class="sd">    CAUDATE_LEFT</span>
-</span><span id="cifti_separate-660"><a href="#cifti_separate-660"><span class="linenos">660</span></a><span class="sd">    CAUDATE_RIGHT</span>
-</span><span id="cifti_separate-661"><a href="#cifti_separate-661"><span class="linenos">661</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
-</span><span id="cifti_separate-662"><a href="#cifti_separate-662"><span class="linenos">662</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
-</span><span id="cifti_separate-663"><a href="#cifti_separate-663"><span class="linenos">663</span></a><span class="sd">    CEREBELLUM_LEFT</span>
-</span><span id="cifti_separate-664"><a href="#cifti_separate-664"><span class="linenos">664</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
-</span><span id="cifti_separate-665"><a href="#cifti_separate-665"><span class="linenos">665</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
-</span><span id="cifti_separate-666"><a href="#cifti_separate-666"><span class="linenos">666</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
-</span><span id="cifti_separate-667"><a href="#cifti_separate-667"><span class="linenos">667</span></a><span class="sd">    CORTEX</span>
-</span><span id="cifti_separate-668"><a href="#cifti_separate-668"><span class="linenos">668</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
-</span><span id="cifti_separate-669"><a href="#cifti_separate-669"><span class="linenos">669</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
-</span><span id="cifti_separate-670"><a href="#cifti_separate-670"><span class="linenos">670</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
-</span><span id="cifti_separate-671"><a href="#cifti_separate-671"><span class="linenos">671</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
-</span><span id="cifti_separate-672"><a href="#cifti_separate-672"><span class="linenos">672</span></a><span class="sd">    INVALID</span>
-</span><span id="cifti_separate-673"><a href="#cifti_separate-673"><span class="linenos">673</span></a><span class="sd">    OTHER</span>
-</span><span id="cifti_separate-674"><a href="#cifti_separate-674"><span class="linenos">674</span></a><span class="sd">    OTHER_GREY_MATTER</span>
-</span><span id="cifti_separate-675"><a href="#cifti_separate-675"><span class="linenos">675</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
-</span><span id="cifti_separate-676"><a href="#cifti_separate-676"><span class="linenos">676</span></a><span class="sd">    PALLIDUM_LEFT</span>
-</span><span id="cifti_separate-677"><a href="#cifti_separate-677"><span class="linenos">677</span></a><span class="sd">    PALLIDUM_RIGHT</span>
-</span><span id="cifti_separate-678"><a href="#cifti_separate-678"><span class="linenos">678</span></a><span class="sd">    PUTAMEN_LEFT</span>
-</span><span id="cifti_separate-679"><a href="#cifti_separate-679"><span class="linenos">679</span></a><span class="sd">    PUTAMEN_RIGHT</span>
-</span><span id="cifti_separate-680"><a href="#cifti_separate-680"><span class="linenos">680</span></a><span class="sd">    THALAMUS_LEFT</span>
-</span><span id="cifti_separate-681"><a href="#cifti_separate-681"><span class="linenos">681</span></a><span class="sd">    THALAMUS_RIGHT.</span>
-</span><span id="cifti_separate-682"><a href="#cifti_separate-682"><span class="linenos">682</span></a><span class="sd">    </span>
-</span><span id="cifti_separate-683"><a href="#cifti_separate-683"><span class="linenos">683</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="cifti_separate-684"><a href="#cifti_separate-684"><span class="linenos">684</span></a><span class="sd">    </span>
-</span><span id="cifti_separate-685"><a href="#cifti_separate-685"><span class="linenos">685</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="cifti_separate-686"><a href="#cifti_separate-686"><span class="linenos">686</span></a><span class="sd">    </span>
-</span><span id="cifti_separate-687"><a href="#cifti_separate-687"><span class="linenos">687</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_separate-688"><a href="#cifti_separate-688"><span class="linenos">688</span></a><span class="sd">        cifti_in: the cifti to separate a component of.</span>
-</span><span id="cifti_separate-689"><a href="#cifti_separate-689"><span class="linenos">689</span></a><span class="sd">        direction: which direction to separate into components, ROW or COLUMN.</span>
-</span><span id="cifti_separate-690"><a href="#cifti_separate-690"><span class="linenos">690</span></a><span class="sd">        volume_all: separate all volume structures into a volume file.</span>
-</span><span id="cifti_separate-691"><a href="#cifti_separate-691"><span class="linenos">691</span></a><span class="sd">        label: separate a surface model into a surface label file.</span>
-</span><span id="cifti_separate-692"><a href="#cifti_separate-692"><span class="linenos">692</span></a><span class="sd">        metric: separate a surface model into a metric file.</span>
-</span><span id="cifti_separate-693"><a href="#cifti_separate-693"><span class="linenos">693</span></a><span class="sd">        volume: separate a volume structure into a volume file.</span>
-</span><span id="cifti_separate-694"><a href="#cifti_separate-694"><span class="linenos">694</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_separate-695"><a href="#cifti_separate-695"><span class="linenos">695</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_separate-696"><a href="#cifti_separate-696"><span class="linenos">696</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiSeparateOutputs`).</span>
-</span><span id="cifti_separate-697"><a href="#cifti_separate-697"><span class="linenos">697</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_separate-698"><a href="#cifti_separate-698"><span class="linenos">698</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_separate-699"><a href="#cifti_separate-699"><span class="linenos">699</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_SEPARATE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_separate-700"><a href="#cifti_separate-700"><span class="linenos">700</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_separate_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
-</span><span id="cifti_separate-701"><a href="#cifti_separate-701"><span class="linenos">701</span></a>    <span class="k">return</span> <span class="n">cifti_separate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_separate-627"><a href="#cifti_separate-627"><span class="linenos">627</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_separate</span><span class="p">(</span>
+</span><span id="cifti_separate-628"><a href="#cifti_separate-628"><span class="linenos">628</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_separate-629"><a href="#cifti_separate-629"><span class="linenos">629</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_separate-630"><a href="#cifti_separate-630"><span class="linenos">630</span></a>    <span class="n">volume_all</span><span class="p">:</span> <span class="n">CiftiSeparateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_separate-631"><a href="#cifti_separate-631"><span class="linenos">631</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_separate-632"><a href="#cifti_separate-632"><span class="linenos">632</span></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_separate-633"><a href="#cifti_separate-633"><span class="linenos">633</span></a>    <span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiSeparateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_separate-634"><a href="#cifti_separate-634"><span class="linenos">634</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_separate-635"><a href="#cifti_separate-635"><span class="linenos">635</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiSeparateOutputs</span><span class="p">:</span>
+</span><span id="cifti_separate-636"><a href="#cifti_separate-636"><span class="linenos">636</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_separate-637"><a href="#cifti_separate-637"><span class="linenos">637</span></a><span class="sd">    Write a cifti structure as metric, label or volume.</span>
+</span><span id="cifti_separate-638"><a href="#cifti_separate-638"><span class="linenos">638</span></a><span class="sd">    </span>
+</span><span id="cifti_separate-639"><a href="#cifti_separate-639"><span class="linenos">639</span></a><span class="sd">    For dtseries, dscalar, and dlabel, use COLUMN for &lt;direction&gt;, and if you</span>
+</span><span id="cifti_separate-640"><a href="#cifti_separate-640"><span class="linenos">640</span></a><span class="sd">    have a symmetric dconn, COLUMN is more efficient.</span>
+</span><span id="cifti_separate-641"><a href="#cifti_separate-641"><span class="linenos">641</span></a><span class="sd">    </span>
+</span><span id="cifti_separate-642"><a href="#cifti_separate-642"><span class="linenos">642</span></a><span class="sd">    You must specify at least one of -metric, -volume-all, -volume, or -label</span>
+</span><span id="cifti_separate-643"><a href="#cifti_separate-643"><span class="linenos">643</span></a><span class="sd">    for this command to do anything. Output volumes will spatially line up with</span>
+</span><span id="cifti_separate-644"><a href="#cifti_separate-644"><span class="linenos">644</span></a><span class="sd">    their original positions, whether or not they are cropped. Volume files</span>
+</span><span id="cifti_separate-645"><a href="#cifti_separate-645"><span class="linenos">645</span></a><span class="sd">    produced by separating a dlabel file, or from the -label suboption of</span>
+</span><span id="cifti_separate-646"><a href="#cifti_separate-646"><span class="linenos">646</span></a><span class="sd">    -volume-all, will be label volumes, see -volume-help.</span>
+</span><span id="cifti_separate-647"><a href="#cifti_separate-647"><span class="linenos">647</span></a><span class="sd">    </span>
+</span><span id="cifti_separate-648"><a href="#cifti_separate-648"><span class="linenos">648</span></a><span class="sd">    For each &lt;structure&gt; argument, use one of the following strings:</span>
+</span><span id="cifti_separate-649"><a href="#cifti_separate-649"><span class="linenos">649</span></a><span class="sd">    </span>
+</span><span id="cifti_separate-650"><a href="#cifti_separate-650"><span class="linenos">650</span></a><span class="sd">    CORTEX_LEFT</span>
+</span><span id="cifti_separate-651"><a href="#cifti_separate-651"><span class="linenos">651</span></a><span class="sd">    CORTEX_RIGHT</span>
+</span><span id="cifti_separate-652"><a href="#cifti_separate-652"><span class="linenos">652</span></a><span class="sd">    CEREBELLUM</span>
+</span><span id="cifti_separate-653"><a href="#cifti_separate-653"><span class="linenos">653</span></a><span class="sd">    ACCUMBENS_LEFT</span>
+</span><span id="cifti_separate-654"><a href="#cifti_separate-654"><span class="linenos">654</span></a><span class="sd">    ACCUMBENS_RIGHT</span>
+</span><span id="cifti_separate-655"><a href="#cifti_separate-655"><span class="linenos">655</span></a><span class="sd">    ALL_GREY_MATTER</span>
+</span><span id="cifti_separate-656"><a href="#cifti_separate-656"><span class="linenos">656</span></a><span class="sd">    ALL_WHITE_MATTER</span>
+</span><span id="cifti_separate-657"><a href="#cifti_separate-657"><span class="linenos">657</span></a><span class="sd">    AMYGDALA_LEFT</span>
+</span><span id="cifti_separate-658"><a href="#cifti_separate-658"><span class="linenos">658</span></a><span class="sd">    AMYGDALA_RIGHT</span>
+</span><span id="cifti_separate-659"><a href="#cifti_separate-659"><span class="linenos">659</span></a><span class="sd">    BRAIN_STEM</span>
+</span><span id="cifti_separate-660"><a href="#cifti_separate-660"><span class="linenos">660</span></a><span class="sd">    CAUDATE_LEFT</span>
+</span><span id="cifti_separate-661"><a href="#cifti_separate-661"><span class="linenos">661</span></a><span class="sd">    CAUDATE_RIGHT</span>
+</span><span id="cifti_separate-662"><a href="#cifti_separate-662"><span class="linenos">662</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_LEFT</span>
+</span><span id="cifti_separate-663"><a href="#cifti_separate-663"><span class="linenos">663</span></a><span class="sd">    CEREBELLAR_WHITE_MATTER_RIGHT</span>
+</span><span id="cifti_separate-664"><a href="#cifti_separate-664"><span class="linenos">664</span></a><span class="sd">    CEREBELLUM_LEFT</span>
+</span><span id="cifti_separate-665"><a href="#cifti_separate-665"><span class="linenos">665</span></a><span class="sd">    CEREBELLUM_RIGHT</span>
+</span><span id="cifti_separate-666"><a href="#cifti_separate-666"><span class="linenos">666</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_LEFT</span>
+</span><span id="cifti_separate-667"><a href="#cifti_separate-667"><span class="linenos">667</span></a><span class="sd">    CEREBRAL_WHITE_MATTER_RIGHT</span>
+</span><span id="cifti_separate-668"><a href="#cifti_separate-668"><span class="linenos">668</span></a><span class="sd">    CORTEX</span>
+</span><span id="cifti_separate-669"><a href="#cifti_separate-669"><span class="linenos">669</span></a><span class="sd">    DIENCEPHALON_VENTRAL_LEFT</span>
+</span><span id="cifti_separate-670"><a href="#cifti_separate-670"><span class="linenos">670</span></a><span class="sd">    DIENCEPHALON_VENTRAL_RIGHT</span>
+</span><span id="cifti_separate-671"><a href="#cifti_separate-671"><span class="linenos">671</span></a><span class="sd">    HIPPOCAMPUS_LEFT</span>
+</span><span id="cifti_separate-672"><a href="#cifti_separate-672"><span class="linenos">672</span></a><span class="sd">    HIPPOCAMPUS_RIGHT</span>
+</span><span id="cifti_separate-673"><a href="#cifti_separate-673"><span class="linenos">673</span></a><span class="sd">    INVALID</span>
+</span><span id="cifti_separate-674"><a href="#cifti_separate-674"><span class="linenos">674</span></a><span class="sd">    OTHER</span>
+</span><span id="cifti_separate-675"><a href="#cifti_separate-675"><span class="linenos">675</span></a><span class="sd">    OTHER_GREY_MATTER</span>
+</span><span id="cifti_separate-676"><a href="#cifti_separate-676"><span class="linenos">676</span></a><span class="sd">    OTHER_WHITE_MATTER</span>
+</span><span id="cifti_separate-677"><a href="#cifti_separate-677"><span class="linenos">677</span></a><span class="sd">    PALLIDUM_LEFT</span>
+</span><span id="cifti_separate-678"><a href="#cifti_separate-678"><span class="linenos">678</span></a><span class="sd">    PALLIDUM_RIGHT</span>
+</span><span id="cifti_separate-679"><a href="#cifti_separate-679"><span class="linenos">679</span></a><span class="sd">    PUTAMEN_LEFT</span>
+</span><span id="cifti_separate-680"><a href="#cifti_separate-680"><span class="linenos">680</span></a><span class="sd">    PUTAMEN_RIGHT</span>
+</span><span id="cifti_separate-681"><a href="#cifti_separate-681"><span class="linenos">681</span></a><span class="sd">    THALAMUS_LEFT</span>
+</span><span id="cifti_separate-682"><a href="#cifti_separate-682"><span class="linenos">682</span></a><span class="sd">    THALAMUS_RIGHT.</span>
+</span><span id="cifti_separate-683"><a href="#cifti_separate-683"><span class="linenos">683</span></a><span class="sd">    </span>
+</span><span id="cifti_separate-684"><a href="#cifti_separate-684"><span class="linenos">684</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="cifti_separate-685"><a href="#cifti_separate-685"><span class="linenos">685</span></a><span class="sd">    </span>
+</span><span id="cifti_separate-686"><a href="#cifti_separate-686"><span class="linenos">686</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_separate-687"><a href="#cifti_separate-687"><span class="linenos">687</span></a><span class="sd">    </span>
+</span><span id="cifti_separate-688"><a href="#cifti_separate-688"><span class="linenos">688</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_separate-689"><a href="#cifti_separate-689"><span class="linenos">689</span></a><span class="sd">        cifti_in: the cifti to separate a component of.</span>
+</span><span id="cifti_separate-690"><a href="#cifti_separate-690"><span class="linenos">690</span></a><span class="sd">        direction: which direction to separate into components, ROW or COLUMN.</span>
+</span><span id="cifti_separate-691"><a href="#cifti_separate-691"><span class="linenos">691</span></a><span class="sd">        volume_all: separate all volume structures into a volume file.</span>
+</span><span id="cifti_separate-692"><a href="#cifti_separate-692"><span class="linenos">692</span></a><span class="sd">        label: separate a surface model into a surface label file.</span>
+</span><span id="cifti_separate-693"><a href="#cifti_separate-693"><span class="linenos">693</span></a><span class="sd">        metric: separate a surface model into a metric file.</span>
+</span><span id="cifti_separate-694"><a href="#cifti_separate-694"><span class="linenos">694</span></a><span class="sd">        volume: separate a volume structure into a volume file.</span>
+</span><span id="cifti_separate-695"><a href="#cifti_separate-695"><span class="linenos">695</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_separate-696"><a href="#cifti_separate-696"><span class="linenos">696</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_separate-697"><a href="#cifti_separate-697"><span class="linenos">697</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiSeparateOutputs`).</span>
+</span><span id="cifti_separate-698"><a href="#cifti_separate-698"><span class="linenos">698</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_separate-699"><a href="#cifti_separate-699"><span class="linenos">699</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_separate-700"><a href="#cifti_separate-700"><span class="linenos">700</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_SEPARATE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_separate-701"><a href="#cifti_separate-701"><span class="linenos">701</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_separate_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">volume_all</span><span class="o">=</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="n">volume</span><span class="p">)</span>
+</span><span id="cifti_separate-702"><a href="#cifti_separate-702"><span class="linenos">702</span></a>    <span class="k">return</span> <span class="n">cifti_separate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

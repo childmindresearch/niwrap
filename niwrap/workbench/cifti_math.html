@@ -479,127 +479,128 @@
 </span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_math_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_math_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_math</span><span class="p">(</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiMathVarParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiMathOutputs</span><span class="p">:</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">    Evaluate expression on cifti files.</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">    </span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each matrix element independently.</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">    There must be at least one -var option (to get the output layout from), even</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">    if the &lt;name&gt; specified in it isn&#39;t used in &lt;expression&gt;.</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">    </span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">    To select a single column from a 2D file (most cifti files are 2D), use</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">    -select 1 &lt;index&gt;, where &lt;index&gt; is 1-based. To select a single row from a</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">    2D file, use -select 2 &lt;index&gt;. Where -select is not used, the cifti files</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">    must have compatible mappings (e.g., brain models and parcels mappings must</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">    match exactly except for parcel names). Use -override-mapping-check to skip</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">    this checking.</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    </span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    Filenames are not valid in &lt;expression&gt;, use a variable name and a -var</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    option with matching &lt;name&gt; to specify an input file. The format of</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    &lt;expression&gt; is as follows:</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    </span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    values of the values being compared.</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">    </span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">    </span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">    x&#39; is an error.</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">    </span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">    The following functions are supported:</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">    </span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="sd">    .</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="sd">    </span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="sd">    </span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a><span class="sd">    </span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="sd">    Args:</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="sd">            NaN with.</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a><span class="sd">        opt_override_mapping_check: don&#39;t check the mappings for compatibility,\</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="sd">            only check length.</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="sd">        var: a cifti file to use as a variable.</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="sd">    Returns:</span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiMathOutputs`).</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_MATH_METADATA</span><span class="p">)</span>
-</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_math_params</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">expression</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_fixnan_replace</span><span class="o">=</span><span class="n">opt_fixnan_replace</span><span class="p">,</span> <span class="n">opt_override_mapping_check</span><span class="o">=</span><span class="n">opt_override_mapping_check</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">)</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="k">return</span> <span class="n">cifti_math_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_math</span><span class="p">(</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiMathVarParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiMathOutputs</span><span class="p">:</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">    Evaluate expression on cifti files.</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">    </span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each matrix element independently.</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">    There must be at least one -var option (to get the output layout from), even</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">    if the &lt;name&gt; specified in it isn&#39;t used in &lt;expression&gt;.</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">    </span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">    To select a single column from a 2D file (most cifti files are 2D), use</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">    -select 1 &lt;index&gt;, where &lt;index&gt; is 1-based. To select a single row from a</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">    2D file, use -select 2 &lt;index&gt;. Where -select is not used, the cifti files</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">    must have compatible mappings (e.g., brain models and parcels mappings must</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">    match exactly except for parcel names). Use -override-mapping-check to skip</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    this checking.</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    </span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    Filenames are not valid in &lt;expression&gt;, use a variable name and a -var</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">    option with matching &lt;name&gt; to specify an input file. The format of</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    &lt;expression&gt; is as follows:</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    </span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">    values of the values being compared.</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">    </span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">    </span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="sd">    x&#39; is an error.</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">    </span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">    The following functions are supported:</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    </span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="sd">    .</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="sd">    </span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="sd">    </span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="sd">    </span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="sd">    Args:</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a><span class="sd">            NaN with.</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="sd">        opt_override_mapping_check: don&#39;t check the mappings for compatibility,\</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="sd">            only check length.</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="sd">        var: a cifti file to use as a variable.</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="sd">    Returns:</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiMathOutputs`).</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_MATH_METADATA</span><span class="p">)</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_math_params</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">expression</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_fixnan_replace</span><span class="o">=</span><span class="n">opt_fixnan_replace</span><span class="p">,</span> <span class="n">opt_override_mapping_check</span><span class="o">=</span><span class="n">opt_override_mapping_check</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">)</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="k">return</span> <span class="n">cifti_math_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a>    <span class="s2">&quot;CIFTI_MATH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a>    <span class="s2">&quot;CiftiMathOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a>    <span class="s2">&quot;CiftiMathParameters&quot;</span><span class="p">,</span>
-</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a>    <span class="s2">&quot;CiftiMathSelectParameters&quot;</span><span class="p">,</span>
-</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a>    <span class="s2">&quot;CiftiMathVarParameters&quot;</span><span class="p">,</span>
-</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a>    <span class="s2">&quot;cifti_math&quot;</span><span class="p">,</span>
-</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;cifti_math_params&quot;</span><span class="p">,</span>
-</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;cifti_math_select_params&quot;</span><span class="p">,</span>
-</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;cifti_math_var_params&quot;</span><span class="p">,</span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="p">]</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a>    <span class="s2">&quot;CIFTI_MATH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a>    <span class="s2">&quot;CiftiMathOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a>    <span class="s2">&quot;CiftiMathParameters&quot;</span><span class="p">,</span>
+</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a>    <span class="s2">&quot;CiftiMathSelectParameters&quot;</span><span class="p">,</span>
+</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a>    <span class="s2">&quot;CiftiMathVarParameters&quot;</span><span class="p">,</span>
+</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;cifti_math&quot;</span><span class="p">,</span>
+</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;cifti_math_params&quot;</span><span class="p">,</span>
+</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;cifti_math_select_params&quot;</span><span class="p">,</span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;cifti_math_var_params&quot;</span><span class="p">,</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -855,110 +856,110 @@
 
     </div>
     <a class="headerlink" href="#cifti_math"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_math-355"><a href="#cifti_math-355"><span class="linenos">355</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_math</span><span class="p">(</span>
-</span><span id="cifti_math-356"><a href="#cifti_math-356"><span class="linenos">356</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_math-357"><a href="#cifti_math-357"><span class="linenos">357</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_math-358"><a href="#cifti_math-358"><span class="linenos">358</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_math-359"><a href="#cifti_math-359"><span class="linenos">359</span></a>    <span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cifti_math-360"><a href="#cifti_math-360"><span class="linenos">360</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiMathVarParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_math-361"><a href="#cifti_math-361"><span class="linenos">361</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_math-362"><a href="#cifti_math-362"><span class="linenos">362</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiMathOutputs</span><span class="p">:</span>
-</span><span id="cifti_math-363"><a href="#cifti_math-363"><span class="linenos">363</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_math-364"><a href="#cifti_math-364"><span class="linenos">364</span></a><span class="sd">    Evaluate expression on cifti files.</span>
-</span><span id="cifti_math-365"><a href="#cifti_math-365"><span class="linenos">365</span></a><span class="sd">    </span>
-</span><span id="cifti_math-366"><a href="#cifti_math-366"><span class="linenos">366</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each matrix element independently.</span>
-</span><span id="cifti_math-367"><a href="#cifti_math-367"><span class="linenos">367</span></a><span class="sd">    There must be at least one -var option (to get the output layout from), even</span>
-</span><span id="cifti_math-368"><a href="#cifti_math-368"><span class="linenos">368</span></a><span class="sd">    if the &lt;name&gt; specified in it isn&#39;t used in &lt;expression&gt;.</span>
-</span><span id="cifti_math-369"><a href="#cifti_math-369"><span class="linenos">369</span></a><span class="sd">    </span>
-</span><span id="cifti_math-370"><a href="#cifti_math-370"><span class="linenos">370</span></a><span class="sd">    To select a single column from a 2D file (most cifti files are 2D), use</span>
-</span><span id="cifti_math-371"><a href="#cifti_math-371"><span class="linenos">371</span></a><span class="sd">    -select 1 &lt;index&gt;, where &lt;index&gt; is 1-based. To select a single row from a</span>
-</span><span id="cifti_math-372"><a href="#cifti_math-372"><span class="linenos">372</span></a><span class="sd">    2D file, use -select 2 &lt;index&gt;. Where -select is not used, the cifti files</span>
-</span><span id="cifti_math-373"><a href="#cifti_math-373"><span class="linenos">373</span></a><span class="sd">    must have compatible mappings (e.g., brain models and parcels mappings must</span>
-</span><span id="cifti_math-374"><a href="#cifti_math-374"><span class="linenos">374</span></a><span class="sd">    match exactly except for parcel names). Use -override-mapping-check to skip</span>
-</span><span id="cifti_math-375"><a href="#cifti_math-375"><span class="linenos">375</span></a><span class="sd">    this checking.</span>
-</span><span id="cifti_math-376"><a href="#cifti_math-376"><span class="linenos">376</span></a><span class="sd">    </span>
-</span><span id="cifti_math-377"><a href="#cifti_math-377"><span class="linenos">377</span></a><span class="sd">    Filenames are not valid in &lt;expression&gt;, use a variable name and a -var</span>
-</span><span id="cifti_math-378"><a href="#cifti_math-378"><span class="linenos">378</span></a><span class="sd">    option with matching &lt;name&gt; to specify an input file. The format of</span>
-</span><span id="cifti_math-379"><a href="#cifti_math-379"><span class="linenos">379</span></a><span class="sd">    &lt;expression&gt; is as follows:</span>
-</span><span id="cifti_math-380"><a href="#cifti_math-380"><span class="linenos">380</span></a><span class="sd">    </span>
-</span><span id="cifti_math-381"><a href="#cifti_math-381"><span class="linenos">381</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
-</span><span id="cifti_math-382"><a href="#cifti_math-382"><span class="linenos">382</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
-</span><span id="cifti_math-383"><a href="#cifti_math-383"><span class="linenos">383</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
-</span><span id="cifti_math-384"><a href="#cifti_math-384"><span class="linenos">384</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
-</span><span id="cifti_math-385"><a href="#cifti_math-385"><span class="linenos">385</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
-</span><span id="cifti_math-386"><a href="#cifti_math-386"><span class="linenos">386</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
-</span><span id="cifti_math-387"><a href="#cifti_math-387"><span class="linenos">387</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
-</span><span id="cifti_math-388"><a href="#cifti_math-388"><span class="linenos">388</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
-</span><span id="cifti_math-389"><a href="#cifti_math-389"><span class="linenos">389</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
-</span><span id="cifti_math-390"><a href="#cifti_math-390"><span class="linenos">390</span></a><span class="sd">    values of the values being compared.</span>
-</span><span id="cifti_math-391"><a href="#cifti_math-391"><span class="linenos">391</span></a><span class="sd">    </span>
-</span><span id="cifti_math-392"><a href="#cifti_math-392"><span class="linenos">392</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
-</span><span id="cifti_math-393"><a href="#cifti_math-393"><span class="linenos">393</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
-</span><span id="cifti_math-394"><a href="#cifti_math-394"><span class="linenos">394</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
-</span><span id="cifti_math-395"><a href="#cifti_math-395"><span class="linenos">395</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
-</span><span id="cifti_math-396"><a href="#cifti_math-396"><span class="linenos">396</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
-</span><span id="cifti_math-397"><a href="#cifti_math-397"><span class="linenos">397</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
-</span><span id="cifti_math-398"><a href="#cifti_math-398"><span class="linenos">398</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
-</span><span id="cifti_math-399"><a href="#cifti_math-399"><span class="linenos">399</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
-</span><span id="cifti_math-400"><a href="#cifti_math-400"><span class="linenos">400</span></a><span class="sd">    </span>
-</span><span id="cifti_math-401"><a href="#cifti_math-401"><span class="linenos">401</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
-</span><span id="cifti_math-402"><a href="#cifti_math-402"><span class="linenos">402</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
-</span><span id="cifti_math-403"><a href="#cifti_math-403"><span class="linenos">403</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
-</span><span id="cifti_math-404"><a href="#cifti_math-404"><span class="linenos">404</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
-</span><span id="cifti_math-405"><a href="#cifti_math-405"><span class="linenos">405</span></a><span class="sd">    x&#39; is an error.</span>
-</span><span id="cifti_math-406"><a href="#cifti_math-406"><span class="linenos">406</span></a><span class="sd">    </span>
-</span><span id="cifti_math-407"><a href="#cifti_math-407"><span class="linenos">407</span></a><span class="sd">    The following functions are supported:</span>
-</span><span id="cifti_math-408"><a href="#cifti_math-408"><span class="linenos">408</span></a><span class="sd">    </span>
-</span><span id="cifti_math-409"><a href="#cifti_math-409"><span class="linenos">409</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
-</span><span id="cifti_math-410"><a href="#cifti_math-410"><span class="linenos">410</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
-</span><span id="cifti_math-411"><a href="#cifti_math-411"><span class="linenos">411</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
-</span><span id="cifti_math-412"><a href="#cifti_math-412"><span class="linenos">412</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
-</span><span id="cifti_math-413"><a href="#cifti_math-413"><span class="linenos">413</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
-</span><span id="cifti_math-414"><a href="#cifti_math-414"><span class="linenos">414</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
-</span><span id="cifti_math-415"><a href="#cifti_math-415"><span class="linenos">415</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
-</span><span id="cifti_math-416"><a href="#cifti_math-416"><span class="linenos">416</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
-</span><span id="cifti_math-417"><a href="#cifti_math-417"><span class="linenos">417</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
-</span><span id="cifti_math-418"><a href="#cifti_math-418"><span class="linenos">418</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
-</span><span id="cifti_math-419"><a href="#cifti_math-419"><span class="linenos">419</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
-</span><span id="cifti_math-420"><a href="#cifti_math-420"><span class="linenos">420</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
-</span><span id="cifti_math-421"><a href="#cifti_math-421"><span class="linenos">421</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
-</span><span id="cifti_math-422"><a href="#cifti_math-422"><span class="linenos">422</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
-</span><span id="cifti_math-423"><a href="#cifti_math-423"><span class="linenos">423</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
-</span><span id="cifti_math-424"><a href="#cifti_math-424"><span class="linenos">424</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
-</span><span id="cifti_math-425"><a href="#cifti_math-425"><span class="linenos">425</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
-</span><span id="cifti_math-426"><a href="#cifti_math-426"><span class="linenos">426</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
-</span><span id="cifti_math-427"><a href="#cifti_math-427"><span class="linenos">427</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
-</span><span id="cifti_math-428"><a href="#cifti_math-428"><span class="linenos">428</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
-</span><span id="cifti_math-429"><a href="#cifti_math-429"><span class="linenos">429</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
-</span><span id="cifti_math-430"><a href="#cifti_math-430"><span class="linenos">430</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
-</span><span id="cifti_math-431"><a href="#cifti_math-431"><span class="linenos">431</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
-</span><span id="cifti_math-432"><a href="#cifti_math-432"><span class="linenos">432</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
-</span><span id="cifti_math-433"><a href="#cifti_math-433"><span class="linenos">433</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
-</span><span id="cifti_math-434"><a href="#cifti_math-434"><span class="linenos">434</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
-</span><span id="cifti_math-435"><a href="#cifti_math-435"><span class="linenos">435</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
-</span><span id="cifti_math-436"><a href="#cifti_math-436"><span class="linenos">436</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
-</span><span id="cifti_math-437"><a href="#cifti_math-437"><span class="linenos">437</span></a><span class="sd">    .</span>
-</span><span id="cifti_math-438"><a href="#cifti_math-438"><span class="linenos">438</span></a><span class="sd">    </span>
-</span><span id="cifti_math-439"><a href="#cifti_math-439"><span class="linenos">439</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="cifti_math-440"><a href="#cifti_math-440"><span class="linenos">440</span></a><span class="sd">    </span>
-</span><span id="cifti_math-441"><a href="#cifti_math-441"><span class="linenos">441</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="cifti_math-442"><a href="#cifti_math-442"><span class="linenos">442</span></a><span class="sd">    </span>
-</span><span id="cifti_math-443"><a href="#cifti_math-443"><span class="linenos">443</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_math-444"><a href="#cifti_math-444"><span class="linenos">444</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
-</span><span id="cifti_math-445"><a href="#cifti_math-445"><span class="linenos">445</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_math-446"><a href="#cifti_math-446"><span class="linenos">446</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
-</span><span id="cifti_math-447"><a href="#cifti_math-447"><span class="linenos">447</span></a><span class="sd">            NaN with.</span>
-</span><span id="cifti_math-448"><a href="#cifti_math-448"><span class="linenos">448</span></a><span class="sd">        opt_override_mapping_check: don&#39;t check the mappings for compatibility,\</span>
-</span><span id="cifti_math-449"><a href="#cifti_math-449"><span class="linenos">449</span></a><span class="sd">            only check length.</span>
-</span><span id="cifti_math-450"><a href="#cifti_math-450"><span class="linenos">450</span></a><span class="sd">        var: a cifti file to use as a variable.</span>
-</span><span id="cifti_math-451"><a href="#cifti_math-451"><span class="linenos">451</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_math-452"><a href="#cifti_math-452"><span class="linenos">452</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_math-453"><a href="#cifti_math-453"><span class="linenos">453</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiMathOutputs`).</span>
-</span><span id="cifti_math-454"><a href="#cifti_math-454"><span class="linenos">454</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_math-455"><a href="#cifti_math-455"><span class="linenos">455</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_math-456"><a href="#cifti_math-456"><span class="linenos">456</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_MATH_METADATA</span><span class="p">)</span>
-</span><span id="cifti_math-457"><a href="#cifti_math-457"><span class="linenos">457</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_math_params</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">expression</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_fixnan_replace</span><span class="o">=</span><span class="n">opt_fixnan_replace</span><span class="p">,</span> <span class="n">opt_override_mapping_check</span><span class="o">=</span><span class="n">opt_override_mapping_check</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">)</span>
-</span><span id="cifti_math-458"><a href="#cifti_math-458"><span class="linenos">458</span></a>    <span class="k">return</span> <span class="n">cifti_math_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_math-356"><a href="#cifti_math-356"><span class="linenos">356</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_math</span><span class="p">(</span>
+</span><span id="cifti_math-357"><a href="#cifti_math-357"><span class="linenos">357</span></a>    <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_math-358"><a href="#cifti_math-358"><span class="linenos">358</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_math-359"><a href="#cifti_math-359"><span class="linenos">359</span></a>    <span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_math-360"><a href="#cifti_math-360"><span class="linenos">360</span></a>    <span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cifti_math-361"><a href="#cifti_math-361"><span class="linenos">361</span></a>    <span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiMathVarParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_math-362"><a href="#cifti_math-362"><span class="linenos">362</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_math-363"><a href="#cifti_math-363"><span class="linenos">363</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiMathOutputs</span><span class="p">:</span>
+</span><span id="cifti_math-364"><a href="#cifti_math-364"><span class="linenos">364</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_math-365"><a href="#cifti_math-365"><span class="linenos">365</span></a><span class="sd">    Evaluate expression on cifti files.</span>
+</span><span id="cifti_math-366"><a href="#cifti_math-366"><span class="linenos">366</span></a><span class="sd">    </span>
+</span><span id="cifti_math-367"><a href="#cifti_math-367"><span class="linenos">367</span></a><span class="sd">    This command evaluates &lt;expression&gt; at each matrix element independently.</span>
+</span><span id="cifti_math-368"><a href="#cifti_math-368"><span class="linenos">368</span></a><span class="sd">    There must be at least one -var option (to get the output layout from), even</span>
+</span><span id="cifti_math-369"><a href="#cifti_math-369"><span class="linenos">369</span></a><span class="sd">    if the &lt;name&gt; specified in it isn&#39;t used in &lt;expression&gt;.</span>
+</span><span id="cifti_math-370"><a href="#cifti_math-370"><span class="linenos">370</span></a><span class="sd">    </span>
+</span><span id="cifti_math-371"><a href="#cifti_math-371"><span class="linenos">371</span></a><span class="sd">    To select a single column from a 2D file (most cifti files are 2D), use</span>
+</span><span id="cifti_math-372"><a href="#cifti_math-372"><span class="linenos">372</span></a><span class="sd">    -select 1 &lt;index&gt;, where &lt;index&gt; is 1-based. To select a single row from a</span>
+</span><span id="cifti_math-373"><a href="#cifti_math-373"><span class="linenos">373</span></a><span class="sd">    2D file, use -select 2 &lt;index&gt;. Where -select is not used, the cifti files</span>
+</span><span id="cifti_math-374"><a href="#cifti_math-374"><span class="linenos">374</span></a><span class="sd">    must have compatible mappings (e.g., brain models and parcels mappings must</span>
+</span><span id="cifti_math-375"><a href="#cifti_math-375"><span class="linenos">375</span></a><span class="sd">    match exactly except for parcel names). Use -override-mapping-check to skip</span>
+</span><span id="cifti_math-376"><a href="#cifti_math-376"><span class="linenos">376</span></a><span class="sd">    this checking.</span>
+</span><span id="cifti_math-377"><a href="#cifti_math-377"><span class="linenos">377</span></a><span class="sd">    </span>
+</span><span id="cifti_math-378"><a href="#cifti_math-378"><span class="linenos">378</span></a><span class="sd">    Filenames are not valid in &lt;expression&gt;, use a variable name and a -var</span>
+</span><span id="cifti_math-379"><a href="#cifti_math-379"><span class="linenos">379</span></a><span class="sd">    option with matching &lt;name&gt; to specify an input file. The format of</span>
+</span><span id="cifti_math-380"><a href="#cifti_math-380"><span class="linenos">380</span></a><span class="sd">    &lt;expression&gt; is as follows:</span>
+</span><span id="cifti_math-381"><a href="#cifti_math-381"><span class="linenos">381</span></a><span class="sd">    </span>
+</span><span id="cifti_math-382"><a href="#cifti_math-382"><span class="linenos">382</span></a><span class="sd">    Expressions consist of constants, variables, operators, parentheses, and</span>
+</span><span id="cifti_math-383"><a href="#cifti_math-383"><span class="linenos">383</span></a><span class="sd">    functions, in infix notation, such as &#39;exp(-x + 3) * scale&#39;. Variables are</span>
+</span><span id="cifti_math-384"><a href="#cifti_math-384"><span class="linenos">384</span></a><span class="sd">    strings of any length, using the characters a-z, A-Z, 0-9, and _, but may</span>
+</span><span id="cifti_math-385"><a href="#cifti_math-385"><span class="linenos">385</span></a><span class="sd">    not take the name of a named constant. Currently, there is only one named</span>
+</span><span id="cifti_math-386"><a href="#cifti_math-386"><span class="linenos">386</span></a><span class="sd">    constant, PI. The operators are +, -, *, /, ^, &gt;, &lt;, &gt;=, &lt;=, ==, !=, !, &amp;&amp;,</span>
+</span><span id="cifti_math-387"><a href="#cifti_math-387"><span class="linenos">387</span></a><span class="sd">    ||. These behave as in C, except that ^ is exponentiation, i.e. pow(x, y),</span>
+</span><span id="cifti_math-388"><a href="#cifti_math-388"><span class="linenos">388</span></a><span class="sd">    and takes higher precedence than other binary operators (also, &#39;-3^-4^-5&#39;</span>
+</span><span id="cifti_math-389"><a href="#cifti_math-389"><span class="linenos">389</span></a><span class="sd">    means &#39;-(3^(-(4^-5)))&#39;). The &lt;=, &gt;=, ==, and != operators are given a small</span>
+</span><span id="cifti_math-390"><a href="#cifti_math-390"><span class="linenos">390</span></a><span class="sd">    amount of wiggle room, equal to one millionth of the smaller of the absolute</span>
+</span><span id="cifti_math-391"><a href="#cifti_math-391"><span class="linenos">391</span></a><span class="sd">    values of the values being compared.</span>
+</span><span id="cifti_math-392"><a href="#cifti_math-392"><span class="linenos">392</span></a><span class="sd">    </span>
+</span><span id="cifti_math-393"><a href="#cifti_math-393"><span class="linenos">393</span></a><span class="sd">    Comparison and logical operators return 0 or 1, you can do masking with</span>
+</span><span id="cifti_math-394"><a href="#cifti_math-394"><span class="linenos">394</span></a><span class="sd">    expressions like &#39;x * (mask &gt; 0)&#39;. For all logical operators, an input is</span>
+</span><span id="cifti_math-395"><a href="#cifti_math-395"><span class="linenos">395</span></a><span class="sd">    considered true iff it is greater than 0. The expression &#39;0 &lt; x &lt; 5&#39; is not</span>
+</span><span id="cifti_math-396"><a href="#cifti_math-396"><span class="linenos">396</span></a><span class="sd">    syntactically wrong, but it will NOT do what is desired, because it is</span>
+</span><span id="cifti_math-397"><a href="#cifti_math-397"><span class="linenos">397</span></a><span class="sd">    evaluated left to right, i.e. &#39;((0 &lt; x) &lt; 5)&#39;, which will always return 1,</span>
+</span><span id="cifti_math-398"><a href="#cifti_math-398"><span class="linenos">398</span></a><span class="sd">    as both possible results of a comparison are less than 5. A warning is</span>
+</span><span id="cifti_math-399"><a href="#cifti_math-399"><span class="linenos">399</span></a><span class="sd">    generated if an expression of this type is detected. Use something like &#39;x &gt;</span>
+</span><span id="cifti_math-400"><a href="#cifti_math-400"><span class="linenos">400</span></a><span class="sd">    0 &amp;&amp; x &lt; 5&#39; to get the desired behavior.</span>
+</span><span id="cifti_math-401"><a href="#cifti_math-401"><span class="linenos">401</span></a><span class="sd">    </span>
+</span><span id="cifti_math-402"><a href="#cifti_math-402"><span class="linenos">402</span></a><span class="sd">    Whitespace between elements is ignored, &#39; sin ( 2 * x ) &#39; is equivalent to</span>
+</span><span id="cifti_math-403"><a href="#cifti_math-403"><span class="linenos">403</span></a><span class="sd">    &#39;sin(2*x)&#39;, but &#39;s in(2*x)&#39; is an error. Implied multiplication is not</span>
+</span><span id="cifti_math-404"><a href="#cifti_math-404"><span class="linenos">404</span></a><span class="sd">    allowed, the expression &#39;2x&#39; will be parsed as a variable. Parentheses are</span>
+</span><span id="cifti_math-405"><a href="#cifti_math-405"><span class="linenos">405</span></a><span class="sd">    (), do not use [] or {}. Functions require parentheses, the expression &#39;sin</span>
+</span><span id="cifti_math-406"><a href="#cifti_math-406"><span class="linenos">406</span></a><span class="sd">    x&#39; is an error.</span>
+</span><span id="cifti_math-407"><a href="#cifti_math-407"><span class="linenos">407</span></a><span class="sd">    </span>
+</span><span id="cifti_math-408"><a href="#cifti_math-408"><span class="linenos">408</span></a><span class="sd">    The following functions are supported:</span>
+</span><span id="cifti_math-409"><a href="#cifti_math-409"><span class="linenos">409</span></a><span class="sd">    </span>
+</span><span id="cifti_math-410"><a href="#cifti_math-410"><span class="linenos">410</span></a><span class="sd">    sin: 1 argument, the sine of the argument (units are radians)</span>
+</span><span id="cifti_math-411"><a href="#cifti_math-411"><span class="linenos">411</span></a><span class="sd">    cos: 1 argument, the cosine of the argument (units are radians)</span>
+</span><span id="cifti_math-412"><a href="#cifti_math-412"><span class="linenos">412</span></a><span class="sd">    tan: 1 argument, the tangent of the argument (units are radians)</span>
+</span><span id="cifti_math-413"><a href="#cifti_math-413"><span class="linenos">413</span></a><span class="sd">    asin: 1 argument, the inverse of sine of the argument, in radians</span>
+</span><span id="cifti_math-414"><a href="#cifti_math-414"><span class="linenos">414</span></a><span class="sd">    acos: 1 argument, the inverse of cosine of the argument, in radians</span>
+</span><span id="cifti_math-415"><a href="#cifti_math-415"><span class="linenos">415</span></a><span class="sd">    atan: 1 argument, the inverse of tangent of the argument, in radians</span>
+</span><span id="cifti_math-416"><a href="#cifti_math-416"><span class="linenos">416</span></a><span class="sd">    atan2: 2 arguments, atan2(y, x) returns the inverse of tangent of (y/x), in</span>
+</span><span id="cifti_math-417"><a href="#cifti_math-417"><span class="linenos">417</span></a><span class="sd">    radians, determining quadrant by the sign of both arguments</span>
+</span><span id="cifti_math-418"><a href="#cifti_math-418"><span class="linenos">418</span></a><span class="sd">    sinh: 1 argument, the hyperbolic sine of the argument</span>
+</span><span id="cifti_math-419"><a href="#cifti_math-419"><span class="linenos">419</span></a><span class="sd">    cosh: 1 argument, the hyperbolic cosine of the argument</span>
+</span><span id="cifti_math-420"><a href="#cifti_math-420"><span class="linenos">420</span></a><span class="sd">    tanh: 1 argument, the hyperbolic tangent of the argument</span>
+</span><span id="cifti_math-421"><a href="#cifti_math-421"><span class="linenos">421</span></a><span class="sd">    asinh: 1 argument, the inverse hyperbolic sine of the argument</span>
+</span><span id="cifti_math-422"><a href="#cifti_math-422"><span class="linenos">422</span></a><span class="sd">    acosh: 1 argument, the inverse hyperbolic cosine of the argument</span>
+</span><span id="cifti_math-423"><a href="#cifti_math-423"><span class="linenos">423</span></a><span class="sd">    atanh: 1 argument, the inverse hyperbolic tangent of the argument</span>
+</span><span id="cifti_math-424"><a href="#cifti_math-424"><span class="linenos">424</span></a><span class="sd">    sinc: 1 argument, sinc(0) = 1, sin(x) / x otherwise</span>
+</span><span id="cifti_math-425"><a href="#cifti_math-425"><span class="linenos">425</span></a><span class="sd">    ln: 1 argument, the natural logarithm of the argument</span>
+</span><span id="cifti_math-426"><a href="#cifti_math-426"><span class="linenos">426</span></a><span class="sd">    exp: 1 argument, the constant e raised to the power of the argument</span>
+</span><span id="cifti_math-427"><a href="#cifti_math-427"><span class="linenos">427</span></a><span class="sd">    log: 1 argument, the base 10 logarithm of the argument</span>
+</span><span id="cifti_math-428"><a href="#cifti_math-428"><span class="linenos">428</span></a><span class="sd">    log2: 1 argument, the base 2 logarithm of the argument</span>
+</span><span id="cifti_math-429"><a href="#cifti_math-429"><span class="linenos">429</span></a><span class="sd">    sqrt: 1 argument, the square root of the argument</span>
+</span><span id="cifti_math-430"><a href="#cifti_math-430"><span class="linenos">430</span></a><span class="sd">    abs: 1 argument, the absolute value of the argument</span>
+</span><span id="cifti_math-431"><a href="#cifti_math-431"><span class="linenos">431</span></a><span class="sd">    floor: 1 argument, the largest integer not greater than the argument</span>
+</span><span id="cifti_math-432"><a href="#cifti_math-432"><span class="linenos">432</span></a><span class="sd">    round: 1 argument, the nearest integer, with ties rounded away from zero</span>
+</span><span id="cifti_math-433"><a href="#cifti_math-433"><span class="linenos">433</span></a><span class="sd">    ceil: 1 argument, the smallest integer not less than the argument</span>
+</span><span id="cifti_math-434"><a href="#cifti_math-434"><span class="linenos">434</span></a><span class="sd">    min: 2 arguments, min(x, y) returns y if (x &gt; y), x otherwise</span>
+</span><span id="cifti_math-435"><a href="#cifti_math-435"><span class="linenos">435</span></a><span class="sd">    max: 2 arguments, max(x, y) returns y if (x &lt; y), x otherwise</span>
+</span><span id="cifti_math-436"><a href="#cifti_math-436"><span class="linenos">436</span></a><span class="sd">    mod: 2 arguments, mod(x, y) = x - y * floor(x / y), or 0 if y == 0</span>
+</span><span id="cifti_math-437"><a href="#cifti_math-437"><span class="linenos">437</span></a><span class="sd">    clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)</span>
+</span><span id="cifti_math-438"><a href="#cifti_math-438"><span class="linenos">438</span></a><span class="sd">    .</span>
+</span><span id="cifti_math-439"><a href="#cifti_math-439"><span class="linenos">439</span></a><span class="sd">    </span>
+</span><span id="cifti_math-440"><a href="#cifti_math-440"><span class="linenos">440</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="cifti_math-441"><a href="#cifti_math-441"><span class="linenos">441</span></a><span class="sd">    </span>
+</span><span id="cifti_math-442"><a href="#cifti_math-442"><span class="linenos">442</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_math-443"><a href="#cifti_math-443"><span class="linenos">443</span></a><span class="sd">    </span>
+</span><span id="cifti_math-444"><a href="#cifti_math-444"><span class="linenos">444</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_math-445"><a href="#cifti_math-445"><span class="linenos">445</span></a><span class="sd">        expression: the expression to evaluate, in quotes.</span>
+</span><span id="cifti_math-446"><a href="#cifti_math-446"><span class="linenos">446</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_math-447"><a href="#cifti_math-447"><span class="linenos">447</span></a><span class="sd">        opt_fixnan_replace: replace NaN results with a value: value to replace\</span>
+</span><span id="cifti_math-448"><a href="#cifti_math-448"><span class="linenos">448</span></a><span class="sd">            NaN with.</span>
+</span><span id="cifti_math-449"><a href="#cifti_math-449"><span class="linenos">449</span></a><span class="sd">        opt_override_mapping_check: don&#39;t check the mappings for compatibility,\</span>
+</span><span id="cifti_math-450"><a href="#cifti_math-450"><span class="linenos">450</span></a><span class="sd">            only check length.</span>
+</span><span id="cifti_math-451"><a href="#cifti_math-451"><span class="linenos">451</span></a><span class="sd">        var: a cifti file to use as a variable.</span>
+</span><span id="cifti_math-452"><a href="#cifti_math-452"><span class="linenos">452</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_math-453"><a href="#cifti_math-453"><span class="linenos">453</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_math-454"><a href="#cifti_math-454"><span class="linenos">454</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiMathOutputs`).</span>
+</span><span id="cifti_math-455"><a href="#cifti_math-455"><span class="linenos">455</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_math-456"><a href="#cifti_math-456"><span class="linenos">456</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_math-457"><a href="#cifti_math-457"><span class="linenos">457</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_MATH_METADATA</span><span class="p">)</span>
+</span><span id="cifti_math-458"><a href="#cifti_math-458"><span class="linenos">458</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_math_params</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">expression</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_fixnan_replace</span><span class="o">=</span><span class="n">opt_fixnan_replace</span><span class="p">,</span> <span class="n">opt_override_mapping_check</span><span class="o">=</span><span class="n">opt_override_mapping_check</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">)</span>
+</span><span id="cifti_math-459"><a href="#cifti_math-459"><span class="linenos">459</span></a>    <span class="k">return</span> <span class="n">cifti_math_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

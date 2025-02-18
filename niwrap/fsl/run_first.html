@@ -313,59 +313,60 @@
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">run_first_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">run_first_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="k">def</span><span class="w"> </span><span class="nf">run_first</span><span class="p">(</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">transformation_matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">n_modes</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">output_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">model_name</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">intref_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">load_bvars</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">multiple_images_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RunFirstOutputs</span><span class="p">:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    A tool to run FSL&#39;s FIRST for subcortical segmentation.</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    </span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    </span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    Args:</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        input_image: Input image file (e.g. img.nii.gz).</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        transformation_matrix: Input transformation matrix file (e.g.\</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            input_to_mni.mat).</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        n_modes: Number of modes.</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        output_basename: Output basename.</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        model_name: Model name.</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        verbose_flag: Verbose mode.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        intref_model_name: Reference structure for the local intensity\</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">            normalization.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        load_bvars: Initializes FIRST with a previous estimate of the structure.</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        multiple_images_flag: Run FIRST on multiple images; provide a list of\</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">            images, transformation matrices, and output names.</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    Returns:</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        NamedTuple of outputs (described in `RunFirstOutputs`).</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_FIRST_METADATA</span><span class="p">)</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">run_first_params</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span> <span class="n">transformation_matrix</span><span class="o">=</span><span class="n">transformation_matrix</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="n">n_modes</span><span class="p">,</span> <span class="n">output_basename</span><span class="o">=</span><span class="n">output_basename</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">intref_model_name</span><span class="o">=</span><span class="n">intref_model_name</span><span class="p">,</span> <span class="n">load_bvars</span><span class="o">=</span><span class="n">load_bvars</span><span class="p">,</span> <span class="n">multiple_images_flag</span><span class="o">=</span><span class="n">multiple_images_flag</span><span class="p">)</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">return</span> <span class="n">run_first_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="k">def</span><span class="w"> </span><span class="nf">run_first</span><span class="p">(</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">transformation_matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">n_modes</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">output_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">model_name</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">intref_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">load_bvars</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">multiple_images_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RunFirstOutputs</span><span class="p">:</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    A tool to run FSL&#39;s FIRST for subcortical segmentation.</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    </span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    </span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    </span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    Args:</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        input_image: Input image file (e.g. img.nii.gz).</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        transformation_matrix: Input transformation matrix file (e.g.\</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            input_to_mni.mat).</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        n_modes: Number of modes.</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        output_basename: Output basename.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        model_name: Model name.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        verbose_flag: Verbose mode.</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        intref_model_name: Reference structure for the local intensity\</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">            normalization.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        load_bvars: Initializes FIRST with a previous estimate of the structure.</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        multiple_images_flag: Run FIRST on multiple images; provide a list of\</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">            images, transformation matrices, and output names.</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    Returns:</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">        NamedTuple of outputs (described in `RunFirstOutputs`).</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_FIRST_METADATA</span><span class="p">)</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">run_first_params</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span> <span class="n">transformation_matrix</span><span class="o">=</span><span class="n">transformation_matrix</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="n">n_modes</span><span class="p">,</span> <span class="n">output_basename</span><span class="o">=</span><span class="n">output_basename</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">intref_model_name</span><span class="o">=</span><span class="n">intref_model_name</span><span class="p">,</span> <span class="n">load_bvars</span><span class="o">=</span><span class="n">load_bvars</span><span class="p">,</span> <span class="n">multiple_images_flag</span><span class="o">=</span><span class="n">multiple_images_flag</span><span class="p">)</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="k">return</span> <span class="n">run_first_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;RUN_FIRST_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;RunFirstOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;RunFirstParameters&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;run_first&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;run_first_params&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="p">]</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;RUN_FIRST_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;RunFirstOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;RunFirstParameters&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;run_first&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;run_first_params&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -573,46 +574,46 @@
 
     </div>
     <a class="headerlink" href="#run_first"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="run_first-213"><a href="#run_first-213"><span class="linenos">213</span></a><span class="k">def</span><span class="w"> </span><span class="nf">run_first</span><span class="p">(</span>
-</span><span id="run_first-214"><a href="#run_first-214"><span class="linenos">214</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="run_first-215"><a href="#run_first-215"><span class="linenos">215</span></a>    <span class="n">transformation_matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="run_first-216"><a href="#run_first-216"><span class="linenos">216</span></a>    <span class="n">n_modes</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="run_first-217"><a href="#run_first-217"><span class="linenos">217</span></a>    <span class="n">output_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="run_first-218"><a href="#run_first-218"><span class="linenos">218</span></a>    <span class="n">model_name</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="run_first-219"><a href="#run_first-219"><span class="linenos">219</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="run_first-220"><a href="#run_first-220"><span class="linenos">220</span></a>    <span class="n">intref_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="run_first-221"><a href="#run_first-221"><span class="linenos">221</span></a>    <span class="n">load_bvars</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="run_first-222"><a href="#run_first-222"><span class="linenos">222</span></a>    <span class="n">multiple_images_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="run_first-223"><a href="#run_first-223"><span class="linenos">223</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="run_first-224"><a href="#run_first-224"><span class="linenos">224</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RunFirstOutputs</span><span class="p">:</span>
-</span><span id="run_first-225"><a href="#run_first-225"><span class="linenos">225</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="run_first-226"><a href="#run_first-226"><span class="linenos">226</span></a><span class="sd">    A tool to run FSL&#39;s FIRST for subcortical segmentation.</span>
-</span><span id="run_first-227"><a href="#run_first-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="run_first-228"><a href="#run_first-228"><span class="linenos">228</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="run_first-229"><a href="#run_first-229"><span class="linenos">229</span></a><span class="sd">    </span>
-</span><span id="run_first-230"><a href="#run_first-230"><span class="linenos">230</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="run_first-231"><a href="#run_first-231"><span class="linenos">231</span></a><span class="sd">    </span>
-</span><span id="run_first-232"><a href="#run_first-232"><span class="linenos">232</span></a><span class="sd">    Args:</span>
-</span><span id="run_first-233"><a href="#run_first-233"><span class="linenos">233</span></a><span class="sd">        input_image: Input image file (e.g. img.nii.gz).</span>
-</span><span id="run_first-234"><a href="#run_first-234"><span class="linenos">234</span></a><span class="sd">        transformation_matrix: Input transformation matrix file (e.g.\</span>
-</span><span id="run_first-235"><a href="#run_first-235"><span class="linenos">235</span></a><span class="sd">            input_to_mni.mat).</span>
-</span><span id="run_first-236"><a href="#run_first-236"><span class="linenos">236</span></a><span class="sd">        n_modes: Number of modes.</span>
-</span><span id="run_first-237"><a href="#run_first-237"><span class="linenos">237</span></a><span class="sd">        output_basename: Output basename.</span>
-</span><span id="run_first-238"><a href="#run_first-238"><span class="linenos">238</span></a><span class="sd">        model_name: Model name.</span>
-</span><span id="run_first-239"><a href="#run_first-239"><span class="linenos">239</span></a><span class="sd">        verbose_flag: Verbose mode.</span>
-</span><span id="run_first-240"><a href="#run_first-240"><span class="linenos">240</span></a><span class="sd">        intref_model_name: Reference structure for the local intensity\</span>
-</span><span id="run_first-241"><a href="#run_first-241"><span class="linenos">241</span></a><span class="sd">            normalization.</span>
-</span><span id="run_first-242"><a href="#run_first-242"><span class="linenos">242</span></a><span class="sd">        load_bvars: Initializes FIRST with a previous estimate of the structure.</span>
-</span><span id="run_first-243"><a href="#run_first-243"><span class="linenos">243</span></a><span class="sd">        multiple_images_flag: Run FIRST on multiple images; provide a list of\</span>
-</span><span id="run_first-244"><a href="#run_first-244"><span class="linenos">244</span></a><span class="sd">            images, transformation matrices, and output names.</span>
-</span><span id="run_first-245"><a href="#run_first-245"><span class="linenos">245</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="run_first-246"><a href="#run_first-246"><span class="linenos">246</span></a><span class="sd">    Returns:</span>
-</span><span id="run_first-247"><a href="#run_first-247"><span class="linenos">247</span></a><span class="sd">        NamedTuple of outputs (described in `RunFirstOutputs`).</span>
-</span><span id="run_first-248"><a href="#run_first-248"><span class="linenos">248</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="run_first-249"><a href="#run_first-249"><span class="linenos">249</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="run_first-250"><a href="#run_first-250"><span class="linenos">250</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_FIRST_METADATA</span><span class="p">)</span>
-</span><span id="run_first-251"><a href="#run_first-251"><span class="linenos">251</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">run_first_params</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span> <span class="n">transformation_matrix</span><span class="o">=</span><span class="n">transformation_matrix</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="n">n_modes</span><span class="p">,</span> <span class="n">output_basename</span><span class="o">=</span><span class="n">output_basename</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">intref_model_name</span><span class="o">=</span><span class="n">intref_model_name</span><span class="p">,</span> <span class="n">load_bvars</span><span class="o">=</span><span class="n">load_bvars</span><span class="p">,</span> <span class="n">multiple_images_flag</span><span class="o">=</span><span class="n">multiple_images_flag</span><span class="p">)</span>
-</span><span id="run_first-252"><a href="#run_first-252"><span class="linenos">252</span></a>    <span class="k">return</span> <span class="n">run_first_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="run_first-214"><a href="#run_first-214"><span class="linenos">214</span></a><span class="k">def</span><span class="w"> </span><span class="nf">run_first</span><span class="p">(</span>
+</span><span id="run_first-215"><a href="#run_first-215"><span class="linenos">215</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="run_first-216"><a href="#run_first-216"><span class="linenos">216</span></a>    <span class="n">transformation_matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="run_first-217"><a href="#run_first-217"><span class="linenos">217</span></a>    <span class="n">n_modes</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="run_first-218"><a href="#run_first-218"><span class="linenos">218</span></a>    <span class="n">output_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="run_first-219"><a href="#run_first-219"><span class="linenos">219</span></a>    <span class="n">model_name</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="run_first-220"><a href="#run_first-220"><span class="linenos">220</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="run_first-221"><a href="#run_first-221"><span class="linenos">221</span></a>    <span class="n">intref_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="run_first-222"><a href="#run_first-222"><span class="linenos">222</span></a>    <span class="n">load_bvars</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="run_first-223"><a href="#run_first-223"><span class="linenos">223</span></a>    <span class="n">multiple_images_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="run_first-224"><a href="#run_first-224"><span class="linenos">224</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="run_first-225"><a href="#run_first-225"><span class="linenos">225</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RunFirstOutputs</span><span class="p">:</span>
+</span><span id="run_first-226"><a href="#run_first-226"><span class="linenos">226</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="run_first-227"><a href="#run_first-227"><span class="linenos">227</span></a><span class="sd">    A tool to run FSL&#39;s FIRST for subcortical segmentation.</span>
+</span><span id="run_first-228"><a href="#run_first-228"><span class="linenos">228</span></a><span class="sd">    </span>
+</span><span id="run_first-229"><a href="#run_first-229"><span class="linenos">229</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="run_first-230"><a href="#run_first-230"><span class="linenos">230</span></a><span class="sd">    </span>
+</span><span id="run_first-231"><a href="#run_first-231"><span class="linenos">231</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="run_first-232"><a href="#run_first-232"><span class="linenos">232</span></a><span class="sd">    </span>
+</span><span id="run_first-233"><a href="#run_first-233"><span class="linenos">233</span></a><span class="sd">    Args:</span>
+</span><span id="run_first-234"><a href="#run_first-234"><span class="linenos">234</span></a><span class="sd">        input_image: Input image file (e.g. img.nii.gz).</span>
+</span><span id="run_first-235"><a href="#run_first-235"><span class="linenos">235</span></a><span class="sd">        transformation_matrix: Input transformation matrix file (e.g.\</span>
+</span><span id="run_first-236"><a href="#run_first-236"><span class="linenos">236</span></a><span class="sd">            input_to_mni.mat).</span>
+</span><span id="run_first-237"><a href="#run_first-237"><span class="linenos">237</span></a><span class="sd">        n_modes: Number of modes.</span>
+</span><span id="run_first-238"><a href="#run_first-238"><span class="linenos">238</span></a><span class="sd">        output_basename: Output basename.</span>
+</span><span id="run_first-239"><a href="#run_first-239"><span class="linenos">239</span></a><span class="sd">        model_name: Model name.</span>
+</span><span id="run_first-240"><a href="#run_first-240"><span class="linenos">240</span></a><span class="sd">        verbose_flag: Verbose mode.</span>
+</span><span id="run_first-241"><a href="#run_first-241"><span class="linenos">241</span></a><span class="sd">        intref_model_name: Reference structure for the local intensity\</span>
+</span><span id="run_first-242"><a href="#run_first-242"><span class="linenos">242</span></a><span class="sd">            normalization.</span>
+</span><span id="run_first-243"><a href="#run_first-243"><span class="linenos">243</span></a><span class="sd">        load_bvars: Initializes FIRST with a previous estimate of the structure.</span>
+</span><span id="run_first-244"><a href="#run_first-244"><span class="linenos">244</span></a><span class="sd">        multiple_images_flag: Run FIRST on multiple images; provide a list of\</span>
+</span><span id="run_first-245"><a href="#run_first-245"><span class="linenos">245</span></a><span class="sd">            images, transformation matrices, and output names.</span>
+</span><span id="run_first-246"><a href="#run_first-246"><span class="linenos">246</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="run_first-247"><a href="#run_first-247"><span class="linenos">247</span></a><span class="sd">    Returns:</span>
+</span><span id="run_first-248"><a href="#run_first-248"><span class="linenos">248</span></a><span class="sd">        NamedTuple of outputs (described in `RunFirstOutputs`).</span>
+</span><span id="run_first-249"><a href="#run_first-249"><span class="linenos">249</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="run_first-250"><a href="#run_first-250"><span class="linenos">250</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="run_first-251"><a href="#run_first-251"><span class="linenos">251</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_FIRST_METADATA</span><span class="p">)</span>
+</span><span id="run_first-252"><a href="#run_first-252"><span class="linenos">252</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">run_first_params</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span> <span class="n">transformation_matrix</span><span class="o">=</span><span class="n">transformation_matrix</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="n">n_modes</span><span class="p">,</span> <span class="n">output_basename</span><span class="o">=</span><span class="n">output_basename</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">verbose_flag</span><span class="o">=</span><span class="n">verbose_flag</span><span class="p">,</span> <span class="n">intref_model_name</span><span class="o">=</span><span class="n">intref_model_name</span><span class="p">,</span> <span class="n">load_bvars</span><span class="o">=</span><span class="n">load_bvars</span><span class="p">,</span> <span class="n">multiple_images_flag</span><span class="o">=</span><span class="n">multiple_images_flag</span><span class="p">)</span>
+</span><span id="run_first-253"><a href="#run_first-253"><span class="linenos">253</span></a>    <span class="k">return</span> <span class="n">run_first_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

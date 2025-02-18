@@ -530,130 +530,131 @@
 </span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">dirstat_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">dirstat_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirstat</span><span class="p">(</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">DirstatFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirstatConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirstatOutputs</span><span class="p">:</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">    Report statistics on a direction set.</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    </span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    This command will accept as inputs:</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    </span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">    - directions file in spherical coordinates (ASCII text, [ az el ]</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">    space-separated values, one per line);</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">    </span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">    - directions file in Cartesian coordinates (ASCII text, [ x y z ]</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">    space-separated values, one per line);</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">    </span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    - DW gradient files (MRtrix format: ASCII text, [ x y z b ] space-separated</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    values, one per line);</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    </span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">    - image files, using the DW gradient scheme found in the header (or provided</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">    using the appropriate command line options below).</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">    </span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">    By default, this produces all relevant metrics for the direction set</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">    provided. If the direction set contains multiple shells, metrics are</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">    provided for each shell separately.</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">    </span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="sd">    Metrics are produced assuming a unipolar or bipolar electrostatic repulsion</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="sd">    model, producing the potential energy (total, mean, min &amp; max), and the</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="sd">    nearest-neighbour angles (mean, min &amp; max). The condition number is also</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="sd">    produced for the spherical harmonic fits up to the highest harmonic order</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">    supported by the number of volumes. Finally, the norm of the mean direction</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">    vector is provided as a measure of the overall symmetry of the direction set</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">    (important with respect to eddy-current resilience).</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">    </span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">    Specific metrics can also be queried independently via the &quot;-output&quot; option,</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="sd">    using these shorthands:</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="sd">    U/B for unipolar/bipolar model,</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="sd">    E/N for energy and nearest-neighbour respectively,</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="sd">    t/-/+ for total/min/max respectively (mean implied otherwise);</span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="sd">    SHn for condition number of SH fit at order n (with n an even integer);</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a><span class="sd">    ASYM for asymmetry index (norm of mean direction vector);</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="sd">    N for the number of directions.</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="sd">    </span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="sd">    References:</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="sd">    </span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="sd">    .</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a><span class="sd">    </span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="sd">    </span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="sd">    </span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="sd">    Args:</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="sd">        dirs: the text file or image containing the directions.</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="sd">        output: output selected metrics as a space-delimited list, suitable for\</span>
-</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="sd">            use in scripts. This will produce one line of values per selected\</span>
-</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a><span class="sd">            shell. Valid metrics are as specified in the description above.</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
-</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="sd">            than one b-value is provided.\</span>
-</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
-</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
-</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
-</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
-</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
-</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="sd">    Returns:</span>
-</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="sd">        NamedTuple of outputs (described in `DirstatOutputs`).</span>
-</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRSTAT_METADATA</span><span class="p">)</span>
-</span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirstat_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">shells</span><span class="o">=</span><span class="n">shells</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
-</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a>    <span class="k">return</span> <span class="n">dirstat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirstat</span><span class="p">(</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">DirstatFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirstatConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirstatOutputs</span><span class="p">:</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    Report statistics on a direction set.</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    </span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    This command will accept as inputs:</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">    </span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">    - directions file in spherical coordinates (ASCII text, [ az el ]</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">    space-separated values, one per line);</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">    </span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">    - directions file in Cartesian coordinates (ASCII text, [ x y z ]</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">    space-separated values, one per line);</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    </span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    - DW gradient files (MRtrix format: ASCII text, [ x y z b ] space-separated</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    values, one per line);</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">    </span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">    - image files, using the DW gradient scheme found in the header (or provided</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">    using the appropriate command line options below).</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">    </span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">    By default, this produces all relevant metrics for the direction set</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">    provided. If the direction set contains multiple shells, metrics are</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">    provided for each shell separately.</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="sd">    </span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="sd">    Metrics are produced assuming a unipolar or bipolar electrostatic repulsion</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="sd">    model, producing the potential energy (total, mean, min &amp; max), and the</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="sd">    nearest-neighbour angles (mean, min &amp; max). The condition number is also</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">    produced for the spherical harmonic fits up to the highest harmonic order</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">    supported by the number of volumes. Finally, the norm of the mean direction</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">    vector is provided as a measure of the overall symmetry of the direction set</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">    (important with respect to eddy-current resilience).</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">    </span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="sd">    Specific metrics can also be queried independently via the &quot;-output&quot; option,</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="sd">    using these shorthands:</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="sd">    U/B for unipolar/bipolar model,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="sd">    E/N for energy and nearest-neighbour respectively,</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="sd">    t/-/+ for total/min/max respectively (mean implied otherwise);</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a><span class="sd">    SHn for condition number of SH fit at order n (with n an even integer);</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="sd">    ASYM for asymmetry index (norm of mean direction vector);</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="sd">    N for the number of directions.</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="sd">    </span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="sd">    References:</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="sd">    </span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a><span class="sd">    .</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="sd">    </span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="sd">    </span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="sd">    </span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="sd">    Args:</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="sd">        dirs: the text file or image containing the directions.</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="sd">        output: output selected metrics as a space-delimited list, suitable for\</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a><span class="sd">            use in scripts. This will produce one line of values per selected\</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a><span class="sd">            shell. Valid metrics are as specified in the description above.</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
+</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="sd">            than one b-value is provided.\</span>
+</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
+</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
+</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
+</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
+</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
+</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="sd">    Returns:</span>
+</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a><span class="sd">        NamedTuple of outputs (described in `DirstatOutputs`).</span>
+</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRSTAT_METADATA</span><span class="p">)</span>
+</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirstat_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">shells</span><span class="o">=</span><span class="n">shells</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
+</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a>    <span class="k">return</span> <span class="n">dirstat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-498"><a href="#L-498"><span class="linenos">498</span></a>
-</span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a>    <span class="s2">&quot;DIRSTAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a>    <span class="s2">&quot;DirstatConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a>    <span class="s2">&quot;DirstatFslgradParameters&quot;</span><span class="p">,</span>
-</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a>    <span class="s2">&quot;DirstatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;DirstatParameters&quot;</span><span class="p">,</span>
-</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;dirstat&quot;</span><span class="p">,</span>
-</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;dirstat_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;dirstat_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a>    <span class="s2">&quot;dirstat_params&quot;</span><span class="p">,</span>
-</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a><span class="p">]</span>
+</span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a>
+</span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a>    <span class="s2">&quot;DIRSTAT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a>    <span class="s2">&quot;DirstatConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a>    <span class="s2">&quot;DirstatFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;DirstatOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;DirstatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;dirstat&quot;</span><span class="p">,</span>
+</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;dirstat_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a>    <span class="s2">&quot;dirstat_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a>    <span class="s2">&quot;dirstat_params&quot;</span><span class="p">,</span>
+</span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -960,113 +961,113 @@
 
     </div>
     <a class="headerlink" href="#dirstat"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dirstat-391"><a href="#dirstat-391"><span class="linenos">391</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirstat</span><span class="p">(</span>
-</span><span id="dirstat-392"><a href="#dirstat-392"><span class="linenos">392</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="dirstat-393"><a href="#dirstat-393"><span class="linenos">393</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirstat-394"><a href="#dirstat-394"><span class="linenos">394</span></a>    <span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirstat-395"><a href="#dirstat-395"><span class="linenos">395</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirstat-396"><a href="#dirstat-396"><span class="linenos">396</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">DirstatFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirstat-397"><a href="#dirstat-397"><span class="linenos">397</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirstat-398"><a href="#dirstat-398"><span class="linenos">398</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirstat-399"><a href="#dirstat-399"><span class="linenos">399</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirstat-400"><a href="#dirstat-400"><span class="linenos">400</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirstat-401"><a href="#dirstat-401"><span class="linenos">401</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirstat-402"><a href="#dirstat-402"><span class="linenos">402</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirstatConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirstat-403"><a href="#dirstat-403"><span class="linenos">403</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirstat-404"><a href="#dirstat-404"><span class="linenos">404</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dirstat-405"><a href="#dirstat-405"><span class="linenos">405</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dirstat-406"><a href="#dirstat-406"><span class="linenos">406</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirstatOutputs</span><span class="p">:</span>
-</span><span id="dirstat-407"><a href="#dirstat-407"><span class="linenos">407</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dirstat-408"><a href="#dirstat-408"><span class="linenos">408</span></a><span class="sd">    Report statistics on a direction set.</span>
-</span><span id="dirstat-409"><a href="#dirstat-409"><span class="linenos">409</span></a><span class="sd">    </span>
-</span><span id="dirstat-410"><a href="#dirstat-410"><span class="linenos">410</span></a><span class="sd">    This command will accept as inputs:</span>
-</span><span id="dirstat-411"><a href="#dirstat-411"><span class="linenos">411</span></a><span class="sd">    </span>
-</span><span id="dirstat-412"><a href="#dirstat-412"><span class="linenos">412</span></a><span class="sd">    - directions file in spherical coordinates (ASCII text, [ az el ]</span>
-</span><span id="dirstat-413"><a href="#dirstat-413"><span class="linenos">413</span></a><span class="sd">    space-separated values, one per line);</span>
-</span><span id="dirstat-414"><a href="#dirstat-414"><span class="linenos">414</span></a><span class="sd">    </span>
-</span><span id="dirstat-415"><a href="#dirstat-415"><span class="linenos">415</span></a><span class="sd">    - directions file in Cartesian coordinates (ASCII text, [ x y z ]</span>
-</span><span id="dirstat-416"><a href="#dirstat-416"><span class="linenos">416</span></a><span class="sd">    space-separated values, one per line);</span>
-</span><span id="dirstat-417"><a href="#dirstat-417"><span class="linenos">417</span></a><span class="sd">    </span>
-</span><span id="dirstat-418"><a href="#dirstat-418"><span class="linenos">418</span></a><span class="sd">    - DW gradient files (MRtrix format: ASCII text, [ x y z b ] space-separated</span>
-</span><span id="dirstat-419"><a href="#dirstat-419"><span class="linenos">419</span></a><span class="sd">    values, one per line);</span>
-</span><span id="dirstat-420"><a href="#dirstat-420"><span class="linenos">420</span></a><span class="sd">    </span>
-</span><span id="dirstat-421"><a href="#dirstat-421"><span class="linenos">421</span></a><span class="sd">    - image files, using the DW gradient scheme found in the header (or provided</span>
-</span><span id="dirstat-422"><a href="#dirstat-422"><span class="linenos">422</span></a><span class="sd">    using the appropriate command line options below).</span>
-</span><span id="dirstat-423"><a href="#dirstat-423"><span class="linenos">423</span></a><span class="sd">    </span>
-</span><span id="dirstat-424"><a href="#dirstat-424"><span class="linenos">424</span></a><span class="sd">    By default, this produces all relevant metrics for the direction set</span>
-</span><span id="dirstat-425"><a href="#dirstat-425"><span class="linenos">425</span></a><span class="sd">    provided. If the direction set contains multiple shells, metrics are</span>
-</span><span id="dirstat-426"><a href="#dirstat-426"><span class="linenos">426</span></a><span class="sd">    provided for each shell separately.</span>
-</span><span id="dirstat-427"><a href="#dirstat-427"><span class="linenos">427</span></a><span class="sd">    </span>
-</span><span id="dirstat-428"><a href="#dirstat-428"><span class="linenos">428</span></a><span class="sd">    Metrics are produced assuming a unipolar or bipolar electrostatic repulsion</span>
-</span><span id="dirstat-429"><a href="#dirstat-429"><span class="linenos">429</span></a><span class="sd">    model, producing the potential energy (total, mean, min &amp; max), and the</span>
-</span><span id="dirstat-430"><a href="#dirstat-430"><span class="linenos">430</span></a><span class="sd">    nearest-neighbour angles (mean, min &amp; max). The condition number is also</span>
-</span><span id="dirstat-431"><a href="#dirstat-431"><span class="linenos">431</span></a><span class="sd">    produced for the spherical harmonic fits up to the highest harmonic order</span>
-</span><span id="dirstat-432"><a href="#dirstat-432"><span class="linenos">432</span></a><span class="sd">    supported by the number of volumes. Finally, the norm of the mean direction</span>
-</span><span id="dirstat-433"><a href="#dirstat-433"><span class="linenos">433</span></a><span class="sd">    vector is provided as a measure of the overall symmetry of the direction set</span>
-</span><span id="dirstat-434"><a href="#dirstat-434"><span class="linenos">434</span></a><span class="sd">    (important with respect to eddy-current resilience).</span>
-</span><span id="dirstat-435"><a href="#dirstat-435"><span class="linenos">435</span></a><span class="sd">    </span>
-</span><span id="dirstat-436"><a href="#dirstat-436"><span class="linenos">436</span></a><span class="sd">    Specific metrics can also be queried independently via the &quot;-output&quot; option,</span>
-</span><span id="dirstat-437"><a href="#dirstat-437"><span class="linenos">437</span></a><span class="sd">    using these shorthands:</span>
-</span><span id="dirstat-438"><a href="#dirstat-438"><span class="linenos">438</span></a><span class="sd">    U/B for unipolar/bipolar model,</span>
-</span><span id="dirstat-439"><a href="#dirstat-439"><span class="linenos">439</span></a><span class="sd">    E/N for energy and nearest-neighbour respectively,</span>
-</span><span id="dirstat-440"><a href="#dirstat-440"><span class="linenos">440</span></a><span class="sd">    t/-/+ for total/min/max respectively (mean implied otherwise);</span>
-</span><span id="dirstat-441"><a href="#dirstat-441"><span class="linenos">441</span></a><span class="sd">    SHn for condition number of SH fit at order n (with n an even integer);</span>
-</span><span id="dirstat-442"><a href="#dirstat-442"><span class="linenos">442</span></a><span class="sd">    ASYM for asymmetry index (norm of mean direction vector);</span>
-</span><span id="dirstat-443"><a href="#dirstat-443"><span class="linenos">443</span></a><span class="sd">    N for the number of directions.</span>
-</span><span id="dirstat-444"><a href="#dirstat-444"><span class="linenos">444</span></a><span class="sd">    </span>
-</span><span id="dirstat-445"><a href="#dirstat-445"><span class="linenos">445</span></a><span class="sd">    References:</span>
-</span><span id="dirstat-446"><a href="#dirstat-446"><span class="linenos">446</span></a><span class="sd">    </span>
-</span><span id="dirstat-447"><a href="#dirstat-447"><span class="linenos">447</span></a><span class="sd">    .</span>
-</span><span id="dirstat-448"><a href="#dirstat-448"><span class="linenos">448</span></a><span class="sd">    </span>
-</span><span id="dirstat-449"><a href="#dirstat-449"><span class="linenos">449</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="dirstat-450"><a href="#dirstat-450"><span class="linenos">450</span></a><span class="sd">    </span>
-</span><span id="dirstat-451"><a href="#dirstat-451"><span class="linenos">451</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="dirstat-452"><a href="#dirstat-452"><span class="linenos">452</span></a><span class="sd">    </span>
-</span><span id="dirstat-453"><a href="#dirstat-453"><span class="linenos">453</span></a><span class="sd">    Args:</span>
-</span><span id="dirstat-454"><a href="#dirstat-454"><span class="linenos">454</span></a><span class="sd">        dirs: the text file or image containing the directions.</span>
-</span><span id="dirstat-455"><a href="#dirstat-455"><span class="linenos">455</span></a><span class="sd">        output: output selected metrics as a space-delimited list, suitable for\</span>
-</span><span id="dirstat-456"><a href="#dirstat-456"><span class="linenos">456</span></a><span class="sd">            use in scripts. This will produce one line of values per selected\</span>
-</span><span id="dirstat-457"><a href="#dirstat-457"><span class="linenos">457</span></a><span class="sd">            shell. Valid metrics are as specified in the description above.</span>
-</span><span id="dirstat-458"><a href="#dirstat-458"><span class="linenos">458</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
-</span><span id="dirstat-459"><a href="#dirstat-459"><span class="linenos">459</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
-</span><span id="dirstat-460"><a href="#dirstat-460"><span class="linenos">460</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
-</span><span id="dirstat-461"><a href="#dirstat-461"><span class="linenos">461</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
-</span><span id="dirstat-462"><a href="#dirstat-462"><span class="linenos">462</span></a><span class="sd">            than one b-value is provided.\</span>
-</span><span id="dirstat-463"><a href="#dirstat-463"><span class="linenos">463</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
-</span><span id="dirstat-464"><a href="#dirstat-464"><span class="linenos">464</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
-</span><span id="dirstat-465"><a href="#dirstat-465"><span class="linenos">465</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
-</span><span id="dirstat-466"><a href="#dirstat-466"><span class="linenos">466</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
-</span><span id="dirstat-467"><a href="#dirstat-467"><span class="linenos">467</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
-</span><span id="dirstat-468"><a href="#dirstat-468"><span class="linenos">468</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dirstat-469"><a href="#dirstat-469"><span class="linenos">469</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="dirstat-470"><a href="#dirstat-470"><span class="linenos">470</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="dirstat-471"><a href="#dirstat-471"><span class="linenos">471</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="dirstat-472"><a href="#dirstat-472"><span class="linenos">472</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="dirstat-473"><a href="#dirstat-473"><span class="linenos">473</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="dirstat-474"><a href="#dirstat-474"><span class="linenos">474</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dirstat-475"><a href="#dirstat-475"><span class="linenos">475</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="dirstat-476"><a href="#dirstat-476"><span class="linenos">476</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="dirstat-477"><a href="#dirstat-477"><span class="linenos">477</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="dirstat-478"><a href="#dirstat-478"><span class="linenos">478</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="dirstat-479"><a href="#dirstat-479"><span class="linenos">479</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="dirstat-480"><a href="#dirstat-480"><span class="linenos">480</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="dirstat-481"><a href="#dirstat-481"><span class="linenos">481</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="dirstat-482"><a href="#dirstat-482"><span class="linenos">482</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="dirstat-483"><a href="#dirstat-483"><span class="linenos">483</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="dirstat-484"><a href="#dirstat-484"><span class="linenos">484</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="dirstat-485"><a href="#dirstat-485"><span class="linenos">485</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="dirstat-486"><a href="#dirstat-486"><span class="linenos">486</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="dirstat-487"><a href="#dirstat-487"><span class="linenos">487</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="dirstat-488"><a href="#dirstat-488"><span class="linenos">488</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="dirstat-489"><a href="#dirstat-489"><span class="linenos">489</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="dirstat-490"><a href="#dirstat-490"><span class="linenos">490</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dirstat-491"><a href="#dirstat-491"><span class="linenos">491</span></a><span class="sd">    Returns:</span>
-</span><span id="dirstat-492"><a href="#dirstat-492"><span class="linenos">492</span></a><span class="sd">        NamedTuple of outputs (described in `DirstatOutputs`).</span>
-</span><span id="dirstat-493"><a href="#dirstat-493"><span class="linenos">493</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dirstat-494"><a href="#dirstat-494"><span class="linenos">494</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dirstat-495"><a href="#dirstat-495"><span class="linenos">495</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRSTAT_METADATA</span><span class="p">)</span>
-</span><span id="dirstat-496"><a href="#dirstat-496"><span class="linenos">496</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirstat_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">shells</span><span class="o">=</span><span class="n">shells</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
-</span><span id="dirstat-497"><a href="#dirstat-497"><span class="linenos">497</span></a>    <span class="k">return</span> <span class="n">dirstat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dirstat-392"><a href="#dirstat-392"><span class="linenos">392</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dirstat</span><span class="p">(</span>
+</span><span id="dirstat-393"><a href="#dirstat-393"><span class="linenos">393</span></a>    <span class="n">dirs</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="dirstat-394"><a href="#dirstat-394"><span class="linenos">394</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirstat-395"><a href="#dirstat-395"><span class="linenos">395</span></a>    <span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirstat-396"><a href="#dirstat-396"><span class="linenos">396</span></a>    <span class="n">grad</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirstat-397"><a href="#dirstat-397"><span class="linenos">397</span></a>    <span class="n">fslgrad</span><span class="p">:</span> <span class="n">DirstatFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirstat-398"><a href="#dirstat-398"><span class="linenos">398</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirstat-399"><a href="#dirstat-399"><span class="linenos">399</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirstat-400"><a href="#dirstat-400"><span class="linenos">400</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirstat-401"><a href="#dirstat-401"><span class="linenos">401</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirstat-402"><a href="#dirstat-402"><span class="linenos">402</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirstat-403"><a href="#dirstat-403"><span class="linenos">403</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DirstatConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirstat-404"><a href="#dirstat-404"><span class="linenos">404</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirstat-405"><a href="#dirstat-405"><span class="linenos">405</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dirstat-406"><a href="#dirstat-406"><span class="linenos">406</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dirstat-407"><a href="#dirstat-407"><span class="linenos">407</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirstatOutputs</span><span class="p">:</span>
+</span><span id="dirstat-408"><a href="#dirstat-408"><span class="linenos">408</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dirstat-409"><a href="#dirstat-409"><span class="linenos">409</span></a><span class="sd">    Report statistics on a direction set.</span>
+</span><span id="dirstat-410"><a href="#dirstat-410"><span class="linenos">410</span></a><span class="sd">    </span>
+</span><span id="dirstat-411"><a href="#dirstat-411"><span class="linenos">411</span></a><span class="sd">    This command will accept as inputs:</span>
+</span><span id="dirstat-412"><a href="#dirstat-412"><span class="linenos">412</span></a><span class="sd">    </span>
+</span><span id="dirstat-413"><a href="#dirstat-413"><span class="linenos">413</span></a><span class="sd">    - directions file in spherical coordinates (ASCII text, [ az el ]</span>
+</span><span id="dirstat-414"><a href="#dirstat-414"><span class="linenos">414</span></a><span class="sd">    space-separated values, one per line);</span>
+</span><span id="dirstat-415"><a href="#dirstat-415"><span class="linenos">415</span></a><span class="sd">    </span>
+</span><span id="dirstat-416"><a href="#dirstat-416"><span class="linenos">416</span></a><span class="sd">    - directions file in Cartesian coordinates (ASCII text, [ x y z ]</span>
+</span><span id="dirstat-417"><a href="#dirstat-417"><span class="linenos">417</span></a><span class="sd">    space-separated values, one per line);</span>
+</span><span id="dirstat-418"><a href="#dirstat-418"><span class="linenos">418</span></a><span class="sd">    </span>
+</span><span id="dirstat-419"><a href="#dirstat-419"><span class="linenos">419</span></a><span class="sd">    - DW gradient files (MRtrix format: ASCII text, [ x y z b ] space-separated</span>
+</span><span id="dirstat-420"><a href="#dirstat-420"><span class="linenos">420</span></a><span class="sd">    values, one per line);</span>
+</span><span id="dirstat-421"><a href="#dirstat-421"><span class="linenos">421</span></a><span class="sd">    </span>
+</span><span id="dirstat-422"><a href="#dirstat-422"><span class="linenos">422</span></a><span class="sd">    - image files, using the DW gradient scheme found in the header (or provided</span>
+</span><span id="dirstat-423"><a href="#dirstat-423"><span class="linenos">423</span></a><span class="sd">    using the appropriate command line options below).</span>
+</span><span id="dirstat-424"><a href="#dirstat-424"><span class="linenos">424</span></a><span class="sd">    </span>
+</span><span id="dirstat-425"><a href="#dirstat-425"><span class="linenos">425</span></a><span class="sd">    By default, this produces all relevant metrics for the direction set</span>
+</span><span id="dirstat-426"><a href="#dirstat-426"><span class="linenos">426</span></a><span class="sd">    provided. If the direction set contains multiple shells, metrics are</span>
+</span><span id="dirstat-427"><a href="#dirstat-427"><span class="linenos">427</span></a><span class="sd">    provided for each shell separately.</span>
+</span><span id="dirstat-428"><a href="#dirstat-428"><span class="linenos">428</span></a><span class="sd">    </span>
+</span><span id="dirstat-429"><a href="#dirstat-429"><span class="linenos">429</span></a><span class="sd">    Metrics are produced assuming a unipolar or bipolar electrostatic repulsion</span>
+</span><span id="dirstat-430"><a href="#dirstat-430"><span class="linenos">430</span></a><span class="sd">    model, producing the potential energy (total, mean, min &amp; max), and the</span>
+</span><span id="dirstat-431"><a href="#dirstat-431"><span class="linenos">431</span></a><span class="sd">    nearest-neighbour angles (mean, min &amp; max). The condition number is also</span>
+</span><span id="dirstat-432"><a href="#dirstat-432"><span class="linenos">432</span></a><span class="sd">    produced for the spherical harmonic fits up to the highest harmonic order</span>
+</span><span id="dirstat-433"><a href="#dirstat-433"><span class="linenos">433</span></a><span class="sd">    supported by the number of volumes. Finally, the norm of the mean direction</span>
+</span><span id="dirstat-434"><a href="#dirstat-434"><span class="linenos">434</span></a><span class="sd">    vector is provided as a measure of the overall symmetry of the direction set</span>
+</span><span id="dirstat-435"><a href="#dirstat-435"><span class="linenos">435</span></a><span class="sd">    (important with respect to eddy-current resilience).</span>
+</span><span id="dirstat-436"><a href="#dirstat-436"><span class="linenos">436</span></a><span class="sd">    </span>
+</span><span id="dirstat-437"><a href="#dirstat-437"><span class="linenos">437</span></a><span class="sd">    Specific metrics can also be queried independently via the &quot;-output&quot; option,</span>
+</span><span id="dirstat-438"><a href="#dirstat-438"><span class="linenos">438</span></a><span class="sd">    using these shorthands:</span>
+</span><span id="dirstat-439"><a href="#dirstat-439"><span class="linenos">439</span></a><span class="sd">    U/B for unipolar/bipolar model,</span>
+</span><span id="dirstat-440"><a href="#dirstat-440"><span class="linenos">440</span></a><span class="sd">    E/N for energy and nearest-neighbour respectively,</span>
+</span><span id="dirstat-441"><a href="#dirstat-441"><span class="linenos">441</span></a><span class="sd">    t/-/+ for total/min/max respectively (mean implied otherwise);</span>
+</span><span id="dirstat-442"><a href="#dirstat-442"><span class="linenos">442</span></a><span class="sd">    SHn for condition number of SH fit at order n (with n an even integer);</span>
+</span><span id="dirstat-443"><a href="#dirstat-443"><span class="linenos">443</span></a><span class="sd">    ASYM for asymmetry index (norm of mean direction vector);</span>
+</span><span id="dirstat-444"><a href="#dirstat-444"><span class="linenos">444</span></a><span class="sd">    N for the number of directions.</span>
+</span><span id="dirstat-445"><a href="#dirstat-445"><span class="linenos">445</span></a><span class="sd">    </span>
+</span><span id="dirstat-446"><a href="#dirstat-446"><span class="linenos">446</span></a><span class="sd">    References:</span>
+</span><span id="dirstat-447"><a href="#dirstat-447"><span class="linenos">447</span></a><span class="sd">    </span>
+</span><span id="dirstat-448"><a href="#dirstat-448"><span class="linenos">448</span></a><span class="sd">    .</span>
+</span><span id="dirstat-449"><a href="#dirstat-449"><span class="linenos">449</span></a><span class="sd">    </span>
+</span><span id="dirstat-450"><a href="#dirstat-450"><span class="linenos">450</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="dirstat-451"><a href="#dirstat-451"><span class="linenos">451</span></a><span class="sd">    </span>
+</span><span id="dirstat-452"><a href="#dirstat-452"><span class="linenos">452</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="dirstat-453"><a href="#dirstat-453"><span class="linenos">453</span></a><span class="sd">    </span>
+</span><span id="dirstat-454"><a href="#dirstat-454"><span class="linenos">454</span></a><span class="sd">    Args:</span>
+</span><span id="dirstat-455"><a href="#dirstat-455"><span class="linenos">455</span></a><span class="sd">        dirs: the text file or image containing the directions.</span>
+</span><span id="dirstat-456"><a href="#dirstat-456"><span class="linenos">456</span></a><span class="sd">        output: output selected metrics as a space-delimited list, suitable for\</span>
+</span><span id="dirstat-457"><a href="#dirstat-457"><span class="linenos">457</span></a><span class="sd">            use in scripts. This will produce one line of values per selected\</span>
+</span><span id="dirstat-458"><a href="#dirstat-458"><span class="linenos">458</span></a><span class="sd">            shell. Valid metrics are as specified in the description above.</span>
+</span><span id="dirstat-459"><a href="#dirstat-459"><span class="linenos">459</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
+</span><span id="dirstat-460"><a href="#dirstat-460"><span class="linenos">460</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
+</span><span id="dirstat-461"><a href="#dirstat-461"><span class="linenos">461</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
+</span><span id="dirstat-462"><a href="#dirstat-462"><span class="linenos">462</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
+</span><span id="dirstat-463"><a href="#dirstat-463"><span class="linenos">463</span></a><span class="sd">            than one b-value is provided.\</span>
+</span><span id="dirstat-464"><a href="#dirstat-464"><span class="linenos">464</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
+</span><span id="dirstat-465"><a href="#dirstat-465"><span class="linenos">465</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
+</span><span id="dirstat-466"><a href="#dirstat-466"><span class="linenos">466</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
+</span><span id="dirstat-467"><a href="#dirstat-467"><span class="linenos">467</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
+</span><span id="dirstat-468"><a href="#dirstat-468"><span class="linenos">468</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
+</span><span id="dirstat-469"><a href="#dirstat-469"><span class="linenos">469</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dirstat-470"><a href="#dirstat-470"><span class="linenos">470</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="dirstat-471"><a href="#dirstat-471"><span class="linenos">471</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="dirstat-472"><a href="#dirstat-472"><span class="linenos">472</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="dirstat-473"><a href="#dirstat-473"><span class="linenos">473</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="dirstat-474"><a href="#dirstat-474"><span class="linenos">474</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="dirstat-475"><a href="#dirstat-475"><span class="linenos">475</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dirstat-476"><a href="#dirstat-476"><span class="linenos">476</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="dirstat-477"><a href="#dirstat-477"><span class="linenos">477</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="dirstat-478"><a href="#dirstat-478"><span class="linenos">478</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="dirstat-479"><a href="#dirstat-479"><span class="linenos">479</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="dirstat-480"><a href="#dirstat-480"><span class="linenos">480</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="dirstat-481"><a href="#dirstat-481"><span class="linenos">481</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="dirstat-482"><a href="#dirstat-482"><span class="linenos">482</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="dirstat-483"><a href="#dirstat-483"><span class="linenos">483</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="dirstat-484"><a href="#dirstat-484"><span class="linenos">484</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="dirstat-485"><a href="#dirstat-485"><span class="linenos">485</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="dirstat-486"><a href="#dirstat-486"><span class="linenos">486</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="dirstat-487"><a href="#dirstat-487"><span class="linenos">487</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="dirstat-488"><a href="#dirstat-488"><span class="linenos">488</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="dirstat-489"><a href="#dirstat-489"><span class="linenos">489</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="dirstat-490"><a href="#dirstat-490"><span class="linenos">490</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="dirstat-491"><a href="#dirstat-491"><span class="linenos">491</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dirstat-492"><a href="#dirstat-492"><span class="linenos">492</span></a><span class="sd">    Returns:</span>
+</span><span id="dirstat-493"><a href="#dirstat-493"><span class="linenos">493</span></a><span class="sd">        NamedTuple of outputs (described in `DirstatOutputs`).</span>
+</span><span id="dirstat-494"><a href="#dirstat-494"><span class="linenos">494</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dirstat-495"><a href="#dirstat-495"><span class="linenos">495</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dirstat-496"><a href="#dirstat-496"><span class="linenos">496</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DIRSTAT_METADATA</span><span class="p">)</span>
+</span><span id="dirstat-497"><a href="#dirstat-497"><span class="linenos">497</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">dirstat_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">shells</span><span class="o">=</span><span class="n">shells</span><span class="p">,</span> <span class="n">grad</span><span class="o">=</span><span class="n">grad</span><span class="p">,</span> <span class="n">fslgrad</span><span class="o">=</span><span class="n">fslgrad</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">dirs</span><span class="o">=</span><span class="n">dirs</span><span class="p">)</span>
+</span><span id="dirstat-498"><a href="#dirstat-498"><span class="linenos">498</span></a>    <span class="k">return</span> <span class="n">dirstat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

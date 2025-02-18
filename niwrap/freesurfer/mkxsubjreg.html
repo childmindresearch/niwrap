@@ -298,56 +298,57 @@
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mkxsubjreg_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mkxsubjreg_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mkxsubjreg</span><span class="p">(</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">srcreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">targreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">targsubj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">xfm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">sd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">fvol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MkxsubjregOutputs</span><span class="p">:</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Creates a new registration matrix that maps from the functional volume of the</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    source subject to the orig of the target subject through the talairach</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    transform.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    </span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Args:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        srcreg: Path to the source registration file (srcreg.dat).</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        targreg: Path to the target registration file (targreg.dat).</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        targsubj: Target subject ID; default is talairach.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        xfm: XFM file name relative to transforms.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        sd: Directory containing subject data; default is env SUBJECTS_DIR.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        fvol: Path to example functional volume.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        help_: Display help information.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        version: Display version information.</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    Returns:</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        NamedTuple of outputs (described in `MkxsubjregOutputs`).</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKXSUBJREG_METADATA</span><span class="p">)</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mkxsubjreg_params</span><span class="p">(</span><span class="n">srcreg</span><span class="o">=</span><span class="n">srcreg</span><span class="p">,</span> <span class="n">targreg</span><span class="o">=</span><span class="n">targreg</span><span class="p">,</span> <span class="n">targsubj</span><span class="o">=</span><span class="n">targsubj</span><span class="p">,</span> <span class="n">xfm</span><span class="o">=</span><span class="n">xfm</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">fvol</span><span class="o">=</span><span class="n">fvol</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">mkxsubjreg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mkxsubjreg</span><span class="p">(</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">srcreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">targreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">targsubj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">xfm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">sd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">fvol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MkxsubjregOutputs</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    Creates a new registration matrix that maps from the functional volume of the</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    source subject to the orig of the target subject through the talairach</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    transform.</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    </span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    Args:</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        srcreg: Path to the source registration file (srcreg.dat).</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        targreg: Path to the target registration file (targreg.dat).</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        targsubj: Target subject ID; default is talairach.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        xfm: XFM file name relative to transforms.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        sd: Directory containing subject data; default is env SUBJECTS_DIR.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        fvol: Path to example functional volume.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        help_: Display help information.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        version: Display version information.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    Returns:</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        NamedTuple of outputs (described in `MkxsubjregOutputs`).</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKXSUBJREG_METADATA</span><span class="p">)</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mkxsubjreg_params</span><span class="p">(</span><span class="n">srcreg</span><span class="o">=</span><span class="n">srcreg</span><span class="p">,</span> <span class="n">targreg</span><span class="o">=</span><span class="n">targreg</span><span class="p">,</span> <span class="n">targsubj</span><span class="o">=</span><span class="n">targsubj</span><span class="p">,</span> <span class="n">xfm</span><span class="o">=</span><span class="n">xfm</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">fvol</span><span class="o">=</span><span class="n">fvol</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="k">return</span> <span class="n">mkxsubjreg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;MKXSUBJREG_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;MkxsubjregOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;MkxsubjregParameters&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;mkxsubjreg&quot;</span><span class="p">,</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;mkxsubjreg_params&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="p">]</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;MKXSUBJREG_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;MkxsubjregOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;MkxsubjregParameters&quot;</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;mkxsubjreg&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;mkxsubjreg_params&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -529,43 +530,43 @@
 
     </div>
     <a class="headerlink" href="#mkxsubjreg"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="mkxsubjreg-204"><a href="#mkxsubjreg-204"><span class="linenos">204</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mkxsubjreg</span><span class="p">(</span>
-</span><span id="mkxsubjreg-205"><a href="#mkxsubjreg-205"><span class="linenos">205</span></a>    <span class="n">srcreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mkxsubjreg-206"><a href="#mkxsubjreg-206"><span class="linenos">206</span></a>    <span class="n">targreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mkxsubjreg-207"><a href="#mkxsubjreg-207"><span class="linenos">207</span></a>    <span class="n">targsubj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mkxsubjreg-208"><a href="#mkxsubjreg-208"><span class="linenos">208</span></a>    <span class="n">xfm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mkxsubjreg-209"><a href="#mkxsubjreg-209"><span class="linenos">209</span></a>    <span class="n">sd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mkxsubjreg-210"><a href="#mkxsubjreg-210"><span class="linenos">210</span></a>    <span class="n">fvol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mkxsubjreg-211"><a href="#mkxsubjreg-211"><span class="linenos">211</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="mkxsubjreg-212"><a href="#mkxsubjreg-212"><span class="linenos">212</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="mkxsubjreg-213"><a href="#mkxsubjreg-213"><span class="linenos">213</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mkxsubjreg-214"><a href="#mkxsubjreg-214"><span class="linenos">214</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MkxsubjregOutputs</span><span class="p">:</span>
-</span><span id="mkxsubjreg-215"><a href="#mkxsubjreg-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mkxsubjreg-216"><a href="#mkxsubjreg-216"><span class="linenos">216</span></a><span class="sd">    Creates a new registration matrix that maps from the functional volume of the</span>
-</span><span id="mkxsubjreg-217"><a href="#mkxsubjreg-217"><span class="linenos">217</span></a><span class="sd">    source subject to the orig of the target subject through the talairach</span>
-</span><span id="mkxsubjreg-218"><a href="#mkxsubjreg-218"><span class="linenos">218</span></a><span class="sd">    transform.</span>
-</span><span id="mkxsubjreg-219"><a href="#mkxsubjreg-219"><span class="linenos">219</span></a><span class="sd">    </span>
-</span><span id="mkxsubjreg-220"><a href="#mkxsubjreg-220"><span class="linenos">220</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="mkxsubjreg-221"><a href="#mkxsubjreg-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="mkxsubjreg-222"><a href="#mkxsubjreg-222"><span class="linenos">222</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="mkxsubjreg-223"><a href="#mkxsubjreg-223"><span class="linenos">223</span></a><span class="sd">    </span>
-</span><span id="mkxsubjreg-224"><a href="#mkxsubjreg-224"><span class="linenos">224</span></a><span class="sd">    Args:</span>
-</span><span id="mkxsubjreg-225"><a href="#mkxsubjreg-225"><span class="linenos">225</span></a><span class="sd">        srcreg: Path to the source registration file (srcreg.dat).</span>
-</span><span id="mkxsubjreg-226"><a href="#mkxsubjreg-226"><span class="linenos">226</span></a><span class="sd">        targreg: Path to the target registration file (targreg.dat).</span>
-</span><span id="mkxsubjreg-227"><a href="#mkxsubjreg-227"><span class="linenos">227</span></a><span class="sd">        targsubj: Target subject ID; default is talairach.</span>
-</span><span id="mkxsubjreg-228"><a href="#mkxsubjreg-228"><span class="linenos">228</span></a><span class="sd">        xfm: XFM file name relative to transforms.</span>
-</span><span id="mkxsubjreg-229"><a href="#mkxsubjreg-229"><span class="linenos">229</span></a><span class="sd">        sd: Directory containing subject data; default is env SUBJECTS_DIR.</span>
-</span><span id="mkxsubjreg-230"><a href="#mkxsubjreg-230"><span class="linenos">230</span></a><span class="sd">        fvol: Path to example functional volume.</span>
-</span><span id="mkxsubjreg-231"><a href="#mkxsubjreg-231"><span class="linenos">231</span></a><span class="sd">        help_: Display help information.</span>
-</span><span id="mkxsubjreg-232"><a href="#mkxsubjreg-232"><span class="linenos">232</span></a><span class="sd">        version: Display version information.</span>
-</span><span id="mkxsubjreg-233"><a href="#mkxsubjreg-233"><span class="linenos">233</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mkxsubjreg-234"><a href="#mkxsubjreg-234"><span class="linenos">234</span></a><span class="sd">    Returns:</span>
-</span><span id="mkxsubjreg-235"><a href="#mkxsubjreg-235"><span class="linenos">235</span></a><span class="sd">        NamedTuple of outputs (described in `MkxsubjregOutputs`).</span>
-</span><span id="mkxsubjreg-236"><a href="#mkxsubjreg-236"><span class="linenos">236</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mkxsubjreg-237"><a href="#mkxsubjreg-237"><span class="linenos">237</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mkxsubjreg-238"><a href="#mkxsubjreg-238"><span class="linenos">238</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKXSUBJREG_METADATA</span><span class="p">)</span>
-</span><span id="mkxsubjreg-239"><a href="#mkxsubjreg-239"><span class="linenos">239</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mkxsubjreg_params</span><span class="p">(</span><span class="n">srcreg</span><span class="o">=</span><span class="n">srcreg</span><span class="p">,</span> <span class="n">targreg</span><span class="o">=</span><span class="n">targreg</span><span class="p">,</span> <span class="n">targsubj</span><span class="o">=</span><span class="n">targsubj</span><span class="p">,</span> <span class="n">xfm</span><span class="o">=</span><span class="n">xfm</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">fvol</span><span class="o">=</span><span class="n">fvol</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
-</span><span id="mkxsubjreg-240"><a href="#mkxsubjreg-240"><span class="linenos">240</span></a>    <span class="k">return</span> <span class="n">mkxsubjreg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="mkxsubjreg-205"><a href="#mkxsubjreg-205"><span class="linenos">205</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mkxsubjreg</span><span class="p">(</span>
+</span><span id="mkxsubjreg-206"><a href="#mkxsubjreg-206"><span class="linenos">206</span></a>    <span class="n">srcreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mkxsubjreg-207"><a href="#mkxsubjreg-207"><span class="linenos">207</span></a>    <span class="n">targreg</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mkxsubjreg-208"><a href="#mkxsubjreg-208"><span class="linenos">208</span></a>    <span class="n">targsubj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mkxsubjreg-209"><a href="#mkxsubjreg-209"><span class="linenos">209</span></a>    <span class="n">xfm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mkxsubjreg-210"><a href="#mkxsubjreg-210"><span class="linenos">210</span></a>    <span class="n">sd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mkxsubjreg-211"><a href="#mkxsubjreg-211"><span class="linenos">211</span></a>    <span class="n">fvol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mkxsubjreg-212"><a href="#mkxsubjreg-212"><span class="linenos">212</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="mkxsubjreg-213"><a href="#mkxsubjreg-213"><span class="linenos">213</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="mkxsubjreg-214"><a href="#mkxsubjreg-214"><span class="linenos">214</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mkxsubjreg-215"><a href="#mkxsubjreg-215"><span class="linenos">215</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MkxsubjregOutputs</span><span class="p">:</span>
+</span><span id="mkxsubjreg-216"><a href="#mkxsubjreg-216"><span class="linenos">216</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="mkxsubjreg-217"><a href="#mkxsubjreg-217"><span class="linenos">217</span></a><span class="sd">    Creates a new registration matrix that maps from the functional volume of the</span>
+</span><span id="mkxsubjreg-218"><a href="#mkxsubjreg-218"><span class="linenos">218</span></a><span class="sd">    source subject to the orig of the target subject through the talairach</span>
+</span><span id="mkxsubjreg-219"><a href="#mkxsubjreg-219"><span class="linenos">219</span></a><span class="sd">    transform.</span>
+</span><span id="mkxsubjreg-220"><a href="#mkxsubjreg-220"><span class="linenos">220</span></a><span class="sd">    </span>
+</span><span id="mkxsubjreg-221"><a href="#mkxsubjreg-221"><span class="linenos">221</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="mkxsubjreg-222"><a href="#mkxsubjreg-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="mkxsubjreg-223"><a href="#mkxsubjreg-223"><span class="linenos">223</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="mkxsubjreg-224"><a href="#mkxsubjreg-224"><span class="linenos">224</span></a><span class="sd">    </span>
+</span><span id="mkxsubjreg-225"><a href="#mkxsubjreg-225"><span class="linenos">225</span></a><span class="sd">    Args:</span>
+</span><span id="mkxsubjreg-226"><a href="#mkxsubjreg-226"><span class="linenos">226</span></a><span class="sd">        srcreg: Path to the source registration file (srcreg.dat).</span>
+</span><span id="mkxsubjreg-227"><a href="#mkxsubjreg-227"><span class="linenos">227</span></a><span class="sd">        targreg: Path to the target registration file (targreg.dat).</span>
+</span><span id="mkxsubjreg-228"><a href="#mkxsubjreg-228"><span class="linenos">228</span></a><span class="sd">        targsubj: Target subject ID; default is talairach.</span>
+</span><span id="mkxsubjreg-229"><a href="#mkxsubjreg-229"><span class="linenos">229</span></a><span class="sd">        xfm: XFM file name relative to transforms.</span>
+</span><span id="mkxsubjreg-230"><a href="#mkxsubjreg-230"><span class="linenos">230</span></a><span class="sd">        sd: Directory containing subject data; default is env SUBJECTS_DIR.</span>
+</span><span id="mkxsubjreg-231"><a href="#mkxsubjreg-231"><span class="linenos">231</span></a><span class="sd">        fvol: Path to example functional volume.</span>
+</span><span id="mkxsubjreg-232"><a href="#mkxsubjreg-232"><span class="linenos">232</span></a><span class="sd">        help_: Display help information.</span>
+</span><span id="mkxsubjreg-233"><a href="#mkxsubjreg-233"><span class="linenos">233</span></a><span class="sd">        version: Display version information.</span>
+</span><span id="mkxsubjreg-234"><a href="#mkxsubjreg-234"><span class="linenos">234</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mkxsubjreg-235"><a href="#mkxsubjreg-235"><span class="linenos">235</span></a><span class="sd">    Returns:</span>
+</span><span id="mkxsubjreg-236"><a href="#mkxsubjreg-236"><span class="linenos">236</span></a><span class="sd">        NamedTuple of outputs (described in `MkxsubjregOutputs`).</span>
+</span><span id="mkxsubjreg-237"><a href="#mkxsubjreg-237"><span class="linenos">237</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mkxsubjreg-238"><a href="#mkxsubjreg-238"><span class="linenos">238</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mkxsubjreg-239"><a href="#mkxsubjreg-239"><span class="linenos">239</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKXSUBJREG_METADATA</span><span class="p">)</span>
+</span><span id="mkxsubjreg-240"><a href="#mkxsubjreg-240"><span class="linenos">240</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mkxsubjreg_params</span><span class="p">(</span><span class="n">srcreg</span><span class="o">=</span><span class="n">srcreg</span><span class="p">,</span> <span class="n">targreg</span><span class="o">=</span><span class="n">targreg</span><span class="p">,</span> <span class="n">targsubj</span><span class="o">=</span><span class="n">targsubj</span><span class="p">,</span> <span class="n">xfm</span><span class="o">=</span><span class="n">xfm</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span> <span class="n">fvol</span><span class="o">=</span><span class="n">fvol</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+</span><span id="mkxsubjreg-241"><a href="#mkxsubjreg-241"><span class="linenos">241</span></a>    <span class="k">return</span> <span class="n">mkxsubjreg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

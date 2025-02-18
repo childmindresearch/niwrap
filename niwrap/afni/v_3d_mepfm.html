@@ -309,53 +309,54 @@
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v_3d_mepfm_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v_3d_mepfm_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_mepfm</span><span class="p">(</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">input_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">dbg_args</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">hrf_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dMepfmOutputs</span><span class="p">:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    Voxelwise deconvolution of Multiecho fMRI data to yield time-varying estimates</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    of changes in transverse relaxation (DR2*) and optionally, net magnetization</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    (DS0).</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    </span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Args:</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        input_files: Dataset to analyze with Multiecho Paradigm Free Mapping,\</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            along with the echo time.</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        dbg_args: Enable R to save the parameters in .3dMEPFM.dbg.AFNI.args in\</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">            the current directory.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        mask: Process voxels inside this mask only. Default is no masking.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        hrf_model: Haemodynamic response function used for deconvolution.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        verbosity: Verbosity level. 0 for quiet, 1 (default) or more:\</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            talkative.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    Returns:</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        NamedTuple of outputs (described in `V3dMepfmOutputs`).</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_MEPFM_METADATA</span><span class="p">)</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_mepfm_params</span><span class="p">(</span><span class="n">input_files</span><span class="o">=</span><span class="n">input_files</span><span class="p">,</span> <span class="n">dbg_args</span><span class="o">=</span><span class="n">dbg_args</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">hrf_model</span><span class="o">=</span><span class="n">hrf_model</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="k">return</span> <span class="n">v_3d_mepfm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_mepfm</span><span class="p">(</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">input_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">dbg_args</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">hrf_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dMepfmOutputs</span><span class="p">:</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Voxelwise deconvolution of Multiecho fMRI data to yield time-varying estimates</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    of changes in transverse relaxation (DR2*) and optionally, net magnetization</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    (DS0).</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    </span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Args:</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        input_files: Dataset to analyze with Multiecho Paradigm Free Mapping,\</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            along with the echo time.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        dbg_args: Enable R to save the parameters in .3dMEPFM.dbg.AFNI.args in\</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">            the current directory.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        mask: Process voxels inside this mask only. Default is no masking.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        hrf_model: Haemodynamic response function used for deconvolution.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        verbosity: Verbosity level. 0 for quiet, 1 (default) or more:\</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            talkative.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    Returns:</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        NamedTuple of outputs (described in `V3dMepfmOutputs`).</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_MEPFM_METADATA</span><span class="p">)</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_mepfm_params</span><span class="p">(</span><span class="n">input_files</span><span class="o">=</span><span class="n">input_files</span><span class="p">,</span> <span class="n">dbg_args</span><span class="o">=</span><span class="n">dbg_args</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">hrf_model</span><span class="o">=</span><span class="n">hrf_model</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">v_3d_mepfm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;V3dMepfmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;V3dMepfmParameters&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;V_3D_MEPFM_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;v_3d_mepfm&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;v_3d_mepfm_params&quot;</span><span class="p">,</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="p">]</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;V3dMepfmOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;V3dMepfmParameters&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;V_3D_MEPFM_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;v_3d_mepfm&quot;</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;v_3d_mepfm_params&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -600,40 +601,40 @@ to selection criterion</p>
 
     </div>
     <a class="headerlink" href="#v_3d_mepfm"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_mepfm-206"><a href="#v_3d_mepfm-206"><span class="linenos">206</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_mepfm</span><span class="p">(</span>
-</span><span id="v_3d_mepfm-207"><a href="#v_3d_mepfm-207"><span class="linenos">207</span></a>    <span class="n">input_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="v_3d_mepfm-208"><a href="#v_3d_mepfm-208"><span class="linenos">208</span></a>    <span class="n">dbg_args</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_mepfm-209"><a href="#v_3d_mepfm-209"><span class="linenos">209</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_mepfm-210"><a href="#v_3d_mepfm-210"><span class="linenos">210</span></a>    <span class="n">hrf_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_mepfm-211"><a href="#v_3d_mepfm-211"><span class="linenos">211</span></a>    <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_mepfm-212"><a href="#v_3d_mepfm-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_mepfm-213"><a href="#v_3d_mepfm-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dMepfmOutputs</span><span class="p">:</span>
-</span><span id="v_3d_mepfm-214"><a href="#v_3d_mepfm-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v_3d_mepfm-215"><a href="#v_3d_mepfm-215"><span class="linenos">215</span></a><span class="sd">    Voxelwise deconvolution of Multiecho fMRI data to yield time-varying estimates</span>
-</span><span id="v_3d_mepfm-216"><a href="#v_3d_mepfm-216"><span class="linenos">216</span></a><span class="sd">    of changes in transverse relaxation (DR2*) and optionally, net magnetization</span>
-</span><span id="v_3d_mepfm-217"><a href="#v_3d_mepfm-217"><span class="linenos">217</span></a><span class="sd">    (DS0).</span>
-</span><span id="v_3d_mepfm-218"><a href="#v_3d_mepfm-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="v_3d_mepfm-219"><a href="#v_3d_mepfm-219"><span class="linenos">219</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="v_3d_mepfm-220"><a href="#v_3d_mepfm-220"><span class="linenos">220</span></a><span class="sd">    </span>
-</span><span id="v_3d_mepfm-221"><a href="#v_3d_mepfm-221"><span class="linenos">221</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="v_3d_mepfm-222"><a href="#v_3d_mepfm-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="v_3d_mepfm-223"><a href="#v_3d_mepfm-223"><span class="linenos">223</span></a><span class="sd">    Args:</span>
-</span><span id="v_3d_mepfm-224"><a href="#v_3d_mepfm-224"><span class="linenos">224</span></a><span class="sd">        input_files: Dataset to analyze with Multiecho Paradigm Free Mapping,\</span>
-</span><span id="v_3d_mepfm-225"><a href="#v_3d_mepfm-225"><span class="linenos">225</span></a><span class="sd">            along with the echo time.</span>
-</span><span id="v_3d_mepfm-226"><a href="#v_3d_mepfm-226"><span class="linenos">226</span></a><span class="sd">        dbg_args: Enable R to save the parameters in .3dMEPFM.dbg.AFNI.args in\</span>
-</span><span id="v_3d_mepfm-227"><a href="#v_3d_mepfm-227"><span class="linenos">227</span></a><span class="sd">            the current directory.</span>
-</span><span id="v_3d_mepfm-228"><a href="#v_3d_mepfm-228"><span class="linenos">228</span></a><span class="sd">        mask: Process voxels inside this mask only. Default is no masking.</span>
-</span><span id="v_3d_mepfm-229"><a href="#v_3d_mepfm-229"><span class="linenos">229</span></a><span class="sd">        hrf_model: Haemodynamic response function used for deconvolution.</span>
-</span><span id="v_3d_mepfm-230"><a href="#v_3d_mepfm-230"><span class="linenos">230</span></a><span class="sd">        verbosity: Verbosity level. 0 for quiet, 1 (default) or more:\</span>
-</span><span id="v_3d_mepfm-231"><a href="#v_3d_mepfm-231"><span class="linenos">231</span></a><span class="sd">            talkative.</span>
-</span><span id="v_3d_mepfm-232"><a href="#v_3d_mepfm-232"><span class="linenos">232</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v_3d_mepfm-233"><a href="#v_3d_mepfm-233"><span class="linenos">233</span></a><span class="sd">    Returns:</span>
-</span><span id="v_3d_mepfm-234"><a href="#v_3d_mepfm-234"><span class="linenos">234</span></a><span class="sd">        NamedTuple of outputs (described in `V3dMepfmOutputs`).</span>
-</span><span id="v_3d_mepfm-235"><a href="#v_3d_mepfm-235"><span class="linenos">235</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v_3d_mepfm-236"><a href="#v_3d_mepfm-236"><span class="linenos">236</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v_3d_mepfm-237"><a href="#v_3d_mepfm-237"><span class="linenos">237</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_MEPFM_METADATA</span><span class="p">)</span>
-</span><span id="v_3d_mepfm-238"><a href="#v_3d_mepfm-238"><span class="linenos">238</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_mepfm_params</span><span class="p">(</span><span class="n">input_files</span><span class="o">=</span><span class="n">input_files</span><span class="p">,</span> <span class="n">dbg_args</span><span class="o">=</span><span class="n">dbg_args</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">hrf_model</span><span class="o">=</span><span class="n">hrf_model</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span>
-</span><span id="v_3d_mepfm-239"><a href="#v_3d_mepfm-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">v_3d_mepfm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_mepfm-207"><a href="#v_3d_mepfm-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_mepfm</span><span class="p">(</span>
+</span><span id="v_3d_mepfm-208"><a href="#v_3d_mepfm-208"><span class="linenos">208</span></a>    <span class="n">input_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="v_3d_mepfm-209"><a href="#v_3d_mepfm-209"><span class="linenos">209</span></a>    <span class="n">dbg_args</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_mepfm-210"><a href="#v_3d_mepfm-210"><span class="linenos">210</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_mepfm-211"><a href="#v_3d_mepfm-211"><span class="linenos">211</span></a>    <span class="n">hrf_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_mepfm-212"><a href="#v_3d_mepfm-212"><span class="linenos">212</span></a>    <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_mepfm-213"><a href="#v_3d_mepfm-213"><span class="linenos">213</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_mepfm-214"><a href="#v_3d_mepfm-214"><span class="linenos">214</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dMepfmOutputs</span><span class="p">:</span>
+</span><span id="v_3d_mepfm-215"><a href="#v_3d_mepfm-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v_3d_mepfm-216"><a href="#v_3d_mepfm-216"><span class="linenos">216</span></a><span class="sd">    Voxelwise deconvolution of Multiecho fMRI data to yield time-varying estimates</span>
+</span><span id="v_3d_mepfm-217"><a href="#v_3d_mepfm-217"><span class="linenos">217</span></a><span class="sd">    of changes in transverse relaxation (DR2*) and optionally, net magnetization</span>
+</span><span id="v_3d_mepfm-218"><a href="#v_3d_mepfm-218"><span class="linenos">218</span></a><span class="sd">    (DS0).</span>
+</span><span id="v_3d_mepfm-219"><a href="#v_3d_mepfm-219"><span class="linenos">219</span></a><span class="sd">    </span>
+</span><span id="v_3d_mepfm-220"><a href="#v_3d_mepfm-220"><span class="linenos">220</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="v_3d_mepfm-221"><a href="#v_3d_mepfm-221"><span class="linenos">221</span></a><span class="sd">    </span>
+</span><span id="v_3d_mepfm-222"><a href="#v_3d_mepfm-222"><span class="linenos">222</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v_3d_mepfm-223"><a href="#v_3d_mepfm-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="v_3d_mepfm-224"><a href="#v_3d_mepfm-224"><span class="linenos">224</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_mepfm-225"><a href="#v_3d_mepfm-225"><span class="linenos">225</span></a><span class="sd">        input_files: Dataset to analyze with Multiecho Paradigm Free Mapping,\</span>
+</span><span id="v_3d_mepfm-226"><a href="#v_3d_mepfm-226"><span class="linenos">226</span></a><span class="sd">            along with the echo time.</span>
+</span><span id="v_3d_mepfm-227"><a href="#v_3d_mepfm-227"><span class="linenos">227</span></a><span class="sd">        dbg_args: Enable R to save the parameters in .3dMEPFM.dbg.AFNI.args in\</span>
+</span><span id="v_3d_mepfm-228"><a href="#v_3d_mepfm-228"><span class="linenos">228</span></a><span class="sd">            the current directory.</span>
+</span><span id="v_3d_mepfm-229"><a href="#v_3d_mepfm-229"><span class="linenos">229</span></a><span class="sd">        mask: Process voxels inside this mask only. Default is no masking.</span>
+</span><span id="v_3d_mepfm-230"><a href="#v_3d_mepfm-230"><span class="linenos">230</span></a><span class="sd">        hrf_model: Haemodynamic response function used for deconvolution.</span>
+</span><span id="v_3d_mepfm-231"><a href="#v_3d_mepfm-231"><span class="linenos">231</span></a><span class="sd">        verbosity: Verbosity level. 0 for quiet, 1 (default) or more:\</span>
+</span><span id="v_3d_mepfm-232"><a href="#v_3d_mepfm-232"><span class="linenos">232</span></a><span class="sd">            talkative.</span>
+</span><span id="v_3d_mepfm-233"><a href="#v_3d_mepfm-233"><span class="linenos">233</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v_3d_mepfm-234"><a href="#v_3d_mepfm-234"><span class="linenos">234</span></a><span class="sd">    Returns:</span>
+</span><span id="v_3d_mepfm-235"><a href="#v_3d_mepfm-235"><span class="linenos">235</span></a><span class="sd">        NamedTuple of outputs (described in `V3dMepfmOutputs`).</span>
+</span><span id="v_3d_mepfm-236"><a href="#v_3d_mepfm-236"><span class="linenos">236</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v_3d_mepfm-237"><a href="#v_3d_mepfm-237"><span class="linenos">237</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v_3d_mepfm-238"><a href="#v_3d_mepfm-238"><span class="linenos">238</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_MEPFM_METADATA</span><span class="p">)</span>
+</span><span id="v_3d_mepfm-239"><a href="#v_3d_mepfm-239"><span class="linenos">239</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_mepfm_params</span><span class="p">(</span><span class="n">input_files</span><span class="o">=</span><span class="n">input_files</span><span class="p">,</span> <span class="n">dbg_args</span><span class="o">=</span><span class="n">dbg_args</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">hrf_model</span><span class="o">=</span><span class="n">hrf_model</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span>
+</span><span id="v_3d_mepfm-240"><a href="#v_3d_mepfm-240"><span class="linenos">240</span></a>    <span class="k">return</span> <span class="n">v_3d_mepfm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

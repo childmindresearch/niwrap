@@ -551,71 +551,72 @@
 </span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">convert_affine_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">convert_affine_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_affine</span><span class="p">(</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="n">from_world</span><span class="p">:</span> <span class="n">ConvertAffineFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="n">from_flirt</span><span class="p">:</span> <span class="n">ConvertAffineFromFlirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="n">to_world</span><span class="p">:</span> <span class="n">ConvertAffineToWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ConvertAffineToFlirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertAffineOutputs</span><span class="p">:</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="sd">    Convert an affine file between conventions.</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">    </span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    NIFTI world matrices can be used directly on mm coordinates via matrix</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    multiplication, they use the NIFTI coordinate system, that is, positive X is</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    right, positive Y is anterior, and positive Z is superior. Note that</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">    wb_command assumes that world matrices transform source coordinates to</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">    target coordinates, while other tools may use affines that transform target</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">    coordinates to source coordinates.</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">    </span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">    The ITK format is used by ANTS.</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">    </span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    You must specify exactly one -from option, but you may specify multiple -to</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    options, and -to-flirt may be specified more than once.</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    </span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">    </span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">    </span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">    Args:</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="sd">            affine.</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">    Returns:</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">convert_affine_params</span><span class="p">(</span><span class="n">from_world</span><span class="o">=</span><span class="n">from_world</span><span class="p">,</span> <span class="n">opt_from_itk_input</span><span class="o">=</span><span class="n">opt_from_itk_input</span><span class="p">,</span> <span class="n">from_flirt</span><span class="o">=</span><span class="n">from_flirt</span><span class="p">,</span> <span class="n">to_world</span><span class="o">=</span><span class="n">to_world</span><span class="p">,</span> <span class="n">opt_to_itk_output</span><span class="o">=</span><span class="n">opt_to_itk_output</span><span class="p">,</span> <span class="n">to_flirt</span><span class="o">=</span><span class="n">to_flirt</span><span class="p">)</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="k">return</span> <span class="n">convert_affine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_affine</span><span class="p">(</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="n">from_world</span><span class="p">:</span> <span class="n">ConvertAffineFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="n">from_flirt</span><span class="p">:</span> <span class="n">ConvertAffineFromFlirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="n">to_world</span><span class="p">:</span> <span class="n">ConvertAffineToWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ConvertAffineToFlirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertAffineOutputs</span><span class="p">:</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="sd">    Convert an affine file between conventions.</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="sd">    </span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="sd">    NIFTI world matrices can be used directly on mm coordinates via matrix</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="sd">    multiplication, they use the NIFTI coordinate system, that is, positive X is</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="sd">    right, positive Y is anterior, and positive Z is superior. Note that</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="sd">    wb_command assumes that world matrices transform source coordinates to</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="sd">    target coordinates, while other tools may use affines that transform target</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="sd">    coordinates to source coordinates.</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="sd">    </span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="sd">    The ITK format is used by ANTS.</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    </span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    You must specify exactly one -from option, but you may specify multiple -to</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    options, and -to-flirt may be specified more than once.</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">    </span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">    </span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">    </span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">    Args:</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">            affine.</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">    Returns:</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">convert_affine_params</span><span class="p">(</span><span class="n">from_world</span><span class="o">=</span><span class="n">from_world</span><span class="p">,</span> <span class="n">opt_from_itk_input</span><span class="o">=</span><span class="n">opt_from_itk_input</span><span class="p">,</span> <span class="n">from_flirt</span><span class="o">=</span><span class="n">from_flirt</span><span class="p">,</span> <span class="n">to_world</span><span class="o">=</span><span class="n">to_world</span><span class="p">,</span> <span class="n">opt_to_itk_output</span><span class="o">=</span><span class="n">opt_to_itk_output</span><span class="p">,</span> <span class="n">to_flirt</span><span class="o">=</span><span class="n">to_flirt</span><span class="p">)</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="k">return</span> <span class="n">convert_affine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;CONVERT_AFFINE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;ConvertAffineFromFlirtParameters&quot;</span><span class="p">,</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;ConvertAffineFromWorldParameters&quot;</span><span class="p">,</span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;ConvertAffineOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;ConvertAffineParameters&quot;</span><span class="p">,</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;ConvertAffineToFlirtParameters&quot;</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;ConvertAffineToWorldParameters&quot;</span><span class="p">,</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;convert_affine&quot;</span><span class="p">,</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;convert_affine_from_flirt_params&quot;</span><span class="p">,</span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="s2">&quot;convert_affine_from_world_params&quot;</span><span class="p">,</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;convert_affine_params&quot;</span><span class="p">,</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="s2">&quot;convert_affine_to_flirt_params&quot;</span><span class="p">,</span>
-</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;convert_affine_to_world_params&quot;</span><span class="p">,</span>
-</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a><span class="p">]</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;CONVERT_AFFINE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;ConvertAffineFromFlirtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;ConvertAffineFromWorldParameters&quot;</span><span class="p">,</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;ConvertAffineOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;ConvertAffineParameters&quot;</span><span class="p">,</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;ConvertAffineToFlirtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;ConvertAffineToWorldParameters&quot;</span><span class="p">,</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;convert_affine&quot;</span><span class="p">,</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="s2">&quot;convert_affine_from_flirt_params&quot;</span><span class="p">,</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;convert_affine_from_world_params&quot;</span><span class="p">,</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="s2">&quot;convert_affine_params&quot;</span><span class="p">,</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;convert_affine_to_flirt_params&quot;</span><span class="p">,</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;convert_affine_to_world_params&quot;</span><span class="p">,</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -937,50 +938,50 @@
 
     </div>
     <a class="headerlink" href="#convert_affine"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_affine-397"><a href="#convert_affine-397"><span class="linenos">397</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_affine</span><span class="p">(</span>
-</span><span id="convert_affine-398"><a href="#convert_affine-398"><span class="linenos">398</span></a>    <span class="n">from_world</span><span class="p">:</span> <span class="n">ConvertAffineFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_affine-399"><a href="#convert_affine-399"><span class="linenos">399</span></a>    <span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_affine-400"><a href="#convert_affine-400"><span class="linenos">400</span></a>    <span class="n">from_flirt</span><span class="p">:</span> <span class="n">ConvertAffineFromFlirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_affine-401"><a href="#convert_affine-401"><span class="linenos">401</span></a>    <span class="n">to_world</span><span class="p">:</span> <span class="n">ConvertAffineToWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_affine-402"><a href="#convert_affine-402"><span class="linenos">402</span></a>    <span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_affine-403"><a href="#convert_affine-403"><span class="linenos">403</span></a>    <span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ConvertAffineToFlirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_affine-404"><a href="#convert_affine-404"><span class="linenos">404</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_affine-405"><a href="#convert_affine-405"><span class="linenos">405</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertAffineOutputs</span><span class="p">:</span>
-</span><span id="convert_affine-406"><a href="#convert_affine-406"><span class="linenos">406</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="convert_affine-407"><a href="#convert_affine-407"><span class="linenos">407</span></a><span class="sd">    Convert an affine file between conventions.</span>
-</span><span id="convert_affine-408"><a href="#convert_affine-408"><span class="linenos">408</span></a><span class="sd">    </span>
-</span><span id="convert_affine-409"><a href="#convert_affine-409"><span class="linenos">409</span></a><span class="sd">    NIFTI world matrices can be used directly on mm coordinates via matrix</span>
-</span><span id="convert_affine-410"><a href="#convert_affine-410"><span class="linenos">410</span></a><span class="sd">    multiplication, they use the NIFTI coordinate system, that is, positive X is</span>
-</span><span id="convert_affine-411"><a href="#convert_affine-411"><span class="linenos">411</span></a><span class="sd">    right, positive Y is anterior, and positive Z is superior. Note that</span>
-</span><span id="convert_affine-412"><a href="#convert_affine-412"><span class="linenos">412</span></a><span class="sd">    wb_command assumes that world matrices transform source coordinates to</span>
-</span><span id="convert_affine-413"><a href="#convert_affine-413"><span class="linenos">413</span></a><span class="sd">    target coordinates, while other tools may use affines that transform target</span>
-</span><span id="convert_affine-414"><a href="#convert_affine-414"><span class="linenos">414</span></a><span class="sd">    coordinates to source coordinates.</span>
-</span><span id="convert_affine-415"><a href="#convert_affine-415"><span class="linenos">415</span></a><span class="sd">    </span>
-</span><span id="convert_affine-416"><a href="#convert_affine-416"><span class="linenos">416</span></a><span class="sd">    The ITK format is used by ANTS.</span>
-</span><span id="convert_affine-417"><a href="#convert_affine-417"><span class="linenos">417</span></a><span class="sd">    </span>
-</span><span id="convert_affine-418"><a href="#convert_affine-418"><span class="linenos">418</span></a><span class="sd">    You must specify exactly one -from option, but you may specify multiple -to</span>
-</span><span id="convert_affine-419"><a href="#convert_affine-419"><span class="linenos">419</span></a><span class="sd">    options, and -to-flirt may be specified more than once.</span>
-</span><span id="convert_affine-420"><a href="#convert_affine-420"><span class="linenos">420</span></a><span class="sd">    </span>
-</span><span id="convert_affine-421"><a href="#convert_affine-421"><span class="linenos">421</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="convert_affine-422"><a href="#convert_affine-422"><span class="linenos">422</span></a><span class="sd">    </span>
-</span><span id="convert_affine-423"><a href="#convert_affine-423"><span class="linenos">423</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="convert_affine-424"><a href="#convert_affine-424"><span class="linenos">424</span></a><span class="sd">    </span>
-</span><span id="convert_affine-425"><a href="#convert_affine-425"><span class="linenos">425</span></a><span class="sd">    Args:</span>
-</span><span id="convert_affine-426"><a href="#convert_affine-426"><span class="linenos">426</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
-</span><span id="convert_affine-427"><a href="#convert_affine-427"><span class="linenos">427</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
-</span><span id="convert_affine-428"><a href="#convert_affine-428"><span class="linenos">428</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
-</span><span id="convert_affine-429"><a href="#convert_affine-429"><span class="linenos">429</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
-</span><span id="convert_affine-430"><a href="#convert_affine-430"><span class="linenos">430</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
-</span><span id="convert_affine-431"><a href="#convert_affine-431"><span class="linenos">431</span></a><span class="sd">            affine.</span>
-</span><span id="convert_affine-432"><a href="#convert_affine-432"><span class="linenos">432</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
-</span><span id="convert_affine-433"><a href="#convert_affine-433"><span class="linenos">433</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="convert_affine-434"><a href="#convert_affine-434"><span class="linenos">434</span></a><span class="sd">    Returns:</span>
-</span><span id="convert_affine-435"><a href="#convert_affine-435"><span class="linenos">435</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
-</span><span id="convert_affine-436"><a href="#convert_affine-436"><span class="linenos">436</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="convert_affine-437"><a href="#convert_affine-437"><span class="linenos">437</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="convert_affine-438"><a href="#convert_affine-438"><span class="linenos">438</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
-</span><span id="convert_affine-439"><a href="#convert_affine-439"><span class="linenos">439</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">convert_affine_params</span><span class="p">(</span><span class="n">from_world</span><span class="o">=</span><span class="n">from_world</span><span class="p">,</span> <span class="n">opt_from_itk_input</span><span class="o">=</span><span class="n">opt_from_itk_input</span><span class="p">,</span> <span class="n">from_flirt</span><span class="o">=</span><span class="n">from_flirt</span><span class="p">,</span> <span class="n">to_world</span><span class="o">=</span><span class="n">to_world</span><span class="p">,</span> <span class="n">opt_to_itk_output</span><span class="o">=</span><span class="n">opt_to_itk_output</span><span class="p">,</span> <span class="n">to_flirt</span><span class="o">=</span><span class="n">to_flirt</span><span class="p">)</span>
-</span><span id="convert_affine-440"><a href="#convert_affine-440"><span class="linenos">440</span></a>    <span class="k">return</span> <span class="n">convert_affine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_affine-398"><a href="#convert_affine-398"><span class="linenos">398</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_affine</span><span class="p">(</span>
+</span><span id="convert_affine-399"><a href="#convert_affine-399"><span class="linenos">399</span></a>    <span class="n">from_world</span><span class="p">:</span> <span class="n">ConvertAffineFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_affine-400"><a href="#convert_affine-400"><span class="linenos">400</span></a>    <span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_affine-401"><a href="#convert_affine-401"><span class="linenos">401</span></a>    <span class="n">from_flirt</span><span class="p">:</span> <span class="n">ConvertAffineFromFlirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_affine-402"><a href="#convert_affine-402"><span class="linenos">402</span></a>    <span class="n">to_world</span><span class="p">:</span> <span class="n">ConvertAffineToWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_affine-403"><a href="#convert_affine-403"><span class="linenos">403</span></a>    <span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_affine-404"><a href="#convert_affine-404"><span class="linenos">404</span></a>    <span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ConvertAffineToFlirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_affine-405"><a href="#convert_affine-405"><span class="linenos">405</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_affine-406"><a href="#convert_affine-406"><span class="linenos">406</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertAffineOutputs</span><span class="p">:</span>
+</span><span id="convert_affine-407"><a href="#convert_affine-407"><span class="linenos">407</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="convert_affine-408"><a href="#convert_affine-408"><span class="linenos">408</span></a><span class="sd">    Convert an affine file between conventions.</span>
+</span><span id="convert_affine-409"><a href="#convert_affine-409"><span class="linenos">409</span></a><span class="sd">    </span>
+</span><span id="convert_affine-410"><a href="#convert_affine-410"><span class="linenos">410</span></a><span class="sd">    NIFTI world matrices can be used directly on mm coordinates via matrix</span>
+</span><span id="convert_affine-411"><a href="#convert_affine-411"><span class="linenos">411</span></a><span class="sd">    multiplication, they use the NIFTI coordinate system, that is, positive X is</span>
+</span><span id="convert_affine-412"><a href="#convert_affine-412"><span class="linenos">412</span></a><span class="sd">    right, positive Y is anterior, and positive Z is superior. Note that</span>
+</span><span id="convert_affine-413"><a href="#convert_affine-413"><span class="linenos">413</span></a><span class="sd">    wb_command assumes that world matrices transform source coordinates to</span>
+</span><span id="convert_affine-414"><a href="#convert_affine-414"><span class="linenos">414</span></a><span class="sd">    target coordinates, while other tools may use affines that transform target</span>
+</span><span id="convert_affine-415"><a href="#convert_affine-415"><span class="linenos">415</span></a><span class="sd">    coordinates to source coordinates.</span>
+</span><span id="convert_affine-416"><a href="#convert_affine-416"><span class="linenos">416</span></a><span class="sd">    </span>
+</span><span id="convert_affine-417"><a href="#convert_affine-417"><span class="linenos">417</span></a><span class="sd">    The ITK format is used by ANTS.</span>
+</span><span id="convert_affine-418"><a href="#convert_affine-418"><span class="linenos">418</span></a><span class="sd">    </span>
+</span><span id="convert_affine-419"><a href="#convert_affine-419"><span class="linenos">419</span></a><span class="sd">    You must specify exactly one -from option, but you may specify multiple -to</span>
+</span><span id="convert_affine-420"><a href="#convert_affine-420"><span class="linenos">420</span></a><span class="sd">    options, and -to-flirt may be specified more than once.</span>
+</span><span id="convert_affine-421"><a href="#convert_affine-421"><span class="linenos">421</span></a><span class="sd">    </span>
+</span><span id="convert_affine-422"><a href="#convert_affine-422"><span class="linenos">422</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="convert_affine-423"><a href="#convert_affine-423"><span class="linenos">423</span></a><span class="sd">    </span>
+</span><span id="convert_affine-424"><a href="#convert_affine-424"><span class="linenos">424</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="convert_affine-425"><a href="#convert_affine-425"><span class="linenos">425</span></a><span class="sd">    </span>
+</span><span id="convert_affine-426"><a href="#convert_affine-426"><span class="linenos">426</span></a><span class="sd">    Args:</span>
+</span><span id="convert_affine-427"><a href="#convert_affine-427"><span class="linenos">427</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
+</span><span id="convert_affine-428"><a href="#convert_affine-428"><span class="linenos">428</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
+</span><span id="convert_affine-429"><a href="#convert_affine-429"><span class="linenos">429</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
+</span><span id="convert_affine-430"><a href="#convert_affine-430"><span class="linenos">430</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
+</span><span id="convert_affine-431"><a href="#convert_affine-431"><span class="linenos">431</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
+</span><span id="convert_affine-432"><a href="#convert_affine-432"><span class="linenos">432</span></a><span class="sd">            affine.</span>
+</span><span id="convert_affine-433"><a href="#convert_affine-433"><span class="linenos">433</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
+</span><span id="convert_affine-434"><a href="#convert_affine-434"><span class="linenos">434</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="convert_affine-435"><a href="#convert_affine-435"><span class="linenos">435</span></a><span class="sd">    Returns:</span>
+</span><span id="convert_affine-436"><a href="#convert_affine-436"><span class="linenos">436</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
+</span><span id="convert_affine-437"><a href="#convert_affine-437"><span class="linenos">437</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="convert_affine-438"><a href="#convert_affine-438"><span class="linenos">438</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="convert_affine-439"><a href="#convert_affine-439"><span class="linenos">439</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
+</span><span id="convert_affine-440"><a href="#convert_affine-440"><span class="linenos">440</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">convert_affine_params</span><span class="p">(</span><span class="n">from_world</span><span class="o">=</span><span class="n">from_world</span><span class="p">,</span> <span class="n">opt_from_itk_input</span><span class="o">=</span><span class="n">opt_from_itk_input</span><span class="p">,</span> <span class="n">from_flirt</span><span class="o">=</span><span class="n">from_flirt</span><span class="p">,</span> <span class="n">to_world</span><span class="o">=</span><span class="n">to_world</span><span class="p">,</span> <span class="n">opt_to_itk_output</span><span class="o">=</span><span class="n">opt_to_itk_output</span><span class="p">,</span> <span class="n">to_flirt</span><span class="o">=</span><span class="n">to_flirt</span><span class="p">)</span>
+</span><span id="convert_affine-441"><a href="#convert_affine-441"><span class="linenos">441</span></a>    <span class="k">return</span> <span class="n">convert_affine_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

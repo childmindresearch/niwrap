@@ -318,56 +318,57 @@
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">metric_estimate_fwhm_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">metric_estimate_fwhm_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_estimate_fwhm</span><span class="p">(</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">opt_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">MetricEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricEstimateFwhmOutputs</span><span class="p">:</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    Estimate fwhm smoothness of a metric file.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    </span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    Estimates the smoothness of the metric columns, printing the estimates to</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    standard output. These estimates ignore variation in vertex spacing.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    </span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    </span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    </span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    Args:</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        surface: the surface to use for distance and neighbor information.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        metric_in: the input metric.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        opt_roi_roi_metric: use only data within an ROI: the metric file to use\</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">            as an ROI.</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        opt_column_column: select a single column to estimate smoothness of:\</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">            the column number or name.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each column\</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">            separately.</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    Returns:</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">        NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_estimate_fwhm_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">opt_roi_roi_metric</span><span class="o">=</span><span class="n">opt_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="k">return</span> <span class="n">metric_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_estimate_fwhm</span><span class="p">(</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">opt_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">MetricEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricEstimateFwhmOutputs</span><span class="p">:</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    Estimate fwhm smoothness of a metric file.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    </span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    Estimates the smoothness of the metric columns, printing the estimates to</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    standard output. These estimates ignore variation in vertex spacing.</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    </span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    </span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    </span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    Args:</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        surface: the surface to use for distance and neighbor information.</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        metric_in: the input metric.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        opt_roi_roi_metric: use only data within an ROI: the metric file to use\</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">            as an ROI.</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        opt_column_column: select a single column to estimate smoothness of:\</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">            the column number or name.</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each column\</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">            separately.</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    Returns:</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">        NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_estimate_fwhm_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">opt_roi_roi_metric</span><span class="o">=</span><span class="n">opt_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">return</span> <span class="n">metric_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;METRIC_ESTIMATE_FWHM_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;MetricEstimateFwhmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;MetricEstimateFwhmParameters&quot;</span><span class="p">,</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;MetricEstimateFwhmWholeFileParameters&quot;</span><span class="p">,</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;metric_estimate_fwhm&quot;</span><span class="p">,</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;metric_estimate_fwhm_params&quot;</span><span class="p">,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="s2">&quot;metric_estimate_fwhm_whole_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="p">]</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;METRIC_ESTIMATE_FWHM_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;MetricEstimateFwhmOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;MetricEstimateFwhmParameters&quot;</span><span class="p">,</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;MetricEstimateFwhmWholeFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;metric_estimate_fwhm&quot;</span><span class="p">,</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="s2">&quot;metric_estimate_fwhm_params&quot;</span><span class="p">,</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="s2">&quot;metric_estimate_fwhm_whole_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -540,41 +541,41 @@
 
     </div>
     <a class="headerlink" href="#metric_estimate_fwhm"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="metric_estimate_fwhm-221"><a href="#metric_estimate_fwhm-221"><span class="linenos">221</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_estimate_fwhm</span><span class="p">(</span>
-</span><span id="metric_estimate_fwhm-222"><a href="#metric_estimate_fwhm-222"><span class="linenos">222</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="metric_estimate_fwhm-223"><a href="#metric_estimate_fwhm-223"><span class="linenos">223</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="metric_estimate_fwhm-224"><a href="#metric_estimate_fwhm-224"><span class="linenos">224</span></a>    <span class="n">opt_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_estimate_fwhm-225"><a href="#metric_estimate_fwhm-225"><span class="linenos">225</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_estimate_fwhm-226"><a href="#metric_estimate_fwhm-226"><span class="linenos">226</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">MetricEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_estimate_fwhm-227"><a href="#metric_estimate_fwhm-227"><span class="linenos">227</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_estimate_fwhm-228"><a href="#metric_estimate_fwhm-228"><span class="linenos">228</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricEstimateFwhmOutputs</span><span class="p">:</span>
-</span><span id="metric_estimate_fwhm-229"><a href="#metric_estimate_fwhm-229"><span class="linenos">229</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="metric_estimate_fwhm-230"><a href="#metric_estimate_fwhm-230"><span class="linenos">230</span></a><span class="sd">    Estimate fwhm smoothness of a metric file.</span>
-</span><span id="metric_estimate_fwhm-231"><a href="#metric_estimate_fwhm-231"><span class="linenos">231</span></a><span class="sd">    </span>
-</span><span id="metric_estimate_fwhm-232"><a href="#metric_estimate_fwhm-232"><span class="linenos">232</span></a><span class="sd">    Estimates the smoothness of the metric columns, printing the estimates to</span>
-</span><span id="metric_estimate_fwhm-233"><a href="#metric_estimate_fwhm-233"><span class="linenos">233</span></a><span class="sd">    standard output. These estimates ignore variation in vertex spacing.</span>
-</span><span id="metric_estimate_fwhm-234"><a href="#metric_estimate_fwhm-234"><span class="linenos">234</span></a><span class="sd">    </span>
-</span><span id="metric_estimate_fwhm-235"><a href="#metric_estimate_fwhm-235"><span class="linenos">235</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="metric_estimate_fwhm-236"><a href="#metric_estimate_fwhm-236"><span class="linenos">236</span></a><span class="sd">    </span>
-</span><span id="metric_estimate_fwhm-237"><a href="#metric_estimate_fwhm-237"><span class="linenos">237</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="metric_estimate_fwhm-238"><a href="#metric_estimate_fwhm-238"><span class="linenos">238</span></a><span class="sd">    </span>
-</span><span id="metric_estimate_fwhm-239"><a href="#metric_estimate_fwhm-239"><span class="linenos">239</span></a><span class="sd">    Args:</span>
-</span><span id="metric_estimate_fwhm-240"><a href="#metric_estimate_fwhm-240"><span class="linenos">240</span></a><span class="sd">        surface: the surface to use for distance and neighbor information.</span>
-</span><span id="metric_estimate_fwhm-241"><a href="#metric_estimate_fwhm-241"><span class="linenos">241</span></a><span class="sd">        metric_in: the input metric.</span>
-</span><span id="metric_estimate_fwhm-242"><a href="#metric_estimate_fwhm-242"><span class="linenos">242</span></a><span class="sd">        opt_roi_roi_metric: use only data within an ROI: the metric file to use\</span>
-</span><span id="metric_estimate_fwhm-243"><a href="#metric_estimate_fwhm-243"><span class="linenos">243</span></a><span class="sd">            as an ROI.</span>
-</span><span id="metric_estimate_fwhm-244"><a href="#metric_estimate_fwhm-244"><span class="linenos">244</span></a><span class="sd">        opt_column_column: select a single column to estimate smoothness of:\</span>
-</span><span id="metric_estimate_fwhm-245"><a href="#metric_estimate_fwhm-245"><span class="linenos">245</span></a><span class="sd">            the column number or name.</span>
-</span><span id="metric_estimate_fwhm-246"><a href="#metric_estimate_fwhm-246"><span class="linenos">246</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each column\</span>
-</span><span id="metric_estimate_fwhm-247"><a href="#metric_estimate_fwhm-247"><span class="linenos">247</span></a><span class="sd">            separately.</span>
-</span><span id="metric_estimate_fwhm-248"><a href="#metric_estimate_fwhm-248"><span class="linenos">248</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="metric_estimate_fwhm-249"><a href="#metric_estimate_fwhm-249"><span class="linenos">249</span></a><span class="sd">    Returns:</span>
-</span><span id="metric_estimate_fwhm-250"><a href="#metric_estimate_fwhm-250"><span class="linenos">250</span></a><span class="sd">        NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).</span>
-</span><span id="metric_estimate_fwhm-251"><a href="#metric_estimate_fwhm-251"><span class="linenos">251</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="metric_estimate_fwhm-252"><a href="#metric_estimate_fwhm-252"><span class="linenos">252</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="metric_estimate_fwhm-253"><a href="#metric_estimate_fwhm-253"><span class="linenos">253</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
-</span><span id="metric_estimate_fwhm-254"><a href="#metric_estimate_fwhm-254"><span class="linenos">254</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_estimate_fwhm_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">opt_roi_roi_metric</span><span class="o">=</span><span class="n">opt_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
-</span><span id="metric_estimate_fwhm-255"><a href="#metric_estimate_fwhm-255"><span class="linenos">255</span></a>    <span class="k">return</span> <span class="n">metric_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="metric_estimate_fwhm-222"><a href="#metric_estimate_fwhm-222"><span class="linenos">222</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_estimate_fwhm</span><span class="p">(</span>
+</span><span id="metric_estimate_fwhm-223"><a href="#metric_estimate_fwhm-223"><span class="linenos">223</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="metric_estimate_fwhm-224"><a href="#metric_estimate_fwhm-224"><span class="linenos">224</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="metric_estimate_fwhm-225"><a href="#metric_estimate_fwhm-225"><span class="linenos">225</span></a>    <span class="n">opt_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_estimate_fwhm-226"><a href="#metric_estimate_fwhm-226"><span class="linenos">226</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_estimate_fwhm-227"><a href="#metric_estimate_fwhm-227"><span class="linenos">227</span></a>    <span class="n">whole_file</span><span class="p">:</span> <span class="n">MetricEstimateFwhmWholeFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_estimate_fwhm-228"><a href="#metric_estimate_fwhm-228"><span class="linenos">228</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_estimate_fwhm-229"><a href="#metric_estimate_fwhm-229"><span class="linenos">229</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricEstimateFwhmOutputs</span><span class="p">:</span>
+</span><span id="metric_estimate_fwhm-230"><a href="#metric_estimate_fwhm-230"><span class="linenos">230</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="metric_estimate_fwhm-231"><a href="#metric_estimate_fwhm-231"><span class="linenos">231</span></a><span class="sd">    Estimate fwhm smoothness of a metric file.</span>
+</span><span id="metric_estimate_fwhm-232"><a href="#metric_estimate_fwhm-232"><span class="linenos">232</span></a><span class="sd">    </span>
+</span><span id="metric_estimate_fwhm-233"><a href="#metric_estimate_fwhm-233"><span class="linenos">233</span></a><span class="sd">    Estimates the smoothness of the metric columns, printing the estimates to</span>
+</span><span id="metric_estimate_fwhm-234"><a href="#metric_estimate_fwhm-234"><span class="linenos">234</span></a><span class="sd">    standard output. These estimates ignore variation in vertex spacing.</span>
+</span><span id="metric_estimate_fwhm-235"><a href="#metric_estimate_fwhm-235"><span class="linenos">235</span></a><span class="sd">    </span>
+</span><span id="metric_estimate_fwhm-236"><a href="#metric_estimate_fwhm-236"><span class="linenos">236</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="metric_estimate_fwhm-237"><a href="#metric_estimate_fwhm-237"><span class="linenos">237</span></a><span class="sd">    </span>
+</span><span id="metric_estimate_fwhm-238"><a href="#metric_estimate_fwhm-238"><span class="linenos">238</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="metric_estimate_fwhm-239"><a href="#metric_estimate_fwhm-239"><span class="linenos">239</span></a><span class="sd">    </span>
+</span><span id="metric_estimate_fwhm-240"><a href="#metric_estimate_fwhm-240"><span class="linenos">240</span></a><span class="sd">    Args:</span>
+</span><span id="metric_estimate_fwhm-241"><a href="#metric_estimate_fwhm-241"><span class="linenos">241</span></a><span class="sd">        surface: the surface to use for distance and neighbor information.</span>
+</span><span id="metric_estimate_fwhm-242"><a href="#metric_estimate_fwhm-242"><span class="linenos">242</span></a><span class="sd">        metric_in: the input metric.</span>
+</span><span id="metric_estimate_fwhm-243"><a href="#metric_estimate_fwhm-243"><span class="linenos">243</span></a><span class="sd">        opt_roi_roi_metric: use only data within an ROI: the metric file to use\</span>
+</span><span id="metric_estimate_fwhm-244"><a href="#metric_estimate_fwhm-244"><span class="linenos">244</span></a><span class="sd">            as an ROI.</span>
+</span><span id="metric_estimate_fwhm-245"><a href="#metric_estimate_fwhm-245"><span class="linenos">245</span></a><span class="sd">        opt_column_column: select a single column to estimate smoothness of:\</span>
+</span><span id="metric_estimate_fwhm-246"><a href="#metric_estimate_fwhm-246"><span class="linenos">246</span></a><span class="sd">            the column number or name.</span>
+</span><span id="metric_estimate_fwhm-247"><a href="#metric_estimate_fwhm-247"><span class="linenos">247</span></a><span class="sd">        whole_file: estimate for the whole file at once, not each column\</span>
+</span><span id="metric_estimate_fwhm-248"><a href="#metric_estimate_fwhm-248"><span class="linenos">248</span></a><span class="sd">            separately.</span>
+</span><span id="metric_estimate_fwhm-249"><a href="#metric_estimate_fwhm-249"><span class="linenos">249</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="metric_estimate_fwhm-250"><a href="#metric_estimate_fwhm-250"><span class="linenos">250</span></a><span class="sd">    Returns:</span>
+</span><span id="metric_estimate_fwhm-251"><a href="#metric_estimate_fwhm-251"><span class="linenos">251</span></a><span class="sd">        NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).</span>
+</span><span id="metric_estimate_fwhm-252"><a href="#metric_estimate_fwhm-252"><span class="linenos">252</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="metric_estimate_fwhm-253"><a href="#metric_estimate_fwhm-253"><span class="linenos">253</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="metric_estimate_fwhm-254"><a href="#metric_estimate_fwhm-254"><span class="linenos">254</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_ESTIMATE_FWHM_METADATA</span><span class="p">)</span>
+</span><span id="metric_estimate_fwhm-255"><a href="#metric_estimate_fwhm-255"><span class="linenos">255</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_estimate_fwhm_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">opt_roi_roi_metric</span><span class="o">=</span><span class="n">opt_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">whole_file</span><span class="o">=</span><span class="n">whole_file</span><span class="p">)</span>
+</span><span id="metric_estimate_fwhm-256"><a href="#metric_estimate_fwhm-256"><span class="linenos">256</span></a>    <span class="k">return</span> <span class="n">metric_estimate_fwhm_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

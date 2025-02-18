@@ -354,76 +354,77 @@
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_reduce_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_reduce_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_reduce</span><span class="p">(</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">opt_direction_direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiReduceExcludeOutliersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiReduceOutputs</span><span class="p">:</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    Perform reduction operation on a cifti file.</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    </span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    For the specified direction (default ROW), perform a reduction operation</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">    along that direction. The direction can be either an integer starting from</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    1, or the strings &#39;ROW&#39; or &#39;COLUMN&#39;. The reduction operators are as follows:</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    </span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    MAX: the maximum value</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    MIN: the minimum value</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">    INDEXMAX: the 1-based index of the maximum value</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    INDEXMIN: the 1-based index of the minimum value</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">    SUM: add all values</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">    PRODUCT: multiply all values</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">    MEAN: the mean of the data</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="sd">    STDEV: the standard deviation (N denominator)</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">    SAMPSTDEV: the sample standard deviation (N-1 denominator)</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">    VARIANCE: the variance of the data</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">    TSNR: mean divided by sample standard deviation (N-1 denominator)</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">    COV: sample standard deviation (N-1 denominator) divided by mean</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">    L2NORM: square root of sum of squares</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">    MEDIAN: the median of the data</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">    MODE: the mode of the data</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">    COUNT_NONZERO: the number of nonzero elements in the data</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">    .</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">    </span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">    </span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">    </span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">    Args:</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">        cifti_in: the cifti file to reduce.</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        operation: the reduction operator to use.</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        opt_direction_direction: specify what direction to reduce along: the\</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">            direction (default ROW).</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">        exclude_outliers: exclude non-numeric values and outliers by standard\</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">            deviation.</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">        opt_only_numeric: exclude non-numeric values.</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">    Returns:</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiReduceOutputs`).</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_REDUCE_METADATA</span><span class="p">)</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_reduce_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_direction_direction</span><span class="o">=</span><span class="n">opt_direction_direction</span><span class="p">,</span> <span class="n">exclude_outliers</span><span class="o">=</span><span class="n">exclude_outliers</span><span class="p">,</span> <span class="n">opt_only_numeric</span><span class="o">=</span><span class="n">opt_only_numeric</span><span class="p">)</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="k">return</span> <span class="n">cifti_reduce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_reduce</span><span class="p">(</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">opt_direction_direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiReduceExcludeOutliersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiReduceOutputs</span><span class="p">:</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    Perform reduction operation on a cifti file.</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    </span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">    For the specified direction (default ROW), perform a reduction operation</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    along that direction. The direction can be either an integer starting from</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    1, or the strings &#39;ROW&#39; or &#39;COLUMN&#39;. The reduction operators are as follows:</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    </span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    MAX: the maximum value</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">    MIN: the minimum value</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    INDEXMAX: the 1-based index of the maximum value</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">    INDEXMIN: the 1-based index of the minimum value</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">    SUM: add all values</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">    PRODUCT: multiply all values</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="sd">    MEAN: the mean of the data</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">    STDEV: the standard deviation (N denominator)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">    SAMPSTDEV: the sample standard deviation (N-1 denominator)</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">    VARIANCE: the variance of the data</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">    TSNR: mean divided by sample standard deviation (N-1 denominator)</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">    COV: sample standard deviation (N-1 denominator) divided by mean</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">    L2NORM: square root of sum of squares</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">    MEDIAN: the median of the data</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">    MODE: the mode of the data</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">    COUNT_NONZERO: the number of nonzero elements in the data</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">    .</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">    </span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">    </span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">    </span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">    Args:</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        cifti_in: the cifti file to reduce.</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        operation: the reduction operator to use.</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">        opt_direction_direction: specify what direction to reduce along: the\</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">            direction (default ROW).</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        exclude_outliers: exclude non-numeric values and outliers by standard\</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">            deviation.</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        opt_only_numeric: exclude non-numeric values.</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">    Returns:</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiReduceOutputs`).</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_REDUCE_METADATA</span><span class="p">)</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_reduce_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_direction_direction</span><span class="o">=</span><span class="n">opt_direction_direction</span><span class="p">,</span> <span class="n">exclude_outliers</span><span class="o">=</span><span class="n">exclude_outliers</span><span class="p">,</span> <span class="n">opt_only_numeric</span><span class="o">=</span><span class="n">opt_only_numeric</span><span class="p">)</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="k">return</span> <span class="n">cifti_reduce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="s2">&quot;CIFTI_REDUCE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;CiftiReduceExcludeOutliersParameters&quot;</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;CiftiReduceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;CiftiReduceParameters&quot;</span><span class="p">,</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;cifti_reduce&quot;</span><span class="p">,</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;cifti_reduce_exclude_outliers_params&quot;</span><span class="p">,</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;cifti_reduce_params&quot;</span><span class="p">,</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="p">]</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;CIFTI_REDUCE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;CiftiReduceExcludeOutliersParameters&quot;</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;CiftiReduceOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;CiftiReduceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;cifti_reduce&quot;</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;cifti_reduce_exclude_outliers_params&quot;</span><span class="p">,</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="s2">&quot;cifti_reduce_params&quot;</span><span class="p">,</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -633,61 +634,61 @@
 
     </div>
     <a class="headerlink" href="#cifti_reduce"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_reduce-248"><a href="#cifti_reduce-248"><span class="linenos">248</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_reduce</span><span class="p">(</span>
-</span><span id="cifti_reduce-249"><a href="#cifti_reduce-249"><span class="linenos">249</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_reduce-250"><a href="#cifti_reduce-250"><span class="linenos">250</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_reduce-251"><a href="#cifti_reduce-251"><span class="linenos">251</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_reduce-252"><a href="#cifti_reduce-252"><span class="linenos">252</span></a>    <span class="n">opt_direction_direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_reduce-253"><a href="#cifti_reduce-253"><span class="linenos">253</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiReduceExcludeOutliersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_reduce-254"><a href="#cifti_reduce-254"><span class="linenos">254</span></a>    <span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cifti_reduce-255"><a href="#cifti_reduce-255"><span class="linenos">255</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_reduce-256"><a href="#cifti_reduce-256"><span class="linenos">256</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiReduceOutputs</span><span class="p">:</span>
-</span><span id="cifti_reduce-257"><a href="#cifti_reduce-257"><span class="linenos">257</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_reduce-258"><a href="#cifti_reduce-258"><span class="linenos">258</span></a><span class="sd">    Perform reduction operation on a cifti file.</span>
-</span><span id="cifti_reduce-259"><a href="#cifti_reduce-259"><span class="linenos">259</span></a><span class="sd">    </span>
-</span><span id="cifti_reduce-260"><a href="#cifti_reduce-260"><span class="linenos">260</span></a><span class="sd">    For the specified direction (default ROW), perform a reduction operation</span>
-</span><span id="cifti_reduce-261"><a href="#cifti_reduce-261"><span class="linenos">261</span></a><span class="sd">    along that direction. The direction can be either an integer starting from</span>
-</span><span id="cifti_reduce-262"><a href="#cifti_reduce-262"><span class="linenos">262</span></a><span class="sd">    1, or the strings &#39;ROW&#39; or &#39;COLUMN&#39;. The reduction operators are as follows:</span>
-</span><span id="cifti_reduce-263"><a href="#cifti_reduce-263"><span class="linenos">263</span></a><span class="sd">    </span>
-</span><span id="cifti_reduce-264"><a href="#cifti_reduce-264"><span class="linenos">264</span></a><span class="sd">    MAX: the maximum value</span>
-</span><span id="cifti_reduce-265"><a href="#cifti_reduce-265"><span class="linenos">265</span></a><span class="sd">    MIN: the minimum value</span>
-</span><span id="cifti_reduce-266"><a href="#cifti_reduce-266"><span class="linenos">266</span></a><span class="sd">    INDEXMAX: the 1-based index of the maximum value</span>
-</span><span id="cifti_reduce-267"><a href="#cifti_reduce-267"><span class="linenos">267</span></a><span class="sd">    INDEXMIN: the 1-based index of the minimum value</span>
-</span><span id="cifti_reduce-268"><a href="#cifti_reduce-268"><span class="linenos">268</span></a><span class="sd">    SUM: add all values</span>
-</span><span id="cifti_reduce-269"><a href="#cifti_reduce-269"><span class="linenos">269</span></a><span class="sd">    PRODUCT: multiply all values</span>
-</span><span id="cifti_reduce-270"><a href="#cifti_reduce-270"><span class="linenos">270</span></a><span class="sd">    MEAN: the mean of the data</span>
-</span><span id="cifti_reduce-271"><a href="#cifti_reduce-271"><span class="linenos">271</span></a><span class="sd">    STDEV: the standard deviation (N denominator)</span>
-</span><span id="cifti_reduce-272"><a href="#cifti_reduce-272"><span class="linenos">272</span></a><span class="sd">    SAMPSTDEV: the sample standard deviation (N-1 denominator)</span>
-</span><span id="cifti_reduce-273"><a href="#cifti_reduce-273"><span class="linenos">273</span></a><span class="sd">    VARIANCE: the variance of the data</span>
-</span><span id="cifti_reduce-274"><a href="#cifti_reduce-274"><span class="linenos">274</span></a><span class="sd">    TSNR: mean divided by sample standard deviation (N-1 denominator)</span>
-</span><span id="cifti_reduce-275"><a href="#cifti_reduce-275"><span class="linenos">275</span></a><span class="sd">    COV: sample standard deviation (N-1 denominator) divided by mean</span>
-</span><span id="cifti_reduce-276"><a href="#cifti_reduce-276"><span class="linenos">276</span></a><span class="sd">    L2NORM: square root of sum of squares</span>
-</span><span id="cifti_reduce-277"><a href="#cifti_reduce-277"><span class="linenos">277</span></a><span class="sd">    MEDIAN: the median of the data</span>
-</span><span id="cifti_reduce-278"><a href="#cifti_reduce-278"><span class="linenos">278</span></a><span class="sd">    MODE: the mode of the data</span>
-</span><span id="cifti_reduce-279"><a href="#cifti_reduce-279"><span class="linenos">279</span></a><span class="sd">    COUNT_NONZERO: the number of nonzero elements in the data</span>
-</span><span id="cifti_reduce-280"><a href="#cifti_reduce-280"><span class="linenos">280</span></a><span class="sd">    .</span>
-</span><span id="cifti_reduce-281"><a href="#cifti_reduce-281"><span class="linenos">281</span></a><span class="sd">    </span>
-</span><span id="cifti_reduce-282"><a href="#cifti_reduce-282"><span class="linenos">282</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="cifti_reduce-283"><a href="#cifti_reduce-283"><span class="linenos">283</span></a><span class="sd">    </span>
-</span><span id="cifti_reduce-284"><a href="#cifti_reduce-284"><span class="linenos">284</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="cifti_reduce-285"><a href="#cifti_reduce-285"><span class="linenos">285</span></a><span class="sd">    </span>
-</span><span id="cifti_reduce-286"><a href="#cifti_reduce-286"><span class="linenos">286</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_reduce-287"><a href="#cifti_reduce-287"><span class="linenos">287</span></a><span class="sd">        cifti_in: the cifti file to reduce.</span>
-</span><span id="cifti_reduce-288"><a href="#cifti_reduce-288"><span class="linenos">288</span></a><span class="sd">        operation: the reduction operator to use.</span>
-</span><span id="cifti_reduce-289"><a href="#cifti_reduce-289"><span class="linenos">289</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_reduce-290"><a href="#cifti_reduce-290"><span class="linenos">290</span></a><span class="sd">        opt_direction_direction: specify what direction to reduce along: the\</span>
-</span><span id="cifti_reduce-291"><a href="#cifti_reduce-291"><span class="linenos">291</span></a><span class="sd">            direction (default ROW).</span>
-</span><span id="cifti_reduce-292"><a href="#cifti_reduce-292"><span class="linenos">292</span></a><span class="sd">        exclude_outliers: exclude non-numeric values and outliers by standard\</span>
-</span><span id="cifti_reduce-293"><a href="#cifti_reduce-293"><span class="linenos">293</span></a><span class="sd">            deviation.</span>
-</span><span id="cifti_reduce-294"><a href="#cifti_reduce-294"><span class="linenos">294</span></a><span class="sd">        opt_only_numeric: exclude non-numeric values.</span>
-</span><span id="cifti_reduce-295"><a href="#cifti_reduce-295"><span class="linenos">295</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_reduce-296"><a href="#cifti_reduce-296"><span class="linenos">296</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_reduce-297"><a href="#cifti_reduce-297"><span class="linenos">297</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiReduceOutputs`).</span>
-</span><span id="cifti_reduce-298"><a href="#cifti_reduce-298"><span class="linenos">298</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_reduce-299"><a href="#cifti_reduce-299"><span class="linenos">299</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_reduce-300"><a href="#cifti_reduce-300"><span class="linenos">300</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_REDUCE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_reduce-301"><a href="#cifti_reduce-301"><span class="linenos">301</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_reduce_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_direction_direction</span><span class="o">=</span><span class="n">opt_direction_direction</span><span class="p">,</span> <span class="n">exclude_outliers</span><span class="o">=</span><span class="n">exclude_outliers</span><span class="p">,</span> <span class="n">opt_only_numeric</span><span class="o">=</span><span class="n">opt_only_numeric</span><span class="p">)</span>
-</span><span id="cifti_reduce-302"><a href="#cifti_reduce-302"><span class="linenos">302</span></a>    <span class="k">return</span> <span class="n">cifti_reduce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_reduce-249"><a href="#cifti_reduce-249"><span class="linenos">249</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_reduce</span><span class="p">(</span>
+</span><span id="cifti_reduce-250"><a href="#cifti_reduce-250"><span class="linenos">250</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_reduce-251"><a href="#cifti_reduce-251"><span class="linenos">251</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_reduce-252"><a href="#cifti_reduce-252"><span class="linenos">252</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_reduce-253"><a href="#cifti_reduce-253"><span class="linenos">253</span></a>    <span class="n">opt_direction_direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_reduce-254"><a href="#cifti_reduce-254"><span class="linenos">254</span></a>    <span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">CiftiReduceExcludeOutliersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_reduce-255"><a href="#cifti_reduce-255"><span class="linenos">255</span></a>    <span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cifti_reduce-256"><a href="#cifti_reduce-256"><span class="linenos">256</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_reduce-257"><a href="#cifti_reduce-257"><span class="linenos">257</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiReduceOutputs</span><span class="p">:</span>
+</span><span id="cifti_reduce-258"><a href="#cifti_reduce-258"><span class="linenos">258</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_reduce-259"><a href="#cifti_reduce-259"><span class="linenos">259</span></a><span class="sd">    Perform reduction operation on a cifti file.</span>
+</span><span id="cifti_reduce-260"><a href="#cifti_reduce-260"><span class="linenos">260</span></a><span class="sd">    </span>
+</span><span id="cifti_reduce-261"><a href="#cifti_reduce-261"><span class="linenos">261</span></a><span class="sd">    For the specified direction (default ROW), perform a reduction operation</span>
+</span><span id="cifti_reduce-262"><a href="#cifti_reduce-262"><span class="linenos">262</span></a><span class="sd">    along that direction. The direction can be either an integer starting from</span>
+</span><span id="cifti_reduce-263"><a href="#cifti_reduce-263"><span class="linenos">263</span></a><span class="sd">    1, or the strings &#39;ROW&#39; or &#39;COLUMN&#39;. The reduction operators are as follows:</span>
+</span><span id="cifti_reduce-264"><a href="#cifti_reduce-264"><span class="linenos">264</span></a><span class="sd">    </span>
+</span><span id="cifti_reduce-265"><a href="#cifti_reduce-265"><span class="linenos">265</span></a><span class="sd">    MAX: the maximum value</span>
+</span><span id="cifti_reduce-266"><a href="#cifti_reduce-266"><span class="linenos">266</span></a><span class="sd">    MIN: the minimum value</span>
+</span><span id="cifti_reduce-267"><a href="#cifti_reduce-267"><span class="linenos">267</span></a><span class="sd">    INDEXMAX: the 1-based index of the maximum value</span>
+</span><span id="cifti_reduce-268"><a href="#cifti_reduce-268"><span class="linenos">268</span></a><span class="sd">    INDEXMIN: the 1-based index of the minimum value</span>
+</span><span id="cifti_reduce-269"><a href="#cifti_reduce-269"><span class="linenos">269</span></a><span class="sd">    SUM: add all values</span>
+</span><span id="cifti_reduce-270"><a href="#cifti_reduce-270"><span class="linenos">270</span></a><span class="sd">    PRODUCT: multiply all values</span>
+</span><span id="cifti_reduce-271"><a href="#cifti_reduce-271"><span class="linenos">271</span></a><span class="sd">    MEAN: the mean of the data</span>
+</span><span id="cifti_reduce-272"><a href="#cifti_reduce-272"><span class="linenos">272</span></a><span class="sd">    STDEV: the standard deviation (N denominator)</span>
+</span><span id="cifti_reduce-273"><a href="#cifti_reduce-273"><span class="linenos">273</span></a><span class="sd">    SAMPSTDEV: the sample standard deviation (N-1 denominator)</span>
+</span><span id="cifti_reduce-274"><a href="#cifti_reduce-274"><span class="linenos">274</span></a><span class="sd">    VARIANCE: the variance of the data</span>
+</span><span id="cifti_reduce-275"><a href="#cifti_reduce-275"><span class="linenos">275</span></a><span class="sd">    TSNR: mean divided by sample standard deviation (N-1 denominator)</span>
+</span><span id="cifti_reduce-276"><a href="#cifti_reduce-276"><span class="linenos">276</span></a><span class="sd">    COV: sample standard deviation (N-1 denominator) divided by mean</span>
+</span><span id="cifti_reduce-277"><a href="#cifti_reduce-277"><span class="linenos">277</span></a><span class="sd">    L2NORM: square root of sum of squares</span>
+</span><span id="cifti_reduce-278"><a href="#cifti_reduce-278"><span class="linenos">278</span></a><span class="sd">    MEDIAN: the median of the data</span>
+</span><span id="cifti_reduce-279"><a href="#cifti_reduce-279"><span class="linenos">279</span></a><span class="sd">    MODE: the mode of the data</span>
+</span><span id="cifti_reduce-280"><a href="#cifti_reduce-280"><span class="linenos">280</span></a><span class="sd">    COUNT_NONZERO: the number of nonzero elements in the data</span>
+</span><span id="cifti_reduce-281"><a href="#cifti_reduce-281"><span class="linenos">281</span></a><span class="sd">    .</span>
+</span><span id="cifti_reduce-282"><a href="#cifti_reduce-282"><span class="linenos">282</span></a><span class="sd">    </span>
+</span><span id="cifti_reduce-283"><a href="#cifti_reduce-283"><span class="linenos">283</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="cifti_reduce-284"><a href="#cifti_reduce-284"><span class="linenos">284</span></a><span class="sd">    </span>
+</span><span id="cifti_reduce-285"><a href="#cifti_reduce-285"><span class="linenos">285</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_reduce-286"><a href="#cifti_reduce-286"><span class="linenos">286</span></a><span class="sd">    </span>
+</span><span id="cifti_reduce-287"><a href="#cifti_reduce-287"><span class="linenos">287</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_reduce-288"><a href="#cifti_reduce-288"><span class="linenos">288</span></a><span class="sd">        cifti_in: the cifti file to reduce.</span>
+</span><span id="cifti_reduce-289"><a href="#cifti_reduce-289"><span class="linenos">289</span></a><span class="sd">        operation: the reduction operator to use.</span>
+</span><span id="cifti_reduce-290"><a href="#cifti_reduce-290"><span class="linenos">290</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_reduce-291"><a href="#cifti_reduce-291"><span class="linenos">291</span></a><span class="sd">        opt_direction_direction: specify what direction to reduce along: the\</span>
+</span><span id="cifti_reduce-292"><a href="#cifti_reduce-292"><span class="linenos">292</span></a><span class="sd">            direction (default ROW).</span>
+</span><span id="cifti_reduce-293"><a href="#cifti_reduce-293"><span class="linenos">293</span></a><span class="sd">        exclude_outliers: exclude non-numeric values and outliers by standard\</span>
+</span><span id="cifti_reduce-294"><a href="#cifti_reduce-294"><span class="linenos">294</span></a><span class="sd">            deviation.</span>
+</span><span id="cifti_reduce-295"><a href="#cifti_reduce-295"><span class="linenos">295</span></a><span class="sd">        opt_only_numeric: exclude non-numeric values.</span>
+</span><span id="cifti_reduce-296"><a href="#cifti_reduce-296"><span class="linenos">296</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_reduce-297"><a href="#cifti_reduce-297"><span class="linenos">297</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_reduce-298"><a href="#cifti_reduce-298"><span class="linenos">298</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiReduceOutputs`).</span>
+</span><span id="cifti_reduce-299"><a href="#cifti_reduce-299"><span class="linenos">299</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_reduce-300"><a href="#cifti_reduce-300"><span class="linenos">300</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_reduce-301"><a href="#cifti_reduce-301"><span class="linenos">301</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_REDUCE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_reduce-302"><a href="#cifti_reduce-302"><span class="linenos">302</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_reduce_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">cifti_out</span><span class="o">=</span><span class="n">cifti_out</span><span class="p">,</span> <span class="n">opt_direction_direction</span><span class="o">=</span><span class="n">opt_direction_direction</span><span class="p">,</span> <span class="n">exclude_outliers</span><span class="o">=</span><span class="n">exclude_outliers</span><span class="p">,</span> <span class="n">opt_only_numeric</span><span class="o">=</span><span class="n">opt_only_numeric</span><span class="p">)</span>
+</span><span id="cifti_reduce-303"><a href="#cifti_reduce-303"><span class="linenos">303</span></a>    <span class="k">return</span> <span class="n">cifti_reduce_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

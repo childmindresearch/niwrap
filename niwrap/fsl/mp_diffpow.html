@@ -232,46 +232,47 @@
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mp_diffpow_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mp_diffpow_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mp_diffpow</span><span class="p">(</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">reg_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">diff_reg_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MpDiffpowOutputs</span><span class="p">:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Generates a file with specific motion parameter calculations useful for</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    accounting for &#39;spin history&#39; effects and other variations not accounted for by</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    motion correction.</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    </span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    </span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    </span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    Args:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        reg_file: Input file containing registration parameters (e.g.,\</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">            regparam.dat).</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        diff_reg_file: Output file with differenced registration parameters\</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">            (e.g., diffregparam.dat).</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    Returns:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        NamedTuple of outputs (described in `MpDiffpowOutputs`).</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MP_DIFFPOW_METADATA</span><span class="p">)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mp_diffpow_params</span><span class="p">(</span><span class="n">reg_file</span><span class="o">=</span><span class="n">reg_file</span><span class="p">,</span> <span class="n">diff_reg_file</span><span class="o">=</span><span class="n">diff_reg_file</span><span class="p">)</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">return</span> <span class="n">mp_diffpow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mp_diffpow</span><span class="p">(</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">reg_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">diff_reg_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MpDiffpowOutputs</span><span class="p">:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    Generates a file with specific motion parameter calculations useful for</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    accounting for &#39;spin history&#39; effects and other variations not accounted for by</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    motion correction.</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    </span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    </span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    </span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    Args:</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        reg_file: Input file containing registration parameters (e.g.,\</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">            regparam.dat).</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        diff_reg_file: Output file with differenced registration parameters\</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">            (e.g., diffregparam.dat).</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Returns:</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        NamedTuple of outputs (described in `MpDiffpowOutputs`).</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MP_DIFFPOW_METADATA</span><span class="p">)</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mp_diffpow_params</span><span class="p">(</span><span class="n">reg_file</span><span class="o">=</span><span class="n">reg_file</span><span class="p">,</span> <span class="n">diff_reg_file</span><span class="o">=</span><span class="n">diff_reg_file</span><span class="p">)</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">return</span> <span class="n">mp_diffpow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;MP_DIFFPOW_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;MpDiffpowOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;MpDiffpowParameters&quot;</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="s2">&quot;mp_diffpow&quot;</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="s2">&quot;mp_diffpow_params&quot;</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="p">]</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;MP_DIFFPOW_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;MpDiffpowOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="s2">&quot;MpDiffpowParameters&quot;</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="s2">&quot;mp_diffpow&quot;</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="s2">&quot;mp_diffpow_params&quot;</span><span class="p">,</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -404,33 +405,33 @@ parameters, and squared differenced values.</p>
 
     </div>
     <a class="headerlink" href="#mp_diffpow"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="mp_diffpow-153"><a href="#mp_diffpow-153"><span class="linenos">153</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mp_diffpow</span><span class="p">(</span>
-</span><span id="mp_diffpow-154"><a href="#mp_diffpow-154"><span class="linenos">154</span></a>    <span class="n">reg_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mp_diffpow-155"><a href="#mp_diffpow-155"><span class="linenos">155</span></a>    <span class="n">diff_reg_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mp_diffpow-156"><a href="#mp_diffpow-156"><span class="linenos">156</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mp_diffpow-157"><a href="#mp_diffpow-157"><span class="linenos">157</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MpDiffpowOutputs</span><span class="p">:</span>
-</span><span id="mp_diffpow-158"><a href="#mp_diffpow-158"><span class="linenos">158</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mp_diffpow-159"><a href="#mp_diffpow-159"><span class="linenos">159</span></a><span class="sd">    Generates a file with specific motion parameter calculations useful for</span>
-</span><span id="mp_diffpow-160"><a href="#mp_diffpow-160"><span class="linenos">160</span></a><span class="sd">    accounting for &#39;spin history&#39; effects and other variations not accounted for by</span>
-</span><span id="mp_diffpow-161"><a href="#mp_diffpow-161"><span class="linenos">161</span></a><span class="sd">    motion correction.</span>
-</span><span id="mp_diffpow-162"><a href="#mp_diffpow-162"><span class="linenos">162</span></a><span class="sd">    </span>
-</span><span id="mp_diffpow-163"><a href="#mp_diffpow-163"><span class="linenos">163</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="mp_diffpow-164"><a href="#mp_diffpow-164"><span class="linenos">164</span></a><span class="sd">    </span>
-</span><span id="mp_diffpow-165"><a href="#mp_diffpow-165"><span class="linenos">165</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="mp_diffpow-166"><a href="#mp_diffpow-166"><span class="linenos">166</span></a><span class="sd">    </span>
-</span><span id="mp_diffpow-167"><a href="#mp_diffpow-167"><span class="linenos">167</span></a><span class="sd">    Args:</span>
-</span><span id="mp_diffpow-168"><a href="#mp_diffpow-168"><span class="linenos">168</span></a><span class="sd">        reg_file: Input file containing registration parameters (e.g.,\</span>
-</span><span id="mp_diffpow-169"><a href="#mp_diffpow-169"><span class="linenos">169</span></a><span class="sd">            regparam.dat).</span>
-</span><span id="mp_diffpow-170"><a href="#mp_diffpow-170"><span class="linenos">170</span></a><span class="sd">        diff_reg_file: Output file with differenced registration parameters\</span>
-</span><span id="mp_diffpow-171"><a href="#mp_diffpow-171"><span class="linenos">171</span></a><span class="sd">            (e.g., diffregparam.dat).</span>
-</span><span id="mp_diffpow-172"><a href="#mp_diffpow-172"><span class="linenos">172</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mp_diffpow-173"><a href="#mp_diffpow-173"><span class="linenos">173</span></a><span class="sd">    Returns:</span>
-</span><span id="mp_diffpow-174"><a href="#mp_diffpow-174"><span class="linenos">174</span></a><span class="sd">        NamedTuple of outputs (described in `MpDiffpowOutputs`).</span>
-</span><span id="mp_diffpow-175"><a href="#mp_diffpow-175"><span class="linenos">175</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mp_diffpow-176"><a href="#mp_diffpow-176"><span class="linenos">176</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mp_diffpow-177"><a href="#mp_diffpow-177"><span class="linenos">177</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MP_DIFFPOW_METADATA</span><span class="p">)</span>
-</span><span id="mp_diffpow-178"><a href="#mp_diffpow-178"><span class="linenos">178</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mp_diffpow_params</span><span class="p">(</span><span class="n">reg_file</span><span class="o">=</span><span class="n">reg_file</span><span class="p">,</span> <span class="n">diff_reg_file</span><span class="o">=</span><span class="n">diff_reg_file</span><span class="p">)</span>
-</span><span id="mp_diffpow-179"><a href="#mp_diffpow-179"><span class="linenos">179</span></a>    <span class="k">return</span> <span class="n">mp_diffpow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="mp_diffpow-154"><a href="#mp_diffpow-154"><span class="linenos">154</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mp_diffpow</span><span class="p">(</span>
+</span><span id="mp_diffpow-155"><a href="#mp_diffpow-155"><span class="linenos">155</span></a>    <span class="n">reg_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mp_diffpow-156"><a href="#mp_diffpow-156"><span class="linenos">156</span></a>    <span class="n">diff_reg_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mp_diffpow-157"><a href="#mp_diffpow-157"><span class="linenos">157</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mp_diffpow-158"><a href="#mp_diffpow-158"><span class="linenos">158</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MpDiffpowOutputs</span><span class="p">:</span>
+</span><span id="mp_diffpow-159"><a href="#mp_diffpow-159"><span class="linenos">159</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="mp_diffpow-160"><a href="#mp_diffpow-160"><span class="linenos">160</span></a><span class="sd">    Generates a file with specific motion parameter calculations useful for</span>
+</span><span id="mp_diffpow-161"><a href="#mp_diffpow-161"><span class="linenos">161</span></a><span class="sd">    accounting for &#39;spin history&#39; effects and other variations not accounted for by</span>
+</span><span id="mp_diffpow-162"><a href="#mp_diffpow-162"><span class="linenos">162</span></a><span class="sd">    motion correction.</span>
+</span><span id="mp_diffpow-163"><a href="#mp_diffpow-163"><span class="linenos">163</span></a><span class="sd">    </span>
+</span><span id="mp_diffpow-164"><a href="#mp_diffpow-164"><span class="linenos">164</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="mp_diffpow-165"><a href="#mp_diffpow-165"><span class="linenos">165</span></a><span class="sd">    </span>
+</span><span id="mp_diffpow-166"><a href="#mp_diffpow-166"><span class="linenos">166</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="mp_diffpow-167"><a href="#mp_diffpow-167"><span class="linenos">167</span></a><span class="sd">    </span>
+</span><span id="mp_diffpow-168"><a href="#mp_diffpow-168"><span class="linenos">168</span></a><span class="sd">    Args:</span>
+</span><span id="mp_diffpow-169"><a href="#mp_diffpow-169"><span class="linenos">169</span></a><span class="sd">        reg_file: Input file containing registration parameters (e.g.,\</span>
+</span><span id="mp_diffpow-170"><a href="#mp_diffpow-170"><span class="linenos">170</span></a><span class="sd">            regparam.dat).</span>
+</span><span id="mp_diffpow-171"><a href="#mp_diffpow-171"><span class="linenos">171</span></a><span class="sd">        diff_reg_file: Output file with differenced registration parameters\</span>
+</span><span id="mp_diffpow-172"><a href="#mp_diffpow-172"><span class="linenos">172</span></a><span class="sd">            (e.g., diffregparam.dat).</span>
+</span><span id="mp_diffpow-173"><a href="#mp_diffpow-173"><span class="linenos">173</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mp_diffpow-174"><a href="#mp_diffpow-174"><span class="linenos">174</span></a><span class="sd">    Returns:</span>
+</span><span id="mp_diffpow-175"><a href="#mp_diffpow-175"><span class="linenos">175</span></a><span class="sd">        NamedTuple of outputs (described in `MpDiffpowOutputs`).</span>
+</span><span id="mp_diffpow-176"><a href="#mp_diffpow-176"><span class="linenos">176</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mp_diffpow-177"><a href="#mp_diffpow-177"><span class="linenos">177</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mp_diffpow-178"><a href="#mp_diffpow-178"><span class="linenos">178</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MP_DIFFPOW_METADATA</span><span class="p">)</span>
+</span><span id="mp_diffpow-179"><a href="#mp_diffpow-179"><span class="linenos">179</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mp_diffpow_params</span><span class="p">(</span><span class="n">reg_file</span><span class="o">=</span><span class="n">reg_file</span><span class="p">,</span> <span class="n">diff_reg_file</span><span class="o">=</span><span class="n">diff_reg_file</span><span class="p">)</span>
+</span><span id="mp_diffpow-180"><a href="#mp_diffpow-180"><span class="linenos">180</span></a>    <span class="k">return</span> <span class="n">mp_diffpow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

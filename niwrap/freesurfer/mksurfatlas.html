@@ -311,59 +311,60 @@
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mksurfatlas_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mksurfatlas_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mksurfatlas</span><span class="p">(</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">atlas</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">surfval</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">surfvaldir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">regsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MksurfatlasOutputs</span><span class="p">:</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Creates an atlas using mris_make_template. The atlas can then be used to create</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    the surface registration for each subject based on this atlas.</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    </span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    </span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    Args:</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        atlas: Save results to this file (tif file).</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        hemi: Hemisphere to process.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        subjects: Subject(s) to process. Multiple subjects can be specified by\</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            repeating the flag.</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        surfval: Surface values file. Looks for\</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            subject/surfvaldir/hemi.surfval.</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        surfvaldir: Directory for surface values; default is &#39;label&#39;.</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        regsurf: Registration surface; default is &#39;sphere&#39;.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        debug: Turn on debugging.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        version: Print version and exit.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        help_: Print help and exit.</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    Returns:</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        NamedTuple of outputs (described in `MksurfatlasOutputs`).</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKSURFATLAS_METADATA</span><span class="p">)</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mksurfatlas_params</span><span class="p">(</span><span class="n">atlas</span><span class="o">=</span><span class="n">atlas</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">subjects</span><span class="o">=</span><span class="n">subjects</span><span class="p">,</span> <span class="n">surfval</span><span class="o">=</span><span class="n">surfval</span><span class="p">,</span> <span class="n">surfvaldir</span><span class="o">=</span><span class="n">surfvaldir</span><span class="p">,</span> <span class="n">regsurf</span><span class="o">=</span><span class="n">regsurf</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">return</span> <span class="n">mksurfatlas_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mksurfatlas</span><span class="p">(</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">atlas</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">surfval</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">surfvaldir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">regsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MksurfatlasOutputs</span><span class="p">:</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    Creates an atlas using mris_make_template. The atlas can then be used to create</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    the surface registration for each subject based on this atlas.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    </span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    </span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    Args:</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        atlas: Save results to this file (tif file).</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        hemi: Hemisphere to process.</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        subjects: Subject(s) to process. Multiple subjects can be specified by\</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            repeating the flag.</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        surfval: Surface values file. Looks for\</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">            subject/surfvaldir/hemi.surfval.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        surfvaldir: Directory for surface values; default is &#39;label&#39;.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        regsurf: Registration surface; default is &#39;sphere&#39;.</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        debug: Turn on debugging.</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        version: Print version and exit.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        help_: Print help and exit.</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    Returns:</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        NamedTuple of outputs (described in `MksurfatlasOutputs`).</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKSURFATLAS_METADATA</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mksurfatlas_params</span><span class="p">(</span><span class="n">atlas</span><span class="o">=</span><span class="n">atlas</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">subjects</span><span class="o">=</span><span class="n">subjects</span><span class="p">,</span> <span class="n">surfval</span><span class="o">=</span><span class="n">surfval</span><span class="p">,</span> <span class="n">surfvaldir</span><span class="o">=</span><span class="n">surfvaldir</span><span class="p">,</span> <span class="n">regsurf</span><span class="o">=</span><span class="n">regsurf</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">return</span> <span class="n">mksurfatlas_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;MKSURFATLAS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;MksurfatlasOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;MksurfatlasParameters&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;mksurfatlas&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;mksurfatlas_params&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="p">]</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;MKSURFATLAS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;MksurfatlasOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;MksurfatlasParameters&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;mksurfatlas&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;mksurfatlas_params&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -571,46 +572,46 @@
 
     </div>
     <a class="headerlink" href="#mksurfatlas"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="mksurfatlas-211"><a href="#mksurfatlas-211"><span class="linenos">211</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mksurfatlas</span><span class="p">(</span>
-</span><span id="mksurfatlas-212"><a href="#mksurfatlas-212"><span class="linenos">212</span></a>    <span class="n">atlas</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mksurfatlas-213"><a href="#mksurfatlas-213"><span class="linenos">213</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mksurfatlas-214"><a href="#mksurfatlas-214"><span class="linenos">214</span></a>    <span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="mksurfatlas-215"><a href="#mksurfatlas-215"><span class="linenos">215</span></a>    <span class="n">surfval</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mksurfatlas-216"><a href="#mksurfatlas-216"><span class="linenos">216</span></a>    <span class="n">surfvaldir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span>
-</span><span id="mksurfatlas-217"><a href="#mksurfatlas-217"><span class="linenos">217</span></a>    <span class="n">regsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
-</span><span id="mksurfatlas-218"><a href="#mksurfatlas-218"><span class="linenos">218</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="mksurfatlas-219"><a href="#mksurfatlas-219"><span class="linenos">219</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="mksurfatlas-220"><a href="#mksurfatlas-220"><span class="linenos">220</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="mksurfatlas-221"><a href="#mksurfatlas-221"><span class="linenos">221</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mksurfatlas-222"><a href="#mksurfatlas-222"><span class="linenos">222</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MksurfatlasOutputs</span><span class="p">:</span>
-</span><span id="mksurfatlas-223"><a href="#mksurfatlas-223"><span class="linenos">223</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mksurfatlas-224"><a href="#mksurfatlas-224"><span class="linenos">224</span></a><span class="sd">    Creates an atlas using mris_make_template. The atlas can then be used to create</span>
-</span><span id="mksurfatlas-225"><a href="#mksurfatlas-225"><span class="linenos">225</span></a><span class="sd">    the surface registration for each subject based on this atlas.</span>
-</span><span id="mksurfatlas-226"><a href="#mksurfatlas-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="mksurfatlas-227"><a href="#mksurfatlas-227"><span class="linenos">227</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="mksurfatlas-228"><a href="#mksurfatlas-228"><span class="linenos">228</span></a><span class="sd">    </span>
-</span><span id="mksurfatlas-229"><a href="#mksurfatlas-229"><span class="linenos">229</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="mksurfatlas-230"><a href="#mksurfatlas-230"><span class="linenos">230</span></a><span class="sd">    </span>
-</span><span id="mksurfatlas-231"><a href="#mksurfatlas-231"><span class="linenos">231</span></a><span class="sd">    Args:</span>
-</span><span id="mksurfatlas-232"><a href="#mksurfatlas-232"><span class="linenos">232</span></a><span class="sd">        atlas: Save results to this file (tif file).</span>
-</span><span id="mksurfatlas-233"><a href="#mksurfatlas-233"><span class="linenos">233</span></a><span class="sd">        hemi: Hemisphere to process.</span>
-</span><span id="mksurfatlas-234"><a href="#mksurfatlas-234"><span class="linenos">234</span></a><span class="sd">        subjects: Subject(s) to process. Multiple subjects can be specified by\</span>
-</span><span id="mksurfatlas-235"><a href="#mksurfatlas-235"><span class="linenos">235</span></a><span class="sd">            repeating the flag.</span>
-</span><span id="mksurfatlas-236"><a href="#mksurfatlas-236"><span class="linenos">236</span></a><span class="sd">        surfval: Surface values file. Looks for\</span>
-</span><span id="mksurfatlas-237"><a href="#mksurfatlas-237"><span class="linenos">237</span></a><span class="sd">            subject/surfvaldir/hemi.surfval.</span>
-</span><span id="mksurfatlas-238"><a href="#mksurfatlas-238"><span class="linenos">238</span></a><span class="sd">        surfvaldir: Directory for surface values; default is &#39;label&#39;.</span>
-</span><span id="mksurfatlas-239"><a href="#mksurfatlas-239"><span class="linenos">239</span></a><span class="sd">        regsurf: Registration surface; default is &#39;sphere&#39;.</span>
-</span><span id="mksurfatlas-240"><a href="#mksurfatlas-240"><span class="linenos">240</span></a><span class="sd">        debug: Turn on debugging.</span>
-</span><span id="mksurfatlas-241"><a href="#mksurfatlas-241"><span class="linenos">241</span></a><span class="sd">        version: Print version and exit.</span>
-</span><span id="mksurfatlas-242"><a href="#mksurfatlas-242"><span class="linenos">242</span></a><span class="sd">        help_: Print help and exit.</span>
-</span><span id="mksurfatlas-243"><a href="#mksurfatlas-243"><span class="linenos">243</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mksurfatlas-244"><a href="#mksurfatlas-244"><span class="linenos">244</span></a><span class="sd">    Returns:</span>
-</span><span id="mksurfatlas-245"><a href="#mksurfatlas-245"><span class="linenos">245</span></a><span class="sd">        NamedTuple of outputs (described in `MksurfatlasOutputs`).</span>
-</span><span id="mksurfatlas-246"><a href="#mksurfatlas-246"><span class="linenos">246</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mksurfatlas-247"><a href="#mksurfatlas-247"><span class="linenos">247</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mksurfatlas-248"><a href="#mksurfatlas-248"><span class="linenos">248</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKSURFATLAS_METADATA</span><span class="p">)</span>
-</span><span id="mksurfatlas-249"><a href="#mksurfatlas-249"><span class="linenos">249</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mksurfatlas_params</span><span class="p">(</span><span class="n">atlas</span><span class="o">=</span><span class="n">atlas</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">subjects</span><span class="o">=</span><span class="n">subjects</span><span class="p">,</span> <span class="n">surfval</span><span class="o">=</span><span class="n">surfval</span><span class="p">,</span> <span class="n">surfvaldir</span><span class="o">=</span><span class="n">surfvaldir</span><span class="p">,</span> <span class="n">regsurf</span><span class="o">=</span><span class="n">regsurf</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="mksurfatlas-250"><a href="#mksurfatlas-250"><span class="linenos">250</span></a>    <span class="k">return</span> <span class="n">mksurfatlas_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="mksurfatlas-212"><a href="#mksurfatlas-212"><span class="linenos">212</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mksurfatlas</span><span class="p">(</span>
+</span><span id="mksurfatlas-213"><a href="#mksurfatlas-213"><span class="linenos">213</span></a>    <span class="n">atlas</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mksurfatlas-214"><a href="#mksurfatlas-214"><span class="linenos">214</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mksurfatlas-215"><a href="#mksurfatlas-215"><span class="linenos">215</span></a>    <span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="mksurfatlas-216"><a href="#mksurfatlas-216"><span class="linenos">216</span></a>    <span class="n">surfval</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mksurfatlas-217"><a href="#mksurfatlas-217"><span class="linenos">217</span></a>    <span class="n">surfvaldir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span>
+</span><span id="mksurfatlas-218"><a href="#mksurfatlas-218"><span class="linenos">218</span></a>    <span class="n">regsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;sphere&quot;</span><span class="p">,</span>
+</span><span id="mksurfatlas-219"><a href="#mksurfatlas-219"><span class="linenos">219</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="mksurfatlas-220"><a href="#mksurfatlas-220"><span class="linenos">220</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="mksurfatlas-221"><a href="#mksurfatlas-221"><span class="linenos">221</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="mksurfatlas-222"><a href="#mksurfatlas-222"><span class="linenos">222</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mksurfatlas-223"><a href="#mksurfatlas-223"><span class="linenos">223</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MksurfatlasOutputs</span><span class="p">:</span>
+</span><span id="mksurfatlas-224"><a href="#mksurfatlas-224"><span class="linenos">224</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="mksurfatlas-225"><a href="#mksurfatlas-225"><span class="linenos">225</span></a><span class="sd">    Creates an atlas using mris_make_template. The atlas can then be used to create</span>
+</span><span id="mksurfatlas-226"><a href="#mksurfatlas-226"><span class="linenos">226</span></a><span class="sd">    the surface registration for each subject based on this atlas.</span>
+</span><span id="mksurfatlas-227"><a href="#mksurfatlas-227"><span class="linenos">227</span></a><span class="sd">    </span>
+</span><span id="mksurfatlas-228"><a href="#mksurfatlas-228"><span class="linenos">228</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="mksurfatlas-229"><a href="#mksurfatlas-229"><span class="linenos">229</span></a><span class="sd">    </span>
+</span><span id="mksurfatlas-230"><a href="#mksurfatlas-230"><span class="linenos">230</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="mksurfatlas-231"><a href="#mksurfatlas-231"><span class="linenos">231</span></a><span class="sd">    </span>
+</span><span id="mksurfatlas-232"><a href="#mksurfatlas-232"><span class="linenos">232</span></a><span class="sd">    Args:</span>
+</span><span id="mksurfatlas-233"><a href="#mksurfatlas-233"><span class="linenos">233</span></a><span class="sd">        atlas: Save results to this file (tif file).</span>
+</span><span id="mksurfatlas-234"><a href="#mksurfatlas-234"><span class="linenos">234</span></a><span class="sd">        hemi: Hemisphere to process.</span>
+</span><span id="mksurfatlas-235"><a href="#mksurfatlas-235"><span class="linenos">235</span></a><span class="sd">        subjects: Subject(s) to process. Multiple subjects can be specified by\</span>
+</span><span id="mksurfatlas-236"><a href="#mksurfatlas-236"><span class="linenos">236</span></a><span class="sd">            repeating the flag.</span>
+</span><span id="mksurfatlas-237"><a href="#mksurfatlas-237"><span class="linenos">237</span></a><span class="sd">        surfval: Surface values file. Looks for\</span>
+</span><span id="mksurfatlas-238"><a href="#mksurfatlas-238"><span class="linenos">238</span></a><span class="sd">            subject/surfvaldir/hemi.surfval.</span>
+</span><span id="mksurfatlas-239"><a href="#mksurfatlas-239"><span class="linenos">239</span></a><span class="sd">        surfvaldir: Directory for surface values; default is &#39;label&#39;.</span>
+</span><span id="mksurfatlas-240"><a href="#mksurfatlas-240"><span class="linenos">240</span></a><span class="sd">        regsurf: Registration surface; default is &#39;sphere&#39;.</span>
+</span><span id="mksurfatlas-241"><a href="#mksurfatlas-241"><span class="linenos">241</span></a><span class="sd">        debug: Turn on debugging.</span>
+</span><span id="mksurfatlas-242"><a href="#mksurfatlas-242"><span class="linenos">242</span></a><span class="sd">        version: Print version and exit.</span>
+</span><span id="mksurfatlas-243"><a href="#mksurfatlas-243"><span class="linenos">243</span></a><span class="sd">        help_: Print help and exit.</span>
+</span><span id="mksurfatlas-244"><a href="#mksurfatlas-244"><span class="linenos">244</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mksurfatlas-245"><a href="#mksurfatlas-245"><span class="linenos">245</span></a><span class="sd">    Returns:</span>
+</span><span id="mksurfatlas-246"><a href="#mksurfatlas-246"><span class="linenos">246</span></a><span class="sd">        NamedTuple of outputs (described in `MksurfatlasOutputs`).</span>
+</span><span id="mksurfatlas-247"><a href="#mksurfatlas-247"><span class="linenos">247</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mksurfatlas-248"><a href="#mksurfatlas-248"><span class="linenos">248</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mksurfatlas-249"><a href="#mksurfatlas-249"><span class="linenos">249</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MKSURFATLAS_METADATA</span><span class="p">)</span>
+</span><span id="mksurfatlas-250"><a href="#mksurfatlas-250"><span class="linenos">250</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mksurfatlas_params</span><span class="p">(</span><span class="n">atlas</span><span class="o">=</span><span class="n">atlas</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">subjects</span><span class="o">=</span><span class="n">subjects</span><span class="p">,</span> <span class="n">surfval</span><span class="o">=</span><span class="n">surfval</span><span class="p">,</span> <span class="n">surfvaldir</span><span class="o">=</span><span class="n">surfvaldir</span><span class="p">,</span> <span class="n">regsurf</span><span class="o">=</span><span class="n">regsurf</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="mksurfatlas-251"><a href="#mksurfatlas-251"><span class="linenos">251</span></a>    <span class="k">return</span> <span class="n">mksurfatlas_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

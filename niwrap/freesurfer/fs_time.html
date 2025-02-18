@@ -265,49 +265,50 @@
 </span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">fs_time_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">fs_time_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fs_time</span><span class="p">(</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">load_avg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsTimeOutputs</span><span class="p">:</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    A frontend for the unix /usr/bin/time program to track resource usage by a</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    process.</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    </span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    </span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    </span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    Args:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        command: The command to be timed with fs_time.</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        output_file: Save resource info into output file.</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        key: Specify a key for the resource information.</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">        load_avg: Report on load averages as from uptime.</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        args: Arguments for the command.</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    Returns:</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        NamedTuple of outputs (described in `FsTimeOutputs`).</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FS_TIME_METADATA</span><span class="p">)</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fs_time_params</span><span class="p">(</span><span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">load_avg</span><span class="o">=</span><span class="n">load_avg</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">command</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">return</span> <span class="n">fs_time_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fs_time</span><span class="p">(</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">load_avg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsTimeOutputs</span><span class="p">:</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    A frontend for the unix /usr/bin/time program to track resource usage by a</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    process.</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    </span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    </span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    </span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Args:</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        command: The command to be timed with fs_time.</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        output_file: Save resource info into output file.</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">        key: Specify a key for the resource information.</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        load_avg: Report on load averages as from uptime.</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        args: Arguments for the command.</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    Returns:</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        NamedTuple of outputs (described in `FsTimeOutputs`).</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FS_TIME_METADATA</span><span class="p">)</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fs_time_params</span><span class="p">(</span><span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">load_avg</span><span class="o">=</span><span class="n">load_avg</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">command</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="k">return</span> <span class="n">fs_time_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="s2">&quot;FS_TIME_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="s2">&quot;FsTimeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="s2">&quot;FsTimeParameters&quot;</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="s2">&quot;fs_time&quot;</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="s2">&quot;fs_time_params&quot;</span><span class="p">,</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="p">]</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="s2">&quot;FS_TIME_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="s2">&quot;FsTimeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="s2">&quot;FsTimeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="s2">&quot;fs_time&quot;</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="s2">&quot;fs_time_params&quot;</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -471,36 +472,36 @@
 
     </div>
     <a class="headerlink" href="#fs_time"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fs_time-177"><a href="#fs_time-177"><span class="linenos">177</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fs_time</span><span class="p">(</span>
-</span><span id="fs_time-178"><a href="#fs_time-178"><span class="linenos">178</span></a>    <span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="fs_time-179"><a href="#fs_time-179"><span class="linenos">179</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fs_time-180"><a href="#fs_time-180"><span class="linenos">180</span></a>    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fs_time-181"><a href="#fs_time-181"><span class="linenos">181</span></a>    <span class="n">load_avg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="fs_time-182"><a href="#fs_time-182"><span class="linenos">182</span></a>    <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fs_time-183"><a href="#fs_time-183"><span class="linenos">183</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fs_time-184"><a href="#fs_time-184"><span class="linenos">184</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsTimeOutputs</span><span class="p">:</span>
-</span><span id="fs_time-185"><a href="#fs_time-185"><span class="linenos">185</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="fs_time-186"><a href="#fs_time-186"><span class="linenos">186</span></a><span class="sd">    A frontend for the unix /usr/bin/time program to track resource usage by a</span>
-</span><span id="fs_time-187"><a href="#fs_time-187"><span class="linenos">187</span></a><span class="sd">    process.</span>
-</span><span id="fs_time-188"><a href="#fs_time-188"><span class="linenos">188</span></a><span class="sd">    </span>
-</span><span id="fs_time-189"><a href="#fs_time-189"><span class="linenos">189</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="fs_time-190"><a href="#fs_time-190"><span class="linenos">190</span></a><span class="sd">    </span>
-</span><span id="fs_time-191"><a href="#fs_time-191"><span class="linenos">191</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="fs_time-192"><a href="#fs_time-192"><span class="linenos">192</span></a><span class="sd">    </span>
-</span><span id="fs_time-193"><a href="#fs_time-193"><span class="linenos">193</span></a><span class="sd">    Args:</span>
-</span><span id="fs_time-194"><a href="#fs_time-194"><span class="linenos">194</span></a><span class="sd">        command: The command to be timed with fs_time.</span>
-</span><span id="fs_time-195"><a href="#fs_time-195"><span class="linenos">195</span></a><span class="sd">        output_file: Save resource info into output file.</span>
-</span><span id="fs_time-196"><a href="#fs_time-196"><span class="linenos">196</span></a><span class="sd">        key: Specify a key for the resource information.</span>
-</span><span id="fs_time-197"><a href="#fs_time-197"><span class="linenos">197</span></a><span class="sd">        load_avg: Report on load averages as from uptime.</span>
-</span><span id="fs_time-198"><a href="#fs_time-198"><span class="linenos">198</span></a><span class="sd">        args: Arguments for the command.</span>
-</span><span id="fs_time-199"><a href="#fs_time-199"><span class="linenos">199</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fs_time-200"><a href="#fs_time-200"><span class="linenos">200</span></a><span class="sd">    Returns:</span>
-</span><span id="fs_time-201"><a href="#fs_time-201"><span class="linenos">201</span></a><span class="sd">        NamedTuple of outputs (described in `FsTimeOutputs`).</span>
-</span><span id="fs_time-202"><a href="#fs_time-202"><span class="linenos">202</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fs_time-203"><a href="#fs_time-203"><span class="linenos">203</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fs_time-204"><a href="#fs_time-204"><span class="linenos">204</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FS_TIME_METADATA</span><span class="p">)</span>
-</span><span id="fs_time-205"><a href="#fs_time-205"><span class="linenos">205</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fs_time_params</span><span class="p">(</span><span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">load_avg</span><span class="o">=</span><span class="n">load_avg</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">command</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-</span><span id="fs_time-206"><a href="#fs_time-206"><span class="linenos">206</span></a>    <span class="k">return</span> <span class="n">fs_time_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fs_time-178"><a href="#fs_time-178"><span class="linenos">178</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fs_time</span><span class="p">(</span>
+</span><span id="fs_time-179"><a href="#fs_time-179"><span class="linenos">179</span></a>    <span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="fs_time-180"><a href="#fs_time-180"><span class="linenos">180</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fs_time-181"><a href="#fs_time-181"><span class="linenos">181</span></a>    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fs_time-182"><a href="#fs_time-182"><span class="linenos">182</span></a>    <span class="n">load_avg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fs_time-183"><a href="#fs_time-183"><span class="linenos">183</span></a>    <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fs_time-184"><a href="#fs_time-184"><span class="linenos">184</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fs_time-185"><a href="#fs_time-185"><span class="linenos">185</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FsTimeOutputs</span><span class="p">:</span>
+</span><span id="fs_time-186"><a href="#fs_time-186"><span class="linenos">186</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="fs_time-187"><a href="#fs_time-187"><span class="linenos">187</span></a><span class="sd">    A frontend for the unix /usr/bin/time program to track resource usage by a</span>
+</span><span id="fs_time-188"><a href="#fs_time-188"><span class="linenos">188</span></a><span class="sd">    process.</span>
+</span><span id="fs_time-189"><a href="#fs_time-189"><span class="linenos">189</span></a><span class="sd">    </span>
+</span><span id="fs_time-190"><a href="#fs_time-190"><span class="linenos">190</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="fs_time-191"><a href="#fs_time-191"><span class="linenos">191</span></a><span class="sd">    </span>
+</span><span id="fs_time-192"><a href="#fs_time-192"><span class="linenos">192</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="fs_time-193"><a href="#fs_time-193"><span class="linenos">193</span></a><span class="sd">    </span>
+</span><span id="fs_time-194"><a href="#fs_time-194"><span class="linenos">194</span></a><span class="sd">    Args:</span>
+</span><span id="fs_time-195"><a href="#fs_time-195"><span class="linenos">195</span></a><span class="sd">        command: The command to be timed with fs_time.</span>
+</span><span id="fs_time-196"><a href="#fs_time-196"><span class="linenos">196</span></a><span class="sd">        output_file: Save resource info into output file.</span>
+</span><span id="fs_time-197"><a href="#fs_time-197"><span class="linenos">197</span></a><span class="sd">        key: Specify a key for the resource information.</span>
+</span><span id="fs_time-198"><a href="#fs_time-198"><span class="linenos">198</span></a><span class="sd">        load_avg: Report on load averages as from uptime.</span>
+</span><span id="fs_time-199"><a href="#fs_time-199"><span class="linenos">199</span></a><span class="sd">        args: Arguments for the command.</span>
+</span><span id="fs_time-200"><a href="#fs_time-200"><span class="linenos">200</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fs_time-201"><a href="#fs_time-201"><span class="linenos">201</span></a><span class="sd">    Returns:</span>
+</span><span id="fs_time-202"><a href="#fs_time-202"><span class="linenos">202</span></a><span class="sd">        NamedTuple of outputs (described in `FsTimeOutputs`).</span>
+</span><span id="fs_time-203"><a href="#fs_time-203"><span class="linenos">203</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fs_time-204"><a href="#fs_time-204"><span class="linenos">204</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fs_time-205"><a href="#fs_time-205"><span class="linenos">205</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FS_TIME_METADATA</span><span class="p">)</span>
+</span><span id="fs_time-206"><a href="#fs_time-206"><span class="linenos">206</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">fs_time_params</span><span class="p">(</span><span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">load_avg</span><span class="o">=</span><span class="n">load_avg</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">command</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+</span><span id="fs_time-207"><a href="#fs_time-207"><span class="linenos">207</span></a>    <span class="k">return</span> <span class="n">fs_time_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

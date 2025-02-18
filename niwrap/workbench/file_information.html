@@ -404,109 +404,110 @@
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">file_information_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">file_information_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_information</span><span class="p">(</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="n">opt_no_map_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="n">opt_only_step_interval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="n">opt_only_number_of_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="n">opt_only_map_names</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="n">only_metadata</span><span class="p">:</span> <span class="n">FileInformationOnlyMetadataParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="n">opt_only_cifti_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">opt_czi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">opt_czi_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileInformationOutputs</span><span class="p">:</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">    List information about a file&#39;s content.</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">    </span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">    List information about the content of a data file. Only one -only option may</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">    be specified. The information listed when no -only option is present is</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">    dependent upon the type of data file.</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">    </span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">    Library paths:</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">    /usr/lib/x86_64-linux-gnu/qt5/plugins</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">    </span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">    /mnt/c/Users/floru/Projects/cmi/nopype/extraction/workbench/source/build/CommandLine</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">    </span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_information</span><span class="p">(</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="n">opt_no_map_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="n">opt_only_step_interval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="n">opt_only_number_of_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="n">opt_only_map_names</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="n">only_metadata</span><span class="p">:</span> <span class="n">FileInformationOnlyMetadataParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">opt_only_cifti_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">opt_czi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">opt_czi_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileInformationOutputs</span><span class="p">:</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">    List information about a file&#39;s content.</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">    </span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">    List information about the content of a data file. Only one -only option may</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">    be specified. The information listed when no -only option is present is</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">    dependent upon the type of data file.</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">    </span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">    Library paths:</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">    /usr/lib/x86_64-linux-gnu/qt5/plugins</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">    </span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">    /mnt/c/Users/floru/Projects/cmi/nopype/extraction/workbench/source/build/CommandLine</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">    </span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">    File and extensions for reading and writing:</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">    Annotation: wb_annot</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">    Annotation Text Substitution: wb_annsub.csv</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">    Border: border, wb_border</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    CIFTI - Dense: dconn.nii</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">    CIFTI - Dense Label: dlabel.nii</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    CIFTI - Dense Parcel: dpconn.nii</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    CIFTI - Dense Scalar: dscalar.nii</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">    CIFTI - Dense Data Series: dtseries.nii</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">    CIFTI - Fiber Orientations TEMPORARY: fiberTEMP.nii</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">    CIFTI - Fiber Trajectory TEMPORARY: trajTEMP.wbsparse</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">    CIFTI - Parcel: pconn.nii</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">    CIFTI - Parcel Dense: pdconn.nii</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">    CIFTI - Parcel Label: plabel.nii</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">    CIFTI - Parcel Scalar: pscalar.nii</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">    CIFTI - Parcel Series: ptseries.nii</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    CIFTI - Scalar Data Series: sdseries.nii</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    CZI Image: czi</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    Foci: foci, wb_foci</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    Histology Slices: metaczi, meta-image</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    Image Read: bmp, gif, jpeg, jpg, png, ppm</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    Write: bmp, jpeg, jpg, png, ppm</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    Label: label.gii</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    Metric: func.gii, shape.gii</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    Palette: palette, wb_palette</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    RGBA: rgba.gii</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    Samples: wb_samples</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    Scene: scene, wb_scene</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    Specification: spec, wb_spec</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    Surface: surf.gii</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    Volume: nii, nii.gz</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    .</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    </span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    </span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    </span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    Args:</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">        data_file: data file.</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">            maps.</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">            between maps.</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">            maps.</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">        only_metadata: suppress normal output, print file metadata.</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">            file type has it.</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">            instead of the Workbench CZI File.</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">            long output).</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">    Returns:</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_information_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_no_map_info</span><span class="o">=</span><span class="n">opt_no_map_info</span><span class="p">,</span> <span class="n">opt_only_step_interval</span><span class="o">=</span><span class="n">opt_only_step_interval</span><span class="p">,</span> <span class="n">opt_only_number_of_maps</span><span class="o">=</span><span class="n">opt_only_number_of_maps</span><span class="p">,</span> <span class="n">opt_only_map_names</span><span class="o">=</span><span class="n">opt_only_map_names</span><span class="p">,</span> <span class="n">only_metadata</span><span class="o">=</span><span class="n">only_metadata</span><span class="p">,</span> <span class="n">opt_only_cifti_xml</span><span class="o">=</span><span class="n">opt_only_cifti_xml</span><span class="p">,</span> <span class="n">opt_czi</span><span class="o">=</span><span class="n">opt_czi</span><span class="p">,</span> <span class="n">opt_czi_all_sub_blocks</span><span class="o">=</span><span class="n">opt_czi_all_sub_blocks</span><span class="p">,</span> <span class="n">opt_czi_xml</span><span class="o">=</span><span class="n">opt_czi_xml</span><span class="p">)</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="k">return</span> <span class="n">file_information_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">    </span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">    File and extensions for reading and writing:</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">    Annotation: wb_annot</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">    Annotation Text Substitution: wb_annsub.csv</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    Border: border, wb_border</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">    CIFTI - Dense: dconn.nii</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    CIFTI - Dense Label: dlabel.nii</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    CIFTI - Dense Parcel: dpconn.nii</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">    CIFTI - Dense Scalar: dscalar.nii</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">    CIFTI - Dense Data Series: dtseries.nii</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">    CIFTI - Fiber Orientations TEMPORARY: fiberTEMP.nii</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">    CIFTI - Fiber Trajectory TEMPORARY: trajTEMP.wbsparse</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">    CIFTI - Parcel: pconn.nii</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">    CIFTI - Parcel Dense: pdconn.nii</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">    CIFTI - Parcel Label: plabel.nii</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">    CIFTI - Parcel Scalar: pscalar.nii</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    CIFTI - Parcel Series: ptseries.nii</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    CIFTI - Scalar Data Series: sdseries.nii</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    CZI Image: czi</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    Foci: foci, wb_foci</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    Histology Slices: metaczi, meta-image</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    Image Read: bmp, gif, jpeg, jpg, png, ppm</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    Write: bmp, jpeg, jpg, png, ppm</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    Label: label.gii</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    Metric: func.gii, shape.gii</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    Palette: palette, wb_palette</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    RGBA: rgba.gii</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    Samples: wb_samples</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    Scene: scene, wb_scene</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    Specification: spec, wb_spec</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    Surface: surf.gii</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    Volume: nii, nii.gz</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    .</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    </span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    </span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    </span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    Args:</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">        data_file: data file.</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">            maps.</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">            between maps.</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">            maps.</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">        only_metadata: suppress normal output, print file metadata.</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">            file type has it.</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">            instead of the Workbench CZI File.</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">            long output).</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">    Returns:</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_information_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_no_map_info</span><span class="o">=</span><span class="n">opt_no_map_info</span><span class="p">,</span> <span class="n">opt_only_step_interval</span><span class="o">=</span><span class="n">opt_only_step_interval</span><span class="p">,</span> <span class="n">opt_only_number_of_maps</span><span class="o">=</span><span class="n">opt_only_number_of_maps</span><span class="p">,</span> <span class="n">opt_only_map_names</span><span class="o">=</span><span class="n">opt_only_map_names</span><span class="p">,</span> <span class="n">only_metadata</span><span class="o">=</span><span class="n">only_metadata</span><span class="p">,</span> <span class="n">opt_only_cifti_xml</span><span class="o">=</span><span class="n">opt_only_cifti_xml</span><span class="p">,</span> <span class="n">opt_czi</span><span class="o">=</span><span class="n">opt_czi</span><span class="p">,</span> <span class="n">opt_czi_all_sub_blocks</span><span class="o">=</span><span class="n">opt_czi_all_sub_blocks</span><span class="p">,</span> <span class="n">opt_czi_xml</span><span class="o">=</span><span class="n">opt_czi_xml</span><span class="p">)</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="k">return</span> <span class="n">file_information_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>    <span class="s2">&quot;FILE_INFORMATION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;FileInformationOnlyMetadataParameters&quot;</span><span class="p">,</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;FileInformationOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;FileInformationParameters&quot;</span><span class="p">,</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;file_information&quot;</span><span class="p">,</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="s2">&quot;file_information_only_metadata_params&quot;</span><span class="p">,</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="s2">&quot;file_information_params&quot;</span><span class="p">,</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="p">]</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;FILE_INFORMATION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;FileInformationOnlyMetadataParameters&quot;</span><span class="p">,</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;FileInformationOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;FileInformationParameters&quot;</span><span class="p">,</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="s2">&quot;file_information&quot;</span><span class="p">,</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="s2">&quot;file_information_only_metadata_params&quot;</span><span class="p">,</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="s2">&quot;file_information_params&quot;</span><span class="p">,</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -734,94 +735,94 @@
 
     </div>
     <a class="headerlink" href="#file_information"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="file_information-292"><a href="#file_information-292"><span class="linenos">292</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_information</span><span class="p">(</span>
-</span><span id="file_information-293"><a href="#file_information-293"><span class="linenos">293</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="file_information-294"><a href="#file_information-294"><span class="linenos">294</span></a>    <span class="n">opt_no_map_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-295"><a href="#file_information-295"><span class="linenos">295</span></a>    <span class="n">opt_only_step_interval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-296"><a href="#file_information-296"><span class="linenos">296</span></a>    <span class="n">opt_only_number_of_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-297"><a href="#file_information-297"><span class="linenos">297</span></a>    <span class="n">opt_only_map_names</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-298"><a href="#file_information-298"><span class="linenos">298</span></a>    <span class="n">only_metadata</span><span class="p">:</span> <span class="n">FileInformationOnlyMetadataParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="file_information-299"><a href="#file_information-299"><span class="linenos">299</span></a>    <span class="n">opt_only_cifti_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-300"><a href="#file_information-300"><span class="linenos">300</span></a>    <span class="n">opt_czi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-301"><a href="#file_information-301"><span class="linenos">301</span></a>    <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-302"><a href="#file_information-302"><span class="linenos">302</span></a>    <span class="n">opt_czi_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="file_information-303"><a href="#file_information-303"><span class="linenos">303</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="file_information-304"><a href="#file_information-304"><span class="linenos">304</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileInformationOutputs</span><span class="p">:</span>
-</span><span id="file_information-305"><a href="#file_information-305"><span class="linenos">305</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="file_information-306"><a href="#file_information-306"><span class="linenos">306</span></a><span class="sd">    List information about a file&#39;s content.</span>
-</span><span id="file_information-307"><a href="#file_information-307"><span class="linenos">307</span></a><span class="sd">    </span>
-</span><span id="file_information-308"><a href="#file_information-308"><span class="linenos">308</span></a><span class="sd">    List information about the content of a data file. Only one -only option may</span>
-</span><span id="file_information-309"><a href="#file_information-309"><span class="linenos">309</span></a><span class="sd">    be specified. The information listed when no -only option is present is</span>
-</span><span id="file_information-310"><a href="#file_information-310"><span class="linenos">310</span></a><span class="sd">    dependent upon the type of data file.</span>
-</span><span id="file_information-311"><a href="#file_information-311"><span class="linenos">311</span></a><span class="sd">    </span>
-</span><span id="file_information-312"><a href="#file_information-312"><span class="linenos">312</span></a><span class="sd">    Library paths:</span>
-</span><span id="file_information-313"><a href="#file_information-313"><span class="linenos">313</span></a><span class="sd">    /usr/lib/x86_64-linux-gnu/qt5/plugins</span>
-</span><span id="file_information-314"><a href="#file_information-314"><span class="linenos">314</span></a><span class="sd">    </span>
-</span><span id="file_information-315"><a href="#file_information-315"><span class="linenos">315</span></a><span class="sd">    /mnt/c/Users/floru/Projects/cmi/nopype/extraction/workbench/source/build/CommandLine</span>
-</span><span id="file_information-316"><a href="#file_information-316"><span class="linenos">316</span></a><span class="sd">    </span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="file_information-293"><a href="#file_information-293"><span class="linenos">293</span></a><span class="k">def</span><span class="w"> </span><span class="nf">file_information</span><span class="p">(</span>
+</span><span id="file_information-294"><a href="#file_information-294"><span class="linenos">294</span></a>    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="file_information-295"><a href="#file_information-295"><span class="linenos">295</span></a>    <span class="n">opt_no_map_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-296"><a href="#file_information-296"><span class="linenos">296</span></a>    <span class="n">opt_only_step_interval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-297"><a href="#file_information-297"><span class="linenos">297</span></a>    <span class="n">opt_only_number_of_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-298"><a href="#file_information-298"><span class="linenos">298</span></a>    <span class="n">opt_only_map_names</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-299"><a href="#file_information-299"><span class="linenos">299</span></a>    <span class="n">only_metadata</span><span class="p">:</span> <span class="n">FileInformationOnlyMetadataParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="file_information-300"><a href="#file_information-300"><span class="linenos">300</span></a>    <span class="n">opt_only_cifti_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-301"><a href="#file_information-301"><span class="linenos">301</span></a>    <span class="n">opt_czi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-302"><a href="#file_information-302"><span class="linenos">302</span></a>    <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-303"><a href="#file_information-303"><span class="linenos">303</span></a>    <span class="n">opt_czi_xml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="file_information-304"><a href="#file_information-304"><span class="linenos">304</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="file_information-305"><a href="#file_information-305"><span class="linenos">305</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileInformationOutputs</span><span class="p">:</span>
+</span><span id="file_information-306"><a href="#file_information-306"><span class="linenos">306</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="file_information-307"><a href="#file_information-307"><span class="linenos">307</span></a><span class="sd">    List information about a file&#39;s content.</span>
+</span><span id="file_information-308"><a href="#file_information-308"><span class="linenos">308</span></a><span class="sd">    </span>
+</span><span id="file_information-309"><a href="#file_information-309"><span class="linenos">309</span></a><span class="sd">    List information about the content of a data file. Only one -only option may</span>
+</span><span id="file_information-310"><a href="#file_information-310"><span class="linenos">310</span></a><span class="sd">    be specified. The information listed when no -only option is present is</span>
+</span><span id="file_information-311"><a href="#file_information-311"><span class="linenos">311</span></a><span class="sd">    dependent upon the type of data file.</span>
+</span><span id="file_information-312"><a href="#file_information-312"><span class="linenos">312</span></a><span class="sd">    </span>
+</span><span id="file_information-313"><a href="#file_information-313"><span class="linenos">313</span></a><span class="sd">    Library paths:</span>
+</span><span id="file_information-314"><a href="#file_information-314"><span class="linenos">314</span></a><span class="sd">    /usr/lib/x86_64-linux-gnu/qt5/plugins</span>
+</span><span id="file_information-315"><a href="#file_information-315"><span class="linenos">315</span></a><span class="sd">    </span>
+</span><span id="file_information-316"><a href="#file_information-316"><span class="linenos">316</span></a><span class="sd">    /mnt/c/Users/floru/Projects/cmi/nopype/extraction/workbench/source/build/CommandLine</span>
 </span><span id="file_information-317"><a href="#file_information-317"><span class="linenos">317</span></a><span class="sd">    </span>
-</span><span id="file_information-318"><a href="#file_information-318"><span class="linenos">318</span></a><span class="sd">    File and extensions for reading and writing:</span>
-</span><span id="file_information-319"><a href="#file_information-319"><span class="linenos">319</span></a><span class="sd">    Annotation: wb_annot</span>
-</span><span id="file_information-320"><a href="#file_information-320"><span class="linenos">320</span></a><span class="sd">    Annotation Text Substitution: wb_annsub.csv</span>
-</span><span id="file_information-321"><a href="#file_information-321"><span class="linenos">321</span></a><span class="sd">    Border: border, wb_border</span>
-</span><span id="file_information-322"><a href="#file_information-322"><span class="linenos">322</span></a><span class="sd">    CIFTI - Dense: dconn.nii</span>
-</span><span id="file_information-323"><a href="#file_information-323"><span class="linenos">323</span></a><span class="sd">    CIFTI - Dense Label: dlabel.nii</span>
-</span><span id="file_information-324"><a href="#file_information-324"><span class="linenos">324</span></a><span class="sd">    CIFTI - Dense Parcel: dpconn.nii</span>
-</span><span id="file_information-325"><a href="#file_information-325"><span class="linenos">325</span></a><span class="sd">    CIFTI - Dense Scalar: dscalar.nii</span>
-</span><span id="file_information-326"><a href="#file_information-326"><span class="linenos">326</span></a><span class="sd">    CIFTI - Dense Data Series: dtseries.nii</span>
-</span><span id="file_information-327"><a href="#file_information-327"><span class="linenos">327</span></a><span class="sd">    CIFTI - Fiber Orientations TEMPORARY: fiberTEMP.nii</span>
-</span><span id="file_information-328"><a href="#file_information-328"><span class="linenos">328</span></a><span class="sd">    CIFTI - Fiber Trajectory TEMPORARY: trajTEMP.wbsparse</span>
-</span><span id="file_information-329"><a href="#file_information-329"><span class="linenos">329</span></a><span class="sd">    CIFTI - Parcel: pconn.nii</span>
-</span><span id="file_information-330"><a href="#file_information-330"><span class="linenos">330</span></a><span class="sd">    CIFTI - Parcel Dense: pdconn.nii</span>
-</span><span id="file_information-331"><a href="#file_information-331"><span class="linenos">331</span></a><span class="sd">    CIFTI - Parcel Label: plabel.nii</span>
-</span><span id="file_information-332"><a href="#file_information-332"><span class="linenos">332</span></a><span class="sd">    CIFTI - Parcel Scalar: pscalar.nii</span>
-</span><span id="file_information-333"><a href="#file_information-333"><span class="linenos">333</span></a><span class="sd">    CIFTI - Parcel Series: ptseries.nii</span>
-</span><span id="file_information-334"><a href="#file_information-334"><span class="linenos">334</span></a><span class="sd">    CIFTI - Scalar Data Series: sdseries.nii</span>
-</span><span id="file_information-335"><a href="#file_information-335"><span class="linenos">335</span></a><span class="sd">    CZI Image: czi</span>
-</span><span id="file_information-336"><a href="#file_information-336"><span class="linenos">336</span></a><span class="sd">    Foci: foci, wb_foci</span>
-</span><span id="file_information-337"><a href="#file_information-337"><span class="linenos">337</span></a><span class="sd">    Histology Slices: metaczi, meta-image</span>
-</span><span id="file_information-338"><a href="#file_information-338"><span class="linenos">338</span></a><span class="sd">    Image Read: bmp, gif, jpeg, jpg, png, ppm</span>
-</span><span id="file_information-339"><a href="#file_information-339"><span class="linenos">339</span></a><span class="sd">    Write: bmp, jpeg, jpg, png, ppm</span>
-</span><span id="file_information-340"><a href="#file_information-340"><span class="linenos">340</span></a><span class="sd">    Label: label.gii</span>
-</span><span id="file_information-341"><a href="#file_information-341"><span class="linenos">341</span></a><span class="sd">    Metric: func.gii, shape.gii</span>
-</span><span id="file_information-342"><a href="#file_information-342"><span class="linenos">342</span></a><span class="sd">    Palette: palette, wb_palette</span>
-</span><span id="file_information-343"><a href="#file_information-343"><span class="linenos">343</span></a><span class="sd">    RGBA: rgba.gii</span>
-</span><span id="file_information-344"><a href="#file_information-344"><span class="linenos">344</span></a><span class="sd">    Samples: wb_samples</span>
-</span><span id="file_information-345"><a href="#file_information-345"><span class="linenos">345</span></a><span class="sd">    Scene: scene, wb_scene</span>
-</span><span id="file_information-346"><a href="#file_information-346"><span class="linenos">346</span></a><span class="sd">    Specification: spec, wb_spec</span>
-</span><span id="file_information-347"><a href="#file_information-347"><span class="linenos">347</span></a><span class="sd">    Surface: surf.gii</span>
-</span><span id="file_information-348"><a href="#file_information-348"><span class="linenos">348</span></a><span class="sd">    Volume: nii, nii.gz</span>
-</span><span id="file_information-349"><a href="#file_information-349"><span class="linenos">349</span></a><span class="sd">    .</span>
-</span><span id="file_information-350"><a href="#file_information-350"><span class="linenos">350</span></a><span class="sd">    </span>
-</span><span id="file_information-351"><a href="#file_information-351"><span class="linenos">351</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="file_information-352"><a href="#file_information-352"><span class="linenos">352</span></a><span class="sd">    </span>
-</span><span id="file_information-353"><a href="#file_information-353"><span class="linenos">353</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="file_information-354"><a href="#file_information-354"><span class="linenos">354</span></a><span class="sd">    </span>
-</span><span id="file_information-355"><a href="#file_information-355"><span class="linenos">355</span></a><span class="sd">    Args:</span>
-</span><span id="file_information-356"><a href="#file_information-356"><span class="linenos">356</span></a><span class="sd">        data_file: data file.</span>
-</span><span id="file_information-357"><a href="#file_information-357"><span class="linenos">357</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
-</span><span id="file_information-358"><a href="#file_information-358"><span class="linenos">358</span></a><span class="sd">            maps.</span>
-</span><span id="file_information-359"><a href="#file_information-359"><span class="linenos">359</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
-</span><span id="file_information-360"><a href="#file_information-360"><span class="linenos">360</span></a><span class="sd">            between maps.</span>
-</span><span id="file_information-361"><a href="#file_information-361"><span class="linenos">361</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
-</span><span id="file_information-362"><a href="#file_information-362"><span class="linenos">362</span></a><span class="sd">            maps.</span>
-</span><span id="file_information-363"><a href="#file_information-363"><span class="linenos">363</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
-</span><span id="file_information-364"><a href="#file_information-364"><span class="linenos">364</span></a><span class="sd">        only_metadata: suppress normal output, print file metadata.</span>
-</span><span id="file_information-365"><a href="#file_information-365"><span class="linenos">365</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
-</span><span id="file_information-366"><a href="#file_information-366"><span class="linenos">366</span></a><span class="sd">            file type has it.</span>
-</span><span id="file_information-367"><a href="#file_information-367"><span class="linenos">367</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
-</span><span id="file_information-368"><a href="#file_information-368"><span class="linenos">368</span></a><span class="sd">            instead of the Workbench CZI File.</span>
-</span><span id="file_information-369"><a href="#file_information-369"><span class="linenos">369</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
-</span><span id="file_information-370"><a href="#file_information-370"><span class="linenos">370</span></a><span class="sd">            long output).</span>
-</span><span id="file_information-371"><a href="#file_information-371"><span class="linenos">371</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
-</span><span id="file_information-372"><a href="#file_information-372"><span class="linenos">372</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="file_information-373"><a href="#file_information-373"><span class="linenos">373</span></a><span class="sd">    Returns:</span>
-</span><span id="file_information-374"><a href="#file_information-374"><span class="linenos">374</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
-</span><span id="file_information-375"><a href="#file_information-375"><span class="linenos">375</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="file_information-376"><a href="#file_information-376"><span class="linenos">376</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="file_information-377"><a href="#file_information-377"><span class="linenos">377</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
-</span><span id="file_information-378"><a href="#file_information-378"><span class="linenos">378</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_information_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_no_map_info</span><span class="o">=</span><span class="n">opt_no_map_info</span><span class="p">,</span> <span class="n">opt_only_step_interval</span><span class="o">=</span><span class="n">opt_only_step_interval</span><span class="p">,</span> <span class="n">opt_only_number_of_maps</span><span class="o">=</span><span class="n">opt_only_number_of_maps</span><span class="p">,</span> <span class="n">opt_only_map_names</span><span class="o">=</span><span class="n">opt_only_map_names</span><span class="p">,</span> <span class="n">only_metadata</span><span class="o">=</span><span class="n">only_metadata</span><span class="p">,</span> <span class="n">opt_only_cifti_xml</span><span class="o">=</span><span class="n">opt_only_cifti_xml</span><span class="p">,</span> <span class="n">opt_czi</span><span class="o">=</span><span class="n">opt_czi</span><span class="p">,</span> <span class="n">opt_czi_all_sub_blocks</span><span class="o">=</span><span class="n">opt_czi_all_sub_blocks</span><span class="p">,</span> <span class="n">opt_czi_xml</span><span class="o">=</span><span class="n">opt_czi_xml</span><span class="p">)</span>
-</span><span id="file_information-379"><a href="#file_information-379"><span class="linenos">379</span></a>    <span class="k">return</span> <span class="n">file_information_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="file_information-318"><a href="#file_information-318"><span class="linenos">318</span></a><span class="sd">    </span>
+</span><span id="file_information-319"><a href="#file_information-319"><span class="linenos">319</span></a><span class="sd">    File and extensions for reading and writing:</span>
+</span><span id="file_information-320"><a href="#file_information-320"><span class="linenos">320</span></a><span class="sd">    Annotation: wb_annot</span>
+</span><span id="file_information-321"><a href="#file_information-321"><span class="linenos">321</span></a><span class="sd">    Annotation Text Substitution: wb_annsub.csv</span>
+</span><span id="file_information-322"><a href="#file_information-322"><span class="linenos">322</span></a><span class="sd">    Border: border, wb_border</span>
+</span><span id="file_information-323"><a href="#file_information-323"><span class="linenos">323</span></a><span class="sd">    CIFTI - Dense: dconn.nii</span>
+</span><span id="file_information-324"><a href="#file_information-324"><span class="linenos">324</span></a><span class="sd">    CIFTI - Dense Label: dlabel.nii</span>
+</span><span id="file_information-325"><a href="#file_information-325"><span class="linenos">325</span></a><span class="sd">    CIFTI - Dense Parcel: dpconn.nii</span>
+</span><span id="file_information-326"><a href="#file_information-326"><span class="linenos">326</span></a><span class="sd">    CIFTI - Dense Scalar: dscalar.nii</span>
+</span><span id="file_information-327"><a href="#file_information-327"><span class="linenos">327</span></a><span class="sd">    CIFTI - Dense Data Series: dtseries.nii</span>
+</span><span id="file_information-328"><a href="#file_information-328"><span class="linenos">328</span></a><span class="sd">    CIFTI - Fiber Orientations TEMPORARY: fiberTEMP.nii</span>
+</span><span id="file_information-329"><a href="#file_information-329"><span class="linenos">329</span></a><span class="sd">    CIFTI - Fiber Trajectory TEMPORARY: trajTEMP.wbsparse</span>
+</span><span id="file_information-330"><a href="#file_information-330"><span class="linenos">330</span></a><span class="sd">    CIFTI - Parcel: pconn.nii</span>
+</span><span id="file_information-331"><a href="#file_information-331"><span class="linenos">331</span></a><span class="sd">    CIFTI - Parcel Dense: pdconn.nii</span>
+</span><span id="file_information-332"><a href="#file_information-332"><span class="linenos">332</span></a><span class="sd">    CIFTI - Parcel Label: plabel.nii</span>
+</span><span id="file_information-333"><a href="#file_information-333"><span class="linenos">333</span></a><span class="sd">    CIFTI - Parcel Scalar: pscalar.nii</span>
+</span><span id="file_information-334"><a href="#file_information-334"><span class="linenos">334</span></a><span class="sd">    CIFTI - Parcel Series: ptseries.nii</span>
+</span><span id="file_information-335"><a href="#file_information-335"><span class="linenos">335</span></a><span class="sd">    CIFTI - Scalar Data Series: sdseries.nii</span>
+</span><span id="file_information-336"><a href="#file_information-336"><span class="linenos">336</span></a><span class="sd">    CZI Image: czi</span>
+</span><span id="file_information-337"><a href="#file_information-337"><span class="linenos">337</span></a><span class="sd">    Foci: foci, wb_foci</span>
+</span><span id="file_information-338"><a href="#file_information-338"><span class="linenos">338</span></a><span class="sd">    Histology Slices: metaczi, meta-image</span>
+</span><span id="file_information-339"><a href="#file_information-339"><span class="linenos">339</span></a><span class="sd">    Image Read: bmp, gif, jpeg, jpg, png, ppm</span>
+</span><span id="file_information-340"><a href="#file_information-340"><span class="linenos">340</span></a><span class="sd">    Write: bmp, jpeg, jpg, png, ppm</span>
+</span><span id="file_information-341"><a href="#file_information-341"><span class="linenos">341</span></a><span class="sd">    Label: label.gii</span>
+</span><span id="file_information-342"><a href="#file_information-342"><span class="linenos">342</span></a><span class="sd">    Metric: func.gii, shape.gii</span>
+</span><span id="file_information-343"><a href="#file_information-343"><span class="linenos">343</span></a><span class="sd">    Palette: palette, wb_palette</span>
+</span><span id="file_information-344"><a href="#file_information-344"><span class="linenos">344</span></a><span class="sd">    RGBA: rgba.gii</span>
+</span><span id="file_information-345"><a href="#file_information-345"><span class="linenos">345</span></a><span class="sd">    Samples: wb_samples</span>
+</span><span id="file_information-346"><a href="#file_information-346"><span class="linenos">346</span></a><span class="sd">    Scene: scene, wb_scene</span>
+</span><span id="file_information-347"><a href="#file_information-347"><span class="linenos">347</span></a><span class="sd">    Specification: spec, wb_spec</span>
+</span><span id="file_information-348"><a href="#file_information-348"><span class="linenos">348</span></a><span class="sd">    Surface: surf.gii</span>
+</span><span id="file_information-349"><a href="#file_information-349"><span class="linenos">349</span></a><span class="sd">    Volume: nii, nii.gz</span>
+</span><span id="file_information-350"><a href="#file_information-350"><span class="linenos">350</span></a><span class="sd">    .</span>
+</span><span id="file_information-351"><a href="#file_information-351"><span class="linenos">351</span></a><span class="sd">    </span>
+</span><span id="file_information-352"><a href="#file_information-352"><span class="linenos">352</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="file_information-353"><a href="#file_information-353"><span class="linenos">353</span></a><span class="sd">    </span>
+</span><span id="file_information-354"><a href="#file_information-354"><span class="linenos">354</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="file_information-355"><a href="#file_information-355"><span class="linenos">355</span></a><span class="sd">    </span>
+</span><span id="file_information-356"><a href="#file_information-356"><span class="linenos">356</span></a><span class="sd">    Args:</span>
+</span><span id="file_information-357"><a href="#file_information-357"><span class="linenos">357</span></a><span class="sd">        data_file: data file.</span>
+</span><span id="file_information-358"><a href="#file_information-358"><span class="linenos">358</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
+</span><span id="file_information-359"><a href="#file_information-359"><span class="linenos">359</span></a><span class="sd">            maps.</span>
+</span><span id="file_information-360"><a href="#file_information-360"><span class="linenos">360</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
+</span><span id="file_information-361"><a href="#file_information-361"><span class="linenos">361</span></a><span class="sd">            between maps.</span>
+</span><span id="file_information-362"><a href="#file_information-362"><span class="linenos">362</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
+</span><span id="file_information-363"><a href="#file_information-363"><span class="linenos">363</span></a><span class="sd">            maps.</span>
+</span><span id="file_information-364"><a href="#file_information-364"><span class="linenos">364</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
+</span><span id="file_information-365"><a href="#file_information-365"><span class="linenos">365</span></a><span class="sd">        only_metadata: suppress normal output, print file metadata.</span>
+</span><span id="file_information-366"><a href="#file_information-366"><span class="linenos">366</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
+</span><span id="file_information-367"><a href="#file_information-367"><span class="linenos">367</span></a><span class="sd">            file type has it.</span>
+</span><span id="file_information-368"><a href="#file_information-368"><span class="linenos">368</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
+</span><span id="file_information-369"><a href="#file_information-369"><span class="linenos">369</span></a><span class="sd">            instead of the Workbench CZI File.</span>
+</span><span id="file_information-370"><a href="#file_information-370"><span class="linenos">370</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
+</span><span id="file_information-371"><a href="#file_information-371"><span class="linenos">371</span></a><span class="sd">            long output).</span>
+</span><span id="file_information-372"><a href="#file_information-372"><span class="linenos">372</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
+</span><span id="file_information-373"><a href="#file_information-373"><span class="linenos">373</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="file_information-374"><a href="#file_information-374"><span class="linenos">374</span></a><span class="sd">    Returns:</span>
+</span><span id="file_information-375"><a href="#file_information-375"><span class="linenos">375</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
+</span><span id="file_information-376"><a href="#file_information-376"><span class="linenos">376</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="file_information-377"><a href="#file_information-377"><span class="linenos">377</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="file_information-378"><a href="#file_information-378"><span class="linenos">378</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
+</span><span id="file_information-379"><a href="#file_information-379"><span class="linenos">379</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">file_information_params</span><span class="p">(</span><span class="n">data_file</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">opt_no_map_info</span><span class="o">=</span><span class="n">opt_no_map_info</span><span class="p">,</span> <span class="n">opt_only_step_interval</span><span class="o">=</span><span class="n">opt_only_step_interval</span><span class="p">,</span> <span class="n">opt_only_number_of_maps</span><span class="o">=</span><span class="n">opt_only_number_of_maps</span><span class="p">,</span> <span class="n">opt_only_map_names</span><span class="o">=</span><span class="n">opt_only_map_names</span><span class="p">,</span> <span class="n">only_metadata</span><span class="o">=</span><span class="n">only_metadata</span><span class="p">,</span> <span class="n">opt_only_cifti_xml</span><span class="o">=</span><span class="n">opt_only_cifti_xml</span><span class="p">,</span> <span class="n">opt_czi</span><span class="o">=</span><span class="n">opt_czi</span><span class="p">,</span> <span class="n">opt_czi_all_sub_blocks</span><span class="o">=</span><span class="n">opt_czi_all_sub_blocks</span><span class="p">,</span> <span class="n">opt_czi_xml</span><span class="o">=</span><span class="n">opt_czi_xml</span><span class="p">)</span>
+</span><span id="file_information-380"><a href="#file_information-380"><span class="linenos">380</span></a>    <span class="k">return</span> <span class="n">file_information_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

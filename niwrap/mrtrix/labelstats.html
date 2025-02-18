@@ -384,73 +384,74 @@
 </span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">labelstats_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">labelstats_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="k">def</span><span class="w"> </span><span class="nf">labelstats</span><span class="p">(</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">voxelspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelstatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelstatsOutputs</span><span class="p">:</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">    Compute statistics of parcels within a label image.</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">    </span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="k">def</span><span class="w"> </span><span class="nf">labelstats</span><span class="p">(</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="n">voxelspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelstatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelstatsOutputs</span><span class="p">:</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">    Compute statistics of parcels within a label image.</span>
 </span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">    </span>
 </span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">    </span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">    References:</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">    </span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">    .</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">    </span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">    </span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">    </span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">    Args:</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">        input_: the input label image.</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        output: output only the field specified; options are: mass,centre.</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        voxelspace: report parcel centres of mass in voxel space rather than\</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">            scanner space.</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">    Returns:</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">        NamedTuple of outputs (described in `LabelstatsOutputs`).</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABELSTATS_METADATA</span><span class="p">)</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">labelstats_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">voxelspace</span><span class="o">=</span><span class="n">voxelspace</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="k">return</span> <span class="n">labelstats_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">    </span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">    References:</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">    </span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">    .</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">    </span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">    </span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">    </span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">    Args:</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        input_: the input label image.</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        output: output only the field specified; options are: mass,centre.</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">        voxelspace: report parcel centres of mass in voxel space rather than\</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">            scanner space.</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">    Returns:</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">        NamedTuple of outputs (described in `LabelstatsOutputs`).</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABELSTATS_METADATA</span><span class="p">)</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">labelstats_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">voxelspace</span><span class="o">=</span><span class="n">voxelspace</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">)</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="k">return</span> <span class="n">labelstats_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="s2">&quot;LABELSTATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="s2">&quot;LabelstatsConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="s2">&quot;LabelstatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="s2">&quot;LabelstatsParameters&quot;</span><span class="p">,</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="s2">&quot;labelstats&quot;</span><span class="p">,</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="s2">&quot;labelstats_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="s2">&quot;labelstats_params&quot;</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="p">]</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="s2">&quot;LABELSTATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="s2">&quot;LabelstatsConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="s2">&quot;LabelstatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="s2">&quot;LabelstatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="s2">&quot;labelstats&quot;</span><span class="p">,</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="s2">&quot;labelstats_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="s2">&quot;labelstats_params&quot;</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -700,58 +701,58 @@
 
     </div>
     <a class="headerlink" href="#labelstats"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="labelstats-266"><a href="#labelstats-266"><span class="linenos">266</span></a><span class="k">def</span><span class="w"> </span><span class="nf">labelstats</span><span class="p">(</span>
-</span><span id="labelstats-267"><a href="#labelstats-267"><span class="linenos">267</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="labelstats-268"><a href="#labelstats-268"><span class="linenos">268</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="labelstats-269"><a href="#labelstats-269"><span class="linenos">269</span></a>    <span class="n">voxelspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="labelstats-270"><a href="#labelstats-270"><span class="linenos">270</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="labelstats-271"><a href="#labelstats-271"><span class="linenos">271</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="labelstats-272"><a href="#labelstats-272"><span class="linenos">272</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="labelstats-273"><a href="#labelstats-273"><span class="linenos">273</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="labelstats-274"><a href="#labelstats-274"><span class="linenos">274</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="labelstats-275"><a href="#labelstats-275"><span class="linenos">275</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelstatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="labelstats-276"><a href="#labelstats-276"><span class="linenos">276</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="labelstats-277"><a href="#labelstats-277"><span class="linenos">277</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="labelstats-278"><a href="#labelstats-278"><span class="linenos">278</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="labelstats-279"><a href="#labelstats-279"><span class="linenos">279</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelstatsOutputs</span><span class="p">:</span>
-</span><span id="labelstats-280"><a href="#labelstats-280"><span class="linenos">280</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="labelstats-281"><a href="#labelstats-281"><span class="linenos">281</span></a><span class="sd">    Compute statistics of parcels within a label image.</span>
-</span><span id="labelstats-282"><a href="#labelstats-282"><span class="linenos">282</span></a><span class="sd">    </span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="labelstats-267"><a href="#labelstats-267"><span class="linenos">267</span></a><span class="k">def</span><span class="w"> </span><span class="nf">labelstats</span><span class="p">(</span>
+</span><span id="labelstats-268"><a href="#labelstats-268"><span class="linenos">268</span></a>    <span class="n">input_</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="labelstats-269"><a href="#labelstats-269"><span class="linenos">269</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="labelstats-270"><a href="#labelstats-270"><span class="linenos">270</span></a>    <span class="n">voxelspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="labelstats-271"><a href="#labelstats-271"><span class="linenos">271</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="labelstats-272"><a href="#labelstats-272"><span class="linenos">272</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="labelstats-273"><a href="#labelstats-273"><span class="linenos">273</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="labelstats-274"><a href="#labelstats-274"><span class="linenos">274</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="labelstats-275"><a href="#labelstats-275"><span class="linenos">275</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="labelstats-276"><a href="#labelstats-276"><span class="linenos">276</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">LabelstatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="labelstats-277"><a href="#labelstats-277"><span class="linenos">277</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="labelstats-278"><a href="#labelstats-278"><span class="linenos">278</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="labelstats-279"><a href="#labelstats-279"><span class="linenos">279</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="labelstats-280"><a href="#labelstats-280"><span class="linenos">280</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelstatsOutputs</span><span class="p">:</span>
+</span><span id="labelstats-281"><a href="#labelstats-281"><span class="linenos">281</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="labelstats-282"><a href="#labelstats-282"><span class="linenos">282</span></a><span class="sd">    Compute statistics of parcels within a label image.</span>
 </span><span id="labelstats-283"><a href="#labelstats-283"><span class="linenos">283</span></a><span class="sd">    </span>
 </span><span id="labelstats-284"><a href="#labelstats-284"><span class="linenos">284</span></a><span class="sd">    </span>
-</span><span id="labelstats-285"><a href="#labelstats-285"><span class="linenos">285</span></a><span class="sd">    References:</span>
-</span><span id="labelstats-286"><a href="#labelstats-286"><span class="linenos">286</span></a><span class="sd">    </span>
-</span><span id="labelstats-287"><a href="#labelstats-287"><span class="linenos">287</span></a><span class="sd">    .</span>
-</span><span id="labelstats-288"><a href="#labelstats-288"><span class="linenos">288</span></a><span class="sd">    </span>
-</span><span id="labelstats-289"><a href="#labelstats-289"><span class="linenos">289</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="labelstats-290"><a href="#labelstats-290"><span class="linenos">290</span></a><span class="sd">    </span>
-</span><span id="labelstats-291"><a href="#labelstats-291"><span class="linenos">291</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="labelstats-292"><a href="#labelstats-292"><span class="linenos">292</span></a><span class="sd">    </span>
-</span><span id="labelstats-293"><a href="#labelstats-293"><span class="linenos">293</span></a><span class="sd">    Args:</span>
-</span><span id="labelstats-294"><a href="#labelstats-294"><span class="linenos">294</span></a><span class="sd">        input_: the input label image.</span>
-</span><span id="labelstats-295"><a href="#labelstats-295"><span class="linenos">295</span></a><span class="sd">        output: output only the field specified; options are: mass,centre.</span>
-</span><span id="labelstats-296"><a href="#labelstats-296"><span class="linenos">296</span></a><span class="sd">        voxelspace: report parcel centres of mass in voxel space rather than\</span>
-</span><span id="labelstats-297"><a href="#labelstats-297"><span class="linenos">297</span></a><span class="sd">            scanner space.</span>
-</span><span id="labelstats-298"><a href="#labelstats-298"><span class="linenos">298</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="labelstats-299"><a href="#labelstats-299"><span class="linenos">299</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="labelstats-300"><a href="#labelstats-300"><span class="linenos">300</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="labelstats-301"><a href="#labelstats-301"><span class="linenos">301</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="labelstats-302"><a href="#labelstats-302"><span class="linenos">302</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="labelstats-303"><a href="#labelstats-303"><span class="linenos">303</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="labelstats-304"><a href="#labelstats-304"><span class="linenos">304</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="labelstats-305"><a href="#labelstats-305"><span class="linenos">305</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="labelstats-306"><a href="#labelstats-306"><span class="linenos">306</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="labelstats-307"><a href="#labelstats-307"><span class="linenos">307</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="labelstats-308"><a href="#labelstats-308"><span class="linenos">308</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="labelstats-309"><a href="#labelstats-309"><span class="linenos">309</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="labelstats-310"><a href="#labelstats-310"><span class="linenos">310</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="labelstats-311"><a href="#labelstats-311"><span class="linenos">311</span></a><span class="sd">    Returns:</span>
-</span><span id="labelstats-312"><a href="#labelstats-312"><span class="linenos">312</span></a><span class="sd">        NamedTuple of outputs (described in `LabelstatsOutputs`).</span>
-</span><span id="labelstats-313"><a href="#labelstats-313"><span class="linenos">313</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="labelstats-314"><a href="#labelstats-314"><span class="linenos">314</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="labelstats-315"><a href="#labelstats-315"><span class="linenos">315</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABELSTATS_METADATA</span><span class="p">)</span>
-</span><span id="labelstats-316"><a href="#labelstats-316"><span class="linenos">316</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">labelstats_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">voxelspace</span><span class="o">=</span><span class="n">voxelspace</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="labelstats-317"><a href="#labelstats-317"><span class="linenos">317</span></a>    <span class="k">return</span> <span class="n">labelstats_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="labelstats-285"><a href="#labelstats-285"><span class="linenos">285</span></a><span class="sd">    </span>
+</span><span id="labelstats-286"><a href="#labelstats-286"><span class="linenos">286</span></a><span class="sd">    References:</span>
+</span><span id="labelstats-287"><a href="#labelstats-287"><span class="linenos">287</span></a><span class="sd">    </span>
+</span><span id="labelstats-288"><a href="#labelstats-288"><span class="linenos">288</span></a><span class="sd">    .</span>
+</span><span id="labelstats-289"><a href="#labelstats-289"><span class="linenos">289</span></a><span class="sd">    </span>
+</span><span id="labelstats-290"><a href="#labelstats-290"><span class="linenos">290</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="labelstats-291"><a href="#labelstats-291"><span class="linenos">291</span></a><span class="sd">    </span>
+</span><span id="labelstats-292"><a href="#labelstats-292"><span class="linenos">292</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="labelstats-293"><a href="#labelstats-293"><span class="linenos">293</span></a><span class="sd">    </span>
+</span><span id="labelstats-294"><a href="#labelstats-294"><span class="linenos">294</span></a><span class="sd">    Args:</span>
+</span><span id="labelstats-295"><a href="#labelstats-295"><span class="linenos">295</span></a><span class="sd">        input_: the input label image.</span>
+</span><span id="labelstats-296"><a href="#labelstats-296"><span class="linenos">296</span></a><span class="sd">        output: output only the field specified; options are: mass,centre.</span>
+</span><span id="labelstats-297"><a href="#labelstats-297"><span class="linenos">297</span></a><span class="sd">        voxelspace: report parcel centres of mass in voxel space rather than\</span>
+</span><span id="labelstats-298"><a href="#labelstats-298"><span class="linenos">298</span></a><span class="sd">            scanner space.</span>
+</span><span id="labelstats-299"><a href="#labelstats-299"><span class="linenos">299</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="labelstats-300"><a href="#labelstats-300"><span class="linenos">300</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="labelstats-301"><a href="#labelstats-301"><span class="linenos">301</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="labelstats-302"><a href="#labelstats-302"><span class="linenos">302</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="labelstats-303"><a href="#labelstats-303"><span class="linenos">303</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="labelstats-304"><a href="#labelstats-304"><span class="linenos">304</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="labelstats-305"><a href="#labelstats-305"><span class="linenos">305</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="labelstats-306"><a href="#labelstats-306"><span class="linenos">306</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="labelstats-307"><a href="#labelstats-307"><span class="linenos">307</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="labelstats-308"><a href="#labelstats-308"><span class="linenos">308</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="labelstats-309"><a href="#labelstats-309"><span class="linenos">309</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="labelstats-310"><a href="#labelstats-310"><span class="linenos">310</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="labelstats-311"><a href="#labelstats-311"><span class="linenos">311</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="labelstats-312"><a href="#labelstats-312"><span class="linenos">312</span></a><span class="sd">    Returns:</span>
+</span><span id="labelstats-313"><a href="#labelstats-313"><span class="linenos">313</span></a><span class="sd">        NamedTuple of outputs (described in `LabelstatsOutputs`).</span>
+</span><span id="labelstats-314"><a href="#labelstats-314"><span class="linenos">314</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="labelstats-315"><a href="#labelstats-315"><span class="linenos">315</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="labelstats-316"><a href="#labelstats-316"><span class="linenos">316</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABELSTATS_METADATA</span><span class="p">)</span>
+</span><span id="labelstats-317"><a href="#labelstats-317"><span class="linenos">317</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">labelstats_params</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">voxelspace</span><span class="o">=</span><span class="n">voxelspace</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">input_</span><span class="o">=</span><span class="n">input_</span><span class="p">)</span>
+</span><span id="labelstats-318"><a href="#labelstats-318"><span class="linenos">318</span></a>    <span class="k">return</span> <span class="n">labelstats_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

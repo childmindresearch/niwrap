@@ -297,59 +297,60 @@
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">invwarp_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">invwarp_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="k">def</span><span class="w"> </span><span class="nf">invwarp</span><span class="p">(</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">out_img</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">ref_img</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">noconstraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">jacobian_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">jacobian_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InvwarpOutputs</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    </span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    Use FSL Invwarp to invert a FNIRT warp.</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    </span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    </span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    </span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    Args:</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        warp: Filename for warp/shiftmap transform (volume).</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        out_img: Filename for output (inverse warped) image.</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        ref_img: Filename for new reference image.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        absolute: Use absolute warp convention (default): x&#39; = w(x).</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        relative: Use relative warp convention (default): x&#39; = x + w(x).</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        noconstraint: Do not apply jacobian constraint.</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        jacobian_min: Minimum acceptable jacobian value for constraint (default\</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            0.01).</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        jacobian_max: Maximum acceptable jacobian value for constraint (default\</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">            100.0).</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        debug: Turn on debugging output.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    Returns:</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        NamedTuple of outputs (described in `InvwarpOutputs`).</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INVWARP_METADATA</span><span class="p">)</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">invwarp_params</span><span class="p">(</span><span class="n">warp</span><span class="o">=</span><span class="n">warp</span><span class="p">,</span> <span class="n">out_img</span><span class="o">=</span><span class="n">out_img</span><span class="p">,</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">ref_img</span><span class="p">,</span> <span class="n">absolute</span><span class="o">=</span><span class="n">absolute</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">,</span> <span class="n">noconstraint</span><span class="o">=</span><span class="n">noconstraint</span><span class="p">,</span> <span class="n">jacobian_min</span><span class="o">=</span><span class="n">jacobian_min</span><span class="p">,</span> <span class="n">jacobian_max</span><span class="o">=</span><span class="n">jacobian_max</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">return</span> <span class="n">invwarp_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="k">def</span><span class="w"> </span><span class="nf">invwarp</span><span class="p">(</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">out_img</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">ref_img</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">noconstraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">jacobian_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">jacobian_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InvwarpOutputs</span><span class="p">:</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    </span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Use FSL Invwarp to invert a FNIRT warp.</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    </span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    </span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    Args:</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        warp: Filename for warp/shiftmap transform (volume).</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        out_img: Filename for output (inverse warped) image.</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        ref_img: Filename for new reference image.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        absolute: Use absolute warp convention (default): x&#39; = w(x).</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        relative: Use relative warp convention (default): x&#39; = x + w(x).</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        noconstraint: Do not apply jacobian constraint.</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        jacobian_min: Minimum acceptable jacobian value for constraint (default\</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            0.01).</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        jacobian_max: Maximum acceptable jacobian value for constraint (default\</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">            100.0).</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        debug: Turn on debugging output.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    Returns:</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        NamedTuple of outputs (described in `InvwarpOutputs`).</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INVWARP_METADATA</span><span class="p">)</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">invwarp_params</span><span class="p">(</span><span class="n">warp</span><span class="o">=</span><span class="n">warp</span><span class="p">,</span> <span class="n">out_img</span><span class="o">=</span><span class="n">out_img</span><span class="p">,</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">ref_img</span><span class="p">,</span> <span class="n">absolute</span><span class="o">=</span><span class="n">absolute</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">,</span> <span class="n">noconstraint</span><span class="o">=</span><span class="n">noconstraint</span><span class="p">,</span> <span class="n">jacobian_min</span><span class="o">=</span><span class="n">jacobian_min</span><span class="p">,</span> <span class="n">jacobian_max</span><span class="o">=</span><span class="n">jacobian_max</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">return</span> <span class="n">invwarp_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="s2">&quot;INVWARP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="s2">&quot;InvwarpOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;InvwarpParameters&quot;</span><span class="p">,</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;invwarp&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;invwarp_params&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="p">]</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="s2">&quot;INVWARP_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;InvwarpOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;InvwarpParameters&quot;</span><span class="p">,</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;invwarp&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;invwarp_params&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -563,46 +564,46 @@ displacements.</p>
 
     </div>
     <a class="headerlink" href="#invwarp"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="invwarp-197"><a href="#invwarp-197"><span class="linenos">197</span></a><span class="k">def</span><span class="w"> </span><span class="nf">invwarp</span><span class="p">(</span>
-</span><span id="invwarp-198"><a href="#invwarp-198"><span class="linenos">198</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="invwarp-199"><a href="#invwarp-199"><span class="linenos">199</span></a>    <span class="n">out_img</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="invwarp-200"><a href="#invwarp-200"><span class="linenos">200</span></a>    <span class="n">ref_img</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="invwarp-201"><a href="#invwarp-201"><span class="linenos">201</span></a>    <span class="n">absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="invwarp-202"><a href="#invwarp-202"><span class="linenos">202</span></a>    <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="invwarp-203"><a href="#invwarp-203"><span class="linenos">203</span></a>    <span class="n">noconstraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="invwarp-204"><a href="#invwarp-204"><span class="linenos">204</span></a>    <span class="n">jacobian_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="invwarp-205"><a href="#invwarp-205"><span class="linenos">205</span></a>    <span class="n">jacobian_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="invwarp-206"><a href="#invwarp-206"><span class="linenos">206</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="invwarp-207"><a href="#invwarp-207"><span class="linenos">207</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="invwarp-208"><a href="#invwarp-208"><span class="linenos">208</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InvwarpOutputs</span><span class="p">:</span>
-</span><span id="invwarp-209"><a href="#invwarp-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="invwarp-210"><a href="#invwarp-210"><span class="linenos">210</span></a><span class="sd">    </span>
-</span><span id="invwarp-211"><a href="#invwarp-211"><span class="linenos">211</span></a><span class="sd">    Use FSL Invwarp to invert a FNIRT warp.</span>
-</span><span id="invwarp-212"><a href="#invwarp-212"><span class="linenos">212</span></a><span class="sd">    </span>
-</span><span id="invwarp-213"><a href="#invwarp-213"><span class="linenos">213</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="invwarp-214"><a href="#invwarp-214"><span class="linenos">214</span></a><span class="sd">    </span>
-</span><span id="invwarp-215"><a href="#invwarp-215"><span class="linenos">215</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="invwarp-216"><a href="#invwarp-216"><span class="linenos">216</span></a><span class="sd">    </span>
-</span><span id="invwarp-217"><a href="#invwarp-217"><span class="linenos">217</span></a><span class="sd">    Args:</span>
-</span><span id="invwarp-218"><a href="#invwarp-218"><span class="linenos">218</span></a><span class="sd">        warp: Filename for warp/shiftmap transform (volume).</span>
-</span><span id="invwarp-219"><a href="#invwarp-219"><span class="linenos">219</span></a><span class="sd">        out_img: Filename for output (inverse warped) image.</span>
-</span><span id="invwarp-220"><a href="#invwarp-220"><span class="linenos">220</span></a><span class="sd">        ref_img: Filename for new reference image.</span>
-</span><span id="invwarp-221"><a href="#invwarp-221"><span class="linenos">221</span></a><span class="sd">        absolute: Use absolute warp convention (default): x&#39; = w(x).</span>
-</span><span id="invwarp-222"><a href="#invwarp-222"><span class="linenos">222</span></a><span class="sd">        relative: Use relative warp convention (default): x&#39; = x + w(x).</span>
-</span><span id="invwarp-223"><a href="#invwarp-223"><span class="linenos">223</span></a><span class="sd">        noconstraint: Do not apply jacobian constraint.</span>
-</span><span id="invwarp-224"><a href="#invwarp-224"><span class="linenos">224</span></a><span class="sd">        jacobian_min: Minimum acceptable jacobian value for constraint (default\</span>
-</span><span id="invwarp-225"><a href="#invwarp-225"><span class="linenos">225</span></a><span class="sd">            0.01).</span>
-</span><span id="invwarp-226"><a href="#invwarp-226"><span class="linenos">226</span></a><span class="sd">        jacobian_max: Maximum acceptable jacobian value for constraint (default\</span>
-</span><span id="invwarp-227"><a href="#invwarp-227"><span class="linenos">227</span></a><span class="sd">            100.0).</span>
-</span><span id="invwarp-228"><a href="#invwarp-228"><span class="linenos">228</span></a><span class="sd">        debug: Turn on debugging output.</span>
-</span><span id="invwarp-229"><a href="#invwarp-229"><span class="linenos">229</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="invwarp-230"><a href="#invwarp-230"><span class="linenos">230</span></a><span class="sd">    Returns:</span>
-</span><span id="invwarp-231"><a href="#invwarp-231"><span class="linenos">231</span></a><span class="sd">        NamedTuple of outputs (described in `InvwarpOutputs`).</span>
-</span><span id="invwarp-232"><a href="#invwarp-232"><span class="linenos">232</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="invwarp-233"><a href="#invwarp-233"><span class="linenos">233</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="invwarp-234"><a href="#invwarp-234"><span class="linenos">234</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INVWARP_METADATA</span><span class="p">)</span>
-</span><span id="invwarp-235"><a href="#invwarp-235"><span class="linenos">235</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">invwarp_params</span><span class="p">(</span><span class="n">warp</span><span class="o">=</span><span class="n">warp</span><span class="p">,</span> <span class="n">out_img</span><span class="o">=</span><span class="n">out_img</span><span class="p">,</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">ref_img</span><span class="p">,</span> <span class="n">absolute</span><span class="o">=</span><span class="n">absolute</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">,</span> <span class="n">noconstraint</span><span class="o">=</span><span class="n">noconstraint</span><span class="p">,</span> <span class="n">jacobian_min</span><span class="o">=</span><span class="n">jacobian_min</span><span class="p">,</span> <span class="n">jacobian_max</span><span class="o">=</span><span class="n">jacobian_max</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
-</span><span id="invwarp-236"><a href="#invwarp-236"><span class="linenos">236</span></a>    <span class="k">return</span> <span class="n">invwarp_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="invwarp-198"><a href="#invwarp-198"><span class="linenos">198</span></a><span class="k">def</span><span class="w"> </span><span class="nf">invwarp</span><span class="p">(</span>
+</span><span id="invwarp-199"><a href="#invwarp-199"><span class="linenos">199</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="invwarp-200"><a href="#invwarp-200"><span class="linenos">200</span></a>    <span class="n">out_img</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="invwarp-201"><a href="#invwarp-201"><span class="linenos">201</span></a>    <span class="n">ref_img</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="invwarp-202"><a href="#invwarp-202"><span class="linenos">202</span></a>    <span class="n">absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="invwarp-203"><a href="#invwarp-203"><span class="linenos">203</span></a>    <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="invwarp-204"><a href="#invwarp-204"><span class="linenos">204</span></a>    <span class="n">noconstraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="invwarp-205"><a href="#invwarp-205"><span class="linenos">205</span></a>    <span class="n">jacobian_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="invwarp-206"><a href="#invwarp-206"><span class="linenos">206</span></a>    <span class="n">jacobian_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="invwarp-207"><a href="#invwarp-207"><span class="linenos">207</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="invwarp-208"><a href="#invwarp-208"><span class="linenos">208</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="invwarp-209"><a href="#invwarp-209"><span class="linenos">209</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InvwarpOutputs</span><span class="p">:</span>
+</span><span id="invwarp-210"><a href="#invwarp-210"><span class="linenos">210</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="invwarp-211"><a href="#invwarp-211"><span class="linenos">211</span></a><span class="sd">    </span>
+</span><span id="invwarp-212"><a href="#invwarp-212"><span class="linenos">212</span></a><span class="sd">    Use FSL Invwarp to invert a FNIRT warp.</span>
+</span><span id="invwarp-213"><a href="#invwarp-213"><span class="linenos">213</span></a><span class="sd">    </span>
+</span><span id="invwarp-214"><a href="#invwarp-214"><span class="linenos">214</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="invwarp-215"><a href="#invwarp-215"><span class="linenos">215</span></a><span class="sd">    </span>
+</span><span id="invwarp-216"><a href="#invwarp-216"><span class="linenos">216</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="invwarp-217"><a href="#invwarp-217"><span class="linenos">217</span></a><span class="sd">    </span>
+</span><span id="invwarp-218"><a href="#invwarp-218"><span class="linenos">218</span></a><span class="sd">    Args:</span>
+</span><span id="invwarp-219"><a href="#invwarp-219"><span class="linenos">219</span></a><span class="sd">        warp: Filename for warp/shiftmap transform (volume).</span>
+</span><span id="invwarp-220"><a href="#invwarp-220"><span class="linenos">220</span></a><span class="sd">        out_img: Filename for output (inverse warped) image.</span>
+</span><span id="invwarp-221"><a href="#invwarp-221"><span class="linenos">221</span></a><span class="sd">        ref_img: Filename for new reference image.</span>
+</span><span id="invwarp-222"><a href="#invwarp-222"><span class="linenos">222</span></a><span class="sd">        absolute: Use absolute warp convention (default): x&#39; = w(x).</span>
+</span><span id="invwarp-223"><a href="#invwarp-223"><span class="linenos">223</span></a><span class="sd">        relative: Use relative warp convention (default): x&#39; = x + w(x).</span>
+</span><span id="invwarp-224"><a href="#invwarp-224"><span class="linenos">224</span></a><span class="sd">        noconstraint: Do not apply jacobian constraint.</span>
+</span><span id="invwarp-225"><a href="#invwarp-225"><span class="linenos">225</span></a><span class="sd">        jacobian_min: Minimum acceptable jacobian value for constraint (default\</span>
+</span><span id="invwarp-226"><a href="#invwarp-226"><span class="linenos">226</span></a><span class="sd">            0.01).</span>
+</span><span id="invwarp-227"><a href="#invwarp-227"><span class="linenos">227</span></a><span class="sd">        jacobian_max: Maximum acceptable jacobian value for constraint (default\</span>
+</span><span id="invwarp-228"><a href="#invwarp-228"><span class="linenos">228</span></a><span class="sd">            100.0).</span>
+</span><span id="invwarp-229"><a href="#invwarp-229"><span class="linenos">229</span></a><span class="sd">        debug: Turn on debugging output.</span>
+</span><span id="invwarp-230"><a href="#invwarp-230"><span class="linenos">230</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="invwarp-231"><a href="#invwarp-231"><span class="linenos">231</span></a><span class="sd">    Returns:</span>
+</span><span id="invwarp-232"><a href="#invwarp-232"><span class="linenos">232</span></a><span class="sd">        NamedTuple of outputs (described in `InvwarpOutputs`).</span>
+</span><span id="invwarp-233"><a href="#invwarp-233"><span class="linenos">233</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="invwarp-234"><a href="#invwarp-234"><span class="linenos">234</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="invwarp-235"><a href="#invwarp-235"><span class="linenos">235</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INVWARP_METADATA</span><span class="p">)</span>
+</span><span id="invwarp-236"><a href="#invwarp-236"><span class="linenos">236</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">invwarp_params</span><span class="p">(</span><span class="n">warp</span><span class="o">=</span><span class="n">warp</span><span class="p">,</span> <span class="n">out_img</span><span class="o">=</span><span class="n">out_img</span><span class="p">,</span> <span class="n">ref_img</span><span class="o">=</span><span class="n">ref_img</span><span class="p">,</span> <span class="n">absolute</span><span class="o">=</span><span class="n">absolute</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">,</span> <span class="n">noconstraint</span><span class="o">=</span><span class="n">noconstraint</span><span class="p">,</span> <span class="n">jacobian_min</span><span class="o">=</span><span class="n">jacobian_min</span><span class="p">,</span> <span class="n">jacobian_max</span><span class="o">=</span><span class="n">jacobian_max</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
+</span><span id="invwarp-237"><a href="#invwarp-237"><span class="linenos">237</span></a>    <span class="k">return</span> <span class="n">invwarp_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

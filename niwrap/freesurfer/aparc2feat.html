@@ -297,55 +297,56 @@
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">aparc2feat_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">aparc2feat_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aparc2feat</span><span class="p">(</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">feat_directories</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">annot</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">annot_a2005s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">annot_a2009s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aparc2featOutputs</span><span class="p">:</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    Resamples the FreeSurfer automatic cortical segmentation to the FEAT functional</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    space.</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    </span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    </span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    Args:</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        feat_directories: FEAT output directory. Multiple --feat arguments can\</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            be supplied.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Multiple\</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">            --featdirfile flags are allowed.</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        hemi: Resample hemisphere only (default is both rh and lh).</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        annot: Specify something other than aparc.</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        annot_a2005s_flag: Specify annotation = aparc.a2005s.</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        annot_a2009s_flag: Specify annotation = aparc.a2009s.</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        debug_flag: Turn on debugging.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    Returns:</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        NamedTuple of outputs (described in `Aparc2featOutputs`).</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APARC2FEAT_METADATA</span><span class="p">)</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aparc2feat_params</span><span class="p">(</span><span class="n">feat_directories</span><span class="o">=</span><span class="n">feat_directories</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">annot_a2005s_flag</span><span class="o">=</span><span class="n">annot_a2005s_flag</span><span class="p">,</span> <span class="n">annot_a2009s_flag</span><span class="o">=</span><span class="n">annot_a2009s_flag</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="k">return</span> <span class="n">aparc2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aparc2feat</span><span class="p">(</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">feat_directories</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">annot</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">annot_a2005s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">annot_a2009s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aparc2featOutputs</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Resamples the FreeSurfer automatic cortical segmentation to the FEAT functional</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    space.</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    </span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    </span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    Args:</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        feat_directories: FEAT output directory. Multiple --feat arguments can\</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">            be supplied.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Multiple\</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">            --featdirfile flags are allowed.</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        hemi: Resample hemisphere only (default is both rh and lh).</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        annot: Specify something other than aparc.</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        annot_a2005s_flag: Specify annotation = aparc.a2005s.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        annot_a2009s_flag: Specify annotation = aparc.a2009s.</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        debug_flag: Turn on debugging.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    Returns:</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        NamedTuple of outputs (described in `Aparc2featOutputs`).</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APARC2FEAT_METADATA</span><span class="p">)</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aparc2feat_params</span><span class="p">(</span><span class="n">feat_directories</span><span class="o">=</span><span class="n">feat_directories</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">annot_a2005s_flag</span><span class="o">=</span><span class="n">annot_a2005s_flag</span><span class="p">,</span> <span class="n">annot_a2009s_flag</span><span class="o">=</span><span class="n">annot_a2009s_flag</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">return</span> <span class="n">aparc2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="s2">&quot;APARC2FEAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="s2">&quot;Aparc2featOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="s2">&quot;Aparc2featParameters&quot;</span><span class="p">,</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;aparc2feat&quot;</span><span class="p">,</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;aparc2feat_params&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="p">]</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="s2">&quot;APARC2FEAT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="s2">&quot;Aparc2featOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;Aparc2featParameters&quot;</span><span class="p">,</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;aparc2feat&quot;</span><span class="p">,</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;aparc2feat_params&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -546,42 +547,42 @@
 
     </div>
     <a class="headerlink" href="#aparc2feat"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="aparc2feat-200"><a href="#aparc2feat-200"><span class="linenos">200</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aparc2feat</span><span class="p">(</span>
-</span><span id="aparc2feat-201"><a href="#aparc2feat-201"><span class="linenos">201</span></a>    <span class="n">feat_directories</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="aparc2feat-202"><a href="#aparc2feat-202"><span class="linenos">202</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="aparc2feat-203"><a href="#aparc2feat-203"><span class="linenos">203</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="aparc2feat-204"><a href="#aparc2feat-204"><span class="linenos">204</span></a>    <span class="n">annot</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="aparc2feat-205"><a href="#aparc2feat-205"><span class="linenos">205</span></a>    <span class="n">annot_a2005s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aparc2feat-206"><a href="#aparc2feat-206"><span class="linenos">206</span></a>    <span class="n">annot_a2009s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aparc2feat-207"><a href="#aparc2feat-207"><span class="linenos">207</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aparc2feat-208"><a href="#aparc2feat-208"><span class="linenos">208</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="aparc2feat-209"><a href="#aparc2feat-209"><span class="linenos">209</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aparc2featOutputs</span><span class="p">:</span>
-</span><span id="aparc2feat-210"><a href="#aparc2feat-210"><span class="linenos">210</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="aparc2feat-211"><a href="#aparc2feat-211"><span class="linenos">211</span></a><span class="sd">    Resamples the FreeSurfer automatic cortical segmentation to the FEAT functional</span>
-</span><span id="aparc2feat-212"><a href="#aparc2feat-212"><span class="linenos">212</span></a><span class="sd">    space.</span>
-</span><span id="aparc2feat-213"><a href="#aparc2feat-213"><span class="linenos">213</span></a><span class="sd">    </span>
-</span><span id="aparc2feat-214"><a href="#aparc2feat-214"><span class="linenos">214</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="aparc2feat-215"><a href="#aparc2feat-215"><span class="linenos">215</span></a><span class="sd">    </span>
-</span><span id="aparc2feat-216"><a href="#aparc2feat-216"><span class="linenos">216</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="aparc2feat-217"><a href="#aparc2feat-217"><span class="linenos">217</span></a><span class="sd">    </span>
-</span><span id="aparc2feat-218"><a href="#aparc2feat-218"><span class="linenos">218</span></a><span class="sd">    Args:</span>
-</span><span id="aparc2feat-219"><a href="#aparc2feat-219"><span class="linenos">219</span></a><span class="sd">        feat_directories: FEAT output directory. Multiple --feat arguments can\</span>
-</span><span id="aparc2feat-220"><a href="#aparc2feat-220"><span class="linenos">220</span></a><span class="sd">            be supplied.</span>
-</span><span id="aparc2feat-221"><a href="#aparc2feat-221"><span class="linenos">221</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Multiple\</span>
-</span><span id="aparc2feat-222"><a href="#aparc2feat-222"><span class="linenos">222</span></a><span class="sd">            --featdirfile flags are allowed.</span>
-</span><span id="aparc2feat-223"><a href="#aparc2feat-223"><span class="linenos">223</span></a><span class="sd">        hemi: Resample hemisphere only (default is both rh and lh).</span>
-</span><span id="aparc2feat-224"><a href="#aparc2feat-224"><span class="linenos">224</span></a><span class="sd">        annot: Specify something other than aparc.</span>
-</span><span id="aparc2feat-225"><a href="#aparc2feat-225"><span class="linenos">225</span></a><span class="sd">        annot_a2005s_flag: Specify annotation = aparc.a2005s.</span>
-</span><span id="aparc2feat-226"><a href="#aparc2feat-226"><span class="linenos">226</span></a><span class="sd">        annot_a2009s_flag: Specify annotation = aparc.a2009s.</span>
-</span><span id="aparc2feat-227"><a href="#aparc2feat-227"><span class="linenos">227</span></a><span class="sd">        debug_flag: Turn on debugging.</span>
-</span><span id="aparc2feat-228"><a href="#aparc2feat-228"><span class="linenos">228</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="aparc2feat-229"><a href="#aparc2feat-229"><span class="linenos">229</span></a><span class="sd">    Returns:</span>
-</span><span id="aparc2feat-230"><a href="#aparc2feat-230"><span class="linenos">230</span></a><span class="sd">        NamedTuple of outputs (described in `Aparc2featOutputs`).</span>
-</span><span id="aparc2feat-231"><a href="#aparc2feat-231"><span class="linenos">231</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="aparc2feat-232"><a href="#aparc2feat-232"><span class="linenos">232</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="aparc2feat-233"><a href="#aparc2feat-233"><span class="linenos">233</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APARC2FEAT_METADATA</span><span class="p">)</span>
-</span><span id="aparc2feat-234"><a href="#aparc2feat-234"><span class="linenos">234</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aparc2feat_params</span><span class="p">(</span><span class="n">feat_directories</span><span class="o">=</span><span class="n">feat_directories</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">annot_a2005s_flag</span><span class="o">=</span><span class="n">annot_a2005s_flag</span><span class="p">,</span> <span class="n">annot_a2009s_flag</span><span class="o">=</span><span class="n">annot_a2009s_flag</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
-</span><span id="aparc2feat-235"><a href="#aparc2feat-235"><span class="linenos">235</span></a>    <span class="k">return</span> <span class="n">aparc2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="aparc2feat-201"><a href="#aparc2feat-201"><span class="linenos">201</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aparc2feat</span><span class="p">(</span>
+</span><span id="aparc2feat-202"><a href="#aparc2feat-202"><span class="linenos">202</span></a>    <span class="n">feat_directories</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="aparc2feat-203"><a href="#aparc2feat-203"><span class="linenos">203</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aparc2feat-204"><a href="#aparc2feat-204"><span class="linenos">204</span></a>    <span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aparc2feat-205"><a href="#aparc2feat-205"><span class="linenos">205</span></a>    <span class="n">annot</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aparc2feat-206"><a href="#aparc2feat-206"><span class="linenos">206</span></a>    <span class="n">annot_a2005s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aparc2feat-207"><a href="#aparc2feat-207"><span class="linenos">207</span></a>    <span class="n">annot_a2009s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aparc2feat-208"><a href="#aparc2feat-208"><span class="linenos">208</span></a>    <span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aparc2feat-209"><a href="#aparc2feat-209"><span class="linenos">209</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aparc2feat-210"><a href="#aparc2feat-210"><span class="linenos">210</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aparc2featOutputs</span><span class="p">:</span>
+</span><span id="aparc2feat-211"><a href="#aparc2feat-211"><span class="linenos">211</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="aparc2feat-212"><a href="#aparc2feat-212"><span class="linenos">212</span></a><span class="sd">    Resamples the FreeSurfer automatic cortical segmentation to the FEAT functional</span>
+</span><span id="aparc2feat-213"><a href="#aparc2feat-213"><span class="linenos">213</span></a><span class="sd">    space.</span>
+</span><span id="aparc2feat-214"><a href="#aparc2feat-214"><span class="linenos">214</span></a><span class="sd">    </span>
+</span><span id="aparc2feat-215"><a href="#aparc2feat-215"><span class="linenos">215</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="aparc2feat-216"><a href="#aparc2feat-216"><span class="linenos">216</span></a><span class="sd">    </span>
+</span><span id="aparc2feat-217"><a href="#aparc2feat-217"><span class="linenos">217</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="aparc2feat-218"><a href="#aparc2feat-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="aparc2feat-219"><a href="#aparc2feat-219"><span class="linenos">219</span></a><span class="sd">    Args:</span>
+</span><span id="aparc2feat-220"><a href="#aparc2feat-220"><span class="linenos">220</span></a><span class="sd">        feat_directories: FEAT output directory. Multiple --feat arguments can\</span>
+</span><span id="aparc2feat-221"><a href="#aparc2feat-221"><span class="linenos">221</span></a><span class="sd">            be supplied.</span>
+</span><span id="aparc2feat-222"><a href="#aparc2feat-222"><span class="linenos">222</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Multiple\</span>
+</span><span id="aparc2feat-223"><a href="#aparc2feat-223"><span class="linenos">223</span></a><span class="sd">            --featdirfile flags are allowed.</span>
+</span><span id="aparc2feat-224"><a href="#aparc2feat-224"><span class="linenos">224</span></a><span class="sd">        hemi: Resample hemisphere only (default is both rh and lh).</span>
+</span><span id="aparc2feat-225"><a href="#aparc2feat-225"><span class="linenos">225</span></a><span class="sd">        annot: Specify something other than aparc.</span>
+</span><span id="aparc2feat-226"><a href="#aparc2feat-226"><span class="linenos">226</span></a><span class="sd">        annot_a2005s_flag: Specify annotation = aparc.a2005s.</span>
+</span><span id="aparc2feat-227"><a href="#aparc2feat-227"><span class="linenos">227</span></a><span class="sd">        annot_a2009s_flag: Specify annotation = aparc.a2009s.</span>
+</span><span id="aparc2feat-228"><a href="#aparc2feat-228"><span class="linenos">228</span></a><span class="sd">        debug_flag: Turn on debugging.</span>
+</span><span id="aparc2feat-229"><a href="#aparc2feat-229"><span class="linenos">229</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="aparc2feat-230"><a href="#aparc2feat-230"><span class="linenos">230</span></a><span class="sd">    Returns:</span>
+</span><span id="aparc2feat-231"><a href="#aparc2feat-231"><span class="linenos">231</span></a><span class="sd">        NamedTuple of outputs (described in `Aparc2featOutputs`).</span>
+</span><span id="aparc2feat-232"><a href="#aparc2feat-232"><span class="linenos">232</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="aparc2feat-233"><a href="#aparc2feat-233"><span class="linenos">233</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="aparc2feat-234"><a href="#aparc2feat-234"><span class="linenos">234</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APARC2FEAT_METADATA</span><span class="p">)</span>
+</span><span id="aparc2feat-235"><a href="#aparc2feat-235"><span class="linenos">235</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aparc2feat_params</span><span class="p">(</span><span class="n">feat_directories</span><span class="o">=</span><span class="n">feat_directories</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">hemi</span><span class="o">=</span><span class="n">hemi</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">annot_a2005s_flag</span><span class="o">=</span><span class="n">annot_a2005s_flag</span><span class="p">,</span> <span class="n">annot_a2009s_flag</span><span class="o">=</span><span class="n">annot_a2009s_flag</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">debug_flag</span><span class="p">)</span>
+</span><span id="aparc2feat-236"><a href="#aparc2feat-236"><span class="linenos">236</span></a>    <span class="k">return</span> <span class="n">aparc2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

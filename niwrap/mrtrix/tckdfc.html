@@ -567,127 +567,128 @@
 </span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">tckdfc_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">tckdfc_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="k">def</span><span class="w"> </span><span class="nf">tckdfc</span><span class="p">(</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="n">fmri</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="n">static</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="n">dynamic</span><span class="p">:</span> <span class="n">TckdfcDynamicParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="n">template</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TckdfcConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TckdfcOutputs</span><span class="p">:</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="sd">    Perform the Track-Weighted Dynamic Functional Connectivity (TW-dFC) method.</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">    </span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">    This command generates a Track-Weighted Image (TWI), where the contribution</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">    from each streamline to the image is the Pearson correlation between the</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">    fMRI time series at the streamline endpoints.</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="sd">    </span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="sd">    The output image can be generated in one of two ways (note that one of these</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="sd">    two command-line options MUST be provided):</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="sd">    </span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="sd">    - &quot;Static&quot; functional connectivity (-static option): Each streamline</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a><span class="sd">    contributes to a static 3D output image based on the correlation between the</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="sd">    signals at the streamline endpoints using the entirety of the input time</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="sd">    series.</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="sd">    </span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="sd">    - &quot;Dynamic&quot; functional connectivity (-dynamic option): The output image is a</span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="sd">    4D image, with the same number of volumes as the input fMRI time series. For</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a><span class="sd">    each volume, the contribution from each streamline is calculated based on a</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="sd">    finite-width sliding time window, centred at the timepoint corresponding to</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="sd">    that volume.</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="sd">    </span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="sd">    Note that the -backtrack option in this command is similar, but not</span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="sd">    precisely equivalent, to back-tracking as can be used with</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="sd">    Anatomically-Constrained Tractography (ACT) in the tckgen command. However,</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="sd">    here the feature does not change the streamlines trajectories in any way; it</span>
-</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="sd">    simply enables detection of the fact that the input fMRI image may not</span>
-</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a><span class="sd">    contain a valid timeseries underneath the streamline endpoint, and where</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a><span class="sd">    this occurs, searches from the streamline endpoint inwards along the</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a><span class="sd">    streamline trajectory in search of a valid timeseries to sample from the</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="sd">    input image.</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="sd">    </span>
-</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="sd">    References:</span>
-</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="sd">    </span>
-</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="sd">    Calamante, F.; Smith, R.E.; Liang, X.; Zalesky, A.; Connelly, A</span>
-</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="sd">    Track-weighted dynamic functional connectivity (TW-dFC): a new method to</span>
-</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a><span class="sd">    study time-resolved functional connectivity. Brain Struct Funct, 2017, doi:</span>
-</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a><span class="sd">    10.1007/s00429-017-1431-1.</span>
-</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a><span class="sd">    </span>
-</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a><span class="sd">    </span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="sd">    </span>
-</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a><span class="sd">    Args:</span>
-</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a><span class="sd">        tracks: the input track file.</span>
-</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a><span class="sd">        fmri: the pre-processed fMRI time series.</span>
-</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a><span class="sd">        output: the output TW-dFC image.</span>
-</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a><span class="sd">        static: generate a &quot;static&quot; (3D) output image.</span>
-</span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a><span class="sd">        dynamic: generate a &quot;dynamic&quot; (4D) output image; must additionally\</span>
-</span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a><span class="sd">            provide the shape and width (in volumes) of the sliding window.</span>
-</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a><span class="sd">        template: an image file to be used as a template for the output (the\</span>
-</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a><span class="sd">            output image will have the same transform and field of view).</span>
-</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a><span class="sd">        vox: provide either an isotropic voxel size (in mm), or comma-separated\</span>
-</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a><span class="sd">            list of 3 voxel dimensions.</span>
-</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a><span class="sd">        stat_vox: define the statistic for choosing the final voxel intensities\</span>
-</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a><span class="sd">            for a given contrast type given the individual values from the tracks\</span>
-</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="sd">            passing through each voxel\</span>
-</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a><span class="sd">            Options are: sum, min, mean, max (default: mean).</span>
-</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a><span class="sd">        backtrack: if no valid timeseries is found at the streamline endpoint,\</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a><span class="sd">            back-track along the streamline trajectory until a valid timeseries is\</span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="sd">            found.</span>
-</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="sd">        upsample: upsample the tracks by some ratio using Hermite interpolation\</span>
-</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="sd">            before mapping (if omitted, an appropriate ratio will be determined\</span>
-</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a><span class="sd">            automatically).</span>
-</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-498"><a href="#L-498"><span class="linenos">498</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a><span class="sd">    Returns:</span>
-</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a><span class="sd">        NamedTuple of outputs (described in `TckdfcOutputs`).</span>
-</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKDFC_METADATA</span><span class="p">)</span>
-</span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">tckdfc_params</span><span class="p">(</span><span class="n">static</span><span class="o">=</span><span class="n">static</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="n">dynamic</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="n">template</span><span class="p">,</span> <span class="n">vox</span><span class="o">=</span><span class="n">vox</span><span class="p">,</span> <span class="n">stat_vox</span><span class="o">=</span><span class="n">stat_vox</span><span class="p">,</span> <span class="n">backtrack</span><span class="o">=</span><span class="n">backtrack</span><span class="p">,</span> <span class="n">upsample</span><span class="o">=</span><span class="n">upsample</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">,</span> <span class="n">fmri</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a>    <span class="k">return</span> <span class="n">tckdfc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="k">def</span><span class="w"> </span><span class="nf">tckdfc</span><span class="p">(</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="n">fmri</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="n">static</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="n">dynamic</span><span class="p">:</span> <span class="n">TckdfcDynamicParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="n">template</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TckdfcConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TckdfcOutputs</span><span class="p">:</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a><span class="sd">    Perform the Track-Weighted Dynamic Functional Connectivity (TW-dFC) method.</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="sd">    </span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="sd">    This command generates a Track-Weighted Image (TWI), where the contribution</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="sd">    from each streamline to the image is the Pearson correlation between the</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="sd">    fMRI time series at the streamline endpoints.</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="sd">    </span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="sd">    The output image can be generated in one of two ways (note that one of these</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="sd">    two command-line options MUST be provided):</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="sd">    </span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a><span class="sd">    - &quot;Static&quot; functional connectivity (-static option): Each streamline</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="sd">    contributes to a static 3D output image based on the correlation between the</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="sd">    signals at the streamline endpoints using the entirety of the input time</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="sd">    series.</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="sd">    </span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="sd">    - &quot;Dynamic&quot; functional connectivity (-dynamic option): The output image is a</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a><span class="sd">    4D image, with the same number of volumes as the input fMRI time series. For</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="sd">    each volume, the contribution from each streamline is calculated based on a</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="sd">    finite-width sliding time window, centred at the timepoint corresponding to</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="sd">    that volume.</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="sd">    </span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="sd">    Note that the -backtrack option in this command is similar, but not</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="sd">    precisely equivalent, to back-tracking as can be used with</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="sd">    Anatomically-Constrained Tractography (ACT) in the tckgen command. However,</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="sd">    here the feature does not change the streamlines trajectories in any way; it</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a><span class="sd">    simply enables detection of the fact that the input fMRI image may not</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a><span class="sd">    contain a valid timeseries underneath the streamline endpoint, and where</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a><span class="sd">    this occurs, searches from the streamline endpoint inwards along the</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="sd">    streamline trajectory in search of a valid timeseries to sample from the</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="sd">    input image.</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="sd">    </span>
+</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="sd">    References:</span>
+</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="sd">    </span>
+</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="sd">    Calamante, F.; Smith, R.E.; Liang, X.; Zalesky, A.; Connelly, A</span>
+</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a><span class="sd">    Track-weighted dynamic functional connectivity (TW-dFC): a new method to</span>
+</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a><span class="sd">    study time-resolved functional connectivity. Brain Struct Funct, 2017, doi:</span>
+</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a><span class="sd">    10.1007/s00429-017-1431-1.</span>
+</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a><span class="sd">    </span>
+</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="sd">    </span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a><span class="sd">    </span>
+</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a><span class="sd">    Args:</span>
+</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a><span class="sd">        tracks: the input track file.</span>
+</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a><span class="sd">        fmri: the pre-processed fMRI time series.</span>
+</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a><span class="sd">        output: the output TW-dFC image.</span>
+</span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a><span class="sd">        static: generate a &quot;static&quot; (3D) output image.</span>
+</span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a><span class="sd">        dynamic: generate a &quot;dynamic&quot; (4D) output image; must additionally\</span>
+</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a><span class="sd">            provide the shape and width (in volumes) of the sliding window.</span>
+</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a><span class="sd">        template: an image file to be used as a template for the output (the\</span>
+</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a><span class="sd">            output image will have the same transform and field of view).</span>
+</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a><span class="sd">        vox: provide either an isotropic voxel size (in mm), or comma-separated\</span>
+</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a><span class="sd">            list of 3 voxel dimensions.</span>
+</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a><span class="sd">        stat_vox: define the statistic for choosing the final voxel intensities\</span>
+</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="sd">            for a given contrast type given the individual values from the tracks\</span>
+</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a><span class="sd">            passing through each voxel\</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a><span class="sd">            Options are: sum, min, mean, max (default: mean).</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a><span class="sd">        backtrack: if no valid timeseries is found at the streamline endpoint,\</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="sd">            back-track along the streamline trajectory until a valid timeseries is\</span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="sd">            found.</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="sd">        upsample: upsample the tracks by some ratio using Hermite interpolation\</span>
+</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a><span class="sd">            before mapping (if omitted, an appropriate ratio will be determined\</span>
+</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a><span class="sd">            automatically).</span>
+</span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-498"><a href="#L-498"><span class="linenos">498</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a><span class="sd">    Returns:</span>
+</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a><span class="sd">        NamedTuple of outputs (described in `TckdfcOutputs`).</span>
+</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKDFC_METADATA</span><span class="p">)</span>
+</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">tckdfc_params</span><span class="p">(</span><span class="n">static</span><span class="o">=</span><span class="n">static</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="n">dynamic</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="n">template</span><span class="p">,</span> <span class="n">vox</span><span class="o">=</span><span class="n">vox</span><span class="p">,</span> <span class="n">stat_vox</span><span class="o">=</span><span class="n">stat_vox</span><span class="p">,</span> <span class="n">backtrack</span><span class="o">=</span><span class="n">backtrack</span><span class="p">,</span> <span class="n">upsample</span><span class="o">=</span><span class="n">upsample</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">,</span> <span class="n">fmri</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a>    <span class="k">return</span> <span class="n">tckdfc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a>
-</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a>    <span class="s2">&quot;TCKDFC_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a>    <span class="s2">&quot;TckdfcConfigParameters&quot;</span><span class="p">,</span>
-</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a>    <span class="s2">&quot;TckdfcDynamicParameters&quot;</span><span class="p">,</span>
-</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a>    <span class="s2">&quot;TckdfcOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a>    <span class="s2">&quot;TckdfcParameters&quot;</span><span class="p">,</span>
-</span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a>    <span class="s2">&quot;tckdfc&quot;</span><span class="p">,</span>
-</span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a>    <span class="s2">&quot;tckdfc_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a>    <span class="s2">&quot;tckdfc_dynamic_params&quot;</span><span class="p">,</span>
-</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a>    <span class="s2">&quot;tckdfc_params&quot;</span><span class="p">,</span>
-</span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a><span class="p">]</span>
+</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a>
+</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a>    <span class="s2">&quot;TCKDFC_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a>    <span class="s2">&quot;TckdfcConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a>    <span class="s2">&quot;TckdfcDynamicParameters&quot;</span><span class="p">,</span>
+</span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a>    <span class="s2">&quot;TckdfcOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a>    <span class="s2">&quot;TckdfcParameters&quot;</span><span class="p">,</span>
+</span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a>    <span class="s2">&quot;tckdfc&quot;</span><span class="p">,</span>
+</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a>    <span class="s2">&quot;tckdfc_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a>    <span class="s2">&quot;tckdfc_dynamic_params&quot;</span><span class="p">,</span>
+</span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a>    <span class="s2">&quot;tckdfc_params&quot;</span><span class="p">,</span>
+</span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1064,110 +1065,110 @@
 
     </div>
     <a class="headerlink" href="#tckdfc"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="tckdfc-410"><a href="#tckdfc-410"><span class="linenos">410</span></a><span class="k">def</span><span class="w"> </span><span class="nf">tckdfc</span><span class="p">(</span>
-</span><span id="tckdfc-411"><a href="#tckdfc-411"><span class="linenos">411</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="tckdfc-412"><a href="#tckdfc-412"><span class="linenos">412</span></a>    <span class="n">fmri</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="tckdfc-413"><a href="#tckdfc-413"><span class="linenos">413</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="tckdfc-414"><a href="#tckdfc-414"><span class="linenos">414</span></a>    <span class="n">static</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-415"><a href="#tckdfc-415"><span class="linenos">415</span></a>    <span class="n">dynamic</span><span class="p">:</span> <span class="n">TckdfcDynamicParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-416"><a href="#tckdfc-416"><span class="linenos">416</span></a>    <span class="n">template</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-417"><a href="#tckdfc-417"><span class="linenos">417</span></a>    <span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-418"><a href="#tckdfc-418"><span class="linenos">418</span></a>    <span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-419"><a href="#tckdfc-419"><span class="linenos">419</span></a>    <span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-420"><a href="#tckdfc-420"><span class="linenos">420</span></a>    <span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-421"><a href="#tckdfc-421"><span class="linenos">421</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-422"><a href="#tckdfc-422"><span class="linenos">422</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-423"><a href="#tckdfc-423"><span class="linenos">423</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-424"><a href="#tckdfc-424"><span class="linenos">424</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-425"><a href="#tckdfc-425"><span class="linenos">425</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-426"><a href="#tckdfc-426"><span class="linenos">426</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TckdfcConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-427"><a href="#tckdfc-427"><span class="linenos">427</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-428"><a href="#tckdfc-428"><span class="linenos">428</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="tckdfc-429"><a href="#tckdfc-429"><span class="linenos">429</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckdfc-430"><a href="#tckdfc-430"><span class="linenos">430</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TckdfcOutputs</span><span class="p">:</span>
-</span><span id="tckdfc-431"><a href="#tckdfc-431"><span class="linenos">431</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="tckdfc-432"><a href="#tckdfc-432"><span class="linenos">432</span></a><span class="sd">    Perform the Track-Weighted Dynamic Functional Connectivity (TW-dFC) method.</span>
-</span><span id="tckdfc-433"><a href="#tckdfc-433"><span class="linenos">433</span></a><span class="sd">    </span>
-</span><span id="tckdfc-434"><a href="#tckdfc-434"><span class="linenos">434</span></a><span class="sd">    This command generates a Track-Weighted Image (TWI), where the contribution</span>
-</span><span id="tckdfc-435"><a href="#tckdfc-435"><span class="linenos">435</span></a><span class="sd">    from each streamline to the image is the Pearson correlation between the</span>
-</span><span id="tckdfc-436"><a href="#tckdfc-436"><span class="linenos">436</span></a><span class="sd">    fMRI time series at the streamline endpoints.</span>
-</span><span id="tckdfc-437"><a href="#tckdfc-437"><span class="linenos">437</span></a><span class="sd">    </span>
-</span><span id="tckdfc-438"><a href="#tckdfc-438"><span class="linenos">438</span></a><span class="sd">    The output image can be generated in one of two ways (note that one of these</span>
-</span><span id="tckdfc-439"><a href="#tckdfc-439"><span class="linenos">439</span></a><span class="sd">    two command-line options MUST be provided):</span>
-</span><span id="tckdfc-440"><a href="#tckdfc-440"><span class="linenos">440</span></a><span class="sd">    </span>
-</span><span id="tckdfc-441"><a href="#tckdfc-441"><span class="linenos">441</span></a><span class="sd">    - &quot;Static&quot; functional connectivity (-static option): Each streamline</span>
-</span><span id="tckdfc-442"><a href="#tckdfc-442"><span class="linenos">442</span></a><span class="sd">    contributes to a static 3D output image based on the correlation between the</span>
-</span><span id="tckdfc-443"><a href="#tckdfc-443"><span class="linenos">443</span></a><span class="sd">    signals at the streamline endpoints using the entirety of the input time</span>
-</span><span id="tckdfc-444"><a href="#tckdfc-444"><span class="linenos">444</span></a><span class="sd">    series.</span>
-</span><span id="tckdfc-445"><a href="#tckdfc-445"><span class="linenos">445</span></a><span class="sd">    </span>
-</span><span id="tckdfc-446"><a href="#tckdfc-446"><span class="linenos">446</span></a><span class="sd">    - &quot;Dynamic&quot; functional connectivity (-dynamic option): The output image is a</span>
-</span><span id="tckdfc-447"><a href="#tckdfc-447"><span class="linenos">447</span></a><span class="sd">    4D image, with the same number of volumes as the input fMRI time series. For</span>
-</span><span id="tckdfc-448"><a href="#tckdfc-448"><span class="linenos">448</span></a><span class="sd">    each volume, the contribution from each streamline is calculated based on a</span>
-</span><span id="tckdfc-449"><a href="#tckdfc-449"><span class="linenos">449</span></a><span class="sd">    finite-width sliding time window, centred at the timepoint corresponding to</span>
-</span><span id="tckdfc-450"><a href="#tckdfc-450"><span class="linenos">450</span></a><span class="sd">    that volume.</span>
-</span><span id="tckdfc-451"><a href="#tckdfc-451"><span class="linenos">451</span></a><span class="sd">    </span>
-</span><span id="tckdfc-452"><a href="#tckdfc-452"><span class="linenos">452</span></a><span class="sd">    Note that the -backtrack option in this command is similar, but not</span>
-</span><span id="tckdfc-453"><a href="#tckdfc-453"><span class="linenos">453</span></a><span class="sd">    precisely equivalent, to back-tracking as can be used with</span>
-</span><span id="tckdfc-454"><a href="#tckdfc-454"><span class="linenos">454</span></a><span class="sd">    Anatomically-Constrained Tractography (ACT) in the tckgen command. However,</span>
-</span><span id="tckdfc-455"><a href="#tckdfc-455"><span class="linenos">455</span></a><span class="sd">    here the feature does not change the streamlines trajectories in any way; it</span>
-</span><span id="tckdfc-456"><a href="#tckdfc-456"><span class="linenos">456</span></a><span class="sd">    simply enables detection of the fact that the input fMRI image may not</span>
-</span><span id="tckdfc-457"><a href="#tckdfc-457"><span class="linenos">457</span></a><span class="sd">    contain a valid timeseries underneath the streamline endpoint, and where</span>
-</span><span id="tckdfc-458"><a href="#tckdfc-458"><span class="linenos">458</span></a><span class="sd">    this occurs, searches from the streamline endpoint inwards along the</span>
-</span><span id="tckdfc-459"><a href="#tckdfc-459"><span class="linenos">459</span></a><span class="sd">    streamline trajectory in search of a valid timeseries to sample from the</span>
-</span><span id="tckdfc-460"><a href="#tckdfc-460"><span class="linenos">460</span></a><span class="sd">    input image.</span>
-</span><span id="tckdfc-461"><a href="#tckdfc-461"><span class="linenos">461</span></a><span class="sd">    </span>
-</span><span id="tckdfc-462"><a href="#tckdfc-462"><span class="linenos">462</span></a><span class="sd">    References:</span>
-</span><span id="tckdfc-463"><a href="#tckdfc-463"><span class="linenos">463</span></a><span class="sd">    </span>
-</span><span id="tckdfc-464"><a href="#tckdfc-464"><span class="linenos">464</span></a><span class="sd">    Calamante, F.; Smith, R.E.; Liang, X.; Zalesky, A.; Connelly, A</span>
-</span><span id="tckdfc-465"><a href="#tckdfc-465"><span class="linenos">465</span></a><span class="sd">    Track-weighted dynamic functional connectivity (TW-dFC): a new method to</span>
-</span><span id="tckdfc-466"><a href="#tckdfc-466"><span class="linenos">466</span></a><span class="sd">    study time-resolved functional connectivity. Brain Struct Funct, 2017, doi:</span>
-</span><span id="tckdfc-467"><a href="#tckdfc-467"><span class="linenos">467</span></a><span class="sd">    10.1007/s00429-017-1431-1.</span>
-</span><span id="tckdfc-468"><a href="#tckdfc-468"><span class="linenos">468</span></a><span class="sd">    </span>
-</span><span id="tckdfc-469"><a href="#tckdfc-469"><span class="linenos">469</span></a><span class="sd">    Author: MRTrix3 Developers</span>
-</span><span id="tckdfc-470"><a href="#tckdfc-470"><span class="linenos">470</span></a><span class="sd">    </span>
-</span><span id="tckdfc-471"><a href="#tckdfc-471"><span class="linenos">471</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
-</span><span id="tckdfc-472"><a href="#tckdfc-472"><span class="linenos">472</span></a><span class="sd">    </span>
-</span><span id="tckdfc-473"><a href="#tckdfc-473"><span class="linenos">473</span></a><span class="sd">    Args:</span>
-</span><span id="tckdfc-474"><a href="#tckdfc-474"><span class="linenos">474</span></a><span class="sd">        tracks: the input track file.</span>
-</span><span id="tckdfc-475"><a href="#tckdfc-475"><span class="linenos">475</span></a><span class="sd">        fmri: the pre-processed fMRI time series.</span>
-</span><span id="tckdfc-476"><a href="#tckdfc-476"><span class="linenos">476</span></a><span class="sd">        output: the output TW-dFC image.</span>
-</span><span id="tckdfc-477"><a href="#tckdfc-477"><span class="linenos">477</span></a><span class="sd">        static: generate a &quot;static&quot; (3D) output image.</span>
-</span><span id="tckdfc-478"><a href="#tckdfc-478"><span class="linenos">478</span></a><span class="sd">        dynamic: generate a &quot;dynamic&quot; (4D) output image; must additionally\</span>
-</span><span id="tckdfc-479"><a href="#tckdfc-479"><span class="linenos">479</span></a><span class="sd">            provide the shape and width (in volumes) of the sliding window.</span>
-</span><span id="tckdfc-480"><a href="#tckdfc-480"><span class="linenos">480</span></a><span class="sd">        template: an image file to be used as a template for the output (the\</span>
-</span><span id="tckdfc-481"><a href="#tckdfc-481"><span class="linenos">481</span></a><span class="sd">            output image will have the same transform and field of view).</span>
-</span><span id="tckdfc-482"><a href="#tckdfc-482"><span class="linenos">482</span></a><span class="sd">        vox: provide either an isotropic voxel size (in mm), or comma-separated\</span>
-</span><span id="tckdfc-483"><a href="#tckdfc-483"><span class="linenos">483</span></a><span class="sd">            list of 3 voxel dimensions.</span>
-</span><span id="tckdfc-484"><a href="#tckdfc-484"><span class="linenos">484</span></a><span class="sd">        stat_vox: define the statistic for choosing the final voxel intensities\</span>
-</span><span id="tckdfc-485"><a href="#tckdfc-485"><span class="linenos">485</span></a><span class="sd">            for a given contrast type given the individual values from the tracks\</span>
-</span><span id="tckdfc-486"><a href="#tckdfc-486"><span class="linenos">486</span></a><span class="sd">            passing through each voxel\</span>
-</span><span id="tckdfc-487"><a href="#tckdfc-487"><span class="linenos">487</span></a><span class="sd">            Options are: sum, min, mean, max (default: mean).</span>
-</span><span id="tckdfc-488"><a href="#tckdfc-488"><span class="linenos">488</span></a><span class="sd">        backtrack: if no valid timeseries is found at the streamline endpoint,\</span>
-</span><span id="tckdfc-489"><a href="#tckdfc-489"><span class="linenos">489</span></a><span class="sd">            back-track along the streamline trajectory until a valid timeseries is\</span>
-</span><span id="tckdfc-490"><a href="#tckdfc-490"><span class="linenos">490</span></a><span class="sd">            found.</span>
-</span><span id="tckdfc-491"><a href="#tckdfc-491"><span class="linenos">491</span></a><span class="sd">        upsample: upsample the tracks by some ratio using Hermite interpolation\</span>
-</span><span id="tckdfc-492"><a href="#tckdfc-492"><span class="linenos">492</span></a><span class="sd">            before mapping (if omitted, an appropriate ratio will be determined\</span>
-</span><span id="tckdfc-493"><a href="#tckdfc-493"><span class="linenos">493</span></a><span class="sd">            automatically).</span>
-</span><span id="tckdfc-494"><a href="#tckdfc-494"><span class="linenos">494</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="tckdfc-495"><a href="#tckdfc-495"><span class="linenos">495</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="tckdfc-496"><a href="#tckdfc-496"><span class="linenos">496</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="tckdfc-497"><a href="#tckdfc-497"><span class="linenos">497</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="tckdfc-498"><a href="#tckdfc-498"><span class="linenos">498</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="tckdfc-499"><a href="#tckdfc-499"><span class="linenos">499</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="tckdfc-500"><a href="#tckdfc-500"><span class="linenos">500</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="tckdfc-501"><a href="#tckdfc-501"><span class="linenos">501</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="tckdfc-502"><a href="#tckdfc-502"><span class="linenos">502</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="tckdfc-503"><a href="#tckdfc-503"><span class="linenos">503</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="tckdfc-504"><a href="#tckdfc-504"><span class="linenos">504</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="tckdfc-505"><a href="#tckdfc-505"><span class="linenos">505</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="tckdfc-506"><a href="#tckdfc-506"><span class="linenos">506</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="tckdfc-507"><a href="#tckdfc-507"><span class="linenos">507</span></a><span class="sd">    Returns:</span>
-</span><span id="tckdfc-508"><a href="#tckdfc-508"><span class="linenos">508</span></a><span class="sd">        NamedTuple of outputs (described in `TckdfcOutputs`).</span>
-</span><span id="tckdfc-509"><a href="#tckdfc-509"><span class="linenos">509</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="tckdfc-510"><a href="#tckdfc-510"><span class="linenos">510</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="tckdfc-511"><a href="#tckdfc-511"><span class="linenos">511</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKDFC_METADATA</span><span class="p">)</span>
-</span><span id="tckdfc-512"><a href="#tckdfc-512"><span class="linenos">512</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">tckdfc_params</span><span class="p">(</span><span class="n">static</span><span class="o">=</span><span class="n">static</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="n">dynamic</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="n">template</span><span class="p">,</span> <span class="n">vox</span><span class="o">=</span><span class="n">vox</span><span class="p">,</span> <span class="n">stat_vox</span><span class="o">=</span><span class="n">stat_vox</span><span class="p">,</span> <span class="n">backtrack</span><span class="o">=</span><span class="n">backtrack</span><span class="p">,</span> <span class="n">upsample</span><span class="o">=</span><span class="n">upsample</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">,</span> <span class="n">fmri</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
-</span><span id="tckdfc-513"><a href="#tckdfc-513"><span class="linenos">513</span></a>    <span class="k">return</span> <span class="n">tckdfc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="tckdfc-411"><a href="#tckdfc-411"><span class="linenos">411</span></a><span class="k">def</span><span class="w"> </span><span class="nf">tckdfc</span><span class="p">(</span>
+</span><span id="tckdfc-412"><a href="#tckdfc-412"><span class="linenos">412</span></a>    <span class="n">tracks</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="tckdfc-413"><a href="#tckdfc-413"><span class="linenos">413</span></a>    <span class="n">fmri</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="tckdfc-414"><a href="#tckdfc-414"><span class="linenos">414</span></a>    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="tckdfc-415"><a href="#tckdfc-415"><span class="linenos">415</span></a>    <span class="n">static</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-416"><a href="#tckdfc-416"><span class="linenos">416</span></a>    <span class="n">dynamic</span><span class="p">:</span> <span class="n">TckdfcDynamicParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-417"><a href="#tckdfc-417"><span class="linenos">417</span></a>    <span class="n">template</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-418"><a href="#tckdfc-418"><span class="linenos">418</span></a>    <span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-419"><a href="#tckdfc-419"><span class="linenos">419</span></a>    <span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-420"><a href="#tckdfc-420"><span class="linenos">420</span></a>    <span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-421"><a href="#tckdfc-421"><span class="linenos">421</span></a>    <span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-422"><a href="#tckdfc-422"><span class="linenos">422</span></a>    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-423"><a href="#tckdfc-423"><span class="linenos">423</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-424"><a href="#tckdfc-424"><span class="linenos">424</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-425"><a href="#tckdfc-425"><span class="linenos">425</span></a>    <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-426"><a href="#tckdfc-426"><span class="linenos">426</span></a>    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-427"><a href="#tckdfc-427"><span class="linenos">427</span></a>    <span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TckdfcConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-428"><a href="#tckdfc-428"><span class="linenos">428</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-429"><a href="#tckdfc-429"><span class="linenos">429</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="tckdfc-430"><a href="#tckdfc-430"><span class="linenos">430</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckdfc-431"><a href="#tckdfc-431"><span class="linenos">431</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TckdfcOutputs</span><span class="p">:</span>
+</span><span id="tckdfc-432"><a href="#tckdfc-432"><span class="linenos">432</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="tckdfc-433"><a href="#tckdfc-433"><span class="linenos">433</span></a><span class="sd">    Perform the Track-Weighted Dynamic Functional Connectivity (TW-dFC) method.</span>
+</span><span id="tckdfc-434"><a href="#tckdfc-434"><span class="linenos">434</span></a><span class="sd">    </span>
+</span><span id="tckdfc-435"><a href="#tckdfc-435"><span class="linenos">435</span></a><span class="sd">    This command generates a Track-Weighted Image (TWI), where the contribution</span>
+</span><span id="tckdfc-436"><a href="#tckdfc-436"><span class="linenos">436</span></a><span class="sd">    from each streamline to the image is the Pearson correlation between the</span>
+</span><span id="tckdfc-437"><a href="#tckdfc-437"><span class="linenos">437</span></a><span class="sd">    fMRI time series at the streamline endpoints.</span>
+</span><span id="tckdfc-438"><a href="#tckdfc-438"><span class="linenos">438</span></a><span class="sd">    </span>
+</span><span id="tckdfc-439"><a href="#tckdfc-439"><span class="linenos">439</span></a><span class="sd">    The output image can be generated in one of two ways (note that one of these</span>
+</span><span id="tckdfc-440"><a href="#tckdfc-440"><span class="linenos">440</span></a><span class="sd">    two command-line options MUST be provided):</span>
+</span><span id="tckdfc-441"><a href="#tckdfc-441"><span class="linenos">441</span></a><span class="sd">    </span>
+</span><span id="tckdfc-442"><a href="#tckdfc-442"><span class="linenos">442</span></a><span class="sd">    - &quot;Static&quot; functional connectivity (-static option): Each streamline</span>
+</span><span id="tckdfc-443"><a href="#tckdfc-443"><span class="linenos">443</span></a><span class="sd">    contributes to a static 3D output image based on the correlation between the</span>
+</span><span id="tckdfc-444"><a href="#tckdfc-444"><span class="linenos">444</span></a><span class="sd">    signals at the streamline endpoints using the entirety of the input time</span>
+</span><span id="tckdfc-445"><a href="#tckdfc-445"><span class="linenos">445</span></a><span class="sd">    series.</span>
+</span><span id="tckdfc-446"><a href="#tckdfc-446"><span class="linenos">446</span></a><span class="sd">    </span>
+</span><span id="tckdfc-447"><a href="#tckdfc-447"><span class="linenos">447</span></a><span class="sd">    - &quot;Dynamic&quot; functional connectivity (-dynamic option): The output image is a</span>
+</span><span id="tckdfc-448"><a href="#tckdfc-448"><span class="linenos">448</span></a><span class="sd">    4D image, with the same number of volumes as the input fMRI time series. For</span>
+</span><span id="tckdfc-449"><a href="#tckdfc-449"><span class="linenos">449</span></a><span class="sd">    each volume, the contribution from each streamline is calculated based on a</span>
+</span><span id="tckdfc-450"><a href="#tckdfc-450"><span class="linenos">450</span></a><span class="sd">    finite-width sliding time window, centred at the timepoint corresponding to</span>
+</span><span id="tckdfc-451"><a href="#tckdfc-451"><span class="linenos">451</span></a><span class="sd">    that volume.</span>
+</span><span id="tckdfc-452"><a href="#tckdfc-452"><span class="linenos">452</span></a><span class="sd">    </span>
+</span><span id="tckdfc-453"><a href="#tckdfc-453"><span class="linenos">453</span></a><span class="sd">    Note that the -backtrack option in this command is similar, but not</span>
+</span><span id="tckdfc-454"><a href="#tckdfc-454"><span class="linenos">454</span></a><span class="sd">    precisely equivalent, to back-tracking as can be used with</span>
+</span><span id="tckdfc-455"><a href="#tckdfc-455"><span class="linenos">455</span></a><span class="sd">    Anatomically-Constrained Tractography (ACT) in the tckgen command. However,</span>
+</span><span id="tckdfc-456"><a href="#tckdfc-456"><span class="linenos">456</span></a><span class="sd">    here the feature does not change the streamlines trajectories in any way; it</span>
+</span><span id="tckdfc-457"><a href="#tckdfc-457"><span class="linenos">457</span></a><span class="sd">    simply enables detection of the fact that the input fMRI image may not</span>
+</span><span id="tckdfc-458"><a href="#tckdfc-458"><span class="linenos">458</span></a><span class="sd">    contain a valid timeseries underneath the streamline endpoint, and where</span>
+</span><span id="tckdfc-459"><a href="#tckdfc-459"><span class="linenos">459</span></a><span class="sd">    this occurs, searches from the streamline endpoint inwards along the</span>
+</span><span id="tckdfc-460"><a href="#tckdfc-460"><span class="linenos">460</span></a><span class="sd">    streamline trajectory in search of a valid timeseries to sample from the</span>
+</span><span id="tckdfc-461"><a href="#tckdfc-461"><span class="linenos">461</span></a><span class="sd">    input image.</span>
+</span><span id="tckdfc-462"><a href="#tckdfc-462"><span class="linenos">462</span></a><span class="sd">    </span>
+</span><span id="tckdfc-463"><a href="#tckdfc-463"><span class="linenos">463</span></a><span class="sd">    References:</span>
+</span><span id="tckdfc-464"><a href="#tckdfc-464"><span class="linenos">464</span></a><span class="sd">    </span>
+</span><span id="tckdfc-465"><a href="#tckdfc-465"><span class="linenos">465</span></a><span class="sd">    Calamante, F.; Smith, R.E.; Liang, X.; Zalesky, A.; Connelly, A</span>
+</span><span id="tckdfc-466"><a href="#tckdfc-466"><span class="linenos">466</span></a><span class="sd">    Track-weighted dynamic functional connectivity (TW-dFC): a new method to</span>
+</span><span id="tckdfc-467"><a href="#tckdfc-467"><span class="linenos">467</span></a><span class="sd">    study time-resolved functional connectivity. Brain Struct Funct, 2017, doi:</span>
+</span><span id="tckdfc-468"><a href="#tckdfc-468"><span class="linenos">468</span></a><span class="sd">    10.1007/s00429-017-1431-1.</span>
+</span><span id="tckdfc-469"><a href="#tckdfc-469"><span class="linenos">469</span></a><span class="sd">    </span>
+</span><span id="tckdfc-470"><a href="#tckdfc-470"><span class="linenos">470</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="tckdfc-471"><a href="#tckdfc-471"><span class="linenos">471</span></a><span class="sd">    </span>
+</span><span id="tckdfc-472"><a href="#tckdfc-472"><span class="linenos">472</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="tckdfc-473"><a href="#tckdfc-473"><span class="linenos">473</span></a><span class="sd">    </span>
+</span><span id="tckdfc-474"><a href="#tckdfc-474"><span class="linenos">474</span></a><span class="sd">    Args:</span>
+</span><span id="tckdfc-475"><a href="#tckdfc-475"><span class="linenos">475</span></a><span class="sd">        tracks: the input track file.</span>
+</span><span id="tckdfc-476"><a href="#tckdfc-476"><span class="linenos">476</span></a><span class="sd">        fmri: the pre-processed fMRI time series.</span>
+</span><span id="tckdfc-477"><a href="#tckdfc-477"><span class="linenos">477</span></a><span class="sd">        output: the output TW-dFC image.</span>
+</span><span id="tckdfc-478"><a href="#tckdfc-478"><span class="linenos">478</span></a><span class="sd">        static: generate a &quot;static&quot; (3D) output image.</span>
+</span><span id="tckdfc-479"><a href="#tckdfc-479"><span class="linenos">479</span></a><span class="sd">        dynamic: generate a &quot;dynamic&quot; (4D) output image; must additionally\</span>
+</span><span id="tckdfc-480"><a href="#tckdfc-480"><span class="linenos">480</span></a><span class="sd">            provide the shape and width (in volumes) of the sliding window.</span>
+</span><span id="tckdfc-481"><a href="#tckdfc-481"><span class="linenos">481</span></a><span class="sd">        template: an image file to be used as a template for the output (the\</span>
+</span><span id="tckdfc-482"><a href="#tckdfc-482"><span class="linenos">482</span></a><span class="sd">            output image will have the same transform and field of view).</span>
+</span><span id="tckdfc-483"><a href="#tckdfc-483"><span class="linenos">483</span></a><span class="sd">        vox: provide either an isotropic voxel size (in mm), or comma-separated\</span>
+</span><span id="tckdfc-484"><a href="#tckdfc-484"><span class="linenos">484</span></a><span class="sd">            list of 3 voxel dimensions.</span>
+</span><span id="tckdfc-485"><a href="#tckdfc-485"><span class="linenos">485</span></a><span class="sd">        stat_vox: define the statistic for choosing the final voxel intensities\</span>
+</span><span id="tckdfc-486"><a href="#tckdfc-486"><span class="linenos">486</span></a><span class="sd">            for a given contrast type given the individual values from the tracks\</span>
+</span><span id="tckdfc-487"><a href="#tckdfc-487"><span class="linenos">487</span></a><span class="sd">            passing through each voxel\</span>
+</span><span id="tckdfc-488"><a href="#tckdfc-488"><span class="linenos">488</span></a><span class="sd">            Options are: sum, min, mean, max (default: mean).</span>
+</span><span id="tckdfc-489"><a href="#tckdfc-489"><span class="linenos">489</span></a><span class="sd">        backtrack: if no valid timeseries is found at the streamline endpoint,\</span>
+</span><span id="tckdfc-490"><a href="#tckdfc-490"><span class="linenos">490</span></a><span class="sd">            back-track along the streamline trajectory until a valid timeseries is\</span>
+</span><span id="tckdfc-491"><a href="#tckdfc-491"><span class="linenos">491</span></a><span class="sd">            found.</span>
+</span><span id="tckdfc-492"><a href="#tckdfc-492"><span class="linenos">492</span></a><span class="sd">        upsample: upsample the tracks by some ratio using Hermite interpolation\</span>
+</span><span id="tckdfc-493"><a href="#tckdfc-493"><span class="linenos">493</span></a><span class="sd">            before mapping (if omitted, an appropriate ratio will be determined\</span>
+</span><span id="tckdfc-494"><a href="#tckdfc-494"><span class="linenos">494</span></a><span class="sd">            automatically).</span>
+</span><span id="tckdfc-495"><a href="#tckdfc-495"><span class="linenos">495</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="tckdfc-496"><a href="#tckdfc-496"><span class="linenos">496</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="tckdfc-497"><a href="#tckdfc-497"><span class="linenos">497</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="tckdfc-498"><a href="#tckdfc-498"><span class="linenos">498</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="tckdfc-499"><a href="#tckdfc-499"><span class="linenos">499</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="tckdfc-500"><a href="#tckdfc-500"><span class="linenos">500</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="tckdfc-501"><a href="#tckdfc-501"><span class="linenos">501</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="tckdfc-502"><a href="#tckdfc-502"><span class="linenos">502</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="tckdfc-503"><a href="#tckdfc-503"><span class="linenos">503</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="tckdfc-504"><a href="#tckdfc-504"><span class="linenos">504</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="tckdfc-505"><a href="#tckdfc-505"><span class="linenos">505</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="tckdfc-506"><a href="#tckdfc-506"><span class="linenos">506</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="tckdfc-507"><a href="#tckdfc-507"><span class="linenos">507</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="tckdfc-508"><a href="#tckdfc-508"><span class="linenos">508</span></a><span class="sd">    Returns:</span>
+</span><span id="tckdfc-509"><a href="#tckdfc-509"><span class="linenos">509</span></a><span class="sd">        NamedTuple of outputs (described in `TckdfcOutputs`).</span>
+</span><span id="tckdfc-510"><a href="#tckdfc-510"><span class="linenos">510</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="tckdfc-511"><a href="#tckdfc-511"><span class="linenos">511</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="tckdfc-512"><a href="#tckdfc-512"><span class="linenos">512</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKDFC_METADATA</span><span class="p">)</span>
+</span><span id="tckdfc-513"><a href="#tckdfc-513"><span class="linenos">513</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">tckdfc_params</span><span class="p">(</span><span class="n">static</span><span class="o">=</span><span class="n">static</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="n">dynamic</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="n">template</span><span class="p">,</span> <span class="n">vox</span><span class="o">=</span><span class="n">vox</span><span class="p">,</span> <span class="n">stat_vox</span><span class="o">=</span><span class="n">stat_vox</span><span class="p">,</span> <span class="n">backtrack</span><span class="o">=</span><span class="n">backtrack</span><span class="p">,</span> <span class="n">upsample</span><span class="o">=</span><span class="n">upsample</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">,</span> <span class="n">fmri</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+</span><span id="tckdfc-514"><a href="#tckdfc-514"><span class="linenos">514</span></a>    <span class="k">return</span> <span class="n">tckdfc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

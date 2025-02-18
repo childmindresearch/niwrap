@@ -424,109 +424,110 @@
 </span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">metric_smoothing_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">metric_smoothing_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_smoothing</span><span class="p">(</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">MetricSmoothingRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricSmoothingOutputs</span><span class="p">:</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">    Smooth a metric file.</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">    </span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    Smooth a metric file on a surface. By default, smooths all input columns on</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">    the entire surface, specify -column to use only one input column, and -roi</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    to smooth only where the roi metric is greater than 0, outputting zeros</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    elsewhere.</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">    </span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">    When using -roi, input data outside the ROI is not used to compute the</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">    smoothed values. By default, the first column of the roi metric is used for</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">    all input columns. When -match-columns is specified to the -roi option, the</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">    input and roi metrics must have the same number of columns, and for each</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">    input column&#39;s index, the same column index is used in the roi metric. If</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">    the -match-columns option to -roi is used while the -column option is also</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">    used, the number of columns must match between the roi and input metric, and</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    it will use the roi column with the index of the selected input column.</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    </span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    The -fix-zeros option causes the smoothing to not use an input value if it</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    is zero, but still write a smoothed value to the vertex. This is useful for</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    zeros that indicate lack of information, preventing them from pulling down</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    the intensity of nearby vertices, while giving the zero an extrapolated</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    value.</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    </span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    The -corrected-areas option is intended for when it is unavoidable to smooth</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    on a group average surface, it is only an approximate correction for the</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    reduction of structure in a group average surface. It is better to smooth</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    the data on individuals before averaging, when feasible.</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    </span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    Valid values for &lt;method&gt; are:</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    </span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    GEO_GAUSS_AREA - uses a geodesic gaussian kernel, and normalizes based on</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    vertex area in order to work more reliably on irregular surfaces</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    </span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    GEO_GAUSS_EQUAL - uses a geodesic gaussian kernel, and normalizes assuming</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    each vertex has equal importance</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    </span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    GEO_GAUSS - matches geodesic gaussian smoothing from caret5, but does not</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    check kernels for having unequal importance</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">    </span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">    The GEO_GAUSS_AREA method is the default because it is usually the correct</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">    choice. GEO_GAUSS_EQUAL may be the correct choice when the sum of vertex</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">    values is more meaningful then the surface integral (sum of values .*</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">    areas), for instance when smoothing vertex areas (the sum is the total</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">    surface area, while the surface integral is the sum of squares of the vertex</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">    areas). The GEO_GAUSS method is not recommended, it exists mainly to</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">    replicate methods of studies done with caret5&#39;s geodesic smoothing.</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">    </span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">    </span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">    </span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">    Args:</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">        surface: the surface to smooth on.</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">        metric_in: the metric to smooth.</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">        smoothing_kernel: the size of the gaussian smoothing kernel in mm, as\</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">            sigma by default.</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">        metric_out: the output metric.</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">        roi: select a region of interest to smooth.</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">        opt_column_column: select a single column to smooth: the column number\</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">            or name.</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">            metric.</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">        opt_method_method: select smoothing method, default GEO_GAUSS_AREA: the\</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">            name of the smoothing method.</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    Returns:</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">        NamedTuple of outputs (described in `MetricSmoothingOutputs`).</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_SMOOTHING_METADATA</span><span class="p">)</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_smoothing_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">smoothing_kernel</span><span class="o">=</span><span class="n">smoothing_kernel</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_fwhm</span><span class="o">=</span><span class="n">opt_fwhm</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">,</span> <span class="n">opt_fix_zeros</span><span class="o">=</span><span class="n">opt_fix_zeros</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">,</span> <span class="n">opt_method_method</span><span class="o">=</span><span class="n">opt_method_method</span><span class="p">)</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="k">return</span> <span class="n">metric_smoothing_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_smoothing</span><span class="p">(</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">MetricSmoothingRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricSmoothingOutputs</span><span class="p">:</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">    Smooth a metric file.</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    </span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">    Smooth a metric file on a surface. By default, smooths all input columns on</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    the entire surface, specify -column to use only one input column, and -roi</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    to smooth only where the roi metric is greater than 0, outputting zeros</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">    elsewhere.</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">    </span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">    When using -roi, input data outside the ROI is not used to compute the</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">    smoothed values. By default, the first column of the roi metric is used for</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">    all input columns. When -match-columns is specified to the -roi option, the</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">    input and roi metrics must have the same number of columns, and for each</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">    input column&#39;s index, the same column index is used in the roi metric. If</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">    the -match-columns option to -roi is used while the -column option is also</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">    used, the number of columns must match between the roi and input metric, and</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">    it will use the roi column with the index of the selected input column.</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">    </span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    The -fix-zeros option causes the smoothing to not use an input value if it</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">    is zero, but still write a smoothed value to the vertex. This is useful for</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    zeros that indicate lack of information, preventing them from pulling down</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    the intensity of nearby vertices, while giving the zero an extrapolated</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">    value.</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    </span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="sd">    The -corrected-areas option is intended for when it is unavoidable to smooth</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">    on a group average surface, it is only an approximate correction for the</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="sd">    reduction of structure in a group average surface. It is better to smooth</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">    the data on individuals before averaging, when feasible.</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">    </span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">    Valid values for &lt;method&gt; are:</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">    </span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">    GEO_GAUSS_AREA - uses a geodesic gaussian kernel, and normalizes based on</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">    vertex area in order to work more reliably on irregular surfaces</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">    </span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">    GEO_GAUSS_EQUAL - uses a geodesic gaussian kernel, and normalizes assuming</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">    each vertex has equal importance</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">    </span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">    GEO_GAUSS - matches geodesic gaussian smoothing from caret5, but does not</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">    check kernels for having unequal importance</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">    </span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">    The GEO_GAUSS_AREA method is the default because it is usually the correct</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">    choice. GEO_GAUSS_EQUAL may be the correct choice when the sum of vertex</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">    values is more meaningful then the surface integral (sum of values .*</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">    areas), for instance when smoothing vertex areas (the sum is the total</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">    surface area, while the surface integral is the sum of squares of the vertex</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">    areas). The GEO_GAUSS method is not recommended, it exists mainly to</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">    replicate methods of studies done with caret5&#39;s geodesic smoothing.</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">    </span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="sd">    </span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="sd">    </span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="sd">    Args:</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="sd">        surface: the surface to smooth on.</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="sd">        metric_in: the metric to smooth.</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="sd">        smoothing_kernel: the size of the gaussian smoothing kernel in mm, as\</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="sd">            sigma by default.</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">        metric_out: the output metric.</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">        roi: select a region of interest to smooth.</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">        opt_column_column: select a single column to smooth: the column number\</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">            or name.</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">            metric.</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">        opt_method_method: select smoothing method, default GEO_GAUSS_AREA: the\</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">            name of the smoothing method.</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">    Returns:</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">        NamedTuple of outputs (described in `MetricSmoothingOutputs`).</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_SMOOTHING_METADATA</span><span class="p">)</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_smoothing_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">smoothing_kernel</span><span class="o">=</span><span class="n">smoothing_kernel</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_fwhm</span><span class="o">=</span><span class="n">opt_fwhm</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">,</span> <span class="n">opt_fix_zeros</span><span class="o">=</span><span class="n">opt_fix_zeros</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">,</span> <span class="n">opt_method_method</span><span class="o">=</span><span class="n">opt_method_method</span><span class="p">)</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="k">return</span> <span class="n">metric_smoothing_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="s2">&quot;METRIC_SMOOTHING_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="s2">&quot;MetricSmoothingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="s2">&quot;MetricSmoothingParameters&quot;</span><span class="p">,</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;MetricSmoothingRoiParameters&quot;</span><span class="p">,</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;metric_smoothing&quot;</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;metric_smoothing_params&quot;</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;metric_smoothing_roi_params&quot;</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a><span class="p">]</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="s2">&quot;METRIC_SMOOTHING_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="s2">&quot;MetricSmoothingOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;MetricSmoothingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;MetricSmoothingRoiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;metric_smoothing&quot;</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;metric_smoothing_params&quot;</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;metric_smoothing_roi_params&quot;</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -780,94 +781,94 @@
 
     </div>
     <a class="headerlink" href="#metric_smoothing"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="metric_smoothing-306"><a href="#metric_smoothing-306"><span class="linenos">306</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_smoothing</span><span class="p">(</span>
-</span><span id="metric_smoothing-307"><a href="#metric_smoothing-307"><span class="linenos">307</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="metric_smoothing-308"><a href="#metric_smoothing-308"><span class="linenos">308</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="metric_smoothing-309"><a href="#metric_smoothing-309"><span class="linenos">309</span></a>    <span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="metric_smoothing-310"><a href="#metric_smoothing-310"><span class="linenos">310</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="metric_smoothing-311"><a href="#metric_smoothing-311"><span class="linenos">311</span></a>    <span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="metric_smoothing-312"><a href="#metric_smoothing-312"><span class="linenos">312</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">MetricSmoothingRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_smoothing-313"><a href="#metric_smoothing-313"><span class="linenos">313</span></a>    <span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="metric_smoothing-314"><a href="#metric_smoothing-314"><span class="linenos">314</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_smoothing-315"><a href="#metric_smoothing-315"><span class="linenos">315</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_smoothing-316"><a href="#metric_smoothing-316"><span class="linenos">316</span></a>    <span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_smoothing-317"><a href="#metric_smoothing-317"><span class="linenos">317</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_smoothing-318"><a href="#metric_smoothing-318"><span class="linenos">318</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricSmoothingOutputs</span><span class="p">:</span>
-</span><span id="metric_smoothing-319"><a href="#metric_smoothing-319"><span class="linenos">319</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="metric_smoothing-320"><a href="#metric_smoothing-320"><span class="linenos">320</span></a><span class="sd">    Smooth a metric file.</span>
-</span><span id="metric_smoothing-321"><a href="#metric_smoothing-321"><span class="linenos">321</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-322"><a href="#metric_smoothing-322"><span class="linenos">322</span></a><span class="sd">    Smooth a metric file on a surface. By default, smooths all input columns on</span>
-</span><span id="metric_smoothing-323"><a href="#metric_smoothing-323"><span class="linenos">323</span></a><span class="sd">    the entire surface, specify -column to use only one input column, and -roi</span>
-</span><span id="metric_smoothing-324"><a href="#metric_smoothing-324"><span class="linenos">324</span></a><span class="sd">    to smooth only where the roi metric is greater than 0, outputting zeros</span>
-</span><span id="metric_smoothing-325"><a href="#metric_smoothing-325"><span class="linenos">325</span></a><span class="sd">    elsewhere.</span>
-</span><span id="metric_smoothing-326"><a href="#metric_smoothing-326"><span class="linenos">326</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-327"><a href="#metric_smoothing-327"><span class="linenos">327</span></a><span class="sd">    When using -roi, input data outside the ROI is not used to compute the</span>
-</span><span id="metric_smoothing-328"><a href="#metric_smoothing-328"><span class="linenos">328</span></a><span class="sd">    smoothed values. By default, the first column of the roi metric is used for</span>
-</span><span id="metric_smoothing-329"><a href="#metric_smoothing-329"><span class="linenos">329</span></a><span class="sd">    all input columns. When -match-columns is specified to the -roi option, the</span>
-</span><span id="metric_smoothing-330"><a href="#metric_smoothing-330"><span class="linenos">330</span></a><span class="sd">    input and roi metrics must have the same number of columns, and for each</span>
-</span><span id="metric_smoothing-331"><a href="#metric_smoothing-331"><span class="linenos">331</span></a><span class="sd">    input column&#39;s index, the same column index is used in the roi metric. If</span>
-</span><span id="metric_smoothing-332"><a href="#metric_smoothing-332"><span class="linenos">332</span></a><span class="sd">    the -match-columns option to -roi is used while the -column option is also</span>
-</span><span id="metric_smoothing-333"><a href="#metric_smoothing-333"><span class="linenos">333</span></a><span class="sd">    used, the number of columns must match between the roi and input metric, and</span>
-</span><span id="metric_smoothing-334"><a href="#metric_smoothing-334"><span class="linenos">334</span></a><span class="sd">    it will use the roi column with the index of the selected input column.</span>
-</span><span id="metric_smoothing-335"><a href="#metric_smoothing-335"><span class="linenos">335</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-336"><a href="#metric_smoothing-336"><span class="linenos">336</span></a><span class="sd">    The -fix-zeros option causes the smoothing to not use an input value if it</span>
-</span><span id="metric_smoothing-337"><a href="#metric_smoothing-337"><span class="linenos">337</span></a><span class="sd">    is zero, but still write a smoothed value to the vertex. This is useful for</span>
-</span><span id="metric_smoothing-338"><a href="#metric_smoothing-338"><span class="linenos">338</span></a><span class="sd">    zeros that indicate lack of information, preventing them from pulling down</span>
-</span><span id="metric_smoothing-339"><a href="#metric_smoothing-339"><span class="linenos">339</span></a><span class="sd">    the intensity of nearby vertices, while giving the zero an extrapolated</span>
-</span><span id="metric_smoothing-340"><a href="#metric_smoothing-340"><span class="linenos">340</span></a><span class="sd">    value.</span>
-</span><span id="metric_smoothing-341"><a href="#metric_smoothing-341"><span class="linenos">341</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-342"><a href="#metric_smoothing-342"><span class="linenos">342</span></a><span class="sd">    The -corrected-areas option is intended for when it is unavoidable to smooth</span>
-</span><span id="metric_smoothing-343"><a href="#metric_smoothing-343"><span class="linenos">343</span></a><span class="sd">    on a group average surface, it is only an approximate correction for the</span>
-</span><span id="metric_smoothing-344"><a href="#metric_smoothing-344"><span class="linenos">344</span></a><span class="sd">    reduction of structure in a group average surface. It is better to smooth</span>
-</span><span id="metric_smoothing-345"><a href="#metric_smoothing-345"><span class="linenos">345</span></a><span class="sd">    the data on individuals before averaging, when feasible.</span>
-</span><span id="metric_smoothing-346"><a href="#metric_smoothing-346"><span class="linenos">346</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-347"><a href="#metric_smoothing-347"><span class="linenos">347</span></a><span class="sd">    Valid values for &lt;method&gt; are:</span>
-</span><span id="metric_smoothing-348"><a href="#metric_smoothing-348"><span class="linenos">348</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-349"><a href="#metric_smoothing-349"><span class="linenos">349</span></a><span class="sd">    GEO_GAUSS_AREA - uses a geodesic gaussian kernel, and normalizes based on</span>
-</span><span id="metric_smoothing-350"><a href="#metric_smoothing-350"><span class="linenos">350</span></a><span class="sd">    vertex area in order to work more reliably on irregular surfaces</span>
-</span><span id="metric_smoothing-351"><a href="#metric_smoothing-351"><span class="linenos">351</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-352"><a href="#metric_smoothing-352"><span class="linenos">352</span></a><span class="sd">    GEO_GAUSS_EQUAL - uses a geodesic gaussian kernel, and normalizes assuming</span>
-</span><span id="metric_smoothing-353"><a href="#metric_smoothing-353"><span class="linenos">353</span></a><span class="sd">    each vertex has equal importance</span>
-</span><span id="metric_smoothing-354"><a href="#metric_smoothing-354"><span class="linenos">354</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-355"><a href="#metric_smoothing-355"><span class="linenos">355</span></a><span class="sd">    GEO_GAUSS - matches geodesic gaussian smoothing from caret5, but does not</span>
-</span><span id="metric_smoothing-356"><a href="#metric_smoothing-356"><span class="linenos">356</span></a><span class="sd">    check kernels for having unequal importance</span>
-</span><span id="metric_smoothing-357"><a href="#metric_smoothing-357"><span class="linenos">357</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-358"><a href="#metric_smoothing-358"><span class="linenos">358</span></a><span class="sd">    The GEO_GAUSS_AREA method is the default because it is usually the correct</span>
-</span><span id="metric_smoothing-359"><a href="#metric_smoothing-359"><span class="linenos">359</span></a><span class="sd">    choice. GEO_GAUSS_EQUAL may be the correct choice when the sum of vertex</span>
-</span><span id="metric_smoothing-360"><a href="#metric_smoothing-360"><span class="linenos">360</span></a><span class="sd">    values is more meaningful then the surface integral (sum of values .*</span>
-</span><span id="metric_smoothing-361"><a href="#metric_smoothing-361"><span class="linenos">361</span></a><span class="sd">    areas), for instance when smoothing vertex areas (the sum is the total</span>
-</span><span id="metric_smoothing-362"><a href="#metric_smoothing-362"><span class="linenos">362</span></a><span class="sd">    surface area, while the surface integral is the sum of squares of the vertex</span>
-</span><span id="metric_smoothing-363"><a href="#metric_smoothing-363"><span class="linenos">363</span></a><span class="sd">    areas). The GEO_GAUSS method is not recommended, it exists mainly to</span>
-</span><span id="metric_smoothing-364"><a href="#metric_smoothing-364"><span class="linenos">364</span></a><span class="sd">    replicate methods of studies done with caret5&#39;s geodesic smoothing.</span>
-</span><span id="metric_smoothing-365"><a href="#metric_smoothing-365"><span class="linenos">365</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-366"><a href="#metric_smoothing-366"><span class="linenos">366</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="metric_smoothing-367"><a href="#metric_smoothing-367"><span class="linenos">367</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-368"><a href="#metric_smoothing-368"><span class="linenos">368</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="metric_smoothing-369"><a href="#metric_smoothing-369"><span class="linenos">369</span></a><span class="sd">    </span>
-</span><span id="metric_smoothing-370"><a href="#metric_smoothing-370"><span class="linenos">370</span></a><span class="sd">    Args:</span>
-</span><span id="metric_smoothing-371"><a href="#metric_smoothing-371"><span class="linenos">371</span></a><span class="sd">        surface: the surface to smooth on.</span>
-</span><span id="metric_smoothing-372"><a href="#metric_smoothing-372"><span class="linenos">372</span></a><span class="sd">        metric_in: the metric to smooth.</span>
-</span><span id="metric_smoothing-373"><a href="#metric_smoothing-373"><span class="linenos">373</span></a><span class="sd">        smoothing_kernel: the size of the gaussian smoothing kernel in mm, as\</span>
-</span><span id="metric_smoothing-374"><a href="#metric_smoothing-374"><span class="linenos">374</span></a><span class="sd">            sigma by default.</span>
-</span><span id="metric_smoothing-375"><a href="#metric_smoothing-375"><span class="linenos">375</span></a><span class="sd">        metric_out: the output metric.</span>
-</span><span id="metric_smoothing-376"><a href="#metric_smoothing-376"><span class="linenos">376</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
-</span><span id="metric_smoothing-377"><a href="#metric_smoothing-377"><span class="linenos">377</span></a><span class="sd">        roi: select a region of interest to smooth.</span>
-</span><span id="metric_smoothing-378"><a href="#metric_smoothing-378"><span class="linenos">378</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
-</span><span id="metric_smoothing-379"><a href="#metric_smoothing-379"><span class="linenos">379</span></a><span class="sd">        opt_column_column: select a single column to smooth: the column number\</span>
-</span><span id="metric_smoothing-380"><a href="#metric_smoothing-380"><span class="linenos">380</span></a><span class="sd">            or name.</span>
-</span><span id="metric_smoothing-381"><a href="#metric_smoothing-381"><span class="linenos">381</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="metric_smoothing-382"><a href="#metric_smoothing-382"><span class="linenos">382</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="metric_smoothing-383"><a href="#metric_smoothing-383"><span class="linenos">383</span></a><span class="sd">            metric.</span>
-</span><span id="metric_smoothing-384"><a href="#metric_smoothing-384"><span class="linenos">384</span></a><span class="sd">        opt_method_method: select smoothing method, default GEO_GAUSS_AREA: the\</span>
-</span><span id="metric_smoothing-385"><a href="#metric_smoothing-385"><span class="linenos">385</span></a><span class="sd">            name of the smoothing method.</span>
-</span><span id="metric_smoothing-386"><a href="#metric_smoothing-386"><span class="linenos">386</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="metric_smoothing-387"><a href="#metric_smoothing-387"><span class="linenos">387</span></a><span class="sd">    Returns:</span>
-</span><span id="metric_smoothing-388"><a href="#metric_smoothing-388"><span class="linenos">388</span></a><span class="sd">        NamedTuple of outputs (described in `MetricSmoothingOutputs`).</span>
-</span><span id="metric_smoothing-389"><a href="#metric_smoothing-389"><span class="linenos">389</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="metric_smoothing-390"><a href="#metric_smoothing-390"><span class="linenos">390</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="metric_smoothing-391"><a href="#metric_smoothing-391"><span class="linenos">391</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_SMOOTHING_METADATA</span><span class="p">)</span>
-</span><span id="metric_smoothing-392"><a href="#metric_smoothing-392"><span class="linenos">392</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_smoothing_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">smoothing_kernel</span><span class="o">=</span><span class="n">smoothing_kernel</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_fwhm</span><span class="o">=</span><span class="n">opt_fwhm</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">,</span> <span class="n">opt_fix_zeros</span><span class="o">=</span><span class="n">opt_fix_zeros</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">,</span> <span class="n">opt_method_method</span><span class="o">=</span><span class="n">opt_method_method</span><span class="p">)</span>
-</span><span id="metric_smoothing-393"><a href="#metric_smoothing-393"><span class="linenos">393</span></a>    <span class="k">return</span> <span class="n">metric_smoothing_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="metric_smoothing-307"><a href="#metric_smoothing-307"><span class="linenos">307</span></a><span class="k">def</span><span class="w"> </span><span class="nf">metric_smoothing</span><span class="p">(</span>
+</span><span id="metric_smoothing-308"><a href="#metric_smoothing-308"><span class="linenos">308</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="metric_smoothing-309"><a href="#metric_smoothing-309"><span class="linenos">309</span></a>    <span class="n">metric_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="metric_smoothing-310"><a href="#metric_smoothing-310"><span class="linenos">310</span></a>    <span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="metric_smoothing-311"><a href="#metric_smoothing-311"><span class="linenos">311</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="metric_smoothing-312"><a href="#metric_smoothing-312"><span class="linenos">312</span></a>    <span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="metric_smoothing-313"><a href="#metric_smoothing-313"><span class="linenos">313</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">MetricSmoothingRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_smoothing-314"><a href="#metric_smoothing-314"><span class="linenos">314</span></a>    <span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="metric_smoothing-315"><a href="#metric_smoothing-315"><span class="linenos">315</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_smoothing-316"><a href="#metric_smoothing-316"><span class="linenos">316</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_smoothing-317"><a href="#metric_smoothing-317"><span class="linenos">317</span></a>    <span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_smoothing-318"><a href="#metric_smoothing-318"><span class="linenos">318</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_smoothing-319"><a href="#metric_smoothing-319"><span class="linenos">319</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricSmoothingOutputs</span><span class="p">:</span>
+</span><span id="metric_smoothing-320"><a href="#metric_smoothing-320"><span class="linenos">320</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="metric_smoothing-321"><a href="#metric_smoothing-321"><span class="linenos">321</span></a><span class="sd">    Smooth a metric file.</span>
+</span><span id="metric_smoothing-322"><a href="#metric_smoothing-322"><span class="linenos">322</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-323"><a href="#metric_smoothing-323"><span class="linenos">323</span></a><span class="sd">    Smooth a metric file on a surface. By default, smooths all input columns on</span>
+</span><span id="metric_smoothing-324"><a href="#metric_smoothing-324"><span class="linenos">324</span></a><span class="sd">    the entire surface, specify -column to use only one input column, and -roi</span>
+</span><span id="metric_smoothing-325"><a href="#metric_smoothing-325"><span class="linenos">325</span></a><span class="sd">    to smooth only where the roi metric is greater than 0, outputting zeros</span>
+</span><span id="metric_smoothing-326"><a href="#metric_smoothing-326"><span class="linenos">326</span></a><span class="sd">    elsewhere.</span>
+</span><span id="metric_smoothing-327"><a href="#metric_smoothing-327"><span class="linenos">327</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-328"><a href="#metric_smoothing-328"><span class="linenos">328</span></a><span class="sd">    When using -roi, input data outside the ROI is not used to compute the</span>
+</span><span id="metric_smoothing-329"><a href="#metric_smoothing-329"><span class="linenos">329</span></a><span class="sd">    smoothed values. By default, the first column of the roi metric is used for</span>
+</span><span id="metric_smoothing-330"><a href="#metric_smoothing-330"><span class="linenos">330</span></a><span class="sd">    all input columns. When -match-columns is specified to the -roi option, the</span>
+</span><span id="metric_smoothing-331"><a href="#metric_smoothing-331"><span class="linenos">331</span></a><span class="sd">    input and roi metrics must have the same number of columns, and for each</span>
+</span><span id="metric_smoothing-332"><a href="#metric_smoothing-332"><span class="linenos">332</span></a><span class="sd">    input column&#39;s index, the same column index is used in the roi metric. If</span>
+</span><span id="metric_smoothing-333"><a href="#metric_smoothing-333"><span class="linenos">333</span></a><span class="sd">    the -match-columns option to -roi is used while the -column option is also</span>
+</span><span id="metric_smoothing-334"><a href="#metric_smoothing-334"><span class="linenos">334</span></a><span class="sd">    used, the number of columns must match between the roi and input metric, and</span>
+</span><span id="metric_smoothing-335"><a href="#metric_smoothing-335"><span class="linenos">335</span></a><span class="sd">    it will use the roi column with the index of the selected input column.</span>
+</span><span id="metric_smoothing-336"><a href="#metric_smoothing-336"><span class="linenos">336</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-337"><a href="#metric_smoothing-337"><span class="linenos">337</span></a><span class="sd">    The -fix-zeros option causes the smoothing to not use an input value if it</span>
+</span><span id="metric_smoothing-338"><a href="#metric_smoothing-338"><span class="linenos">338</span></a><span class="sd">    is zero, but still write a smoothed value to the vertex. This is useful for</span>
+</span><span id="metric_smoothing-339"><a href="#metric_smoothing-339"><span class="linenos">339</span></a><span class="sd">    zeros that indicate lack of information, preventing them from pulling down</span>
+</span><span id="metric_smoothing-340"><a href="#metric_smoothing-340"><span class="linenos">340</span></a><span class="sd">    the intensity of nearby vertices, while giving the zero an extrapolated</span>
+</span><span id="metric_smoothing-341"><a href="#metric_smoothing-341"><span class="linenos">341</span></a><span class="sd">    value.</span>
+</span><span id="metric_smoothing-342"><a href="#metric_smoothing-342"><span class="linenos">342</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-343"><a href="#metric_smoothing-343"><span class="linenos">343</span></a><span class="sd">    The -corrected-areas option is intended for when it is unavoidable to smooth</span>
+</span><span id="metric_smoothing-344"><a href="#metric_smoothing-344"><span class="linenos">344</span></a><span class="sd">    on a group average surface, it is only an approximate correction for the</span>
+</span><span id="metric_smoothing-345"><a href="#metric_smoothing-345"><span class="linenos">345</span></a><span class="sd">    reduction of structure in a group average surface. It is better to smooth</span>
+</span><span id="metric_smoothing-346"><a href="#metric_smoothing-346"><span class="linenos">346</span></a><span class="sd">    the data on individuals before averaging, when feasible.</span>
+</span><span id="metric_smoothing-347"><a href="#metric_smoothing-347"><span class="linenos">347</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-348"><a href="#metric_smoothing-348"><span class="linenos">348</span></a><span class="sd">    Valid values for &lt;method&gt; are:</span>
+</span><span id="metric_smoothing-349"><a href="#metric_smoothing-349"><span class="linenos">349</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-350"><a href="#metric_smoothing-350"><span class="linenos">350</span></a><span class="sd">    GEO_GAUSS_AREA - uses a geodesic gaussian kernel, and normalizes based on</span>
+</span><span id="metric_smoothing-351"><a href="#metric_smoothing-351"><span class="linenos">351</span></a><span class="sd">    vertex area in order to work more reliably on irregular surfaces</span>
+</span><span id="metric_smoothing-352"><a href="#metric_smoothing-352"><span class="linenos">352</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-353"><a href="#metric_smoothing-353"><span class="linenos">353</span></a><span class="sd">    GEO_GAUSS_EQUAL - uses a geodesic gaussian kernel, and normalizes assuming</span>
+</span><span id="metric_smoothing-354"><a href="#metric_smoothing-354"><span class="linenos">354</span></a><span class="sd">    each vertex has equal importance</span>
+</span><span id="metric_smoothing-355"><a href="#metric_smoothing-355"><span class="linenos">355</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-356"><a href="#metric_smoothing-356"><span class="linenos">356</span></a><span class="sd">    GEO_GAUSS - matches geodesic gaussian smoothing from caret5, but does not</span>
+</span><span id="metric_smoothing-357"><a href="#metric_smoothing-357"><span class="linenos">357</span></a><span class="sd">    check kernels for having unequal importance</span>
+</span><span id="metric_smoothing-358"><a href="#metric_smoothing-358"><span class="linenos">358</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-359"><a href="#metric_smoothing-359"><span class="linenos">359</span></a><span class="sd">    The GEO_GAUSS_AREA method is the default because it is usually the correct</span>
+</span><span id="metric_smoothing-360"><a href="#metric_smoothing-360"><span class="linenos">360</span></a><span class="sd">    choice. GEO_GAUSS_EQUAL may be the correct choice when the sum of vertex</span>
+</span><span id="metric_smoothing-361"><a href="#metric_smoothing-361"><span class="linenos">361</span></a><span class="sd">    values is more meaningful then the surface integral (sum of values .*</span>
+</span><span id="metric_smoothing-362"><a href="#metric_smoothing-362"><span class="linenos">362</span></a><span class="sd">    areas), for instance when smoothing vertex areas (the sum is the total</span>
+</span><span id="metric_smoothing-363"><a href="#metric_smoothing-363"><span class="linenos">363</span></a><span class="sd">    surface area, while the surface integral is the sum of squares of the vertex</span>
+</span><span id="metric_smoothing-364"><a href="#metric_smoothing-364"><span class="linenos">364</span></a><span class="sd">    areas). The GEO_GAUSS method is not recommended, it exists mainly to</span>
+</span><span id="metric_smoothing-365"><a href="#metric_smoothing-365"><span class="linenos">365</span></a><span class="sd">    replicate methods of studies done with caret5&#39;s geodesic smoothing.</span>
+</span><span id="metric_smoothing-366"><a href="#metric_smoothing-366"><span class="linenos">366</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-367"><a href="#metric_smoothing-367"><span class="linenos">367</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="metric_smoothing-368"><a href="#metric_smoothing-368"><span class="linenos">368</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-369"><a href="#metric_smoothing-369"><span class="linenos">369</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="metric_smoothing-370"><a href="#metric_smoothing-370"><span class="linenos">370</span></a><span class="sd">    </span>
+</span><span id="metric_smoothing-371"><a href="#metric_smoothing-371"><span class="linenos">371</span></a><span class="sd">    Args:</span>
+</span><span id="metric_smoothing-372"><a href="#metric_smoothing-372"><span class="linenos">372</span></a><span class="sd">        surface: the surface to smooth on.</span>
+</span><span id="metric_smoothing-373"><a href="#metric_smoothing-373"><span class="linenos">373</span></a><span class="sd">        metric_in: the metric to smooth.</span>
+</span><span id="metric_smoothing-374"><a href="#metric_smoothing-374"><span class="linenos">374</span></a><span class="sd">        smoothing_kernel: the size of the gaussian smoothing kernel in mm, as\</span>
+</span><span id="metric_smoothing-375"><a href="#metric_smoothing-375"><span class="linenos">375</span></a><span class="sd">            sigma by default.</span>
+</span><span id="metric_smoothing-376"><a href="#metric_smoothing-376"><span class="linenos">376</span></a><span class="sd">        metric_out: the output metric.</span>
+</span><span id="metric_smoothing-377"><a href="#metric_smoothing-377"><span class="linenos">377</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
+</span><span id="metric_smoothing-378"><a href="#metric_smoothing-378"><span class="linenos">378</span></a><span class="sd">        roi: select a region of interest to smooth.</span>
+</span><span id="metric_smoothing-379"><a href="#metric_smoothing-379"><span class="linenos">379</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
+</span><span id="metric_smoothing-380"><a href="#metric_smoothing-380"><span class="linenos">380</span></a><span class="sd">        opt_column_column: select a single column to smooth: the column number\</span>
+</span><span id="metric_smoothing-381"><a href="#metric_smoothing-381"><span class="linenos">381</span></a><span class="sd">            or name.</span>
+</span><span id="metric_smoothing-382"><a href="#metric_smoothing-382"><span class="linenos">382</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="metric_smoothing-383"><a href="#metric_smoothing-383"><span class="linenos">383</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="metric_smoothing-384"><a href="#metric_smoothing-384"><span class="linenos">384</span></a><span class="sd">            metric.</span>
+</span><span id="metric_smoothing-385"><a href="#metric_smoothing-385"><span class="linenos">385</span></a><span class="sd">        opt_method_method: select smoothing method, default GEO_GAUSS_AREA: the\</span>
+</span><span id="metric_smoothing-386"><a href="#metric_smoothing-386"><span class="linenos">386</span></a><span class="sd">            name of the smoothing method.</span>
+</span><span id="metric_smoothing-387"><a href="#metric_smoothing-387"><span class="linenos">387</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="metric_smoothing-388"><a href="#metric_smoothing-388"><span class="linenos">388</span></a><span class="sd">    Returns:</span>
+</span><span id="metric_smoothing-389"><a href="#metric_smoothing-389"><span class="linenos">389</span></a><span class="sd">        NamedTuple of outputs (described in `MetricSmoothingOutputs`).</span>
+</span><span id="metric_smoothing-390"><a href="#metric_smoothing-390"><span class="linenos">390</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="metric_smoothing-391"><a href="#metric_smoothing-391"><span class="linenos">391</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="metric_smoothing-392"><a href="#metric_smoothing-392"><span class="linenos">392</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_SMOOTHING_METADATA</span><span class="p">)</span>
+</span><span id="metric_smoothing-393"><a href="#metric_smoothing-393"><span class="linenos">393</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">metric_smoothing_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">metric_in</span><span class="o">=</span><span class="n">metric_in</span><span class="p">,</span> <span class="n">smoothing_kernel</span><span class="o">=</span><span class="n">smoothing_kernel</span><span class="p">,</span> <span class="n">metric_out</span><span class="o">=</span><span class="n">metric_out</span><span class="p">,</span> <span class="n">opt_fwhm</span><span class="o">=</span><span class="n">opt_fwhm</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">,</span> <span class="n">opt_fix_zeros</span><span class="o">=</span><span class="n">opt_fix_zeros</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">,</span> <span class="n">opt_method_method</span><span class="o">=</span><span class="n">opt_method_method</span><span class="p">)</span>
+</span><span id="metric_smoothing-394"><a href="#metric_smoothing-394"><span class="linenos">394</span></a>    <span class="k">return</span> <span class="n">metric_smoothing_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

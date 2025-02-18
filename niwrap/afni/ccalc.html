@@ -230,44 +230,45 @@
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">ccalc_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ccalc_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">execution</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="k">def</span><span class="w"> </span><span class="nf">ccalc</span><span class="p">(</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">expr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">format_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CcalcOutputs</span><span class="p">:</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    Command line calculator with formatted output options.</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    </span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    </span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    </span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    Args:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        expr: Evaluate an expression specified on command line, return answer\</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">            and quit.</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        format_: Format output in a nice form. Choose from &#39;double&#39;, &#39;nice&#39;,\</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">            &#39;int&#39;, &#39;rint&#39;, &#39;cint&#39;, &#39;fint&#39;, or custom format string (e.g., %n.mf).</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    Returns:</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        NamedTuple of outputs (described in `CcalcOutputs`).</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCALC_METADATA</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">ccalc_params</span><span class="p">(</span><span class="n">format_</span><span class="o">=</span><span class="n">format_</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span><span class="p">)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">return</span> <span class="n">ccalc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="k">def</span><span class="w"> </span><span class="nf">ccalc</span><span class="p">(</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">expr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">format_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CcalcOutputs</span><span class="p">:</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    Command line calculator with formatted output options.</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    </span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    </span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    </span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    Args:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        expr: Evaluate an expression specified on command line, return answer\</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">            and quit.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        format_: Format output in a nice form. Choose from &#39;double&#39;, &#39;nice&#39;,\</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">            &#39;int&#39;, &#39;rint&#39;, &#39;cint&#39;, &#39;fint&#39;, or custom format string (e.g., %n.mf).</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    Returns:</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        NamedTuple of outputs (described in `CcalcOutputs`).</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCALC_METADATA</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">ccalc_params</span><span class="p">(</span><span class="n">format_</span><span class="o">=</span><span class="n">format_</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span><span class="p">)</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">return</span> <span class="n">ccalc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;CCALC_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;CcalcOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;CcalcParameters&quot;</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;ccalc&quot;</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="s2">&quot;ccalc_params&quot;</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="p">]</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;CCALC_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;CcalcOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;CcalcParameters&quot;</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="s2">&quot;ccalc&quot;</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="s2">&quot;ccalc_params&quot;</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -383,31 +384,31 @@
 
     </div>
     <a class="headerlink" href="#ccalc"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ccalc-154"><a href="#ccalc-154"><span class="linenos">154</span></a><span class="k">def</span><span class="w"> </span><span class="nf">ccalc</span><span class="p">(</span>
-</span><span id="ccalc-155"><a href="#ccalc-155"><span class="linenos">155</span></a>    <span class="n">expr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="ccalc-156"><a href="#ccalc-156"><span class="linenos">156</span></a>    <span class="n">format_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="ccalc-157"><a href="#ccalc-157"><span class="linenos">157</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="ccalc-158"><a href="#ccalc-158"><span class="linenos">158</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CcalcOutputs</span><span class="p">:</span>
-</span><span id="ccalc-159"><a href="#ccalc-159"><span class="linenos">159</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ccalc-160"><a href="#ccalc-160"><span class="linenos">160</span></a><span class="sd">    Command line calculator with formatted output options.</span>
-</span><span id="ccalc-161"><a href="#ccalc-161"><span class="linenos">161</span></a><span class="sd">    </span>
-</span><span id="ccalc-162"><a href="#ccalc-162"><span class="linenos">162</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="ccalc-163"><a href="#ccalc-163"><span class="linenos">163</span></a><span class="sd">    </span>
-</span><span id="ccalc-164"><a href="#ccalc-164"><span class="linenos">164</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="ccalc-165"><a href="#ccalc-165"><span class="linenos">165</span></a><span class="sd">    </span>
-</span><span id="ccalc-166"><a href="#ccalc-166"><span class="linenos">166</span></a><span class="sd">    Args:</span>
-</span><span id="ccalc-167"><a href="#ccalc-167"><span class="linenos">167</span></a><span class="sd">        expr: Evaluate an expression specified on command line, return answer\</span>
-</span><span id="ccalc-168"><a href="#ccalc-168"><span class="linenos">168</span></a><span class="sd">            and quit.</span>
-</span><span id="ccalc-169"><a href="#ccalc-169"><span class="linenos">169</span></a><span class="sd">        format_: Format output in a nice form. Choose from &#39;double&#39;, &#39;nice&#39;,\</span>
-</span><span id="ccalc-170"><a href="#ccalc-170"><span class="linenos">170</span></a><span class="sd">            &#39;int&#39;, &#39;rint&#39;, &#39;cint&#39;, &#39;fint&#39;, or custom format string (e.g., %n.mf).</span>
-</span><span id="ccalc-171"><a href="#ccalc-171"><span class="linenos">171</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="ccalc-172"><a href="#ccalc-172"><span class="linenos">172</span></a><span class="sd">    Returns:</span>
-</span><span id="ccalc-173"><a href="#ccalc-173"><span class="linenos">173</span></a><span class="sd">        NamedTuple of outputs (described in `CcalcOutputs`).</span>
-</span><span id="ccalc-174"><a href="#ccalc-174"><span class="linenos">174</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="ccalc-175"><a href="#ccalc-175"><span class="linenos">175</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="ccalc-176"><a href="#ccalc-176"><span class="linenos">176</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCALC_METADATA</span><span class="p">)</span>
-</span><span id="ccalc-177"><a href="#ccalc-177"><span class="linenos">177</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">ccalc_params</span><span class="p">(</span><span class="n">format_</span><span class="o">=</span><span class="n">format_</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span><span class="p">)</span>
-</span><span id="ccalc-178"><a href="#ccalc-178"><span class="linenos">178</span></a>    <span class="k">return</span> <span class="n">ccalc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ccalc-155"><a href="#ccalc-155"><span class="linenos">155</span></a><span class="k">def</span><span class="w"> </span><span class="nf">ccalc</span><span class="p">(</span>
+</span><span id="ccalc-156"><a href="#ccalc-156"><span class="linenos">156</span></a>    <span class="n">expr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="ccalc-157"><a href="#ccalc-157"><span class="linenos">157</span></a>    <span class="n">format_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="ccalc-158"><a href="#ccalc-158"><span class="linenos">158</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="ccalc-159"><a href="#ccalc-159"><span class="linenos">159</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CcalcOutputs</span><span class="p">:</span>
+</span><span id="ccalc-160"><a href="#ccalc-160"><span class="linenos">160</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="ccalc-161"><a href="#ccalc-161"><span class="linenos">161</span></a><span class="sd">    Command line calculator with formatted output options.</span>
+</span><span id="ccalc-162"><a href="#ccalc-162"><span class="linenos">162</span></a><span class="sd">    </span>
+</span><span id="ccalc-163"><a href="#ccalc-163"><span class="linenos">163</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="ccalc-164"><a href="#ccalc-164"><span class="linenos">164</span></a><span class="sd">    </span>
+</span><span id="ccalc-165"><a href="#ccalc-165"><span class="linenos">165</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="ccalc-166"><a href="#ccalc-166"><span class="linenos">166</span></a><span class="sd">    </span>
+</span><span id="ccalc-167"><a href="#ccalc-167"><span class="linenos">167</span></a><span class="sd">    Args:</span>
+</span><span id="ccalc-168"><a href="#ccalc-168"><span class="linenos">168</span></a><span class="sd">        expr: Evaluate an expression specified on command line, return answer\</span>
+</span><span id="ccalc-169"><a href="#ccalc-169"><span class="linenos">169</span></a><span class="sd">            and quit.</span>
+</span><span id="ccalc-170"><a href="#ccalc-170"><span class="linenos">170</span></a><span class="sd">        format_: Format output in a nice form. Choose from &#39;double&#39;, &#39;nice&#39;,\</span>
+</span><span id="ccalc-171"><a href="#ccalc-171"><span class="linenos">171</span></a><span class="sd">            &#39;int&#39;, &#39;rint&#39;, &#39;cint&#39;, &#39;fint&#39;, or custom format string (e.g., %n.mf).</span>
+</span><span id="ccalc-172"><a href="#ccalc-172"><span class="linenos">172</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="ccalc-173"><a href="#ccalc-173"><span class="linenos">173</span></a><span class="sd">    Returns:</span>
+</span><span id="ccalc-174"><a href="#ccalc-174"><span class="linenos">174</span></a><span class="sd">        NamedTuple of outputs (described in `CcalcOutputs`).</span>
+</span><span id="ccalc-175"><a href="#ccalc-175"><span class="linenos">175</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="ccalc-176"><a href="#ccalc-176"><span class="linenos">176</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="ccalc-177"><a href="#ccalc-177"><span class="linenos">177</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CCALC_METADATA</span><span class="p">)</span>
+</span><span id="ccalc-178"><a href="#ccalc-178"><span class="linenos">178</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">ccalc_params</span><span class="p">(</span><span class="n">format_</span><span class="o">=</span><span class="n">format_</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span><span class="p">)</span>
+</span><span id="ccalc-179"><a href="#ccalc-179"><span class="linenos">179</span></a>    <span class="k">return</span> <span class="n">ccalc_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 
