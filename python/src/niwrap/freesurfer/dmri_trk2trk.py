@@ -380,9 +380,9 @@ def dmri_trk2trk_execute(
     Returns:
         NamedTuple of outputs (described in `DmriTrk2trkOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_trk2trk_cargs(params, execution)
     ret = dmri_trk2trk_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

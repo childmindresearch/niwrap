@@ -558,9 +558,9 @@ def tckmap_execute(
     Returns:
         NamedTuple of outputs (described in `TckmapOutputs`).
     """
+    params = execution.params(params)
     cargs = tckmap_cargs(params, execution)
     ret = tckmap_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -141,9 +141,9 @@ def register_child_execute(
     Returns:
         NamedTuple of outputs (described in `RegisterChildOutputs`).
     """
+    params = execution.params(params)
     cargs = register_child_cargs(params, execution)
     ret = register_child_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

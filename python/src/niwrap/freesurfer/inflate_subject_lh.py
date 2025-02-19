@@ -137,9 +137,9 @@ def inflate_subject_lh_execute(
     Returns:
         NamedTuple of outputs (described in `InflateSubjectLhOutputs`).
     """
+    params = execution.params(params)
     cargs = inflate_subject_lh_cargs(params, execution)
     ret = inflate_subject_lh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

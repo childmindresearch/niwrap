@@ -244,9 +244,9 @@ def v_3d_tsmooth_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTsmoothOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_tsmooth_cargs(params, execution)
     ret = v_3d_tsmooth_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

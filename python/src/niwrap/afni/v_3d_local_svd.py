@@ -193,9 +193,9 @@ def v_3d_local_svd_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLocalSvdOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_local_svd_cargs(params, execution)
     ret = v_3d_local_svd_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

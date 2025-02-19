@@ -184,9 +184,9 @@ def v_3d_tto1_d_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTto1DOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_tto1_d_cargs(params, execution)
     ret = v_3d_tto1_d_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

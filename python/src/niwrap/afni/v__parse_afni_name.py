@@ -143,9 +143,9 @@ def v__parse_afni_name_execute(
     Returns:
         NamedTuple of outputs (described in `VParseAfniNameOutputs`).
     """
+    params = execution.params(params)
     cargs = v__parse_afni_name_cargs(params, execution)
     ret = v__parse_afni_name_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

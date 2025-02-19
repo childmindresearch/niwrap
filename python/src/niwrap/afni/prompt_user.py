@@ -143,9 +143,9 @@ def prompt_user_execute(
     Returns:
         NamedTuple of outputs (described in `PromptUserOutputs`).
     """
+    params = execution.params(params)
     cargs = prompt_user_cargs(params, execution)
     ret = prompt_user_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

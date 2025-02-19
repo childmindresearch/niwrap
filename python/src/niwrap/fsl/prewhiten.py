@@ -144,9 +144,9 @@ def prewhiten_execute(
     Returns:
         NamedTuple of outputs (described in `PrewhitenOutputs`).
     """
+    params = execution.params(params)
     cargs = prewhiten_cargs(params, execution)
     ret = prewhiten_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

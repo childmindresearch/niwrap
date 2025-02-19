@@ -133,9 +133,9 @@ def feat_execute(
     Returns:
         NamedTuple of outputs (described in `FeatOutputs`).
     """
+    params = execution.params(params)
     cargs = feat_cargs(params, execution)
     ret = feat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

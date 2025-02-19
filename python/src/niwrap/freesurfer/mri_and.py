@@ -129,9 +129,9 @@ def mri_and_execute(
     Returns:
         NamedTuple of outputs (described in `MriAndOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_and_cargs(params, execution)
     ret = mri_and_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

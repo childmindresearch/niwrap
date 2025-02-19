@@ -336,9 +336,9 @@ def atropos_execute(
     Returns:
         NamedTuple of outputs (described in `AtroposOutputs`).
     """
+    params = execution.params(params)
     cargs = atropos_cargs(params, execution)
     ret = atropos_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

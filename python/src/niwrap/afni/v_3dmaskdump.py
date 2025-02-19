@@ -314,9 +314,9 @@ def v_3dmaskdump_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmaskdumpOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dmaskdump_cargs(params, execution)
     ret = v_3dmaskdump_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

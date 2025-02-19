@@ -245,9 +245,9 @@ def cifti_label_to_border_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelToBorderOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_label_to_border_cargs(params, execution)
     ret = cifti_label_to_border_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

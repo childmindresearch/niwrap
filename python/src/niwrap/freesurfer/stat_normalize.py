@@ -193,9 +193,9 @@ def stat_normalize_execute(
     Returns:
         NamedTuple of outputs (described in `StatNormalizeOutputs`).
     """
+    params = execution.params(params)
     cargs = stat_normalize_cargs(params, execution)
     ret = stat_normalize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

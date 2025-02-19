@@ -162,9 +162,9 @@ def v_3d_compare_affine_execute(
     Returns:
         NamedTuple of outputs (described in `V3dCompareAffineOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_compare_affine_cargs(params, execution)
     ret = v_3d_compare_affine_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -143,9 +143,9 @@ def ventfix_execute(
     Returns:
         NamedTuple of outputs (described in `VentfixOutputs`).
     """
+    params = execution.params(params)
     cargs = ventfix_cargs(params, execution)
     ret = ventfix_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

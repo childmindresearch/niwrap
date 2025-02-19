@@ -167,9 +167,9 @@ def texture_cooccurrence_features_execute(
     Returns:
         NamedTuple of outputs (described in `TextureCooccurrenceFeaturesOutputs`).
     """
+    params = execution.params(params)
     cargs = texture_cooccurrence_features_cargs(params, execution)
     ret = texture_cooccurrence_features_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

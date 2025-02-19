@@ -207,9 +207,9 @@ def tbss_skeleton_execute(
     Returns:
         NamedTuple of outputs (described in `TbssSkeletonOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_skeleton_cargs(params, execution)
     ret = tbss_skeleton_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

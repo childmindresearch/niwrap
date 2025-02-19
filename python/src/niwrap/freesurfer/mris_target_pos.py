@@ -228,9 +228,9 @@ def mris_target_pos_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTargetPosOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_target_pos_cargs(params, execution)
     ret = mris_target_pos_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

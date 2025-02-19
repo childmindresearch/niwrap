@@ -276,9 +276,9 @@ def gtmseg_execute(
     Returns:
         NamedTuple of outputs (described in `GtmsegOutputs`).
     """
+    params = execution.params(params)
     cargs = gtmseg_cargs(params, execution)
     ret = gtmseg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

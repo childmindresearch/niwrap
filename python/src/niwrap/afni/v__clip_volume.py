@@ -288,9 +288,9 @@ def v__clip_volume_execute(
     Returns:
         NamedTuple of outputs (described in `VClipVolumeOutputs`).
     """
+    params = execution.params(params)
     cargs = v__clip_volume_cargs(params, execution)
     ret = v__clip_volume_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

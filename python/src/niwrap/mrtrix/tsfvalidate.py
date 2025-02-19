@@ -244,9 +244,9 @@ def tsfvalidate_execute(
     Returns:
         NamedTuple of outputs (described in `TsfvalidateOutputs`).
     """
+    params = execution.params(params)
     cargs = tsfvalidate_cargs(params, execution)
     ret = tsfvalidate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

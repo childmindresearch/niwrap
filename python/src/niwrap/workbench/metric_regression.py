@@ -287,9 +287,9 @@ def metric_regression_execute(
     Returns:
         NamedTuple of outputs (described in `MetricRegressionOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_regression_cargs(params, execution)
     ret = metric_regression_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

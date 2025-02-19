@@ -139,9 +139,9 @@ def reg_average_execute(
     Returns:
         NamedTuple of outputs (described in `RegAverageOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_average_cargs(params, execution)
     ret = reg_average_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

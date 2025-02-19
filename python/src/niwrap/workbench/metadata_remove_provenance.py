@@ -137,9 +137,9 @@ def metadata_remove_provenance_execute(
     Returns:
         NamedTuple of outputs (described in `MetadataRemoveProvenanceOutputs`).
     """
+    params = execution.params(params)
     cargs = metadata_remove_provenance_cargs(params, execution)
     ret = metadata_remove_provenance_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

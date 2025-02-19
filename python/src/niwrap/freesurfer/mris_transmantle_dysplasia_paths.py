@@ -170,9 +170,9 @@ def mris_transmantle_dysplasia_paths_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTransmantleDysplasiaPathsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_transmantle_dysplasia_paths_cargs(params, execution)
     ret = mris_transmantle_dysplasia_paths_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

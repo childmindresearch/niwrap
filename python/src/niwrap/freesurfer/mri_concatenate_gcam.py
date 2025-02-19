@@ -180,9 +180,9 @@ def mri_concatenate_gcam_execute(
     Returns:
         NamedTuple of outputs (described in `MriConcatenateGcamOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_concatenate_gcam_cargs(params, execution)
     ret = mri_concatenate_gcam_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

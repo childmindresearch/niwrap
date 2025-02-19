@@ -192,9 +192,9 @@ def v_3d_cruiseto_afni_execute(
     Returns:
         NamedTuple of outputs (described in `V3dCruisetoAfniOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_cruiseto_afni_cargs(params, execution)
     ret = v_3d_cruiseto_afni_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

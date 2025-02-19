@@ -246,9 +246,9 @@ def gen_group_command_execute(
     Returns:
         NamedTuple of outputs (described in `GenGroupCommandOutputs`).
     """
+    params = execution.params(params)
     cargs = gen_group_command_cargs(params, execution)
     ret = gen_group_command_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

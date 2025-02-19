@@ -173,9 +173,9 @@ def v__djunct_montage_coordinator_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunctMontageCoordinatorOutputs`).
     """
+    params = execution.params(params)
     cargs = v__djunct_montage_coordinator_cargs(params, execution)
     ret = v__djunct_montage_coordinator_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

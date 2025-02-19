@@ -138,9 +138,9 @@ def label_export_table_execute(
     Returns:
         NamedTuple of outputs (described in `LabelExportTableOutputs`).
     """
+    params = execution.params(params)
     cargs = label_export_table_cargs(params, execution)
     ret = label_export_table_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

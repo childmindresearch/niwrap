@@ -135,9 +135,9 @@ def fslsize_execute(
     Returns:
         NamedTuple of outputs (described in `FslsizeOutputs`).
     """
+    params = execution.params(params)
     cargs = fslsize_cargs(params, execution)
     ret = fslsize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

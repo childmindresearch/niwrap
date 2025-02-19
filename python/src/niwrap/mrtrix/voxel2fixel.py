@@ -257,9 +257,9 @@ def voxel2fixel_execute(
     Returns:
         NamedTuple of outputs (described in `Voxel2fixelOutputs`).
     """
+    params = execution.params(params)
     cargs = voxel2fixel_cargs(params, execution)
     ret = voxel2fixel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

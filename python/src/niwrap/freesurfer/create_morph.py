@@ -176,9 +176,9 @@ def create_morph_execute(
     Returns:
         NamedTuple of outputs (described in `CreateMorphOutputs`).
     """
+    params = execution.params(params)
     cargs = create_morph_cargs(params, execution)
     ret = create_morph_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

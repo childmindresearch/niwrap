@@ -410,9 +410,9 @@ def gdcmconv_fs_execute(
     Returns:
         NamedTuple of outputs (described in `GdcmconvFsOutputs`).
     """
+    params = execution.params(params)
     cargs = gdcmconv_fs_cargs(params, execution)
     ret = gdcmconv_fs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

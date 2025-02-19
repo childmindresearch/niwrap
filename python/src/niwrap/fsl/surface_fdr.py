@@ -139,9 +139,9 @@ def surface_fdr_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceFdrOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_fdr_cargs(params, execution)
     ret = surface_fdr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

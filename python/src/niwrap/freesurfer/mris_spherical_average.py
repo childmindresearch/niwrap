@@ -165,9 +165,9 @@ def mris_spherical_average_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSphericalAverageOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_spherical_average_cargs(params, execution)
     ret = mris_spherical_average_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

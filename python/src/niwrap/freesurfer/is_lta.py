@@ -145,9 +145,9 @@ def is_lta_execute(
     Returns:
         NamedTuple of outputs (described in `IsLtaOutputs`).
     """
+    params = execution.params(params)
     cargs = is_lta_cargs(params, execution)
     ret = is_lta_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

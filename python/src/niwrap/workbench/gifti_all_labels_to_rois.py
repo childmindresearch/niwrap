@@ -148,9 +148,9 @@ def gifti_all_labels_to_rois_execute(
     Returns:
         NamedTuple of outputs (described in `GiftiAllLabelsToRoisOutputs`).
     """
+    params = execution.params(params)
     cargs = gifti_all_labels_to_rois_cargs(params, execution)
     ret = gifti_all_labels_to_rois_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

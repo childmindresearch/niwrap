@@ -150,9 +150,9 @@ def mri_fslmat_to_lta_execute(
     Returns:
         NamedTuple of outputs (described in `MriFslmatToLtaOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_fslmat_to_lta_cargs(params, execution)
     ret = mri_fslmat_to_lta_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

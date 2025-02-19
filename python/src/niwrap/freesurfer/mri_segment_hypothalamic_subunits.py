@@ -251,9 +251,9 @@ def mri_segment_hypothalamic_subunits_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegmentHypothalamicSubunitsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_segment_hypothalamic_subunits_cargs(params, execution)
     ret = mri_segment_hypothalamic_subunits_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

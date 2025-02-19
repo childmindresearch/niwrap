@@ -141,9 +141,9 @@ def v__grayplot_execute(
     Returns:
         NamedTuple of outputs (described in `VGrayplotOutputs`).
     """
+    params = execution.params(params)
     cargs = v__grayplot_cargs(params, execution)
     ret = v__grayplot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

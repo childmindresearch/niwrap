@@ -137,9 +137,9 @@ def v_1d_rplot_execute(
     Returns:
         NamedTuple of outputs (described in `V1dRplotOutputs`).
     """
+    params = execution.params(params)
     cargs = v_1d_rplot_cargs(params, execution)
     ret = v_1d_rplot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

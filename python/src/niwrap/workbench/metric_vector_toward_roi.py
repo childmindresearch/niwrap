@@ -158,9 +158,9 @@ def metric_vector_toward_roi_execute(
     Returns:
         NamedTuple of outputs (described in `MetricVectorTowardRoiOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_vector_toward_roi_cargs(params, execution)
     ret = metric_vector_toward_roi_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

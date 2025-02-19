@@ -158,9 +158,9 @@ def abids_json_tool_py_execute(
     Returns:
         NamedTuple of outputs (described in `AbidsJsonToolPyOutputs`).
     """
+    params = execution.params(params)
     cargs = abids_json_tool_py_cargs(params, execution)
     ret = abids_json_tool_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

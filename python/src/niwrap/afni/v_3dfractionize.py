@@ -193,9 +193,9 @@ def v_3dfractionize_execute(
     Returns:
         NamedTuple of outputs (described in `V3dfractionizeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dfractionize_cargs(params, execution)
     ret = v_3dfractionize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

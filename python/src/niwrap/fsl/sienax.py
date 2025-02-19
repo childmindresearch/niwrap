@@ -227,9 +227,9 @@ def sienax_execute(
     Returns:
         NamedTuple of outputs (described in `SienaxOutputs`).
     """
+    params = execution.params(params)
     cargs = sienax_cargs(params, execution)
     ret = sienax_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -215,9 +215,9 @@ def trac_preproc_execute(
     Returns:
         NamedTuple of outputs (described in `TracPreprocOutputs`).
     """
+    params = execution.params(params)
     cargs = trac_preproc_cargs(params, execution)
     ret = trac_preproc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

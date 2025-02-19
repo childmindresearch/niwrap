@@ -135,9 +135,9 @@ def fsrealpath_execute(
     Returns:
         NamedTuple of outputs (described in `FsrealpathOutputs`).
     """
+    params = execution.params(params)
     cargs = fsrealpath_cargs(params, execution)
     ret = fsrealpath_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

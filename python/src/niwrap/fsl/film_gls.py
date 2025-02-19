@@ -344,9 +344,9 @@ def film_gls_execute(
     Returns:
         NamedTuple of outputs (described in `FilmGlsOutputs`).
     """
+    params = execution.params(params)
     cargs = film_gls_cargs(params, execution)
     ret = film_gls_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

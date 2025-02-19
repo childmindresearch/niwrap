@@ -142,9 +142,9 @@ def volume_fill_holes_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeFillHolesOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_fill_holes_cargs(params, execution)
     ret = volume_fill_holes_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

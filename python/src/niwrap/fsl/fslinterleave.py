@@ -149,9 +149,9 @@ def fslinterleave_execute(
     Returns:
         NamedTuple of outputs (described in `FslinterleaveOutputs`).
     """
+    params = execution.params(params)
     cargs = fslinterleave_cargs(params, execution)
     ret = fslinterleave_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

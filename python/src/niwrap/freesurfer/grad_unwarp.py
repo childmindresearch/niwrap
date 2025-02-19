@@ -204,9 +204,9 @@ def grad_unwarp_execute(
     Returns:
         NamedTuple of outputs (described in `GradUnwarpOutputs`).
     """
+    params = execution.params(params)
     cargs = grad_unwarp_cargs(params, execution)
     ret = grad_unwarp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

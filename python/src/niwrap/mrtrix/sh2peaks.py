@@ -379,9 +379,9 @@ def sh2peaks_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2peaksOutputs`).
     """
+    params = execution.params(params)
     cargs = sh2peaks_cargs(params, execution)
     ret = sh2peaks_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

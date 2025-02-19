@@ -445,9 +445,9 @@ def optseq2_execute(
     Returns:
         NamedTuple of outputs (described in `Optseq2Outputs`).
     """
+    params = execution.params(params)
     cargs = optseq2_cargs(params, execution)
     ret = optseq2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

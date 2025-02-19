@@ -153,9 +153,9 @@ def extracttxt_execute(
     Returns:
         NamedTuple of outputs (described in `ExtracttxtOutputs`).
     """
+    params = execution.params(params)
     cargs = extracttxt_cargs(params, execution)
     ret = extracttxt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

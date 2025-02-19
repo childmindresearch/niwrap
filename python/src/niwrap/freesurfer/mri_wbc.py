@@ -276,9 +276,9 @@ def mri_wbc_execute(
     Returns:
         NamedTuple of outputs (described in `MriWbcOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_wbc_cargs(params, execution)
     ret = mri_wbc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -158,9 +158,9 @@ def bugr_execute(
     Returns:
         NamedTuple of outputs (described in `BugrOutputs`).
     """
+    params = execution.params(params)
     cargs = bugr_cargs(params, execution)
     ret = bugr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

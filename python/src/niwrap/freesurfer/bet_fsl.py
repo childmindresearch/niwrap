@@ -326,9 +326,9 @@ def bet_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `BetFslOutputs`).
     """
+    params = execution.params(params)
     cargs = bet_fsl_cargs(params, execution)
     ret = bet_fsl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

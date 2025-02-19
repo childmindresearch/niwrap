@@ -213,9 +213,9 @@ def fat_proc_imit2w_from_t1w_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcImit2wFromT1wOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_proc_imit2w_from_t1w_cargs(params, execution)
     ret = fat_proc_imit2w_from_t1w_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

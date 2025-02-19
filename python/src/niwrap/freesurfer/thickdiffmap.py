@@ -151,9 +151,9 @@ def thickdiffmap_execute(
     Returns:
         NamedTuple of outputs (described in `ThickdiffmapOutputs`).
     """
+    params = execution.params(params)
     cargs = thickdiffmap_cargs(params, execution)
     ret = thickdiffmap_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

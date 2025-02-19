@@ -388,9 +388,9 @@ def fslregister_execute(
     Returns:
         NamedTuple of outputs (described in `FslregisterOutputs`).
     """
+    params = execution.params(params)
     cargs = fslregister_cargs(params, execution)
     ret = fslregister_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

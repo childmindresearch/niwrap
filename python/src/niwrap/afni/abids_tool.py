@@ -142,9 +142,9 @@ def abids_tool_execute(
     Returns:
         NamedTuple of outputs (described in `AbidsToolOutputs`).
     """
+    params = execution.params(params)
     cargs = abids_tool_cargs(params, execution)
     ret = abids_tool_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

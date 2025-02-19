@@ -148,9 +148,9 @@ def v__build_afni_xlib_execute(
     Returns:
         NamedTuple of outputs (described in `VBuildAfniXlibOutputs`).
     """
+    params = execution.params(params)
     cargs = v__build_afni_xlib_cargs(params, execution)
     ret = v__build_afni_xlib_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -222,9 +222,9 @@ def fdr_execute(
     Returns:
         NamedTuple of outputs (described in `FdrOutputs`).
     """
+    params = execution.params(params)
     cargs = fdr_cargs(params, execution)
     ret = fdr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

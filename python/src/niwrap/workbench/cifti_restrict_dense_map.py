@@ -206,9 +206,9 @@ def cifti_restrict_dense_map_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiRestrictDenseMapOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_restrict_dense_map_cargs(params, execution)
     ret = cifti_restrict_dense_map_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

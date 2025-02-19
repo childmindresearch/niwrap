@@ -333,9 +333,9 @@ def v_3d_tproject_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTprojectOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_tproject_cargs(params, execution)
     ret = v_3d_tproject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

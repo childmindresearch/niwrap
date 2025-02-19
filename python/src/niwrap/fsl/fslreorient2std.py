@@ -157,9 +157,9 @@ def fslreorient2std_execute(
     Returns:
         NamedTuple of outputs (described in `Fslreorient2stdOutputs`).
     """
+    params = execution.params(params)
     cargs = fslreorient2std_cargs(params, execution)
     ret = fslreorient2std_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

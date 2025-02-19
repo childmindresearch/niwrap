@@ -218,9 +218,9 @@ def afni_open_execute(
     Returns:
         NamedTuple of outputs (described in `AfniOpenOutputs`).
     """
+    params = execution.params(params)
     cargs = afni_open_cargs(params, execution)
     ret = afni_open_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

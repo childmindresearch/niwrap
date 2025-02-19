@@ -131,9 +131,9 @@ def check_mcr_sh_execute(
     Returns:
         NamedTuple of outputs (described in `CheckMcrShOutputs`).
     """
+    params = execution.params(params)
     cargs = check_mcr_sh_cargs(params, execution)
     ret = check_mcr_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

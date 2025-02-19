@@ -269,9 +269,9 @@ def shbasis_execute(
     Returns:
         NamedTuple of outputs (described in `ShbasisOutputs`).
     """
+    params = execution.params(params)
     cargs = shbasis_cargs(params, execution)
     ret = shbasis_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

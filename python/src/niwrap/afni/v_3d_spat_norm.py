@@ -195,9 +195,9 @@ def v_3d_spat_norm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dSpatNormOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_spat_norm_cargs(params, execution)
     ret = v_3d_spat_norm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -264,9 +264,9 @@ def surf_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `SurfFwhmOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_fwhm_cargs(params, execution)
     ret = surf_fwhm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

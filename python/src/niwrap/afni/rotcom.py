@@ -142,9 +142,9 @@ def rotcom_execute(
     Returns:
         NamedTuple of outputs (described in `RotcomOutputs`).
     """
+    params = execution.params(params)
     cargs = rotcom_cargs(params, execution)
     ret = rotcom_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -217,9 +217,9 @@ def dmri_bset_execute(
     Returns:
         NamedTuple of outputs (described in `DmriBsetOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_bset_cargs(params, execution)
     ret = dmri_bset_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

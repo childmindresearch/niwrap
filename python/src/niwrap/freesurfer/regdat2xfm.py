@@ -134,9 +134,9 @@ def regdat2xfm_execute(
     Returns:
         NamedTuple of outputs (described in `Regdat2xfmOutputs`).
     """
+    params = execution.params(params)
     cargs = regdat2xfm_cargs(params, execution)
     ret = regdat2xfm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

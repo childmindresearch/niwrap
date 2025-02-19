@@ -160,9 +160,9 @@ def oct_register_mosaic_execute(
     Returns:
         NamedTuple of outputs (described in `OctRegisterMosaicOutputs`).
     """
+    params = execution.params(params)
     cargs = oct_register_mosaic_cargs(params, execution)
     ret = oct_register_mosaic_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

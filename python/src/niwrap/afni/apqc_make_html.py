@@ -132,9 +132,9 @@ def apqc_make_html_execute(
     Returns:
         NamedTuple of outputs (described in `ApqcMakeHtmlOutputs`).
     """
+    params = execution.params(params)
     cargs = apqc_make_html_cargs(params, execution)
     ret = apqc_make_html_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

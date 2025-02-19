@@ -292,9 +292,9 @@ def make_average_surface_execute(
     Returns:
         NamedTuple of outputs (described in `MakeAverageSurfaceOutputs`).
     """
+    params = execution.params(params)
     cargs = make_average_surface_cargs(params, execution)
     ret = make_average_surface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

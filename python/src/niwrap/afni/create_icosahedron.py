@@ -210,9 +210,9 @@ def create_icosahedron_execute(
     Returns:
         NamedTuple of outputs (described in `CreateIcosahedronOutputs`).
     """
+    params = execution.params(params)
     cargs = create_icosahedron_cargs(params, execution)
     ret = create_icosahedron_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

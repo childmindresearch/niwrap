@@ -142,9 +142,9 @@ def v_3d_mask_to_ascii_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMaskToAsciiOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_mask_to_ascii_cargs(params, execution)
     ret = v_3d_mask_to_ascii_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

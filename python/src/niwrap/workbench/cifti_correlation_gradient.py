@@ -476,9 +476,9 @@ def cifti_correlation_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCorrelationGradientOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_correlation_gradient_cargs(params, execution)
     ret = cifti_correlation_gradient_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

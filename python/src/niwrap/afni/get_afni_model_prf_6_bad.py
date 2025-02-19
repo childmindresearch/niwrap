@@ -154,9 +154,9 @@ def get_afni_model_prf_6_bad_execute(
     Returns:
         NamedTuple of outputs (described in `GetAfniModelPrf6BadOutputs`).
     """
+    params = execution.params(params)
     cargs = get_afni_model_prf_6_bad_cargs(params, execution)
     ret = get_afni_model_prf_6_bad_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -150,9 +150,9 @@ def mris_find_flat_regions_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFindFlatRegionsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_find_flat_regions_cargs(params, execution)
     ret = mris_find_flat_regions_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

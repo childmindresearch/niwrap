@@ -132,9 +132,9 @@ def fs_print_help_execute(
     Returns:
         NamedTuple of outputs (described in `FsPrintHelpOutputs`).
     """
+    params = execution.params(params)
     cargs = fs_print_help_cargs(params, execution)
     ret = fs_print_help_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

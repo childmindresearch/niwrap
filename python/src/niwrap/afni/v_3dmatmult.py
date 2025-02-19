@@ -172,9 +172,9 @@ def v_3dmatmult_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmatmultOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dmatmult_cargs(params, execution)
     ret = v_3dmatmult_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

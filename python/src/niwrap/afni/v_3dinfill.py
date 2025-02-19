@@ -229,9 +229,9 @@ def v_3dinfill_execute(
     Returns:
         NamedTuple of outputs (described in `V3dinfillOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dinfill_cargs(params, execution)
     ret = v_3dinfill_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

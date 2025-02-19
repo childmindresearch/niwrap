@@ -533,9 +533,9 @@ def mrfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MrfilterOutputs`).
     """
+    params = execution.params(params)
     cargs = mrfilter_cargs(params, execution)
     ret = mrfilter_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

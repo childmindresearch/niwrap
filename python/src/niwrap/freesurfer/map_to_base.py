@@ -172,9 +172,9 @@ def map_to_base_execute(
     Returns:
         NamedTuple of outputs (described in `MapToBaseOutputs`).
     """
+    params = execution.params(params)
     cargs = map_to_base_cargs(params, execution)
     ret = map_to_base_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

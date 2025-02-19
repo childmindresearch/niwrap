@@ -203,9 +203,9 @@ def run_first_execute(
     Returns:
         NamedTuple of outputs (described in `RunFirstOutputs`).
     """
+    params = execution.params(params)
     cargs = run_first_cargs(params, execution)
     ret = run_first_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

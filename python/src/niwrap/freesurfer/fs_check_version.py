@@ -167,9 +167,9 @@ def fs_check_version_execute(
     Returns:
         NamedTuple of outputs (described in `FsCheckVersionOutputs`).
     """
+    params = execution.params(params)
     cargs = fs_check_version_cargs(params, execution)
     ret = fs_check_version_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

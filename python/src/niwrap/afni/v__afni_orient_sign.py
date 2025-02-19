@@ -136,9 +136,9 @@ def v__afni_orient_sign_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniOrientSignOutputs`).
     """
+    params = execution.params(params)
     cargs = v__afni_orient_sign_cargs(params, execution)
     ret = v__afni_orient_sign_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

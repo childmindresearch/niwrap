@@ -196,9 +196,9 @@ def mri_func2sph_execute(
     Returns:
         NamedTuple of outputs (described in `MriFunc2sphOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_func2sph_cargs(params, execution)
     ret = mri_func2sph_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

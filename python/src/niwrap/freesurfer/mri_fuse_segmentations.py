@@ -181,9 +181,9 @@ def mri_fuse_segmentations_execute(
     Returns:
         NamedTuple of outputs (described in `MriFuseSegmentationsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_fuse_segmentations_cargs(params, execution)
     ret = mri_fuse_segmentations_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -143,9 +143,9 @@ def histo_compute_joint_density_execute(
     Returns:
         NamedTuple of outputs (described in `HistoComputeJointDensityOutputs`).
     """
+    params = execution.params(params)
     cargs = histo_compute_joint_density_cargs(params, execution)
     ret = histo_compute_joint_density_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

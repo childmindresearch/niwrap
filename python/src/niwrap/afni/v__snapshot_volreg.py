@@ -154,9 +154,9 @@ def v__snapshot_volreg_execute(
     Returns:
         NamedTuple of outputs (described in `VSnapshotVolregOutputs`).
     """
+    params = execution.params(params)
     cargs = v__snapshot_volreg_cargs(params, execution)
     ret = v__snapshot_volreg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -165,9 +165,9 @@ def mris_average_curvature_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAverageCurvatureOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_average_curvature_cargs(params, execution)
     ret = mris_average_curvature_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -289,9 +289,9 @@ def fixelconnectivity_execute(
     Returns:
         NamedTuple of outputs (described in `FixelconnectivityOutputs`).
     """
+    params = execution.params(params)
     cargs = fixelconnectivity_cargs(params, execution)
     ret = fixelconnectivity_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

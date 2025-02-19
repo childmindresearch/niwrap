@@ -158,9 +158,9 @@ def cifti_reorder_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiReorderOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_reorder_cargs(params, execution)
     ret = cifti_reorder_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -138,9 +138,9 @@ def zeropad_execute(
     Returns:
         NamedTuple of outputs (described in `ZeropadOutputs`).
     """
+    params = execution.params(params)
     cargs = zeropad_cargs(params, execution)
     ret = zeropad_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

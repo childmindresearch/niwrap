@@ -173,9 +173,9 @@ def long_qdec_table_execute(
     Returns:
         NamedTuple of outputs (described in `LongQdecTableOutputs`).
     """
+    params = execution.params(params)
     cargs = long_qdec_table_cargs(params, execution)
     ret = long_qdec_table_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

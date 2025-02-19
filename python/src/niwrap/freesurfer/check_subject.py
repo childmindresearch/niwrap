@@ -129,9 +129,9 @@ def check_subject_execute(
     Returns:
         NamedTuple of outputs (described in `CheckSubjectOutputs`).
     """
+    params = execution.params(params)
     cargs = check_subject_cargs(params, execution)
     ret = check_subject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

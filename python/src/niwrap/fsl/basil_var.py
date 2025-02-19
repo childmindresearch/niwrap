@@ -140,9 +140,9 @@ def basil_var_execute(
     Returns:
         NamedTuple of outputs (described in `BasilVarOutputs`).
     """
+    params = execution.params(params)
     cargs = basil_var_cargs(params, execution)
     ret = basil_var_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

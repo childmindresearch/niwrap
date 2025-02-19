@@ -133,9 +133,9 @@ def register_subject_flash_execute(
     Returns:
         NamedTuple of outputs (described in `RegisterSubjectFlashOutputs`).
     """
+    params = execution.params(params)
     cargs = register_subject_flash_cargs(params, execution)
     ret = register_subject_flash_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

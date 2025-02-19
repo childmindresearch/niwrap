@@ -138,9 +138,9 @@ def find_the_biggest_execute(
     Returns:
         NamedTuple of outputs (described in `FindTheBiggestOutputs`).
     """
+    params = execution.params(params)
     cargs = find_the_biggest_cargs(params, execution)
     ret = find_the_biggest_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

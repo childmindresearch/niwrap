@@ -213,9 +213,9 @@ def eddy_quad_execute(
     Returns:
         NamedTuple of outputs (described in `EddyQuadOutputs`).
     """
+    params = execution.params(params)
     cargs = eddy_quad_cargs(params, execution)
     ret = eddy_quad_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

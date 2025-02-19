@@ -131,9 +131,9 @@ def afni_check_omp_execute(
     Returns:
         NamedTuple of outputs (described in `AfniCheckOmpOutputs`).
     """
+    params = execution.params(params)
     cargs = afni_check_omp_cargs(params, execution)
     ret = afni_check_omp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -168,9 +168,9 @@ def longmc_execute(
     Returns:
         NamedTuple of outputs (described in `LongmcOutputs`).
     """
+    params = execution.params(params)
     cargs = longmc_cargs(params, execution)
     ret = longmc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

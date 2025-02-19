@@ -245,9 +245,9 @@ def mris_pmake_execute(
     Returns:
         NamedTuple of outputs (described in `MrisPmakeOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_pmake_cargs(params, execution)
     ret = mris_pmake_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

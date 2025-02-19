@@ -221,9 +221,9 @@ def fnirt_execute(
     Returns:
         NamedTuple of outputs (described in `FnirtOutputs`).
     """
+    params = execution.params(params)
     cargs = fnirt_cargs(params, execution)
     ret = fnirt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

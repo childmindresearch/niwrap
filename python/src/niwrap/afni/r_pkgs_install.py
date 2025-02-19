@@ -168,9 +168,9 @@ def r_pkgs_install_execute(
     Returns:
         NamedTuple of outputs (described in `RPkgsInstallOutputs`).
     """
+    params = execution.params(params)
     cargs = r_pkgs_install_cargs(params, execution)
     ret = r_pkgs_install_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

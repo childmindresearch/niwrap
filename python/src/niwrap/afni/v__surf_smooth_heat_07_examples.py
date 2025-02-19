@@ -129,9 +129,9 @@ def v__surf_smooth_heat_07_examples_execute(
     Returns:
         NamedTuple of outputs (described in `VSurfSmoothHeat07ExamplesOutputs`).
     """
+    params = execution.params(params)
     cargs = v__surf_smooth_heat_07_examples_cargs(params, execution)
     ret = v__surf_smooth_heat_07_examples_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

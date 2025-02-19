@@ -300,9 +300,9 @@ def mri_create_tests_execute(
     Returns:
         NamedTuple of outputs (described in `MriCreateTestsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_create_tests_cargs(params, execution)
     ret = mri_create_tests_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

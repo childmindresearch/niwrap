@@ -134,9 +134,9 @@ def concat_bvars_execute(
     Returns:
         NamedTuple of outputs (described in `ConcatBvarsOutputs`).
     """
+    params = execution.params(params)
     cargs = concat_bvars_cargs(params, execution)
     ret = concat_bvars_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

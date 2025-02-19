@@ -162,9 +162,9 @@ def v__command_globb_execute(
     Returns:
         NamedTuple of outputs (described in `VCommandGlobbOutputs`).
     """
+    params = execution.params(params)
     cargs = v__command_globb_cargs(params, execution)
     ret = v__command_globb_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

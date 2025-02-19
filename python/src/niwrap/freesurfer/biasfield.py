@@ -173,9 +173,9 @@ def biasfield_execute(
     Returns:
         NamedTuple of outputs (described in `BiasfieldOutputs`).
     """
+    params = execution.params(params)
     cargs = biasfield_cargs(params, execution)
     ret = biasfield_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

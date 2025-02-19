@@ -288,9 +288,9 @@ def rbbr_execute(
     Returns:
         NamedTuple of outputs (described in `RbbrOutputs`).
     """
+    params = execution.params(params)
     cargs = rbbr_cargs(params, execution)
     ret = rbbr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

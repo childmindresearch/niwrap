@@ -158,9 +158,9 @@ def mris_compute_acorr_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeAcorrOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_compute_acorr_cargs(params, execution)
     ret = mris_compute_acorr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

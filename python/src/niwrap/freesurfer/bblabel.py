@@ -221,9 +221,9 @@ def bblabel_execute(
     Returns:
         NamedTuple of outputs (described in `BblabelOutputs`).
     """
+    params = execution.params(params)
     cargs = bblabel_cargs(params, execution)
     ret = bblabel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

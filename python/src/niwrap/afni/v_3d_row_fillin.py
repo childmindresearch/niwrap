@@ -174,9 +174,9 @@ def v_3d_row_fillin_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRowFillinOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_row_fillin_cargs(params, execution)
     ret = v_3d_row_fillin_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -636,9 +636,9 @@ def mri_em_register_execute(
     Returns:
         NamedTuple of outputs (described in `MriEmRegisterOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_em_register_cargs(params, execution)
     ret = mri_em_register_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

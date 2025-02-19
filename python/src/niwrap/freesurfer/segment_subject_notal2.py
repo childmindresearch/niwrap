@@ -138,9 +138,9 @@ def segment_subject_notal2_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubjectNotal2Outputs`).
     """
+    params = execution.params(params)
     cargs = segment_subject_notal2_cargs(params, execution)
     ret = segment_subject_notal2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

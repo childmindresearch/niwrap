@@ -199,9 +199,9 @@ def v__fat_tract_colorize_execute(
     Returns:
         NamedTuple of outputs (described in `VFatTractColorizeOutputs`).
     """
+    params = execution.params(params)
     cargs = v__fat_tract_colorize_cargs(params, execution)
     ret = v__fat_tract_colorize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

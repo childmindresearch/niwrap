@@ -139,9 +139,9 @@ def mri_compute_bias_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeBiasOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_compute_bias_cargs(params, execution)
     ret = mri_compute_bias_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

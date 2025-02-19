@@ -256,9 +256,9 @@ def gems_compute_atlas_probs_execute(
     Returns:
         NamedTuple of outputs (described in `GemsComputeAtlasProbsOutputs`).
     """
+    params = execution.params(params)
     cargs = gems_compute_atlas_probs_cargs(params, execution)
     ret = gems_compute_atlas_probs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

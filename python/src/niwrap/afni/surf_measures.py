@@ -278,9 +278,9 @@ def surf_measures_execute(
     Returns:
         NamedTuple of outputs (described in `SurfMeasuresOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_measures_cargs(params, execution)
     ret = surf_measures_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

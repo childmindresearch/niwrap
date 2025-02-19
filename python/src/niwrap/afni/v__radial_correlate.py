@@ -307,9 +307,9 @@ def v__radial_correlate_execute(
     Returns:
         NamedTuple of outputs (described in `VRadialCorrelateOutputs`).
     """
+    params = execution.params(params)
     cargs = v__radial_correlate_cargs(params, execution)
     ret = v__radial_correlate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -160,9 +160,9 @@ def p2dsetstat_execute(
     Returns:
         NamedTuple of outputs (described in `P2dsetstatOutputs`).
     """
+    params = execution.params(params)
     cargs = p2dsetstat_cargs(params, execution)
     ret = p2dsetstat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

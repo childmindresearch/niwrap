@@ -255,9 +255,9 @@ def bet2_execute(
     Returns:
         NamedTuple of outputs (described in `Bet2Outputs`).
     """
+    params = execution.params(params)
     cargs = bet2_cargs(params, execution)
     ret = bet2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

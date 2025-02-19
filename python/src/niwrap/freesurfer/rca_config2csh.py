@@ -131,9 +131,9 @@ def rca_config2csh_execute(
     Returns:
         NamedTuple of outputs (described in `RcaConfig2cshOutputs`).
     """
+    params = execution.params(params)
     cargs = rca_config2csh_cargs(params, execution)
     ret = rca_config2csh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

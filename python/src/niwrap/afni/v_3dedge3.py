@@ -199,9 +199,9 @@ def v_3dedge3_execute(
     Returns:
         NamedTuple of outputs (described in `V3dedge3Outputs`).
     """
+    params = execution.params(params)
     cargs = v_3dedge3_cargs(params, execution)
     ret = v_3dedge3_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

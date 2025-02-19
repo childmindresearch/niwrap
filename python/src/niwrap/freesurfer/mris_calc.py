@@ -180,9 +180,9 @@ def mris_calc_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCalcOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_calc_cargs(params, execution)
     ret = mris_calc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

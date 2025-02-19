@@ -228,9 +228,9 @@ def surf_layers_execute(
     Returns:
         NamedTuple of outputs (described in `SurfLayersOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_layers_cargs(params, execution)
     ret = surf_layers_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

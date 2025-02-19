@@ -133,9 +133,9 @@ def mri_gradient_info_execute(
     Returns:
         NamedTuple of outputs (described in `MriGradientInfoOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_gradient_info_cargs(params, execution)
     ret = mri_gradient_info_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

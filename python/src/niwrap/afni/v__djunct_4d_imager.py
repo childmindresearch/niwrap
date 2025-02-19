@@ -172,9 +172,9 @@ def v__djunct_4d_imager_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunct4dImagerOutputs`).
     """
+    params = execution.params(params)
     cargs = v__djunct_4d_imager_cargs(params, execution)
     ret = v__djunct_4d_imager_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

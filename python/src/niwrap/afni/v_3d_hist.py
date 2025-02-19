@@ -303,9 +303,9 @@ def v_3d_hist_execute(
     Returns:
         NamedTuple of outputs (described in `V3dHistOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_hist_cargs(params, execution)
     ret = v_3d_hist_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

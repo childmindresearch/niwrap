@@ -159,9 +159,9 @@ def zero_lt_4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `ZeroLt4dfpOutputs`).
     """
+    params = execution.params(params)
     cargs = zero_lt_4dfp_cargs(params, execution)
     ret = zero_lt_4dfp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

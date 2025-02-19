@@ -129,9 +129,9 @@ def bedpostx_datacheck_execute(
     Returns:
         NamedTuple of outputs (described in `BedpostxDatacheckOutputs`).
     """
+    params = execution.params(params)
     cargs = bedpostx_datacheck_cargs(params, execution)
     ret = bedpostx_datacheck_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

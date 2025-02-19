@@ -191,9 +191,9 @@ def mri_synthstrip_execute(
     Returns:
         NamedTuple of outputs (described in `MriSynthstripOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_synthstrip_cargs(params, execution)
     ret = mri_synthstrip_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

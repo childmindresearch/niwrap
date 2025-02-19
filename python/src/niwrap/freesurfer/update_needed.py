@@ -135,9 +135,9 @@ def update_needed_execute(
     Returns:
         NamedTuple of outputs (described in `UpdateNeededOutputs`).
     """
+    params = execution.params(params)
     cargs = update_needed_cargs(params, execution)
     ret = update_needed_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

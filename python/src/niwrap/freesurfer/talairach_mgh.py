@@ -138,9 +138,9 @@ def talairach_mgh_execute(
     Returns:
         NamedTuple of outputs (described in `TalairachMghOutputs`).
     """
+    params = execution.params(params)
     cargs = talairach_mgh_cargs(params, execution)
     ret = talairach_mgh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -300,9 +300,9 @@ def mris_volmask_vtk_execute(
     Returns:
         NamedTuple of outputs (described in `MrisVolmaskVtkOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_volmask_vtk_cargs(params, execution)
     ret = mris_volmask_vtk_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

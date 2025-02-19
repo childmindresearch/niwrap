@@ -171,9 +171,9 @@ def spharm_rm_execute(
     Returns:
         NamedTuple of outputs (described in `SpharmRmOutputs`).
     """
+    params = execution.params(params)
     cargs = spharm_rm_cargs(params, execution)
     ret = spharm_rm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

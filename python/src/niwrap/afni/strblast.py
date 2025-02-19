@@ -175,9 +175,9 @@ def strblast_execute(
     Returns:
         NamedTuple of outputs (described in `StrblastOutputs`).
     """
+    params = execution.params(params)
     cargs = strblast_cargs(params, execution)
     ret = strblast_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

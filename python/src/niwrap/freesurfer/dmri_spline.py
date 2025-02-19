@@ -207,9 +207,9 @@ def dmri_spline_execute(
     Returns:
         NamedTuple of outputs (described in `DmriSplineOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_spline_cargs(params, execution)
     ret = dmri_spline_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

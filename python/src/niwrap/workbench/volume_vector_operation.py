@@ -187,9 +187,9 @@ def volume_vector_operation_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeVectorOperationOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_vector_operation_cargs(params, execution)
     ret = volume_vector_operation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

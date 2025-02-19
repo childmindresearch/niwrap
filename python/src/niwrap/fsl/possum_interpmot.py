@@ -164,9 +164,9 @@ def possum_interpmot_execute(
     Returns:
         NamedTuple of outputs (described in `PossumInterpmotOutputs`).
     """
+    params = execution.params(params)
     cargs = possum_interpmot_cargs(params, execution)
     ret = possum_interpmot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

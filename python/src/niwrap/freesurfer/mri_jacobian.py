@@ -211,9 +211,9 @@ def mri_jacobian_execute(
     Returns:
         NamedTuple of outputs (described in `MriJacobianOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_jacobian_cargs(params, execution)
     ret = mri_jacobian_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

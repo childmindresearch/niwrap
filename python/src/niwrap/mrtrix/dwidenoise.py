@@ -341,9 +341,9 @@ def dwidenoise_execute(
     Returns:
         NamedTuple of outputs (described in `DwidenoiseOutputs`).
     """
+    params = execution.params(params)
     cargs = dwidenoise_cargs(params, execution)
     ret = dwidenoise_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

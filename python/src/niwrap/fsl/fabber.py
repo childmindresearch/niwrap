@@ -458,9 +458,9 @@ def fabber_execute(
     Returns:
         NamedTuple of outputs (described in `FabberOutputs`).
     """
+    params = execution.params(params)
     cargs = fabber_cargs(params, execution)
     ret = fabber_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

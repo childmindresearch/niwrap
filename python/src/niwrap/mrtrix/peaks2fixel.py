@@ -260,9 +260,9 @@ def peaks2fixel_execute(
     Returns:
         NamedTuple of outputs (described in `Peaks2fixelOutputs`).
     """
+    params = execution.params(params)
     cargs = peaks2fixel_cargs(params, execution)
     ret = peaks2fixel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

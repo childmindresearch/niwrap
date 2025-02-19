@@ -173,9 +173,9 @@ def v_2perm_execute(
     Returns:
         NamedTuple of outputs (described in `V2permOutputs`).
     """
+    params = execution.params(params)
     cargs = v_2perm_cargs(params, execution)
     ret = v_2perm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

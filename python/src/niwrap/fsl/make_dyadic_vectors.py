@@ -158,9 +158,9 @@ def make_dyadic_vectors_execute(
     Returns:
         NamedTuple of outputs (described in `MakeDyadicVectorsOutputs`).
     """
+    params = execution.params(params)
     cargs = make_dyadic_vectors_cargs(params, execution)
     ret = make_dyadic_vectors_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -192,9 +192,9 @@ def fsl_schurprod_execute(
     Returns:
         NamedTuple of outputs (described in `FslSchurprodOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_schurprod_cargs(params, execution)
     ret = fsl_schurprod_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

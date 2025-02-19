@@ -203,9 +203,9 @@ def spharm_reco_execute(
     Returns:
         NamedTuple of outputs (described in `SpharmRecoOutputs`).
     """
+    params = execution.params(params)
     cargs = spharm_reco_cargs(params, execution)
     ret = spharm_reco_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

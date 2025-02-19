@@ -179,9 +179,9 @@ def v__afni_r_package_install_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRPackageInstallOutputs`).
     """
+    params = execution.params(params)
     cargs = v__afni_r_package_install_cargs(params, execution)
     ret = v__afni_r_package_install_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

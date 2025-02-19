@@ -167,9 +167,9 @@ def fs_time_execute(
     Returns:
         NamedTuple of outputs (described in `FsTimeOutputs`).
     """
+    params = execution.params(params)
     cargs = fs_time_cargs(params, execution)
     ret = fs_time_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

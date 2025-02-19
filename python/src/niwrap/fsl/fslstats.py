@@ -339,9 +339,9 @@ def fslstats_execute(
     Returns:
         NamedTuple of outputs (described in `FslstatsOutputs`).
     """
+    params = execution.params(params)
     cargs = fslstats_cargs(params, execution)
     ret = fslstats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

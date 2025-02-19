@@ -227,9 +227,9 @@ def mri_gradunwarp_execute(
     Returns:
         NamedTuple of outputs (described in `MriGradunwarpOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_gradunwarp_cargs(params, execution)
     ret = mri_gradunwarp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -252,9 +252,9 @@ def cifti_stats_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_stats_cargs(params, execution)
     ret = cifti_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

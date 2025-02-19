@@ -217,9 +217,9 @@ def v__fs_roi_label_execute(
     Returns:
         NamedTuple of outputs (described in `VFsRoiLabelOutputs`).
     """
+    params = execution.params(params)
     cargs = v__fs_roi_label_cargs(params, execution)
     ret = v__fs_roi_label_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

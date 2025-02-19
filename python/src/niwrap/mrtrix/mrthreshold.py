@@ -386,9 +386,9 @@ def mrthreshold_execute(
     Returns:
         NamedTuple of outputs (described in `MrthresholdOutputs`).
     """
+    params = execution.params(params)
     cargs = mrthreshold_cargs(params, execution)
     ret = mrthreshold_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

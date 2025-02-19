@@ -236,9 +236,9 @@ def v__anaticor_execute(
     Returns:
         NamedTuple of outputs (described in `VAnaticorOutputs`).
     """
+    params = execution.params(params)
     cargs = v__anaticor_cargs(params, execution)
     ret = v__anaticor_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -171,9 +171,9 @@ def surface_cortex_layer_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceCortexLayerOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_cortex_layer_cargs(params, execution)
     ret = surface_cortex_layer_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -141,9 +141,9 @@ def backend_average_roi_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `BackendAverageRoiCorrelationOutputs`).
     """
+    params = execution.params(params)
     cargs = backend_average_roi_correlation_cargs(params, execution)
     ret = backend_average_roi_correlation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -257,9 +257,9 @@ def dirorder_execute(
     Returns:
         NamedTuple of outputs (described in `DirorderOutputs`).
     """
+    params = execution.params(params)
     cargs = dirorder_cargs(params, execution)
     ret = dirorder_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -236,9 +236,9 @@ def fat_proc_filter_dwis_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcFilterDwisOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_proc_filter_dwis_cargs(params, execution)
     ret = fat_proc_filter_dwis_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

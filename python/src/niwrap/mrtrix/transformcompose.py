@@ -353,9 +353,9 @@ def transformcompose_execute(
     Returns:
         NamedTuple of outputs (described in `TransformcomposeOutputs`).
     """
+    params = execution.params(params)
     cargs = transformcompose_cargs(params, execution)
     ret = transformcompose_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

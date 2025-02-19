@@ -129,9 +129,9 @@ def mpr2mni305_execute(
     Returns:
         NamedTuple of outputs (described in `Mpr2mni305Outputs`).
     """
+    params = execution.params(params)
     cargs = mpr2mni305_cargs(params, execution)
     ret = mpr2mni305_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

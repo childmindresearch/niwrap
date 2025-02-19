@@ -142,9 +142,9 @@ def gltsymtest_execute(
     Returns:
         NamedTuple of outputs (described in `GltsymtestOutputs`).
     """
+    params = execution.params(params)
     cargs = gltsymtest_cargs(params, execution)
     ret = gltsymtest_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

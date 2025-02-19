@@ -373,9 +373,9 @@ def fabber_asl_execute(
     Returns:
         NamedTuple of outputs (described in `FabberAslOutputs`).
     """
+    params = execution.params(params)
     cargs = fabber_asl_cargs(params, execution)
     ret = fabber_asl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

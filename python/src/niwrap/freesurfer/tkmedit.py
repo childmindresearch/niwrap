@@ -138,9 +138,9 @@ def tkmedit_execute(
     Returns:
         NamedTuple of outputs (described in `TkmeditOutputs`).
     """
+    params = execution.params(params)
     cargs = tkmedit_cargs(params, execution)
     ret = tkmedit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

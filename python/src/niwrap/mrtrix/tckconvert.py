@@ -438,9 +438,9 @@ def tckconvert_execute(
     Returns:
         NamedTuple of outputs (described in `TckconvertOutputs`).
     """
+    params = execution.params(params)
     cargs = tckconvert_cargs(params, execution)
     ret = tckconvert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

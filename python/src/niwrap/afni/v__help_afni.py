@@ -125,9 +125,9 @@ def v__help_afni_execute(
     Returns:
         NamedTuple of outputs (described in `VHelpAfniOutputs`).
     """
+    params = execution.params(params)
     cargs = v__help_afni_cargs(params, execution)
     ret = v__help_afni_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

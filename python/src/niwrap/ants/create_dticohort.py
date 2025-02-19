@@ -225,9 +225,9 @@ def create_dticohort_execute(
     Returns:
         NamedTuple of outputs (described in `CreateDticohortOutputs`).
     """
+    params = execution.params(params)
     cargs = create_dticohort_cargs(params, execution)
     ret = create_dticohort_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

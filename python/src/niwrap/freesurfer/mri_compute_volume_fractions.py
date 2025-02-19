@@ -358,9 +358,9 @@ def mri_compute_volume_fractions_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeVolumeFractionsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_compute_volume_fractions_cargs(params, execution)
     ret = mri_compute_volume_fractions_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

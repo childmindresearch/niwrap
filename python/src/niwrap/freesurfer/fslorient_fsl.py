@@ -155,9 +155,9 @@ def fslorient_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `FslorientFslOutputs`).
     """
+    params = execution.params(params)
     cargs = fslorient_fsl_cargs(params, execution)
     ret = fslorient_fsl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

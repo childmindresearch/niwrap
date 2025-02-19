@@ -421,9 +421,9 @@ def mri_segment_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegmentOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_segment_cargs(params, execution)
     ret = mri_segment_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

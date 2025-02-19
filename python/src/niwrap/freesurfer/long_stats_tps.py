@@ -193,9 +193,9 @@ def long_stats_tps_execute(
     Returns:
         NamedTuple of outputs (described in `LongStatsTpsOutputs`).
     """
+    params = execution.params(params)
     cargs = long_stats_tps_cargs(params, execution)
     ret = long_stats_tps_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

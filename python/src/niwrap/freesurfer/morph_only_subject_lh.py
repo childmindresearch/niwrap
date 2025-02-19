@@ -135,9 +135,9 @@ def morph_only_subject_lh_execute(
     Returns:
         NamedTuple of outputs (described in `MorphOnlySubjectLhOutputs`).
     """
+    params = execution.params(params)
     cargs = morph_only_subject_lh_cargs(params, execution)
     ret = morph_only_subject_lh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

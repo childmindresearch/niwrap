@@ -249,9 +249,9 @@ def peaks2amp_execute(
     Returns:
         NamedTuple of outputs (described in `Peaks2ampOutputs`).
     """
+    params = execution.params(params)
     cargs = peaks2amp_cargs(params, execution)
     ret = peaks2amp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

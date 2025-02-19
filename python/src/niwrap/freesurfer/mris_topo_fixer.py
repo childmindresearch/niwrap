@@ -138,9 +138,9 @@ def mris_topo_fixer_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTopoFixerOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_topo_fixer_cargs(params, execution)
     ret = mris_topo_fixer_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

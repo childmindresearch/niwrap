@@ -278,9 +278,9 @@ def reg_feat2anat_execute(
     Returns:
         NamedTuple of outputs (described in `RegFeat2anatOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_feat2anat_cargs(params, execution)
     ret = reg_feat2anat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

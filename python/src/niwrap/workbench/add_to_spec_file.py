@@ -179,9 +179,9 @@ def add_to_spec_file_execute(
     Returns:
         NamedTuple of outputs (described in `AddToSpecFileOutputs`).
     """
+    params = execution.params(params)
     cargs = add_to_spec_file_cargs(params, execution)
     ret = add_to_spec_file_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

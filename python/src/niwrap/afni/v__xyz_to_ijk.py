@@ -165,9 +165,9 @@ def v__xyz_to_ijk_execute(
     Returns:
         NamedTuple of outputs (described in `VXyzToIjkOutputs`).
     """
+    params = execution.params(params)
     cargs = v__xyz_to_ijk_cargs(params, execution)
     ret = v__xyz_to_ijk_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

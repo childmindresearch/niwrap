@@ -190,9 +190,9 @@ def dicom_hdr_execute(
     Returns:
         NamedTuple of outputs (described in `DicomHdrOutputs`).
     """
+    params = execution.params(params)
     cargs = dicom_hdr_cargs(params, execution)
     ret = dicom_hdr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -129,9 +129,9 @@ def getfullpath_execute(
     Returns:
         NamedTuple of outputs (described in `GetfullpathOutputs`).
     """
+    params = execution.params(params)
     cargs = getfullpath_cargs(params, execution)
     ret = getfullpath_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

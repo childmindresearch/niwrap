@@ -330,9 +330,9 @@ def dcmedit_execute(
     Returns:
         NamedTuple of outputs (described in `DcmeditOutputs`).
     """
+    params = execution.params(params)
     cargs = dcmedit_cargs(params, execution)
     ret = dcmedit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

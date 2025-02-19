@@ -143,9 +143,9 @@ def segment_subfields_t1_longitudinal_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubfieldsT1LongitudinalOutputs`).
     """
+    params = execution.params(params)
     cargs = segment_subfields_t1_longitudinal_cargs(params, execution)
     ret = segment_subfields_t1_longitudinal_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -296,9 +296,9 @@ def metric_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `MetricSmoothingOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_smoothing_cargs(params, execution)
     ret = metric_smoothing_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

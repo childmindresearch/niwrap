@@ -227,9 +227,9 @@ def exvivo_hemi_proc_execute(
     Returns:
         NamedTuple of outputs (described in `ExvivoHemiProcOutputs`).
     """
+    params = execution.params(params)
     cargs = exvivo_hemi_proc_cargs(params, execution)
     ret = exvivo_hemi_proc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

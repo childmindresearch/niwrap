@@ -248,9 +248,9 @@ def ants_joint_label_fusion_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsJointLabelFusionShOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_joint_label_fusion_sh_cargs(params, execution)
     ret = ants_joint_label_fusion_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

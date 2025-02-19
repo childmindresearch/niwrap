@@ -554,9 +554,9 @@ def melodic_execute(
     Returns:
         NamedTuple of outputs (described in `MelodicOutputs`).
     """
+    params = execution.params(params)
     cargs = melodic_cargs(params, execution)
     ret = melodic_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

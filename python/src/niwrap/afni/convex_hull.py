@@ -287,9 +287,9 @@ def convex_hull_execute(
     Returns:
         NamedTuple of outputs (described in `ConvexHullOutputs`).
     """
+    params = execution.params(params)
     cargs = convex_hull_cargs(params, execution)
     ret = convex_hull_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

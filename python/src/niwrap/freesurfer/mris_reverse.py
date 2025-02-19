@@ -138,9 +138,9 @@ def mris_reverse_execute(
     Returns:
         NamedTuple of outputs (described in `MrisReverseOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_reverse_cargs(params, execution)
     ret = mris_reverse_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

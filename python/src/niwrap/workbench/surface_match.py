@@ -143,9 +143,9 @@ def surface_match_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceMatchOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_match_cargs(params, execution)
     ret = surface_match_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -135,9 +135,9 @@ def uniq_images_execute(
     Returns:
         NamedTuple of outputs (described in `UniqImagesOutputs`).
     """
+    params = execution.params(params)
     cargs = uniq_images_cargs(params, execution)
     ret = uniq_images_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

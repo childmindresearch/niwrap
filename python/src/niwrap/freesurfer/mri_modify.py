@@ -230,9 +230,9 @@ def mri_modify_execute(
     Returns:
         NamedTuple of outputs (described in `MriModifyOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_modify_cargs(params, execution)
     ret = mri_modify_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -281,9 +281,9 @@ def fsl_tsplot_execute(
     Returns:
         NamedTuple of outputs (described in `FslTsplotOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_tsplot_cargs(params, execution)
     ret = fsl_tsplot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

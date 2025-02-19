@@ -145,9 +145,9 @@ def mris_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `MrisGradientOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_gradient_cargs(params, execution)
     ret = mris_gradient_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

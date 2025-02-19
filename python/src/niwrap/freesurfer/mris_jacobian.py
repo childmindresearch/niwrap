@@ -161,9 +161,9 @@ def mris_jacobian_execute(
     Returns:
         NamedTuple of outputs (described in `MrisJacobianOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_jacobian_cargs(params, execution)
     ret = mris_jacobian_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

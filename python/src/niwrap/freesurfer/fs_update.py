@@ -138,9 +138,9 @@ def fs_update_execute(
     Returns:
         NamedTuple of outputs (described in `FsUpdateOutputs`).
     """
+    params = execution.params(params)
     cargs = fs_update_cargs(params, execution)
     ret = fs_update_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

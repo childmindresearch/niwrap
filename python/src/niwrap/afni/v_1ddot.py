@@ -181,9 +181,9 @@ def v_1ddot_execute(
     Returns:
         NamedTuple of outputs (described in `V1ddotOutputs`).
     """
+    params = execution.params(params)
     cargs = v_1ddot_cargs(params, execution)
     ret = v_1ddot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

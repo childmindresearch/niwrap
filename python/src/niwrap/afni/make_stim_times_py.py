@@ -227,9 +227,9 @@ def make_stim_times_py_execute(
     Returns:
         NamedTuple of outputs (described in `MakeStimTimesPyOutputs`).
     """
+    params = execution.params(params)
     cargs = make_stim_times_py_cargs(params, execution)
     ret = make_stim_times_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

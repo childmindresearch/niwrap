@@ -156,9 +156,9 @@ def label_subject_mixed_execute(
     Returns:
         NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).
     """
+    params = execution.params(params)
     cargs = label_subject_mixed_cargs(params, execution)
     ret = label_subject_mixed_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

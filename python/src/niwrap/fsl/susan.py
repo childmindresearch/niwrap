@@ -196,9 +196,9 @@ def susan_execute(
     Returns:
         NamedTuple of outputs (described in `SusanOutputs`).
     """
+    params = execution.params(params)
     cargs = susan_cargs(params, execution)
     ret = susan_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

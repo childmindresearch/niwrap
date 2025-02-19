@@ -359,9 +359,9 @@ def avw2fsl_execute(
     Returns:
         NamedTuple of outputs (described in `Avw2fslOutputs`).
     """
+    params = execution.params(params)
     cargs = avw2fsl_cargs(params, execution)
     ret = avw2fsl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -193,9 +193,9 @@ def groupstats_execute(
     Returns:
         NamedTuple of outputs (described in `GroupstatsOutputs`).
     """
+    params = execution.params(params)
     cargs = groupstats_cargs(params, execution)
     ret = groupstats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

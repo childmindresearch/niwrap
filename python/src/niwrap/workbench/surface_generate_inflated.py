@@ -164,9 +164,9 @@ def surface_generate_inflated_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceGenerateInflatedOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_generate_inflated_cargs(params, execution)
     ret = surface_generate_inflated_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

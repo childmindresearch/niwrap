@@ -218,9 +218,9 @@ def neuro_deconvolve_py_execute(
     Returns:
         NamedTuple of outputs (described in `NeuroDeconvolvePyOutputs`).
     """
+    params = execution.params(params)
     cargs = neuro_deconvolve_py_cargs(params, execution)
     ret = neuro_deconvolve_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

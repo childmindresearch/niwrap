@@ -307,9 +307,9 @@ def trr_execute(
     Returns:
         NamedTuple of outputs (described in `TrrOutputs`).
     """
+    params = execution.params(params)
     cargs = trr_cargs(params, execution)
     ret = trr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

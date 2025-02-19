@@ -143,9 +143,9 @@ def mp_diffpow_execute(
     Returns:
         NamedTuple of outputs (described in `MpDiffpowOutputs`).
     """
+    params = execution.params(params)
     cargs = mp_diffpow_cargs(params, execution)
     ret = mp_diffpow_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

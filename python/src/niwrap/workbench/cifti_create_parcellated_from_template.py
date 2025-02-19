@@ -212,9 +212,9 @@ def cifti_create_parcellated_from_template_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateParcellatedFromTemplateOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_create_parcellated_from_template_cargs(params, execution)
     ret = cifti_create_parcellated_from_template_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

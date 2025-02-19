@@ -161,9 +161,9 @@ def compute_interrater_variability_csh_execute(
     Returns:
         NamedTuple of outputs (described in `ComputeInterraterVariabilityCshOutputs`).
     """
+    params = execution.params(params)
     cargs = compute_interrater_variability_csh_cargs(params, execution)
     ret = compute_interrater_variability_csh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

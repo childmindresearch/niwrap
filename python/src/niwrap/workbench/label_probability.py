@@ -152,9 +152,9 @@ def label_probability_execute(
     Returns:
         NamedTuple of outputs (described in `LabelProbabilityOutputs`).
     """
+    params = execution.params(params)
     cargs = label_probability_cargs(params, execution)
     ret = label_probability_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

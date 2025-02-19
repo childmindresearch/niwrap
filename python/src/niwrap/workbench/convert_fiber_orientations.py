@@ -257,9 +257,9 @@ def convert_fiber_orientations_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_fiber_orientations_cargs(params, execution)
     ret = convert_fiber_orientations_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

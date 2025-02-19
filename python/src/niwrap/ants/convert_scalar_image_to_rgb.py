@@ -200,9 +200,9 @@ def convert_scalar_image_to_rgb_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertScalarImageToRgbOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_scalar_image_to_rgb_cargs(params, execution)
     ret = convert_scalar_image_to_rgb_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

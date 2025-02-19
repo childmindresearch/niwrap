@@ -192,9 +192,9 @@ def dcmsplit_execute(
     Returns:
         NamedTuple of outputs (described in `DcmsplitOutputs`).
     """
+    params = execution.params(params)
     cargs = dcmsplit_cargs(params, execution)
     ret = dcmsplit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

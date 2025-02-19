@@ -134,9 +134,9 @@ def v__get_afni_view_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniViewOutputs`).
     """
+    params = execution.params(params)
     cargs = v__get_afni_view_cargs(params, execution)
     ret = v__get_afni_view_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -644,9 +644,9 @@ def mri_surf2surf_execute(
     Returns:
         NamedTuple of outputs (described in `MriSurf2surfOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_surf2surf_cargs(params, execution)
     ret = mri_surf2surf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

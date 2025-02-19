@@ -143,9 +143,9 @@ def label_subject_execute(
     Returns:
         NamedTuple of outputs (described in `LabelSubjectOutputs`).
     """
+    params = execution.params(params)
     cargs = label_subject_cargs(params, execution)
     ret = label_subject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

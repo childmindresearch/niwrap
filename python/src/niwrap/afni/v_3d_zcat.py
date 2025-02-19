@@ -189,9 +189,9 @@ def v_3d_zcat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dZcatOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_zcat_cargs(params, execution)
     ret = v_3d_zcat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

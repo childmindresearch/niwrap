@@ -169,9 +169,9 @@ def border_to_rois_execute(
     Returns:
         NamedTuple of outputs (described in `BorderToRoisOutputs`).
     """
+    params = execution.params(params)
     cargs = border_to_rois_cargs(params, execution)
     ret = border_to_rois_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

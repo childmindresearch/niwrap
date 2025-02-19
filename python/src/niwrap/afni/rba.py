@@ -383,9 +383,9 @@ def rba_execute(
     Returns:
         NamedTuple of outputs (described in `RbaOutputs`).
     """
+    params = execution.params(params)
     cargs = rba_cargs(params, execution)
     ret = rba_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

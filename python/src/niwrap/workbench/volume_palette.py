@@ -566,9 +566,9 @@ def volume_palette_execute(
     Returns:
         NamedTuple of outputs (described in `VolumePaletteOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_palette_cargs(params, execution)
     ret = volume_palette_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

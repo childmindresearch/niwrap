@@ -1479,9 +1479,9 @@ def greedy_execute(
     Returns:
         NamedTuple of outputs (described in `GreedyOutputs`).
     """
+    params = execution.params(params)
     cargs = greedy_cargs(params, execution)
     ret = greedy_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

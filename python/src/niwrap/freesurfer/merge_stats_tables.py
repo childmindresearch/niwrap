@@ -244,9 +244,9 @@ def merge_stats_tables_execute(
     Returns:
         NamedTuple of outputs (described in `MergeStatsTablesOutputs`).
     """
+    params = execution.params(params)
     cargs = merge_stats_tables_cargs(params, execution)
     ret = merge_stats_tables_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

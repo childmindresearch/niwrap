@@ -138,9 +138,9 @@ def fsl_fix_text_execute(
     Returns:
         NamedTuple of outputs (described in `FslFixTextOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_fix_text_cargs(params, execution)
     ret = fsl_fix_text_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

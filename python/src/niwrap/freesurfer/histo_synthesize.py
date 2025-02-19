@@ -144,9 +144,9 @@ def histo_synthesize_execute(
     Returns:
         NamedTuple of outputs (described in `HistoSynthesizeOutputs`).
     """
+    params = execution.params(params)
     cargs = histo_synthesize_cargs(params, execution)
     ret = histo_synthesize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

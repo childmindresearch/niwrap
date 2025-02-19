@@ -211,9 +211,9 @@ def metric_estimate_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_estimate_fwhm_cargs(params, execution)
     ret = metric_estimate_fwhm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

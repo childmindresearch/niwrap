@@ -173,9 +173,9 @@ def fat_roi_row_execute(
     Returns:
         NamedTuple of outputs (described in `FatRoiRowOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_roi_row_cargs(params, execution)
     ret = fat_roi_row_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

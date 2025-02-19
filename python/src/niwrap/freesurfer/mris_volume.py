@@ -135,9 +135,9 @@ def mris_volume_execute(
     Returns:
         NamedTuple of outputs (described in `MrisVolumeOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_volume_cargs(params, execution)
     ret = mris_volume_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

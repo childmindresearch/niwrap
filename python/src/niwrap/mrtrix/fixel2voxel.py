@@ -312,9 +312,9 @@ def fixel2voxel_execute(
     Returns:
         NamedTuple of outputs (described in `Fixel2voxelOutputs`).
     """
+    params = execution.params(params)
     cargs = fixel2voxel_cargs(params, execution)
     ret = fixel2voxel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

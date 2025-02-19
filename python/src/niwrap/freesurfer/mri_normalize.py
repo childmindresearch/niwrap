@@ -431,9 +431,9 @@ def mri_normalize_execute(
     Returns:
         NamedTuple of outputs (described in `MriNormalizeOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_normalize_cargs(params, execution)
     ret = mri_normalize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

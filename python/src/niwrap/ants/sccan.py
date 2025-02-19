@@ -405,9 +405,9 @@ def sccan_execute(
     Returns:
         NamedTuple of outputs (described in `SccanOutputs`).
     """
+    params = execution.params(params)
     cargs = sccan_cargs(params, execution)
     ret = sccan_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

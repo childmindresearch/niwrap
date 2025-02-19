@@ -227,9 +227,9 @@ def surf2_vol_coord_execute(
     Returns:
         NamedTuple of outputs (described in `Surf2VolCoordOutputs`).
     """
+    params = execution.params(params)
     cargs = surf2_vol_coord_cargs(params, execution)
     ret = surf2_vol_coord_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

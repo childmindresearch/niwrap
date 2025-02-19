@@ -303,9 +303,9 @@ def topup_execute(
     Returns:
         NamedTuple of outputs (described in `TopupOutputs`).
     """
+    params = execution.params(params)
     cargs = topup_cargs(params, execution)
     ret = topup_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

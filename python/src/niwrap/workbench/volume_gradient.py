@@ -238,9 +238,9 @@ def volume_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeGradientOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_gradient_cargs(params, execution)
     ret = volume_gradient_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

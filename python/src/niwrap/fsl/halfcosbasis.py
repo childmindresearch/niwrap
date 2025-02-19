@@ -205,9 +205,9 @@ def halfcosbasis_execute(
     Returns:
         NamedTuple of outputs (described in `HalfcosbasisOutputs`).
     """
+    params = execution.params(params)
     cargs = halfcosbasis_cargs(params, execution)
     ret = halfcosbasis_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

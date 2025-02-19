@@ -149,9 +149,9 @@ def set_spacing_execute(
     Returns:
         NamedTuple of outputs (described in `SetSpacingOutputs`).
     """
+    params = execution.params(params)
     cargs = set_spacing_cargs(params, execution)
     ret = set_spacing_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -168,9 +168,9 @@ def ants_motion_corr_diffusion_direction_execute(
     Returns:
         NamedTuple of outputs (described in `AntsMotionCorrDiffusionDirectionOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_motion_corr_diffusion_direction_cargs(params, execution)
     ret = ants_motion_corr_diffusion_direction_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

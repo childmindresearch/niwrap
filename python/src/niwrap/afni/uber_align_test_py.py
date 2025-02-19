@@ -196,9 +196,9 @@ def uber_align_test_py_execute(
     Returns:
         NamedTuple of outputs (described in `UberAlignTestPyOutputs`).
     """
+    params = execution.params(params)
     cargs = uber_align_test_py_cargs(params, execution)
     ret = uber_align_test_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

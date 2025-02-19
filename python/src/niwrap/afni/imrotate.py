@@ -159,9 +159,9 @@ def imrotate_execute(
     Returns:
         NamedTuple of outputs (described in `ImrotateOutputs`).
     """
+    params = execution.params(params)
     cargs = imrotate_cargs(params, execution)
     ret = imrotate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

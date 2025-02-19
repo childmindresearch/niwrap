@@ -404,9 +404,9 @@ def run_samseg_execute(
     Returns:
         NamedTuple of outputs (described in `RunSamsegOutputs`).
     """
+    params = execution.params(params)
     cargs = run_samseg_cargs(params, execution)
     ret = run_samseg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

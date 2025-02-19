@@ -286,9 +286,9 @@ def v_3d_zipper_zapper_execute(
     Returns:
         NamedTuple of outputs (described in `V3dZipperZapperOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_zipper_zapper_cargs(params, execution)
     ret = v_3d_zipper_zapper_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

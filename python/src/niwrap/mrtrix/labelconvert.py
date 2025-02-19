@@ -276,9 +276,9 @@ def labelconvert_execute(
     Returns:
         NamedTuple of outputs (described in `LabelconvertOutputs`).
     """
+    params = execution.params(params)
     cargs = labelconvert_cargs(params, execution)
     ret = labelconvert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

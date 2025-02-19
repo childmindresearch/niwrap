@@ -137,9 +137,9 @@ def run_mris_preproc_execute(
     Returns:
         NamedTuple of outputs (described in `RunMrisPreprocOutputs`).
     """
+    params = execution.params(params)
     cargs = run_mris_preproc_cargs(params, execution)
     ret = run_mris_preproc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

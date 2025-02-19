@@ -151,9 +151,9 @@ def v__clust_exp_cat_lab_execute(
     Returns:
         NamedTuple of outputs (described in `VClustExpCatLabOutputs`).
     """
+    params = execution.params(params)
     cargs = v__clust_exp_cat_lab_cargs(params, execution)
     ret = v__clust_exp_cat_lab_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

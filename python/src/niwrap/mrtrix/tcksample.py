@@ -293,9 +293,9 @@ def tcksample_execute(
     Returns:
         NamedTuple of outputs (described in `TcksampleOutputs`).
     """
+    params = execution.params(params)
     cargs = tcksample_cargs(params, execution)
     ret = tcksample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

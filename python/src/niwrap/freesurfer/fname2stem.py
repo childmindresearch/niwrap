@@ -131,9 +131,9 @@ def fname2stem_execute(
     Returns:
         NamedTuple of outputs (described in `Fname2stemOutputs`).
     """
+    params = execution.params(params)
     cargs = fname2stem_cargs(params, execution)
     ret = fname2stem_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

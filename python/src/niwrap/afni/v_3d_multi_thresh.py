@@ -227,9 +227,9 @@ def v_3d_multi_thresh_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMultiThreshOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_multi_thresh_cargs(params, execution)
     ret = v_3d_multi_thresh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

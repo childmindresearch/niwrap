@@ -153,9 +153,9 @@ def mri_probedicom_execute(
     Returns:
         NamedTuple of outputs (described in `MriProbedicomOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_probedicom_cargs(params, execution)
     ret = mri_probedicom_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

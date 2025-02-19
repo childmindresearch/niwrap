@@ -151,9 +151,9 @@ def cifti_all_labels_to_rois_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiAllLabelsToRoisOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_all_labels_to_rois_cargs(params, execution)
     ret = cifti_all_labels_to_rois_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

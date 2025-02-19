@@ -164,9 +164,9 @@ def mri_xvolavg_execute(
     Returns:
         NamedTuple of outputs (described in `MriXvolavgOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_xvolavg_cargs(params, execution)
     ret = mri_xvolavg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

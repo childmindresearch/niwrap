@@ -176,9 +176,9 @@ def v_3dnewid_execute(
     Returns:
         NamedTuple of outputs (described in `V3dnewidOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dnewid_cargs(params, execution)
     ret = v_3dnewid_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

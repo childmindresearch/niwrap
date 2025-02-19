@@ -170,9 +170,9 @@ def flip_4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `Flip4dfpOutputs`).
     """
+    params = execution.params(params)
     cargs = flip_4dfp_cargs(params, execution)
     ret = flip_4dfp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -147,9 +147,9 @@ def surface_closest_vertex_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceClosestVertexOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_closest_vertex_cargs(params, execution)
     ret = surface_closest_vertex_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

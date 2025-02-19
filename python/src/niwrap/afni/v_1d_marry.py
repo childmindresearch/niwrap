@@ -161,9 +161,9 @@ def v_1d_marry_execute(
     Returns:
         NamedTuple of outputs (described in `V1dMarryOutputs`).
     """
+    params = execution.params(params)
     cargs = v_1d_marry_cargs(params, execution)
     ret = v_1d_marry_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

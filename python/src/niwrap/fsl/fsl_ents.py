@@ -166,9 +166,9 @@ def fsl_ents_execute(
     Returns:
         NamedTuple of outputs (described in `FslEntsOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_ents_cargs(params, execution)
     ret = fsl_ents_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

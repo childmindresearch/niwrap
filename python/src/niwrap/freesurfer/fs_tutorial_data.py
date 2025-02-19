@@ -135,9 +135,9 @@ def fs_tutorial_data_execute(
     Returns:
         NamedTuple of outputs (described in `FsTutorialDataOutputs`).
     """
+    params = execution.params(params)
     cargs = fs_tutorial_data_cargs(params, execution)
     ret = fs_tutorial_data_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

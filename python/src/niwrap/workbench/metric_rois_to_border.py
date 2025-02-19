@@ -174,9 +174,9 @@ def metric_rois_to_border_execute(
     Returns:
         NamedTuple of outputs (described in `MetricRoisToBorderOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_rois_to_border_cargs(params, execution)
     ret = metric_rois_to_border_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

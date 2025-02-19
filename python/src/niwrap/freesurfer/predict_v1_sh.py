@@ -162,9 +162,9 @@ def predict_v1_sh_execute(
     Returns:
         NamedTuple of outputs (described in `PredictV1ShOutputs`).
     """
+    params = execution.params(params)
     cargs = predict_v1_sh_cargs(params, execution)
     ret = predict_v1_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

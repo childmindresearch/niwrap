@@ -328,9 +328,9 @@ def cifti_change_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiChangeMappingOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_change_mapping_cargs(params, execution)
     ret = cifti_change_mapping_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

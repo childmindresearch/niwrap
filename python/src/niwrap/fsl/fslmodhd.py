@@ -139,9 +139,9 @@ def fslmodhd_execute(
     Returns:
         NamedTuple of outputs (described in `FslmodhdOutputs`).
     """
+    params = execution.params(params)
     cargs = fslmodhd_cargs(params, execution)
     ret = fslmodhd_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

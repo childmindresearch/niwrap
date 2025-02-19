@@ -362,9 +362,9 @@ def first_utils_execute(
     Returns:
         NamedTuple of outputs (described in `FirstUtilsOutputs`).
     """
+    params = execution.params(params)
     cargs = first_utils_cargs(params, execution)
     ret = first_utils_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

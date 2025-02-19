@@ -158,9 +158,9 @@ def float_scan_execute(
     Returns:
         NamedTuple of outputs (described in `FloatScanOutputs`).
     """
+    params = execution.params(params)
     cargs = float_scan_cargs(params, execution)
     ret = float_scan_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

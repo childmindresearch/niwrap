@@ -186,9 +186,9 @@ def image_set_statistics_execute(
     Returns:
         NamedTuple of outputs (described in `ImageSetStatisticsOutputs`).
     """
+    params = execution.params(params)
     cargs = image_set_statistics_cargs(params, execution)
     ret = image_set_statistics_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

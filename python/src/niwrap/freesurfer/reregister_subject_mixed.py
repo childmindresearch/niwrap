@@ -152,9 +152,9 @@ def reregister_subject_mixed_execute(
     Returns:
         NamedTuple of outputs (described in `ReregisterSubjectMixedOutputs`).
     """
+    params = execution.params(params)
     cargs = reregister_subject_mixed_cargs(params, execution)
     ret = reregister_subject_mixed_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

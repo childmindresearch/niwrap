@@ -260,9 +260,9 @@ def sh2power_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2powerOutputs`).
     """
+    params = execution.params(params)
     cargs = sh2power_cargs(params, execution)
     ret = sh2power_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

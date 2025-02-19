@@ -193,9 +193,9 @@ def v_3d_anhist_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAnhistOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_anhist_cargs(params, execution)
     ret = v_3d_anhist_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

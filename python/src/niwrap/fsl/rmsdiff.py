@@ -146,9 +146,9 @@ def rmsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `RmsdiffOutputs`).
     """
+    params = execution.params(params)
     cargs = rmsdiff_cargs(params, execution)
     ret = rmsdiff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

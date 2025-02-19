@@ -158,9 +158,9 @@ def dsetstat2p_execute(
     Returns:
         NamedTuple of outputs (described in `Dsetstat2pOutputs`).
     """
+    params = execution.params(params)
     cargs = dsetstat2p_cargs(params, execution)
     ret = dsetstat2p_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

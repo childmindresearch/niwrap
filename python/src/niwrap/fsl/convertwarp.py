@@ -266,9 +266,9 @@ def convertwarp_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertwarpOutputs`).
     """
+    params = execution.params(params)
     cargs = convertwarp_cargs(params, execution)
     ret = convertwarp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

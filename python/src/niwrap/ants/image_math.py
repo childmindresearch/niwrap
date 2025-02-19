@@ -158,9 +158,9 @@ def image_math_execute(
     Returns:
         NamedTuple of outputs (described in `ImageMathOutputs`).
     """
+    params = execution.params(params)
     cargs = image_math_cargs(params, execution)
     ret = image_math_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

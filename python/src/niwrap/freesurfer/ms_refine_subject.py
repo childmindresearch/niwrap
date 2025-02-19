@@ -130,9 +130,9 @@ def ms_refine_subject_execute(
     Returns:
         NamedTuple of outputs (described in `MsRefineSubjectOutputs`).
     """
+    params = execution.params(params)
     cargs = ms_refine_subject_cargs(params, execution)
     ret = ms_refine_subject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

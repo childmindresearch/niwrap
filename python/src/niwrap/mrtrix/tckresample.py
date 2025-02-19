@@ -449,9 +449,9 @@ def tckresample_execute(
     Returns:
         NamedTuple of outputs (described in `TckresampleOutputs`).
     """
+    params = execution.params(params)
     cargs = tckresample_cargs(params, execution)
     ret = tckresample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

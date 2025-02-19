@@ -296,9 +296,9 @@ def border_merge_execute(
     Returns:
         NamedTuple of outputs (described in `BorderMergeOutputs`).
     """
+    params = execution.params(params)
     cargs = border_merge_cargs(params, execution)
     ret = border_merge_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

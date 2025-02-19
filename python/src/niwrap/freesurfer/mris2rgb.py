@@ -133,9 +133,9 @@ def mris2rgb_execute(
     Returns:
         NamedTuple of outputs (described in `Mris2rgbOutputs`).
     """
+    params = execution.params(params)
     cargs = mris2rgb_cargs(params, execution)
     ret = mris2rgb_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

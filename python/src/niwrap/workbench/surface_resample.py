@@ -291,9 +291,9 @@ def surface_resample_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_resample_cargs(params, execution)
     ret = surface_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

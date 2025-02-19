@@ -328,9 +328,9 @@ def metric_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `MetricGradientOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_gradient_cargs(params, execution)
     ret = metric_gradient_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

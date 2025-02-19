@@ -138,9 +138,9 @@ def irepifitvol_execute(
     Returns:
         NamedTuple of outputs (described in `IrepifitvolOutputs`).
     """
+    params = execution.params(params)
     cargs = irepifitvol_cargs(params, execution)
     ret = irepifitvol_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

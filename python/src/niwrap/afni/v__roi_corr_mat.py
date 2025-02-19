@@ -206,9 +206,9 @@ def v__roi_corr_mat_execute(
     Returns:
         NamedTuple of outputs (described in `VRoiCorrMatOutputs`).
     """
+    params = execution.params(params)
     cargs = v__roi_corr_mat_cargs(params, execution)
     ret = v__roi_corr_mat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

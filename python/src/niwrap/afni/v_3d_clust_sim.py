@@ -156,9 +156,9 @@ def v_3d_clust_sim_execute(
     Returns:
         NamedTuple of outputs (described in `V3dClustSimOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_clust_sim_cargs(params, execution)
     ret = v_3d_clust_sim_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

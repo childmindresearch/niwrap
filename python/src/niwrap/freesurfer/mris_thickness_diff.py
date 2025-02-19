@@ -251,9 +251,9 @@ def mris_thickness_diff_execute(
     Returns:
         NamedTuple of outputs (described in `MrisThicknessDiffOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_thickness_diff_cargs(params, execution)
     ret = mris_thickness_diff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

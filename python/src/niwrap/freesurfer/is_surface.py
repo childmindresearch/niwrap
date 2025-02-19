@@ -132,9 +132,9 @@ def is_surface_execute(
     Returns:
         NamedTuple of outputs (described in `IsSurfaceOutputs`).
     """
+    params = execution.params(params)
     cargs = is_surface_cargs(params, execution)
     ret = is_surface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

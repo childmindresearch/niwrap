@@ -190,9 +190,9 @@ def fat_mvm_prep_execute(
     Returns:
         NamedTuple of outputs (described in `FatMvmPrepOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_mvm_prep_cargs(params, execution)
     ret = fat_mvm_prep_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

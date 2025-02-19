@@ -163,9 +163,9 @@ def v_3d_toy_prog_execute(
     Returns:
         NamedTuple of outputs (described in `V3dToyProgOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_toy_prog_cargs(params, execution)
     ret = v_3d_toy_prog_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

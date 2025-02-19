@@ -293,9 +293,9 @@ def mri_gtmseg_execute(
     Returns:
         NamedTuple of outputs (described in `MriGtmsegOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_gtmseg_cargs(params, execution)
     ret = mri_gtmseg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -304,9 +304,9 @@ def afni_history_execute(
     Returns:
         NamedTuple of outputs (described in `AfniHistoryOutputs`).
     """
+    params = execution.params(params)
     cargs = afni_history_cargs(params, execution)
     ret = afni_history_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

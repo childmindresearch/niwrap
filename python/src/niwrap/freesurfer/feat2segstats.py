@@ -282,9 +282,9 @@ def feat2segstats_execute(
     Returns:
         NamedTuple of outputs (described in `Feat2segstatsOutputs`).
     """
+    params = execution.params(params)
     cargs = feat2segstats_cargs(params, execution)
     ret = feat2segstats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

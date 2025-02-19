@@ -150,9 +150,9 @@ def mri_ca_tissue_parms_execute(
     Returns:
         NamedTuple of outputs (described in `MriCaTissueParmsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_ca_tissue_parms_cargs(params, execution)
     ret = mri_ca_tissue_parms_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

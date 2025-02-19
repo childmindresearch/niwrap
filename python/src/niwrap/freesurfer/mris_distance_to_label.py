@@ -136,9 +136,9 @@ def mris_distance_to_label_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDistanceToLabelOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_distance_to_label_cargs(params, execution)
     ret = mris_distance_to_label_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

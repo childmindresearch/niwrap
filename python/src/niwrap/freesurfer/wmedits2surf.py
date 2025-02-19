@@ -209,9 +209,9 @@ def wmedits2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Wmedits2surfOutputs`).
     """
+    params = execution.params(params)
     cargs = wmedits2surf_cargs(params, execution)
     ret = wmedits2surf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

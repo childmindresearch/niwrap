@@ -316,9 +316,9 @@ def slicer_execute(
     Returns:
         NamedTuple of outputs (described in `SlicerOutputs`).
     """
+    params = execution.params(params)
     cargs = slicer_cargs(params, execution)
     ret = slicer_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

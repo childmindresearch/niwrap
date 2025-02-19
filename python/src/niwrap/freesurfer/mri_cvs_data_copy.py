@@ -162,9 +162,9 @@ def mri_cvs_data_copy_execute(
     Returns:
         NamedTuple of outputs (described in `MriCvsDataCopyOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_cvs_data_copy_cargs(params, execution)
     ret = mri_cvs_data_copy_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

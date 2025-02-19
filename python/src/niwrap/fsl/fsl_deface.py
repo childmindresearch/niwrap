@@ -268,9 +268,9 @@ def fsl_deface_execute(
     Returns:
         NamedTuple of outputs (described in `FslDefaceOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_deface_cargs(params, execution)
     ret = fsl_deface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

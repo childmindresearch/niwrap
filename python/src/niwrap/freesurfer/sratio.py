@@ -155,9 +155,9 @@ def sratio_execute(
     Returns:
         NamedTuple of outputs (described in `SratioOutputs`).
     """
+    params = execution.params(params)
     cargs = sratio_cargs(params, execution)
     ret = sratio_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

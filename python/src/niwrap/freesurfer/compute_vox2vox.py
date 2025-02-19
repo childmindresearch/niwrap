@@ -143,9 +143,9 @@ def compute_vox2vox_execute(
     Returns:
         NamedTuple of outputs (described in `ComputeVox2voxOutputs`).
     """
+    params = execution.params(params)
     cargs = compute_vox2vox_cargs(params, execution)
     ret = compute_vox2vox_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

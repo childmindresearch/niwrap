@@ -312,9 +312,9 @@ def metric_weighted_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MetricWeightedStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_weighted_stats_cargs(params, execution)
     ret = metric_weighted_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

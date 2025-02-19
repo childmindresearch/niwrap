@@ -220,9 +220,9 @@ def volume_capture_plane_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeCapturePlaneOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_capture_plane_cargs(params, execution)
     ret = volume_capture_plane_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

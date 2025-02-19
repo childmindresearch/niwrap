@@ -265,9 +265,9 @@ def fixel2tsf_execute(
     Returns:
         NamedTuple of outputs (described in `Fixel2tsfOutputs`).
     """
+    params = execution.params(params)
     cargs = fixel2tsf_cargs(params, execution)
     ret = fixel2tsf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

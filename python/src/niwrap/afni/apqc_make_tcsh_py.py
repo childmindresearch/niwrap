@@ -180,9 +180,9 @@ def apqc_make_tcsh_py_execute(
     Returns:
         NamedTuple of outputs (described in `ApqcMakeTcshPyOutputs`).
     """
+    params = execution.params(params)
     cargs = apqc_make_tcsh_py_cargs(params, execution)
     ret = apqc_make_tcsh_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -145,9 +145,9 @@ def images_equal_execute(
     Returns:
         NamedTuple of outputs (described in `ImagesEqualOutputs`).
     """
+    params = execution.params(params)
     cargs = images_equal_cargs(params, execution)
     ret = images_equal_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -146,9 +146,9 @@ def surface_affine_regression_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceAffineRegressionOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_affine_regression_cargs(params, execution)
     ret = surface_affine_regression_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

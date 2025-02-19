@@ -167,9 +167,9 @@ def tbss_non_fa_execute(
     Returns:
         NamedTuple of outputs (described in `TbssNonFaOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_non_fa_cargs(params, execution)
     ret = tbss_non_fa_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -138,9 +138,9 @@ def mris_extract_main_component_execute(
     Returns:
         NamedTuple of outputs (described in `MrisExtractMainComponentOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_extract_main_component_cargs(params, execution)
     ret = mris_extract_main_component_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

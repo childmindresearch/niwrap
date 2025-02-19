@@ -183,9 +183,9 @@ def v_3d_attribute_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAttributeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_attribute_cargs(params, execution)
     ret = v_3d_attribute_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

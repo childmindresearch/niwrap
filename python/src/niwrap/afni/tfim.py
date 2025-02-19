@@ -201,9 +201,9 @@ def tfim_execute(
     Returns:
         NamedTuple of outputs (described in `TfimOutputs`).
     """
+    params = execution.params(params)
     cargs = tfim_cargs(params, execution)
     ret = tfim_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

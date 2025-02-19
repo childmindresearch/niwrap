@@ -226,9 +226,9 @@ def reg_resample_execute(
     Returns:
         NamedTuple of outputs (described in `RegResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_resample_cargs(params, execution)
     ret = reg_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

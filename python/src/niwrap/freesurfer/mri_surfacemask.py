@@ -145,9 +145,9 @@ def mri_surfacemask_execute(
     Returns:
         NamedTuple of outputs (described in `MriSurfacemaskOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_surfacemask_cargs(params, execution)
     ret = mri_surfacemask_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

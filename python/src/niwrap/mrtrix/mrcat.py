@@ -281,9 +281,9 @@ def mrcat_execute(
     Returns:
         NamedTuple of outputs (described in `MrcatOutputs`).
     """
+    params = execution.params(params)
     cargs = mrcat_cargs(params, execution)
     ret = mrcat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -209,9 +209,9 @@ def makevol_execute(
     Returns:
         NamedTuple of outputs (described in `MakevolOutputs`).
     """
+    params = execution.params(params)
     cargs = makevol_cargs(params, execution)
     ret = makevol_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

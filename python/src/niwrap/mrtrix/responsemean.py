@@ -230,9 +230,9 @@ def responsemean_execute(
     Returns:
         NamedTuple of outputs (described in `ResponsemeanOutputs`).
     """
+    params = execution.params(params)
     cargs = responsemean_cargs(params, execution)
     ret = responsemean_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

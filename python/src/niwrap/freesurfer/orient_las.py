@@ -145,9 +145,9 @@ def orient_las_execute(
     Returns:
         NamedTuple of outputs (described in `OrientLasOutputs`).
     """
+    params = execution.params(params)
     cargs = orient_las_cargs(params, execution)
     ret = orient_las_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

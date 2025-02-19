@@ -133,9 +133,9 @@ def fix_subject_execute(
     Returns:
         NamedTuple of outputs (described in `FixSubjectOutputs`).
     """
+    params = execution.params(params)
     cargs = fix_subject_cargs(params, execution)
     ret = fix_subject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

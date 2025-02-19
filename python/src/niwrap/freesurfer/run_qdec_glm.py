@@ -131,9 +131,9 @@ def run_qdec_glm_execute(
     Returns:
         NamedTuple of outputs (described in `RunQdecGlmOutputs`).
     """
+    params = execution.params(params)
     cargs = run_qdec_glm_cargs(params, execution)
     ret = run_qdec_glm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

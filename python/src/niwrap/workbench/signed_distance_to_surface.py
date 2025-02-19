@@ -174,9 +174,9 @@ def signed_distance_to_surface_execute(
     Returns:
         NamedTuple of outputs (described in `SignedDistanceToSurfaceOutputs`).
     """
+    params = execution.params(params)
     cargs = signed_distance_to_surface_cargs(params, execution)
     ret = signed_distance_to_surface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

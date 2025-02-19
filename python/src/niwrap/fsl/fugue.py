@@ -359,9 +359,9 @@ def fugue_execute(
     Returns:
         NamedTuple of outputs (described in `FugueOutputs`).
     """
+    params = execution.params(params)
     cargs = fugue_cargs(params, execution)
     ret = fugue_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -153,9 +153,9 @@ def mris_translate_annotation_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTranslateAnnotationOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_translate_annotation_cargs(params, execution)
     ret = mris_translate_annotation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -134,9 +134,9 @@ def mri_correct_segmentations_execute(
     Returns:
         NamedTuple of outputs (described in `MriCorrectSegmentationsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_correct_segmentations_cargs(params, execution)
     ret = mri_correct_segmentations_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

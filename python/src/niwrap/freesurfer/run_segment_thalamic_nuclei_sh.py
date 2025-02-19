@@ -137,9 +137,9 @@ def run_segment_thalamic_nuclei_sh_execute(
     Returns:
         NamedTuple of outputs (described in `RunSegmentThalamicNucleiShOutputs`).
     """
+    params = execution.params(params)
     cargs = run_segment_thalamic_nuclei_sh_cargs(params, execution)
     ret = run_segment_thalamic_nuclei_sh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

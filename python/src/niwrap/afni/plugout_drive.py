@@ -192,9 +192,9 @@ def plugout_drive_execute(
     Returns:
         NamedTuple of outputs (described in `PlugoutDriveOutputs`).
     """
+    params = execution.params(params)
     cargs = plugout_drive_cargs(params, execution)
     ret = plugout_drive_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

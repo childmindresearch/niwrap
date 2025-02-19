@@ -151,9 +151,9 @@ def rmz_execute(
     Returns:
         NamedTuple of outputs (described in `RmzOutputs`).
     """
+    params = execution.params(params)
     cargs = rmz_cargs(params, execution)
     ret = rmz_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -130,9 +130,9 @@ def listsubj_execute(
     Returns:
         NamedTuple of outputs (described in `ListsubjOutputs`).
     """
+    params = execution.params(params)
     cargs = listsubj_cargs(params, execution)
     ret = listsubj_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

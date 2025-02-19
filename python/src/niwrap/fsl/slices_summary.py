@@ -189,9 +189,9 @@ def slices_summary_execute(
     Returns:
         NamedTuple of outputs (described in `SlicesSummaryOutputs`).
     """
+    params = execution.params(params)
     cargs = slices_summary_cargs(params, execution)
     ret = slices_summary_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

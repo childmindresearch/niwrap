@@ -265,9 +265,9 @@ def fsl_sbca_execute(
     Returns:
         NamedTuple of outputs (described in `FslSbcaOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_sbca_cargs(params, execution)
     ret = fsl_sbca_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -142,9 +142,9 @@ def volume_components_to_frames_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeComponentsToFramesOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_components_to_frames_cargs(params, execution)
     ret = volume_components_to_frames_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

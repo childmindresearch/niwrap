@@ -269,9 +269,9 @@ def v__grad_flip_test_execute(
     Returns:
         NamedTuple of outputs (described in `VGradFlipTestOutputs`).
     """
+    params = execution.params(params)
     cargs = v__grad_flip_test_cargs(params, execution)
     ret = v__grad_flip_test_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

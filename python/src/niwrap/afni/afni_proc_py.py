@@ -206,9 +206,9 @@ def afni_proc_py_execute(
     Returns:
         NamedTuple of outputs (described in `AfniProcPyOutputs`).
     """
+    params = execution.params(params)
     cargs = afni_proc_py_cargs(params, execution)
     ret = afni_proc_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

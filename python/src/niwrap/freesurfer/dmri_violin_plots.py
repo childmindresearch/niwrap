@@ -148,9 +148,9 @@ def dmri_violin_plots_execute(
     Returns:
         NamedTuple of outputs (described in `DmriViolinPlotsOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_violin_plots_cargs(params, execution)
     ret = dmri_violin_plots_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -129,9 +129,9 @@ def tbss_1_preproc_execute(
     Returns:
         NamedTuple of outputs (described in `Tbss1PreprocOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_1_preproc_cargs(params, execution)
     ret = tbss_1_preproc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

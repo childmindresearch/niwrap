@@ -178,9 +178,9 @@ def fslascii2img_execute(
     Returns:
         NamedTuple of outputs (described in `Fslascii2imgOutputs`).
     """
+    params = execution.params(params)
     cargs = fslascii2img_cargs(params, execution)
     ret = fslascii2img_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -170,9 +170,9 @@ def super_resolution_execute(
     Returns:
         NamedTuple of outputs (described in `SuperResolutionOutputs`).
     """
+    params = execution.params(params)
     cargs = super_resolution_cargs(params, execution)
     ret = super_resolution_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

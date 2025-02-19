@@ -169,9 +169,9 @@ def mris_defects_pointset_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDefectsPointsetOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_defects_pointset_cargs(params, execution)
     ret = mris_defects_pointset_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

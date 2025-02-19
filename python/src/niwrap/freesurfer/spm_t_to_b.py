@@ -134,9 +134,9 @@ def spm_t_to_b_execute(
     Returns:
         NamedTuple of outputs (described in `SpmTToBOutputs`).
     """
+    params = execution.params(params)
     cargs = spm_t_to_b_cargs(params, execution)
     ret = spm_t_to_b_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

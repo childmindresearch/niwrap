@@ -388,9 +388,9 @@ def dcmdjpeg_fs_execute(
     Returns:
         NamedTuple of outputs (described in `DcmdjpegFsOutputs`).
     """
+    params = execution.params(params)
     cargs = dcmdjpeg_fs_cargs(params, execution)
     ret = dcmdjpeg_fs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

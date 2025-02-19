@@ -136,9 +136,9 @@ def v__no_ext_execute(
     Returns:
         NamedTuple of outputs (described in `VNoExtOutputs`).
     """
+    params = execution.params(params)
     cargs = v__no_ext_cargs(params, execution)
     ret = v__no_ext_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

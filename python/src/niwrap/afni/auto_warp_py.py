@@ -385,9 +385,9 @@ def auto_warp_py_execute(
     Returns:
         NamedTuple of outputs (described in `AutoWarpPyOutputs`).
     """
+    params = execution.params(params)
     cargs = auto_warp_py_cargs(params, execution)
     ret = auto_warp_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

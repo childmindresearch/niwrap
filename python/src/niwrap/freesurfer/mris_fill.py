@@ -156,9 +156,9 @@ def mris_fill_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFillOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_fill_cargs(params, execution)
     ret = mris_fill_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

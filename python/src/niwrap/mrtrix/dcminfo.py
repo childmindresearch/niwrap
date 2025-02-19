@@ -317,9 +317,9 @@ def dcminfo_execute(
     Returns:
         NamedTuple of outputs (described in `DcminfoOutputs`).
     """
+    params = execution.params(params)
     cargs = dcminfo_cargs(params, execution)
     ret = dcminfo_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

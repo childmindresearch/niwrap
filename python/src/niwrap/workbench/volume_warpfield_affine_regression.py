@@ -222,9 +222,9 @@ def volume_warpfield_affine_regression_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_warpfield_affine_regression_cargs(params, execution)
     ret = volume_warpfield_affine_regression_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

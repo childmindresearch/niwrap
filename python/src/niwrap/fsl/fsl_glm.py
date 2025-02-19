@@ -388,9 +388,9 @@ def fsl_glm_execute(
     Returns:
         NamedTuple of outputs (described in `FslGlmOutputs`).
     """
+    params = execution.params(params)
     cargs = fsl_glm_cargs(params, execution)
     ret = fsl_glm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -136,9 +136,9 @@ def v__get_afni_prefix_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniPrefixOutputs`).
     """
+    params = execution.params(params)
     cargs = v__get_afni_prefix_cargs(params, execution)
     ret = v__get_afni_prefix_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

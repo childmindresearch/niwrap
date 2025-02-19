@@ -203,9 +203,9 @@ def mris_inflate_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInflateOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_inflate_cargs(params, execution)
     ret = mris_inflate_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

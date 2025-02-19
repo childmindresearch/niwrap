@@ -129,9 +129,9 @@ def renormalize_subject_keep_editting_execute(
     Returns:
         NamedTuple of outputs (described in `RenormalizeSubjectKeepEdittingOutputs`).
     """
+    params = execution.params(params)
     cargs = renormalize_subject_keep_editting_cargs(params, execution)
     ret = renormalize_subject_keep_editting_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

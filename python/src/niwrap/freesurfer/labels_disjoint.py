@@ -146,9 +146,9 @@ def labels_disjoint_execute(
     Returns:
         NamedTuple of outputs (described in `LabelsDisjointOutputs`).
     """
+    params = execution.params(params)
     cargs = labels_disjoint_cargs(params, execution)
     ret = labels_disjoint_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

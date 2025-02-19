@@ -252,9 +252,9 @@ def metric_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MetricStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_stats_cargs(params, execution)
     ret = metric_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

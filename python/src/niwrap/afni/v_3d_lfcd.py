@@ -187,9 +187,9 @@ def v_3d_lfcd_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLfcdOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_lfcd_cargs(params, execution)
     ret = v_3d_lfcd_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

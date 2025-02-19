@@ -247,9 +247,9 @@ def rsfgen_execute(
     Returns:
         NamedTuple of outputs (described in `RsfgenOutputs`).
     """
+    params = execution.params(params)
     cargs = rsfgen_cargs(params, execution)
     ret = rsfgen_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

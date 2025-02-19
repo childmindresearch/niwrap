@@ -538,9 +538,9 @@ def uber_subject_py_execute(
     Returns:
         NamedTuple of outputs (described in `UberSubjectPyOutputs`).
     """
+    params = execution.params(params)
     cargs = uber_subject_py_cargs(params, execution)
     ret = uber_subject_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

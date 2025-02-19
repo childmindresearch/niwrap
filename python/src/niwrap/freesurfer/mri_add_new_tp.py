@@ -135,9 +135,9 @@ def mri_add_new_tp_execute(
     Returns:
         NamedTuple of outputs (described in `MriAddNewTpOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_add_new_tp_cargs(params, execution)
     ret = mri_add_new_tp_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

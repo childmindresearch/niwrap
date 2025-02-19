@@ -150,9 +150,9 @@ def mris_thickness_comparison_execute(
     Returns:
         NamedTuple of outputs (described in `MrisThicknessComparisonOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_thickness_comparison_cargs(params, execution)
     ret = mris_thickness_comparison_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

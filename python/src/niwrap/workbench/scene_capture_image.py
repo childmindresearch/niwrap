@@ -524,9 +524,9 @@ def scene_capture_image_execute(
     Returns:
         NamedTuple of outputs (described in `SceneCaptureImageOutputs`).
     """
+    params = execution.params(params)
     cargs = scene_capture_image_cargs(params, execution)
     ret = scene_capture_image_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

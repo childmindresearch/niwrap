@@ -151,9 +151,9 @@ def ants_denoise_image_fs_execute(
     Returns:
         NamedTuple of outputs (described in `AntsDenoiseImageFsOutputs`).
     """
+    params = execution.params(params)
     cargs = ants_denoise_image_fs_cargs(params, execution)
     ret = ants_denoise_image_fs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -158,9 +158,9 @@ def vertexvol_execute(
     Returns:
         NamedTuple of outputs (described in `VertexvolOutputs`).
     """
+    params = execution.params(params)
     cargs = vertexvol_cargs(params, execution)
     ret = vertexvol_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

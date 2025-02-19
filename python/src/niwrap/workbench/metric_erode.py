@@ -190,9 +190,9 @@ def metric_erode_execute(
     Returns:
         NamedTuple of outputs (described in `MetricErodeOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_erode_cargs(params, execution)
     ret = metric_erode_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -168,9 +168,9 @@ def isolate_labels_keeporigval_csh_execute(
     Returns:
         NamedTuple of outputs (described in `IsolateLabelsKeeporigvalCshOutputs`).
     """
+    params = execution.params(params)
     cargs = isolate_labels_keeporigval_csh_cargs(params, execution)
     ret = isolate_labels_keeporigval_csh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

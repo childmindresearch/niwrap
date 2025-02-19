@@ -140,9 +140,9 @@ def ifh2hdr_execute(
     Returns:
         NamedTuple of outputs (described in `Ifh2hdrOutputs`).
     """
+    params = execution.params(params)
     cargs = ifh2hdr_cargs(params, execution)
     ret = ifh2hdr_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

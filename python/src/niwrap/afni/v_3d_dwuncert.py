@@ -214,9 +214,9 @@ def v_3d_dwuncert_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDwuncertOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_dwuncert_cargs(params, execution)
     ret = v_3d_dwuncert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

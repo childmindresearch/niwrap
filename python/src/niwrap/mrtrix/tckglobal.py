@@ -561,9 +561,9 @@ def tckglobal_execute(
     Returns:
         NamedTuple of outputs (described in `TckglobalOutputs`).
     """
+    params = execution.params(params)
     cargs = tckglobal_cargs(params, execution)
     ret = tckglobal_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

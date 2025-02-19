@@ -166,9 +166,9 @@ def immask_execute(
     Returns:
         NamedTuple of outputs (described in `ImmaskOutputs`).
     """
+    params = execution.params(params)
     cargs = immask_cargs(params, execution)
     ret = immask_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

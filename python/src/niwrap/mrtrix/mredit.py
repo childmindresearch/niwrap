@@ -433,9 +433,9 @@ def mredit_execute(
     Returns:
         NamedTuple of outputs (described in `MreditOutputs`).
     """
+    params = execution.params(params)
     cargs = mredit_cargs(params, execution)
     ret = mredit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

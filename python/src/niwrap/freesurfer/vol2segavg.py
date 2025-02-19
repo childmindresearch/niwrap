@@ -248,9 +248,9 @@ def vol2segavg_execute(
     Returns:
         NamedTuple of outputs (described in `Vol2segavgOutputs`).
     """
+    params = execution.params(params)
     cargs = vol2segavg_cargs(params, execution)
     ret = vol2segavg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

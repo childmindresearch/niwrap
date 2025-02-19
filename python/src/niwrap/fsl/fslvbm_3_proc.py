@@ -416,9 +416,9 @@ def fslvbm_3_proc_execute(
     Returns:
         NamedTuple of outputs (described in `Fslvbm3ProcOutputs`).
     """
+    params = execution.params(params)
     cargs = fslvbm_3_proc_cargs(params, execution)
     ret = fslvbm_3_proc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

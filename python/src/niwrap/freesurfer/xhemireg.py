@@ -217,9 +217,9 @@ def xhemireg_execute(
     Returns:
         NamedTuple of outputs (described in `XhemiregOutputs`).
     """
+    params = execution.params(params)
     cargs = xhemireg_cargs(params, execution)
     ret = xhemireg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

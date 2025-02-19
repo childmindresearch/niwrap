@@ -138,9 +138,9 @@ def dmri_colored_fa_execute(
     Returns:
         NamedTuple of outputs (described in `DmriColoredFaOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_colored_fa_cargs(params, execution)
     ret = dmri_colored_fa_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

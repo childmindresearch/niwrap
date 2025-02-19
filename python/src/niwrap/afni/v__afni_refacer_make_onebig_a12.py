@@ -134,9 +134,9 @@ def v__afni_refacer_make_onebig_a12_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRefacerMakeOnebigA12Outputs`).
     """
+    params = execution.params(params)
     cargs = v__afni_refacer_make_onebig_a12_cargs(params, execution)
     ret = v__afni_refacer_make_onebig_a12_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

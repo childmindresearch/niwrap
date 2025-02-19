@@ -129,9 +129,9 @@ def browse_minc_header_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `BrowseMincHeaderTclOutputs`).
     """
+    params = execution.params(params)
     cargs = browse_minc_header_tcl_cargs(params, execution)
     ret = browse_minc_header_tcl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

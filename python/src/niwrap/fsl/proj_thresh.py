@@ -135,9 +135,9 @@ def proj_thresh_execute(
     Returns:
         NamedTuple of outputs (described in `ProjThreshOutputs`).
     """
+    params = execution.params(params)
     cargs = proj_thresh_cargs(params, execution)
     ret = proj_thresh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -177,9 +177,9 @@ def v__shift_volume_execute(
     Returns:
         NamedTuple of outputs (described in `VShiftVolumeOutputs`).
     """
+    params = execution.params(params)
     cargs = v__shift_volume_cargs(params, execution)
     ret = v__shift_volume_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

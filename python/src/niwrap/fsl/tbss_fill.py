@@ -154,9 +154,9 @@ def tbss_fill_execute(
     Returns:
         NamedTuple of outputs (described in `TbssFillOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_fill_cargs(params, execution)
     ret = tbss_fill_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

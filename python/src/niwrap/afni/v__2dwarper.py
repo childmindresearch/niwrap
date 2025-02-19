@@ -133,9 +133,9 @@ def v__2dwarper_execute(
     Returns:
         NamedTuple of outputs (described in `V2dwarperOutputs`).
     """
+    params = execution.params(params)
     cargs = v__2dwarper_cargs(params, execution)
     ret = v__2dwarper_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

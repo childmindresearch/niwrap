@@ -166,9 +166,9 @@ def mris_mesh_subdivide_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMeshSubdivideOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_mesh_subdivide_cargs(params, execution)
     ret = mris_mesh_subdivide_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

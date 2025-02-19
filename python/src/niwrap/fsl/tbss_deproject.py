@@ -149,9 +149,9 @@ def tbss_deproject_execute(
     Returns:
         NamedTuple of outputs (described in `TbssDeprojectOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_deproject_cargs(params, execution)
     ret = tbss_deproject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

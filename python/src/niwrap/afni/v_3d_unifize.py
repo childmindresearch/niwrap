@@ -282,9 +282,9 @@ def v_3d_unifize_execute(
     Returns:
         NamedTuple of outputs (described in `V3dUnifizeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_unifize_cargs(params, execution)
     ret = v_3d_unifize_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

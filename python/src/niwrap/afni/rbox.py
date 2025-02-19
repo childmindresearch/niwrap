@@ -183,9 +183,9 @@ def rbox_execute(
     Returns:
         NamedTuple of outputs (described in `RboxOutputs`).
     """
+    params = execution.params(params)
     cargs = rbox_cargs(params, execution)
     ret = rbox_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

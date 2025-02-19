@@ -252,9 +252,9 @@ def non_local_super_resolution_execute(
     Returns:
         NamedTuple of outputs (described in `NonLocalSuperResolutionOutputs`).
     """
+    params = execution.params(params)
     cargs = non_local_super_resolution_cargs(params, execution)
     ret = non_local_super_resolution_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

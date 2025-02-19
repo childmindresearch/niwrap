@@ -183,9 +183,9 @@ def siena_diff_execute(
     Returns:
         NamedTuple of outputs (described in `SienaDiffOutputs`).
     """
+    params = execution.params(params)
     cargs = siena_diff_cargs(params, execution)
     ret = siena_diff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

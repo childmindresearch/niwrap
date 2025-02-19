@@ -258,9 +258,9 @@ def convert_matrix4_to_matrix2_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertMatrix4ToMatrix2Outputs`).
     """
+    params = execution.params(params)
     cargs = convert_matrix4_to_matrix2_cargs(params, execution)
     ret = convert_matrix4_to_matrix2_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

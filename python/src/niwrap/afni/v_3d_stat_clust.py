@@ -190,9 +190,9 @@ def v_3d_stat_clust_execute(
     Returns:
         NamedTuple of outputs (described in `V3dStatClustOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_stat_clust_cargs(params, execution)
     ret = v_3d_stat_clust_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

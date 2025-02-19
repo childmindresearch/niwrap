@@ -193,9 +193,9 @@ def cifti_label_import_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelImportOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_label_import_cargs(params, execution)
     ret = cifti_label_import_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

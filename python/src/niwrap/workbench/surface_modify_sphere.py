@@ -159,9 +159,9 @@ def surface_modify_sphere_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceModifySphereOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_modify_sphere_cargs(params, execution)
     ret = surface_modify_sphere_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

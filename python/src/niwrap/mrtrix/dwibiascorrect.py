@@ -360,9 +360,9 @@ def dwibiascorrect_execute(
     Returns:
         NamedTuple of outputs (described in `DwibiascorrectOutputs`).
     """
+    params = execution.params(params)
     cargs = dwibiascorrect_cargs(params, execution)
     ret = dwibiascorrect_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

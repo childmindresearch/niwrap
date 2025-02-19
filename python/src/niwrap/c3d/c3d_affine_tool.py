@@ -271,9 +271,9 @@ def c3d_affine_tool_execute(
     Returns:
         NamedTuple of outputs (described in `C3dAffineToolOutputs`).
     """
+    params = execution.params(params)
     cargs = c3d_affine_tool_cargs(params, execution)
     ret = c3d_affine_tool_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

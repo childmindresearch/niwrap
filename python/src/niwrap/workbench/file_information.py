@@ -282,9 +282,9 @@ def file_information_execute(
     Returns:
         NamedTuple of outputs (described in `FileInformationOutputs`).
     """
+    params = execution.params(params)
     cargs = file_information_cargs(params, execution)
     ret = file_information_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -408,9 +408,9 @@ def dcm2niix_afni_execute(
     Returns:
         NamedTuple of outputs (described in `Dcm2niixAfniOutputs`).
     """
+    params = execution.params(params)
     cargs = dcm2niix_afni_cargs(params, execution)
     ret = dcm2niix_afni_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

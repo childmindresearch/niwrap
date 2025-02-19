@@ -125,9 +125,9 @@ def fsfirst_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `FsfirstFslOutputs`).
     """
+    params = execution.params(params)
     cargs = fsfirst_fsl_cargs(params, execution)
     ret = fsfirst_fsl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

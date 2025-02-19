@@ -223,9 +223,9 @@ def train_gcs_atlas_execute(
     Returns:
         NamedTuple of outputs (described in `TrainGcsAtlasOutputs`).
     """
+    params = execution.params(params)
     cargs = train_gcs_atlas_cargs(params, execution)
     ret = train_gcs_atlas_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -176,9 +176,9 @@ def dmri_mergepaths_execute(
     Returns:
         NamedTuple of outputs (described in `DmriMergepathsOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_mergepaths_cargs(params, execution)
     ret = dmri_mergepaths_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

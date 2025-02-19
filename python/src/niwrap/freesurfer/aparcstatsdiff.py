@@ -161,9 +161,9 @@ def aparcstatsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `AparcstatsdiffOutputs`).
     """
+    params = execution.params(params)
     cargs = aparcstatsdiff_cargs(params, execution)
     ret = aparcstatsdiff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

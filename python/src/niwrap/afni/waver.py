@@ -342,9 +342,9 @@ def waver_execute(
     Returns:
         NamedTuple of outputs (described in `WaverOutputs`).
     """
+    params = execution.params(params)
     cargs = waver_cargs(params, execution)
     ret = waver_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

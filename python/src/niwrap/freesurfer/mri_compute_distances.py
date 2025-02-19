@@ -144,9 +144,9 @@ def mri_compute_distances_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeDistancesOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_compute_distances_cargs(params, execution)
     ret = mri_compute_distances_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

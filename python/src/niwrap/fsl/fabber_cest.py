@@ -165,9 +165,9 @@ def fabber_cest_execute(
     Returns:
         NamedTuple of outputs (described in `FabberCestOutputs`).
     """
+    params = execution.params(params)
     cargs = fabber_cest_cargs(params, execution)
     ret = fabber_cest_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

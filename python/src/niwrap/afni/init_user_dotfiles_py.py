@@ -258,9 +258,9 @@ def init_user_dotfiles_py_execute(
     Returns:
         NamedTuple of outputs (described in `InitUserDotfilesPyOutputs`).
     """
+    params = execution.params(params)
     cargs = init_user_dotfiles_py_cargs(params, execution)
     ret = init_user_dotfiles_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -687,9 +687,9 @@ def v_5ttgen_execute(
     Returns:
         NamedTuple of outputs (described in `V5ttgenOutputs`).
     """
+    params = execution.params(params)
     cargs = v_5ttgen_cargs(params, execution)
     ret = v_5ttgen_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

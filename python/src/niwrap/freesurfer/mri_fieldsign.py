@@ -318,9 +318,9 @@ def mri_fieldsign_execute(
     Returns:
         NamedTuple of outputs (described in `MriFieldsignOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_fieldsign_cargs(params, execution)
     ret = mri_fieldsign_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

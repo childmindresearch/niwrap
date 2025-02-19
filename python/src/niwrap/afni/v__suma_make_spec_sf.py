@@ -157,9 +157,9 @@ def v__suma_make_spec_sf_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).
     """
+    params = execution.params(params)
     cargs = v__suma_make_spec_sf_cargs(params, execution)
     ret = v__suma_make_spec_sf_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

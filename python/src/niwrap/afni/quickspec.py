@@ -194,9 +194,9 @@ def quickspec_execute(
     Returns:
         NamedTuple of outputs (described in `QuickspecOutputs`).
     """
+    params = execution.params(params)
     cargs = quickspec_cargs(params, execution)
     ret = quickspec_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

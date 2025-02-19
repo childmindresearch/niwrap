@@ -139,9 +139,9 @@ def irepifitvol_glnx64_execute(
     Returns:
         NamedTuple of outputs (described in `IrepifitvolGlnx64Outputs`).
     """
+    params = execution.params(params)
     cargs = irepifitvol_glnx64_cargs(params, execution)
     ret = irepifitvol_glnx64_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

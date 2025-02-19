@@ -172,9 +172,9 @@ def cjpeg_execute(
     Returns:
         NamedTuple of outputs (described in `CjpegOutputs`).
     """
+    params = execution.params(params)
     cargs = cjpeg_cargs(params, execution)
     ret = cjpeg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

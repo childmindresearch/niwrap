@@ -290,9 +290,9 @@ def sh2response_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2responseOutputs`).
     """
+    params = execution.params(params)
     cargs = sh2response_cargs(params, execution)
     ret = sh2response_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -172,9 +172,9 @@ def un_warp_epi_py_execute(
     Returns:
         NamedTuple of outputs (described in `UnWarpEpiPyOutputs`).
     """
+    params = execution.params(params)
     cargs = un_warp_epi_py_cargs(params, execution)
     ret = un_warp_epi_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

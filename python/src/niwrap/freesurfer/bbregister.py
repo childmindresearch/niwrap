@@ -166,9 +166,9 @@ def bbregister_execute(
     Returns:
         NamedTuple of outputs (described in `BbregisterOutputs`).
     """
+    params = execution.params(params)
     cargs = bbregister_cargs(params, execution)
     ret = bbregister_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

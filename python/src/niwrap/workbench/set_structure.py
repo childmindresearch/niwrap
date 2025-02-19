@@ -216,9 +216,9 @@ def set_structure_execute(
     Returns:
         NamedTuple of outputs (described in `SetStructureOutputs`).
     """
+    params = execution.params(params)
     cargs = set_structure_cargs(params, execution)
     ret = set_structure_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

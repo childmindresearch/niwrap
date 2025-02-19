@@ -145,9 +145,9 @@ def fslmaths_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `FslmathsFslOutputs`).
     """
+    params = execution.params(params)
     cargs = fslmaths_fsl_cargs(params, execution)
     ret = fslmaths_fsl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

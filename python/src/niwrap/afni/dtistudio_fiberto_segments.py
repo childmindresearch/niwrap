@@ -149,9 +149,9 @@ def dtistudio_fiberto_segments_execute(
     Returns:
         NamedTuple of outputs (described in `DtistudioFibertoSegmentsOutputs`).
     """
+    params = execution.params(params)
     cargs = dtistudio_fiberto_segments_cargs(params, execution)
     ret = dtistudio_fiberto_segments_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -240,9 +240,9 @@ def v_1dgen_arma11_execute(
     Returns:
         NamedTuple of outputs (described in `V1dgenArma11Outputs`).
     """
+    params = execution.params(params)
     cargs = v_1dgen_arma11_cargs(params, execution)
     ret = v_1dgen_arma11_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

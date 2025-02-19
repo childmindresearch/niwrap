@@ -446,9 +446,9 @@ def mtnormalise_execute(
     Returns:
         NamedTuple of outputs (described in `MtnormaliseOutputs`).
     """
+    params = execution.params(params)
     cargs = mtnormalise_cargs(params, execution)
     ret = mtnormalise_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

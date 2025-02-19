@@ -248,9 +248,9 @@ def mris_make_average_surface_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMakeAverageSurfaceOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_make_average_surface_cargs(params, execution)
     ret = mris_make_average_surface_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

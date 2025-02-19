@@ -315,9 +315,9 @@ def qboot_execute(
     Returns:
         NamedTuple of outputs (described in `QbootOutputs`).
     """
+    params = execution.params(params)
     cargs = qboot_cargs(params, execution)
     ret = qboot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -155,9 +155,9 @@ def prompt_popup_execute(
     Returns:
         NamedTuple of outputs (described in `PromptPopupOutputs`).
     """
+    params = execution.params(params)
     cargs = prompt_popup_cargs(params, execution)
     ret = prompt_popup_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -250,9 +250,9 @@ def v_3d_grayplot_execute(
     Returns:
         NamedTuple of outputs (described in `V3dGrayplotOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_grayplot_cargs(params, execution)
     ret = v_3d_grayplot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

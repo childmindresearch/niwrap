@@ -306,9 +306,9 @@ def v_3_droimaker_execute(
     Returns:
         NamedTuple of outputs (described in `V3DroimakerOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3_droimaker_cargs(params, execution)
     ret = v_3_droimaker_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

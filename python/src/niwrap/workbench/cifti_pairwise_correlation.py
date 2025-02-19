@@ -161,9 +161,9 @@ def cifti_pairwise_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiPairwiseCorrelationOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_pairwise_correlation_cargs(params, execution)
     ret = cifti_pairwise_correlation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

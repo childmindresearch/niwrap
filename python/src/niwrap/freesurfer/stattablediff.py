@@ -205,9 +205,9 @@ def stattablediff_execute(
     Returns:
         NamedTuple of outputs (described in `StattablediffOutputs`).
     """
+    params = execution.params(params)
     cargs = stattablediff_cargs(params, execution)
     ret = stattablediff_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

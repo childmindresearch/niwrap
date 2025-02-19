@@ -134,9 +134,9 @@ def reconbatchjobs_execute(
     Returns:
         NamedTuple of outputs (described in `ReconbatchjobsOutputs`).
     """
+    params = execution.params(params)
     cargs = reconbatchjobs_cargs(params, execution)
     ret = reconbatchjobs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

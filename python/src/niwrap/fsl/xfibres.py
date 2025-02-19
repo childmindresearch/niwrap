@@ -351,9 +351,9 @@ def xfibres_execute(
     Returns:
         NamedTuple of outputs (described in `XfibresOutputs`).
     """
+    params = execution.params(params)
     cargs = xfibres_cargs(params, execution)
     ret = xfibres_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

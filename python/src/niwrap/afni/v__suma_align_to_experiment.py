@@ -310,9 +310,9 @@ def v__suma_align_to_experiment_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaAlignToExperimentOutputs`).
     """
+    params = execution.params(params)
     cargs = v__suma_align_to_experiment_cargs(params, execution)
     ret = v__suma_align_to_experiment_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

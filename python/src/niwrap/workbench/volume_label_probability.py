@@ -151,9 +151,9 @@ def volume_label_probability_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeLabelProbabilityOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_label_probability_cargs(params, execution)
     ret = volume_label_probability_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

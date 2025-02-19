@@ -343,9 +343,9 @@ def volume_weighted_stats_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeWeightedStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_weighted_stats_cargs(params, execution)
     ret = volume_weighted_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

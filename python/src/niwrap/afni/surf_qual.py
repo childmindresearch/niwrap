@@ -192,9 +192,9 @@ def surf_qual_execute(
     Returns:
         NamedTuple of outputs (described in `SurfQualOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_qual_cargs(params, execution)
     ret = surf_qual_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

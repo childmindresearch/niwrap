@@ -204,9 +204,9 @@ def lta_convert_execute(
     Returns:
         NamedTuple of outputs (described in `LtaConvertOutputs`).
     """
+    params = execution.params(params)
     cargs = lta_convert_cargs(params, execution)
     ret = lta_convert_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

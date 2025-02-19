@@ -145,9 +145,9 @@ def mris_profile_clustering_execute(
     Returns:
         NamedTuple of outputs (described in `MrisProfileClusteringOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_profile_clustering_cargs(params, execution)
     ret = mris_profile_clustering_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

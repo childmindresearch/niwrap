@@ -143,9 +143,9 @@ def mris_sphere_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSphereOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_sphere_cargs(params, execution)
     ret = mris_sphere_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

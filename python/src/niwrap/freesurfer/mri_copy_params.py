@@ -150,9 +150,9 @@ def mri_copy_params_execute(
     Returns:
         NamedTuple of outputs (described in `MriCopyParamsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_copy_params_cargs(params, execution)
     ret = mri_copy_params_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

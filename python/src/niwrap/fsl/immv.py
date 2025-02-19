@@ -135,9 +135,9 @@ def immv_execute(
     Returns:
         NamedTuple of outputs (described in `ImmvOutputs`).
     """
+    params = execution.params(params)
     cargs = immv_cargs(params, execution)
     ret = immv_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

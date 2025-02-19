@@ -442,9 +442,9 @@ def fabber_qbold_execute(
     Returns:
         NamedTuple of outputs (described in `FabberQboldOutputs`).
     """
+    params = execution.params(params)
     cargs = fabber_qbold_cargs(params, execution)
     ret = fabber_qbold_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -172,9 +172,9 @@ def zip_scene_file_execute(
     Returns:
         NamedTuple of outputs (described in `ZipSceneFileOutputs`).
     """
+    params = execution.params(params)
     cargs = zip_scene_file_cargs(params, execution)
     ret = zip_scene_file_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

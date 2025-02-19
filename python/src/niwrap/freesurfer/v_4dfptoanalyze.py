@@ -168,9 +168,9 @@ def v_4dfptoanalyze_execute(
     Returns:
         NamedTuple of outputs (described in `V4dfptoanalyzeOutputs`).
     """
+    params = execution.params(params)
     cargs = v_4dfptoanalyze_cargs(params, execution)
     ret = v_4dfptoanalyze_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

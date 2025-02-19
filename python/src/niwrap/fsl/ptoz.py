@@ -145,9 +145,9 @@ def ptoz_execute(
     Returns:
         NamedTuple of outputs (described in `PtozOutputs`).
     """
+    params = execution.params(params)
     cargs = ptoz_cargs(params, execution)
     ret = ptoz_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

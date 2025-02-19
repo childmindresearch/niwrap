@@ -293,9 +293,9 @@ def surf2vol_execute(
     Returns:
         NamedTuple of outputs (described in `Surf2volOutputs`).
     """
+    params = execution.params(params)
     cargs = surf2vol_cargs(params, execution)
     ret = surf2vol_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

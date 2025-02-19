@@ -155,9 +155,9 @@ def surface_cut_resample_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceCutResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = surface_cut_resample_cargs(params, execution)
     ret = surface_cut_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

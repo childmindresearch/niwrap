@@ -412,9 +412,9 @@ def cifti_weighted_stats_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiWeightedStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_weighted_stats_cargs(params, execution)
     ret = cifti_weighted_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -143,9 +143,9 @@ def siena_flirt_execute(
     Returns:
         NamedTuple of outputs (described in `SienaFlirtOutputs`).
     """
+    params = execution.params(params)
     cargs = siena_flirt_cargs(params, execution)
     ret = siena_flirt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

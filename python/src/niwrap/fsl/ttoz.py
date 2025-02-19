@@ -159,9 +159,9 @@ def ttoz_execute(
     Returns:
         NamedTuple of outputs (described in `TtozOutputs`).
     """
+    params = execution.params(params)
     cargs = ttoz_cargs(params, execution)
     ret = ttoz_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

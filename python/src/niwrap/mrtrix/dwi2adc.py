@@ -326,9 +326,9 @@ def dwi2adc_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2adcOutputs`).
     """
+    params = execution.params(params)
     cargs = dwi2adc_cargs(params, execution)
     ret = dwi2adc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

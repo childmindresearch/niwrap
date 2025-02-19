@@ -204,9 +204,9 @@ def metric_label_import_execute(
     Returns:
         NamedTuple of outputs (described in `MetricLabelImportOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_label_import_cargs(params, execution)
     ret = metric_label_import_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

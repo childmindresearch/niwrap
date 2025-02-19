@@ -130,9 +130,9 @@ def fsr_getxopts_execute(
     Returns:
         NamedTuple of outputs (described in `FsrGetxoptsOutputs`).
     """
+    params = execution.params(params)
     cargs = fsr_getxopts_cargs(params, execution)
     ret = fsr_getxopts_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

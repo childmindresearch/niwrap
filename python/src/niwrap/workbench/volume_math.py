@@ -290,9 +290,9 @@ def volume_math_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeMathOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_math_cargs(params, execution)
     ret = volume_math_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

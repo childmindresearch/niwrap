@@ -177,9 +177,9 @@ def v__fix_fssphere_execute(
     Returns:
         NamedTuple of outputs (described in `VFixFssphereOutputs`).
     """
+    params = execution.params(params)
     cargs = v__fix_fssphere_cargs(params, execution)
     ret = v__fix_fssphere_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

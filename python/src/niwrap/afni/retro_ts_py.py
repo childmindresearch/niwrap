@@ -352,9 +352,9 @@ def retro_ts_py_execute(
     Returns:
         NamedTuple of outputs (described in `RetroTsPyOutputs`).
     """
+    params = execution.params(params)
     cargs = retro_ts_py_cargs(params, execution)
     ret = retro_ts_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

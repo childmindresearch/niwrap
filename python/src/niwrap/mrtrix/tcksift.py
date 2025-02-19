@@ -428,9 +428,9 @@ def tcksift_execute(
     Returns:
         NamedTuple of outputs (described in `TcksiftOutputs`).
     """
+    params = execution.params(params)
     cargs = tcksift_cargs(params, execution)
     ret = tcksift_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

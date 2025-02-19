@@ -240,9 +240,9 @@ def reg_aladin_execute(
     Returns:
         NamedTuple of outputs (described in `RegAladinOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_aladin_cargs(params, execution)
     ret = reg_aladin_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

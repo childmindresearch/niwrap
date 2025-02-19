@@ -323,9 +323,9 @@ def mrstats_execute(
     Returns:
         NamedTuple of outputs (described in `MrstatsOutputs`).
     """
+    params = execution.params(params)
     cargs = mrstats_cargs(params, execution)
     ret = mrstats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

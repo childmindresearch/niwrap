@@ -138,9 +138,9 @@ def minc2seqinfo_execute(
     Returns:
         NamedTuple of outputs (described in `Minc2seqinfoOutputs`).
     """
+    params = execution.params(params)
     cargs = minc2seqinfo_cargs(params, execution)
     ret = minc2seqinfo_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

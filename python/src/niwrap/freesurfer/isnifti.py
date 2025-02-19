@@ -129,9 +129,9 @@ def isnifti_execute(
     Returns:
         NamedTuple of outputs (described in `IsniftiOutputs`).
     """
+    params = execution.params(params)
     cargs = isnifti_cargs(params, execution)
     ret = isnifti_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

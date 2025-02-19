@@ -320,9 +320,9 @@ def gifti_tool_execute(
     Returns:
         NamedTuple of outputs (described in `GiftiToolOutputs`).
     """
+    params = execution.params(params)
     cargs = gifti_tool_cargs(params, execution)
     ret = gifti_tool_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

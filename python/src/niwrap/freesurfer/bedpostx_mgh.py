@@ -199,9 +199,9 @@ def bedpostx_mgh_execute(
     Returns:
         NamedTuple of outputs (described in `BedpostxMghOutputs`).
     """
+    params = execution.params(params)
     cargs = bedpostx_mgh_cargs(params, execution)
     ret = bedpostx_mgh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

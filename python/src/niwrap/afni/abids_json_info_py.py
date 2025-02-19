@@ -179,9 +179,9 @@ def abids_json_info_py_execute(
     Returns:
         NamedTuple of outputs (described in `AbidsJsonInfoPyOutputs`).
     """
+    params = execution.params(params)
     cargs = abids_json_info_py_cargs(params, execution)
     ret = abids_json_info_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

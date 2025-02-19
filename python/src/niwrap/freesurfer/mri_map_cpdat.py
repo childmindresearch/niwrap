@@ -185,9 +185,9 @@ def mri_map_cpdat_execute(
     Returns:
         NamedTuple of outputs (described in `MriMapCpdatOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_map_cpdat_cargs(params, execution)
     ret = mri_map_cpdat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

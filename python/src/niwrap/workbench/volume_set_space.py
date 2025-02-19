@@ -380,9 +380,9 @@ def volume_set_space_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeSetSpaceOutputs`).
     """
+    params = execution.params(params)
     cargs = volume_set_space_cargs(params, execution)
     ret = volume_set_space_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

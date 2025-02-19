@@ -144,9 +144,9 @@ def hiam_register_execute(
     Returns:
         NamedTuple of outputs (described in `HiamRegisterOutputs`).
     """
+    params = execution.params(params)
     cargs = hiam_register_cargs(params, execution)
     ret = hiam_register_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

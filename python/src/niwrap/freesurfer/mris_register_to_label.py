@@ -234,9 +234,9 @@ def mris_register_to_label_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRegisterToLabelOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_register_to_label_cargs(params, execution)
     ret = mris_register_to_label_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

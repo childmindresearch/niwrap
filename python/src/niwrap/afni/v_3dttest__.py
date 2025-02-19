@@ -330,9 +330,9 @@ def v_3dttest___execute(
     Returns:
         NamedTuple of outputs (described in `V3dttestOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3dttest___cargs(params, execution)
     ret = v_3dttest___outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

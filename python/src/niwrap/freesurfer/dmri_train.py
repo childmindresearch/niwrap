@@ -351,9 +351,9 @@ def dmri_train_execute(
     Returns:
         NamedTuple of outputs (described in `DmriTrainOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_train_cargs(params, execution)
     ret = dmri_train_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

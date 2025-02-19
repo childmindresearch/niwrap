@@ -224,9 +224,9 @@ def parc_atlas_jackknife_test_execute(
     Returns:
         NamedTuple of outputs (described in `ParcAtlasJackknifeTestOutputs`).
     """
+    params = execution.params(params)
     cargs = parc_atlas_jackknife_test_cargs(params, execution)
     ret = parc_atlas_jackknife_test_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

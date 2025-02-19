@@ -163,9 +163,9 @@ def mris_image2vtk_execute(
     Returns:
         NamedTuple of outputs (described in `MrisImage2vtkOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_image2vtk_cargs(params, execution)
     ret = mris_image2vtk_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

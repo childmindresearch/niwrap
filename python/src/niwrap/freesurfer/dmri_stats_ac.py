@@ -170,9 +170,9 @@ def dmri_stats_ac_execute(
     Returns:
         NamedTuple of outputs (described in `DmriStatsAcOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_stats_ac_cargs(params, execution)
     ret = dmri_stats_ac_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

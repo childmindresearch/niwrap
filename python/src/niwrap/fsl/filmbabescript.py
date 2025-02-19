@@ -134,9 +134,9 @@ def filmbabescript_execute(
     Returns:
         NamedTuple of outputs (described in `FilmbabescriptOutputs`).
     """
+    params = execution.params(params)
     cargs = filmbabescript_cargs(params, execution)
     ret = filmbabescript_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

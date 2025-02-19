@@ -673,9 +673,9 @@ def dwi2fod_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2fodOutputs`).
     """
+    params = execution.params(params)
     cargs = dwi2fod_cargs(params, execution)
     ret = dwi2fod_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

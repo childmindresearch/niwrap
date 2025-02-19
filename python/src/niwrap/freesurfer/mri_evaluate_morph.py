@@ -144,9 +144,9 @@ def mri_evaluate_morph_execute(
     Returns:
         NamedTuple of outputs (described in `MriEvaluateMorphOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_evaluate_morph_cargs(params, execution)
     ret = mri_evaluate_morph_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

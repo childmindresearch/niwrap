@@ -281,9 +281,9 @@ def v_3d_deconvolve_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDeconvolveOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_deconvolve_cargs(params, execution)
     ret = v_3d_deconvolve_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

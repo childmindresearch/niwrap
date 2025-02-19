@@ -257,9 +257,9 @@ def n3_bias_field_correction_execute(
     Returns:
         NamedTuple of outputs (described in `N3BiasFieldCorrectionOutputs`).
     """
+    params = execution.params(params)
     cargs = n3_bias_field_correction_cargs(params, execution)
     ret = n3_bias_field_correction_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -146,9 +146,9 @@ def flirt_newdefault_20080811_sch_execute(
     Returns:
         NamedTuple of outputs (described in `FlirtNewdefault20080811SchOutputs`).
     """
+    params = execution.params(params)
     cargs = flirt_newdefault_20080811_sch_cargs(params, execution)
     ret = flirt_newdefault_20080811_sch_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

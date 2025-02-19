@@ -144,9 +144,9 @@ def dicom_rename_execute(
     Returns:
         NamedTuple of outputs (described in `DicomRenameOutputs`).
     """
+    params = execution.params(params)
     cargs = dicom_rename_cargs(params, execution)
     ret = dicom_rename_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

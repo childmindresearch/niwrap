@@ -198,9 +198,9 @@ def fat_proc_select_vols_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcSelectVolsOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_proc_select_vols_cargs(params, execution)
     ret = fat_proc_select_vols_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

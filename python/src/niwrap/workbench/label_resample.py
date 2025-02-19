@@ -326,9 +326,9 @@ def label_resample_execute(
     Returns:
         NamedTuple of outputs (described in `LabelResampleOutputs`).
     """
+    params = execution.params(params)
     cargs = label_resample_cargs(params, execution)
     ret = label_resample_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

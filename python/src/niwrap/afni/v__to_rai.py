@@ -130,9 +130,9 @@ def v__to_rai_execute(
     Returns:
         NamedTuple of outputs (described in `VToRaiOutputs`).
     """
+    params = execution.params(params)
     cargs = v__to_rai_cargs(params, execution)
     ret = v__to_rai_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

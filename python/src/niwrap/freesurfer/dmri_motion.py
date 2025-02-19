@@ -223,9 +223,9 @@ def dmri_motion_execute(
     Returns:
         NamedTuple of outputs (described in `DmriMotionOutputs`).
     """
+    params = execution.params(params)
     cargs = dmri_motion_cargs(params, execution)
     ret = dmri_motion_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

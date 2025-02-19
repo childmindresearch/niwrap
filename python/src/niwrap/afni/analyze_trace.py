@@ -212,9 +212,9 @@ def analyze_trace_execute(
     Returns:
         NamedTuple of outputs (described in `AnalyzeTraceOutputs`).
     """
+    params = execution.params(params)
     cargs = analyze_trace_cargs(params, execution)
     ret = analyze_trace_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

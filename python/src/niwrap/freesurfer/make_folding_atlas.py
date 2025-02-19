@@ -288,9 +288,9 @@ def make_folding_atlas_execute(
     Returns:
         NamedTuple of outputs (described in `MakeFoldingAtlasOutputs`).
     """
+    params = execution.params(params)
     cargs = make_folding_atlas_cargs(params, execution)
     ret = make_folding_atlas_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

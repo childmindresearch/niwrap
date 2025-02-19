@@ -134,9 +134,9 @@ def v__get_afni_version_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniVersionOutputs`).
     """
+    params = execution.params(params)
     cargs = v__get_afni_version_cargs(params, execution)
     ret = v__get_afni_version_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

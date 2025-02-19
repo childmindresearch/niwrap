@@ -426,9 +426,9 @@ def vectorstats_execute(
     Returns:
         NamedTuple of outputs (described in `VectorstatsOutputs`).
     """
+    params = execution.params(params)
     cargs = vectorstats_cargs(params, execution)
     ret = vectorstats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

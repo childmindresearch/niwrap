@@ -136,9 +136,9 @@ def convert_to_jpg_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertToJpgOutputs`).
     """
+    params = execution.params(params)
     cargs = convert_to_jpg_cargs(params, execution)
     ret = convert_to_jpg_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -220,9 +220,9 @@ def mris_seg2annot_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSeg2annotOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_seg2annot_cargs(params, execution)
     ret = mris_seg2annot_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

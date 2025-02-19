@@ -202,9 +202,9 @@ def v_3d_brain_sync_execute(
     Returns:
         NamedTuple of outputs (described in `V3dBrainSyncOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_brain_sync_cargs(params, execution)
     ret = v_3d_brain_sync_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

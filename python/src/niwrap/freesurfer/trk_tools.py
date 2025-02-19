@@ -186,9 +186,9 @@ def trk_tools_execute(
     Returns:
         NamedTuple of outputs (described in `TrkToolsOutputs`).
     """
+    params = execution.params(params)
     cargs = trk_tools_cargs(params, execution)
     ret = trk_tools_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

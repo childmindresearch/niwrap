@@ -167,9 +167,9 @@ def fsr_import_execute(
     Returns:
         NamedTuple of outputs (described in `FsrImportOutputs`).
     """
+    params = execution.params(params)
     cargs = fsr_import_cargs(params, execution)
     ret = fsr_import_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

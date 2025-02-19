@@ -264,9 +264,9 @@ def mris_surface_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSurfaceStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_surface_stats_cargs(params, execution)
     ret = mris_surface_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

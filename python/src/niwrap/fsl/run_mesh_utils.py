@@ -172,9 +172,9 @@ def run_mesh_utils_execute(
     Returns:
         NamedTuple of outputs (described in `RunMeshUtilsOutputs`).
     """
+    params = execution.params(params)
     cargs = run_mesh_utils_cargs(params, execution)
     ret = run_mesh_utils_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

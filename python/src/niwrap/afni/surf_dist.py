@@ -155,9 +155,9 @@ def surf_dist_execute(
     Returns:
         NamedTuple of outputs (described in `SurfDistOutputs`).
     """
+    params = execution.params(params)
     cargs = surf_dist_cargs(params, execution)
     ret = surf_dist_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

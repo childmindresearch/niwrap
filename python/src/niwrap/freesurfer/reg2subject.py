@@ -133,9 +133,9 @@ def reg2subject_execute(
     Returns:
         NamedTuple of outputs (described in `Reg2subjectOutputs`).
     """
+    params = execution.params(params)
     cargs = reg2subject_cargs(params, execution)
     ret = reg2subject_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -130,9 +130,9 @@ def nmovie_qt_execute(
     Returns:
         NamedTuple of outputs (described in `NmovieQtOutputs`).
     """
+    params = execution.params(params)
     cargs = nmovie_qt_cargs(params, execution)
     ret = nmovie_qt_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

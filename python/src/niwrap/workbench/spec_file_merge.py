@@ -143,9 +143,9 @@ def spec_file_merge_execute(
     Returns:
         NamedTuple of outputs (described in `SpecFileMergeOutputs`).
     """
+    params = execution.params(params)
     cargs = spec_file_merge_cargs(params, execution)
     ret = spec_file_merge_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

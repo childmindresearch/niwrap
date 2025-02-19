@@ -134,9 +134,9 @@ def v__1d_diff_mag_execute(
     Returns:
         NamedTuple of outputs (described in `V1dDiffMagOutputs`).
     """
+    params = execution.params(params)
     cargs = v__1d_diff_mag_cargs(params, execution)
     ret = v__1d_diff_mag_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

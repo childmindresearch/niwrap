@@ -134,9 +134,9 @@ def tbss_x_execute(
     Returns:
         NamedTuple of outputs (described in `TbssXOutputs`).
     """
+    params = execution.params(params)
     cargs = tbss_x_cargs(params, execution)
     ret = tbss_x_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

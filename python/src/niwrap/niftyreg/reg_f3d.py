@@ -508,9 +508,9 @@ def reg_f3d_execute(
     Returns:
         NamedTuple of outputs (described in `RegF3dOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_f3d_cargs(params, execution)
     ret = reg_f3d_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

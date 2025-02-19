@@ -142,9 +142,9 @@ def long_create_orig_execute(
     Returns:
         NamedTuple of outputs (described in `LongCreateOrigOutputs`).
     """
+    params = execution.params(params)
     cargs = long_create_orig_cargs(params, execution)
     ret = long_create_orig_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

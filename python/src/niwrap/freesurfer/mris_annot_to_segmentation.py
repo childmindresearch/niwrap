@@ -158,9 +158,9 @@ def mris_annot_to_segmentation_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAnnotToSegmentationOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_annot_to_segmentation_cargs(params, execution)
     ret = mris_annot_to_segmentation_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

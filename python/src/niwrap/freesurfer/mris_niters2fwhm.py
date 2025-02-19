@@ -188,9 +188,9 @@ def mris_niters2fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `MrisNiters2fwhmOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_niters2fwhm_cargs(params, execution)
     ret = mris_niters2fwhm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

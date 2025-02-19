@@ -238,9 +238,9 @@ def conf2hires_execute(
     Returns:
         NamedTuple of outputs (described in `Conf2hiresOutputs`).
     """
+    params = execution.params(params)
     cargs = conf2hires_cargs(params, execution)
     ret = conf2hires_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

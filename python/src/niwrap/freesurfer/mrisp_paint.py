@@ -253,9 +253,9 @@ def mrisp_paint_execute(
     Returns:
         NamedTuple of outputs (described in `MrispPaintOutputs`).
     """
+    params = execution.params(params)
     cargs = mrisp_paint_cargs(params, execution)
     ret = mrisp_paint_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

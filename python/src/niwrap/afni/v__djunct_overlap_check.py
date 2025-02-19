@@ -318,9 +318,9 @@ def v__djunct_overlap_check_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunctOverlapCheckOutputs`).
     """
+    params = execution.params(params)
     cargs = v__djunct_overlap_check_cargs(params, execution)
     ret = v__djunct_overlap_check_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

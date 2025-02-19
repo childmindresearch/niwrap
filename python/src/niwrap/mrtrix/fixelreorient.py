@@ -265,9 +265,9 @@ def fixelreorient_execute(
     Returns:
         NamedTuple of outputs (described in `FixelreorientOutputs`).
     """
+    params = execution.params(params)
     cargs = fixelreorient_cargs(params, execution)
     ret = fixelreorient_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

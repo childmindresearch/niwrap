@@ -139,9 +139,9 @@ def v__show_dynamic_range_execute(
     Returns:
         NamedTuple of outputs (described in `VShowDynamicRangeOutputs`).
     """
+    params = execution.params(params)
     cargs = v__show_dynamic_range_cargs(params, execution)
     ret = v__show_dynamic_range_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

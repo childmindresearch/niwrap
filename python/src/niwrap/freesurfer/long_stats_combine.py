@@ -202,9 +202,9 @@ def long_stats_combine_execute(
     Returns:
         NamedTuple of outputs (described in `LongStatsCombineOutputs`).
     """
+    params = execution.params(params)
     cargs = long_stats_combine_cargs(params, execution)
     ret = long_stats_combine_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

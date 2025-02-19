@@ -240,9 +240,9 @@ def spmregister_execute(
     Returns:
         NamedTuple of outputs (described in `SpmregisterOutputs`).
     """
+    params = execution.params(params)
     cargs = spmregister_cargs(params, execution)
     ret = spmregister_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

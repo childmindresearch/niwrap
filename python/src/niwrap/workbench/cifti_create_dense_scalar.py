@@ -423,9 +423,9 @@ def cifti_create_dense_scalar_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).
     """
+    params = execution.params(params)
     cargs = cifti_create_dense_scalar_cargs(params, execution)
     ret = cifti_create_dense_scalar_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

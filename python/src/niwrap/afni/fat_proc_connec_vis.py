@@ -246,9 +246,9 @@ def fat_proc_connec_vis_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcConnecVisOutputs`).
     """
+    params = execution.params(params)
     cargs = fat_proc_connec_vis_cargs(params, execution)
     ret = fat_proc_connec_vis_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

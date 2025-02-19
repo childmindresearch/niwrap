@@ -125,9 +125,9 @@ def mri_gcab_train_execute(
     Returns:
         NamedTuple of outputs (described in `MriGcabTrainOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_gcab_train_cargs(params, execution)
     ret = mri_gcab_train_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

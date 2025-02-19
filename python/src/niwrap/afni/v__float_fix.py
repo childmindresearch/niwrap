@@ -131,9 +131,9 @@ def v__float_fix_execute(
     Returns:
         NamedTuple of outputs (described in `VFloatFixOutputs`).
     """
+    params = execution.params(params)
     cargs = v__float_fix_cargs(params, execution)
     ret = v__float_fix_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

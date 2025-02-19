@@ -135,9 +135,9 @@ def pngappend_execute(
     Returns:
         NamedTuple of outputs (described in `PngappendOutputs`).
     """
+    params = execution.params(params)
     cargs = pngappend_cargs(params, execution)
     ret = pngappend_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

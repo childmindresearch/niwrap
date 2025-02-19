@@ -129,9 +129,9 @@ def fslnvols_execute(
     Returns:
         NamedTuple of outputs (described in `FslnvolsOutputs`).
     """
+    params = execution.params(params)
     cargs = fslnvols_cargs(params, execution)
     ret = fslnvols_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

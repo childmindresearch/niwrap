@@ -146,9 +146,9 @@ def reg_mni305_2mm_execute(
     Returns:
         NamedTuple of outputs (described in `RegMni3052mmOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_mni305_2mm_cargs(params, execution)
     ret = reg_mni305_2mm_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

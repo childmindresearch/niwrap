@@ -328,9 +328,9 @@ def mri_mcsim_execute(
     Returns:
         NamedTuple of outputs (described in `MriMcsimOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_mcsim_cargs(params, execution)
     ret = mri_mcsim_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

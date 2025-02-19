@@ -181,9 +181,9 @@ def table2map_execute(
     Returns:
         NamedTuple of outputs (described in `Table2mapOutputs`).
     """
+    params = execution.params(params)
     cargs = table2map_cargs(params, execution)
     ret = table2map_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

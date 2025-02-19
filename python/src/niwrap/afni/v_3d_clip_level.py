@@ -131,9 +131,9 @@ def v_3d_clip_level_execute(
     Returns:
         NamedTuple of outputs (described in `V3dClipLevelOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3d_clip_level_cargs(params, execution)
     ret = v_3d_clip_level_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -425,9 +425,9 @@ def mri_ms_fitparms_execute(
     Returns:
         NamedTuple of outputs (described in `MriMsFitparmsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_ms_fitparms_cargs(params, execution)
     ret = mri_ms_fitparms_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

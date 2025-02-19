@@ -347,9 +347,9 @@ def v__sswarper_execute(
     Returns:
         NamedTuple of outputs (described in `VSswarperOutputs`).
     """
+    params = execution.params(params)
     cargs = v__sswarper_cargs(params, execution)
     ret = v__sswarper_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

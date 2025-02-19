@@ -129,9 +129,9 @@ def isanalyze_execute(
     Returns:
         NamedTuple of outputs (described in `IsanalyzeOutputs`).
     """
+    params = execution.params(params)
     cargs = isanalyze_cargs(params, execution)
     ret = isanalyze_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

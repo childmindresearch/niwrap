@@ -165,9 +165,9 @@ def slicesdir_execute(
     Returns:
         NamedTuple of outputs (described in `SlicesdirOutputs`).
     """
+    params = execution.params(params)
     cargs = slicesdir_cargs(params, execution)
     ret = slicesdir_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -245,9 +245,9 @@ def tckinfo_execute(
     Returns:
         NamedTuple of outputs (described in `TckinfoOutputs`).
     """
+    params = execution.params(params)
     cargs = tckinfo_cargs(params, execution)
     ret = tckinfo_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

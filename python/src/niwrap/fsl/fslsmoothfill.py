@@ -174,9 +174,9 @@ def fslsmoothfill_execute(
     Returns:
         NamedTuple of outputs (described in `FslsmoothfillOutputs`).
     """
+    params = execution.params(params)
     cargs = fslsmoothfill_cargs(params, execution)
     ret = fslsmoothfill_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

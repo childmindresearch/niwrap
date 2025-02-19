@@ -2568,9 +2568,9 @@ def mrcalc_execute(
     Returns:
         NamedTuple of outputs (described in `MrcalcOutputs`).
     """
+    params = execution.params(params)
     cargs = mrcalc_cargs(params, execution)
     ret = mrcalc_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

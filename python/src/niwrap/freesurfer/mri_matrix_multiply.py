@@ -183,9 +183,9 @@ def mri_matrix_multiply_execute(
     Returns:
         NamedTuple of outputs (described in `MriMatrixMultiplyOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_matrix_multiply_cargs(params, execution)
     ret = mri_matrix_multiply_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

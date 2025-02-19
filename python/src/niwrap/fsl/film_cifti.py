@@ -212,9 +212,9 @@ def film_cifti_execute(
     Returns:
         NamedTuple of outputs (described in `FilmCiftiOutputs`).
     """
+    params = execution.params(params)
     cargs = film_cifti_cargs(params, execution)
     ret = film_cifti_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

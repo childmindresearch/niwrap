@@ -147,9 +147,9 @@ def match_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `MatchSmoothingOutputs`).
     """
+    params = execution.params(params)
     cargs = match_smoothing_cargs(params, execution)
     ret = match_smoothing_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

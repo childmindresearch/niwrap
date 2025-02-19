@@ -312,9 +312,9 @@ def metric_tfce_execute(
     Returns:
         NamedTuple of outputs (described in `MetricTfceOutputs`).
     """
+    params = execution.params(params)
     cargs = metric_tfce_cargs(params, execution)
     ret = metric_tfce_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

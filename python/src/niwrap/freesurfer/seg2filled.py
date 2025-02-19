@@ -188,9 +188,9 @@ def seg2filled_execute(
     Returns:
         NamedTuple of outputs (described in `Seg2filledOutputs`).
     """
+    params = execution.params(params)
     cargs = seg2filled_cargs(params, execution)
     ret = seg2filled_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

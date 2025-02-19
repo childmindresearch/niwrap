@@ -192,9 +192,9 @@ def eddy_combine_execute(
     Returns:
         NamedTuple of outputs (described in `EddyCombineOutputs`).
     """
+    params = execution.params(params)
     cargs = eddy_combine_cargs(params, execution)
     ret = eddy_combine_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

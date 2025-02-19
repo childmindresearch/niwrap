@@ -158,9 +158,9 @@ def mris_multiscale_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMultiscaleStatsOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_multiscale_stats_cargs(params, execution)
     ret = mris_multiscale_stats_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -181,9 +181,9 @@ def paste_image_into_image_execute(
     Returns:
         NamedTuple of outputs (described in `PasteImageIntoImageOutputs`).
     """
+    params = execution.params(params)
     cargs = paste_image_into_image_cargs(params, execution)
     ret = paste_image_into_image_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

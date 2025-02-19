@@ -152,9 +152,9 @@ def fslsplit_execute(
     Returns:
         NamedTuple of outputs (described in `FslsplitOutputs`).
     """
+    params = execution.params(params)
     cargs = fslsplit_cargs(params, execution)
     ret = fslsplit_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

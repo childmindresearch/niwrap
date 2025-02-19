@@ -153,9 +153,9 @@ def mris_left_right_register_execute(
     Returns:
         NamedTuple of outputs (described in `MrisLeftRightRegisterOutputs`).
     """
+    params = execution.params(params)
     cargs = mris_left_right_register_cargs(params, execution)
     ret = mris_left_right_register_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

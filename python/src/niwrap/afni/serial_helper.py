@@ -222,9 +222,9 @@ def serial_helper_execute(
     Returns:
         NamedTuple of outputs (described in `SerialHelperOutputs`).
     """
+    params = execution.params(params)
     cargs = serial_helper_cargs(params, execution)
     ret = serial_helper_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -172,9 +172,9 @@ def aiv_execute(
     Returns:
         NamedTuple of outputs (described in `AivOutputs`).
     """
+    params = execution.params(params)
     cargs = aiv_cargs(params, execution)
     ret = aiv_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

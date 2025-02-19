@@ -154,9 +154,9 @@ def mri_mergelabels_execute(
     Returns:
         NamedTuple of outputs (described in `MriMergelabelsOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_mergelabels_cargs(params, execution)
     ret = mri_mergelabels_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -143,9 +143,9 @@ def quick_alpha_vals_py_execute(
     Returns:
         NamedTuple of outputs (described in `QuickAlphaValsPyOutputs`).
     """
+    params = execution.params(params)
     cargs = quick_alpha_vals_py_cargs(params, execution)
     ret = quick_alpha_vals_py_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

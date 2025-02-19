@@ -129,9 +129,9 @@ def v__afni_orient2_raimap_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniOrient2RaimapOutputs`).
     """
+    params = execution.params(params)
     cargs = v__afni_orient2_raimap_cargs(params, execution)
     ret = v__afni_orient2_raimap_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

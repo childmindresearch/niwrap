@@ -374,9 +374,9 @@ def pulse_execute(
     Returns:
         NamedTuple of outputs (described in `PulseOutputs`).
     """
+    params = execution.params(params)
     cargs = pulse_cargs(params, execution)
     ret = pulse_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

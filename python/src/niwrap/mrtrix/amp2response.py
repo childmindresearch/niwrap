@@ -324,9 +324,9 @@ def amp2response_execute(
     Returns:
         NamedTuple of outputs (described in `Amp2responseOutputs`).
     """
+    params = execution.params(params)
     cargs = amp2response_cargs(params, execution)
     ret = amp2response_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

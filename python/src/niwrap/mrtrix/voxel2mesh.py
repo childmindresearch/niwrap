@@ -275,9 +275,9 @@ def voxel2mesh_execute(
     Returns:
         NamedTuple of outputs (described in `Voxel2meshOutputs`).
     """
+    params = execution.params(params)
     cargs = voxel2mesh_cargs(params, execution)
     ret = voxel2mesh_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

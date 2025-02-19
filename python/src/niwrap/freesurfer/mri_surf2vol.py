@@ -396,9 +396,9 @@ def mri_surf2vol_execute(
     Returns:
         NamedTuple of outputs (described in `MriSurf2volOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_surf2vol_cargs(params, execution)
     ret = mri_surf2vol_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

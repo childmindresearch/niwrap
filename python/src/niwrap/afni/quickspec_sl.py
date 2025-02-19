@@ -209,9 +209,9 @@ def quickspec_sl_execute(
     Returns:
         NamedTuple of outputs (described in `QuickspecSlOutputs`).
     """
+    params = execution.params(params)
     cargs = quickspec_sl_cargs(params, execution)
     ret = quickspec_sl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

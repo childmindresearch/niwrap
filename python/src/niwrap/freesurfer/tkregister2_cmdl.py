@@ -640,9 +640,9 @@ def tkregister2_cmdl_execute(
     Returns:
         NamedTuple of outputs (described in `Tkregister2CmdlOutputs`).
     """
+    params = execution.params(params)
     cargs = tkregister2_cmdl_cargs(params, execution)
     ret = tkregister2_cmdl_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

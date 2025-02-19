@@ -275,9 +275,9 @@ def meshfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MeshfilterOutputs`).
     """
+    params = execution.params(params)
     cargs = meshfilter_cargs(params, execution)
     ret = meshfilter_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

@@ -134,9 +134,9 @@ def v_3drename_execute(
     Returns:
         NamedTuple of outputs (described in `V3drenameOutputs`).
     """
+    params = execution.params(params)
     cargs = v_3drename_cargs(params, execution)
     ret = v_3drename_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

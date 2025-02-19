@@ -385,9 +385,9 @@ def fod2fixel_execute(
     Returns:
         NamedTuple of outputs (described in `Fod2fixelOutputs`).
     """
+    params = execution.params(params)
     cargs = fod2fixel_cargs(params, execution)
     ret = fod2fixel_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

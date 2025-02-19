@@ -194,9 +194,9 @@ def v_1dcat_execute(
     Returns:
         NamedTuple of outputs (described in `V1dcatOutputs`).
     """
+    params = execution.params(params)
     cargs = v_1dcat_cargs(params, execution)
     ret = v_1dcat_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

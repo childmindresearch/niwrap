@@ -225,9 +225,9 @@ def mri_segment_thalamic_nuclei_dti_cnn_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegmentThalamicNucleiDtiCnnOutputs`).
     """
+    params = execution.params(params)
     cargs = mri_segment_thalamic_nuclei_dti_cnn_cargs(params, execution)
     ret = mri_segment_thalamic_nuclei_dti_cnn_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

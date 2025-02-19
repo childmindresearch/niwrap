@@ -187,9 +187,9 @@ def v__move_to_series_dirs_execute(
     Returns:
         NamedTuple of outputs (described in `VMoveToSeriesDirsOutputs`).
     """
+    params = execution.params(params)
     cargs = v__move_to_series_dirs_cargs(params, execution)
     ret = v__move_to_series_dirs_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

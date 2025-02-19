@@ -337,9 +337,9 @@ def fod2dec_execute(
     Returns:
         NamedTuple of outputs (described in `Fod2decOutputs`).
     """
+    params = execution.params(params)
     cargs = fod2dec_cargs(params, execution)
     ret = fod2dec_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 

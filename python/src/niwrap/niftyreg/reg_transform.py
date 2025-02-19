@@ -406,9 +406,9 @@ def reg_transform_execute(
     Returns:
         NamedTuple of outputs (described in `RegTransformOutputs`).
     """
+    params = execution.params(params)
     cargs = reg_transform_cargs(params, execution)
     ret = reg_transform_outputs(params, execution)
-    params = execution.params(params)
     execution.run(cargs)
     return ret
 
