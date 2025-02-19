@@ -11,16 +11,22 @@ DWIGRADCHECK_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DwigradcheckFslgradParameters = typing.TypedDict('DwigradcheckFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 DwigradcheckExportGradFslParameters = typing.TypedDict('DwigradcheckExportGradFslParameters', {
     "__STYX_TYPE__": typing.Literal["export_grad_fsl"],
     "bvecs_path": str,
     "bvals_path": str,
 })
+
+
 DwigradcheckParameters = typing.TypedDict('DwigradcheckParameters', {
     "__STYX_TYPE__": typing.Literal["dwigradcheck"],
     "input_image": InputPathType,
@@ -491,7 +497,26 @@ def dwigradcheck(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWIGRADCHECK_METADATA)
-    params = dwigradcheck_params(input_image=input_image, grad=grad, fslgrad=fslgrad, mask_image=mask_image, number=number, export_grad_mrtrix=export_grad_mrtrix, export_grad_fsl=export_grad_fsl, nocleanup=nocleanup, scratch_dir=scratch_dir, continue_scratch_dir=continue_scratch_dir, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version)
+    params = dwigradcheck_params(
+        input_image=input_image,
+        grad=grad,
+        fslgrad=fslgrad,
+        mask_image=mask_image,
+        number=number,
+        export_grad_mrtrix=export_grad_mrtrix,
+        export_grad_fsl=export_grad_fsl,
+        nocleanup=nocleanup,
+        scratch_dir=scratch_dir,
+        continue_scratch_dir=continue_scratch_dir,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+    )
     return dwigradcheck_execute(params, execution)
 
 

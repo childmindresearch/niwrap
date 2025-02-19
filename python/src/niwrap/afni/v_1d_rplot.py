@@ -11,6 +11,8 @@ V_1D_RPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dRplotParameters = typing.TypedDict('V1dRplotParameters', {
     "__STYX_TYPE__": typing.Literal["1dRplot"],
     "input_file": InputPathType,
@@ -163,7 +165,9 @@ def v_1d_rplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_RPLOT_METADATA)
-    params = v_1d_rplot_params(input_file=input_file)
+    params = v_1d_rplot_params(
+        input_file=input_file,
+    )
     return v_1d_rplot_execute(params, execution)
 
 

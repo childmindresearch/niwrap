@@ -11,11 +11,15 @@ MASKDUMP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MaskdumpConfigParameters = typing.TypedDict('MaskdumpConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MaskdumpParameters = typing.TypedDict('MaskdumpParameters', {
     "__STYX_TYPE__": typing.Literal["maskdump"],
     "info": bool,
@@ -306,7 +310,18 @@ def maskdump(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MASKDUMP_METADATA)
-    params = maskdump_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = maskdump_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return maskdump_execute(params, execution)
 
 

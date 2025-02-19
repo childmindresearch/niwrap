@@ -11,6 +11,8 @@ BASIL_VAR_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BasilVarParameters = typing.TypedDict('BasilVarParameters', {
     "__STYX_TYPE__": typing.Literal["basil_var"],
     "results_dir": str,
@@ -168,7 +170,10 @@ def basil_var(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BASIL_VAR_METADATA)
-    params = basil_var_params(results_dir=results_dir, mask_image=mask_image)
+    params = basil_var_params(
+        results_dir=results_dir,
+        mask_image=mask_image,
+    )
     return basil_var_execute(params, execution)
 
 

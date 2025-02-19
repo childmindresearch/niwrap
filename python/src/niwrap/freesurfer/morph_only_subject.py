@@ -11,6 +11,8 @@ MORPH_ONLY_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MorphOnlySubjectParameters = typing.TypedDict('MorphOnlySubjectParameters', {
     "__STYX_TYPE__": typing.Literal["morph_only_subject"],
     "placeholder_input": typing.NotRequired[str | None],
@@ -161,7 +163,9 @@ def morph_only_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_ONLY_SUBJECT_METADATA)
-    params = morph_only_subject_params(placeholder_input=placeholder_input)
+    params = morph_only_subject_params(
+        placeholder_input=placeholder_input,
+    )
     return morph_only_subject_execute(params, execution)
 
 

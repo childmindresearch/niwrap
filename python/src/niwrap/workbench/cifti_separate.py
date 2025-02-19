@@ -11,6 +11,8 @@ CIFTI_SEPARATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiSeparateVolumeAllParameters = typing.TypedDict('CiftiSeparateVolumeAllParameters', {
     "__STYX_TYPE__": typing.Literal["volume_all"],
     "volume_out": str,
@@ -18,18 +20,24 @@ CiftiSeparateVolumeAllParameters = typing.TypedDict('CiftiSeparateVolumeAllParam
     "opt_label_label_out": typing.NotRequired[str | None],
     "opt_crop": bool,
 })
+
+
 CiftiSeparateLabelParameters = typing.TypedDict('CiftiSeparateLabelParameters', {
     "__STYX_TYPE__": typing.Literal["label"],
     "structure": str,
     "label_out": str,
     "opt_roi_roi_out": typing.NotRequired[str | None],
 })
+
+
 CiftiSeparateMetricParameters = typing.TypedDict('CiftiSeparateMetricParameters', {
     "__STYX_TYPE__": typing.Literal["metric"],
     "structure": str,
     "metric_out": str,
     "opt_roi_roi_out": typing.NotRequired[str | None],
 })
+
+
 CiftiSeparateVolumeParameters = typing.TypedDict('CiftiSeparateVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "structure": str,
@@ -37,6 +45,8 @@ CiftiSeparateVolumeParameters = typing.TypedDict('CiftiSeparateVolumeParameters'
     "opt_roi_roi_out": typing.NotRequired[str | None],
     "opt_crop": bool,
 })
+
+
 CiftiSeparateParameters = typing.TypedDict('CiftiSeparateParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-separate"],
     "cifti_in": InputPathType,
@@ -697,7 +707,14 @@ def cifti_separate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_SEPARATE_METADATA)
-    params = cifti_separate_params(cifti_in=cifti_in, direction=direction, volume_all=volume_all, label=label, metric=metric, volume=volume)
+    params = cifti_separate_params(
+        cifti_in=cifti_in,
+        direction=direction,
+        volume_all=volume_all,
+        label=label,
+        metric=metric,
+        volume=volume,
+    )
     return cifti_separate_execute(params, execution)
 
 

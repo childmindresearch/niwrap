@@ -11,6 +11,8 @@ V_3D_TAGALIGN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTagalignParameters = typing.TypedDict('V3dTagalignParameters', {
     "__STYX_TYPE__": typing.Literal["3dTagalign"],
     "input_dataset": InputPathType,
@@ -311,7 +313,23 @@ def v_3d_tagalign(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TAGALIGN_METADATA)
-    params = v_3d_tagalign_params(input_dataset=input_dataset, master_dataset=master_dataset, tagset_file=tagset_file, no_keep_tags=no_keep_tags, matvec_file=matvec_file, rotate=rotate, affine=affine, rotscl=rotscl, prefix=prefix, verbose=verbose, dummy=dummy, linear_interpolation=linear_interpolation, cubic_interpolation=cubic_interpolation, nearest_neighbor_interpolation=nearest_neighbor_interpolation, quintic_interpolation=quintic_interpolation)
+    params = v_3d_tagalign_params(
+        input_dataset=input_dataset,
+        master_dataset=master_dataset,
+        tagset_file=tagset_file,
+        no_keep_tags=no_keep_tags,
+        matvec_file=matvec_file,
+        rotate=rotate,
+        affine=affine,
+        rotscl=rotscl,
+        prefix=prefix,
+        verbose=verbose,
+        dummy=dummy,
+        linear_interpolation=linear_interpolation,
+        cubic_interpolation=cubic_interpolation,
+        nearest_neighbor_interpolation=nearest_neighbor_interpolation,
+        quintic_interpolation=quintic_interpolation,
+    )
     return v_3d_tagalign_execute(params, execution)
 
 

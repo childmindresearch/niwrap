@@ -11,6 +11,8 @@ MRIS_MAKE_FACE_PARCELLATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMakeFaceParcellationParameters = typing.TypedDict('MrisMakeFaceParcellationParameters', {
     "__STYX_TYPE__": typing.Literal["mris_make_face_parcellation"],
     "input_surface": InputPathType,
@@ -185,7 +187,12 @@ def mris_make_face_parcellation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MAKE_FACE_PARCELLATION_METADATA)
-    params = mris_make_face_parcellation_params(input_surface=input_surface, ico_file=ico_file, output_annot=output_annot, colortable=colortable)
+    params = mris_make_face_parcellation_params(
+        input_surface=input_surface,
+        ico_file=ico_file,
+        output_annot=output_annot,
+        colortable=colortable,
+    )
     return mris_make_face_parcellation_execute(params, execution)
 
 

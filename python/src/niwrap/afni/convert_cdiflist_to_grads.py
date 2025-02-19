@@ -11,6 +11,8 @@ CONVERT_CDIFLIST_TO_GRADS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ConvertCdiflistToGradsParameters = typing.TypedDict('ConvertCdiflistToGradsParameters', {
     "__STYX_TYPE__": typing.Literal["convert_cdiflist_to_grads"],
     "cdiflist": InputPathType,
@@ -228,7 +230,15 @@ def convert_cdiflist_to_grads(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_CDIFLIST_TO_GRADS_METADATA)
-    params = convert_cdiflist_to_grads_params(cdiflist=cdiflist, bval_max=bval_max, prefix=prefix, ver=ver, date=date, help_=help_, hview=hview)
+    params = convert_cdiflist_to_grads_params(
+        cdiflist=cdiflist,
+        bval_max=bval_max,
+        prefix=prefix,
+        ver=ver,
+        date=date,
+        help_=help_,
+        hview=hview,
+    )
     return convert_cdiflist_to_grads_execute(params, execution)
 
 

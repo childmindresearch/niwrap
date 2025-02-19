@@ -11,6 +11,8 @@ V__AFNI_ORIENT_SIGN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniOrientSignParameters = typing.TypedDict('VAfniOrientSignParameters', {
     "__STYX_TYPE__": typing.Literal["@AfniOrientSign"],
     "infile": InputPathType,
@@ -162,7 +164,9 @@ def v__afni_orient_sign(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_ORIENT_SIGN_METADATA)
-    params = v__afni_orient_sign_params(infile=infile)
+    params = v__afni_orient_sign_params(
+        infile=infile,
+    )
     return v__afni_orient_sign_execute(params, execution)
 
 

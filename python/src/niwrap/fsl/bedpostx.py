@@ -11,6 +11,8 @@ BEDPOSTX_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BedpostxParameters = typing.TypedDict('BedpostxParameters', {
     "__STYX_TYPE__": typing.Literal["bedpostx"],
     "subject_dir": str,
@@ -252,7 +254,16 @@ def bedpostx(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BEDPOSTX_METADATA)
-    params = bedpostx_params(subject_dir=subject_dir, num_fibres=num_fibres, ard_weight=ard_weight, burnin=burnin, num_jumps=num_jumps, sample_every=sample_every, model_type=model_type, grad_nonlinear=grad_nonlinear)
+    params = bedpostx_params(
+        subject_dir=subject_dir,
+        num_fibres=num_fibres,
+        ard_weight=ard_weight,
+        burnin=burnin,
+        num_jumps=num_jumps,
+        sample_every=sample_every,
+        model_type=model_type,
+        grad_nonlinear=grad_nonlinear,
+    )
     return bedpostx_execute(params, execution)
 
 

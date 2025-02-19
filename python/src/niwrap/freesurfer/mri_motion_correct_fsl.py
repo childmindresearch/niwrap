@@ -11,6 +11,8 @@ MRI_MOTION_CORRECT_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMotionCorrectFslParameters = typing.TypedDict('MriMotionCorrectFslParameters', {
     "__STYX_TYPE__": typing.Literal["mri_motion_correct.fsl"],
     "input_image": InputPathType,
@@ -167,7 +169,10 @@ def mri_motion_correct_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MOTION_CORRECT_FSL_METADATA)
-    params = mri_motion_correct_fsl_params(input_image=input_image, output_image=output_image)
+    params = mri_motion_correct_fsl_params(
+        input_image=input_image,
+        output_image=output_image,
+    )
     return mri_motion_correct_fsl_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ DIRMERGE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DirmergeConfigParameters = typing.TypedDict('DirmergeConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DirmergeParameters = typing.TypedDict('DirmergeParameters', {
     "__STYX_TYPE__": typing.Literal["dirmerge"],
     "unipolar_weight": typing.NotRequired[float | None],
@@ -333,7 +337,20 @@ def dirmerge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DIRMERGE_METADATA)
-    params = dirmerge_params(unipolar_weight=unipolar_weight, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, subsets=subsets, bvalue_files=bvalue_files, out=out)
+    params = dirmerge_params(
+        unipolar_weight=unipolar_weight,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        subsets=subsets,
+        bvalue_files=bvalue_files,
+        out=out,
+    )
     return dirmerge_execute(params, execution)
 
 

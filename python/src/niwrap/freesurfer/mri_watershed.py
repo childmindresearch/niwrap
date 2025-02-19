@@ -11,6 +11,8 @@ MRI_WATERSHED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriWatershedParameters = typing.TypedDict('MriWatershedParameters', {
     "__STYX_TYPE__": typing.Literal["mri_watershed"],
     "input_volume": InputPathType,
@@ -465,7 +467,39 @@ def mri_watershed(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_WATERSHED_METADATA)
-    params = mri_watershed_params(input_volume=input_volume, output_volume=output_volume, weight=weight, no_wta_flag=no_wta_flag, proba_merging=proba_merging, preflooding_height=preflooding_height, no_seedpt_flag=no_seedpt_flag, no_ta_flag=no_ta_flag, copy_flag=copy_flag, atlas_flag=atlas_flag, surf_name=surf_name, usesurf_ras_flag=usesurf_ras_flag, no_t1_analysis_flag=no_t1_analysis_flag, shrink_surface_flag=shrink_surface_flag, expand_surface_flag=expand_surface_flag, use_watershed_flag=use_watershed_flag, t1_volume=t1_volume, wat_temp_flag=wat_temp_flag, first_temp_flag=first_temp_flag, surf_debug_flag=surf_debug_flag, brain_surf_name=brain_surf_name, shrink_brain_surf=shrink_brain_surf, seed_point=seed_point, center_brain=center_brain, brain_radius=brain_radius, watershed_threshold=watershed_threshold, no_watershed_analysis_flag=no_watershed_analysis_flag, label_flag=label_flag, manual_params=manual_params, xthresh=xthresh, mask_flag=mask_flag)
+    params = mri_watershed_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        weight=weight,
+        no_wta_flag=no_wta_flag,
+        proba_merging=proba_merging,
+        preflooding_height=preflooding_height,
+        no_seedpt_flag=no_seedpt_flag,
+        no_ta_flag=no_ta_flag,
+        copy_flag=copy_flag,
+        atlas_flag=atlas_flag,
+        surf_name=surf_name,
+        usesurf_ras_flag=usesurf_ras_flag,
+        no_t1_analysis_flag=no_t1_analysis_flag,
+        shrink_surface_flag=shrink_surface_flag,
+        expand_surface_flag=expand_surface_flag,
+        use_watershed_flag=use_watershed_flag,
+        t1_volume=t1_volume,
+        wat_temp_flag=wat_temp_flag,
+        first_temp_flag=first_temp_flag,
+        surf_debug_flag=surf_debug_flag,
+        brain_surf_name=brain_surf_name,
+        shrink_brain_surf=shrink_brain_surf,
+        seed_point=seed_point,
+        center_brain=center_brain,
+        brain_radius=brain_radius,
+        watershed_threshold=watershed_threshold,
+        no_watershed_analysis_flag=no_watershed_analysis_flag,
+        label_flag=label_flag,
+        manual_params=manual_params,
+        xthresh=xthresh,
+        mask_flag=mask_flag,
+    )
     return mri_watershed_execute(params, execution)
 
 

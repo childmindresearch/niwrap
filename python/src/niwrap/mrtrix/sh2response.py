@@ -11,11 +11,15 @@ SH2RESPONSE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Sh2responseConfigParameters = typing.TypedDict('Sh2responseConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Sh2responseParameters = typing.TypedDict('Sh2responseParameters', {
     "__STYX_TYPE__": typing.Literal["sh2response"],
     "lmax": typing.NotRequired[int | None],
@@ -360,7 +364,22 @@ def sh2response(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SH2RESPONSE_METADATA)
-    params = sh2response_params(lmax=lmax, dump=dump, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, sh=sh, mask=mask, directions=directions, response=response)
+    params = sh2response_params(
+        lmax=lmax,
+        dump=dump,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        sh=sh,
+        mask=mask,
+        directions=directions,
+        response=response,
+    )
     return sh2response_execute(params, execution)
 
 

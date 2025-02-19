@@ -11,6 +11,8 @@ MCFLIRT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 McflirtParameters = typing.TypedDict('McflirtParameters', {
     "__STYX_TYPE__": typing.Literal["mcflirt"],
     "in_file": InputPathType,
@@ -401,7 +403,29 @@ def mcflirt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MCFLIRT_METADATA)
-    params = mcflirt_params(in_file=in_file, bins=bins, cost=cost, dof=dof, init=init, interpolation=interpolation, mean_vol=mean_vol, out_file=out_file, ref_file=ref_file, ref_vol=ref_vol, rotation=rotation, save_mats=save_mats, save_plots=save_plots, save_rmsabs=save_rmsabs, save_rmsrel=save_rmsrel, scaling=scaling, smooth=smooth, stages=stages, stats_imgs=stats_imgs, use_contour=use_contour, use_gradient=use_gradient)
+    params = mcflirt_params(
+        in_file=in_file,
+        bins=bins,
+        cost=cost,
+        dof=dof,
+        init=init,
+        interpolation=interpolation,
+        mean_vol=mean_vol,
+        out_file=out_file,
+        ref_file=ref_file,
+        ref_vol=ref_vol,
+        rotation=rotation,
+        save_mats=save_mats,
+        save_plots=save_plots,
+        save_rmsabs=save_rmsabs,
+        save_rmsrel=save_rmsrel,
+        scaling=scaling,
+        smooth=smooth,
+        stages=stages,
+        stats_imgs=stats_imgs,
+        use_contour=use_contour,
+        use_gradient=use_gradient,
+    )
     return mcflirt_execute(params, execution)
 
 

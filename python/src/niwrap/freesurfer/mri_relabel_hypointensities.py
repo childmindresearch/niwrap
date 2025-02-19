@@ -11,6 +11,8 @@ MRI_RELABEL_HYPOINTENSITIES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRelabelHypointensitiesParameters = typing.TypedDict('MriRelabelHypointensitiesParameters', {
     "__STYX_TYPE__": typing.Literal["mri_relabel_hypointensities"],
     "input_aseg": InputPathType,
@@ -173,7 +175,11 @@ def mri_relabel_hypointensities(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RELABEL_HYPOINTENSITIES_METADATA)
-    params = mri_relabel_hypointensities_params(input_aseg=input_aseg, surface_directory=surface_directory, output_aseg=output_aseg)
+    params = mri_relabel_hypointensities_params(
+        input_aseg=input_aseg,
+        surface_directory=surface_directory,
+        output_aseg=output_aseg,
+    )
     return mri_relabel_hypointensities_execute(params, execution)
 
 

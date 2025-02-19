@@ -11,6 +11,8 @@ TKREGISTER2_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Tkregister2Parameters = typing.TypedDict('Tkregister2Parameters', {
     "__STYX_TYPE__": typing.Literal["tkregister2"],
     "fixed_volume": InputPathType,
@@ -213,7 +215,16 @@ def tkregister2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKREGISTER2_METADATA)
-    params = tkregister2_params(fixed_volume=fixed_volume, moving_volume=moving_volume, reg_file=reg_file, noedit=noedit, lta=lta, surf_reg=surf_reg, reg_only=reg_only, help_=help_)
+    params = tkregister2_params(
+        fixed_volume=fixed_volume,
+        moving_volume=moving_volume,
+        reg_file=reg_file,
+        noedit=noedit,
+        lta=lta,
+        surf_reg=surf_reg,
+        reg_only=reg_only,
+        help_=help_,
+    )
     return tkregister2_execute(params, execution)
 
 

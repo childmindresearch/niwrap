@@ -11,6 +11,8 @@ SYSTEMNOISE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SystemnoiseParameters = typing.TypedDict('SystemnoiseParameters', {
     "__STYX_TYPE__": typing.Literal["systemnoise"],
     "input_signal": InputPathType,
@@ -212,7 +214,14 @@ def systemnoise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SYSTEMNOISE_METADATA)
-    params = systemnoise_params(input_signal=input_signal, output_signal=output_signal, noise_standard_deviation=noise_standard_deviation, seed=seed, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = systemnoise_params(
+        input_signal=input_signal,
+        output_signal=output_signal,
+        noise_standard_deviation=noise_standard_deviation,
+        seed=seed,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return systemnoise_execute(params, execution)
 
 

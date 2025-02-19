@@ -11,6 +11,8 @@ HIAM_MAKE_TEMPLATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 HiamMakeTemplateParameters = typing.TypedDict('HiamMakeTemplateParameters', {
     "__STYX_TYPE__": typing.Literal["hiam_make_template"],
     "hemi": str,
@@ -176,7 +178,12 @@ def hiam_make_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIAM_MAKE_TEMPLATE_METADATA)
-    params = hiam_make_template_params(hemi=hemi, surface_name=surface_name, subjects=subjects, output_name=output_name)
+    params = hiam_make_template_params(
+        hemi=hemi,
+        surface_name=surface_name,
+        subjects=subjects,
+        output_name=output_name,
+    )
     return hiam_make_template_execute(params, execution)
 
 

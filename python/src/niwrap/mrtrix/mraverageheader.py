@@ -11,11 +11,15 @@ MRAVERAGEHEADER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MraverageheaderConfigParameters = typing.TypedDict('MraverageheaderConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MraverageheaderParameters = typing.TypedDict('MraverageheaderParameters', {
     "__STYX_TYPE__": typing.Literal["mraverageheader"],
     "padding": typing.NotRequired[float | None],
@@ -362,7 +366,22 @@ def mraverageheader(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRAVERAGEHEADER_METADATA)
-    params = mraverageheader_params(padding=padding, resolution=resolution, fill=fill, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = mraverageheader_params(
+        padding=padding,
+        resolution=resolution,
+        fill=fill,
+        datatype=datatype,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return mraverageheader_execute(params, execution)
 
 

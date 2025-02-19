@@ -11,6 +11,8 @@ SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentSubjectT2AutoEstimateAlveusMlParameters = typing.TypedDict('SegmentSubjectT2AutoEstimateAlveusMlParameters', {
     "__STYX_TYPE__": typing.Literal["segmentSubjectT2_autoEstimateAlveusML"],
 })
@@ -148,7 +150,8 @@ def segment_subject_t2_auto_estimate_alveus_ml(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_METADATA)
-    params = segment_subject_t2_auto_estimate_alveus_ml_params()
+    params = segment_subject_t2_auto_estimate_alveus_ml_params(
+    )
     return segment_subject_t2_auto_estimate_alveus_ml_execute(params, execution)
 
 

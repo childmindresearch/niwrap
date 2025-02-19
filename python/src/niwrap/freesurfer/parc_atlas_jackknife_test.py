@@ -11,6 +11,8 @@ PARC_ATLAS_JACKKNIFE_TEST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ParcAtlasJackknifeTestParameters = typing.TypedDict('ParcAtlasJackknifeTestParameters', {
     "__STYX_TYPE__": typing.Literal["parc_atlas_jackknife_test"],
     "register": bool,
@@ -272,7 +274,20 @@ def parc_atlas_jackknife_test(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PARC_ATLAS_JACKKNIFE_TEST_METADATA)
-    params = parc_atlas_jackknife_test_params(register=register, reg_dist=reg_dist, reg_append=reg_append, reg_copy=reg_copy, train=train, classify=classify, test=test, all_=all_, subjects_dir=subjects_dir, freesurfer_home=freesurfer_home, binaries_path=binaries_path, dontrun=dontrun)
+    params = parc_atlas_jackknife_test_params(
+        register=register,
+        reg_dist=reg_dist,
+        reg_append=reg_append,
+        reg_copy=reg_copy,
+        train=train,
+        classify=classify,
+        test=test,
+        all_=all_,
+        subjects_dir=subjects_dir,
+        freesurfer_home=freesurfer_home,
+        binaries_path=binaries_path,
+        dontrun=dontrun,
+    )
     return parc_atlas_jackknife_test_execute(params, execution)
 
 

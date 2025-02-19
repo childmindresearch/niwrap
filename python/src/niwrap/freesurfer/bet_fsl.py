@@ -11,6 +11,8 @@ BET_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BetFslParameters = typing.TypedDict('BetFslParameters', {
     "__STYX_TYPE__": typing.Literal["bet.fsl"],
     "infile": InputPathType,
@@ -404,7 +406,29 @@ def bet_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BET_FSL_METADATA)
-    params = bet_fsl_params(infile=infile, maskfile=maskfile, fractional_intensity=fractional_intensity, vg_fractional_intensity=vg_fractional_intensity, center_of_gravity=center_of_gravity, overlay=overlay, binary_mask=binary_mask, approx_skull=approx_skull, no_seg_output=no_seg_output, vtk_mesh=vtk_mesh, head_radius=head_radius, thresholding=thresholding, robust_iters=robust_iters, residual_optic_cleanup=residual_optic_cleanup, reduce_bias=reduce_bias, slice_padding=slice_padding, whole_set_mask=whole_set_mask, additional_surfaces=additional_surfaces, additional_surfaces_t2=additional_surfaces_t2, verbose=verbose, debug=debug)
+    params = bet_fsl_params(
+        infile=infile,
+        maskfile=maskfile,
+        fractional_intensity=fractional_intensity,
+        vg_fractional_intensity=vg_fractional_intensity,
+        center_of_gravity=center_of_gravity,
+        overlay=overlay,
+        binary_mask=binary_mask,
+        approx_skull=approx_skull,
+        no_seg_output=no_seg_output,
+        vtk_mesh=vtk_mesh,
+        head_radius=head_radius,
+        thresholding=thresholding,
+        robust_iters=robust_iters,
+        residual_optic_cleanup=residual_optic_cleanup,
+        reduce_bias=reduce_bias,
+        slice_padding=slice_padding,
+        whole_set_mask=whole_set_mask,
+        additional_surfaces=additional_surfaces,
+        additional_surfaces_t2=additional_surfaces_t2,
+        verbose=verbose,
+        debug=debug,
+    )
     return bet_fsl_execute(params, execution)
 
 

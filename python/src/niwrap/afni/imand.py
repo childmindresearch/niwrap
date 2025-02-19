@@ -11,6 +11,8 @@ IMAND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImandParameters = typing.TypedDict('ImandParameters', {
     "__STYX_TYPE__": typing.Literal["imand"],
     "threshold": typing.NotRequired[float | None],
@@ -184,7 +186,11 @@ def imand(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAND_METADATA)
-    params = imand_params(threshold=threshold, input_images=input_images, output_image=output_image)
+    params = imand_params(
+        threshold=threshold,
+        input_images=input_images,
+        output_image=output_image,
+    )
     return imand_execute(params, execution)
 
 

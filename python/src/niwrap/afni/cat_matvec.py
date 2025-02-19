@@ -11,6 +11,8 @@ CAT_MATVEC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 CatMatvecParameters = typing.TypedDict('CatMatvecParameters', {
     "__STYX_TYPE__": typing.Literal["cat_matvec"],
     "four_by_four_format": bool,
@@ -167,7 +169,10 @@ def cat_matvec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CAT_MATVEC_METADATA)
-    params = cat_matvec_params(four_by_four_format=four_by_four_format, matvec_spec=matvec_spec)
+    params = cat_matvec_params(
+        four_by_four_format=four_by_four_format,
+        matvec_spec=matvec_spec,
+    )
     return cat_matvec_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_FLATTEN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisFlattenParameters = typing.TypedDict('MrisFlattenParameters', {
     "__STYX_TYPE__": typing.Literal["mris_flatten"],
     "input_patch": InputPathType,
@@ -240,7 +242,16 @@ def mris_flatten(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FLATTEN_METADATA)
-    params = mris_flatten_params(input_patch=input_patch, output_patch=output_patch, iterations=iterations, distances=distances, dilations=dilations, random_seed=random_seed, copy_coords=copy_coords, norand=norand)
+    params = mris_flatten_params(
+        input_patch=input_patch,
+        output_patch=output_patch,
+        iterations=iterations,
+        distances=distances,
+        dilations=dilations,
+        random_seed=random_seed,
+        copy_coords=copy_coords,
+        norand=norand,
+    )
     return mris_flatten_execute(params, execution)
 
 

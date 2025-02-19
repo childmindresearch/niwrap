@@ -11,6 +11,8 @@ V_3D_AFNITO_NIML_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAfnitoNimlParameters = typing.TypedDict('V3dAfnitoNimlParameters', {
     "__STYX_TYPE__": typing.Literal["3dAFNItoNIML"],
     "dset": InputPathType,
@@ -158,7 +160,9 @@ def v_3d_afnito_niml(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_AFNITO_NIML_METADATA)
-    params = v_3d_afnito_niml_params(dset=dset)
+    params = v_3d_afnito_niml_params(
+        dset=dset,
+    )
     return v_3d_afnito_niml_execute(params, execution)
 
 

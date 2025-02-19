@@ -11,6 +11,8 @@ V_3D_LOCAL_SVD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLocalSvdParameters = typing.TypedDict('V3dLocalSvdParameters', {
     "__STYX_TYPE__": typing.Literal["3dLocalSVD"],
     "auto_mask": bool,
@@ -234,7 +236,16 @@ def v_3d_local_svd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCAL_SVD_METADATA)
-    params = v_3d_local_svd_params(auto_mask=auto_mask, input_file=input_file, mask_file=mask_file, output_file=output_file, nbhd=nbhd, polort=polort, vnorm=vnorm, vproj=vproj)
+    params = v_3d_local_svd_params(
+        auto_mask=auto_mask,
+        input_file=input_file,
+        mask_file=mask_file,
+        output_file=output_file,
+        nbhd=nbhd,
+        polort=polort,
+        vnorm=vnorm,
+        vproj=vproj,
+    )
     return v_3d_local_svd_execute(params, execution)
 
 

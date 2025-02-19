@@ -11,6 +11,8 @@ AFNI_HISTORY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniHistoryParameters = typing.TypedDict('AfniHistoryParameters', {
     "__STYX_TYPE__": typing.Literal["afni_history"],
     "verb_level": typing.NotRequired[int | None],
@@ -376,7 +378,29 @@ def afni_history(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_HISTORY_METADATA)
-    params = afni_history_params(verb_level=verb_level, check_date=check_date, help_=help_, history=history, list_authors=list_authors, list_types=list_types, version=version, author=author, level=level, min_level=min_level, program=program, past_entries=past_entries, past_days=past_days, past_months=past_months, past_years=past_years, type_=type_, html_=html_, dline=dline, reverse=reverse, show_field=show_field, show_field_names=show_field_names)
+    params = afni_history_params(
+        verb_level=verb_level,
+        check_date=check_date,
+        help_=help_,
+        history=history,
+        list_authors=list_authors,
+        list_types=list_types,
+        version=version,
+        author=author,
+        level=level,
+        min_level=min_level,
+        program=program,
+        past_entries=past_entries,
+        past_days=past_days,
+        past_months=past_months,
+        past_years=past_years,
+        type_=type_,
+        html_=html_,
+        dline=dline,
+        reverse=reverse,
+        show_field=show_field,
+        show_field_names=show_field_names,
+    )
     return afni_history_execute(params, execution)
 
 

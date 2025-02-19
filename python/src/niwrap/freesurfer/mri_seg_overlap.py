@@ -11,6 +11,8 @@ MRI_SEG_OVERLAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegOverlapParameters = typing.TypedDict('MriSegOverlapParameters', {
     "__STYX_TYPE__": typing.Literal["mri_seg_overlap"],
     "vol1": InputPathType,
@@ -256,7 +258,18 @@ def mri_seg_overlap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEG_OVERLAP_METADATA)
-    params = mri_seg_overlap_params(vol1=vol1, vol2=vol2, out_file=out_file, measures=measures, labels=labels, label_names=label_names, label_file=label_file, no_names_flag=no_names_flag, seg_flag=seg_flag, quiet_flag=quiet_flag)
+    params = mri_seg_overlap_params(
+        vol1=vol1,
+        vol2=vol2,
+        out_file=out_file,
+        measures=measures,
+        labels=labels,
+        label_names=label_names,
+        label_file=label_file,
+        no_names_flag=no_names_flag,
+        seg_flag=seg_flag,
+        quiet_flag=quiet_flag,
+    )
     return mri_seg_overlap_execute(params, execution)
 
 

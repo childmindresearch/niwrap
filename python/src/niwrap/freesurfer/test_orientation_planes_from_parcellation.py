@@ -11,6 +11,8 @@ TEST_ORIENTATION_PLANES_FROM_PARCELLATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TestOrientationPlanesFromParcellationParameters = typing.TypedDict('TestOrientationPlanesFromParcellationParameters', {
     "__STYX_TYPE__": typing.Literal["testOrientationPlanesFromParcellation"],
     "input_file": InputPathType,
@@ -176,7 +178,11 @@ def test_orientation_planes_from_parcellation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TEST_ORIENTATION_PLANES_FROM_PARCELLATION_METADATA)
-    params = test_orientation_planes_from_parcellation_params(input_file=input_file, output_file=output_file, bb_flag=bb_flag)
+    params = test_orientation_planes_from_parcellation_params(
+        input_file=input_file,
+        output_file=output_file,
+        bb_flag=bb_flag,
+    )
     return test_orientation_planes_from_parcellation_execute(params, execution)
 
 

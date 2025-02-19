@@ -11,6 +11,8 @@ V_3DTTEST___METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dttestParameters = typing.TypedDict('V3dttestParameters', {
     "__STYX_TYPE__": typing.Literal["3dttest++"],
     "setA": list[str],
@@ -407,7 +409,29 @@ def v_3dttest__(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DTTEST___METADATA)
-    params = v_3dttest___params(set_a=set_a, set_b=set_b, set_a_long=set_a_long, set_b_long=set_b_long, covariates=covariates, label_a=label_a, label_b=label_b, setweight_a=setweight_a, setweight_b=setweight_b, prefix=prefix, resid=resid, paired=paired, unpooled=unpooled, mask=mask, exblur=exblur, randomsign=randomsign, permute=permute, etac=etac, etac_blur=etac_blur, etac_opt=etac_opt, seed=seed)
+    params = v_3dttest___params(
+        set_a=set_a,
+        set_b=set_b,
+        set_a_long=set_a_long,
+        set_b_long=set_b_long,
+        covariates=covariates,
+        label_a=label_a,
+        label_b=label_b,
+        setweight_a=setweight_a,
+        setweight_b=setweight_b,
+        prefix=prefix,
+        resid=resid,
+        paired=paired,
+        unpooled=unpooled,
+        mask=mask,
+        exblur=exblur,
+        randomsign=randomsign,
+        permute=permute,
+        etac=etac,
+        etac_blur=etac_blur,
+        etac_opt=etac_opt,
+        seed=seed,
+    )
     return v_3dttest___execute(params, execution)
 
 

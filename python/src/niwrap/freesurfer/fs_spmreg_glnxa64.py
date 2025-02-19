@@ -11,6 +11,8 @@ FS_SPMREG_GLNXA64_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsSpmregGlnxa64Parameters = typing.TypedDict('FsSpmregGlnxa64Parameters', {
     "__STYX_TYPE__": typing.Literal["fs_spmreg.glnxa64"],
 })
@@ -153,7 +155,8 @@ def fs_spmreg_glnxa64(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_SPMREG_GLNXA64_METADATA)
-    params = fs_spmreg_glnxa64_params()
+    params = fs_spmreg_glnxa64_params(
+    )
     return fs_spmreg_glnxa64_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_1D_MARRY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dMarryParameters = typing.TypedDict('V1dMarryParameters', {
     "__STYX_TYPE__": typing.Literal["1dMarry"],
     "sep": typing.NotRequired[str | None],
@@ -195,7 +197,11 @@ def v_1d_marry(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_MARRY_METADATA)
-    params = v_1d_marry_params(sep=sep, divorce=divorce, files=files)
+    params = v_1d_marry_params(
+        sep=sep,
+        divorce=divorce,
+        files=files,
+    )
     return v_1d_marry_execute(params, execution)
 
 

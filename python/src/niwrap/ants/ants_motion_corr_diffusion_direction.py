@@ -11,6 +11,8 @@ ANTS_MOTION_CORR_DIFFUSION_DIRECTION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsMotionCorrDiffusionDirectionParameters = typing.TypedDict('AntsMotionCorrDiffusionDirectionParameters', {
     "__STYX_TYPE__": typing.Literal["antsMotionCorrDiffusionDirection"],
     "scheme": InputPathType,
@@ -202,7 +204,13 @@ def ants_motion_corr_diffusion_direction(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_MOTION_CORR_DIFFUSION_DIRECTION_METADATA)
-    params = ants_motion_corr_diffusion_direction_params(scheme=scheme, bvec=bvec, physical=physical, moco=moco, output=output)
+    params = ants_motion_corr_diffusion_direction_params(
+        scheme=scheme,
+        bvec=bvec,
+        physical=physical,
+        moco=moco,
+        output=output,
+    )
     return ants_motion_corr_diffusion_direction_execute(params, execution)
 
 

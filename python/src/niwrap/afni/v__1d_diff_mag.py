@@ -11,6 +11,8 @@ V__1D_DIFF_MAG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dDiffMagParameters = typing.TypedDict('V1dDiffMagParameters', {
     "__STYX_TYPE__": typing.Literal["@1dDiffMag"],
     "infile": InputPathType,
@@ -161,7 +163,9 @@ def v__1d_diff_mag(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__1D_DIFF_MAG_METADATA)
-    params = v__1d_diff_mag_params(infile=infile)
+    params = v__1d_diff_mag_params(
+        infile=infile,
+    )
     return v__1d_diff_mag_execute(params, execution)
 
 

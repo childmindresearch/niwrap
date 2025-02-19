@@ -11,6 +11,8 @@ MRI_EDIT_SEGMENTATION_WITH_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEditSegmentationWithSurfacesParameters = typing.TypedDict('MriEditSegmentationWithSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["mri_edit_segmentation_with_surfaces"],
     "aseg_name": InputPathType,
@@ -242,7 +244,17 @@ def mri_edit_segmentation_with_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EDIT_SEGMENTATION_WITH_SURFACES_METADATA)
-    params = mri_edit_segmentation_with_surfaces_params(aseg_name=aseg_name, surface_dir=surface_dir, norm_volume=norm_volume, output_volume=output_volume, label_file=label_file, hypo_flag=hypo_flag, cerebellum_flag=cerebellum_flag, cortex_flag=cortex_flag, annotation_file=annotation_file)
+    params = mri_edit_segmentation_with_surfaces_params(
+        aseg_name=aseg_name,
+        surface_dir=surface_dir,
+        norm_volume=norm_volume,
+        output_volume=output_volume,
+        label_file=label_file,
+        hypo_flag=hypo_flag,
+        cerebellum_flag=cerebellum_flag,
+        cortex_flag=cortex_flag,
+        annotation_file=annotation_file,
+    )
     return mri_edit_segmentation_with_surfaces_execute(params, execution)
 
 

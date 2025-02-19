@@ -11,6 +11,8 @@ MRI_NL_ALIGN_BINARY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriNlAlignBinaryParameters = typing.TypedDict('MriNlAlignBinaryParameters', {
     "__STYX_TYPE__": typing.Literal["mri_nl_align_binary"],
     "source_file": InputPathType,
@@ -173,7 +175,11 @@ def mri_nl_align_binary(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_NL_ALIGN_BINARY_METADATA)
-    params = mri_nl_align_binary_params(source_file=source_file, target_file=target_file, warp_file=warp_file)
+    params = mri_nl_align_binary_params(
+        source_file=source_file,
+        target_file=target_file,
+        warp_file=warp_file,
+    )
     return mri_nl_align_binary_execute(params, execution)
 
 

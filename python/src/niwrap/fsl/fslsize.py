@@ -11,6 +11,8 @@ FSLSIZE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslsizeParameters = typing.TypedDict('FslsizeParameters', {
     "__STYX_TYPE__": typing.Literal["fslsize"],
     "input_file": InputPathType,
@@ -163,7 +165,10 @@ def fslsize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSIZE_METADATA)
-    params = fslsize_params(input_file=input_file, short_format_flag=short_format_flag)
+    params = fslsize_params(
+        input_file=input_file,
+        short_format_flag=short_format_flag,
+    )
     return fslsize_execute(params, execution)
 
 

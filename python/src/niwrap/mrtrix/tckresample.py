@@ -11,12 +11,16 @@ TCKRESAMPLE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckresampleLineParameters = typing.TypedDict('TckresampleLineParameters', {
     "__STYX_TYPE__": typing.Literal["line"],
     "num": int,
     "start": list[float],
     "end": list[float],
 })
+
+
 TckresampleArcParameters = typing.TypedDict('TckresampleArcParameters', {
     "__STYX_TYPE__": typing.Literal["arc"],
     "num": int,
@@ -24,11 +28,15 @@ TckresampleArcParameters = typing.TypedDict('TckresampleArcParameters', {
     "mid": list[float],
     "end": list[float],
 })
+
+
 TckresampleConfigParameters = typing.TypedDict('TckresampleConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckresampleParameters = typing.TypedDict('TckresampleParameters', {
     "__STYX_TYPE__": typing.Literal["tckresample"],
     "upsample": typing.NotRequired[int | None],
@@ -535,7 +543,25 @@ def tckresample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKRESAMPLE_METADATA)
-    params = tckresample_params(upsample=upsample, downsample=downsample, step_size=step_size, num_points=num_points, endpoints=endpoints, line=line, arc=arc, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_tracks=in_tracks, out_tracks=out_tracks)
+    params = tckresample_params(
+        upsample=upsample,
+        downsample=downsample,
+        step_size=step_size,
+        num_points=num_points,
+        endpoints=endpoints,
+        line=line,
+        arc=arc,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_tracks=in_tracks,
+        out_tracks=out_tracks,
+    )
     return tckresample_execute(params, execution)
 
 

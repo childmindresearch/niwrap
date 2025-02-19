@@ -11,6 +11,8 @@ IS_LTA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IsLtaParameters = typing.TypedDict('IsLtaParameters', {
     "__STYX_TYPE__": typing.Literal["IsLTA"],
     "candidate_file": InputPathType,
@@ -174,7 +176,10 @@ def is_lta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IS_LTA_METADATA)
-    params = is_lta_params(candidate_file=candidate_file, outfile=outfile)
+    params = is_lta_params(
+        candidate_file=candidate_file,
+        outfile=outfile,
+    )
     return is_lta_execute(params, execution)
 
 

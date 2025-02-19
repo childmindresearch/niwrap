@@ -11,6 +11,8 @@ FVCOMPARE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FvcompareParameters = typing.TypedDict('FvcompareParameters', {
     "__STYX_TYPE__": typing.Literal["fvcompare"],
     "subject1": str,
@@ -404,7 +406,32 @@ def fvcompare(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FVCOMPARE_METADATA)
-    params = fvcompare_params(subject1=subject1, subject2=subject2, subject_dir1=subject_dir1, subject_dir2=subject_dir2, name1=name1, name2=name2, color1=color1, volume=volume, segmentation=segmentation, aseg=aseg, no_seg=no_seg, right_hemi=right_hemi, no_surf=no_surf, gray_levels=gray_levels, cursor_position=cursor_position, zoom_level=zoom_level, annotation=annotation, aparc=aparc, inflated=inflated, white=white, orig=orig, surf_name=surf_name, pointset=pointset, wot2=wot2)
+    params = fvcompare_params(
+        subject1=subject1,
+        subject2=subject2,
+        subject_dir1=subject_dir1,
+        subject_dir2=subject_dir2,
+        name1=name1,
+        name2=name2,
+        color1=color1,
+        volume=volume,
+        segmentation=segmentation,
+        aseg=aseg,
+        no_seg=no_seg,
+        right_hemi=right_hemi,
+        no_surf=no_surf,
+        gray_levels=gray_levels,
+        cursor_position=cursor_position,
+        zoom_level=zoom_level,
+        annotation=annotation,
+        aparc=aparc,
+        inflated=inflated,
+        white=white,
+        orig=orig,
+        surf_name=surf_name,
+        pointset=pointset,
+        wot2=wot2,
+    )
     return fvcompare_execute(params, execution)
 
 

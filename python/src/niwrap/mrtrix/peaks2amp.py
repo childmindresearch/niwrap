@@ -11,11 +11,15 @@ PEAKS2AMP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Peaks2ampConfigParameters = typing.TypedDict('Peaks2ampConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Peaks2ampParameters = typing.TypedDict('Peaks2ampParameters', {
     "__STYX_TYPE__": typing.Literal["peaks2amp"],
     "info": bool,
@@ -304,7 +308,18 @@ def peaks2amp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PEAKS2AMP_METADATA)
-    params = peaks2amp_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, directions=directions, amplitudes=amplitudes)
+    params = peaks2amp_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        directions=directions,
+        amplitudes=amplitudes,
+    )
     return peaks2amp_execute(params, execution)
 
 

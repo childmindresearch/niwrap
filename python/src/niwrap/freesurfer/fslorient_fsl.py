@@ -11,6 +11,8 @@ FSLORIENT_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FslorientFslParameters = typing.TypedDict('FslorientFslParameters', {
     "__STYX_TYPE__": typing.Literal["fslorient.fsl"],
     "swap_orient": bool,
@@ -187,7 +189,12 @@ def fslorient_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLORIENT_FSL_METADATA)
-    params = fslorient_fsl_params(swap_orient=swap_orient, filename=filename, set_qform=set_qform, set_qform_code=set_qform_code)
+    params = fslorient_fsl_params(
+        swap_orient=swap_orient,
+        filename=filename,
+        set_qform=set_qform,
+        set_qform_code=set_qform_code,
+    )
     return fslorient_fsl_execute(params, execution)
 
 

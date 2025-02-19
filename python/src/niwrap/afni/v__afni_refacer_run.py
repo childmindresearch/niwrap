@@ -11,6 +11,8 @@ V__AFNI_REFACER_RUN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniRefacerRunParameters = typing.TypedDict('VAfniRefacerRunParameters', {
     "__STYX_TYPE__": typing.Literal["@afni_refacer_run"],
     "input_file": InputPathType,
@@ -278,7 +280,18 @@ def v__afni_refacer_run(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_REFACER_RUN_METADATA)
-    params = v__afni_refacer_run_params(input_file=input_file, mode_all=mode_all, prefix=prefix, anonymize_output=anonymize_output, cost_function=cost_function, shell_option=shell_option, no_clean=no_clean, no_images=no_images, overwrite=overwrite, verbose=verbose)
+    params = v__afni_refacer_run_params(
+        input_file=input_file,
+        mode_all=mode_all,
+        prefix=prefix,
+        anonymize_output=anonymize_output,
+        cost_function=cost_function,
+        shell_option=shell_option,
+        no_clean=no_clean,
+        no_images=no_images,
+        overwrite=overwrite,
+        verbose=verbose,
+    )
     return v__afni_refacer_run_execute(params, execution)
 
 

@@ -11,18 +11,24 @@ CIFTI_MATH_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiMathSelectParameters = typing.TypedDict('CiftiMathSelectParameters', {
     "__STYX_TYPE__": typing.Literal["select"],
     "dim": int,
     "index": str,
     "opt_repeat": bool,
 })
+
+
 CiftiMathVarParameters = typing.TypedDict('CiftiMathVarParameters', {
     "__STYX_TYPE__": typing.Literal["var"],
     "name": str,
     "cifti": InputPathType,
     "select": typing.NotRequired[list[CiftiMathSelectParameters] | None],
 })
+
+
 CiftiMathParameters = typing.TypedDict('CiftiMathParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-math"],
     "expression": str,
@@ -454,7 +460,13 @@ def cifti_math(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_MATH_METADATA)
-    params = cifti_math_params(expression=expression, cifti_out=cifti_out, opt_fixnan_replace=opt_fixnan_replace, opt_override_mapping_check=opt_override_mapping_check, var=var)
+    params = cifti_math_params(
+        expression=expression,
+        cifti_out=cifti_out,
+        opt_fixnan_replace=opt_fixnan_replace,
+        opt_override_mapping_check=opt_override_mapping_check,
+        var=var,
+    )
     return cifti_math_execute(params, execution)
 
 

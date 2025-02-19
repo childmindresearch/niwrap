@@ -11,6 +11,8 @@ TBSS_DEPROJECT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TbssDeprojectParameters = typing.TypedDict('TbssDeprojectParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_deproject"],
     "skeleton_space_input_image": InputPathType,
@@ -181,7 +183,11 @@ def tbss_deproject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_DEPROJECT_METADATA)
-    params = tbss_deproject_params(skeleton_space_input_image=skeleton_space_input_image, final_space_option=final_space_option, index_image_flag=index_image_flag)
+    params = tbss_deproject_params(
+        skeleton_space_input_image=skeleton_space_input_image,
+        final_space_option=final_space_option,
+        index_image_flag=index_image_flag,
+    )
     return tbss_deproject_execute(params, execution)
 
 

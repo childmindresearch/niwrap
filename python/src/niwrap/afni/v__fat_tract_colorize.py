@@ -11,6 +11,8 @@ V__FAT_TRACT_COLORIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFatTractColorizeParameters = typing.TypedDict('VFatTractColorizeParameters', {
     "__STYX_TYPE__": typing.Literal["@fat_tract_colorize"],
     "in_fa": InputPathType,
@@ -244,7 +246,15 @@ def v__fat_tract_colorize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FAT_TRACT_COLORIZE_METADATA)
-    params = v__fat_tract_colorize_params(in_fa=in_fa, in_v1=in_v1, in_tracts=in_tracts, prefix=prefix, in_ulay=in_ulay, no_view=no_view, only_view=only_view)
+    params = v__fat_tract_colorize_params(
+        in_fa=in_fa,
+        in_v1=in_v1,
+        in_tracts=in_tracts,
+        prefix=prefix,
+        in_ulay=in_ulay,
+        no_view=no_view,
+        only_view=only_view,
+    )
     return v__fat_tract_colorize_execute(params, execution)
 
 

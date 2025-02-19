@@ -11,6 +11,8 @@ V_3D_RANKIZER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRankizerParameters = typing.TypedDict('V3dRankizerParameters', {
     "__STYX_TYPE__": typing.Literal["3dRankizer"],
     "dataset": InputPathType,
@@ -219,7 +221,14 @@ def v_3d_rankizer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_RANKIZER_METADATA)
-    params = v_3d_rankizer_params(dataset=dataset, base_rank=base_rank, mask=mask, prefix=prefix, percentize=percentize, percentize_mask=percentize_mask)
+    params = v_3d_rankizer_params(
+        dataset=dataset,
+        base_rank=base_rank,
+        mask=mask,
+        prefix=prefix,
+        percentize=percentize,
+        percentize_mask=percentize_mask,
+    )
     return v_3d_rankizer_execute(params, execution)
 
 

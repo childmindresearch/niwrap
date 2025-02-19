@@ -11,6 +11,8 @@ BORDER_EXPORT_COLOR_TABLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BorderExportColorTableParameters = typing.TypedDict('BorderExportColorTableParameters', {
     "__STYX_TYPE__": typing.Literal["border-export-color-table"],
     "border_file": InputPathType,
@@ -181,7 +183,11 @@ def border_export_color_table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_EXPORT_COLOR_TABLE_METADATA)
-    params = border_export_color_table_params(border_file=border_file, table_out=table_out, opt_class_colors=opt_class_colors)
+    params = border_export_color_table_params(
+        border_file=border_file,
+        table_out=table_out,
+        opt_class_colors=opt_class_colors,
+    )
     return border_export_color_table_execute(params, execution)
 
 

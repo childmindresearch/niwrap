@@ -11,6 +11,8 @@ FSLSLICE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslsliceParameters = typing.TypedDict('FslsliceParameters', {
     "__STYX_TYPE__": typing.Literal["fslslice"],
     "volume": InputPathType,
@@ -168,7 +170,10 @@ def fslslice(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSLICE_METADATA)
-    params = fslslice_params(volume=volume, output_basename=output_basename)
+    params = fslslice_params(
+        volume=volume,
+        output_basename=output_basename,
+    )
     return fslslice_execute(params, execution)
 
 

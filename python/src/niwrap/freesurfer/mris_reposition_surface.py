@@ -11,6 +11,8 @@ MRIS_REPOSITION_SURFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRepositionSurfaceParameters = typing.TypedDict('MrisRepositionSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["mris_reposition_surface"],
     "surf": InputPathType,
@@ -228,7 +230,15 @@ def mris_reposition_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REPOSITION_SURFACE_METADATA)
-    params = mris_reposition_surface_params(surf=surf, volume=volume, points=points, output=output, size=size, sigma=sigma, iterations=iterations)
+    params = mris_reposition_surface_params(
+        surf=surf,
+        volume=volume,
+        points=points,
+        output=output,
+        size=size,
+        sigma=sigma,
+        iterations=iterations,
+    )
     return mris_reposition_surface_execute(params, execution)
 
 

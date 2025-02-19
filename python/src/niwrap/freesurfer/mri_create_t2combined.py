@@ -11,6 +11,8 @@ MRI_CREATE_T2COMBINED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCreateT2combinedParameters = typing.TypedDict('MriCreateT2combinedParameters', {
     "__STYX_TYPE__": typing.Literal["mri_create_t2combined"],
     "subjid": str,
@@ -211,7 +213,15 @@ def mri_create_t2combined(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CREATE_T2COMBINED_METADATA)
-    params = mri_create_t2combined_params(subjid=subjid, t1wb=t1wb, t2upper=t2upper, t2middle=t2middle, t2lower=t2lower, t2combined=t2combined, show=show)
+    params = mri_create_t2combined_params(
+        subjid=subjid,
+        t1wb=t1wb,
+        t2upper=t2upper,
+        t2middle=t2middle,
+        t2lower=t2lower,
+        t2combined=t2combined,
+        show=show,
+    )
     return mri_create_t2combined_execute(params, execution)
 
 

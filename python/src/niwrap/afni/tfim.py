@@ -11,6 +11,8 @@ TFIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 TfimParameters = typing.TypedDict('TfimParameters', {
     "__STYX_TYPE__": typing.Literal["tfim"],
     "prefix": typing.NotRequired[str | None],
@@ -244,7 +246,15 @@ def tfim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TFIM_METADATA)
-    params = tfim_params(prefix=prefix, pthresh=pthresh, eqcorr=eqcorr, paired=paired, set1_images=set1_images, set2_images=set2_images, base1_value=base1_value)
+    params = tfim_params(
+        prefix=prefix,
+        pthresh=pthresh,
+        eqcorr=eqcorr,
+        paired=paired,
+        set1_images=set1_images,
+        set2_images=set2_images,
+        base1_value=base1_value,
+    )
     return tfim_execute(params, execution)
 
 

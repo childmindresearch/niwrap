@@ -11,6 +11,8 @@ V_3DVOLREG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dvolregParameters = typing.TypedDict('V3dvolregParameters', {
     "__STYX_TYPE__": typing.Literal["3dvolreg"],
     "copyorigin": bool,
@@ -329,7 +331,23 @@ def v_3dvolreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DVOLREG_METADATA)
-    params = v_3dvolreg_params(copyorigin=copyorigin, twopass=twopass, fourier=fourier, in_weight_volume=in_weight_volume, in_weight_volume_2=in_weight_volume_2, interp=interp, num_threads=num_threads, outputtype=outputtype, timeshift=timeshift, verbose=verbose, basefile=basefile, zpad=zpad, prefix=prefix, maxdisp1d=maxdisp1d, in_file=in_file)
+    params = v_3dvolreg_params(
+        copyorigin=copyorigin,
+        twopass=twopass,
+        fourier=fourier,
+        in_weight_volume=in_weight_volume,
+        in_weight_volume_2=in_weight_volume_2,
+        interp=interp,
+        num_threads=num_threads,
+        outputtype=outputtype,
+        timeshift=timeshift,
+        verbose=verbose,
+        basefile=basefile,
+        zpad=zpad,
+        prefix=prefix,
+        maxdisp1d=maxdisp1d,
+        in_file=in_file,
+    )
     return v_3dvolreg_execute(params, execution)
 
 

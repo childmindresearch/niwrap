@@ -11,66 +11,94 @@ MRCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrconvertCoordParameters = typing.TypedDict('MrconvertCoordParameters', {
     "__STYX_TYPE__": typing.Literal["coord"],
     "axis": int,
     "selection": list[int],
 })
+
+
 MrconvertClearPropertyParameters = typing.TypedDict('MrconvertClearPropertyParameters', {
     "__STYX_TYPE__": typing.Literal["clear_property"],
     "key": str,
 })
+
+
 MrconvertSetPropertyParameters = typing.TypedDict('MrconvertSetPropertyParameters', {
     "__STYX_TYPE__": typing.Literal["set_property"],
     "key": str,
     "value": str,
 })
+
+
 MrconvertAppendPropertyParameters = typing.TypedDict('MrconvertAppendPropertyParameters', {
     "__STYX_TYPE__": typing.Literal["append_property"],
     "key": str,
     "value": str,
 })
+
+
 MrconvertVariousStringParameters = typing.TypedDict('MrconvertVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 MrconvertVariousFileParameters = typing.TypedDict('MrconvertVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 MrconvertVariousString1Parameters = typing.TypedDict('MrconvertVariousString1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
+
+
 MrconvertVariousFile1Parameters = typing.TypedDict('MrconvertVariousFile1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
+
+
 MrconvertFslgradParameters = typing.TypedDict('MrconvertFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 MrconvertExportGradFslParameters = typing.TypedDict('MrconvertExportGradFslParameters', {
     "__STYX_TYPE__": typing.Literal["export_grad_fsl"],
     "bvecs_path": str,
     "bvals_path": str,
 })
+
+
 MrconvertImportPeEddyParameters = typing.TypedDict('MrconvertImportPeEddyParameters', {
     "__STYX_TYPE__": typing.Literal["import_pe_eddy"],
     "config": InputPathType,
     "indices": InputPathType,
 })
+
+
 MrconvertExportPeEddyParameters = typing.TypedDict('MrconvertExportPeEddyParameters', {
     "__STYX_TYPE__": typing.Literal["export_pe_eddy"],
     "config": str,
     "indices": str,
 })
+
+
 MrconvertConfigParameters = typing.TypedDict('MrconvertConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrconvertParameters = typing.TypedDict('MrconvertParameters', {
     "__STYX_TYPE__": typing.Literal["mrconvert"],
     "coord": typing.NotRequired[list[MrconvertCoordParameters] | None],
@@ -1322,7 +1350,39 @@ def mrconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRCONVERT_METADATA)
-    params = mrconvert_params(coord=coord, vox=vox, axes=axes, scaling=scaling, json_import=json_import, json_export=json_export, clear_property=clear_property, set_property=set_property, append_property=append_property, copy_properties=copy_properties, strides=strides, datatype=datatype, grad=grad, fslgrad=fslgrad, bvalue_scaling=bvalue_scaling, export_grad_mrtrix=export_grad_mrtrix, export_grad_fsl=export_grad_fsl, import_pe_table=import_pe_table, import_pe_eddy=import_pe_eddy, export_pe_table=export_pe_table, export_pe_eddy=export_pe_eddy, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = mrconvert_params(
+        coord=coord,
+        vox=vox,
+        axes=axes,
+        scaling=scaling,
+        json_import=json_import,
+        json_export=json_export,
+        clear_property=clear_property,
+        set_property=set_property,
+        append_property=append_property,
+        copy_properties=copy_properties,
+        strides=strides,
+        datatype=datatype,
+        grad=grad,
+        fslgrad=fslgrad,
+        bvalue_scaling=bvalue_scaling,
+        export_grad_mrtrix=export_grad_mrtrix,
+        export_grad_fsl=export_grad_fsl,
+        import_pe_table=import_pe_table,
+        import_pe_eddy=import_pe_eddy,
+        export_pe_table=export_pe_table,
+        export_pe_eddy=export_pe_eddy,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return mrconvert_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ANTS_N4_BIAS_FIELD_CORRECTION_FS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 AntsN4BiasFieldCorrectionFsParameters = typing.TypedDict('AntsN4BiasFieldCorrectionFsParameters', {
     "__STYX_TYPE__": typing.Literal["AntsN4BiasFieldCorrectionFs"],
     "input_file": InputPathType,
@@ -246,7 +248,15 @@ def ants_n4_bias_field_correction_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_N4_BIAS_FIELD_CORRECTION_FS_METADATA)
-    params = ants_n4_bias_field_correction_fs_params(input_file=input_file, output_file=output_file, mask_file=mask_file, shrink_factor=shrink_factor, iterations=iterations, output_dtype=output_dtype, replace_zeros=replace_zeros)
+    params = ants_n4_bias_field_correction_fs_params(
+        input_file=input_file,
+        output_file=output_file,
+        mask_file=mask_file,
+        shrink_factor=shrink_factor,
+        iterations=iterations,
+        output_dtype=output_dtype,
+        replace_zeros=replace_zeros,
+    )
     return ants_n4_bias_field_correction_fs_execute(params, execution)
 
 

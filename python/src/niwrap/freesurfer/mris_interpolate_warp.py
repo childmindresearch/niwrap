@@ -11,6 +11,8 @@ MRIS_INTERPOLATE_WARP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisInterpolateWarpParameters = typing.TypedDict('MrisInterpolateWarpParameters', {
     "__STYX_TYPE__": typing.Literal["mris_interpolate_warp"],
     "start_surface": InputPathType,
@@ -169,7 +171,11 @@ def mris_interpolate_warp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INTERPOLATE_WARP_METADATA)
-    params = mris_interpolate_warp_params(start_surface=start_surface, end_surface=end_surface, warp_field=warp_field)
+    params = mris_interpolate_warp_params(
+        start_surface=start_surface,
+        end_surface=end_surface,
+        warp_field=warp_field,
+    )
     return mris_interpolate_warp_execute(params, execution)
 
 

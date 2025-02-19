@@ -11,6 +11,8 @@ SLICEDELAY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SlicedelayParameters = typing.TypedDict('SlicedelayParameters', {
     "__STYX_TYPE__": typing.Literal["slicedelay"],
     "slicedelayfile": str,
@@ -194,7 +196,12 @@ def slicedelay(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICEDELAY_METADATA)
-    params = slicedelay_params(slicedelayfile=slicedelayfile, nslices=nslices, order=order, ngroups=ngroups)
+    params = slicedelay_params(
+        slicedelayfile=slicedelayfile,
+        nslices=nslices,
+        order=order,
+        ngroups=ngroups,
+    )
     return slicedelay_execute(params, execution)
 
 

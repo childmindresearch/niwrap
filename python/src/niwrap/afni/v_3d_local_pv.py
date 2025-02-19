@@ -11,6 +11,8 @@ V_3D_LOCAL_PV_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLocalPvParameters = typing.TypedDict('V3dLocalPvParameters', {
     "__STYX_TYPE__": typing.Literal["3dLocalPV"],
     "input_dataset": InputPathType,
@@ -291,7 +293,19 @@ def v_3d_local_pv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCAL_PV_METADATA)
-    params = v_3d_local_pv_params(input_dataset=input_dataset, mask=mask, automask=automask, prefix=prefix, prefix2=prefix2, evprefix=evprefix, neighborhood=neighborhood, despike=despike, polort=polort, vnorm=vnorm, vproj=vproj)
+    params = v_3d_local_pv_params(
+        input_dataset=input_dataset,
+        mask=mask,
+        automask=automask,
+        prefix=prefix,
+        prefix2=prefix2,
+        evprefix=evprefix,
+        neighborhood=neighborhood,
+        despike=despike,
+        polort=polort,
+        vnorm=vnorm,
+        vproj=vproj,
+    )
     return v_3d_local_pv_execute(params, execution)
 
 

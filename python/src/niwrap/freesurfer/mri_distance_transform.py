@@ -11,6 +11,8 @@ MRI_DISTANCE_TRANSFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriDistanceTransformParameters = typing.TypedDict('MriDistanceTransformParameters', {
     "__STYX_TYPE__": typing.Literal["mri_distance_transform"],
     "input_volume": InputPathType,
@@ -191,7 +193,13 @@ def mri_distance_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DISTANCE_TRANSFORM_METADATA)
-    params = mri_distance_transform_params(input_volume=input_volume, label=label, max_distance=max_distance, mode=mode, output_volume=output_volume)
+    params = mri_distance_transform_params(
+        input_volume=input_volume,
+        label=label,
+        max_distance=max_distance,
+        mode=mode,
+        output_volume=output_volume,
+    )
     return mri_distance_transform_execute(params, execution)
 
 

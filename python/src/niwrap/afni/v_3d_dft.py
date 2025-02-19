@@ -11,6 +11,8 @@ V_3D_DFT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDftParameters = typing.TypedDict('V3dDftParameters', {
     "__STYX_TYPE__": typing.Literal["3dDFT"],
     "infile": InputPathType,
@@ -222,7 +224,15 @@ def v_3d_dft(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DFT_METADATA)
-    params = v_3d_dft_params(infile=infile, prefix=prefix, abs_output=abs_output, nfft=nfft, detrend=detrend, taper=taper, inverse=inverse)
+    params = v_3d_dft_params(
+        infile=infile,
+        prefix=prefix,
+        abs_output=abs_output,
+        nfft=nfft,
+        detrend=detrend,
+        taper=taper,
+        inverse=inverse,
+    )
     return v_3d_dft_execute(params, execution)
 
 

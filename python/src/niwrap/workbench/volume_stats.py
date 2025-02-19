@@ -11,11 +11,15 @@ VOLUME_STATS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeStatsRoiParameters = typing.TypedDict('VolumeStatsRoiParameters', {
     "__STYX_TYPE__": typing.Literal["roi"],
     "roi_volume": InputPathType,
     "opt_match_maps": bool,
 })
+
+
 VolumeStatsParameters = typing.TypedDict('VolumeStatsParameters', {
     "__STYX_TYPE__": typing.Literal["volume-stats"],
     "volume_in": InputPathType,
@@ -318,7 +322,14 @@ def volume_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_STATS_METADATA)
-    params = volume_stats_params(volume_in=volume_in, opt_reduce_operation=opt_reduce_operation, opt_percentile_percent=opt_percentile_percent, opt_subvolume_subvolume=opt_subvolume_subvolume, roi=roi, opt_show_map_name=opt_show_map_name)
+    params = volume_stats_params(
+        volume_in=volume_in,
+        opt_reduce_operation=opt_reduce_operation,
+        opt_percentile_percent=opt_percentile_percent,
+        opt_subvolume_subvolume=opt_subvolume_subvolume,
+        roi=roi,
+        opt_show_map_name=opt_show_map_name,
+    )
     return volume_stats_execute(params, execution)
 
 

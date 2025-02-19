@@ -11,6 +11,8 @@ V_3D_LMER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLmerParameters = typing.TypedDict('V3dLmerParameters', {
     "__STYX_TYPE__": typing.Literal["3dLMEr"],
     "bound_lower": typing.NotRequired[float | None],
@@ -387,7 +389,30 @@ def v_3d_lmer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LMER_METADATA)
-    params = v_3d_lmer_params(bound_lower=bound_lower, bound_upper=bound_upper, cio=cio, data_table=data_table, debug_args=debug_args, glf_code=glf_code, glt_code=glt_code, help_=help_, input_file_column=input_file_column, jobs=jobs, mask=mask, model=model, prefix=prefix, qvar_centers=qvar_centers, qvars=qvars, resid=resid, rio=rio, show_options=show_options, ss_type=ss_type, trr=trr, vvar_centers=vvar_centers, vvars=vvars)
+    params = v_3d_lmer_params(
+        bound_lower=bound_lower,
+        bound_upper=bound_upper,
+        cio=cio,
+        data_table=data_table,
+        debug_args=debug_args,
+        glf_code=glf_code,
+        glt_code=glt_code,
+        help_=help_,
+        input_file_column=input_file_column,
+        jobs=jobs,
+        mask=mask,
+        model=model,
+        prefix=prefix,
+        qvar_centers=qvar_centers,
+        qvars=qvars,
+        resid=resid,
+        rio=rio,
+        show_options=show_options,
+        ss_type=ss_type,
+        trr=trr,
+        vvar_centers=vvar_centers,
+        vvars=vvars,
+    )
     return v_3d_lmer_execute(params, execution)
 
 

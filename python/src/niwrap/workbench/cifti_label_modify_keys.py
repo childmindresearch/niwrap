@@ -11,6 +11,8 @@ CIFTI_LABEL_MODIFY_KEYS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiLabelModifyKeysParameters = typing.TypedDict('CiftiLabelModifyKeysParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-label-modify-keys"],
     "cifti_in": InputPathType,
@@ -216,7 +218,12 @@ def cifti_label_modify_keys(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_LABEL_MODIFY_KEYS_METADATA)
-    params = cifti_label_modify_keys_params(cifti_in=cifti_in, remap_file=remap_file, cifti_out=cifti_out, opt_column_column=opt_column_column)
+    params = cifti_label_modify_keys_params(
+        cifti_in=cifti_in,
+        remap_file=remap_file,
+        cifti_out=cifti_out,
+        opt_column_column=opt_column_column,
+    )
     return cifti_label_modify_keys_execute(params, execution)
 
 

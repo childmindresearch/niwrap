@@ -11,6 +11,8 @@ BREC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BrecParameters = typing.TypedDict('BrecParameters', {
     "__STYX_TYPE__": typing.Literal["brec"],
     "my_file": str,
@@ -163,7 +165,10 @@ def brec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BREC_METADATA)
-    params = brec_params(my_file=my_file, depth_limit=depth_limit)
+    params = brec_params(
+        my_file=my_file,
+        depth_limit=depth_limit,
+    )
     return brec_execute(params, execution)
 
 

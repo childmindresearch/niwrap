@@ -11,6 +11,8 @@ V_3D_SYNTHESIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSynthesizeParameters = typing.TypedDict('V3dSynthesizeParameters', {
     "__STYX_TYPE__": typing.Literal["3dSynthesize"],
     "c_bucket": InputPathType,
@@ -228,7 +230,15 @@ def v_3d_synthesize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SYNTHESIZE_METADATA)
-    params = v_3d_synthesize_params(c_bucket=c_bucket, matrix=matrix, select_=select_, prefix=prefix, dry_flag=dry_flag, tr=tr, cenfill=cenfill)
+    params = v_3d_synthesize_params(
+        c_bucket=c_bucket,
+        matrix=matrix,
+        select_=select_,
+        prefix=prefix,
+        dry_flag=dry_flag,
+        tr=tr,
+        cenfill=cenfill,
+    )
     return v_3d_synthesize_execute(params, execution)
 
 

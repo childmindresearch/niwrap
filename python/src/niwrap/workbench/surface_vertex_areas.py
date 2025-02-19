@@ -11,6 +11,8 @@ SURFACE_VERTEX_AREAS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceVertexAreasParameters = typing.TypedDict('SurfaceVertexAreasParameters', {
     "__STYX_TYPE__": typing.Literal["surface-vertex-areas"],
     "surface": InputPathType,
@@ -173,7 +175,10 @@ def surface_vertex_areas(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_VERTEX_AREAS_METADATA)
-    params = surface_vertex_areas_params(surface=surface, metric=metric)
+    params = surface_vertex_areas_params(
+        surface=surface,
+        metric=metric,
+    )
     return surface_vertex_areas_execute(params, execution)
 
 

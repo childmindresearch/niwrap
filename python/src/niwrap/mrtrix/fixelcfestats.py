@@ -11,23 +11,33 @@ FIXELCFESTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 FixelcfestatsColumnParameters = typing.TypedDict('FixelcfestatsColumnParameters', {
     "__STYX_TYPE__": typing.Literal["column"],
     "path": InputPathType,
 })
+
+
 FixelcfestatsConfigParameters = typing.TypedDict('FixelcfestatsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 FixelcfestatsVariousStringParameters = typing.TypedDict('FixelcfestatsVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 FixelcfestatsVariousFileParameters = typing.TypedDict('FixelcfestatsVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 FixelcfestatsParameters = typing.TypedDict('FixelcfestatsParameters', {
     "__STYX_TYPE__": typing.Literal["fixelcfestats"],
     "mask": typing.NotRequired[InputPathType | None],
@@ -826,7 +836,43 @@ def fixelcfestats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELCFESTATS_METADATA)
-    params = fixelcfestats_params(mask=mask, notest=notest, errors=errors, exchange_within=exchange_within, exchange_whole=exchange_whole, strong=strong, nshuffles=nshuffles, permutations=permutations, nonstationarity=nonstationarity, skew_nonstationarity=skew_nonstationarity, nshuffles_nonstationarity=nshuffles_nonstationarity, permutations_nonstationarity=permutations_nonstationarity, cfe_dh=cfe_dh, cfe_e=cfe_e, cfe_h=cfe_h, cfe_c=cfe_c, cfe_legacy=cfe_legacy, variance=variance, ftests=ftests, fonly=fonly, column=column, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_fixel_directory=in_fixel_directory, subjects=subjects, design=design, contrast=contrast, connectivity=connectivity, out_fixel_directory=out_fixel_directory)
+    params = fixelcfestats_params(
+        mask=mask,
+        notest=notest,
+        errors=errors,
+        exchange_within=exchange_within,
+        exchange_whole=exchange_whole,
+        strong=strong,
+        nshuffles=nshuffles,
+        permutations=permutations,
+        nonstationarity=nonstationarity,
+        skew_nonstationarity=skew_nonstationarity,
+        nshuffles_nonstationarity=nshuffles_nonstationarity,
+        permutations_nonstationarity=permutations_nonstationarity,
+        cfe_dh=cfe_dh,
+        cfe_e=cfe_e,
+        cfe_h=cfe_h,
+        cfe_c=cfe_c,
+        cfe_legacy=cfe_legacy,
+        variance=variance,
+        ftests=ftests,
+        fonly=fonly,
+        column=column,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_fixel_directory=in_fixel_directory,
+        subjects=subjects,
+        design=design,
+        contrast=contrast,
+        connectivity=connectivity,
+        out_fixel_directory=out_fixel_directory,
+    )
     return fixelcfestats_execute(params, execution)
 
 

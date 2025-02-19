@@ -11,6 +11,8 @@ MRI_LABEL2VOL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLabel2volParameters = typing.TypedDict('MriLabel2volParameters', {
     "__STYX_TYPE__": typing.Literal["mri_label2vol"],
     "labels": typing.NotRequired[list[str] | None],
@@ -380,7 +382,26 @@ def mri_label2vol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LABEL2VOL_METADATA)
-    params = mri_label2vol_params(labels=labels, annotation=annotation, segmentation=segmentation, template=template, registration=registration, identity_flag=identity_flag, fill_threshold=fill_threshold, label_vox_vol=label_vox_vol, projection=projection, subject=subject, hemisphere=hemisphere, output_volume=output_volume, hits_volume=hits_volume, label_stat_volume=label_stat_volume, stat_threshold=stat_threshold, offset=offset, defects=defects, native_vox2ras_flag=native_vox2ras_flag)
+    params = mri_label2vol_params(
+        labels=labels,
+        annotation=annotation,
+        segmentation=segmentation,
+        template=template,
+        registration=registration,
+        identity_flag=identity_flag,
+        fill_threshold=fill_threshold,
+        label_vox_vol=label_vox_vol,
+        projection=projection,
+        subject=subject,
+        hemisphere=hemisphere,
+        output_volume=output_volume,
+        hits_volume=hits_volume,
+        label_stat_volume=label_stat_volume,
+        stat_threshold=stat_threshold,
+        offset=offset,
+        defects=defects,
+        native_vox2ras_flag=native_vox2ras_flag,
+    )
     return mri_label2vol_execute(params, execution)
 
 

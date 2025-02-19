@@ -11,6 +11,8 @@ V__IS_OBLIQUE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VIsObliqueParameters = typing.TypedDict('VIsObliqueParameters', {
     "__STYX_TYPE__": typing.Literal["@isOblique"],
     "infile": InputPathType,
@@ -159,7 +161,9 @@ def v__is_oblique(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__IS_OBLIQUE_METADATA)
-    params = v__is_oblique_params(infile=infile)
+    params = v__is_oblique_params(
+        infile=infile,
+    )
     return v__is_oblique_execute(params, execution)
 
 

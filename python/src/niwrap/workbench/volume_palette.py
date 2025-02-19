@@ -11,26 +11,36 @@ VOLUME_PALETTE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumePalettePosPercentParameters = typing.TypedDict('VolumePalettePosPercentParameters', {
     "__STYX_TYPE__": typing.Literal["pos_percent"],
     "pos_min__": float,
     "pos_max__": float,
 })
+
+
 VolumePaletteNegPercentParameters = typing.TypedDict('VolumePaletteNegPercentParameters', {
     "__STYX_TYPE__": typing.Literal["neg_percent"],
     "neg_min__": float,
     "neg_max__": float,
 })
+
+
 VolumePalettePosUserParameters = typing.TypedDict('VolumePalettePosUserParameters', {
     "__STYX_TYPE__": typing.Literal["pos_user"],
     "pos_min_user": float,
     "pos_max_user": float,
 })
+
+
 VolumePaletteNegUserParameters = typing.TypedDict('VolumePaletteNegUserParameters', {
     "__STYX_TYPE__": typing.Literal["neg_user"],
     "neg_min_user": float,
     "neg_max_user": float,
 })
+
+
 VolumePaletteThresholdingParameters = typing.TypedDict('VolumePaletteThresholdingParameters', {
     "__STYX_TYPE__": typing.Literal["thresholding"],
     "type": str,
@@ -38,6 +48,8 @@ VolumePaletteThresholdingParameters = typing.TypedDict('VolumePaletteThresholdin
     "min": float,
     "max": float,
 })
+
+
 VolumePaletteParameters = typing.TypedDict('VolumePaletteParameters', {
     "__STYX_TYPE__": typing.Literal["volume-palette"],
     "volume": str,
@@ -699,7 +711,22 @@ def volume_palette(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_PALETTE_METADATA)
-    params = volume_palette_params(volume=volume, mode=mode, opt_subvolume_subvolume=opt_subvolume_subvolume, pos_percent=pos_percent, neg_percent=neg_percent, pos_user=pos_user, neg_user=neg_user, opt_interpolate_interpolate=opt_interpolate_interpolate, opt_disp_pos_display=opt_disp_pos_display, opt_disp_neg_display=opt_disp_neg_display, opt_disp_zero_display=opt_disp_zero_display, opt_palette_name_name=opt_palette_name_name, thresholding=thresholding, opt_inversion_type=opt_inversion_type)
+    params = volume_palette_params(
+        volume=volume,
+        mode=mode,
+        opt_subvolume_subvolume=opt_subvolume_subvolume,
+        pos_percent=pos_percent,
+        neg_percent=neg_percent,
+        pos_user=pos_user,
+        neg_user=neg_user,
+        opt_interpolate_interpolate=opt_interpolate_interpolate,
+        opt_disp_pos_display=opt_disp_pos_display,
+        opt_disp_neg_display=opt_disp_neg_display,
+        opt_disp_zero_display=opt_disp_zero_display,
+        opt_palette_name_name=opt_palette_name_name,
+        thresholding=thresholding,
+        opt_inversion_type=opt_inversion_type,
+    )
     return volume_palette_execute(params, execution)
 
 

@@ -11,26 +11,36 @@ CIFTI_CREATE_LABEL_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCreateLabelVolumeParameters = typing.TypedDict('CiftiCreateLabelVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "label_volume": InputPathType,
     "structure_label_volume": InputPathType,
 })
+
+
 CiftiCreateLabelLeftLabelParameters = typing.TypedDict('CiftiCreateLabelLeftLabelParameters', {
     "__STYX_TYPE__": typing.Literal["left_label"],
     "label": InputPathType,
     "opt_roi_left_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateLabelRightLabelParameters = typing.TypedDict('CiftiCreateLabelRightLabelParameters', {
     "__STYX_TYPE__": typing.Literal["right_label"],
     "label": InputPathType,
     "opt_roi_right_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateLabelCerebellumLabelParameters = typing.TypedDict('CiftiCreateLabelCerebellumLabelParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_label"],
     "label": InputPathType,
     "opt_roi_cerebellum_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateLabelParameters = typing.TypedDict('CiftiCreateLabelParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-create-label"],
     "cifti_out": str,
@@ -499,7 +509,13 @@ def cifti_create_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_LABEL_METADATA)
-    params = cifti_create_label_params(cifti_out=cifti_out, volume=volume, left_label=left_label, right_label=right_label, cerebellum_label=cerebellum_label)
+    params = cifti_create_label_params(
+        cifti_out=cifti_out,
+        volume=volume,
+        left_label=left_label,
+        right_label=right_label,
+        cerebellum_label=cerebellum_label,
+    )
     return cifti_create_label_execute(params, execution)
 
 

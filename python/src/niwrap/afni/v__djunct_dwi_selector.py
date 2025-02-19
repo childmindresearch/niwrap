@@ -11,6 +11,8 @@ V__DJUNCT_DWI_SELECTOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunctDwiSelectorParameters = typing.TypedDict('VDjunctDwiSelectorParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_dwi_selector"],
     "dwi": InputPathType,
@@ -173,7 +175,11 @@ def v__djunct_dwi_selector(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_DWI_SELECTOR_METADATA)
-    params = v__djunct_dwi_selector_params(dwi=dwi, png=png, outfile=outfile)
+    params = v__djunct_dwi_selector_params(
+        dwi=dwi,
+        png=png,
+        outfile=outfile,
+    )
     return v__djunct_dwi_selector_execute(params, execution)
 
 

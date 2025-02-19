@@ -11,6 +11,8 @@ DUAL_REGRESSION_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 DualRegressionParameters = typing.TypedDict('DualRegressionParameters', {
     "__STYX_TYPE__": typing.Literal["dual_regression"],
     "group_ic_maps": InputPathType,
@@ -234,7 +236,16 @@ def dual_regression(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DUAL_REGRESSION_METADATA)
-    params = dual_regression_params(group_ic_maps=group_ic_maps, des_norm=des_norm, design_mat=design_mat, design_con=design_con, n_perm=n_perm, thr_flag=thr_flag, output_directory=output_directory, input_files=input_files)
+    params = dual_regression_params(
+        group_ic_maps=group_ic_maps,
+        des_norm=des_norm,
+        design_mat=design_mat,
+        design_con=design_con,
+        n_perm=n_perm,
+        thr_flag=thr_flag,
+        output_directory=output_directory,
+        input_files=input_files,
+    )
     return dual_regression_execute(params, execution)
 
 

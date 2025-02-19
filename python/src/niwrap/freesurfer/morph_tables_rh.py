@@ -11,6 +11,8 @@ MORPH_TABLES_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MorphTablesRhParameters = typing.TypedDict('MorphTablesRhParameters', {
     "__STYX_TYPE__": typing.Literal["morph_tables-rh"],
     "options": typing.NotRequired[str | None],
@@ -161,7 +163,9 @@ def morph_tables_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_TABLES_RH_METADATA)
-    params = morph_tables_rh_params(options=options)
+    params = morph_tables_rh_params(
+        options=options,
+    )
     return morph_tables_rh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSL_SCHURPROD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslSchurprodParameters = typing.TypedDict('FslSchurprodParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_schurprod"],
     "input_file": InputPathType,
@@ -234,7 +236,16 @@ def fsl_schurprod(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_SCHURPROD_METADATA)
-    params = fsl_schurprod_params(input_file=input_file, design_file=design_file, output_file=output_file, regression_flag=regression_flag, index=index, mask_file=mask_file, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = fsl_schurprod_params(
+        input_file=input_file,
+        design_file=design_file,
+        output_file=output_file,
+        regression_flag=regression_flag,
+        index=index,
+        mask_file=mask_file,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return fsl_schurprod_execute(params, execution)
 
 

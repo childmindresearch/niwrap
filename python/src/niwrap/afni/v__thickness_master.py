@@ -11,6 +11,8 @@ V__THICKNESS_MASTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VThicknessMasterParameters = typing.TypedDict('VThicknessMasterParameters', {
     "__STYX_TYPE__": typing.Literal["@thickness_master"],
     "maskset": InputPathType,
@@ -194,7 +196,11 @@ def v__thickness_master(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__THICKNESS_MASTER_METADATA)
-    params = v__thickness_master_params(maskset=maskset, surfset=surfset, outdir=outdir)
+    params = v__thickness_master_params(
+        maskset=maskset,
+        surfset=surfset,
+        outdir=outdir,
+    )
     return v__thickness_master_execute(params, execution)
 
 

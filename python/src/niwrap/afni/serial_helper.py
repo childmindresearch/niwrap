@@ -11,6 +11,8 @@ SERIAL_HELPER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SerialHelperParameters = typing.TypedDict('SerialHelperParameters', {
     "__STYX_TYPE__": typing.Literal["serial_helper"],
     "serial_port": str,
@@ -270,7 +272,20 @@ def serial_helper(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SERIAL_HELPER_METADATA)
-    params = serial_helper_params(serial_port=serial_port, sock_num=sock_num, mp_max=mp_max, mp_min=mp_min, num_extra=num_extra, disp_all=disp_all, debug=debug, show_times=show_times, help_=help_, hist=hist, no_serial=no_serial, version=version)
+    params = serial_helper_params(
+        serial_port=serial_port,
+        sock_num=sock_num,
+        mp_max=mp_max,
+        mp_min=mp_min,
+        num_extra=num_extra,
+        disp_all=disp_all,
+        debug=debug,
+        show_times=show_times,
+        help_=help_,
+        hist=hist,
+        no_serial=no_serial,
+        version=version,
+    )
     return serial_helper_execute(params, execution)
 
 

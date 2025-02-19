@@ -11,6 +11,8 @@ AVI2TALXFM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Avi2talxfmParameters = typing.TypedDict('Avi2talxfmParameters', {
     "__STYX_TYPE__": typing.Literal["avi2talxfm"],
     "input_volume": InputPathType,
@@ -180,7 +182,12 @@ def avi2talxfm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AVI2TALXFM_METADATA)
-    params = avi2talxfm_params(input_volume=input_volume, target_volume=target_volume, vox2vox_transform=vox2vox_transform, output_xfm=output_xfm)
+    params = avi2talxfm_params(
+        input_volume=input_volume,
+        target_volume=target_volume,
+        vox2vox_transform=vox2vox_transform,
+        output_xfm=output_xfm,
+    )
     return avi2talxfm_execute(params, execution)
 
 

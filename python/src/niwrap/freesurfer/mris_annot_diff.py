@@ -11,6 +11,8 @@ MRIS_ANNOT_DIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisAnnotDiffParameters = typing.TypedDict('MrisAnnotDiffParameters', {
     "__STYX_TYPE__": typing.Literal["mris_annot_diff"],
     "annot1": InputPathType,
@@ -178,7 +180,12 @@ def mris_annot_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ANNOT_DIFF_METADATA)
-    params = mris_annot_diff_params(annot1=annot1, annot2=annot2, diff_ctab=diff_ctab, verbose=verbose)
+    params = mris_annot_diff_params(
+        annot1=annot1,
+        annot2=annot2,
+        diff_ctab=diff_ctab,
+        verbose=verbose,
+    )
     return mris_annot_diff_execute(params, execution)
 
 

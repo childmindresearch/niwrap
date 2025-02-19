@@ -11,6 +11,8 @@ MRIS_FIND_FLAT_REGIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisFindFlatRegionsParameters = typing.TypedDict('MrisFindFlatRegionsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_find_flat_regions"],
     "surface": InputPathType,
@@ -181,7 +183,11 @@ def mris_find_flat_regions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FIND_FLAT_REGIONS_METADATA)
-    params = mris_find_flat_regions_params(surface=surface, wfile=wfile, threshold=threshold)
+    params = mris_find_flat_regions_params(
+        surface=surface,
+        wfile=wfile,
+        threshold=threshold,
+    )
     return mris_find_flat_regions_execute(params, execution)
 
 

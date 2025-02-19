@@ -11,6 +11,8 @@ MRI_RF_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRfTrainParameters = typing.TypedDict('MriRfTrainParameters', {
     "__STYX_TYPE__": typing.Literal["mri_rf_train"],
     "seg_volume": str,
@@ -244,7 +246,17 @@ def mri_rf_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RF_TRAIN_METADATA)
-    params = mri_rf_train_params(seg_volume=seg_volume, atlas_transform=atlas_transform, mask_volume=mask_volume, node_spacing=node_spacing, prior_spacing=prior_spacing, input_training_data=input_training_data, sanity_check=sanity_check, subjects=subjects, output_rfa=output_rfa)
+    params = mri_rf_train_params(
+        seg_volume=seg_volume,
+        atlas_transform=atlas_transform,
+        mask_volume=mask_volume,
+        node_spacing=node_spacing,
+        prior_spacing=prior_spacing,
+        input_training_data=input_training_data,
+        sanity_check=sanity_check,
+        subjects=subjects,
+        output_rfa=output_rfa,
+    )
     return mri_rf_train_execute(params, execution)
 
 

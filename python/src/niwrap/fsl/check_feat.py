@@ -11,6 +11,8 @@ CHECK_FEAT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 CheckFeatParameters = typing.TypedDict('CheckFeatParameters', {
     "__STYX_TYPE__": typing.Literal["checkFEAT"],
     "report_file": InputPathType,
@@ -169,7 +171,10 @@ def check_feat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CHECK_FEAT_METADATA)
-    params = check_feat_params(report_file=report_file, report_log_file=report_log_file)
+    params = check_feat_params(
+        report_file=report_file,
+        report_log_file=report_log_file,
+    )
     return check_feat_execute(params, execution)
 
 

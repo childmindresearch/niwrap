@@ -11,6 +11,8 @@ V_3D_PVMAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dPvmapParameters = typing.TypedDict('V3dPvmapParameters', {
     "__STYX_TYPE__": typing.Literal["3dPVmap"],
     "prefix": typing.NotRequired[str | None],
@@ -201,7 +203,12 @@ def v_3d_pvmap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PVMAP_METADATA)
-    params = v_3d_pvmap_params(prefix=prefix, mask=mask, automask=automask, inputdataset=inputdataset)
+    params = v_3d_pvmap_params(
+        prefix=prefix,
+        mask=mask,
+        automask=automask,
+        inputdataset=inputdataset,
+    )
     return v_3d_pvmap_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ REINFLATE_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ReinflateSubjectParameters = typing.TypedDict('ReinflateSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["reinflate_subject"],
     "args": typing.NotRequired[str | None],
@@ -157,7 +159,9 @@ def reinflate_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REINFLATE_SUBJECT_METADATA)
-    params = reinflate_subject_params(args=args)
+    params = reinflate_subject_params(
+        args=args,
+    )
     return reinflate_subject_execute(params, execution)
 
 

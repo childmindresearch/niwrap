@@ -11,722 +11,1082 @@ C3D_METADATA = Metadata(
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
 )
+
+
 C3dAccumParameters = typing.TypedDict('C3dAccumParameters', {
     "__STYX_TYPE__": typing.Literal["accum"],
     "accum": str,
 })
+
+
 C3dAcosParameters = typing.TypedDict('C3dAcosParameters', {
     "__STYX_TYPE__": typing.Literal["acos"],
     "acos": str,
 })
+
+
 C3dAddParameters = typing.TypedDict('C3dAddParameters', {
     "__STYX_TYPE__": typing.Literal["add"],
     "add": str,
 })
+
+
 C3dAlignLandmarksParameters = typing.TypedDict('C3dAlignLandmarksParameters', {
     "__STYX_TYPE__": typing.Literal["align_landmarks"],
     "align_landmarks": str,
 })
+
+
 C3dAnisotropicDiffusionParameters = typing.TypedDict('C3dAnisotropicDiffusionParameters', {
     "__STYX_TYPE__": typing.Literal["anisotropic_diffusion"],
     "anisotropic_diffusion": str,
 })
+
+
 C3dAntialiasParameters = typing.TypedDict('C3dAntialiasParameters', {
     "__STYX_TYPE__": typing.Literal["antialias"],
     "antialias": str,
 })
+
+
 C3dSetParameters = typing.TypedDict('C3dSetParameters', {
     "__STYX_TYPE__": typing.Literal["set"],
     "set": str,
 })
+
+
 C3dAsinParameters = typing.TypedDict('C3dAsinParameters', {
     "__STYX_TYPE__": typing.Literal["asin"],
     "asin": str,
 })
+
+
 C3dAtan2Parameters = typing.TypedDict('C3dAtan2Parameters', {
     "__STYX_TYPE__": typing.Literal["atan2"],
     "atan2": str,
 })
+
+
 C3dBackgroundParameters = typing.TypedDict('C3dBackgroundParameters', {
     "__STYX_TYPE__": typing.Literal["background"],
     "background": str,
 })
+
+
 C3dN4BiasCorrectionParameters = typing.TypedDict('C3dN4BiasCorrectionParameters', {
     "__STYX_TYPE__": typing.Literal["n4_bias_correction"],
     "n4_bias_correction": str,
 })
+
+
 C3dBinarizeParameters = typing.TypedDict('C3dBinarizeParameters', {
     "__STYX_TYPE__": typing.Literal["binarize"],
     "binarize": str,
 })
+
+
 C3dCannyParameters = typing.TypedDict('C3dCannyParameters', {
     "__STYX_TYPE__": typing.Literal["canny"],
     "canny": str,
 })
+
+
 C3dCeilParameters = typing.TypedDict('C3dCeilParameters', {
     "__STYX_TYPE__": typing.Literal["ceil"],
     "ceil": str,
 })
+
+
 C3dCentroidParameters = typing.TypedDict('C3dCentroidParameters', {
     "__STYX_TYPE__": typing.Literal["centroid"],
     "centroid": str,
 })
+
+
 C3dCentroidMarkParameters = typing.TypedDict('C3dCentroidMarkParameters', {
     "__STYX_TYPE__": typing.Literal["centroid_mark"],
     "centroid_mark": str,
 })
+
+
 C3dConnectedComponentsParameters = typing.TypedDict('C3dConnectedComponentsParameters', {
     "__STYX_TYPE__": typing.Literal["connected_components"],
     "connected_components": str,
 })
+
+
 C3dClearParameters = typing.TypedDict('C3dClearParameters', {
     "__STYX_TYPE__": typing.Literal["clear"],
     "clear": str,
 })
+
+
 C3dClipParameters = typing.TypedDict('C3dClipParameters', {
     "__STYX_TYPE__": typing.Literal["clip"],
     "clip": str,
 })
+
+
 C3dColorMapParameters = typing.TypedDict('C3dColorMapParameters', {
     "__STYX_TYPE__": typing.Literal["color_map"],
     "color_map": str,
 })
+
+
 C3dCompressParameters = typing.TypedDict('C3dCompressParameters', {
     "__STYX_TYPE__": typing.Literal["compress"],
     "compress": str,
 })
+
+
 C3dNoCompressParameters = typing.TypedDict('C3dNoCompressParameters', {
     "__STYX_TYPE__": typing.Literal["no_compress"],
     "no_compress": str,
 })
+
+
 C3dConvParameters = typing.TypedDict('C3dConvParameters', {
     "__STYX_TYPE__": typing.Literal["conv"],
     "conv": str,
 })
+
+
 C3dCoordinateMapVoxelParameters = typing.TypedDict('C3dCoordinateMapVoxelParameters', {
     "__STYX_TYPE__": typing.Literal["coordinate_map_voxel"],
     "coordinate_map_voxel": str,
 })
+
+
 C3dCoordinateMapPhysicalParameters = typing.TypedDict('C3dCoordinateMapPhysicalParameters', {
     "__STYX_TYPE__": typing.Literal["coordinate_map_physical"],
     "coordinate_map_physical": str,
 })
+
+
 C3dCopyTransformParameters = typing.TypedDict('C3dCopyTransformParameters', {
     "__STYX_TYPE__": typing.Literal["copy_transform"],
     "copy_transform": str,
 })
+
+
 C3dCosParameters = typing.TypedDict('C3dCosParameters', {
     "__STYX_TYPE__": typing.Literal["cos"],
     "cos": str,
 })
+
+
 C3dCreateParameters = typing.TypedDict('C3dCreateParameters', {
     "__STYX_TYPE__": typing.Literal["create"],
     "create": str,
 })
+
+
 C3dDicomSeriesListParameters = typing.TypedDict('C3dDicomSeriesListParameters', {
     "__STYX_TYPE__": typing.Literal["dicom_series_list"],
     "dicom_series_list": str,
 })
+
+
 C3dDicomSeriesReadParameters = typing.TypedDict('C3dDicomSeriesReadParameters', {
     "__STYX_TYPE__": typing.Literal["dicom_series_read"],
     "dicom_series_read": str,
 })
+
+
 C3dDilateParameters = typing.TypedDict('C3dDilateParameters', {
     "__STYX_TYPE__": typing.Literal["dilate"],
     "dilate": str,
 })
+
+
 C3dDivideParameters = typing.TypedDict('C3dDivideParameters', {
     "__STYX_TYPE__": typing.Literal["divide"],
     "divide": str,
 })
+
+
 C3dDuplicateParameters = typing.TypedDict('C3dDuplicateParameters', {
     "__STYX_TYPE__": typing.Literal["duplicate"],
     "duplicate": str,
 })
+
+
 C3dEndaccumParameters = typing.TypedDict('C3dEndaccumParameters', {
     "__STYX_TYPE__": typing.Literal["endaccum"],
     "endaccum": str,
 })
+
+
 C3dEndforParameters = typing.TypedDict('C3dEndforParameters', {
     "__STYX_TYPE__": typing.Literal["endfor"],
     "endfor": str,
 })
+
+
 C3dErodeParameters = typing.TypedDict('C3dErodeParameters', {
     "__STYX_TYPE__": typing.Literal["erode"],
     "erode": str,
 })
+
+
 C3dErfParameters = typing.TypedDict('C3dErfParameters', {
     "__STYX_TYPE__": typing.Literal["erf"],
     "erf": str,
 })
+
+
 C3dExpParameters = typing.TypedDict('C3dExpParameters', {
     "__STYX_TYPE__": typing.Literal["exp"],
     "exp": str,
 })
+
+
 C3dExportPatchesParameters = typing.TypedDict('C3dExportPatchesParameters', {
     "__STYX_TYPE__": typing.Literal["export_patches"],
     "export_patches": str,
 })
+
+
 C3dExportPatchesAugParameters = typing.TypedDict('C3dExportPatchesAugParameters', {
     "__STYX_TYPE__": typing.Literal["export_patches_aug"],
     "export_patches_aug": str,
 })
+
+
 C3dExtrudeSegParameters = typing.TypedDict('C3dExtrudeSegParameters', {
     "__STYX_TYPE__": typing.Literal["extrude_seg"],
     "extrude_seg": str,
 })
+
+
 C3dFillBackgroundWithNoiseParameters = typing.TypedDict('C3dFillBackgroundWithNoiseParameters', {
     "__STYX_TYPE__": typing.Literal["fill_background_with_noise"],
     "fill_background_with_noise": str,
 })
+
+
 C3dFftParameters = typing.TypedDict('C3dFftParameters', {
     "__STYX_TYPE__": typing.Literal["fft"],
     "fft": str,
 })
+
+
 C3dFlipParameters = typing.TypedDict('C3dFlipParameters', {
     "__STYX_TYPE__": typing.Literal["flip"],
     "flip": str,
 })
+
+
 C3dFloorParameters = typing.TypedDict('C3dFloorParameters', {
     "__STYX_TYPE__": typing.Literal["floor"],
     "floor": str,
 })
+
+
 C3dForeachParameters = typing.TypedDict('C3dForeachParameters', {
     "__STYX_TYPE__": typing.Literal["foreach"],
     "foreach": str,
 })
+
+
 C3dForeachCompParameters = typing.TypedDict('C3dForeachCompParameters', {
     "__STYX_TYPE__": typing.Literal["foreach_comp"],
     "foreach_comp": str,
 })
+
+
 C3dGlmParameters = typing.TypedDict('C3dGlmParameters', {
     "__STYX_TYPE__": typing.Literal["glm"],
     "glm": str,
 })
+
+
 C3dGradientParameters = typing.TypedDict('C3dGradientParameters', {
     "__STYX_TYPE__": typing.Literal["gradient"],
     "gradient": str,
 })
+
+
 C3dHelpParameters = typing.TypedDict('C3dHelpParameters', {
     "__STYX_TYPE__": typing.Literal["_help"],
     "_help": str,
 })
+
+
 C3dHolefillParameters = typing.TypedDict('C3dHolefillParameters', {
     "__STYX_TYPE__": typing.Literal["holefill"],
     "holefill": str,
 })
+
+
 C3dHessianEigenvaluesParameters = typing.TypedDict('C3dHessianEigenvaluesParameters', {
     "__STYX_TYPE__": typing.Literal["hessian_eigenvalues"],
     "hessian_eigenvalues": str,
 })
+
+
 C3dHessianObjectnessParameters = typing.TypedDict('C3dHessianObjectnessParameters', {
     "__STYX_TYPE__": typing.Literal["hessian_objectness"],
     "hessian_objectness": str,
 })
+
+
 C3dHistogramMatchParameters = typing.TypedDict('C3dHistogramMatchParameters', {
     "__STYX_TYPE__": typing.Literal["histogram_match"],
     "histogram_match": str,
 })
+
+
 C3dInfoParameters = typing.TypedDict('C3dInfoParameters', {
     "__STYX_TYPE__": typing.Literal["info"],
     "info": str,
 })
+
+
 C3dInfoFullParameters = typing.TypedDict('C3dInfoFullParameters', {
     "__STYX_TYPE__": typing.Literal["info_full"],
     "info_full": str,
 })
+
+
 C3dInsertParameters = typing.TypedDict('C3dInsertParameters', {
     "__STYX_TYPE__": typing.Literal["insert"],
     "insert": str,
 })
+
+
 C3dInterpolationParameters = typing.TypedDict('C3dInterpolationParameters', {
     "__STYX_TYPE__": typing.Literal["interpolation"],
     "interpolation": str,
 })
+
+
 C3dIterationsParameters = typing.TypedDict('C3dIterationsParameters', {
     "__STYX_TYPE__": typing.Literal["iterations"],
     "iterations": str,
 })
+
+
 C3dLabelOverlapParameters = typing.TypedDict('C3dLabelOverlapParameters', {
     "__STYX_TYPE__": typing.Literal["label_overlap"],
     "label_overlap": str,
 })
+
+
 C3dLabelStatisticsParameters = typing.TypedDict('C3dLabelStatisticsParameters', {
     "__STYX_TYPE__": typing.Literal["label_statistics"],
     "label_statistics": str,
 })
+
+
 C3dLandmarksToSpheresParameters = typing.TypedDict('C3dLandmarksToSpheresParameters', {
     "__STYX_TYPE__": typing.Literal["landmarks_to_spheres"],
     "landmarks_to_spheres": str,
 })
+
+
 C3dLaplacianParameters = typing.TypedDict('C3dLaplacianParameters', {
     "__STYX_TYPE__": typing.Literal["laplacian"],
     "laplacian": str,
 })
+
+
 C3dLevelsetParameters = typing.TypedDict('C3dLevelsetParameters', {
     "__STYX_TYPE__": typing.Literal["levelset"],
     "levelset": str,
 })
+
+
 C3dLevelsetCurvatureParameters = typing.TypedDict('C3dLevelsetCurvatureParameters', {
     "__STYX_TYPE__": typing.Literal["levelset_curvature"],
     "levelset_curvature": str,
 })
+
+
 C3dLevelsetAdvectionParameters = typing.TypedDict('C3dLevelsetAdvectionParameters', {
     "__STYX_TYPE__": typing.Literal["levelset_advection"],
     "levelset_advection": str,
 })
+
+
 C3dLogParameters = typing.TypedDict('C3dLogParameters', {
     "__STYX_TYPE__": typing.Literal["log"],
     "log": str,
 })
+
+
 C3dLog10Parameters = typing.TypedDict('C3dLog10Parameters', {
     "__STYX_TYPE__": typing.Literal["log10"],
     "log10": str,
 })
+
+
 C3dManualParameters = typing.TypedDict('C3dManualParameters', {
     "__STYX_TYPE__": typing.Literal["manual"],
     "manual": str,
 })
+
+
 C3dMatchBoundingBoxParameters = typing.TypedDict('C3dMatchBoundingBoxParameters', {
     "__STYX_TYPE__": typing.Literal["match_bounding_box"],
     "match_bounding_box": str,
 })
+
+
 C3dMaximumParameters = typing.TypedDict('C3dMaximumParameters', {
     "__STYX_TYPE__": typing.Literal["maximum"],
     "maximum": str,
 })
+
+
 C3dMulticomponentSplitParameters = typing.TypedDict('C3dMulticomponentSplitParameters', {
     "__STYX_TYPE__": typing.Literal["multicomponent_split"],
     "multicomponent_split": str,
 })
+
+
 C3dMeanParameters = typing.TypedDict('C3dMeanParameters', {
     "__STYX_TYPE__": typing.Literal["mean"],
     "mean": str,
 })
+
+
 C3dMedianFilterParameters = typing.TypedDict('C3dMedianFilterParameters', {
     "__STYX_TYPE__": typing.Literal["median_filter"],
     "median_filter": str,
 })
+
+
 C3dMergeParameters = typing.TypedDict('C3dMergeParameters', {
     "__STYX_TYPE__": typing.Literal["merge"],
     "merge": str,
 })
+
+
 C3dMeanFilterParameters = typing.TypedDict('C3dMeanFilterParameters', {
     "__STYX_TYPE__": typing.Literal["mean_filter"],
     "mean_filter": str,
 })
+
+
 C3dMutualInfoParameters = typing.TypedDict('C3dMutualInfoParameters', {
     "__STYX_TYPE__": typing.Literal["mutual_info"],
     "mutual_info": str,
 })
+
+
 C3dMinimumParameters = typing.TypedDict('C3dMinimumParameters', {
     "__STYX_TYPE__": typing.Literal["minimum"],
     "minimum": str,
 })
+
+
 C3dMixtureModelParameters = typing.TypedDict('C3dMixtureModelParameters', {
     "__STYX_TYPE__": typing.Literal["mixture_model"],
     "mixture_model": str,
 })
+
+
 C3dMomentsParameters = typing.TypedDict('C3dMomentsParameters', {
     "__STYX_TYPE__": typing.Literal["moments"],
     "moments": str,
 })
+
+
 C3dMattesMutualInfoParameters = typing.TypedDict('C3dMattesMutualInfoParameters', {
     "__STYX_TYPE__": typing.Literal["mattes_mutual_info"],
     "mattes_mutual_info": str,
 })
+
+
 C3dMeanSquareParameters = typing.TypedDict('C3dMeanSquareParameters', {
     "__STYX_TYPE__": typing.Literal["mean_square"],
     "mean_square": str,
 })
+
+
 C3dMultiplyParameters = typing.TypedDict('C3dMultiplyParameters', {
     "__STYX_TYPE__": typing.Literal["multiply"],
     "multiply": str,
 })
+
+
 C3dNormalizedCrossCorrelationParameters = typing.TypedDict('C3dNormalizedCrossCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["normalized_cross_correlation"],
     "normalized_cross_correlation": str,
 })
+
+
 C3dNormalizedCorrelationParameters = typing.TypedDict('C3dNormalizedCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["normalized_correlation"],
     "normalized_correlation": str,
 })
+
+
 C3dNormalizedMutualInfoParameters = typing.TypedDict('C3dNormalizedMutualInfoParameters', {
     "__STYX_TYPE__": typing.Literal["normalized_mutual_info"],
     "normalized_mutual_info": str,
 })
+
+
 C3dNoiseGaussianParameters = typing.TypedDict('C3dNoiseGaussianParameters', {
     "__STYX_TYPE__": typing.Literal["noise_gaussian"],
     "noise_gaussian": str,
 })
+
+
 C3dNoisePoissonParameters = typing.TypedDict('C3dNoisePoissonParameters', {
     "__STYX_TYPE__": typing.Literal["noise_poisson"],
     "noise_poisson": str,
 })
+
+
 C3dNoiseSpeckleParameters = typing.TypedDict('C3dNoiseSpeckleParameters', {
     "__STYX_TYPE__": typing.Literal["noise_speckle"],
     "noise_speckle": str,
 })
+
+
 C3dNoiseSaltPepperParameters = typing.TypedDict('C3dNoiseSaltPepperParameters', {
     "__STYX_TYPE__": typing.Literal["noise_salt_pepper"],
     "noise_salt_pepper": str,
 })
+
+
 C3dNoMulticomponentSplitParameters = typing.TypedDict('C3dNoMulticomponentSplitParameters', {
     "__STYX_TYPE__": typing.Literal["no_multicomponent_split"],
     "no_multicomponent_split": str,
 })
+
+
 C3dNormalizeLocalWindowParameters = typing.TypedDict('C3dNormalizeLocalWindowParameters', {
     "__STYX_TYPE__": typing.Literal["normalize_local_window"],
     "normalize_local_window": str,
 })
+
+
 C3dNormpdfParameters = typing.TypedDict('C3dNormpdfParameters', {
     "__STYX_TYPE__": typing.Literal["normpdf"],
     "normpdf": str,
 })
+
+
 C3dNoroundParameters = typing.TypedDict('C3dNoroundParameters', {
     "__STYX_TYPE__": typing.Literal["noround"],
     "noround": str,
 })
+
+
 C3dNospmParameters = typing.TypedDict('C3dNospmParameters', {
     "__STYX_TYPE__": typing.Literal["nospm"],
     "nospm": str,
 })
+
+
 C3dOutputParameters = typing.TypedDict('C3dOutputParameters', {
     "__STYX_TYPE__": typing.Literal["output"],
     "output": str,
 })
+
+
 C3dOutputMulticomponentParameters = typing.TypedDict('C3dOutputMulticomponentParameters', {
     "__STYX_TYPE__": typing.Literal["output_multicomponent"],
     "output_multicomponent": str,
 })
+
+
 C3dOutputMultipleMulticomponentParameters = typing.TypedDict('C3dOutputMultipleMulticomponentParameters', {
     "__STYX_TYPE__": typing.Literal["output_multiple_multicomponent"],
     "output_multiple_multicomponent": str,
 })
+
+
 C3dOrientParameters = typing.TypedDict('C3dOrientParameters', {
     "__STYX_TYPE__": typing.Literal["orient"],
     "orient": str,
 })
+
+
 C3dOutputMultipleParameters = typing.TypedDict('C3dOutputMultipleParameters', {
     "__STYX_TYPE__": typing.Literal["output_multiple"],
     "output_multiple": str,
 })
+
+
 C3dOrient1Parameters = typing.TypedDict('C3dOrient1Parameters', {
     "__STYX_TYPE__": typing.Literal["orient_1"],
     "orient": str,
 })
+
+
 C3dOriginParameters = typing.TypedDict('C3dOriginParameters', {
     "__STYX_TYPE__": typing.Literal["origin"],
     "origin": str,
 })
+
+
 C3dOriginVoxelParameters = typing.TypedDict('C3dOriginVoxelParameters', {
     "__STYX_TYPE__": typing.Literal["origin_voxel"],
     "origin_voxel": str,
 })
+
+
 C3dOriginVoxelCoordParameters = typing.TypedDict('C3dOriginVoxelCoordParameters', {
     "__STYX_TYPE__": typing.Literal["origin_voxel_coord"],
     "origin_voxel_coord": str,
 })
+
+
 C3dOverlapParameters = typing.TypedDict('C3dOverlapParameters', {
     "__STYX_TYPE__": typing.Literal["overlap"],
     "overlap": str,
 })
+
+
 C3dOverlayLabelImageParameters = typing.TypedDict('C3dOverlayLabelImageParameters', {
     "__STYX_TYPE__": typing.Literal["overlay_label_image"],
     "overlay_label_image": str,
 })
+
+
 C3dPadParameters = typing.TypedDict('C3dPadParameters', {
     "__STYX_TYPE__": typing.Literal["pad"],
     "pad": str,
 })
+
+
 C3dPadToParameters = typing.TypedDict('C3dPadToParameters', {
     "__STYX_TYPE__": typing.Literal["pad_to"],
     "pad_to": str,
 })
+
+
 C3dPcaParameters = typing.TypedDict('C3dPcaParameters', {
     "__STYX_TYPE__": typing.Literal["pca"],
     "pca": str,
 })
+
+
 C3dPercentIntensityModeParameters = typing.TypedDict('C3dPercentIntensityModeParameters', {
     "__STYX_TYPE__": typing.Literal["percent_intensity_mode"],
     "percent_intensity_mode": str,
 })
+
+
 C3dPixelParameters = typing.TypedDict('C3dPixelParameters', {
     "__STYX_TYPE__": typing.Literal["pixel"],
     "pixel": str,
 })
+
+
 C3dPopParameters = typing.TypedDict('C3dPopParameters', {
     "__STYX_TYPE__": typing.Literal["pop"],
     "pop": str,
 })
+
+
 C3dPopasParameters = typing.TypedDict('C3dPopasParameters', {
     "__STYX_TYPE__": typing.Literal["popas"],
     "popas": str,
 })
+
+
 C3dProbeParameters = typing.TypedDict('C3dProbeParameters', {
     "__STYX_TYPE__": typing.Literal["probe"],
     "probe": str,
 })
+
+
 C3dPushParameters = typing.TypedDict('C3dPushParameters', {
     "__STYX_TYPE__": typing.Literal["push"],
     "push": str,
 })
+
+
 C3dRankParameters = typing.TypedDict('C3dRankParameters', {
     "__STYX_TYPE__": typing.Literal["rank"],
     "rank": str,
 })
+
+
 C3dReciprocalParameters = typing.TypedDict('C3dReciprocalParameters', {
     "__STYX_TYPE__": typing.Literal["reciprocal"],
     "reciprocal": str,
 })
+
+
 C3dRegionParameters = typing.TypedDict('C3dRegionParameters', {
     "__STYX_TYPE__": typing.Literal["region"],
     "region": str,
 })
+
+
 C3dReorderParameters = typing.TypedDict('C3dReorderParameters', {
     "__STYX_TYPE__": typing.Literal["reorder"],
     "reorder": str,
 })
+
+
 C3dRetainLabelsParameters = typing.TypedDict('C3dRetainLabelsParameters', {
     "__STYX_TYPE__": typing.Literal["retain_labels"],
     "retain_labels": str,
 })
+
+
 C3dRfApplyParameters = typing.TypedDict('C3dRfApplyParameters', {
     "__STYX_TYPE__": typing.Literal["rf_apply"],
     "rf_apply": str,
 })
+
+
 C3dRfTrainParameters = typing.TypedDict('C3dRfTrainParameters', {
     "__STYX_TYPE__": typing.Literal["rf_train"],
     "rf_train": str,
 })
+
+
 C3dRfParamPatchParameters = typing.TypedDict('C3dRfParamPatchParameters', {
     "__STYX_TYPE__": typing.Literal["rf_param_patch"],
     "rf_param_patch": str,
 })
+
+
 C3dRfParamUsexyzParameters = typing.TypedDict('C3dRfParamUsexyzParameters', {
     "__STYX_TYPE__": typing.Literal["rf_param_usexyz"],
     "rf_param_usexyz": str,
 })
+
+
 C3dRfParamNousexyzParameters = typing.TypedDict('C3dRfParamNousexyzParameters', {
     "__STYX_TYPE__": typing.Literal["rf_param_nousexyz"],
     "rf_param_nousexyz": str,
 })
+
+
 C3dRfParamNtreesParameters = typing.TypedDict('C3dRfParamNtreesParameters', {
     "__STYX_TYPE__": typing.Literal["rf_param_ntrees"],
     "rf_param_ntrees": str,
 })
+
+
 C3dRfParamTreedepthParameters = typing.TypedDict('C3dRfParamTreedepthParameters', {
     "__STYX_TYPE__": typing.Literal["rf_param_treedepth"],
     "rf_param_treedepth": str,
 })
+
+
 C3dSetSformParameters = typing.TypedDict('C3dSetSformParameters', {
     "__STYX_TYPE__": typing.Literal["set_sform"],
     "set_sform": str,
 })
+
+
 C3dReplaceParameters = typing.TypedDict('C3dReplaceParameters', {
     "__STYX_TYPE__": typing.Literal["replace"],
     "replace": str,
 })
+
+
 C3dResampleParameters = typing.TypedDict('C3dResampleParameters', {
     "__STYX_TYPE__": typing.Literal["resample"],
     "resample": str,
 })
+
+
 C3dResampleIsoParameters = typing.TypedDict('C3dResampleIsoParameters', {
     "__STYX_TYPE__": typing.Literal["resample_iso"],
     "resample_iso": str,
 })
+
+
 C3dResampleMmParameters = typing.TypedDict('C3dResampleMmParameters', {
     "__STYX_TYPE__": typing.Literal["resample_mm"],
     "resample_mm": str,
 })
+
+
 C3dResliceItkParameters = typing.TypedDict('C3dResliceItkParameters', {
     "__STYX_TYPE__": typing.Literal["reslice_itk"],
     "reslice_itk": str,
 })
+
+
 C3dResliceMatrixParameters = typing.TypedDict('C3dResliceMatrixParameters', {
     "__STYX_TYPE__": typing.Literal["reslice_matrix"],
     "reslice_matrix": str,
 })
+
+
 C3dResliceIdentityParameters = typing.TypedDict('C3dResliceIdentityParameters', {
     "__STYX_TYPE__": typing.Literal["reslice_identity"],
     "reslice_identity": str,
 })
+
+
 C3dRgb2hsvParameters = typing.TypedDict('C3dRgb2hsvParameters', {
     "__STYX_TYPE__": typing.Literal["rgb2hsv"],
     "rgb2hsv": str,
 })
+
+
 C3dRmsParameters = typing.TypedDict('C3dRmsParameters', {
     "__STYX_TYPE__": typing.Literal["rms"],
     "rms": str,
 })
+
+
 C3dRoundParameters = typing.TypedDict('C3dRoundParameters', {
     "__STYX_TYPE__": typing.Literal["round"],
     "round": str,
 })
+
+
 C3dScaleParameters = typing.TypedDict('C3dScaleParameters', {
     "__STYX_TYPE__": typing.Literal["scale"],
     "scale": str,
 })
+
+
 C3dSetSform1Parameters = typing.TypedDict('C3dSetSform1Parameters', {
     "__STYX_TYPE__": typing.Literal["set_sform_1"],
     "set_sform": str,
 })
+
+
 C3dSinParameters = typing.TypedDict('C3dSinParameters', {
     "__STYX_TYPE__": typing.Literal["sin"],
     "sin": str,
 })
+
+
 C3dSliceParameters = typing.TypedDict('C3dSliceParameters', {
     "__STYX_TYPE__": typing.Literal["slice"],
     "slice": str,
 })
+
+
 C3dSliceAllParameters = typing.TypedDict('C3dSliceAllParameters', {
     "__STYX_TYPE__": typing.Literal["slice_all"],
     "slice_all": str,
 })
+
+
 C3dSharpenParameters = typing.TypedDict('C3dSharpenParameters', {
     "__STYX_TYPE__": typing.Literal["sharpen"],
     "sharpen": str,
 })
+
+
 C3dShiftParameters = typing.TypedDict('C3dShiftParameters', {
     "__STYX_TYPE__": typing.Literal["shift"],
     "shift": str,
 })
+
+
 C3dSignedDistanceTransformParameters = typing.TypedDict('C3dSignedDistanceTransformParameters', {
     "__STYX_TYPE__": typing.Literal["signed_distance_transform"],
     "signed_distance_transform": str,
 })
+
+
 C3dSmoothParameters = typing.TypedDict('C3dSmoothParameters', {
     "__STYX_TYPE__": typing.Literal["smooth"],
     "smooth": str,
 })
+
+
 C3dSmoothFastParameters = typing.TypedDict('C3dSmoothFastParameters', {
     "__STYX_TYPE__": typing.Literal["smooth_fast"],
     "smooth_fast": str,
 })
+
+
 C3dSpacingParameters = typing.TypedDict('C3dSpacingParameters', {
     "__STYX_TYPE__": typing.Literal["spacing"],
     "spacing": str,
 })
+
+
 C3dSplitParameters = typing.TypedDict('C3dSplitParameters', {
     "__STYX_TYPE__": typing.Literal["split"],
     "split": str,
 })
+
+
 C3dSqrtParameters = typing.TypedDict('C3dSqrtParameters', {
     "__STYX_TYPE__": typing.Literal["sqrt"],
     "sqrt": str,
 })
+
+
 C3dStapleParameters = typing.TypedDict('C3dStapleParameters', {
     "__STYX_TYPE__": typing.Literal["staple"],
     "staple": str,
 })
+
+
 C3dStructureTensorEigenvaluesParameters = typing.TypedDict('C3dStructureTensorEigenvaluesParameters', {
     "__STYX_TYPE__": typing.Literal["structure_tensor_eigenvalues"],
     "structure_tensor_eigenvalues": str,
 })
+
+
 C3dSpmParameters = typing.TypedDict('C3dSpmParameters', {
     "__STYX_TYPE__": typing.Literal["spm"],
     "spm": str,
 })
+
+
 C3dSubtractParameters = typing.TypedDict('C3dSubtractParameters', {
     "__STYX_TYPE__": typing.Literal["subtract"],
     "subtract": str,
 })
+
+
 C3dSupervoxelParameters = typing.TypedDict('C3dSupervoxelParameters', {
     "__STYX_TYPE__": typing.Literal["supervoxel"],
     "supervoxel": str,
 })
+
+
 C3dStretchParameters = typing.TypedDict('C3dStretchParameters', {
     "__STYX_TYPE__": typing.Literal["stretch"],
     "stretch": str,
 })
+
+
 C3dSwapdimParameters = typing.TypedDict('C3dSwapdimParameters', {
     "__STYX_TYPE__": typing.Literal["swapdim"],
     "swapdim": str,
 })
+
+
 C3dTestImageParameters = typing.TypedDict('C3dTestImageParameters', {
     "__STYX_TYPE__": typing.Literal["test_image"],
     "test_image": str,
 })
+
+
 C3dTestProbeParameters = typing.TypedDict('C3dTestProbeParameters', {
     "__STYX_TYPE__": typing.Literal["test_probe"],
     "test_probe": str,
 })
+
+
 C3dThresholdParameters = typing.TypedDict('C3dThresholdParameters', {
     "__STYX_TYPE__": typing.Literal["threshold"],
     "threshold": str,
 })
+
+
 C3dTileParameters = typing.TypedDict('C3dTileParameters', {
     "__STYX_TYPE__": typing.Literal["tile"],
     "tile": str,
 })
+
+
 C3dTrimParameters = typing.TypedDict('C3dTrimParameters', {
     "__STYX_TYPE__": typing.Literal["trim"],
     "trim": str,
 })
+
+
 C3dTrimToSizeParameters = typing.TypedDict('C3dTrimToSizeParameters', {
     "__STYX_TYPE__": typing.Literal["trim_to_size"],
     "trim_to_size": str,
 })
+
+
 C3dTypeParameters = typing.TypedDict('C3dTypeParameters', {
     "__STYX_TYPE__": typing.Literal["type"],
     "type": str,
 })
+
+
 C3dVerboseParameters = typing.TypedDict('C3dVerboseParameters', {
     "__STYX_TYPE__": typing.Literal["verbose"],
     "verbose": str,
 })
+
+
 C3dNoverboseParameters = typing.TypedDict('C3dNoverboseParameters', {
     "__STYX_TYPE__": typing.Literal["noverbose"],
     "noverbose": str,
 })
+
+
 C3dVersionParameters = typing.TypedDict('C3dVersionParameters', {
     "__STYX_TYPE__": typing.Literal["version"],
     "version": str,
 })
+
+
 C3dVoteParameters = typing.TypedDict('C3dVoteParameters', {
     "__STYX_TYPE__": typing.Literal["vote"],
     "vote": str,
 })
+
+
 C3dVoteMrfParameters = typing.TypedDict('C3dVoteMrfParameters', {
     "__STYX_TYPE__": typing.Literal["vote_mrf"],
     "vote_mrf": str,
 })
+
+
 C3dVoteLabelParameters = typing.TypedDict('C3dVoteLabelParameters', {
     "__STYX_TYPE__": typing.Literal["vote_label"],
     "vote_label": str,
 })
+
+
 C3dVoxelSumParameters = typing.TypedDict('C3dVoxelSumParameters', {
     "__STYX_TYPE__": typing.Literal["voxel_sum"],
     "voxel_sum": str,
 })
+
+
 C3dVoxelIntegralParameters = typing.TypedDict('C3dVoxelIntegralParameters', {
     "__STYX_TYPE__": typing.Literal["voxel_integral"],
     "voxel_integral": str,
 })
+
+
 C3dVoxelwiseRegressionParameters = typing.TypedDict('C3dVoxelwiseRegressionParameters', {
     "__STYX_TYPE__": typing.Literal["voxelwise_regression"],
     "voxelwise_regression": str,
 })
+
+
 C3dWarpParameters = typing.TypedDict('C3dWarpParameters', {
     "__STYX_TYPE__": typing.Literal["warp"],
     "warp": str,
 })
+
+
 C3dWarpLabelParameters = typing.TypedDict('C3dWarpLabelParameters', {
     "__STYX_TYPE__": typing.Literal["warp_label"],
     "warp_label": str,
 })
+
+
 C3dWrapParameters = typing.TypedDict('C3dWrapParameters', {
     "__STYX_TYPE__": typing.Literal["wrap"],
     "wrap": str,
 })
+
+
 C3dWeightedSumParameters = typing.TypedDict('C3dWeightedSumParameters', {
     "__STYX_TYPE__": typing.Literal["weighted_sum"],
     "weighted_sum": str,
 })
+
+
 C3dWeightedSumVoxelwiseParameters = typing.TypedDict('C3dWeightedSumVoxelwiseParameters', {
     "__STYX_TYPE__": typing.Literal["weighted_sum_voxelwise"],
     "weighted_sum_voxelwise": str,
 })
+
+
 C3dParameters = typing.TypedDict('C3dParameters', {
     "__STYX_TYPE__": typing.Literal["c3d"],
     "input": list[InputPathType],
@@ -10097,7 +10457,11 @@ def c3d_(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(C3D_METADATA)
-    params = c3d_params(input_=input_, operations=operations, output=output)
+    params = c3d_params(
+        input_=input_,
+        operations=operations,
+        output=output,
+    )
     return c3d_execute(params, execution)
 
 

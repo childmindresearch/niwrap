@@ -11,6 +11,8 @@ V_3D_ROISTATS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRoistatsParameters = typing.TypedDict('V3dRoistatsParameters', {
     "__STYX_TYPE__": typing.Literal["3dROIstats"],
     "in_file": InputPathType,
@@ -349,7 +351,22 @@ def v_3d_roistats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ROISTATS_METADATA)
-    params = v_3d_roistats_params(in_file=in_file, mask=mask, debug=debug, format1_d=format1_d, format1_dr=format1_dr, mask_f2short=mask_f2short, mask_file=mask_file, nobriklab=nobriklab, nomeanout=nomeanout, num_roi=num_roi, quiet=quiet, roisel=roisel, stat_=stat_, zerofill=zerofill)
+    params = v_3d_roistats_params(
+        in_file=in_file,
+        mask=mask,
+        debug=debug,
+        format1_d=format1_d,
+        format1_dr=format1_dr,
+        mask_f2short=mask_f2short,
+        mask_file=mask_file,
+        nobriklab=nobriklab,
+        nomeanout=nomeanout,
+        num_roi=num_roi,
+        quiet=quiet,
+        roisel=roisel,
+        stat_=stat_,
+        zerofill=zerofill,
+    )
     return v_3d_roistats_execute(params, execution)
 
 

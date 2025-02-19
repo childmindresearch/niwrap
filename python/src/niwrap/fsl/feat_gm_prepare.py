@@ -11,6 +11,8 @@ FEAT_GM_PREPARE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FeatGmPrepareParameters = typing.TypedDict('FeatGmPrepareParameters', {
     "__STYX_TYPE__": typing.Literal["feat_gm_prepare"],
     "gm_output": str,
@@ -162,7 +164,10 @@ def feat_gm_prepare(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEAT_GM_PREPARE_METADATA)
-    params = feat_gm_prepare_params(gm_output=gm_output, feat_dirs_list=feat_dirs_list)
+    params = feat_gm_prepare_params(
+        gm_output=gm_output,
+        feat_dirs_list=feat_dirs_list,
+    )
     return feat_gm_prepare_execute(params, execution)
 
 

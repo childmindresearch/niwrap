@@ -11,11 +11,15 @@ V_5TT2GMWMI_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 V5tt2gmwmiConfigParameters = typing.TypedDict('V5tt2gmwmiConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 V5tt2gmwmiParameters = typing.TypedDict('V5tt2gmwmiParameters', {
     "__STYX_TYPE__": typing.Literal["5tt2gmwmi"],
     "mask_in": typing.NotRequired[InputPathType | None],
@@ -328,7 +332,19 @@ def v_5tt2gmwmi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TT2GMWMI_METADATA)
-    params = v_5tt2gmwmi_params(mask_in=mask_in, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, v_5tt_in=v_5tt_in, mask_out=mask_out)
+    params = v_5tt2gmwmi_params(
+        mask_in=mask_in,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        v_5tt_in=v_5tt_in,
+        mask_out=mask_out,
+    )
     return v_5tt2gmwmi_execute(params, execution)
 
 

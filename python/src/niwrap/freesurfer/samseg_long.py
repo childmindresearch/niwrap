@@ -11,6 +11,8 @@ SAMSEG_LONG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SamsegLongParameters = typing.TypedDict('SamsegLongParameters', {
     "__STYX_TYPE__": typing.Literal["samseg-long"],
     "output_dir": str,
@@ -214,7 +216,14 @@ def samseg_long(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SAMSEG_LONG_METADATA)
-    params = samseg_long_params(output_dir=output_dir, align_no_mc=align_no_mc, threads=threads, input_files=input_files, save_posteriors=save_posteriors, force_update=force_update)
+    params = samseg_long_params(
+        output_dir=output_dir,
+        align_no_mc=align_no_mc,
+        threads=threads,
+        input_files=input_files,
+        save_posteriors=save_posteriors,
+        force_update=force_update,
+    )
     return samseg_long_execute(params, execution)
 
 

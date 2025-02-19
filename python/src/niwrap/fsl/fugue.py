@@ -11,6 +11,8 @@ FUGUE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FugueParameters = typing.TypedDict('FugueParameters', {
     "__STYX_TYPE__": typing.Literal["fugue"],
     "asym_se_time": typing.NotRequired[float | None],
@@ -454,7 +456,41 @@ def fugue(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FUGUE_METADATA)
-    params = fugue_params(asym_se_time=asym_se_time, despike_2dfilter=despike_2dfilter, despike_threshold=despike_threshold, dwell_time=dwell_time, dwell_to_asym_ratio=dwell_to_asym_ratio, fmap_in_file=fmap_in_file, fmap_out_file=fmap_out_file, forward_warping=forward_warping, fourier_order=fourier_order, icorr=icorr, icorr_only=icorr_only, in_file=in_file, mask_file=mask_file, median_2dfilter=median_2dfilter, no_extend=no_extend, no_gap_fill=no_gap_fill, nokspace=nokspace, output_type=output_type, pava=pava, phase_conjugate=phase_conjugate, phasemap_in_file=phasemap_in_file, poly_order=poly_order, save_fmap=save_fmap, save_shift=save_shift, save_unmasked_fmap=save_unmasked_fmap, save_unmasked_shift=save_unmasked_shift, shift_in_file=shift_in_file, shift_out_file=shift_out_file, smooth2d=smooth2d, smooth3d=smooth3d, unwarp_direction=unwarp_direction, unwarped_file=unwarped_file, warped_file=warped_file)
+    params = fugue_params(
+        asym_se_time=asym_se_time,
+        despike_2dfilter=despike_2dfilter,
+        despike_threshold=despike_threshold,
+        dwell_time=dwell_time,
+        dwell_to_asym_ratio=dwell_to_asym_ratio,
+        fmap_in_file=fmap_in_file,
+        fmap_out_file=fmap_out_file,
+        forward_warping=forward_warping,
+        fourier_order=fourier_order,
+        icorr=icorr,
+        icorr_only=icorr_only,
+        in_file=in_file,
+        mask_file=mask_file,
+        median_2dfilter=median_2dfilter,
+        no_extend=no_extend,
+        no_gap_fill=no_gap_fill,
+        nokspace=nokspace,
+        output_type=output_type,
+        pava=pava,
+        phase_conjugate=phase_conjugate,
+        phasemap_in_file=phasemap_in_file,
+        poly_order=poly_order,
+        save_fmap=save_fmap,
+        save_shift=save_shift,
+        save_unmasked_fmap=save_unmasked_fmap,
+        save_unmasked_shift=save_unmasked_shift,
+        shift_in_file=shift_in_file,
+        shift_out_file=shift_out_file,
+        smooth2d=smooth2d,
+        smooth3d=smooth3d,
+        unwarp_direction=unwarp_direction,
+        unwarped_file=unwarped_file,
+        warped_file=warped_file,
+    )
     return fugue_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSLMATHS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslmathsOperationParameters = typing.TypedDict('FslmathsOperationParameters', {
     "__STYX_TYPE__": typing.Literal["operation"],
     "add": typing.NotRequired[float | None],
@@ -112,6 +114,8 @@ FslmathsOperationParameters = typing.TypedDict('FslmathsOperationParameters', {
     "bptf": typing.NotRequired[list[float] | None],
     "roc": typing.NotRequired[list[float] | None],
 })
+
+
 FslmathsParameters = typing.TypedDict('FslmathsParameters', {
     "__STYX_TYPE__": typing.Literal["fslmaths"],
     "datatype_internal": typing.NotRequired[typing.Literal["char", "short", "int", "float", "double", "input"] | None],
@@ -985,7 +989,13 @@ def fslmaths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMATHS_METADATA)
-    params = fslmaths_params(datatype_internal=datatype_internal, input_files=input_files, operations=operations, output=output, output_datatype=output_datatype)
+    params = fslmaths_params(
+        datatype_internal=datatype_internal,
+        input_files=input_files,
+        operations=operations,
+        output=output,
+        output_datatype=output_datatype,
+    )
     return fslmaths_execute(params, execution)
 
 

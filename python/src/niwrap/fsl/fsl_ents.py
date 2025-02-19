@@ -11,6 +11,8 @@ FSL_ENTS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslEntsParameters = typing.TypedDict('FslEntsParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_ents"],
     "icadir": str,
@@ -201,7 +203,13 @@ def fsl_ents(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_ENTS_METADATA)
-    params = fsl_ents_params(icadir=icadir, components=components, outfile=outfile, overwrite=overwrite, conffile=conffile)
+    params = fsl_ents_params(
+        icadir=icadir,
+        components=components,
+        outfile=outfile,
+        overwrite=overwrite,
+        conffile=conffile,
+    )
     return fsl_ents_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FNIRTFILEUTILS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FnirtfileutilsParameters = typing.TypedDict('FnirtfileutilsParameters', {
     "__STYX_TYPE__": typing.Literal["fnirtfileutils"],
     "input_coefs": InputPathType,
@@ -286,7 +288,19 @@ def fnirtfileutils(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FNIRTFILEUTILS_METADATA)
-    params = fnirtfileutils_params(input_coefs=input_coefs, ref_volume=ref_volume, out_field=out_field, output_format=output_format, warp_res=warp_res, knot_space=knot_space, jacobian_output=jacobian_output, jacobian_matrix_output=jacobian_matrix_output, with_aff=with_aff, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = fnirtfileutils_params(
+        input_coefs=input_coefs,
+        ref_volume=ref_volume,
+        out_field=out_field,
+        output_format=output_format,
+        warp_res=warp_res,
+        knot_space=knot_space,
+        jacobian_output=jacobian_output,
+        jacobian_matrix_output=jacobian_matrix_output,
+        with_aff=with_aff,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return fnirtfileutils_execute(params, execution)
 
 

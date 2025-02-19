@@ -11,11 +11,15 @@ MRDUMP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrdumpConfigParameters = typing.TypedDict('MrdumpConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrdumpParameters = typing.TypedDict('MrdumpParameters', {
     "__STYX_TYPE__": typing.Literal["mrdump"],
     "mask": typing.NotRequired[InputPathType | None],
@@ -320,7 +324,19 @@ def mrdump(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRDUMP_METADATA)
-    params = mrdump_params(mask=mask, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = mrdump_params(
+        mask=mask,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return mrdump_execute(params, execution)
 
 

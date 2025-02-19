@@ -11,6 +11,8 @@ EPIDEWARP_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 EpidewarpFslParameters = typing.TypedDict('EpidewarpFslParameters', {
     "__STYX_TYPE__": typing.Literal["epidewarp.fsl"],
     "mag": typing.NotRequired[InputPathType | None],
@@ -401,7 +403,30 @@ def epidewarp_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EPIDEWARP_FSL_METADATA)
-    params = epidewarp_fsl_params(mag=mag, dph=dph, ph=ph, complex_=complex_, exf=exf, epi=epi, tediff=tediff, esp=esp, perev=perev, sigma=sigma, vsm_fwhm=vsm_fwhm, vsm=vsm, vsmmag=vsmmag, exfdw=exfdw, epidw=epidw, nomagexfreg=nomagexfreg, head=head, tmpdir=tmpdir, log=log, nocleanup=nocleanup, cleanup=cleanup, debug=debug)
+    params = epidewarp_fsl_params(
+        mag=mag,
+        dph=dph,
+        ph=ph,
+        complex_=complex_,
+        exf=exf,
+        epi=epi,
+        tediff=tediff,
+        esp=esp,
+        perev=perev,
+        sigma=sigma,
+        vsm_fwhm=vsm_fwhm,
+        vsm=vsm,
+        vsmmag=vsmmag,
+        exfdw=exfdw,
+        epidw=epidw,
+        nomagexfreg=nomagexfreg,
+        head=head,
+        tmpdir=tmpdir,
+        log=log,
+        nocleanup=nocleanup,
+        cleanup=cleanup,
+        debug=debug,
+    )
     return epidewarp_fsl_execute(params, execution)
 
 

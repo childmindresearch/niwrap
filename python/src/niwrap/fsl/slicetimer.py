@@ -11,6 +11,8 @@ SLICETIMER_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SlicetimerParameters = typing.TypedDict('SlicetimerParameters', {
     "__STYX_TYPE__": typing.Literal["slicetimer"],
     "infile": InputPathType,
@@ -264,7 +266,18 @@ def slicetimer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICETIMER_METADATA)
-    params = slicetimer_params(infile=infile, outfile=outfile, verbose_flag=verbose_flag, down_flag=down_flag, tr_value=tr_value, direction=direction, odd_flag=odd_flag, tcustom_file=tcustom_file, tglobal_value=tglobal_value, ocustom_file=ocustom_file)
+    params = slicetimer_params(
+        infile=infile,
+        outfile=outfile,
+        verbose_flag=verbose_flag,
+        down_flag=down_flag,
+        tr_value=tr_value,
+        direction=direction,
+        odd_flag=odd_flag,
+        tcustom_file=tcustom_file,
+        tglobal_value=tglobal_value,
+        ocustom_file=ocustom_file,
+    )
     return slicetimer_execute(params, execution)
 
 

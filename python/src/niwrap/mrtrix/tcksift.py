@@ -11,11 +11,15 @@ TCKSIFT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TcksiftConfigParameters = typing.TypedDict('TcksiftConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TcksiftParameters = typing.TypedDict('TcksiftParameters', {
     "__STYX_TYPE__": typing.Literal["tcksift"],
     "nofilter": bool,
@@ -545,7 +549,35 @@ def tcksift(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKSIFT_METADATA)
-    params = tcksift_params(nofilter=nofilter, output_at_counts=output_at_counts, proc_mask=proc_mask, act=act, fd_scale_gm=fd_scale_gm, no_dilate_lut=no_dilate_lut, make_null_lobes=make_null_lobes, remove_untracked=remove_untracked, fd_thresh=fd_thresh, csv_=csv_, out_mu=out_mu, output_debug=output_debug, out_selection=out_selection, term_number=term_number, term_ratio=term_ratio, term_mu=term_mu, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_tracks=in_tracks, in_fod=in_fod, out_tracks=out_tracks)
+    params = tcksift_params(
+        nofilter=nofilter,
+        output_at_counts=output_at_counts,
+        proc_mask=proc_mask,
+        act=act,
+        fd_scale_gm=fd_scale_gm,
+        no_dilate_lut=no_dilate_lut,
+        make_null_lobes=make_null_lobes,
+        remove_untracked=remove_untracked,
+        fd_thresh=fd_thresh,
+        csv_=csv_,
+        out_mu=out_mu,
+        output_debug=output_debug,
+        out_selection=out_selection,
+        term_number=term_number,
+        term_ratio=term_ratio,
+        term_mu=term_mu,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_tracks=in_tracks,
+        in_fod=in_fod,
+        out_tracks=out_tracks,
+    )
     return tcksift_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_VOL2LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriVol2labelParameters = typing.TypedDict('MriVol2labelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_vol2label"],
     "input": InputPathType,
@@ -295,7 +297,20 @@ def mri_vol2label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOL2LABEL_METADATA)
-    params = mri_vol2label_params(input_=input_, label_id=label_id, threshold=threshold, label_file=label_file, vol_file=vol_file, surf_subject_hemi=surf_subject_hemi, surf_path=surf_path, opt_params=opt_params, remove_holes=remove_holes, dilations=dilations, erosions=erosions, help_=help_)
+    params = mri_vol2label_params(
+        input_=input_,
+        label_id=label_id,
+        threshold=threshold,
+        label_file=label_file,
+        vol_file=vol_file,
+        surf_subject_hemi=surf_subject_hemi,
+        surf_path=surf_path,
+        opt_params=opt_params,
+        remove_holes=remove_holes,
+        dilations=dilations,
+        erosions=erosions,
+        help_=help_,
+    )
     return mri_vol2label_execute(params, execution)
 
 

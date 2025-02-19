@@ -11,6 +11,8 @@ ADJUNCT_SELECT_STR_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctSelectStrPyParameters = typing.TypedDict('AdjunctSelectStrPyParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_select_str.py"],
     "input_file": InputPathType,
@@ -169,7 +171,11 @@ def adjunct_select_str_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_SELECT_STR_PY_METADATA)
-    params = adjunct_select_str_py_params(input_file=input_file, num_bricks=num_bricks, output_file=output_file)
+    params = adjunct_select_str_py_params(
+        input_file=input_file,
+        num_bricks=num_bricks,
+        output_file=output_file,
+    )
     return adjunct_select_str_py_execute(params, execution)
 
 

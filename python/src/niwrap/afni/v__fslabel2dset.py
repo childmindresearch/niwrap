@@ -11,6 +11,8 @@ V__FSLABEL2DSET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFslabel2dsetParameters = typing.TypedDict('VFslabel2dsetParameters', {
     "__STYX_TYPE__": typing.Literal["@FSlabel2dset"],
     "fs_label_file": InputPathType,
@@ -196,7 +198,13 @@ def v__fslabel2dset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FSLABEL2DSET_METADATA)
-    params = v__fslabel2dset_params(fs_label_file=fs_label_file, val=val, help_=help_, echo=echo, keep_tmp=keep_tmp)
+    params = v__fslabel2dset_params(
+        fs_label_file=fs_label_file,
+        val=val,
+        help_=help_,
+        echo=echo,
+        keep_tmp=keep_tmp,
+    )
     return v__fslabel2dset_execute(params, execution)
 
 

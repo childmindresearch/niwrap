@@ -11,11 +11,15 @@ TSFINFO_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TsfinfoConfigParameters = typing.TypedDict('TsfinfoConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TsfinfoParameters = typing.TypedDict('TsfinfoParameters', {
     "__STYX_TYPE__": typing.Literal["tsfinfo"],
     "count": bool,
@@ -313,7 +317,19 @@ def tsfinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TSFINFO_METADATA)
-    params = tsfinfo_params(count=count, ascii_=ascii_, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks)
+    params = tsfinfo_params(
+        count=count,
+        ascii_=ascii_,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks=tracks,
+    )
     return tsfinfo_execute(params, execution)
 
 

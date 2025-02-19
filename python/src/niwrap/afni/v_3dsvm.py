@@ -11,6 +11,8 @@ V_3DSVM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dsvmParameters = typing.TypedDict('V3dsvmParameters', {
     "__STYX_TYPE__": typing.Literal["3dsvm"],
     "train_vol": typing.NotRequired[InputPathType | None],
@@ -475,7 +477,35 @@ def v_3dsvm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DSVM_METADATA)
-    params = v_3dsvm_params(train_vol=train_vol, train_labels=train_labels, mask=mask, no_model_mask=no_model_mask, model=model, alpha=alpha, bucket=bucket, type_=type_, c_value=c_value, epsilon=epsilon, kernel=kernel, d_value=d_value, gamma=gamma, s_value=s_value, r_value=r_value, max_iterations=max_iterations, wout=wout, test_vol=test_vol, predictions=predictions, classout=classout, nopred_censored=nopred_censored, nodetrend=nodetrend, nopred_scale=nopred_scale, test_labels=test_labels, multiclass=multiclass, help_=help_, version=version)
+    params = v_3dsvm_params(
+        train_vol=train_vol,
+        train_labels=train_labels,
+        mask=mask,
+        no_model_mask=no_model_mask,
+        model=model,
+        alpha=alpha,
+        bucket=bucket,
+        type_=type_,
+        c_value=c_value,
+        epsilon=epsilon,
+        kernel=kernel,
+        d_value=d_value,
+        gamma=gamma,
+        s_value=s_value,
+        r_value=r_value,
+        max_iterations=max_iterations,
+        wout=wout,
+        test_vol=test_vol,
+        predictions=predictions,
+        classout=classout,
+        nopred_censored=nopred_censored,
+        nodetrend=nodetrend,
+        nopred_scale=nopred_scale,
+        test_labels=test_labels,
+        multiclass=multiclass,
+        help_=help_,
+        version=version,
+    )
     return v_3dsvm_execute(params, execution)
 
 

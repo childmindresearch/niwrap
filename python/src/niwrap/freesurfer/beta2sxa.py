@@ -11,6 +11,8 @@ BETA2SXA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Beta2sxaParameters = typing.TypedDict('Beta2sxaParameters', {
     "__STYX_TYPE__": typing.Literal["beta2sxa"],
     "beta_files": list[InputPathType],
@@ -196,7 +198,12 @@ def beta2sxa(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BETA2SXA_METADATA)
-    params = beta2sxa_params(beta_files=beta_files, number_of_conditions=number_of_conditions, number_of_per_subjects=number_of_per_subjects, sxa_output=sxa_output)
+    params = beta2sxa_params(
+        beta_files=beta_files,
+        number_of_conditions=number_of_conditions,
+        number_of_per_subjects=number_of_per_subjects,
+        sxa_output=sxa_output,
+    )
     return beta2sxa_execute(params, execution)
 
 

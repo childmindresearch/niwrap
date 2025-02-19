@@ -11,6 +11,8 @@ MM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MmParameters = typing.TypedDict('MmParameters', {
     "__STYX_TYPE__": typing.Literal["mm"],
     "spatial_data_file": InputPathType,
@@ -330,7 +332,25 @@ def mm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MM_METADATA)
-    params = mm_params(spatial_data_file=spatial_data_file, mask_file=mask_file, verbose_flag=verbose_flag, debug_level=debug_level, timing_flag=timing_flag, example_epi_file=example_epi_file, log_directory=log_directory, nonspatial_flag=nonspatial_flag, fix_mrf_precision_flag=fix_mrf_precision_flag, mrf_prec_start=mrf_prec_start, mrf_prec_multiplier=mrf_prec_multiplier, init_multiplier=init_multiplier, no_update_theta_flag=no_update_theta_flag, zfstat_flag=zfstat_flag, phi=phi, niters=niters, threshold=threshold)
+    params = mm_params(
+        spatial_data_file=spatial_data_file,
+        mask_file=mask_file,
+        verbose_flag=verbose_flag,
+        debug_level=debug_level,
+        timing_flag=timing_flag,
+        example_epi_file=example_epi_file,
+        log_directory=log_directory,
+        nonspatial_flag=nonspatial_flag,
+        fix_mrf_precision_flag=fix_mrf_precision_flag,
+        mrf_prec_start=mrf_prec_start,
+        mrf_prec_multiplier=mrf_prec_multiplier,
+        init_multiplier=init_multiplier,
+        no_update_theta_flag=no_update_theta_flag,
+        zfstat_flag=zfstat_flag,
+        phi=phi,
+        niters=niters,
+        threshold=threshold,
+    )
     return mm_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_VOL2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriVol2surfParameters = typing.TypedDict('MriVol2surfParameters', {
     "__STYX_TYPE__": typing.Literal["mri_vol2surf"],
     "input_volume": InputPathType,
@@ -264,7 +266,17 @@ def mri_vol2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOL2SURF_METADATA)
-    params = mri_vol2surf_params(input_volume=input_volume, registration_file=registration_file, output_path=output_path, reference_volume=reference_volume, regheader_subject=regheader_subject, mni152reg_flag=mni152reg_flag, target_subject=target_subject, hemisphere=hemisphere, surface=surface)
+    params = mri_vol2surf_params(
+        input_volume=input_volume,
+        registration_file=registration_file,
+        output_path=output_path,
+        reference_volume=reference_volume,
+        regheader_subject=regheader_subject,
+        mni152reg_flag=mni152reg_flag,
+        target_subject=target_subject,
+        hemisphere=hemisphere,
+        surface=surface,
+    )
     return mri_vol2surf_execute(params, execution)
 
 

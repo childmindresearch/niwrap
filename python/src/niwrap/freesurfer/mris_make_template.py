@@ -11,6 +11,8 @@ MRIS_MAKE_TEMPLATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMakeTemplateParameters = typing.TypedDict('MrisMakeTemplateParameters', {
     "__STYX_TYPE__": typing.Literal["mris_make_template"],
     "hemi": str,
@@ -294,7 +296,23 @@ def mris_make_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MAKE_TEMPLATE_METADATA)
-    params = mris_make_template_params(hemi=hemi, surface_name=surface_name, subjects=subjects, output_name=output_name, addframe_parameters=addframe_parameters, vector=vector, norot=norot, rot=rot, annot=annot, overlay_parameters=overlay_parameters, overlay_dir=overlay_dir, scale=scale, surf_dir=surf_dir, smooth_iterations=smooth_iterations, subjects_dir=subjects_dir)
+    params = mris_make_template_params(
+        hemi=hemi,
+        surface_name=surface_name,
+        subjects=subjects,
+        output_name=output_name,
+        addframe_parameters=addframe_parameters,
+        vector=vector,
+        norot=norot,
+        rot=rot,
+        annot=annot,
+        overlay_parameters=overlay_parameters,
+        overlay_dir=overlay_dir,
+        scale=scale,
+        surf_dir=surf_dir,
+        smooth_iterations=smooth_iterations,
+        subjects_dir=subjects_dir,
+    )
     return mris_make_template_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_NUDGE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisNudgeParameters = typing.TypedDict('MrisNudgeParameters', {
     "__STYX_TYPE__": typing.Literal["mris_nudge"],
     "input_surface": InputPathType,
@@ -188,7 +190,13 @@ def mris_nudge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_NUDGE_METADATA)
-    params = mris_nudge_params(input_surface=input_surface, input_volume=input_volume, vertex=vertex, target_val=target_val, nbhd=nbhd)
+    params = mris_nudge_params(
+        input_surface=input_surface,
+        input_volume=input_volume,
+        vertex=vertex,
+        target_val=target_val,
+        nbhd=nbhd,
+    )
     return mris_nudge_execute(params, execution)
 
 

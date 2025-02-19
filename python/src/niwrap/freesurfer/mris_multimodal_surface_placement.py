@@ -11,6 +11,8 @@ MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMultimodalSurfacePlacementParameters = typing.TypedDict('MrisMultimodalSurfacePlacementParameters', {
     "__STYX_TYPE__": typing.Literal["mris_multimodal_surface_placement"],
     "input_surface": InputPathType,
@@ -308,7 +310,24 @@ def mris_multimodal_surface_placement(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA)
-    params = mris_multimodal_surface_placement_params(input_surface=input_surface, output_surface=output_surface, sphere_surface=sphere_surface, normals=normals, values_=values_, debug_vertex=debug_vertex, step_size=step_size, number_of_steps=number_of_steps, gradient_sigma=gradient_sigma, aseg_aparc=aseg_aparc, white_surface=white_surface, prob_of_csf=prob_of_csf, t1_image=t1_image, t2_image=t2_image, flair_image=flair_image, min_max=min_max)
+    params = mris_multimodal_surface_placement_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        sphere_surface=sphere_surface,
+        normals=normals,
+        values_=values_,
+        debug_vertex=debug_vertex,
+        step_size=step_size,
+        number_of_steps=number_of_steps,
+        gradient_sigma=gradient_sigma,
+        aseg_aparc=aseg_aparc,
+        white_surface=white_surface,
+        prob_of_csf=prob_of_csf,
+        t1_image=t1_image,
+        t2_image=t2_image,
+        flair_image=flair_image,
+        min_max=min_max,
+    )
     return mris_multimodal_surface_placement_execute(params, execution)
 
 

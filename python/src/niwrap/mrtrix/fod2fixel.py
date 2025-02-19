@@ -11,11 +11,15 @@ FOD2FIXEL_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Fod2fixelConfigParameters = typing.TypedDict('Fod2fixelConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Fod2fixelParameters = typing.TypedDict('Fod2fixelParameters', {
     "__STYX_TYPE__": typing.Literal["fod2fixel"],
     "afd": typing.NotRequired[str | None],
@@ -489,7 +493,29 @@ def fod2fixel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FOD2FIXEL_METADATA)
-    params = fod2fixel_params(afd=afd, peak_amp=peak_amp, disp=disp, fmls_integral=fmls_integral, fmls_peak_value=fmls_peak_value, fmls_no_thresholds=fmls_no_thresholds, fmls_lobe_merge_ratio=fmls_lobe_merge_ratio, mask=mask, maxnum=maxnum, nii=nii, dirpeak=dirpeak, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fod=fod, fixel_directory=fixel_directory)
+    params = fod2fixel_params(
+        afd=afd,
+        peak_amp=peak_amp,
+        disp=disp,
+        fmls_integral=fmls_integral,
+        fmls_peak_value=fmls_peak_value,
+        fmls_no_thresholds=fmls_no_thresholds,
+        fmls_lobe_merge_ratio=fmls_lobe_merge_ratio,
+        mask=mask,
+        maxnum=maxnum,
+        nii=nii,
+        dirpeak=dirpeak,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        fod=fod,
+        fixel_directory=fixel_directory,
+    )
     return fod2fixel_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ANTS_BRAIN_EXTRACTION_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsBrainExtractionShParameters = typing.TypedDict('AntsBrainExtractionShParameters', {
     "__STYX_TYPE__": typing.Literal["antsBrainExtraction.sh"],
     "image_dimension": int,
@@ -314,7 +316,23 @@ def ants_brain_extraction_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_BRAIN_EXTRACTION_SH_METADATA)
-    params = ants_brain_extraction_sh_params(image_dimension=image_dimension, anatomical_image=anatomical_image, template=template, probability_mask=probability_mask, tissue_classification=tissue_classification, brain_extraction_registration_mask=brain_extraction_registration_mask, keep_temporary_files=keep_temporary_files, single_floating_point_precision=single_floating_point_precision, initial_moving_transform=initial_moving_transform, rotation_search_params=rotation_search_params, image_file_suffix=image_file_suffix, translation_search_params=translation_search_params, random_seeding=random_seeding, debug_mode=debug_mode, output_prefix=output_prefix)
+    params = ants_brain_extraction_sh_params(
+        image_dimension=image_dimension,
+        anatomical_image=anatomical_image,
+        template=template,
+        probability_mask=probability_mask,
+        tissue_classification=tissue_classification,
+        brain_extraction_registration_mask=brain_extraction_registration_mask,
+        keep_temporary_files=keep_temporary_files,
+        single_floating_point_precision=single_floating_point_precision,
+        initial_moving_transform=initial_moving_transform,
+        rotation_search_params=rotation_search_params,
+        image_file_suffix=image_file_suffix,
+        translation_search_params=translation_search_params,
+        random_seeding=random_seeding,
+        debug_mode=debug_mode,
+        output_prefix=output_prefix,
+    )
     return ants_brain_extraction_sh_execute(params, execution)
 
 

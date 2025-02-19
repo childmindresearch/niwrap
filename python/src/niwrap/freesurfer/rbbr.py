@@ -11,6 +11,8 @@ RBBR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RbbrParameters = typing.TypedDict('RbbrParameters', {
     "__STYX_TYPE__": typing.Literal["rbbr"],
     "subject": typing.NotRequired[str | None],
@@ -348,7 +350,26 @@ def rbbr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RBBR_METADATA)
-    params = rbbr_params(subject=subject, moving_image=moving_image, t2_contrast=t2_contrast, init_header=init_header, cost_threshold=cost_threshold, gtm_synthesize=gtm_synthesize, tt_reduce=tt_reduce, iterations=iterations, output_reg=output_reg, output_lta=output_lta, left_hemi=left_hemi, right_hemi=right_hemi, gm_proj_frac=gm_proj_frac, gm_proj_abs=gm_proj_abs, wm_proj_abs=wm_proj_abs, frame_no=frame_no, output_template=output_template, no_merge=no_merge)
+    params = rbbr_params(
+        subject=subject,
+        moving_image=moving_image,
+        t2_contrast=t2_contrast,
+        init_header=init_header,
+        cost_threshold=cost_threshold,
+        gtm_synthesize=gtm_synthesize,
+        tt_reduce=tt_reduce,
+        iterations=iterations,
+        output_reg=output_reg,
+        output_lta=output_lta,
+        left_hemi=left_hemi,
+        right_hemi=right_hemi,
+        gm_proj_frac=gm_proj_frac,
+        gm_proj_abs=gm_proj_abs,
+        wm_proj_abs=wm_proj_abs,
+        frame_no=frame_no,
+        output_template=output_template,
+        no_merge=no_merge,
+    )
     return rbbr_execute(params, execution)
 
 

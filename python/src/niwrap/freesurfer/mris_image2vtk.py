@@ -11,6 +11,8 @@ MRIS_IMAGE2VTK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisImage2vtkParameters = typing.TypedDict('MrisImage2vtkParameters', {
     "__STYX_TYPE__": typing.Literal["mris_image2vtk"],
     "input_filename": InputPathType,
@@ -201,7 +203,15 @@ def mris_image2vtk(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_IMAGE2VTK_METADATA)
-    params = mris_image2vtk_params(input_filename=input_filename, output_filename=output_filename, lower_threshold=lower_threshold, upper_threshold=upper_threshold, vtk_smoothing_iters=vtk_smoothing_iters, image_smoothing_size=image_smoothing_size, reduction_percent=reduction_percent)
+    params = mris_image2vtk_params(
+        input_filename=input_filename,
+        output_filename=output_filename,
+        lower_threshold=lower_threshold,
+        upper_threshold=upper_threshold,
+        vtk_smoothing_iters=vtk_smoothing_iters,
+        image_smoothing_size=image_smoothing_size,
+        reduction_percent=reduction_percent,
+    )
     return mris_image2vtk_execute(params, execution)
 
 

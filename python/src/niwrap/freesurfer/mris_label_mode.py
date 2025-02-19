@@ -11,6 +11,8 @@ MRIS_LABEL_MODE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisLabelModeParameters = typing.TypedDict('MrisLabelModeParameters', {
     "__STYX_TYPE__": typing.Literal["mris_label_mode"],
     "input_curv_file": InputPathType,
@@ -212,7 +214,16 @@ def mris_label_mode(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LABEL_MODE_METADATA)
-    params = mris_label_mode_params(input_curv_file=input_curv_file, hemi=hemi, surface=surface, subject=subject, output_curv_file=output_curv_file, summary_statistics=summary_statistics, statistics_cond=statistics_cond, output_directory=output_directory)
+    params = mris_label_mode_params(
+        input_curv_file=input_curv_file,
+        hemi=hemi,
+        surface=surface,
+        subject=subject,
+        output_curv_file=output_curv_file,
+        summary_statistics=summary_statistics,
+        statistics_cond=statistics_cond,
+        output_directory=output_directory,
+    )
     return mris_label_mode_execute(params, execution)
 
 

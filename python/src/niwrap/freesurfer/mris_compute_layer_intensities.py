@@ -11,6 +11,8 @@ MRIS_COMPUTE_LAYER_INTENSITIES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisComputeLayerIntensitiesParameters = typing.TypedDict('MrisComputeLayerIntensitiesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_compute_layer_intensities"],
     "input_intensity_volume": InputPathType,
@@ -182,7 +184,12 @@ def mris_compute_layer_intensities(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COMPUTE_LAYER_INTENSITIES_METADATA)
-    params = mris_compute_layer_intensities_params(input_intensity_volume=input_intensity_volume, layer_volume_fractions_file=layer_volume_fractions_file, input_surface=input_surface, output_overlay=output_overlay)
+    params = mris_compute_layer_intensities_params(
+        input_intensity_volume=input_intensity_volume,
+        layer_volume_fractions_file=layer_volume_fractions_file,
+        input_surface=input_surface,
+        output_overlay=output_overlay,
+    )
     return mris_compute_layer_intensities_execute(params, execution)
 
 

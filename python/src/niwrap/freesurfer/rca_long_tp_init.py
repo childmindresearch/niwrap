@@ -11,6 +11,8 @@ RCA_LONG_TP_INIT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RcaLongTpInitParameters = typing.TypedDict('RcaLongTpInitParameters', {
     "__STYX_TYPE__": typing.Literal["rca-long-tp-init"],
     "timepoint": str,
@@ -209,7 +211,14 @@ def rca_long_tp_init(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_LONG_TP_INIT_METADATA)
-    params = rca_long_tp_init_params(timepoint=timepoint, base=base, use_long_base_ctrl_vol=use_long_base_ctrl_vol, hemisphere=hemisphere, expert_opts=expert_opts, subject=subject)
+    params = rca_long_tp_init_params(
+        timepoint=timepoint,
+        base=base,
+        use_long_base_ctrl_vol=use_long_base_ctrl_vol,
+        hemisphere=hemisphere,
+        expert_opts=expert_opts,
+        subject=subject,
+    )
     return rca_long_tp_init_execute(params, execution)
 
 

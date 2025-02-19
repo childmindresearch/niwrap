@@ -11,6 +11,8 @@ FOCI_LIST_COORDS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 FociListCoordsParameters = typing.TypedDict('FociListCoordsParameters', {
     "__STYX_TYPE__": typing.Literal["foci-list-coords"],
     "foci_file": InputPathType,
@@ -183,7 +185,11 @@ def foci_list_coords(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FOCI_LIST_COORDS_METADATA)
-    params = foci_list_coords_params(foci_file=foci_file, coord_file_out=coord_file_out, opt_names_out_names_file_out=opt_names_out_names_file_out)
+    params = foci_list_coords_params(
+        foci_file=foci_file,
+        coord_file_out=coord_file_out,
+        opt_names_out_names_file_out=opt_names_out_names_file_out,
+    )
     return foci_list_coords_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ VOLUME_COMPONENTS_TO_FRAMES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeComponentsToFramesParameters = typing.TypedDict('VolumeComponentsToFramesParameters', {
     "__STYX_TYPE__": typing.Literal["volume-components-to-frames"],
     "input": InputPathType,
@@ -173,7 +175,10 @@ def volume_components_to_frames(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_COMPONENTS_TO_FRAMES_METADATA)
-    params = volume_components_to_frames_params(input_=input_, output=output)
+    params = volume_components_to_frames_params(
+        input_=input_,
+        output=output,
+    )
     return volume_components_to_frames_execute(params, execution)
 
 

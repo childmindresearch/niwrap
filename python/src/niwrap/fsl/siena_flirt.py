@@ -11,6 +11,8 @@ SIENA_FLIRT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SienaFlirtParameters = typing.TypedDict('SienaFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["siena_flirt"],
     "input1_fileroot": str,
@@ -173,7 +175,10 @@ def siena_flirt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIENA_FLIRT_METADATA)
-    params = siena_flirt_params(input1_fileroot=input1_fileroot, input2_fileroot=input2_fileroot)
+    params = siena_flirt_params(
+        input1_fileroot=input1_fileroot,
+        input2_fileroot=input2_fileroot,
+    )
     return siena_flirt_execute(params, execution)
 
 

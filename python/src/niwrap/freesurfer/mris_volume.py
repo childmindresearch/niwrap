@@ -11,6 +11,8 @@ MRIS_VOLUME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisVolumeParameters = typing.TypedDict('MrisVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["mris_volume"],
     "surface_file": InputPathType,
@@ -163,7 +165,10 @@ def mris_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_VOLUME_METADATA)
-    params = mris_volume_params(surface_file=surface_file, verbose_flag=verbose_flag)
+    params = mris_volume_params(
+        surface_file=surface_file,
+        verbose_flag=verbose_flag,
+    )
     return mris_volume_execute(params, execution)
 
 

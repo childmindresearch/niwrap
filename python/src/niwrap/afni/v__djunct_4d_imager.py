@@ -11,6 +11,8 @@ V__DJUNCT_4D_IMAGER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunct4dImagerParameters = typing.TypedDict('VDjunct4dImagerParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_4d_imager"],
     "inset": InputPathType,
@@ -205,7 +207,12 @@ def v__djunct_4d_imager(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_4D_IMAGER_METADATA)
-    params = v__djunct_4d_imager_params(inset=inset, prefix=prefix, do_movie=do_movie, no_clean=no_clean)
+    params = v__djunct_4d_imager_params(
+        inset=inset,
+        prefix=prefix,
+        do_movie=do_movie,
+        no_clean=no_clean,
+    )
     return v__djunct_4d_imager_execute(params, execution)
 
 

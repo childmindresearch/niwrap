@@ -11,6 +11,8 @@ MRI_CVS_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCvsRegisterParameters = typing.TypedDict('MriCvsRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_cvs_register"],
     "mov_subjid": str,
@@ -437,7 +439,35 @@ def mri_cvs_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CVS_REGISTER_METADATA)
-    params = mri_cvs_register_params(mov_subjid=mov_subjid, template_subjid=template_subjid, templatedir=templatedir, mni_flag=mni_flag, outdir=outdir, asegfname=asegfname, voltype=voltype, step1_flag=step1_flag, step2_flag=step2_flag, step3_flag=step3_flag, noaseg_flag=noaseg_flag, nointensity_flag=nointensity_flag, hemi_flag=hemi_flag, masktargethemi_flag=masktargethemi_flag, maskmovinghemi_flag=maskmovinghemi_flag, nocleanup_flag=nocleanup_flag, keepelreg_flag=keepelreg_flag, keepallm3z_flag=keepallm3z_flag, cleanall_flag=cleanall_flag, cleansurfreg_flag=cleansurfreg_flag, cleanelreg_flag=cleanelreg_flag, cleanvolreg_flag=cleanvolreg_flag, m3d_flag=m3d_flag, openmp=openmp, nolog_flag=nolog_flag, version_flag=version_flag, help_flag=help_flag)
+    params = mri_cvs_register_params(
+        mov_subjid=mov_subjid,
+        template_subjid=template_subjid,
+        templatedir=templatedir,
+        mni_flag=mni_flag,
+        outdir=outdir,
+        asegfname=asegfname,
+        voltype=voltype,
+        step1_flag=step1_flag,
+        step2_flag=step2_flag,
+        step3_flag=step3_flag,
+        noaseg_flag=noaseg_flag,
+        nointensity_flag=nointensity_flag,
+        hemi_flag=hemi_flag,
+        masktargethemi_flag=masktargethemi_flag,
+        maskmovinghemi_flag=maskmovinghemi_flag,
+        nocleanup_flag=nocleanup_flag,
+        keepelreg_flag=keepelreg_flag,
+        keepallm3z_flag=keepallm3z_flag,
+        cleanall_flag=cleanall_flag,
+        cleansurfreg_flag=cleansurfreg_flag,
+        cleanelreg_flag=cleanelreg_flag,
+        cleanvolreg_flag=cleanvolreg_flag,
+        m3d_flag=m3d_flag,
+        openmp=openmp,
+        nolog_flag=nolog_flag,
+        version_flag=version_flag,
+        help_flag=help_flag,
+    )
     return mri_cvs_register_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_COPY_HEADER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCopyHeaderParameters = typing.TypedDict('MrisCopyHeaderParameters', {
     "__STYX_TYPE__": typing.Literal["mris_copy_header"],
     "input_surface": InputPathType,
@@ -177,7 +179,11 @@ def mris_copy_header(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COPY_HEADER_METADATA)
-    params = mris_copy_header_params(input_surface=input_surface, template_surface=template_surface, output_surface=output_surface)
+    params = mris_copy_header_params(
+        input_surface=input_surface,
+        template_surface=template_surface,
+        output_surface=output_surface,
+    )
     return mris_copy_header_execute(params, execution)
 
 

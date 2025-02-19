@@ -11,6 +11,8 @@ MRI_SURF2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSurf2surfParameters = typing.TypedDict('MriSurf2surfParameters', {
     "__STYX_TYPE__": typing.Literal["mri_surf2surf"],
     "src_subject": str,
@@ -785,7 +787,64 @@ def mri_surf2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SURF2SURF_METADATA)
-    params = mri_surf2surf_params(src_subject=src_subject, sval_path=sval_path, sval_xyz=sval_xyz, projfrac=projfrac, projabs=projabs, sval_tal_xyz=sval_tal_xyz, sval_area=sval_area, sval_annot=sval_annot, sval_nxyz=sval_nxyz, patch=patch, sfmt=sfmt, reg=reg, reg_inv=reg_inv, srcicoorder=srcicoorder, trg_subject=trg_subject, trgicoorder=trgicoorder, tval_path=tval_path, tval_xyz=tval_xyz, tfmt=tfmt, trg_dist=trg_dist, s=s, hemi=hemi, src_hemi=src_hemi, trg_hemi=trg_hemi, dual_hemi=dual_hemi, jac=jac, surfreg=surfreg, src_surfreg=src_surfreg, trg_surfreg=trg_surfreg, mapmethod=mapmethod, frame=frame, fwhm_src=fwhm_src, fwhm_trg=fwhm_trg, nsmooth_in=nsmooth_in, nsmooth_out=nsmooth_out, cortex=cortex, no_cortex=no_cortex, label_src=label_src, label_trg=label_trg, mul=mul, div=div, reshape=reshape, reshape_factor=reshape_factor, reshape3d=reshape3d, split=split, synth=synth, ones=ones, normvar=normvar, seed=seed, prune=prune, no_prune=no_prune, proj_surf=proj_surf, proj_norm=proj_norm, reg_diff=reg_diff, rms=rms, rms_mask=rms_mask)
+    params = mri_surf2surf_params(
+        src_subject=src_subject,
+        sval_path=sval_path,
+        sval_xyz=sval_xyz,
+        projfrac=projfrac,
+        projabs=projabs,
+        sval_tal_xyz=sval_tal_xyz,
+        sval_area=sval_area,
+        sval_annot=sval_annot,
+        sval_nxyz=sval_nxyz,
+        patch=patch,
+        sfmt=sfmt,
+        reg=reg,
+        reg_inv=reg_inv,
+        srcicoorder=srcicoorder,
+        trg_subject=trg_subject,
+        trgicoorder=trgicoorder,
+        tval_path=tval_path,
+        tval_xyz=tval_xyz,
+        tfmt=tfmt,
+        trg_dist=trg_dist,
+        s=s,
+        hemi=hemi,
+        src_hemi=src_hemi,
+        trg_hemi=trg_hemi,
+        dual_hemi=dual_hemi,
+        jac=jac,
+        surfreg=surfreg,
+        src_surfreg=src_surfreg,
+        trg_surfreg=trg_surfreg,
+        mapmethod=mapmethod,
+        frame=frame,
+        fwhm_src=fwhm_src,
+        fwhm_trg=fwhm_trg,
+        nsmooth_in=nsmooth_in,
+        nsmooth_out=nsmooth_out,
+        cortex=cortex,
+        no_cortex=no_cortex,
+        label_src=label_src,
+        label_trg=label_trg,
+        mul=mul,
+        div=div,
+        reshape=reshape,
+        reshape_factor=reshape_factor,
+        reshape3d=reshape3d,
+        split=split,
+        synth=synth,
+        ones=ones,
+        normvar=normvar,
+        seed=seed,
+        prune=prune,
+        no_prune=no_prune,
+        proj_surf=proj_surf,
+        proj_norm=proj_norm,
+        reg_diff=reg_diff,
+        rms=rms,
+        rms_mask=rms_mask,
+    )
     return mri_surf2surf_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__AUTO_TLRC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAutoTlrcParameters = typing.TypedDict('VAutoTlrcParameters', {
     "__STYX_TYPE__": typing.Literal["@auto_tlrc"],
     "base_template": InputPathType,
@@ -587,7 +589,47 @@ def v__auto_tlrc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AUTO_TLRC_METADATA)
-    params = v__auto_tlrc_params(base_template=base_template, input_anat=input_anat, no_ss=no_ss, warp_orig_vol=warp_orig_vol, dxyz=dxyz, dx=dx, dy=dy, dz=dz, pad_base=pad_base, keep_tmp=keep_tmp, clean=clean, xform=xform, no_avoid_eyes=no_avoid_eyes, ncr=ncr, onepass=onepass, twopass=twopass, maxite=maxite, not_ok_maxite=not_ok_maxite, inweight=inweight, rigid_equiv=rigid_equiv, init_xform=init_xform, no_pre=no_pre, out_space=out_space, v_3d_allineate=v_3d_allineate, v_3d_alcost=v_3d_alcost, overwrite=overwrite, apar=apar, input_dataset=input_dataset, pad_input=pad_input, onewarp=onewarp, twowarp=twowarp, rmode=rmode, prefix=prefix, suffix=suffix, keep_view=keep_view, base_copy=base_copy, base_list=base_list, use_gz=use_gz, verb=verb)
+    params = v__auto_tlrc_params(
+        base_template=base_template,
+        input_anat=input_anat,
+        no_ss=no_ss,
+        warp_orig_vol=warp_orig_vol,
+        dxyz=dxyz,
+        dx=dx,
+        dy=dy,
+        dz=dz,
+        pad_base=pad_base,
+        keep_tmp=keep_tmp,
+        clean=clean,
+        xform=xform,
+        no_avoid_eyes=no_avoid_eyes,
+        ncr=ncr,
+        onepass=onepass,
+        twopass=twopass,
+        maxite=maxite,
+        not_ok_maxite=not_ok_maxite,
+        inweight=inweight,
+        rigid_equiv=rigid_equiv,
+        init_xform=init_xform,
+        no_pre=no_pre,
+        out_space=out_space,
+        v_3d_allineate=v_3d_allineate,
+        v_3d_alcost=v_3d_alcost,
+        overwrite=overwrite,
+        apar=apar,
+        input_dataset=input_dataset,
+        pad_input=pad_input,
+        onewarp=onewarp,
+        twowarp=twowarp,
+        rmode=rmode,
+        prefix=prefix,
+        suffix=suffix,
+        keep_view=keep_view,
+        base_copy=base_copy,
+        base_list=base_list,
+        use_gz=use_gz,
+        verb=verb,
+    )
     return v__auto_tlrc_execute(params, execution)
 
 

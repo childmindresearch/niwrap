@@ -11,6 +11,8 @@ SMOOTH_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SmoothImageParameters = typing.TypedDict('SmoothImageParameters', {
     "__STYX_TYPE__": typing.Literal["SmoothImage"],
     "image_dimension": int,
@@ -206,7 +208,14 @@ def smooth_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SMOOTH_IMAGE_METADATA)
-    params = smooth_image_params(image_dimension=image_dimension, image_ext=image_ext, smoothing_sigma=smoothing_sigma, out_image_ext=out_image_ext, sigma_units=sigma_units, median_filter=median_filter)
+    params = smooth_image_params(
+        image_dimension=image_dimension,
+        image_ext=image_ext,
+        smoothing_sigma=smoothing_sigma,
+        out_image_ext=out_image_ext,
+        sigma_units=sigma_units,
+        median_filter=median_filter,
+    )
     return smooth_image_execute(params, execution)
 
 

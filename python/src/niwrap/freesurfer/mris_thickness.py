@@ -11,6 +11,8 @@ MRIS_THICKNESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisThicknessParameters = typing.TypedDict('MrisThicknessParameters', {
     "__STYX_TYPE__": typing.Literal["mris_thickness"],
     "subject_name": str,
@@ -225,7 +227,15 @@ def mris_thickness(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_THICKNESS_METADATA)
-    params = mris_thickness_params(subject_name=subject_name, hemi=hemi, thickness_file=thickness_file, max_threshold=max_threshold, fill_holes=fill_holes, thickness_from_seg=thickness_from_seg, vector=vector)
+    params = mris_thickness_params(
+        subject_name=subject_name,
+        hemi=hemi,
+        thickness_file=thickness_file,
+        max_threshold=max_threshold,
+        fill_holes=fill_holes,
+        thickness_from_seg=thickness_from_seg,
+        vector=vector,
+    )
     return mris_thickness_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ METRIC_VECTOR_OPERATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricVectorOperationParameters = typing.TypedDict('MetricVectorOperationParameters', {
     "__STYX_TYPE__": typing.Literal["metric-vector-operation"],
     "vectors_a": InputPathType,
@@ -241,7 +243,16 @@ def metric_vector_operation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_VECTOR_OPERATION_METADATA)
-    params = metric_vector_operation_params(vectors_a=vectors_a, vectors_b=vectors_b, operation=operation, metric_out=metric_out, opt_normalize_a=opt_normalize_a, opt_normalize_b=opt_normalize_b, opt_normalize_output=opt_normalize_output, opt_magnitude=opt_magnitude)
+    params = metric_vector_operation_params(
+        vectors_a=vectors_a,
+        vectors_b=vectors_b,
+        operation=operation,
+        metric_out=metric_out,
+        opt_normalize_a=opt_normalize_a,
+        opt_normalize_b=opt_normalize_b,
+        opt_normalize_output=opt_normalize_output,
+        opt_magnitude=opt_magnitude,
+    )
     return metric_vector_operation_execute(params, execution)
 
 

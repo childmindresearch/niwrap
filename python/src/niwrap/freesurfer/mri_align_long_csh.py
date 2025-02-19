@@ -11,6 +11,8 @@ MRI_ALIGN_LONG_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAlignLongCshParameters = typing.TypedDict('MriAlignLongCshParameters', {
     "__STYX_TYPE__": typing.Literal["mri_align_long.csh"],
     "base_id": str,
@@ -164,7 +166,9 @@ def mri_align_long_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ALIGN_LONG_CSH_METADATA)
-    params = mri_align_long_csh_params(base_id=base_id)
+    params = mri_align_long_csh_params(
+        base_id=base_id,
+    )
     return mri_align_long_csh_execute(params, execution)
 
 

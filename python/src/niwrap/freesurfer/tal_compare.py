@@ -11,6 +11,8 @@ TAL_COMPARE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TalCompareParameters = typing.TypedDict('TalCompareParameters', {
     "__STYX_TYPE__": typing.Literal["tal_compare"],
     "ref_file": InputPathType,
@@ -181,7 +183,12 @@ def tal_compare(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TAL_COMPARE_METADATA)
-    params = tal_compare_params(ref_file=ref_file, moving_file=moving_file, output_file=output_file, verbose=verbose)
+    params = tal_compare_params(
+        ref_file=ref_file,
+        moving_file=moving_file,
+        output_file=output_file,
+        verbose=verbose,
+    )
     return tal_compare_execute(params, execution)
 
 

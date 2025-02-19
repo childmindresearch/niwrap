@@ -11,24 +11,32 @@ CIFTI_EXPORT_DENSE_MAPPING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiExportDenseMappingVolumeAllParameters = typing.TypedDict('CiftiExportDenseMappingVolumeAllParameters', {
     "__STYX_TYPE__": typing.Literal["volume_all"],
     "text_out": str,
     "opt_no_cifti_index": bool,
     "opt_structure": bool,
 })
+
+
 CiftiExportDenseMappingSurfaceParameters = typing.TypedDict('CiftiExportDenseMappingSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["surface"],
     "structure": str,
     "text_out": str,
     "opt_no_cifti_index": bool,
 })
+
+
 CiftiExportDenseMappingVolumeParameters = typing.TypedDict('CiftiExportDenseMappingVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "structure": str,
     "text_out": str,
     "opt_no_cifti_index": bool,
 })
+
+
 CiftiExportDenseMappingParameters = typing.TypedDict('CiftiExportDenseMappingParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-export-dense-mapping"],
     "cifti": InputPathType,
@@ -443,7 +451,13 @@ def cifti_export_dense_mapping(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_EXPORT_DENSE_MAPPING_METADATA)
-    params = cifti_export_dense_mapping_params(cifti=cifti, direction=direction, volume_all=volume_all, surface=surface, volume=volume)
+    params = cifti_export_dense_mapping_params(
+        cifti=cifti,
+        direction=direction,
+        volume_all=volume_all,
+        surface=surface,
+        volume=volume,
+    )
     return cifti_export_dense_mapping_execute(params, execution)
 
 

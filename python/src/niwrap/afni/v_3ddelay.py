@@ -11,6 +11,8 @@ V_3DDELAY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3ddelayParameters = typing.TypedDict('V3ddelayParameters', {
     "__STYX_TYPE__": typing.Literal["3ddelay"],
     "input_file": InputPathType,
@@ -403,7 +405,32 @@ def v_3ddelay(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DDELAY_METADATA)
-    params = v_3ddelay_params(input_file=input_file, reference_file=reference_file, sampling_freq=sampling_freq, stim_period=stim_period, prefix=prefix, polort=polort, nodtrnd=nodtrnd, units_seconds=units_seconds, units_degrees=units_degrees, units_radians=units_radians, phzwrp=phzwrp, nophzwrp=nophzwrp, phzreverse=phzreverse, phzscale=phzscale, bias=bias, nobias=nobias, dsamp=dsamp, nodsamp=nodsamp, mask=mask, nfirst=nfirst, nlast=nlast, co=co, asc=asc, ascts=ascts)
+    params = v_3ddelay_params(
+        input_file=input_file,
+        reference_file=reference_file,
+        sampling_freq=sampling_freq,
+        stim_period=stim_period,
+        prefix=prefix,
+        polort=polort,
+        nodtrnd=nodtrnd,
+        units_seconds=units_seconds,
+        units_degrees=units_degrees,
+        units_radians=units_radians,
+        phzwrp=phzwrp,
+        nophzwrp=nophzwrp,
+        phzreverse=phzreverse,
+        phzscale=phzscale,
+        bias=bias,
+        nobias=nobias,
+        dsamp=dsamp,
+        nodsamp=nodsamp,
+        mask=mask,
+        nfirst=nfirst,
+        nlast=nlast,
+        co=co,
+        asc=asc,
+        ascts=ascts,
+    )
     return v_3ddelay_execute(params, execution)
 
 

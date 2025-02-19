@@ -11,6 +11,8 @@ DEFACE_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DefaceSubjectParameters = typing.TypedDict('DefaceSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["deface_subject"],
     "subjects_dir": str,
@@ -192,7 +194,12 @@ def deface_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DEFACE_SUBJECT_METADATA)
-    params = deface_subject_params(subjects_dir=subjects_dir, subject_id=subject_id, volume_input=volume_input, volume_output=volume_output)
+    params = deface_subject_params(
+        subjects_dir=subjects_dir,
+        subject_id=subject_id,
+        volume_input=volume_input,
+        volume_output=volume_output,
+    )
     return deface_subject_execute(params, execution)
 
 

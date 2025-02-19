@@ -11,6 +11,8 @@ FSLCREATEHD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslcreatehdParameters = typing.TypedDict('FslcreatehdParameters', {
     "__STYX_TYPE__": typing.Literal["fslcreatehd"],
     "xsize": float,
@@ -256,7 +258,22 @@ def fslcreatehd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLCREATEHD_METADATA)
-    params = fslcreatehd_params(xsize=xsize, ysize=ysize, zsize=zsize, tsize=tsize, xvoxsize=xvoxsize, yvoxsize=yvoxsize, zvoxsize=zvoxsize, tr=tr, xorigin=xorigin, yorigin=yorigin, zorigin=zorigin, datatype=datatype, headername=headername, nifti_xml_file=nifti_xml_file)
+    params = fslcreatehd_params(
+        xsize=xsize,
+        ysize=ysize,
+        zsize=zsize,
+        tsize=tsize,
+        xvoxsize=xvoxsize,
+        yvoxsize=yvoxsize,
+        zvoxsize=zvoxsize,
+        tr=tr,
+        xorigin=xorigin,
+        yorigin=yorigin,
+        zorigin=zorigin,
+        datatype=datatype,
+        headername=headername,
+        nifti_xml_file=nifti_xml_file,
+    )
     return fslcreatehd_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSL_FIX_TEXT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslFixTextParameters = typing.TypedDict('FslFixTextParameters', {
     "__STYX_TYPE__": typing.Literal["fslFixText"],
     "input_text_file": InputPathType,
@@ -166,7 +168,10 @@ def fsl_fix_text(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_FIX_TEXT_METADATA)
-    params = fsl_fix_text_params(input_text_file=input_text_file, output_text_file=output_text_file)
+    params = fsl_fix_text_params(
+        input_text_file=input_text_file,
+        output_text_file=output_text_file,
+    )
     return fsl_fix_text_execute(params, execution)
 
 

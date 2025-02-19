@@ -11,16 +11,22 @@ CIFTI_AVERAGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiAverageExcludeOutliersParameters = typing.TypedDict('CiftiAverageExcludeOutliersParameters', {
     "__STYX_TYPE__": typing.Literal["exclude_outliers"],
     "sigma_below": float,
     "sigma_above": float,
 })
+
+
 CiftiAverageCiftiParameters = typing.TypedDict('CiftiAverageCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti"],
     "cifti_in": InputPathType,
     "opt_weight_weight": typing.NotRequired[float | None],
 })
+
+
 CiftiAverageParameters = typing.TypedDict('CiftiAverageParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-average"],
     "cifti_out": str,
@@ -307,7 +313,12 @@ def cifti_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_AVERAGE_METADATA)
-    params = cifti_average_params(cifti_out=cifti_out, exclude_outliers=exclude_outliers, opt_mem_limit_limit_gb=opt_mem_limit_limit_gb, cifti=cifti)
+    params = cifti_average_params(
+        cifti_out=cifti_out,
+        exclude_outliers=exclude_outliers,
+        opt_mem_limit_limit_gb=opt_mem_limit_limit_gb,
+        cifti=cifti,
+    )
     return cifti_average_execute(params, execution)
 
 

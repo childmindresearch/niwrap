@@ -11,6 +11,8 @@ V__EXTRACT_MEICA_ORTVEC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VExtractMeicaOrtvecParameters = typing.TypedDict('VExtractMeicaOrtvecParameters', {
     "__STYX_TYPE__": typing.Literal["@extract_meica_ortvec"],
     "prefix": str,
@@ -226,7 +228,14 @@ def v__extract_meica_ortvec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__EXTRACT_MEICA_ORTVEC_METADATA)
-    params = v__extract_meica_ortvec_params(prefix=prefix, meica_dir=meica_dir, reject_ignored=reject_ignored, reject_midk=reject_midk, work_dir=work_dir, verbosity=verbosity)
+    params = v__extract_meica_ortvec_params(
+        prefix=prefix,
+        meica_dir=meica_dir,
+        reject_ignored=reject_ignored,
+        reject_midk=reject_midk,
+        work_dir=work_dir,
+        verbosity=verbosity,
+    )
     return v__extract_meica_ortvec_execute(params, execution)
 
 

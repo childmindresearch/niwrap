@@ -11,6 +11,8 @@ V__SUMA_REPREFIXIZE_SPEC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSumaReprefixizeSpecParameters = typing.TypedDict('VSumaReprefixizeSpecParameters', {
     "__STYX_TYPE__": typing.Literal["@suma_reprefixize_spec"],
     "input_file": InputPathType,
@@ -200,7 +202,13 @@ def v__suma_reprefixize_spec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_REPREFIXIZE_SPEC_METADATA)
-    params = v__suma_reprefixize_spec_params(input_file=input_file, prefix=prefix, output_dir=output_dir, work_dir=work_dir, no_clean=no_clean)
+    params = v__suma_reprefixize_spec_params(
+        input_file=input_file,
+        prefix=prefix,
+        output_dir=output_dir,
+        work_dir=work_dir,
+        no_clean=no_clean,
+    )
     return v__suma_reprefixize_spec_execute(params, execution)
 
 

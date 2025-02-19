@@ -11,11 +11,15 @@ MRHISTOGRAM_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrhistogramConfigParameters = typing.TypedDict('MrhistogramConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrhistogramParameters = typing.TypedDict('MrhistogramParameters', {
     "__STYX_TYPE__": typing.Literal["mrhistogram"],
     "bins": typing.NotRequired[int | None],
@@ -358,7 +362,23 @@ def mrhistogram(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRHISTOGRAM_METADATA)
-    params = mrhistogram_params(bins=bins, template=template, mask=mask, ignorezero=ignorezero, allvolumes=allvolumes, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image=image, hist=hist)
+    params = mrhistogram_params(
+        bins=bins,
+        template=template,
+        mask=mask,
+        ignorezero=ignorezero,
+        allvolumes=allvolumes,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        image=image,
+        hist=hist,
+    )
     return mrhistogram_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ IMAGE_INTENSITY_STATISTICS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ImageIntensityStatisticsParameters = typing.TypedDict('ImageIntensityStatisticsParameters', {
     "__STYX_TYPE__": typing.Literal["ImageIntensityStatistics"],
     "image_dimension": int,
@@ -179,7 +181,11 @@ def image_intensity_statistics(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAGE_INTENSITY_STATISTICS_METADATA)
-    params = image_intensity_statistics_params(image_dimension=image_dimension, input_image=input_image, label_image=label_image)
+    params = image_intensity_statistics_params(
+        image_dimension=image_dimension,
+        input_image=input_image,
+        label_image=label_image,
+    )
     return image_intensity_statistics_execute(params, execution)
 
 

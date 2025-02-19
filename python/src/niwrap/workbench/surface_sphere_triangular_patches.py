@@ -11,6 +11,8 @@ SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceSphereTriangularPatchesParameters = typing.TypedDict('SurfaceSphereTriangularPatchesParameters', {
     "__STYX_TYPE__": typing.Literal["surface-sphere-triangular-patches"],
     "sphere": InputPathType,
@@ -178,7 +180,11 @@ def surface_sphere_triangular_patches(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA)
-    params = surface_sphere_triangular_patches_params(sphere=sphere, divisions=divisions, text_out=text_out)
+    params = surface_sphere_triangular_patches_params(
+        sphere=sphere,
+        divisions=divisions,
+        text_out=text_out,
+    )
     return surface_sphere_triangular_patches_execute(params, execution)
 
 

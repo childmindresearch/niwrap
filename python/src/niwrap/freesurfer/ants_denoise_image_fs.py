@@ -11,6 +11,8 @@ ANTS_DENOISE_IMAGE_FS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 AntsDenoiseImageFsParameters = typing.TypedDict('AntsDenoiseImageFsParameters', {
     "__STYX_TYPE__": typing.Literal["AntsDenoiseImageFs"],
     "input_image": InputPathType,
@@ -182,7 +184,11 @@ def ants_denoise_image_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_DENOISE_IMAGE_FS_METADATA)
-    params = ants_denoise_image_fs_params(input_image=input_image, output_image=output_image, rician_flag=rician_flag)
+    params = ants_denoise_image_fs_params(
+        input_image=input_image,
+        output_image=output_image,
+        rician_flag=rician_flag,
+    )
     return ants_denoise_image_fs_execute(params, execution)
 
 

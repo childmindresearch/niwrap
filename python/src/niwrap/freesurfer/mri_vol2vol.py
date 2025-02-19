@@ -11,6 +11,8 @@ MRI_VOL2VOL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriVol2volParameters = typing.TypedDict('MriVol2volParameters', {
     "__STYX_TYPE__": typing.Literal["mri_vol2vol"],
     "movvol": InputPathType,
@@ -627,7 +629,52 @@ def mri_vol2vol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOL2VOL_METADATA)
-    params = mri_vol2vol_params(movvol=movvol, targvol=targvol, outvol=outvol, dispvol=dispvol, downsample=downsample, register_dat=register_dat, lta=lta, lta_inv=lta_inv, fsl=fsl, xfm=xfm, inv=inv, tal=tal, talres=talres, talxfm=talxfm, m3z=m3z, inv_morph=inv_morph, fstarg=fstarg, crop=crop, slice_crop=slice_crop, slice_reverse=slice_reverse, slice_bias=slice_bias, interp=interp, fill_average=fill_average, fill_conserve=fill_conserve, fill_up=fill_up, mul=mul, precision=precision, keep_precision=keep_precision, kernel=kernel, copy_ctab=copy_ctab, gcam=gcam, spm_warp=spm_warp, map_point=map_point, map_point_inv_lta=map_point_inv_lta, no_resample=no_resample, rot=rot, trans=trans, shear=shear, reg_final=reg_final, synth=synth, seed=seed, save_reg=save_reg, debug=debug, version=version)
+    params = mri_vol2vol_params(
+        movvol=movvol,
+        targvol=targvol,
+        outvol=outvol,
+        dispvol=dispvol,
+        downsample=downsample,
+        register_dat=register_dat,
+        lta=lta,
+        lta_inv=lta_inv,
+        fsl=fsl,
+        xfm=xfm,
+        inv=inv,
+        tal=tal,
+        talres=talres,
+        talxfm=talxfm,
+        m3z=m3z,
+        inv_morph=inv_morph,
+        fstarg=fstarg,
+        crop=crop,
+        slice_crop=slice_crop,
+        slice_reverse=slice_reverse,
+        slice_bias=slice_bias,
+        interp=interp,
+        fill_average=fill_average,
+        fill_conserve=fill_conserve,
+        fill_up=fill_up,
+        mul=mul,
+        precision=precision,
+        keep_precision=keep_precision,
+        kernel=kernel,
+        copy_ctab=copy_ctab,
+        gcam=gcam,
+        spm_warp=spm_warp,
+        map_point=map_point,
+        map_point_inv_lta=map_point_inv_lta,
+        no_resample=no_resample,
+        rot=rot,
+        trans=trans,
+        shear=shear,
+        reg_final=reg_final,
+        synth=synth,
+        seed=seed,
+        save_reg=save_reg,
+        debug=debug,
+        version=version,
+    )
     return mri_vol2vol_execute(params, execution)
 
 

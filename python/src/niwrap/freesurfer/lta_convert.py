@@ -11,6 +11,8 @@ LTA_CONVERT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LtaConvertParameters = typing.TypedDict('LtaConvertParameters', {
     "__STYX_TYPE__": typing.Literal["lta_convert"],
     "in_vox": typing.NotRequired[InputPathType | None],
@@ -248,7 +250,17 @@ def lta_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LTA_CONVERT_METADATA)
-    params = lta_convert_params(in_vox=in_vox, out_vox=out_vox, invert=invert, ltavox2vox=ltavox2vox, ltatkreg=ltatkreg, src_geometry=src_geometry, trg_geometry=trg_geometry, trg_conform=trg_conform, subject_name=subject_name)
+    params = lta_convert_params(
+        in_vox=in_vox,
+        out_vox=out_vox,
+        invert=invert,
+        ltavox2vox=ltavox2vox,
+        ltatkreg=ltatkreg,
+        src_geometry=src_geometry,
+        trg_geometry=trg_geometry,
+        trg_conform=trg_conform,
+        subject_name=subject_name,
+    )
     return lta_convert_execute(params, execution)
 
 

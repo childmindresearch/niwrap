@@ -11,6 +11,8 @@ MRIS_MERGE_PARCELLATIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMergeParcellationsParameters = typing.TypedDict('MrisMergeParcellationsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_merge_parcellations"],
     "surface": InputPathType,
@@ -181,7 +183,12 @@ def mris_merge_parcellations(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MERGE_PARCELLATIONS_METADATA)
-    params = mris_merge_parcellations_params(surface=surface, label1=label1, label2=label2, annot_name=annot_name)
+    params = mris_merge_parcellations_params(
+        surface=surface,
+        label1=label1,
+        label2=label2,
+        annot_name=annot_name,
+    )
     return mris_merge_parcellations_execute(params, execution)
 
 

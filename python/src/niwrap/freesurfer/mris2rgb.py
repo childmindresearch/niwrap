@@ -11,6 +11,8 @@ MRIS2RGB_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Mris2rgbParameters = typing.TypedDict('Mris2rgbParameters', {
     "__STYX_TYPE__": typing.Literal["mris2rgb"],
     "library_path": str,
@@ -160,7 +162,9 @@ def mris2rgb(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS2RGB_METADATA)
-    params = mris2rgb_params(library_path=library_path)
+    params = mris2rgb_params(
+        library_path=library_path,
+    )
     return mris2rgb_execute(params, execution)
 
 

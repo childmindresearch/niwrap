@@ -11,6 +11,8 @@ SIENAX_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SienaxParameters = typing.TypedDict('SienaxParameters', {
     "__STYX_TYPE__": typing.Literal["sienax"],
     "infile": InputPathType,
@@ -280,7 +282,19 @@ def sienax(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIENAX_METADATA)
-    params = sienax_params(infile=infile, output_dir=output_dir, debug_flag=debug_flag, bet_options=bet_options, twoclass_segment_flag=twoclass_segment_flag, t2_flag=t2_flag, top_threshold=top_threshold, bottom_threshold=bottom_threshold, regional_flag=regional_flag, lesion_mask=lesion_mask, fast_options=fast_options)
+    params = sienax_params(
+        infile=infile,
+        output_dir=output_dir,
+        debug_flag=debug_flag,
+        bet_options=bet_options,
+        twoclass_segment_flag=twoclass_segment_flag,
+        t2_flag=t2_flag,
+        top_threshold=top_threshold,
+        bottom_threshold=bottom_threshold,
+        regional_flag=regional_flag,
+        lesion_mask=lesion_mask,
+        fast_options=fast_options,
+    )
     return sienax_execute(params, execution)
 
 

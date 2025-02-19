@@ -11,6 +11,8 @@ ANTS_CORTICAL_THICKNESS_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsCorticalThicknessShParameters = typing.TypedDict('AntsCorticalThicknessShParameters', {
     "__STYX_TYPE__": typing.Literal["antsCorticalThickness.sh"],
     "image_dimension": typing.Literal[2, 3],
@@ -234,7 +236,14 @@ def ants_cortical_thickness_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_CORTICAL_THICKNESS_SH_METADATA)
-    params = ants_cortical_thickness_sh_params(image_dimension=image_dimension, anatomical_image=anatomical_image, brain_template=brain_template, brain_extraction_probability_mask=brain_extraction_probability_mask, brain_segmentation_priors=brain_segmentation_priors, output_prefix=output_prefix)
+    params = ants_cortical_thickness_sh_params(
+        image_dimension=image_dimension,
+        anatomical_image=anatomical_image,
+        brain_template=brain_template,
+        brain_extraction_probability_mask=brain_extraction_probability_mask,
+        brain_segmentation_priors=brain_segmentation_priors,
+        output_prefix=output_prefix,
+    )
     return ants_cortical_thickness_sh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_REMOVE_VARIANCE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRemoveVarianceParameters = typing.TypedDict('MrisRemoveVarianceParameters', {
     "__STYX_TYPE__": typing.Literal["mris_remove_variance"],
     "input_surface_file": InputPathType,
@@ -184,7 +186,12 @@ def mris_remove_variance(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REMOVE_VARIANCE_METADATA)
-    params = mris_remove_variance_params(input_surface_file=input_surface_file, curvature_file=curvature_file, curvature_file_to_remove=curvature_file_to_remove, output_curvature_file=output_curvature_file)
+    params = mris_remove_variance_params(
+        input_surface_file=input_surface_file,
+        curvature_file=curvature_file,
+        curvature_file_to_remove=curvature_file_to_remove,
+        output_curvature_file=output_curvature_file,
+    )
     return mris_remove_variance_execute(params, execution)
 
 

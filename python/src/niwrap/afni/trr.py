@@ -11,6 +11,8 @@ TRR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 TrrParameters = typing.TypedDict('TrrParameters', {
     "__STYX_TYPE__": typing.Literal["TRR"],
     "prefix": str,
@@ -371,7 +373,26 @@ def trr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRR_METADATA)
-    params = trr_params(prefix=prefix, chains=chains, iterations=iterations, response_var=response_var, subject_var=subject_var, repetition_var=repetition_var, condition_var=condition_var, data_table=data_table, categorical_vars=categorical_vars, quantitative_vars=quantitative_vars, response_dist=response_dist, model=model, plot_size=plot_size, standard_error=standard_error, t_stat=t_stat, within_chain_parallelization=within_chain_parallelization, debug=debug, verbose=verbose)
+    params = trr_params(
+        prefix=prefix,
+        chains=chains,
+        iterations=iterations,
+        response_var=response_var,
+        subject_var=subject_var,
+        repetition_var=repetition_var,
+        condition_var=condition_var,
+        data_table=data_table,
+        categorical_vars=categorical_vars,
+        quantitative_vars=quantitative_vars,
+        response_dist=response_dist,
+        model=model,
+        plot_size=plot_size,
+        standard_error=standard_error,
+        t_stat=t_stat,
+        within_chain_parallelization=within_chain_parallelization,
+        debug=debug,
+        verbose=verbose,
+    )
     return trr_execute(params, execution)
 
 

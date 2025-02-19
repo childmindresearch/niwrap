@@ -11,6 +11,8 @@ MRI_CORRECT_SEGMENTATIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCorrectSegmentationsParameters = typing.TypedDict('MriCorrectSegmentationsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_correct_segmentations"],
     "input_file_1": InputPathType,
@@ -162,7 +164,10 @@ def mri_correct_segmentations(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CORRECT_SEGMENTATIONS_METADATA)
-    params = mri_correct_segmentations_params(input_file_1=input_file_1, input_file_2=input_file_2)
+    params = mri_correct_segmentations_params(
+        input_file_1=input_file_1,
+        input_file_2=input_file_2,
+    )
     return mri_correct_segmentations_execute(params, execution)
 
 

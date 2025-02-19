@@ -11,6 +11,8 @@ FSLMODHD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslmodhdParameters = typing.TypedDict('FslmodhdParameters', {
     "__STYX_TYPE__": typing.Literal["fslmodhd"],
     "image": InputPathType,
@@ -169,7 +171,11 @@ def fslmodhd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMODHD_METADATA)
-    params = fslmodhd_params(image=image, keyword_=keyword_, value=value)
+    params = fslmodhd_params(
+        image=image,
+        keyword_=keyword_,
+        value=value,
+    )
     return fslmodhd_execute(params, execution)
 
 

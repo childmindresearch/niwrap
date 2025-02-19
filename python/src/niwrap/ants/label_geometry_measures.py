@@ -11,6 +11,8 @@ LABEL_GEOMETRY_MEASURES_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 LabelGeometryMeasuresParameters = typing.TypedDict('LabelGeometryMeasuresParameters', {
     "__STYX_TYPE__": typing.Literal["LabelGeometryMeasures"],
     "image_dimension": int,
@@ -192,7 +194,12 @@ def label_geometry_measures(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_GEOMETRY_MEASURES_METADATA)
-    params = label_geometry_measures_params(image_dimension=image_dimension, label_image=label_image, intensity_image=intensity_image, csv_file=csv_file)
+    params = label_geometry_measures_params(
+        image_dimension=image_dimension,
+        label_image=label_image,
+        intensity_image=intensity_image,
+        csv_file=csv_file,
+    )
     return label_geometry_measures_execute(params, execution)
 
 

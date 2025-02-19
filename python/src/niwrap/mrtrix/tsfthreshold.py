@@ -11,11 +11,15 @@ TSFTHRESHOLD_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TsfthresholdConfigParameters = typing.TypedDict('TsfthresholdConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TsfthresholdParameters = typing.TypedDict('TsfthresholdParameters', {
     "__STYX_TYPE__": typing.Literal["tsfthreshold"],
     "invert": bool,
@@ -317,7 +321,20 @@ def tsfthreshold(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TSFTHRESHOLD_METADATA)
-    params = tsfthreshold_params(invert=invert, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, t=t, output=output)
+    params = tsfthreshold_params(
+        invert=invert,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        t=t,
+        output=output,
+    )
     return tsfthreshold_execute(params, execution)
 
 

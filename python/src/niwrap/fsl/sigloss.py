@@ -11,6 +11,8 @@ SIGLOSS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SiglossParameters = typing.TypedDict('SiglossParameters', {
     "__STYX_TYPE__": typing.Literal["sigloss"],
     "input_b0map": InputPathType,
@@ -212,7 +214,14 @@ def sigloss(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIGLOSS_METADATA)
-    params = sigloss_params(input_b0map=input_b0map, output_sigloss=output_sigloss, input_mask=input_mask, echo_time=echo_time, slice_direction=slice_direction, verbose_flag=verbose_flag)
+    params = sigloss_params(
+        input_b0map=input_b0map,
+        output_sigloss=output_sigloss,
+        input_mask=input_mask,
+        echo_time=echo_time,
+        slice_direction=slice_direction,
+        verbose_flag=verbose_flag,
+    )
     return sigloss_execute(params, execution)
 
 

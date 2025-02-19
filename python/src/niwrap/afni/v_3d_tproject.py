@@ -11,6 +11,8 @@ V_3D_TPROJECT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTprojectParameters = typing.TypedDict('V3dTprojectParameters', {
     "__STYX_TYPE__": typing.Literal["3dTproject"],
     "TR": typing.NotRequired[float | None],
@@ -442,7 +444,25 @@ def v_3d_tproject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TPROJECT_METADATA)
-    params = v_3d_tproject_params(tr=tr, automask=automask, bandpass=bandpass, blur=blur, cenmode=cenmode, censor=censor, censortr=censortr, concat=concat, dsort=dsort, in_file=in_file, mask=mask, noblock=noblock, norm=norm, ort=ort, polort=polort, stopband=stopband, prefix=prefix)
+    params = v_3d_tproject_params(
+        tr=tr,
+        automask=automask,
+        bandpass=bandpass,
+        blur=blur,
+        cenmode=cenmode,
+        censor=censor,
+        censortr=censortr,
+        concat=concat,
+        dsort=dsort,
+        in_file=in_file,
+        mask=mask,
+        noblock=noblock,
+        norm=norm,
+        ort=ort,
+        polort=polort,
+        stopband=stopband,
+        prefix=prefix,
+    )
     return v_3d_tproject_execute(params, execution)
 
 

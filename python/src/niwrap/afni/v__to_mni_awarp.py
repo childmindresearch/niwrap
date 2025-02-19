@@ -11,6 +11,8 @@ V__TO_MNI_AWARP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VToMniAwarpParameters = typing.TypedDict('VToMniAwarpParameters', {
     "__STYX_TYPE__": typing.Literal["@toMNI_Awarp"],
     "directory": str,
@@ -170,7 +172,10 @@ def v__to_mni_awarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__TO_MNI_AWARP_METADATA)
-    params = v__to_mni_awarp_params(directory=directory, datasets=datasets)
+    params = v__to_mni_awarp_params(
+        directory=directory,
+        datasets=datasets,
+    )
     return v__to_mni_awarp_execute(params, execution)
 
 

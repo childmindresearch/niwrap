@@ -11,6 +11,8 @@ ADJUNCT_IS_LABEL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctIsLabelPyParameters = typing.TypedDict('AdjunctIsLabelPyParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_is_label.py"],
     "infile": InputPathType,
@@ -162,7 +164,10 @@ def adjunct_is_label_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_IS_LABEL_PY_METADATA)
-    params = adjunct_is_label_py_params(infile=infile, label=label)
+    params = adjunct_is_label_py_params(
+        infile=infile,
+        label=label,
+    )
     return adjunct_is_label_py_execute(params, execution)
 
 

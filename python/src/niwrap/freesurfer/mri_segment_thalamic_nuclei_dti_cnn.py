@@ -11,6 +11,8 @@ MRI_SEGMENT_THALAMIC_NUCLEI_DTI_CNN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegmentThalamicNucleiDtiCnnParameters = typing.TypedDict('MriSegmentThalamicNucleiDtiCnnParameters', {
     "__STYX_TYPE__": typing.Literal["mri_segment_thalamic_nuclei_dti_cnn"],
     "t1_images": InputPathType,
@@ -272,7 +274,18 @@ def mri_segment_thalamic_nuclei_dti_cnn(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGMENT_THALAMIC_NUCLEI_DTI_CNN_METADATA)
-    params = mri_segment_thalamic_nuclei_dti_cnn_params(t1_images=t1_images, aseg=aseg, fa=fa, v1=v1, output=output, volume_output=volume_output, posteriors_output=posteriors_output, threads=threads, force_cpu=force_cpu, model=model)
+    params = mri_segment_thalamic_nuclei_dti_cnn_params(
+        t1_images=t1_images,
+        aseg=aseg,
+        fa=fa,
+        v1=v1,
+        output=output,
+        volume_output=volume_output,
+        posteriors_output=posteriors_output,
+        threads=threads,
+        force_cpu=force_cpu,
+        model=model,
+    )
     return mri_segment_thalamic_nuclei_dti_cnn_execute(params, execution)
 
 

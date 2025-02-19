@@ -11,6 +11,8 @@ MRI_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriTrainParameters = typing.TypedDict('MriTrainParameters', {
     "__STYX_TYPE__": typing.Literal["mri_train"],
     "training_file": InputPathType,
@@ -166,7 +168,10 @@ def mri_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_TRAIN_METADATA)
-    params = mri_train_params(training_file=training_file, output_file=output_file)
+    params = mri_train_params(
+        training_file=training_file,
+        output_file=output_file,
+    )
     return mri_train_execute(params, execution)
 
 

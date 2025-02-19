@@ -11,11 +11,15 @@ CONNECTOMEEDIT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 ConnectomeeditConfigParameters = typing.TypedDict('ConnectomeeditConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 ConnectomeeditParameters = typing.TypedDict('ConnectomeeditParameters', {
     "__STYX_TYPE__": typing.Literal["connectomeedit"],
     "info": bool,
@@ -307,7 +311,19 @@ def connectomeedit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONNECTOMEEDIT_METADATA)
-    params = connectomeedit_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, operation=operation, output=output)
+    params = connectomeedit_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        operation=operation,
+        output=output,
+    )
     return connectomeedit_execute(params, execution)
 
 

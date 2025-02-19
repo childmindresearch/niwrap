@@ -11,6 +11,8 @@ FSLSWAPDIM_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FslswapdimFslParameters = typing.TypedDict('FslswapdimFslParameters', {
     "__STYX_TYPE__": typing.Literal["fslswapdim.fsl"],
     "input_file": InputPathType,
@@ -195,7 +197,13 @@ def fslswapdim_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSWAPDIM_FSL_METADATA)
-    params = fslswapdim_fsl_params(input_file=input_file, axis_a=axis_a, axis_b=axis_b, axis_c=axis_c, output_file=output_file)
+    params = fslswapdim_fsl_params(
+        input_file=input_file,
+        axis_a=axis_a,
+        axis_b=axis_b,
+        axis_c=axis_c,
+        output_file=output_file,
+    )
     return fslswapdim_fsl_execute(params, execution)
 
 

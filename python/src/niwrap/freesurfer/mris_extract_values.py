@@ -11,6 +11,8 @@ MRIS_EXTRACT_VALUES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisExtractValuesParameters = typing.TypedDict('MrisExtractValuesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_extract_values"],
     "surface": InputPathType,
@@ -214,7 +216,14 @@ def mris_extract_values(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXTRACT_VALUES_METADATA)
-    params = mris_extract_values_params(surface=surface, overlay=overlay, annotation=annotation, csvfile=csvfile, num_images=num_images, image_files=image_files)
+    params = mris_extract_values_params(
+        surface=surface,
+        overlay=overlay,
+        annotation=annotation,
+        csvfile=csvfile,
+        num_images=num_images,
+        image_files=image_files,
+    )
     return mris_extract_values_execute(params, execution)
 
 

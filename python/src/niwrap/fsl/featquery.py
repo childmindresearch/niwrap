@@ -11,6 +11,8 @@ FEATQUERY_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FeatqueryParameters = typing.TypedDict('FeatqueryParameters', {
     "__STYX_TYPE__": typing.Literal["featquery"],
     "n_featdirs": float,
@@ -274,7 +276,22 @@ def featquery(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEATQUERY_METADATA)
-    params = featquery_params(n_featdirs=n_featdirs, featdirs=featdirs, n_stats=n_stats, stats=stats, output_rootname=output_rootname, atlas_flag=atlas_flag, percent_convert_flag=percent_convert_flag, thresh_flag=thresh_flag, interp_thresh=interp_thresh, timeseries_flag=timeseries_flag, weight_flag=weight_flag, browser_flag=browser_flag, mask_file=mask_file, coords=coords)
+    params = featquery_params(
+        n_featdirs=n_featdirs,
+        featdirs=featdirs,
+        n_stats=n_stats,
+        stats=stats,
+        output_rootname=output_rootname,
+        atlas_flag=atlas_flag,
+        percent_convert_flag=percent_convert_flag,
+        thresh_flag=thresh_flag,
+        interp_thresh=interp_thresh,
+        timeseries_flag=timeseries_flag,
+        weight_flag=weight_flag,
+        browser_flag=browser_flag,
+        mask_file=mask_file,
+        coords=coords,
+    )
     return featquery_execute(params, execution)
 
 

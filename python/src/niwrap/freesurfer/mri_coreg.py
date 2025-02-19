@@ -11,6 +11,8 @@ MRI_COREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCoregParameters = typing.TypedDict('MriCoregParameters', {
     "__STYX_TYPE__": typing.Literal["mri_coreg"],
     "movvol": InputPathType,
@@ -744,7 +746,61 @@ def mri_coreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COREG_METADATA)
-    params = mri_coreg_params(movvol=movvol, refvol=refvol, reg=reg, subject=subject, dof=dof, zscale=zscale, xztrans_yrot=xztrans_yrot, xytrans_zrot=xytrans_zrot, xytrans_zrot_xyscale_xyshear=xytrans_zrot_xyscale_xyshear, ref_maskvol=ref_maskvol, no_ref_mask=no_ref_mask, mov_maskvol=mov_maskvol, threads=threads, subjects_dir=subjects_dir, regdat=regdat, no_coord_dither=no_coord_dither, no_intensity_dither=no_intensity_dither, spatial_scales=spatial_scales, trans=trans, rot=rot, scale=scale, shear=shear, init_reg=init_reg, out_param_file=out_param_file, out_cost_file=out_cost_file, no_cras0=no_cras0, centroid=centroid, ras2ras=ras2ras, nitersmax=nitersmax, ftol=ftol, linmintol=linmintol, seed=seed, sat=sat, conf_ref=conf_ref, no_bf=no_bf, bf_lim=bf_lim, bf_nsamp=bf_nsamp, no_smooth=no_smooth, ref_fwhm=ref_fwhm, mov_oob=mov_oob, init_reg_save=init_reg_save, init_reg_save_only=init_reg_save_only, mat2par=mat2par, mat2rot=mat2rot, par2mat=par2mat, lrrev=lrrev, landmarks=landmarks, rms=rms, movout=movout, mov_idither=mov_idither, debug=debug, checkopts=checkopts, version=version)
+    params = mri_coreg_params(
+        movvol=movvol,
+        refvol=refvol,
+        reg=reg,
+        subject=subject,
+        dof=dof,
+        zscale=zscale,
+        xztrans_yrot=xztrans_yrot,
+        xytrans_zrot=xytrans_zrot,
+        xytrans_zrot_xyscale_xyshear=xytrans_zrot_xyscale_xyshear,
+        ref_maskvol=ref_maskvol,
+        no_ref_mask=no_ref_mask,
+        mov_maskvol=mov_maskvol,
+        threads=threads,
+        subjects_dir=subjects_dir,
+        regdat=regdat,
+        no_coord_dither=no_coord_dither,
+        no_intensity_dither=no_intensity_dither,
+        spatial_scales=spatial_scales,
+        trans=trans,
+        rot=rot,
+        scale=scale,
+        shear=shear,
+        init_reg=init_reg,
+        out_param_file=out_param_file,
+        out_cost_file=out_cost_file,
+        no_cras0=no_cras0,
+        centroid=centroid,
+        ras2ras=ras2ras,
+        nitersmax=nitersmax,
+        ftol=ftol,
+        linmintol=linmintol,
+        seed=seed,
+        sat=sat,
+        conf_ref=conf_ref,
+        no_bf=no_bf,
+        bf_lim=bf_lim,
+        bf_nsamp=bf_nsamp,
+        no_smooth=no_smooth,
+        ref_fwhm=ref_fwhm,
+        mov_oob=mov_oob,
+        init_reg_save=init_reg_save,
+        init_reg_save_only=init_reg_save_only,
+        mat2par=mat2par,
+        mat2rot=mat2rot,
+        par2mat=par2mat,
+        lrrev=lrrev,
+        landmarks=landmarks,
+        rms=rms,
+        movout=movout,
+        mov_idither=mov_idither,
+        debug=debug,
+        checkopts=checkopts,
+        version=version,
+    )
     return mri_coreg_execute(params, execution)
 
 

@@ -11,14 +11,20 @@ NIFTI_INFORMATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 NiftiInformationPrintHeaderParameters = typing.TypedDict('NiftiInformationPrintHeaderParameters', {
     "__STYX_TYPE__": typing.Literal["print_header"],
     "opt_allow_truncated": bool,
 })
+
+
 NiftiInformationPrintXmlParameters = typing.TypedDict('NiftiInformationPrintXmlParameters', {
     "__STYX_TYPE__": typing.Literal["print_xml"],
     "opt_version_version": typing.NotRequired[str | None],
 })
+
+
 NiftiInformationParameters = typing.TypedDict('NiftiInformationParameters', {
     "__STYX_TYPE__": typing.Literal["nifti-information"],
     "nifti_file": str,
@@ -277,7 +283,12 @@ def nifti_information(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NIFTI_INFORMATION_METADATA)
-    params = nifti_information_params(nifti_file=nifti_file, print_header=print_header, opt_print_matrix=opt_print_matrix, print_xml=print_xml)
+    params = nifti_information_params(
+        nifti_file=nifti_file,
+        print_header=print_header,
+        opt_print_matrix=opt_print_matrix,
+        print_xml=print_xml,
+    )
     return nifti_information_execute(params, execution)
 
 

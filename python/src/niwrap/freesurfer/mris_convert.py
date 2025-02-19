@@ -11,6 +11,8 @@ MRIS_CONVERT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisConvertParameters = typing.TypedDict('MrisConvertParameters', {
     "__STYX_TYPE__": typing.Literal["mris_convert"],
     "input_file": InputPathType,
@@ -543,7 +545,46 @@ def mris_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CONVERT_METADATA)
-    params = mris_convert_params(input_file=input_file, second_input_file=second_input_file, output_file=output_file, patch=patch, curv_overlay_files=curv_overlay_files, functional_data_file=functional_data_file, orig_positions=orig_positions, scale=scale, rescale=rescale, talairach_xfm=talairach_xfm, normals=normals, neighbors=neighbors, xyz=xyz, annotation_file=annotation_file, parcstats_file=parcstats_file, gifti_dataarray_num=gifti_dataarray_num, label_file=label_file, label_stats_file=label_stats_file, combine_surfs=combine_surfs, merge_gifti=merge_gifti, split_gifti=split_gifti, gifti_outdir=gifti_outdir, delete_cmds=delete_cmds, center=center, vol_geom=vol_geom, remove_vol_geom=remove_vol_geom, to_surf=to_surf, to_scanner=to_scanner, to_tkr=to_tkr, userealras=userealras, usesurfras=usesurfras, upsample=upsample, volume=volume, area=area, angle=angle, label_to_mask=label_to_mask, cras_add=cras_add, cras_subtract=cras_subtract)
+    params = mris_convert_params(
+        input_file=input_file,
+        second_input_file=second_input_file,
+        output_file=output_file,
+        patch=patch,
+        curv_overlay_files=curv_overlay_files,
+        functional_data_file=functional_data_file,
+        orig_positions=orig_positions,
+        scale=scale,
+        rescale=rescale,
+        talairach_xfm=talairach_xfm,
+        normals=normals,
+        neighbors=neighbors,
+        xyz=xyz,
+        annotation_file=annotation_file,
+        parcstats_file=parcstats_file,
+        gifti_dataarray_num=gifti_dataarray_num,
+        label_file=label_file,
+        label_stats_file=label_stats_file,
+        combine_surfs=combine_surfs,
+        merge_gifti=merge_gifti,
+        split_gifti=split_gifti,
+        gifti_outdir=gifti_outdir,
+        delete_cmds=delete_cmds,
+        center=center,
+        vol_geom=vol_geom,
+        remove_vol_geom=remove_vol_geom,
+        to_surf=to_surf,
+        to_scanner=to_scanner,
+        to_tkr=to_tkr,
+        userealras=userealras,
+        usesurfras=usesurfras,
+        upsample=upsample,
+        volume=volume,
+        area=area,
+        angle=angle,
+        label_to_mask=label_to_mask,
+        cras_add=cras_add,
+        cras_subtract=cras_subtract,
+    )
     return mris_convert_execute(params, execution)
 
 

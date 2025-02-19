@@ -11,6 +11,8 @@ DISTANCEMAP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 DistancemapParameters = typing.TypedDict('DistancemapParameters', {
     "__STYX_TYPE__": typing.Literal["distancemap"],
     "input_image": InputPathType,
@@ -270,7 +272,18 @@ def distancemap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DISTANCEMAP_METADATA)
-    params = distancemap_params(input_image=input_image, output_image=output_image, mask_image=mask_image, second_image=second_image, local_maxima_image=local_maxima_image, segmented_image=segmented_image, invert_flag=invert_flag, interpolate_values=interpolate_values, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = distancemap_params(
+        input_image=input_image,
+        output_image=output_image,
+        mask_image=mask_image,
+        second_image=second_image,
+        local_maxima_image=local_maxima_image,
+        segmented_image=segmented_image,
+        invert_flag=invert_flag,
+        interpolate_values=interpolate_values,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return distancemap_execute(params, execution)
 
 

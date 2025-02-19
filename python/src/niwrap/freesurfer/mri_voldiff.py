@@ -11,6 +11,8 @@ MRI_VOLDIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriVoldiffParameters = typing.TypedDict('MriVoldiffParameters', {
     "__STYX_TYPE__": typing.Literal["mri_voldiff"],
     "volume1": InputPathType,
@@ -234,7 +236,17 @@ def mri_voldiff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOLDIFF_METADATA)
-    params = mri_voldiff_params(volume1=volume1, volume2=volume2, vox2ras_thresh=vox2ras_thresh, pix_thresh=pix_thresh, allow_precision=allow_precision, allow_resolution=allow_resolution, allow_vox2ras=allow_vox2ras, debug=debug, checkopts=checkopts)
+    params = mri_voldiff_params(
+        volume1=volume1,
+        volume2=volume2,
+        vox2ras_thresh=vox2ras_thresh,
+        pix_thresh=pix_thresh,
+        allow_precision=allow_precision,
+        allow_resolution=allow_resolution,
+        allow_vox2ras=allow_vox2ras,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return mri_voldiff_execute(params, execution)
 
 

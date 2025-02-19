@@ -11,6 +11,8 @@ V_3D_DWITO_DT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDwitoDtParameters = typing.TypedDict('V3dDwitoDtParameters', {
     "__STYX_TYPE__": typing.Literal["3dDWItoDT"],
     "gradient_file": InputPathType,
@@ -173,7 +175,10 @@ def v_3d_dwito_dt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DWITO_DT_METADATA)
-    params = v_3d_dwito_dt_params(gradient_file=gradient_file, dataset=dataset)
+    params = v_3d_dwito_dt_params(
+        gradient_file=gradient_file,
+        dataset=dataset,
+    )
     return v_3d_dwito_dt_execute(params, execution)
 
 

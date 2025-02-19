@@ -11,6 +11,8 @@ MRIS_FILL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisFillParameters = typing.TypedDict('MrisFillParameters', {
     "__STYX_TYPE__": typing.Literal["mris_fill"],
     "resolution": typing.NotRequired[float | None],
@@ -190,7 +192,12 @@ def mris_fill(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FILL_METADATA)
-    params = mris_fill_params(resolution=resolution, conform=conform, input_surface=input_surface, output_volume=output_volume)
+    params = mris_fill_params(
+        resolution=resolution,
+        conform=conform,
+        input_surface=input_surface,
+        output_volume=output_volume,
+    )
     return mris_fill_execute(params, execution)
 
 

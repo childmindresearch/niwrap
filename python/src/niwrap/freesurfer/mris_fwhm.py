@@ -11,6 +11,8 @@ MRIS_FWHM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisFwhmParameters = typing.TypedDict('MrisFwhmParameters', {
     "__STYX_TYPE__": typing.Literal["mris_fwhm"],
     "input_file": InputPathType,
@@ -474,7 +476,39 @@ def mris_fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FWHM_METADATA)
-    params = mris_fwhm_params(input_file=input_file, subject=subject, hemi=hemi, surf=surf, label_file=label_file, cortex_flag=cortex_flag, mask_file=mask_file, x_matrix=x_matrix, detrend_order=detrend_order, smooth_only_flag=smooth_only_flag, no_detrend_flag=no_detrend_flag, sqr_flag=sqr_flag, sum_file=sum_file, dat_file=dat_file, ar1dat_file=ar1dat_file, ar1vol=ar1vol, fwhmmap=fwhmmap, prune_flag=prune_flag, no_prune_flag=no_prune_flag, out_mask=out_mask, varnorm_flag=varnorm_flag, fwhm=fwhm, niters_only=niters_only, output_file=output_file, sd=sd, synth_flag=synth_flag, synth_frames=synth_frames, threads=threads, debug_flag=debug_flag, checkopts_flag=checkopts_flag, version_flag=version_flag)
+    params = mris_fwhm_params(
+        input_file=input_file,
+        subject=subject,
+        hemi=hemi,
+        surf=surf,
+        label_file=label_file,
+        cortex_flag=cortex_flag,
+        mask_file=mask_file,
+        x_matrix=x_matrix,
+        detrend_order=detrend_order,
+        smooth_only_flag=smooth_only_flag,
+        no_detrend_flag=no_detrend_flag,
+        sqr_flag=sqr_flag,
+        sum_file=sum_file,
+        dat_file=dat_file,
+        ar1dat_file=ar1dat_file,
+        ar1vol=ar1vol,
+        fwhmmap=fwhmmap,
+        prune_flag=prune_flag,
+        no_prune_flag=no_prune_flag,
+        out_mask=out_mask,
+        varnorm_flag=varnorm_flag,
+        fwhm=fwhm,
+        niters_only=niters_only,
+        output_file=output_file,
+        sd=sd,
+        synth_flag=synth_flag,
+        synth_frames=synth_frames,
+        threads=threads,
+        debug_flag=debug_flag,
+        checkopts_flag=checkopts_flag,
+        version_flag=version_flag,
+    )
     return mris_fwhm_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ANTS_REGISTRATION_SY_N_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsRegistrationSyNShParameters = typing.TypedDict('AntsRegistrationSyNShParameters', {
     "__STYX_TYPE__": typing.Literal["antsRegistrationSyN.sh"],
     "image_dimension": typing.Literal[2, 3],
@@ -402,7 +404,24 @@ def ants_registration_sy_n_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_REGISTRATION_SY_N_SH_METADATA)
-    params = ants_registration_sy_n_sh_params(image_dimension=image_dimension, fixed_image=fixed_image, moving_image=moving_image, output_prefix=output_prefix, threads=threads, initial_transform=initial_transform, transform_type=transform_type, radius=radius, spline_distance=spline_distance, gradient_step=gradient_step, masks=masks, precision_type=precision_type, use_histogram_matching=use_histogram_matching, use_repro_mode=use_repro_mode, collapse_output_transforms=collapse_output_transforms, random_seed=random_seed)
+    params = ants_registration_sy_n_sh_params(
+        image_dimension=image_dimension,
+        fixed_image=fixed_image,
+        moving_image=moving_image,
+        output_prefix=output_prefix,
+        threads=threads,
+        initial_transform=initial_transform,
+        transform_type=transform_type,
+        radius=radius,
+        spline_distance=spline_distance,
+        gradient_step=gradient_step,
+        masks=masks,
+        precision_type=precision_type,
+        use_histogram_matching=use_histogram_matching,
+        use_repro_mode=use_repro_mode,
+        collapse_output_transforms=collapse_output_transforms,
+        random_seed=random_seed,
+    )
     return ants_registration_sy_n_sh_execute(params, execution)
 
 

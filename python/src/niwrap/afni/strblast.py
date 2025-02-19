@@ -11,6 +11,8 @@ STRBLAST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 StrblastParameters = typing.TypedDict('StrblastParameters', {
     "__STYX_TYPE__": typing.Literal["strblast"],
     "targetstring": str,
@@ -216,7 +218,15 @@ def strblast(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(STRBLAST_METADATA)
-    params = strblast_params(targetstring=targetstring, input_files=input_files, new_char=new_char, new_string=new_string, unescape=unescape, quiet=quiet, help_=help_)
+    params = strblast_params(
+        targetstring=targetstring,
+        input_files=input_files,
+        new_char=new_char,
+        new_string=new_string,
+        unescape=unescape,
+        quiet=quiet,
+        help_=help_,
+    )
     return strblast_execute(params, execution)
 
 

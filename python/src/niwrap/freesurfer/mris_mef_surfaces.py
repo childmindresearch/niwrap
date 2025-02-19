@@ -11,6 +11,8 @@ MRIS_MEF_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMefSurfacesParameters = typing.TypedDict('MrisMefSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_mef_surfaces"],
     "subject_name": str,
@@ -210,7 +212,14 @@ def mris_mef_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MEF_SURFACES_METADATA)
-    params = mris_mef_surfaces_params(subject_name=subject_name, hemisphere=hemisphere, omit_self_intersection=omit_self_intersection, curvature=curvature, average_curvature=average_curvature, white_only=white_only)
+    params = mris_mef_surfaces_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        omit_self_intersection=omit_self_intersection,
+        curvature=curvature,
+        average_curvature=average_curvature,
+        white_only=white_only,
+    )
     return mris_mef_surfaces_execute(params, execution)
 
 

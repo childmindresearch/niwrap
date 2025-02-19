@@ -11,6 +11,8 @@ BIANCA_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BiancaParameters = typing.TypedDict('BiancaParameters', {
     "__STYX_TYPE__": typing.Literal["bianca"],
     "master_file": InputPathType,
@@ -326,7 +328,23 @@ def bianca(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BIANCA_METADATA)
-    params = bianca_params(master_file=master_file, label_feature_num=label_feature_num, brain_mask_feature_num=brain_mask_feature_num, query_subject_num=query_subject_num, feature_subset=feature_subset, mat_feature_num=mat_feature_num, spatial_weight=spatial_weight, patch_sizes=patch_sizes, patch_3d=patch_3d, select_pts=select_pts, training_pts=training_pts, non_les_pts=non_les_pts, save_classifier_data=save_classifier_data, verbose_flag=verbose_flag, out_name=out_name)
+    params = bianca_params(
+        master_file=master_file,
+        label_feature_num=label_feature_num,
+        brain_mask_feature_num=brain_mask_feature_num,
+        query_subject_num=query_subject_num,
+        feature_subset=feature_subset,
+        mat_feature_num=mat_feature_num,
+        spatial_weight=spatial_weight,
+        patch_sizes=patch_sizes,
+        patch_3d=patch_3d,
+        select_pts=select_pts,
+        training_pts=training_pts,
+        non_les_pts=non_les_pts,
+        save_classifier_data=save_classifier_data,
+        verbose_flag=verbose_flag,
+        out_name=out_name,
+    )
     return bianca_execute(params, execution)
 
 

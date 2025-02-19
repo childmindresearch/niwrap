@@ -11,6 +11,8 @@ WFILEMASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 WfilemaskParameters = typing.TypedDict('WfilemaskParameters', {
     "__STYX_TYPE__": typing.Literal["wfilemask"],
     "w_file": InputPathType,
@@ -210,7 +212,14 @@ def wfilemask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WFILEMASK_METADATA)
-    params = wfilemask_params(w_file=w_file, label_file=label_file, output_file=output_file, permission_mask=permission_mask, help_flag=help_flag, version_flag=version_flag)
+    params = wfilemask_params(
+        w_file=w_file,
+        label_file=label_file,
+        output_file=output_file,
+        permission_mask=permission_mask,
+        help_flag=help_flag,
+        version_flag=version_flag,
+    )
     return wfilemask_execute(params, execution)
 
 

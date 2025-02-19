@@ -11,27 +11,39 @@ FIXELFILTER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 FixelfilterConfigParameters = typing.TypedDict('FixelfilterConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 FixelfilterVariousStringParameters = typing.TypedDict('FixelfilterVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 FixelfilterVariousFileParameters = typing.TypedDict('FixelfilterVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 FixelfilterVariousString1Parameters = typing.TypedDict('FixelfilterVariousString1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
+
+
 FixelfilterVariousFile1Parameters = typing.TypedDict('FixelfilterVariousFile1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
+
+
 FixelfilterParameters = typing.TypedDict('FixelfilterParameters', {
     "__STYX_TYPE__": typing.Literal["fixelfilter"],
     "matrix": InputPathType,
@@ -563,7 +575,25 @@ def fixelfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELFILTER_METADATA)
-    params = fixelfilter_params(matrix=matrix, threshold_value=threshold_value, threshold_connectivity=threshold_connectivity, fwhm=fwhm, minweight=minweight, mask=mask, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, filter_=filter_, output=output)
+    params = fixelfilter_params(
+        matrix=matrix,
+        threshold_value=threshold_value,
+        threshold_connectivity=threshold_connectivity,
+        fwhm=fwhm,
+        minweight=minweight,
+        mask=mask,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        filter_=filter_,
+        output=output,
+    )
     return fixelfilter_execute(params, execution)
 
 

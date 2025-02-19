@@ -11,6 +11,8 @@ FSFIRST_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsfirstFslParameters = typing.TypedDict('FsfirstFslParameters', {
     "__STYX_TYPE__": typing.Literal["fsfirst.fsl"],
 })
@@ -150,7 +152,8 @@ def fsfirst_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSFIRST_FSL_METADATA)
-    params = fsfirst_fsl_params()
+    params = fsfirst_fsl_params(
+    )
     return fsfirst_fsl_execute(params, execution)
 
 

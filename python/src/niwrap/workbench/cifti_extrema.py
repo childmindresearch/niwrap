@@ -11,11 +11,15 @@ CIFTI_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiExtremaThresholdParameters = typing.TypedDict('CiftiExtremaThresholdParameters', {
     "__STYX_TYPE__": typing.Literal["threshold"],
     "low": float,
     "high": float,
 })
+
+
 CiftiExtremaParameters = typing.TypedDict('CiftiExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-extrema"],
     "cifti": InputPathType,
@@ -388,7 +392,25 @@ def cifti_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_EXTREMA_METADATA)
-    params = cifti_extrema_params(cifti=cifti, surface_distance=surface_distance, volume_distance=volume_distance, direction=direction, cifti_out=cifti_out, opt_left_surface_surface=opt_left_surface_surface, opt_right_surface_surface=opt_right_surface_surface, opt_cerebellum_surface_surface=opt_cerebellum_surface_surface, opt_surface_presmooth_surface_kernel=opt_surface_presmooth_surface_kernel, opt_volume_presmooth_volume_kernel=opt_volume_presmooth_volume_kernel, opt_presmooth_fwhm=opt_presmooth_fwhm, threshold=threshold, opt_merged_volume=opt_merged_volume, opt_sum_maps=opt_sum_maps, opt_consolidate_mode=opt_consolidate_mode, opt_only_maxima=opt_only_maxima, opt_only_minima=opt_only_minima)
+    params = cifti_extrema_params(
+        cifti=cifti,
+        surface_distance=surface_distance,
+        volume_distance=volume_distance,
+        direction=direction,
+        cifti_out=cifti_out,
+        opt_left_surface_surface=opt_left_surface_surface,
+        opt_right_surface_surface=opt_right_surface_surface,
+        opt_cerebellum_surface_surface=opt_cerebellum_surface_surface,
+        opt_surface_presmooth_surface_kernel=opt_surface_presmooth_surface_kernel,
+        opt_volume_presmooth_volume_kernel=opt_volume_presmooth_volume_kernel,
+        opt_presmooth_fwhm=opt_presmooth_fwhm,
+        threshold=threshold,
+        opt_merged_volume=opt_merged_volume,
+        opt_sum_maps=opt_sum_maps,
+        opt_consolidate_mode=opt_consolidate_mode,
+        opt_only_maxima=opt_only_maxima,
+        opt_only_minima=opt_only_minima,
+    )
     return cifti_extrema_execute(params, execution)
 
 

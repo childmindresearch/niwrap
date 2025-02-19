@@ -11,6 +11,8 @@ GCATRAINSKULL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GcatrainskullParameters = typing.TypedDict('GcatrainskullParameters', {
     "__STYX_TYPE__": typing.Literal["gcatrainskull"],
     "gcatrain_dir": str,
@@ -158,7 +160,9 @@ def gcatrainskull(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GCATRAINSKULL_METADATA)
-    params = gcatrainskull_params(gcatrain_dir=gcatrain_dir)
+    params = gcatrainskull_params(
+        gcatrain_dir=gcatrain_dir,
+    )
     return gcatrainskull_execute(params, execution)
 
 

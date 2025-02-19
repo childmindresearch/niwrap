@@ -11,6 +11,8 @@ SEGPONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegponsParameters = typing.TypedDict('SegponsParameters', {
     "__STYX_TYPE__": typing.Literal["segpons"],
     "subject": str,
@@ -210,7 +212,14 @@ def segpons(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGPONS_METADATA)
-    params = segpons_params(subject=subject, aseg=aseg, apas=apas, seg=seg, no_refine=no_refine, pons152_mask=pons152_mask)
+    params = segpons_params(
+        subject=subject,
+        aseg=aseg,
+        apas=apas,
+        seg=seg,
+        no_refine=no_refine,
+        pons152_mask=pons152_mask,
+    )
     return segpons_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ RUN_MESH_UTILS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 RunMeshUtilsParameters = typing.TypedDict('RunMeshUtilsParameters', {
     "__STYX_TYPE__": typing.Literal["run_mesh_utils"],
     "base_mesh": InputPathType,
@@ -206,7 +208,13 @@ def run_mesh_utils(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_MESH_UTILS_METADATA)
-    params = run_mesh_utils_params(base_mesh=base_mesh, output_image=output_image, input_image=input_image, second_input_image=second_input_image, weighting_image_force=weighting_image_force)
+    params = run_mesh_utils_params(
+        base_mesh=base_mesh,
+        output_image=output_image,
+        input_image=input_image,
+        second_input_image=second_input_image,
+        weighting_image_force=weighting_image_force,
+    )
     return run_mesh_utils_execute(params, execution)
 
 

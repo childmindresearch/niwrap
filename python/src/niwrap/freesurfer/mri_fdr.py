@@ -11,6 +11,8 @@ MRI_FDR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFdrParameters = typing.TypedDict('MriFdrParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fdr"],
     "input_files": list[str],
@@ -249,7 +251,18 @@ def mri_fdr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FDR_METADATA)
-    params = mri_fdr_params(input_files=input_files, fdr_value=fdr_value, default_frame=default_frame, positive_only=positive_only, negative_only=negative_only, all_voxels=all_voxels, raw_p_values=raw_p_values, threshold_file=threshold_file, debug=debug, check_options=check_options)
+    params = mri_fdr_params(
+        input_files=input_files,
+        fdr_value=fdr_value,
+        default_frame=default_frame,
+        positive_only=positive_only,
+        negative_only=negative_only,
+        all_voxels=all_voxels,
+        raw_p_values=raw_p_values,
+        threshold_file=threshold_file,
+        debug=debug,
+        check_options=check_options,
+    )
     return mri_fdr_execute(params, execution)
 
 

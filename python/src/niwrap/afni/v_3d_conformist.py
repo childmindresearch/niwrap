@@ -11,6 +11,8 @@ V_3D_CONFORMIST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dConformistParameters = typing.TypedDict('V3dConformistParameters', {
     "__STYX_TYPE__": typing.Literal["3dConformist"],
     "input_files": list[InputPathType],
@@ -159,7 +161,9 @@ def v_3d_conformist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CONFORMIST_METADATA)
-    params = v_3d_conformist_params(input_files=input_files)
+    params = v_3d_conformist_params(
+        input_files=input_files,
+    )
     return v_3d_conformist_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_ROTATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRotateParameters = typing.TypedDict('MrisRotateParameters', {
     "__STYX_TYPE__": typing.Literal["mris_rotate"],
     "input_surface": InputPathType,
@@ -209,7 +211,15 @@ def mris_rotate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ROTATE_METADATA)
-    params = mris_rotate_params(input_surface=input_surface, alpha_deg=alpha_deg, beta_deg=beta_deg, gamma_deg=gamma_deg, output_surface=output_surface, regfile=regfile, invalidate_geometry=invalidate_geometry)
+    params = mris_rotate_params(
+        input_surface=input_surface,
+        alpha_deg=alpha_deg,
+        beta_deg=beta_deg,
+        gamma_deg=gamma_deg,
+        output_surface=output_surface,
+        regfile=regfile,
+        invalidate_geometry=invalidate_geometry,
+    )
     return mris_rotate_execute(params, execution)
 
 

@@ -11,19 +11,27 @@ MRFILTER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrfilterVariousStringParameters = typing.TypedDict('MrfilterVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 MrfilterVariousFileParameters = typing.TypedDict('MrfilterVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 MrfilterConfigParameters = typing.TypedDict('MrfilterConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrfilterParameters = typing.TypedDict('MrfilterParameters', {
     "__STYX_TYPE__": typing.Literal["mrfilter"],
     "axes": typing.NotRequired[list[int] | None],
@@ -659,7 +667,37 @@ def mrfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRFILTER_METADATA)
-    params = mrfilter_params(axes=axes, inverse=inverse, magnitude=magnitude, centre_zero=centre_zero, stdev=stdev, magnitude_1=magnitude_1, scanner=scanner, extent=extent, extent_1=extent_1, stdev_1=stdev_1, fwhm=fwhm, extent_2=extent_2, zupper=zupper, zlower=zlower, bridge=bridge, maskin=maskin, maskout=maskout, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, filter_=filter_, output=output)
+    params = mrfilter_params(
+        axes=axes,
+        inverse=inverse,
+        magnitude=magnitude,
+        centre_zero=centre_zero,
+        stdev=stdev,
+        magnitude_1=magnitude_1,
+        scanner=scanner,
+        extent=extent,
+        extent_1=extent_1,
+        stdev_1=stdev_1,
+        fwhm=fwhm,
+        extent_2=extent_2,
+        zupper=zupper,
+        zlower=zlower,
+        bridge=bridge,
+        maskin=maskin,
+        maskout=maskout,
+        strides=strides,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        filter_=filter_,
+        output=output,
+    )
     return mrfilter_execute(params, execution)
 
 

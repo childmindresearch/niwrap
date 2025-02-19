@@ -11,6 +11,8 @@ SCALE_TO_MAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ScaleToMapParameters = typing.TypedDict('ScaleToMapParameters', {
     "__STYX_TYPE__": typing.Literal["ScaleToMap"],
     "input_file": InputPathType,
@@ -435,7 +437,38 @@ def scale_to_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SCALE_TO_MAP_METADATA)
-    params = scale_to_map_params(input_file=input_file, icol=icol, vcol=vcol, cmap=cmap, cmapfile=cmapfile, cmapdb=cmapdb, frf=frf, clp=clp, perc_clp=perc_clp, apr=apr, anr=anr, interp=interp, nointerp=nointerp, direct=direct, msk_zero=msk_zero, msk=msk, msk_col=msk_col, nomsk_col=nomsk_col, br=br, help_=help_, verbose=verbose, showmap=showmap, showdb=showdb, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, trace_1=trace_1, nomall=nomall, yesmall=yesmall)
+    params = scale_to_map_params(
+        input_file=input_file,
+        icol=icol,
+        vcol=vcol,
+        cmap=cmap,
+        cmapfile=cmapfile,
+        cmapdb=cmapdb,
+        frf=frf,
+        clp=clp,
+        perc_clp=perc_clp,
+        apr=apr,
+        anr=anr,
+        interp=interp,
+        nointerp=nointerp,
+        direct=direct,
+        msk_zero=msk_zero,
+        msk=msk,
+        msk_col=msk_col,
+        nomsk_col=nomsk_col,
+        br=br,
+        help_=help_,
+        verbose=verbose,
+        showmap=showmap,
+        showdb=showdb,
+        novolreg=novolreg,
+        noxform=noxform,
+        setenv=setenv,
+        trace_=trace_,
+        trace_1=trace_1,
+        nomall=nomall,
+        yesmall=yesmall,
+    )
     return scale_to_map_execute(params, execution)
 
 

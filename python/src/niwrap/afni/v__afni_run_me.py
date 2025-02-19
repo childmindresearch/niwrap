@@ -11,6 +11,8 @@ V__AFNI_RUN_ME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniRunMeParameters = typing.TypedDict('VAfniRunMeParameters', {
     "__STYX_TYPE__": typing.Literal["@afni.run.me"],
     "go": bool,
@@ -172,7 +174,11 @@ def v__afni_run_me(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_RUN_ME_METADATA)
-    params = v__afni_run_me_params(go=go, curl=curl, help_=help_)
+    params = v__afni_run_me_params(
+        go=go,
+        curl=curl,
+        help_=help_,
+    )
     return v__afni_run_me_execute(params, execution)
 
 

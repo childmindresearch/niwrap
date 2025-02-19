@@ -11,6 +11,8 @@ FSLSELECTVOLS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslselectvolsParameters = typing.TypedDict('FslselectvolsParameters', {
     "__STYX_TYPE__": typing.Literal["fslselectvols"],
     "input_file": InputPathType,
@@ -200,7 +202,13 @@ def fslselectvols(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSELECTVOLS_METADATA)
-    params = fslselectvols_params(input_file=input_file, output_file=output_file, vols_list=vols_list, output_mean_flag=output_mean_flag, output_variance_flag=output_variance_flag)
+    params = fslselectvols_params(
+        input_file=input_file,
+        output_file=output_file,
+        vols_list=vols_list,
+        output_mean_flag=output_mean_flag,
+        output_variance_flag=output_variance_flag,
+    )
     return fslselectvols_execute(params, execution)
 
 

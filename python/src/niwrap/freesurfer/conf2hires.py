@@ -11,6 +11,8 @@ CONF2HIRES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Conf2hiresParameters = typing.TypedDict('Conf2hiresParameters', {
     "__STYX_TYPE__": typing.Literal["conf2hires"],
     "subject": str,
@@ -298,7 +300,23 @@ def conf2hires(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONF2HIRES_METADATA)
-    params = conf2hires_params(subject=subject, no_t2=no_t2, mm_norm_sigma=mm_norm_sigma, no_flair=no_flair, threads=threads, copy_bias_from_conf=copy_bias_from_conf, norm_opts_rca=norm_opts_rca, trilin=trilin, no_dev=no_dev, bbr_t2=bbr_t2, first_peak_d1=first_peak_d1, first_peak_d2=first_peak_d2, stopmask=stopmask, expert=expert, force_update=force_update)
+    params = conf2hires_params(
+        subject=subject,
+        no_t2=no_t2,
+        mm_norm_sigma=mm_norm_sigma,
+        no_flair=no_flair,
+        threads=threads,
+        copy_bias_from_conf=copy_bias_from_conf,
+        norm_opts_rca=norm_opts_rca,
+        trilin=trilin,
+        no_dev=no_dev,
+        bbr_t2=bbr_t2,
+        first_peak_d1=first_peak_d1,
+        first_peak_d2=first_peak_d2,
+        stopmask=stopmask,
+        expert=expert,
+        force_update=force_update,
+    )
     return conf2hires_execute(params, execution)
 
 

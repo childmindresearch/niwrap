@@ -11,6 +11,8 @@ VECWARP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VecwarpParameters = typing.TypedDict('VecwarpParameters', {
     "__STYX_TYPE__": typing.Literal["Vecwarp"],
     "apar": typing.NotRequired[InputPathType | None],
@@ -242,7 +244,15 @@ def vecwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VECWARP_METADATA)
-    params = vecwarp_params(apar=apar, matvec=matvec, forward=forward, backward=backward, input_=input_, output=output, force=force)
+    params = vecwarp_params(
+        apar=apar,
+        matvec=matvec,
+        forward=forward,
+        backward=backward,
+        input_=input_,
+        output=output,
+        force=force,
+    )
     return vecwarp_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ DMRI_GROUP_BY_ENDPOINTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriGroupByEndpointsParameters = typing.TypedDict('DmriGroupByEndpointsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_groupByEndpoints"],
     "streamline_file": InputPathType,
@@ -178,7 +180,11 @@ def dmri_group_by_endpoints(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_GROUP_BY_ENDPOINTS_METADATA)
-    params = dmri_group_by_endpoints_params(streamline_file=streamline_file, image_file=image_file, output_directory=output_directory)
+    params = dmri_group_by_endpoints_params(
+        streamline_file=streamline_file,
+        image_file=image_file,
+        output_directory=output_directory,
+    )
     return dmri_group_by_endpoints_execute(params, execution)
 
 

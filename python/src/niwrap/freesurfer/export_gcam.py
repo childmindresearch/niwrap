@@ -11,6 +11,8 @@ EXPORT_GCAM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ExportGcamParameters = typing.TypedDict('ExportGcamParameters', {
     "__STYX_TYPE__": typing.Literal["exportGcam"],
     "fixed": InputPathType,
@@ -242,7 +244,16 @@ def export_gcam(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXPORT_GCAM_METADATA)
-    params = export_gcam_params(fixed=fixed, moving=moving, morph=morph, out_gcam=out_gcam, zlib_buffer=zlib_buffer, bbox_threshold=bbox_threshold, interp_method=interp_method, test=test)
+    params = export_gcam_params(
+        fixed=fixed,
+        moving=moving,
+        morph=morph,
+        out_gcam=out_gcam,
+        zlib_buffer=zlib_buffer,
+        bbox_threshold=bbox_threshold,
+        interp_method=interp_method,
+        test=test,
+    )
     return export_gcam_execute(params, execution)
 
 

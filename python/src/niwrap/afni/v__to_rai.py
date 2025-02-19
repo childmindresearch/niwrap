@@ -11,6 +11,8 @@ V__TO_RAI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VToRaiParameters = typing.TypedDict('VToRaiParameters', {
     "__STYX_TYPE__": typing.Literal["@ToRAI"],
 })
@@ -154,7 +156,8 @@ def v__to_rai(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__TO_RAI_METADATA)
-    params = v__to_rai_params()
+    params = v__to_rai_params(
+    )
     return v__to_rai_execute(params, execution)
 
 

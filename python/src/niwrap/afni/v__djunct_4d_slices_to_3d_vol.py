@@ -11,6 +11,8 @@ V__DJUNCT_4D_SLICES_TO_3D_VOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunct4dSlicesTo3dVolParameters = typing.TypedDict('VDjunct4dSlicesTo3dVolParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_4d_slices_to_3d_vol"],
     "do_something": bool,
@@ -160,7 +162,9 @@ def v__djunct_4d_slices_to_3d_vol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_4D_SLICES_TO_3D_VOL_METADATA)
-    params = v__djunct_4d_slices_to_3d_vol_params(do_something=do_something)
+    params = v__djunct_4d_slices_to_3d_vol_params(
+        do_something=do_something,
+    )
     return v__djunct_4d_slices_to_3d_vol_execute(params, execution)
 
 

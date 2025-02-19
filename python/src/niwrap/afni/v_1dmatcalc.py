@@ -11,6 +11,8 @@ V_1DMATCALC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dmatcalcParameters = typing.TypedDict('V1dmatcalcParameters', {
     "__STYX_TYPE__": typing.Literal["1dmatcalc"],
     "expression": typing.NotRequired[str | None],
@@ -163,7 +165,9 @@ def v_1dmatcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DMATCALC_METADATA)
-    params = v_1dmatcalc_params(expression=expression)
+    params = v_1dmatcalc_params(
+        expression=expression,
+    )
     return v_1dmatcalc_execute(params, execution)
 
 

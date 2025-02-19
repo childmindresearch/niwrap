@@ -11,11 +11,15 @@ MRMATH_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrmathConfigParameters = typing.TypedDict('MrmathConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrmathParameters = typing.TypedDict('MrmathParameters', {
     "__STYX_TYPE__": typing.Literal["mrmath"],
     "axis": typing.NotRequired[int | None],
@@ -379,7 +383,22 @@ def mrmath(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRMATH_METADATA)
-    params = mrmath_params(axis=axis, keep_unary_axes=keep_unary_axes, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, operation=operation, output=output)
+    params = mrmath_params(
+        axis=axis,
+        keep_unary_axes=keep_unary_axes,
+        datatype=datatype,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        operation=operation,
+        output=output,
+    )
     return mrmath_execute(params, execution)
 
 

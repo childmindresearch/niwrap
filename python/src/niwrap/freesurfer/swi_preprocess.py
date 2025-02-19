@@ -11,6 +11,8 @@ SWI_PREPROCESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SwiPreprocessParameters = typing.TypedDict('SwiPreprocessParameters', {
     "__STYX_TYPE__": typing.Literal["swi_preprocess"],
     "scanner": typing.Literal["ge", "siemens", "philips"],
@@ -247,7 +249,15 @@ def swi_preprocess(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SWI_PREPROCESS_METADATA)
-    params = swi_preprocess_params(scanner=scanner, ge_file=ge_file, philips_file=philips_file, siemens_magnitude=siemens_magnitude, siemens_phase=siemens_phase, out_magnitude=out_magnitude, out_phase=out_phase)
+    params = swi_preprocess_params(
+        scanner=scanner,
+        ge_file=ge_file,
+        philips_file=philips_file,
+        siemens_magnitude=siemens_magnitude,
+        siemens_phase=siemens_phase,
+        out_magnitude=out_magnitude,
+        out_phase=out_phase,
+    )
     return swi_preprocess_execute(params, execution)
 
 

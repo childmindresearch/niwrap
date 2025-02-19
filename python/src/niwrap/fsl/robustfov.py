@@ -11,6 +11,8 @@ ROBUSTFOV_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 RobustfovParameters = typing.TypedDict('RobustfovParameters', {
     "__STYX_TYPE__": typing.Literal["robustfov"],
     "input_file": InputPathType,
@@ -217,7 +219,14 @@ def robustfov(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ROBUSTFOV_METADATA)
-    params = robustfov_params(input_file=input_file, output_image=output_image, brain_size=brain_size, matrix_output=matrix_output, debug_flag=debug_flag, verbose_flag=verbose_flag)
+    params = robustfov_params(
+        input_file=input_file,
+        output_image=output_image,
+        brain_size=brain_size,
+        matrix_output=matrix_output,
+        debug_flag=debug_flag,
+        verbose_flag=verbose_flag,
+    )
     return robustfov_execute(params, execution)
 
 

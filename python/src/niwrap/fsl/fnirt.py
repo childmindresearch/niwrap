@@ -11,6 +11,8 @@ FNIRT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FnirtParameters = typing.TypedDict('FnirtParameters', {
     "__STYX_TYPE__": typing.Literal["fnirt"],
     "affine_file": typing.NotRequired[InputPathType | None],
@@ -272,7 +274,19 @@ def fnirt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FNIRT_METADATA)
-    params = fnirt_params(affine_file=affine_file, config_file=config_file, field_file=field_file, fieldcoeff_file=fieldcoeff_file, in_file=in_file, jacobian_file=jacobian_file, log_file=log_file, modulatedref_file=modulatedref_file, ref_file=ref_file, refmask_file=refmask_file, warped_file=warped_file)
+    params = fnirt_params(
+        affine_file=affine_file,
+        config_file=config_file,
+        field_file=field_file,
+        fieldcoeff_file=fieldcoeff_file,
+        in_file=in_file,
+        jacobian_file=jacobian_file,
+        log_file=log_file,
+        modulatedref_file=modulatedref_file,
+        ref_file=ref_file,
+        refmask_file=refmask_file,
+        warped_file=warped_file,
+    )
     return fnirt_execute(params, execution)
 
 

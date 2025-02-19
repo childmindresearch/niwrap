@@ -11,6 +11,8 @@ V_3DEDGEDOG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dedgedogParameters = typing.TypedDict('V3dedgedogParameters', {
     "__STYX_TYPE__": typing.Literal["3dedgedog"],
     "input": InputPathType,
@@ -316,7 +318,20 @@ def v_3dedgedog(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DEDGEDOG_METADATA)
-    params = v_3dedgedog_params(input_=input_, prefix=prefix, mask=mask, automask=automask, sigma_rad=sigma_rad, sigma_nvox=sigma_nvox, ratio_sigma=ratio_sigma, output_intermed=output_intermed, edge_bnd_nn=edge_bnd_nn, edge_bnd_side=edge_bnd_side, edge_bnd_scale=edge_bnd_scale, only2d=only2d)
+    params = v_3dedgedog_params(
+        input_=input_,
+        prefix=prefix,
+        mask=mask,
+        automask=automask,
+        sigma_rad=sigma_rad,
+        sigma_nvox=sigma_nvox,
+        ratio_sigma=ratio_sigma,
+        output_intermed=output_intermed,
+        edge_bnd_nn=edge_bnd_nn,
+        edge_bnd_side=edge_bnd_side,
+        edge_bnd_scale=edge_bnd_scale,
+        only2d=only2d,
+    )
     return v_3dedgedog_execute(params, execution)
 
 

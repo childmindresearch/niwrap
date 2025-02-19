@@ -11,6 +11,8 @@ MRIS_TARGET_POS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisTargetPosParameters = typing.TypedDict('MrisTargetPosParameters', {
     "__STYX_TYPE__": typing.Literal["mris_target_pos"],
     "input_volume": InputPathType,
@@ -280,7 +282,21 @@ def mris_target_pos(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TARGET_POS_METADATA)
-    params = mris_target_pos_params(input_volume=input_volume, input_surface=input_surface, output_surface=output_surface, adgws_file=adgws_file, threshold_values=threshold_values, label=label, interpolation_method=interpolation_method, debug_vertex=debug_vertex, cbv_flag=cbv_flag, debug_flag=debug_flag, check_options=check_options, help_flag=help_flag, version_flag=version_flag)
+    params = mris_target_pos_params(
+        input_volume=input_volume,
+        input_surface=input_surface,
+        output_surface=output_surface,
+        adgws_file=adgws_file,
+        threshold_values=threshold_values,
+        label=label,
+        interpolation_method=interpolation_method,
+        debug_vertex=debug_vertex,
+        cbv_flag=cbv_flag,
+        debug_flag=debug_flag,
+        check_options=check_options,
+        help_flag=help_flag,
+        version_flag=version_flag,
+    )
     return mris_target_pos_execute(params, execution)
 
 

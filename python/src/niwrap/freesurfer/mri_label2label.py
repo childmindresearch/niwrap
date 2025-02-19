@@ -11,6 +11,8 @@ MRI_LABEL2LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLabel2labelParameters = typing.TypedDict('MriLabel2labelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_label2label"],
     "src_label": InputPathType,
@@ -678,7 +680,54 @@ def mri_label2label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LABEL2LABEL_METADATA)
-    params = mri_label2label_params(src_label=src_label, trg_label=trg_label, erode=erode, open_=open_, close=close, dilate=dilate, ring=ring, src_subject=src_subject, trg_subject=trg_subject, subject=subject, outmask=outmask, outstat=outstat, sample=sample, regmethod=regmethod, usepathfiles=usepathfiles, hemi=hemi, src_hemi=src_hemi, trg_hemi=trg_hemi, src_ico_order=src_ico_order, trg_ico_order=trg_ico_order, direct=direct, trgsurf=trgsurf, surfreg=surfreg, srcsurfreg=srcsurfreg, trgsurfreg=trgsurfreg, srcsurfreg_file=srcsurfreg_file, trgsurfreg_file=trgsurfreg_file, paint=paint, dmindmin=dmindmin, baryfill=baryfill, label_cortex=label_cortex, surf_label2mask=surf_label2mask, srcmask=srcmask, srcmasksign=srcmasksign, srcmaskframe=srcmaskframe, xfm=xfm, reg=reg, xfm_invert=xfm_invert, projabs=projabs, projfrac=projfrac, sd=sd, nohash=nohash, norevmap=norevmap, to_scanner=to_scanner, to_tkr=to_tkr, scanner=scanner)
+    params = mri_label2label_params(
+        src_label=src_label,
+        trg_label=trg_label,
+        erode=erode,
+        open_=open_,
+        close=close,
+        dilate=dilate,
+        ring=ring,
+        src_subject=src_subject,
+        trg_subject=trg_subject,
+        subject=subject,
+        outmask=outmask,
+        outstat=outstat,
+        sample=sample,
+        regmethod=regmethod,
+        usepathfiles=usepathfiles,
+        hemi=hemi,
+        src_hemi=src_hemi,
+        trg_hemi=trg_hemi,
+        src_ico_order=src_ico_order,
+        trg_ico_order=trg_ico_order,
+        direct=direct,
+        trgsurf=trgsurf,
+        surfreg=surfreg,
+        srcsurfreg=srcsurfreg,
+        trgsurfreg=trgsurfreg,
+        srcsurfreg_file=srcsurfreg_file,
+        trgsurfreg_file=trgsurfreg_file,
+        paint=paint,
+        dmindmin=dmindmin,
+        baryfill=baryfill,
+        label_cortex=label_cortex,
+        surf_label2mask=surf_label2mask,
+        srcmask=srcmask,
+        srcmasksign=srcmasksign,
+        srcmaskframe=srcmaskframe,
+        xfm=xfm,
+        reg=reg,
+        xfm_invert=xfm_invert,
+        projabs=projabs,
+        projfrac=projfrac,
+        sd=sd,
+        nohash=nohash,
+        norevmap=norevmap,
+        to_scanner=to_scanner,
+        to_tkr=to_tkr,
+        scanner=scanner,
+    )
     return mri_label2label_execute(params, execution)
 
 

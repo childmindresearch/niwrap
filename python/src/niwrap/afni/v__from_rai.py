@@ -11,6 +11,8 @@ V__FROM_RAI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFromRaiParameters = typing.TypedDict('VFromRaiParameters', {
     "__STYX_TYPE__": typing.Literal["@FromRAI"],
     "rai_coordinates": list[float],
@@ -168,7 +170,10 @@ def v__from_rai(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FROM_RAI_METADATA)
-    params = v__from_rai_params(rai_coordinates=rai_coordinates, orientation=orientation)
+    params = v__from_rai_params(
+        rai_coordinates=rai_coordinates,
+        orientation=orientation,
+    )
     return v__from_rai_execute(params, execution)
 
 

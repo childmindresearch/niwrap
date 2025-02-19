@@ -11,6 +11,8 @@ V__MAKE_PLUG_DIFF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VMakePlugDiffParameters = typing.TypedDict('VMakePlugDiffParameters', {
     "__STYX_TYPE__": typing.Literal["@make_plug_diff"],
     "vtk_dir": str,
@@ -214,7 +216,15 @@ def v__make_plug_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__MAKE_PLUG_DIFF_METADATA)
-    params = v__make_plug_diff_params(vtk_dir=vtk_dir, xm_dir=xm_dir, afni_src_dir=afni_src_dir, afni_bin_dir=afni_bin_dir, comments=comments, linux=linux, diff_dir=diff_dir)
+    params = v__make_plug_diff_params(
+        vtk_dir=vtk_dir,
+        xm_dir=xm_dir,
+        afni_src_dir=afni_src_dir,
+        afni_bin_dir=afni_bin_dir,
+        comments=comments,
+        linux=linux,
+        diff_dir=diff_dir,
+    )
     return v__make_plug_diff_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_NITERS2FWHM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisNiters2fwhmParameters = typing.TypedDict('MrisNiters2fwhmParameters', {
     "__STYX_TYPE__": typing.Literal["mris_niters2fwhm"],
     "subject": str,
@@ -230,7 +232,17 @@ def mris_niters2fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_NITERS2FWHM_METADATA)
-    params = mris_niters2fwhm_params(subject=subject, hemi=hemi, surf=surf, dof=dof, niters=niters, debug=debug, checkopts=checkopts, help_=help_, version=version)
+    params = mris_niters2fwhm_params(
+        subject=subject,
+        hemi=hemi,
+        surf=surf,
+        dof=dof,
+        niters=niters,
+        debug=debug,
+        checkopts=checkopts,
+        help_=help_,
+        version=version,
+    )
     return mris_niters2fwhm_execute(params, execution)
 
 

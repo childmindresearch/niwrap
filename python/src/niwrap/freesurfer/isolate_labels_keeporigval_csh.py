@@ -11,6 +11,8 @@ ISOLATE_LABELS_KEEPORIGVAL_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IsolateLabelsKeeporigvalCshParameters = typing.TypedDict('IsolateLabelsKeeporigvalCshParameters', {
     "__STYX_TYPE__": typing.Literal["isolate_labels_keeporigval.csh"],
     "vol": InputPathType,
@@ -204,7 +206,13 @@ def isolate_labels_keeporigval_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ISOLATE_LABELS_KEEPORIGVAL_CSH_METADATA)
-    params = isolate_labels_keeporigval_csh_params(vol=vol, outprefix=outprefix, label=label, version=version, help_=help_)
+    params = isolate_labels_keeporigval_csh_params(
+        vol=vol,
+        outprefix=outprefix,
+        label=label,
+        version=version,
+        help_=help_,
+    )
     return isolate_labels_keeporigval_csh_execute(params, execution)
 
 

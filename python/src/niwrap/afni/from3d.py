@@ -11,6 +11,8 @@ FROM3D_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 From3dParameters = typing.TypedDict('From3dParameters', {
     "__STYX_TYPE__": typing.Literal["from3d"],
     "verbose": bool,
@@ -266,7 +268,18 @@ def from3d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FROM3D_METADATA)
-    params = from3d_params(verbose=verbose, nsize=nsize, raw=raw, float_=float_, zfirst=zfirst, zlast=zlast, tfirst=tfirst, tlast=tlast, input_=input_, prefix=prefix)
+    params = from3d_params(
+        verbose=verbose,
+        nsize=nsize,
+        raw=raw,
+        float_=float_,
+        zfirst=zfirst,
+        zlast=zlast,
+        tfirst=tfirst,
+        tlast=tlast,
+        input_=input_,
+        prefix=prefix,
+    )
     return from3d_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_PREPROC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisPreprocParameters = typing.TypedDict('MrisPreprocParameters', {
     "__STYX_TYPE__": typing.Literal["mris_preproc"],
     "outfile": str,
@@ -675,7 +677,56 @@ def mris_preproc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PREPROC_METADATA)
-    params = mris_preproc_params(outfile=outfile, target_subject=target_subject, hemi=hemi, meas=meas, label=label, measdir=measdir, subjects=subjects, fsgd=fsgd, subjectlist=subjectlist, qdec=qdec, qdec_long=qdec_long, surfmeasfile=surfmeasfile, projfrac=projfrac, projfrac_max=projfrac_max, projfrac_avg=projfrac_avg, no_mask_non_cortex=no_mask_non_cortex, session_file=session_file, dir_file=dir_file, analysis=analysis, contrast=contrast, cvar_flag=cvar_flag, offset_flag=offset_flag, map_=map_, etiv_flag=etiv_flag, fwhm=fwhm, fwhm_src=fwhm_src, niters=niters, niters_src=niters_src, cortex_only=cortex_only, mgz_flag=mgz_flag, no_jac_flag=no_jac_flag, paired_diff_flag=paired_diff_flag, cache_out=cache_out, cache_in=cache_in, cache_out_only=cache_out_only, no_prune_flag=no_prune_flag, mean_flag=mean_flag, std_flag=std_flag, reshape_flag=reshape_flag, surfreg=surfreg, subjects_dir=subjects_dir, synth_flag=synth_flag, tmpdir=tmpdir, nocleanup_flag=nocleanup_flag, cleanup_flag=cleanup_flag, log=log, nolog_flag=nolog_flag, debug_flag=debug_flag)
+    params = mris_preproc_params(
+        outfile=outfile,
+        target_subject=target_subject,
+        hemi=hemi,
+        meas=meas,
+        label=label,
+        measdir=measdir,
+        subjects=subjects,
+        fsgd=fsgd,
+        subjectlist=subjectlist,
+        qdec=qdec,
+        qdec_long=qdec_long,
+        surfmeasfile=surfmeasfile,
+        projfrac=projfrac,
+        projfrac_max=projfrac_max,
+        projfrac_avg=projfrac_avg,
+        no_mask_non_cortex=no_mask_non_cortex,
+        session_file=session_file,
+        dir_file=dir_file,
+        analysis=analysis,
+        contrast=contrast,
+        cvar_flag=cvar_flag,
+        offset_flag=offset_flag,
+        map_=map_,
+        etiv_flag=etiv_flag,
+        fwhm=fwhm,
+        fwhm_src=fwhm_src,
+        niters=niters,
+        niters_src=niters_src,
+        cortex_only=cortex_only,
+        mgz_flag=mgz_flag,
+        no_jac_flag=no_jac_flag,
+        paired_diff_flag=paired_diff_flag,
+        cache_out=cache_out,
+        cache_in=cache_in,
+        cache_out_only=cache_out_only,
+        no_prune_flag=no_prune_flag,
+        mean_flag=mean_flag,
+        std_flag=std_flag,
+        reshape_flag=reshape_flag,
+        surfreg=surfreg,
+        subjects_dir=subjects_dir,
+        synth_flag=synth_flag,
+        tmpdir=tmpdir,
+        nocleanup_flag=nocleanup_flag,
+        cleanup_flag=cleanup_flag,
+        log=log,
+        nolog_flag=nolog_flag,
+        debug_flag=debug_flag,
+    )
     return mris_preproc_execute(params, execution)
 
 

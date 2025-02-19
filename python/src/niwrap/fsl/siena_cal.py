@@ -11,6 +11,8 @@ SIENA_CAL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SienaCalParameters = typing.TypedDict('SienaCalParameters', {
     "__STYX_TYPE__": typing.Literal["siena_cal"],
     "input1_file": InputPathType,
@@ -184,7 +186,12 @@ def siena_cal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIENA_CAL_METADATA)
-    params = siena_cal_params(input1_file=input1_file, input2_file=input2_file, scale=scale, siena_diff_options=siena_diff_options)
+    params = siena_cal_params(
+        input1_file=input1_file,
+        input2_file=input2_file,
+        scale=scale,
+        siena_diff_options=siena_diff_options,
+    )
     return siena_cal_execute(params, execution)
 
 

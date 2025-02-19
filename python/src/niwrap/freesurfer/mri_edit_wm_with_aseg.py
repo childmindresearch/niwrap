@@ -11,6 +11,8 @@ MRI_EDIT_WM_WITH_ASEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEditWmWithAsegParameters = typing.TypedDict('MriEditWmWithAsegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_edit_wm_with_aseg"],
     "input_wm": InputPathType,
@@ -282,7 +284,22 @@ def mri_edit_wm_with_aseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EDIT_WM_WITH_ASEG_METADATA)
-    params = mri_edit_wm_with_aseg_params(input_wm=input_wm, input_t1_brain=input_t1_brain, aseg=aseg, output_wm=output_wm, fillven=fillven, fix_scm_ha=fix_scm_ha, fix_scm_ha_only=fix_scm_ha_only, keep=keep, keep_in=keep_in, lh=lh, rh=rh, fix_ento_wm=fix_ento_wm, sa_fix_ento_wm=sa_fix_ento_wm, debug_voxel=debug_voxel)
+    params = mri_edit_wm_with_aseg_params(
+        input_wm=input_wm,
+        input_t1_brain=input_t1_brain,
+        aseg=aseg,
+        output_wm=output_wm,
+        fillven=fillven,
+        fix_scm_ha=fix_scm_ha,
+        fix_scm_ha_only=fix_scm_ha_only,
+        keep=keep,
+        keep_in=keep_in,
+        lh=lh,
+        rh=rh,
+        fix_ento_wm=fix_ento_wm,
+        sa_fix_ento_wm=sa_fix_ento_wm,
+        debug_voxel=debug_voxel,
+    )
     return mri_edit_wm_with_aseg_execute(params, execution)
 
 

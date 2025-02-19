@@ -11,6 +11,8 @@ TKMEDIT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TkmeditParameters = typing.TypedDict('TkmeditParameters', {
     "__STYX_TYPE__": typing.Literal["tkmedit"],
     "input_volume": InputPathType,
@@ -168,7 +170,10 @@ def tkmedit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKMEDIT_METADATA)
-    params = tkmedit_params(input_volume=input_volume, options=options)
+    params = tkmedit_params(
+        input_volume=input_volume,
+        options=options,
+    )
     return tkmedit_execute(params, execution)
 
 

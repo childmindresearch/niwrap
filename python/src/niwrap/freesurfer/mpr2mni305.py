@@ -11,6 +11,8 @@ MPR2MNI305_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Mpr2mni305Parameters = typing.TypedDict('Mpr2mni305Parameters', {
     "__STYX_TYPE__": typing.Literal["mpr2mni305"],
     "mpr_anat": str,
@@ -155,7 +157,9 @@ def mpr2mni305(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MPR2MNI305_METADATA)
-    params = mpr2mni305_params(mpr_anat=mpr_anat)
+    params = mpr2mni305_params(
+        mpr_anat=mpr_anat,
+    )
     return mpr2mni305_execute(params, execution)
 
 

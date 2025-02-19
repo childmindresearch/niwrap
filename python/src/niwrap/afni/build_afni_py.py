@@ -11,6 +11,8 @@ BUILD_AFNI_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 BuildAfniPyParameters = typing.TypedDict('BuildAfniPyParameters', {
     "__STYX_TYPE__": typing.Literal["build_afni.py"],
     "build_root": str,
@@ -301,7 +303,21 @@ def build_afni_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BUILD_AFNI_PY_METADATA)
-    params = build_afni_py_params(build_root=build_root, clean_root=clean_root, git_branch=git_branch, git_tag=git_tag, git_update=git_update, make_target=make_target, makefile=makefile, package=package, prep_only=prep_only, run_cmake=run_cmake, run_make=run_make, verbose_level=verbose_level, version=version)
+    params = build_afni_py_params(
+        build_root=build_root,
+        clean_root=clean_root,
+        git_branch=git_branch,
+        git_tag=git_tag,
+        git_update=git_update,
+        make_target=make_target,
+        makefile=makefile,
+        package=package,
+        prep_only=prep_only,
+        run_cmake=run_cmake,
+        run_make=run_make,
+        verbose_level=verbose_level,
+        version=version,
+    )
     return build_afni_py_execute(params, execution)
 
 

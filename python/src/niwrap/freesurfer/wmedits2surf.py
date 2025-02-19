@@ -11,6 +11,8 @@ WMEDITS2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Wmedits2surfParameters = typing.TypedDict('Wmedits2surfParameters', {
     "__STYX_TYPE__": typing.Literal["wmedits2surf"],
     "subject": str,
@@ -253,7 +255,18 @@ def wmedits2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WMEDITS2SURF_METADATA)
-    params = wmedits2surf_params(subject=subject, self=self, overwrite=overwrite, tmp_dir=tmp_dir, cleanup=cleanup, no_cleanup=no_cleanup, debug=debug, lh=lh, rh=rh, no_surfs=no_surfs)
+    params = wmedits2surf_params(
+        subject=subject,
+        self=self,
+        overwrite=overwrite,
+        tmp_dir=tmp_dir,
+        cleanup=cleanup,
+        no_cleanup=no_cleanup,
+        debug=debug,
+        lh=lh,
+        rh=rh,
+        no_surfs=no_surfs,
+    )
     return wmedits2surf_execute(params, execution)
 
 

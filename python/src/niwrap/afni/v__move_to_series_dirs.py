@@ -11,6 +11,8 @@ V__MOVE_TO_SERIES_DIRS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VMoveToSeriesDirsParameters = typing.TypedDict('VMoveToSeriesDirsParameters', {
     "__STYX_TYPE__": typing.Literal["@move.to.series.dirs"],
     "action": typing.NotRequired[typing.Literal["copy", "move"] | None],
@@ -231,7 +233,16 @@ def v__move_to_series_dirs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__MOVE_TO_SERIES_DIRS_METADATA)
-    params = v__move_to_series_dirs_params(action=action, dprefix=dprefix, tag=tag, test=test, help_=help_, hist=hist, ver=ver, dicom_files=dicom_files)
+    params = v__move_to_series_dirs_params(
+        action=action,
+        dprefix=dprefix,
+        tag=tag,
+        test=test,
+        help_=help_,
+        hist=hist,
+        ver=ver,
+        dicom_files=dicom_files,
+    )
     return v__move_to_series_dirs_execute(params, execution)
 
 

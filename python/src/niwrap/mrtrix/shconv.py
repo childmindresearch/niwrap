@@ -11,19 +11,27 @@ SHCONV_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 ShconvVariousStringParameters = typing.TypedDict('ShconvVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 ShconvVariousFileParameters = typing.TypedDict('ShconvVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 ShconvConfigParameters = typing.TypedDict('ShconvConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 ShconvParameters = typing.TypedDict('ShconvParameters', {
     "__STYX_TYPE__": typing.Literal["shconv"],
     "datatype": typing.NotRequired[str | None],
@@ -458,7 +466,20 @@ def shconv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SHCONV_METADATA)
-    params = shconv_params(datatype=datatype, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, odf_response=odf_response, sh_out=sh_out)
+    params = shconv_params(
+        datatype=datatype,
+        strides=strides,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        odf_response=odf_response,
+        sh_out=sh_out,
+    )
     return shconv_execute(params, execution)
 
 

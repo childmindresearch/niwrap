@@ -11,6 +11,8 @@ MRIS_WARP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisWarpParameters = typing.TypedDict('MrisWarpParameters', {
     "__STYX_TYPE__": typing.Literal["mris_warp"],
     "deformvol": typing.NotRequired[str | None],
@@ -238,7 +240,16 @@ def mris_warp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_WARP_METADATA)
-    params = mris_warp_params(deformvol=deformvol, m3z=m3z, regfile=regfile, surf=surf, out=out, abs_=abs_, help_=help_, version=version)
+    params = mris_warp_params(
+        deformvol=deformvol,
+        m3z=m3z,
+        regfile=regfile,
+        surf=surf,
+        out=out,
+        abs_=abs_,
+        help_=help_,
+        version=version,
+    )
     return mris_warp_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ XFMROT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 XfmrotParameters = typing.TypedDict('XfmrotParameters', {
     "__STYX_TYPE__": typing.Literal["xfmrot"],
     "transform_file": InputPathType,
@@ -183,7 +185,11 @@ def xfmrot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XFMROT_METADATA)
-    params = xfmrot_params(transform_file=transform_file, input_vector_file=input_vector_file, output_vector_file=output_vector_file)
+    params = xfmrot_params(
+        transform_file=transform_file,
+        input_vector_file=input_vector_file,
+        output_vector_file=output_vector_file,
+    )
     return xfmrot_execute(params, execution)
 
 

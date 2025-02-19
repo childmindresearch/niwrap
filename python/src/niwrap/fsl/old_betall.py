@@ -11,6 +11,8 @@ OLD_BETALL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 OldBetallParameters = typing.TypedDict('OldBetallParameters', {
     "__STYX_TYPE__": typing.Literal["old_betall"],
     "t1_filerout": str,
@@ -169,7 +171,10 @@ def old_betall(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(OLD_BETALL_METADATA)
-    params = old_betall_params(t1_filerout=t1_filerout, t2_filerout=t2_filerout)
+    params = old_betall_params(
+        t1_filerout=t1_filerout,
+        t2_filerout=t2_filerout,
+    )
     return old_betall_execute(params, execution)
 
 

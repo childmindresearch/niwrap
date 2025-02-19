@@ -11,6 +11,8 @@ MRI_PATH2LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriPath2labelParameters = typing.TypedDict('MriPath2labelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_path2label"],
     "input_file": str,
@@ -266,7 +268,19 @@ def mri_path2label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PATH2LABEL_METADATA)
-    params = mri_path2label_params(input_file=input_file, output_file=output_file, single=single, path_to_label=path_to_label, label_to_path=label_to_path, connect=connect, fill=fill, confillx=confillx, confill=confill, source_file=source_file, dest_file=dest_file)
+    params = mri_path2label_params(
+        input_file=input_file,
+        output_file=output_file,
+        single=single,
+        path_to_label=path_to_label,
+        label_to_path=label_to_path,
+        connect=connect,
+        fill=fill,
+        confillx=confillx,
+        confill=confill,
+        source_file=source_file,
+        dest_file=dest_file,
+    )
     return mri_path2label_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SEGMENT_SUBFIELDS_T1_LONGITUDINAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentSubfieldsT1LongitudinalParameters = typing.TypedDict('SegmentSubfieldsT1LongitudinalParameters', {
     "__STYX_TYPE__": typing.Literal["SegmentSubfieldsT1Longitudinal"],
     "subject_id": str,
@@ -173,7 +175,11 @@ def segment_subfields_t1_longitudinal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBFIELDS_T1_LONGITUDINAL_METADATA)
-    params = segment_subfields_t1_longitudinal_params(subject_id=subject_id, input_image=input_image, output_dir=output_dir)
+    params = segment_subfields_t1_longitudinal_params(
+        subject_id=subject_id,
+        input_image=input_image,
+        output_dir=output_dir,
+    )
     return segment_subfields_t1_longitudinal_execute(params, execution)
 
 

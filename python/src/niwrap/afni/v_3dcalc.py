@@ -11,6 +11,8 @@ V_3DCALC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dcalcParameters = typing.TypedDict('V3dcalcParameters', {
     "__STYX_TYPE__": typing.Literal["3dcalc"],
     "in_file_a": InputPathType,
@@ -252,7 +254,18 @@ def v_3dcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DCALC_METADATA)
-    params = v_3dcalc_params(in_file_a=in_file_a, in_file_b=in_file_b, in_file_c=in_file_c, other=other, overwrite=overwrite, single_idx=single_idx, start_idx=start_idx, stop_idx=stop_idx, expr=expr, prefix=prefix)
+    params = v_3dcalc_params(
+        in_file_a=in_file_a,
+        in_file_b=in_file_b,
+        in_file_c=in_file_c,
+        other=other,
+        overwrite=overwrite,
+        single_idx=single_idx,
+        start_idx=start_idx,
+        stop_idx=stop_idx,
+        expr=expr,
+        prefix=prefix,
+    )
     return v_3dcalc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ GIFTI_CONVERT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 GiftiConvertParameters = typing.TypedDict('GiftiConvertParameters', {
     "__STYX_TYPE__": typing.Literal["gifti-convert"],
     "gifti_encoding": str,
@@ -184,7 +186,11 @@ def gifti_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GIFTI_CONVERT_METADATA)
-    params = gifti_convert_params(gifti_encoding=gifti_encoding, input_gifti_file=input_gifti_file, output_gifti_file=output_gifti_file)
+    params = gifti_convert_params(
+        gifti_encoding=gifti_encoding,
+        input_gifti_file=input_gifti_file,
+        output_gifti_file=output_gifti_file,
+    )
     return gifti_convert_execute(params, execution)
 
 

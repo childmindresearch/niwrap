@@ -11,6 +11,8 @@ IMCUTUP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImcutupParameters = typing.TypedDict('ImcutupParameters', {
     "__STYX_TYPE__": typing.Literal["imcutup"],
     "prefix": typing.NotRequired[str | None],
@@ -217,7 +219,16 @@ def imcutup(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMCUTUP_METADATA)
-    params = imcutup_params(prefix=prefix, xynum=xynum, yxnum=yxnum, xynum_format=xynum_format, yxnum_format=yxnum_format, nx=nx, ny=ny, input_file=input_file)
+    params = imcutup_params(
+        prefix=prefix,
+        xynum=xynum,
+        yxnum=yxnum,
+        xynum_format=xynum_format,
+        yxnum_format=yxnum_format,
+        nx=nx,
+        ny=ny,
+        input_file=input_file,
+    )
     return imcutup_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_SMOOTH_INTRACORTICAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSmoothIntracorticalParameters = typing.TypedDict('MrisSmoothIntracorticalParameters', {
     "__STYX_TYPE__": typing.Literal["mris_smooth_intracortical"],
     "surf_dir": str,
@@ -278,7 +280,18 @@ def mris_smooth_intracortical(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SMOOTH_INTRACORTICAL_METADATA)
-    params = mris_smooth_intracortical_params(surf_dir=surf_dir, surf_name=surf_name, overlay_dir=overlay_dir, overlay_name=overlay_name, output_dir=output_dir, output_name=output_name, tan_size=tan_size, rad_size=rad_size, rad_start=rad_start, tan_weights=tan_weights)
+    params = mris_smooth_intracortical_params(
+        surf_dir=surf_dir,
+        surf_name=surf_name,
+        overlay_dir=overlay_dir,
+        overlay_name=overlay_name,
+        output_dir=output_dir,
+        output_name=output_name,
+        tan_size=tan_size,
+        rad_size=rad_size,
+        rad_start=rad_start,
+        tan_weights=tan_weights,
+    )
     return mris_smooth_intracortical_execute(params, execution)
 
 

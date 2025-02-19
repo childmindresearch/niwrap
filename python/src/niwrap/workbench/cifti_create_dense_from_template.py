@@ -11,37 +11,51 @@ CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCreateDenseFromTemplateSeriesParameters = typing.TypedDict('CiftiCreateDenseFromTemplateSeriesParameters', {
     "__STYX_TYPE__": typing.Literal["series"],
     "step": float,
     "start": float,
     "opt_unit_unit": typing.NotRequired[str | None],
 })
+
+
 CiftiCreateDenseFromTemplateVolumeAllParameters = typing.TypedDict('CiftiCreateDenseFromTemplateVolumeAllParameters', {
     "__STYX_TYPE__": typing.Literal["volume_all"],
     "volume_in": InputPathType,
     "opt_from_cropped": bool,
 })
+
+
 CiftiCreateDenseFromTemplateCiftiParameters = typing.TypedDict('CiftiCreateDenseFromTemplateCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti"],
     "cifti_in": InputPathType,
 })
+
+
 CiftiCreateDenseFromTemplateMetricParameters = typing.TypedDict('CiftiCreateDenseFromTemplateMetricParameters', {
     "__STYX_TYPE__": typing.Literal["metric"],
     "structure": str,
     "metric_in": InputPathType,
 })
+
+
 CiftiCreateDenseFromTemplateLabelParameters = typing.TypedDict('CiftiCreateDenseFromTemplateLabelParameters', {
     "__STYX_TYPE__": typing.Literal["label"],
     "structure": str,
     "label_in": InputPathType,
 })
+
+
 CiftiCreateDenseFromTemplateVolumeParameters = typing.TypedDict('CiftiCreateDenseFromTemplateVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "structure": str,
     "volume_in": InputPathType,
     "opt_from_cropped": bool,
 })
+
+
 CiftiCreateDenseFromTemplateParameters = typing.TypedDict('CiftiCreateDenseFromTemplateParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-create-dense-from-template"],
     "template_cifti": InputPathType,
@@ -647,7 +661,17 @@ def cifti_create_dense_from_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA)
-    params = cifti_create_dense_from_template_params(template_cifti=template_cifti, cifti_out=cifti_out, series=series, volume_all=volume_all, opt_label_collision_action=opt_label_collision_action, cifti=cifti, metric=metric, label=label, volume=volume)
+    params = cifti_create_dense_from_template_params(
+        template_cifti=template_cifti,
+        cifti_out=cifti_out,
+        series=series,
+        volume_all=volume_all,
+        opt_label_collision_action=opt_label_collision_action,
+        cifti=cifti,
+        metric=metric,
+        label=label,
+        volume=volume,
+    )
     return cifti_create_dense_from_template_execute(params, execution)
 
 

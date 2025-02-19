@@ -11,6 +11,8 @@ MRIS_APPLY_REG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisApplyRegParameters = typing.TypedDict('MrisApplyRegParameters', {
     "__STYX_TYPE__": typing.Literal["mris_apply_reg"],
     "src_input": InputPathType,
@@ -391,7 +393,31 @@ def mris_apply_reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_APPLY_REG_METADATA)
-    params = mris_apply_reg_params(src_input=src_input, trg_output=trg_output, streg_pair=streg_pair, src_label=src_label, src_annotation=src_annotation, src_xyz=src_xyz, jacobian=jacobian, no_reverse=no_reverse, rand_noise=rand_noise, replace_ones=replace_ones, center_output=center_output, curv_format=curv_format, lta_transform=lta_transform, lta_patch_transform=lta_patch_transform, reverse_surface=reverse_surface, patch_apply=patch_apply, save_vertex_pair=save_vertex_pair, m3z_transform=m3z_transform, inv_m3z_transform=inv_m3z_transform, src_reg_scale=src_reg_scale, trg_reg_scale=trg_reg_scale, debug_mode=debug_mode, check_options=check_options)
+    params = mris_apply_reg_params(
+        src_input=src_input,
+        trg_output=trg_output,
+        streg_pair=streg_pair,
+        src_label=src_label,
+        src_annotation=src_annotation,
+        src_xyz=src_xyz,
+        jacobian=jacobian,
+        no_reverse=no_reverse,
+        rand_noise=rand_noise,
+        replace_ones=replace_ones,
+        center_output=center_output,
+        curv_format=curv_format,
+        lta_transform=lta_transform,
+        lta_patch_transform=lta_patch_transform,
+        reverse_surface=reverse_surface,
+        patch_apply=patch_apply,
+        save_vertex_pair=save_vertex_pair,
+        m3z_transform=m3z_transform,
+        inv_m3z_transform=inv_m3z_transform,
+        src_reg_scale=src_reg_scale,
+        trg_reg_scale=trg_reg_scale,
+        debug_mode=debug_mode,
+        check_options=check_options,
+    )
     return mris_apply_reg_execute(params, execution)
 
 

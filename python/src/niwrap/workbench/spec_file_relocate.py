@@ -11,6 +11,8 @@ SPEC_FILE_RELOCATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SpecFileRelocateParameters = typing.TypedDict('SpecFileRelocateParameters', {
     "__STYX_TYPE__": typing.Literal["spec-file-relocate"],
     "input_spec": str,
@@ -173,7 +175,10 @@ def spec_file_relocate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPEC_FILE_RELOCATE_METADATA)
-    params = spec_file_relocate_params(input_spec=input_spec, output_spec=output_spec)
+    params = spec_file_relocate_params(
+        input_spec=input_spec,
+        output_spec=output_spec,
+    )
     return spec_file_relocate_execute(params, execution)
 
 

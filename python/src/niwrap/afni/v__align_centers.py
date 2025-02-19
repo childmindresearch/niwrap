@@ -11,6 +11,8 @@ V__ALIGN_CENTERS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAlignCentersParameters = typing.TypedDict('VAlignCentersParameters', {
     "__STYX_TYPE__": typing.Literal["@Align_Centers"],
     "base": InputPathType,
@@ -294,7 +296,22 @@ def v__align_centers(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ALIGN_CENTERS_METADATA)
-    params = v__align_centers_params(base=base, dset=dset, children=children, echo=echo, overwrite=overwrite, prefix=prefix, matrix_only=matrix_only, matrix_only_no_dset=matrix_only_no_dset, no_cp=no_cp, center_grid=center_grid, center_cm=center_cm, center_cm_no_amask=center_cm_no_amask, shift_xform=shift_xform, shift_xform_inv=shift_xform_inv)
+    params = v__align_centers_params(
+        base=base,
+        dset=dset,
+        children=children,
+        echo=echo,
+        overwrite=overwrite,
+        prefix=prefix,
+        matrix_only=matrix_only,
+        matrix_only_no_dset=matrix_only_no_dset,
+        no_cp=no_cp,
+        center_grid=center_grid,
+        center_cm=center_cm,
+        center_cm_no_amask=center_cm_no_amask,
+        shift_xform=shift_xform,
+        shift_xform_inv=shift_xform_inv,
+    )
     return v__align_centers_execute(params, execution)
 
 

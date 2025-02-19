@@ -11,6 +11,8 @@ SURF_EXTREMA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfExtremaParameters = typing.TypedDict('SurfExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["SurfExtrema"],
     "input": typing.NotRequired[InputPathType | None],
@@ -255,7 +257,16 @@ def surf_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_EXTREMA_METADATA)
-    params = surf_extrema_params(input_=input_, hood=hood, thresh=thresh, gthresh=gthresh, gscale=gscale, extype=extype, prefix=prefix, table=table)
+    params = surf_extrema_params(
+        input_=input_,
+        hood=hood,
+        thresh=thresh,
+        gthresh=gthresh,
+        gscale=gscale,
+        extype=extype,
+        prefix=prefix,
+        table=table,
+    )
     return surf_extrema_execute(params, execution)
 
 

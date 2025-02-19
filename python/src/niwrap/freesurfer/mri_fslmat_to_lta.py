@@ -11,6 +11,8 @@ MRI_FSLMAT_TO_LTA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFslmatToLtaParameters = typing.TypedDict('MriFslmatToLtaParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fslmat_to_lta"],
     "src_vol": InputPathType,
@@ -183,7 +185,12 @@ def mri_fslmat_to_lta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FSLMAT_TO_LTA_METADATA)
-    params = mri_fslmat_to_lta_params(src_vol=src_vol, target_vol=target_vol, fslmat_file=fslmat_file, lta_file=lta_file)
+    params = mri_fslmat_to_lta_params(
+        src_vol=src_vol,
+        target_vol=target_vol,
+        fslmat_file=fslmat_file,
+        lta_file=lta_file,
+    )
     return mri_fslmat_to_lta_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ TALAIRACH_AFD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TalairachAfdParameters = typing.TypedDict('TalairachAfdParameters', {
     "__STYX_TYPE__": typing.Literal["talairach_afd"],
     "subject_name": typing.NotRequired[str | None],
@@ -206,7 +208,13 @@ def talairach_afd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH_AFD_METADATA)
-    params = talairach_afd_params(subject_name=subject_name, xfm_file=xfm_file, p_value_threshold=p_value_threshold, afd_directory=afd_directory, verbose=verbose)
+    params = talairach_afd_params(
+        subject_name=subject_name,
+        xfm_file=xfm_file,
+        p_value_threshold=p_value_threshold,
+        afd_directory=afd_directory,
+        verbose=verbose,
+    )
     return talairach_afd_execute(params, execution)
 
 

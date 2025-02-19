@@ -11,11 +11,15 @@ VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeWarpfieldAffineRegressionFlirtOutParameters = typing.TypedDict('VolumeWarpfieldAffineRegressionFlirtOutParameters', {
     "__STYX_TYPE__": typing.Literal["flirt_out"],
     "source_volume": str,
     "target_volume": str,
 })
+
+
 VolumeWarpfieldAffineRegressionParameters = typing.TypedDict('VolumeWarpfieldAffineRegressionParameters', {
     "__STYX_TYPE__": typing.Literal["volume-warpfield-affine-regression"],
     "warpfield": str,
@@ -268,7 +272,13 @@ def volume_warpfield_affine_regression(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA)
-    params = volume_warpfield_affine_regression_params(warpfield=warpfield, affine_out=affine_out, opt_roi_roi_vol=opt_roi_roi_vol, opt_fnirt_source_volume=opt_fnirt_source_volume, flirt_out=flirt_out)
+    params = volume_warpfield_affine_regression_params(
+        warpfield=warpfield,
+        affine_out=affine_out,
+        opt_roi_roi_vol=opt_roi_roi_vol,
+        opt_fnirt_source_volume=opt_fnirt_source_volume,
+        flirt_out=flirt_out,
+    )
     return volume_warpfield_affine_regression_execute(params, execution)
 
 

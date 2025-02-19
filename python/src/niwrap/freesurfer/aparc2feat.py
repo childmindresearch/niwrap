@@ -11,6 +11,8 @@ APARC2FEAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Aparc2featParameters = typing.TypedDict('Aparc2featParameters', {
     "__STYX_TYPE__": typing.Literal["aparc2feat"],
     "feat_directories": str,
@@ -231,7 +233,15 @@ def aparc2feat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APARC2FEAT_METADATA)
-    params = aparc2feat_params(feat_directories=feat_directories, featdirfile=featdirfile, hemi=hemi, annot=annot, annot_a2005s_flag=annot_a2005s_flag, annot_a2009s_flag=annot_a2009s_flag, debug_flag=debug_flag)
+    params = aparc2feat_params(
+        feat_directories=feat_directories,
+        featdirfile=featdirfile,
+        hemi=hemi,
+        annot=annot,
+        annot_a2005s_flag=annot_a2005s_flag,
+        annot_a2009s_flag=annot_a2009s_flag,
+        debug_flag=debug_flag,
+    )
     return aparc2feat_execute(params, execution)
 
 

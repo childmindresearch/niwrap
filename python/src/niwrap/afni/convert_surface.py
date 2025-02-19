@@ -11,6 +11,8 @@ CONVERT_SURFACE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ConvertSurfaceParameters = typing.TypedDict('ConvertSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["ConvertSurface"],
     "input_surface": str,
@@ -224,7 +226,15 @@ def convert_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_SURFACE_METADATA)
-    params = convert_surface_params(input_surface=input_surface, output_surface=output_surface, surface_volume=surface_volume, transform_tlrc=transform_tlrc, mni_lpi=mni_lpi, ixmat_1_d=ixmat_1_d, native=native)
+    params = convert_surface_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        surface_volume=surface_volume,
+        transform_tlrc=transform_tlrc,
+        mni_lpi=mni_lpi,
+        ixmat_1_d=ixmat_1_d,
+        native=native,
+    )
     return convert_surface_execute(params, execution)
 
 

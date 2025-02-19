@@ -11,15 +11,21 @@ MRSTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrstatsOutputParameters = typing.TypedDict('MrstatsOutputParameters', {
     "__STYX_TYPE__": typing.Literal["output"],
     "field": str,
 })
+
+
 MrstatsConfigParameters = typing.TypedDict('MrstatsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrstatsParameters = typing.TypedDict('MrstatsParameters', {
     "__STYX_TYPE__": typing.Literal["mrstats"],
     "output": typing.NotRequired[list[MrstatsOutputParameters] | None],
@@ -390,7 +396,21 @@ def mrstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRSTATS_METADATA)
-    params = mrstats_params(output=output, mask=mask, ignorezero=ignorezero, allvolumes=allvolumes, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image=image)
+    params = mrstats_params(
+        output=output,
+        mask=mask,
+        ignorezero=ignorezero,
+        allvolumes=allvolumes,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        image=image,
+    )
     return mrstats_execute(params, execution)
 
 

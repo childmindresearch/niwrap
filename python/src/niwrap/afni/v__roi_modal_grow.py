@@ -11,6 +11,8 @@ V__ROI_MODAL_GROW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VRoiModalGrowParameters = typing.TypedDict('VRoiModalGrowParameters', {
     "__STYX_TYPE__": typing.Literal["@ROI_modal_grow"],
     "input_dset": InputPathType,
@@ -234,7 +236,14 @@ def v__roi_modal_grow(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ROI_MODAL_GROW_METADATA)
-    params = v__roi_modal_grow_params(input_dset=input_dset, niters=niters, outdir=outdir, mask=mask, prefix=prefix, neighborhood_type=neighborhood_type)
+    params = v__roi_modal_grow_params(
+        input_dset=input_dset,
+        niters=niters,
+        outdir=outdir,
+        mask=mask,
+        prefix=prefix,
+        neighborhood_type=neighborhood_type,
+    )
     return v__roi_modal_grow_execute(params, execution)
 
 

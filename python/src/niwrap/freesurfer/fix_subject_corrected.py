@@ -11,6 +11,8 @@ FIX_SUBJECT_CORRECTED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FixSubjectCorrectedParameters = typing.TypedDict('FixSubjectCorrectedParameters', {
     "__STYX_TYPE__": typing.Literal["fix_subject_corrected"],
     "subject_directory": str,
@@ -162,7 +164,10 @@ def fix_subject_corrected(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIX_SUBJECT_CORRECTED_METADATA)
-    params = fix_subject_corrected_params(subject_directory=subject_directory, output_directory=output_directory)
+    params = fix_subject_corrected_params(
+        subject_directory=subject_directory,
+        output_directory=output_directory,
+    )
     return fix_subject_corrected_execute(params, execution)
 
 

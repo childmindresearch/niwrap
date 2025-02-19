@@ -11,6 +11,8 @@ FAT_PROC_ALIGN_ANAT_PAIR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcAlignAnatPairParameters = typing.TypedDict('FatProcAlignAnatPairParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_align_anat_pair"],
     "input_t1w": InputPathType,
@@ -280,7 +282,19 @@ def fat_proc_align_anat_pair(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_ALIGN_ANAT_PAIR_METADATA)
-    params = fat_proc_align_anat_pair_params(input_t1w=input_t1w, input_t2w=input_t2w, output_prefix=output_prefix, output_grid=output_grid, input_t2w_mask=input_t2w_mask, do_ss_tmp_t1w=do_ss_tmp_t1w, warp=warp, matrix=matrix, workdir=workdir, no_cmd_out=no_cmd_out, no_clean=no_clean)
+    params = fat_proc_align_anat_pair_params(
+        input_t1w=input_t1w,
+        input_t2w=input_t2w,
+        output_prefix=output_prefix,
+        output_grid=output_grid,
+        input_t2w_mask=input_t2w_mask,
+        do_ss_tmp_t1w=do_ss_tmp_t1w,
+        warp=warp,
+        matrix=matrix,
+        workdir=workdir,
+        no_cmd_out=no_cmd_out,
+        no_clean=no_clean,
+    )
     return fat_proc_align_anat_pair_execute(params, execution)
 
 

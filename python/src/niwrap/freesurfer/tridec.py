@@ -11,6 +11,8 @@ TRIDEC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TridecParameters = typing.TypedDict('TridecParameters', {
     "__STYX_TYPE__": typing.Literal["tridec"],
     "subject_name": str,
@@ -180,7 +182,12 @@ def tridec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRIDEC_METADATA)
-    params = tridec_params(subject_name=subject_name, fine_file=fine_file, ico_file=ico_file, out_file=out_file)
+    params = tridec_params(
+        subject_name=subject_name,
+        fine_file=fine_file,
+        ico_file=ico_file,
+        out_file=out_file,
+    )
     return tridec_execute(params, execution)
 
 

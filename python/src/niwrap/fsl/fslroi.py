@@ -11,6 +11,8 @@ FSLROI_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslroiParameters = typing.TypedDict('FslroiParameters', {
     "__STYX_TYPE__": typing.Literal["fslroi"],
     "infile": InputPathType,
@@ -238,7 +240,18 @@ def fslroi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLROI_METADATA)
-    params = fslroi_params(infile=infile, outfile=outfile, xmin=xmin, xsize=xsize, ymin=ymin, ysize=ysize, zmin=zmin, zsize=zsize, tmin=tmin, tsize=tsize)
+    params = fslroi_params(
+        infile=infile,
+        outfile=outfile,
+        xmin=xmin,
+        xsize=xsize,
+        ymin=ymin,
+        ysize=ysize,
+        zmin=zmin,
+        zsize=zsize,
+        tmin=tmin,
+        tsize=tsize,
+    )
     return fslroi_execute(params, execution)
 
 

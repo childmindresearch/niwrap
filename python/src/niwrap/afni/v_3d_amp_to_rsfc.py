@@ -11,6 +11,8 @@ V_3D_AMP_TO_RSFC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAmpToRsfcParameters = typing.TypedDict('V3dAmpToRsfcParameters', {
     "__STYX_TYPE__": typing.Literal["3dAmpToRSFC"],
     "in_amp": typing.NotRequired[InputPathType | None],
@@ -241,7 +243,13 @@ def v_3d_amp_to_rsfc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_AMP_TO_RSFC_METADATA)
-    params = v_3d_amp_to_rsfc_params(in_amp=in_amp, in_pow=in_pow, prefix=prefix, band=band, mask=mask)
+    params = v_3d_amp_to_rsfc_params(
+        in_amp=in_amp,
+        in_pow=in_pow,
+        prefix=prefix,
+        band=band,
+        mask=mask,
+    )
     return v_3d_amp_to_rsfc_execute(params, execution)
 
 

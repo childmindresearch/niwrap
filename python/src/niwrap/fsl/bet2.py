@@ -11,6 +11,8 @@ BET2_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Bet2Parameters = typing.TypedDict('Bet2Parameters', {
     "__STYX_TYPE__": typing.Literal["bet2"],
     "input_fileroot": str,
@@ -318,7 +320,23 @@ def bet2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BET2_METADATA)
-    params = bet2_params(input_fileroot=input_fileroot, output_fileroot=output_fileroot, fractional_intensity=fractional_intensity, vertical_gradient=vertical_gradient, center_of_gravity=center_of_gravity, outline_flag=outline_flag, mask_flag=mask_flag, skull_flag=skull_flag, no_output_flag=no_output_flag, mesh_flag=mesh_flag, head_radius=head_radius, smooth_factor=smooth_factor, threshold_flag=threshold_flag, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = bet2_params(
+        input_fileroot=input_fileroot,
+        output_fileroot=output_fileroot,
+        fractional_intensity=fractional_intensity,
+        vertical_gradient=vertical_gradient,
+        center_of_gravity=center_of_gravity,
+        outline_flag=outline_flag,
+        mask_flag=mask_flag,
+        skull_flag=skull_flag,
+        no_output_flag=no_output_flag,
+        mesh_flag=mesh_flag,
+        head_radius=head_radius,
+        smooth_factor=smooth_factor,
+        threshold_flag=threshold_flag,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return bet2_execute(params, execution)
 
 

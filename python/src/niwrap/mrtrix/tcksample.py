@@ -11,11 +11,15 @@ TCKSAMPLE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TcksampleConfigParameters = typing.TypedDict('TcksampleConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TcksampleParameters = typing.TypedDict('TcksampleParameters', {
     "__STYX_TYPE__": typing.Literal["tcksample"],
     "stat_tck": typing.NotRequired[str | None],
@@ -369,7 +373,23 @@ def tcksample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKSAMPLE_METADATA)
-    params = tcksample_params(stat_tck=stat_tck, nointerp=nointerp, precise=precise, use_tdi_fraction=use_tdi_fraction, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks, image=image, values_=values_)
+    params = tcksample_params(
+        stat_tck=stat_tck,
+        nointerp=nointerp,
+        precise=precise,
+        use_tdi_fraction=use_tdi_fraction,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks=tracks,
+        image=image,
+        values_=values_,
+    )
     return tcksample_execute(params, execution)
 
 

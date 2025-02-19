@@ -11,6 +11,8 @@ SUPER_RESOLUTION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SuperResolutionParameters = typing.TypedDict('SuperResolutionParameters', {
     "__STYX_TYPE__": typing.Literal["SuperResolution"],
     "image_dimension": int,
@@ -215,7 +217,15 @@ def super_resolution(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SUPER_RESOLUTION_METADATA)
-    params = super_resolution_params(image_dimension=image_dimension, output_image=output_image, domain_image=domain_image, gradient_sigma=gradient_sigma, mesh_size=mesh_size, number_of_levels=number_of_levels, input_image_files=input_image_files)
+    params = super_resolution_params(
+        image_dimension=image_dimension,
+        output_image=output_image,
+        domain_image=domain_image,
+        gradient_sigma=gradient_sigma,
+        mesh_size=mesh_size,
+        number_of_levels=number_of_levels,
+        input_image_files=input_image_files,
+    )
     return super_resolution_execute(params, execution)
 
 

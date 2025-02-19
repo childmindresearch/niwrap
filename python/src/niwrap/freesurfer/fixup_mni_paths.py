@@ -11,6 +11,8 @@ FIXUP_MNI_PATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FixupMniPathsParameters = typing.TypedDict('FixupMniPathsParameters', {
     "__STYX_TYPE__": typing.Literal["fixup_mni_paths"],
     "verbose": bool,
@@ -196,7 +198,9 @@ def fixup_mni_paths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXUP_MNI_PATHS_METADATA)
-    params = fixup_mni_paths_params(verbose=verbose)
+    params = fixup_mni_paths_params(
+        verbose=verbose,
+    )
     return fixup_mni_paths_execute(params, execution)
 
 

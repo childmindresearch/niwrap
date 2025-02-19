@@ -11,6 +11,8 @@ IMAVER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImaverParameters = typing.TypedDict('ImaverParameters', {
     "__STYX_TYPE__": typing.Literal["imaver"],
     "out_ave": typing.NotRequired[str | None],
@@ -182,7 +184,11 @@ def imaver(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAVER_METADATA)
-    params = imaver_params(out_ave=out_ave, out_sig=out_sig, input_images=input_images)
+    params = imaver_params(
+        out_ave=out_ave,
+        out_sig=out_sig,
+        input_images=input_images,
+    )
     return imaver_execute(params, execution)
 
 

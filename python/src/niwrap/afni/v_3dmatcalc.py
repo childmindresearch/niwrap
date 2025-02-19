@@ -11,6 +11,8 @@ V_3DMATCALC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmatcalcParameters = typing.TypedDict('V3dmatcalcParameters', {
     "__STYX_TYPE__": typing.Literal["3dmatcalc"],
     "input_dataset": InputPathType,
@@ -201,7 +203,12 @@ def v_3dmatcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMATCALC_METADATA)
-    params = v_3dmatcalc_params(input_dataset=input_dataset, input_matrix=input_matrix, output_dataset=output_dataset, mask=mask)
+    params = v_3dmatcalc_params(
+        input_dataset=input_dataset,
+        input_matrix=input_matrix,
+        output_dataset=output_dataset,
+        mask=mask,
+    )
     return v_3dmatcalc_execute(params, execution)
 
 

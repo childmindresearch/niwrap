@@ -11,6 +11,8 @@ MRI_POLV_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriPolvParameters = typing.TypedDict('MriPolvParameters', {
     "__STYX_TYPE__": typing.Literal["mri_polv"],
     "window_size": typing.NotRequired[float | None],
@@ -180,7 +182,11 @@ def mri_polv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_POLV_METADATA)
-    params = mri_polv_params(window_size=window_size, input_image=input_image, output_image=output_image)
+    params = mri_polv_params(
+        window_size=window_size,
+        input_image=input_image,
+        output_image=output_image,
+    )
     return mri_polv_execute(params, execution)
 
 

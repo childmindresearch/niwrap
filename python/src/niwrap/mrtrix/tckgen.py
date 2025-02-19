@@ -11,82 +11,120 @@ TCKGEN_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckgenSeedImageParameters = typing.TypedDict('TckgenSeedImageParameters', {
     "__STYX_TYPE__": typing.Literal["seed_image"],
     "image": InputPathType,
 })
+
+
 TckgenSeedSphereParameters = typing.TypedDict('TckgenSeedSphereParameters', {
     "__STYX_TYPE__": typing.Literal["seed_sphere"],
     "spec": list[float],
 })
+
+
 TckgenSeedRandomPerVoxelParameters = typing.TypedDict('TckgenSeedRandomPerVoxelParameters', {
     "__STYX_TYPE__": typing.Literal["seed_random_per_voxel"],
     "image": InputPathType,
     "num_per_voxel": int,
 })
+
+
 TckgenSeedGridPerVoxelParameters = typing.TypedDict('TckgenSeedGridPerVoxelParameters', {
     "__STYX_TYPE__": typing.Literal["seed_grid_per_voxel"],
     "image": InputPathType,
     "grid_size": int,
 })
+
+
 TckgenSeedRejectionParameters = typing.TypedDict('TckgenSeedRejectionParameters', {
     "__STYX_TYPE__": typing.Literal["seed_rejection"],
     "image": InputPathType,
 })
+
+
 TckgenSeedGmwmiParameters = typing.TypedDict('TckgenSeedGmwmiParameters', {
     "__STYX_TYPE__": typing.Literal["seed_gmwmi"],
     "image": InputPathType,
 })
+
+
 TckgenVariousStringParameters = typing.TypedDict('TckgenVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 TckgenVariousFileParameters = typing.TypedDict('TckgenVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 TckgenIncludeParameters = typing.TypedDict('TckgenIncludeParameters', {
     "__STYX_TYPE__": typing.Literal["include"],
     "spec": typing.Union[TckgenVariousStringParameters, TckgenVariousFileParameters],
 })
+
+
 TckgenIncludeOrderedParameters = typing.TypedDict('TckgenIncludeOrderedParameters', {
     "__STYX_TYPE__": typing.Literal["include_ordered"],
     "image": str,
 })
+
+
 TckgenVariousString1Parameters = typing.TypedDict('TckgenVariousString1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
+
+
 TckgenVariousFile1Parameters = typing.TypedDict('TckgenVariousFile1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
+
+
 TckgenExcludeParameters = typing.TypedDict('TckgenExcludeParameters', {
     "__STYX_TYPE__": typing.Literal["exclude"],
     "spec": typing.Union[TckgenVariousString1Parameters, TckgenVariousFile1Parameters],
 })
+
+
 TckgenVariousString2Parameters = typing.TypedDict('TckgenVariousString2Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousString_2"],
     "obj": str,
 })
+
+
 TckgenVariousFile2Parameters = typing.TypedDict('TckgenVariousFile2Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile_2"],
     "obj": InputPathType,
 })
+
+
 TckgenMaskParameters = typing.TypedDict('TckgenMaskParameters', {
     "__STYX_TYPE__": typing.Literal["mask"],
     "spec": typing.Union[TckgenVariousString2Parameters, TckgenVariousFile2Parameters],
 })
+
+
 TckgenFslgradParameters = typing.TypedDict('TckgenFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 TckgenConfigParameters = typing.TypedDict('TckgenConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckgenParameters = typing.TypedDict('TckgenParameters', {
     "__STYX_TYPE__": typing.Literal["tckgen"],
     "algorithm": typing.NotRequired[str | None],
@@ -1849,7 +1887,54 @@ def tckgen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKGEN_METADATA)
-    params = tckgen_params(algorithm=algorithm, select_=select_, step=step, angle=angle, minlength=minlength, maxlength=maxlength, cutoff=cutoff, trials=trials, noprecomputed=noprecomputed, rk4=rk4, stop=stop, downsample=downsample, seed_image=seed_image, seed_sphere=seed_sphere, seed_random_per_voxel=seed_random_per_voxel, seed_grid_per_voxel=seed_grid_per_voxel, seed_rejection=seed_rejection, seed_gmwmi=seed_gmwmi, seed_dynamic=seed_dynamic, seeds=seeds, max_attempts_per_seed=max_attempts_per_seed, seed_cutoff=seed_cutoff, seed_unidirectional=seed_unidirectional, seed_direction=seed_direction, output_seeds=output_seeds, include=include, include_ordered=include_ordered, exclude=exclude, mask=mask, act=act, backtrack=backtrack, crop_at_gmwmi=crop_at_gmwmi, power=power, samples=samples, grad=grad, fslgrad=fslgrad, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, source=source, tracks=tracks)
+    params = tckgen_params(
+        algorithm=algorithm,
+        select_=select_,
+        step=step,
+        angle=angle,
+        minlength=minlength,
+        maxlength=maxlength,
+        cutoff=cutoff,
+        trials=trials,
+        noprecomputed=noprecomputed,
+        rk4=rk4,
+        stop=stop,
+        downsample=downsample,
+        seed_image=seed_image,
+        seed_sphere=seed_sphere,
+        seed_random_per_voxel=seed_random_per_voxel,
+        seed_grid_per_voxel=seed_grid_per_voxel,
+        seed_rejection=seed_rejection,
+        seed_gmwmi=seed_gmwmi,
+        seed_dynamic=seed_dynamic,
+        seeds=seeds,
+        max_attempts_per_seed=max_attempts_per_seed,
+        seed_cutoff=seed_cutoff,
+        seed_unidirectional=seed_unidirectional,
+        seed_direction=seed_direction,
+        output_seeds=output_seeds,
+        include=include,
+        include_ordered=include_ordered,
+        exclude=exclude,
+        mask=mask,
+        act=act,
+        backtrack=backtrack,
+        crop_at_gmwmi=crop_at_gmwmi,
+        power=power,
+        samples=samples,
+        grad=grad,
+        fslgrad=fslgrad,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        source=source,
+        tracks=tracks,
+    )
     return tckgen_execute(params, execution)
 
 

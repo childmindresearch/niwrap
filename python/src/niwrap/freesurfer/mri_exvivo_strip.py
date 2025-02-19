@@ -11,6 +11,8 @@ MRI_EXVIVO_STRIP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriExvivoStripParameters = typing.TypedDict('MriExvivoStripParameters', {
     "__STYX_TYPE__": typing.Literal["mri_exvivo_strip"],
     "invol": InputPathType,
@@ -288,7 +290,20 @@ def mri_exvivo_strip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EXVIVO_STRIP_METADATA)
-    params = mri_exvivo_strip_params(invol=invol, outvol=outvol, hemi=hemi, pred=pred, norm=norm, fv=fv, uthresh=uthresh, border=border, multichannel=multichannel, model=model, wts=wts, gpu=gpu)
+    params = mri_exvivo_strip_params(
+        invol=invol,
+        outvol=outvol,
+        hemi=hemi,
+        pred=pred,
+        norm=norm,
+        fv=fv,
+        uthresh=uthresh,
+        border=border,
+        multichannel=multichannel,
+        model=model,
+        wts=wts,
+        gpu=gpu,
+    )
     return mri_exvivo_strip_execute(params, execution)
 
 

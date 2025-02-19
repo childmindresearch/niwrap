@@ -11,6 +11,8 @@ MRI_EM_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEmRegisterParameters = typing.TypedDict('MriEmRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_em_register"],
     "input_volume": InputPathType,
@@ -775,7 +777,64 @@ def mri_em_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EM_REGISTER_METADATA)
-    params = mri_em_register_params(input_volume=input_volume, template_gca=template_gca, output_transform=output_transform, distance=distance, nomap=nomap, flash=flash, mask=mask, skull=skull, uns=uns, diag=diag, debug_voxel=debug_voxel, debug_label=debug_label, tr=tr, te=te, alpha=alpha, example=example, samples=samples, fsamples=fsamples, nsamples=nsamples, contrast=contrast, flash_parms=flash_parms, transonly=transonly, write_mean=write_mean, prior=prior, spacing=spacing, scales=scales, novar=novar, dt=dt, tol=tol, center=center, noscale=noscale, noiscale=noiscale, num_transforms=num_transforms, area=area, nlarea=nlarea, levels=levels, intensity=intensity, reduce=reduce, n_samples=n_samples, norm=norm, trans=trans, steps=steps, long_reg=long_reg, cpfile=cpfile, translation_vector=translation_vector, rotation_vector=rotation_vector, xform=xform, blur=blur, diagno=diagno, s=s, max_angle=max_angle, niters=niters, write_iters=write_iters, ctl_point_pct=ctl_point_pct, momentum=momentum, threads=threads)
+    params = mri_em_register_params(
+        input_volume=input_volume,
+        template_gca=template_gca,
+        output_transform=output_transform,
+        distance=distance,
+        nomap=nomap,
+        flash=flash,
+        mask=mask,
+        skull=skull,
+        uns=uns,
+        diag=diag,
+        debug_voxel=debug_voxel,
+        debug_label=debug_label,
+        tr=tr,
+        te=te,
+        alpha=alpha,
+        example=example,
+        samples=samples,
+        fsamples=fsamples,
+        nsamples=nsamples,
+        contrast=contrast,
+        flash_parms=flash_parms,
+        transonly=transonly,
+        write_mean=write_mean,
+        prior=prior,
+        spacing=spacing,
+        scales=scales,
+        novar=novar,
+        dt=dt,
+        tol=tol,
+        center=center,
+        noscale=noscale,
+        noiscale=noiscale,
+        num_transforms=num_transforms,
+        area=area,
+        nlarea=nlarea,
+        levels=levels,
+        intensity=intensity,
+        reduce=reduce,
+        n_samples=n_samples,
+        norm=norm,
+        trans=trans,
+        steps=steps,
+        long_reg=long_reg,
+        cpfile=cpfile,
+        translation_vector=translation_vector,
+        rotation_vector=rotation_vector,
+        xform=xform,
+        blur=blur,
+        diagno=diagno,
+        s=s,
+        max_angle=max_angle,
+        niters=niters,
+        write_iters=write_iters,
+        ctl_point_pct=ctl_point_pct,
+        momentum=momentum,
+        threads=threads,
+    )
     return mri_em_register_execute(params, execution)
 
 

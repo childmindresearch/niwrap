@@ -11,15 +11,21 @@ CONNECTOMESTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 ConnectomestatsColumnParameters = typing.TypedDict('ConnectomestatsColumnParameters', {
     "__STYX_TYPE__": typing.Literal["column"],
     "path": InputPathType,
 })
+
+
 ConnectomestatsConfigParameters = typing.TypedDict('ConnectomestatsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 ConnectomestatsParameters = typing.TypedDict('ConnectomestatsParameters', {
     "__STYX_TYPE__": typing.Literal["connectomestats"],
     "notest": bool,
@@ -711,7 +717,40 @@ def connectomestats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONNECTOMESTATS_METADATA)
-    params = connectomestats_params(notest=notest, errors=errors, exchange_within=exchange_within, exchange_whole=exchange_whole, strong=strong, nshuffles=nshuffles, permutations=permutations, nonstationarity=nonstationarity, skew_nonstationarity=skew_nonstationarity, nshuffles_nonstationarity=nshuffles_nonstationarity, permutations_nonstationarity=permutations_nonstationarity, tfce_dh=tfce_dh, tfce_e=tfce_e, tfce_h=tfce_h, variance=variance, ftests=ftests, fonly=fonly, column=column, threshold=threshold, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, algorithm=algorithm, design=design, contrast=contrast, output=output)
+    params = connectomestats_params(
+        notest=notest,
+        errors=errors,
+        exchange_within=exchange_within,
+        exchange_whole=exchange_whole,
+        strong=strong,
+        nshuffles=nshuffles,
+        permutations=permutations,
+        nonstationarity=nonstationarity,
+        skew_nonstationarity=skew_nonstationarity,
+        nshuffles_nonstationarity=nshuffles_nonstationarity,
+        permutations_nonstationarity=permutations_nonstationarity,
+        tfce_dh=tfce_dh,
+        tfce_e=tfce_e,
+        tfce_h=tfce_h,
+        variance=variance,
+        ftests=ftests,
+        fonly=fonly,
+        column=column,
+        threshold=threshold,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        algorithm=algorithm,
+        design=design,
+        contrast=contrast,
+        output=output,
+    )
     return connectomestats_execute(params, execution)
 
 

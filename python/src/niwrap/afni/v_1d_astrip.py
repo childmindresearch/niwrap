@@ -11,6 +11,8 @@ V_1D_ASTRIP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dAstripParameters = typing.TypedDict('V1dAstripParameters', {
     "__STYX_TYPE__": typing.Literal["1dAstrip"],
     "infile": InputPathType,
@@ -159,7 +161,9 @@ def v_1d_astrip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_ASTRIP_METADATA)
-    params = v_1d_astrip_params(infile=infile)
+    params = v_1d_astrip_params(
+        infile=infile,
+    )
     return v_1d_astrip_execute(params, execution)
 
 

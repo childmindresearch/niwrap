@@ -11,6 +11,8 @@ DMRI_ANATOMI_CUTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriAnatomiCutsParameters = typing.TypedDict('DmriAnatomiCutsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_AnatomiCuts"],
     "segmentation_file": InputPathType,
@@ -224,7 +226,15 @@ def dmri_anatomi_cuts(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_ANATOMI_CUTS_METADATA)
-    params = dmri_anatomi_cuts_params(segmentation_file=segmentation_file, fiber_file=fiber_file, clusters=clusters, points=points, fibers_eigen=fibers_eigen, output_folder=output_folder, direction_flag=direction_flag)
+    params = dmri_anatomi_cuts_params(
+        segmentation_file=segmentation_file,
+        fiber_file=fiber_file,
+        clusters=clusters,
+        points=points,
+        fibers_eigen=fibers_eigen,
+        output_folder=output_folder,
+        direction_flag=direction_flag,
+    )
     return dmri_anatomi_cuts_execute(params, execution)
 
 

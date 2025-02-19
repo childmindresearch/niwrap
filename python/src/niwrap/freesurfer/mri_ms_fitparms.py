@@ -11,6 +11,8 @@ MRI_MS_FITPARMS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMsFitparmsParameters = typing.TypedDict('MriMsFitparmsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_ms_fitparms"],
     "volumes": list[InputPathType],
@@ -525,7 +527,44 @@ def mri_ms_fitparms(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MS_FITPARMS_METADATA)
-    params = mri_ms_fitparms_params(volumes=volumes, output_dir=output_dir, afi_flag=afi_flag, ait_flag=ait_flag, at=at, conform_flag=conform_flag, correct_flag=correct_flag, cubic_flag=cubic_flag, debug_slice_flag=debug_slice_flag, debug_voxel_flag=debug_voxel_flag, dt=dt, fa=fa, fa_scale=fa_scale, faf=faf, fsmooth=fsmooth, invert_flag=invert_flag, momentum=momentum, max_t2=max_t2, n_iter=n_iter, nearest_flag=nearest_flag, nocompress_flag=nocompress_flag, nosynth_flag=nosynth_flag, residuals=residuals, smooth_sigma=smooth_sigma, scale_factor=scale_factor, sinc_flag=sinc_flag, transform_flag=transform_flag, echo_time=echo_time, repetition_time=repetition_time, trilinear_flag=trilinear_flag, tukey_flag=tukey_flag, help_flag=help_flag, use_brain_mask_flag=use_brain_mask_flag, write_intermediate=write_intermediate, extract_subimage=extract_subimage, window_flag=window_flag)
+    params = mri_ms_fitparms_params(
+        volumes=volumes,
+        output_dir=output_dir,
+        afi_flag=afi_flag,
+        ait_flag=ait_flag,
+        at=at,
+        conform_flag=conform_flag,
+        correct_flag=correct_flag,
+        cubic_flag=cubic_flag,
+        debug_slice_flag=debug_slice_flag,
+        debug_voxel_flag=debug_voxel_flag,
+        dt=dt,
+        fa=fa,
+        fa_scale=fa_scale,
+        faf=faf,
+        fsmooth=fsmooth,
+        invert_flag=invert_flag,
+        momentum=momentum,
+        max_t2=max_t2,
+        n_iter=n_iter,
+        nearest_flag=nearest_flag,
+        nocompress_flag=nocompress_flag,
+        nosynth_flag=nosynth_flag,
+        residuals=residuals,
+        smooth_sigma=smooth_sigma,
+        scale_factor=scale_factor,
+        sinc_flag=sinc_flag,
+        transform_flag=transform_flag,
+        echo_time=echo_time,
+        repetition_time=repetition_time,
+        trilinear_flag=trilinear_flag,
+        tukey_flag=tukey_flag,
+        help_flag=help_flag,
+        use_brain_mask_flag=use_brain_mask_flag,
+        write_intermediate=write_intermediate,
+        extract_subimage=extract_subimage,
+        window_flag=window_flag,
+    )
     return mri_ms_fitparms_execute(params, execution)
 
 

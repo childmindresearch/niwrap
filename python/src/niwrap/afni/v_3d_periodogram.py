@@ -11,6 +11,8 @@ V_3D_PERIODOGRAM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dPeriodogramParameters = typing.TypedDict('V3dPeriodogramParameters', {
     "__STYX_TYPE__": typing.Literal["3dPeriodogram"],
     "prefix": typing.NotRequired[str | None],
@@ -200,7 +202,12 @@ def v_3d_periodogram(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PERIODOGRAM_METADATA)
-    params = v_3d_periodogram_params(prefix=prefix, taper=taper, nfft=nfft, dataset=dataset)
+    params = v_3d_periodogram_params(
+        prefix=prefix,
+        taper=taper,
+        nfft=nfft,
+        dataset=dataset,
+    )
     return v_3d_periodogram_execute(params, execution)
 
 

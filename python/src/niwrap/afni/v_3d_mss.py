@@ -11,6 +11,8 @@ V_3D_MSS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMssParameters = typing.TypedDict('V3dMssParameters', {
     "__STYX_TYPE__": typing.Literal["3dMSS"],
     "prefix": str,
@@ -363,7 +365,26 @@ def v_3d_mss(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MSS_METADATA)
-    params = v_3d_mss_params(prefix=prefix, jobs=jobs, mrr_formula=mrr_formula, lme_formula=lme_formula, random_effect=random_effect, qvars=qvars, mask=mask, bounds=bounds, prediction_table=prediction_table, data_table=data_table, cio_flag=cio_flag, rio_flag=rio_flag, help_flag=help_flag, dbg_args_flag=dbg_args_flag, if_name=if_name, show_allowed_options_flag=show_allowed_options_flag, sdiff_vars=sdiff_vars, vt_formula=vt_formula)
+    params = v_3d_mss_params(
+        prefix=prefix,
+        jobs=jobs,
+        mrr_formula=mrr_formula,
+        lme_formula=lme_formula,
+        random_effect=random_effect,
+        qvars=qvars,
+        mask=mask,
+        bounds=bounds,
+        prediction_table=prediction_table,
+        data_table=data_table,
+        cio_flag=cio_flag,
+        rio_flag=rio_flag,
+        help_flag=help_flag,
+        dbg_args_flag=dbg_args_flag,
+        if_name=if_name,
+        show_allowed_options_flag=show_allowed_options_flag,
+        sdiff_vars=sdiff_vars,
+        vt_formula=vt_formula,
+    )
     return v_3d_mss_execute(params, execution)
 
 

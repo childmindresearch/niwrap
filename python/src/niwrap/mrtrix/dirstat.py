@@ -11,16 +11,22 @@ DIRSTAT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DirstatFslgradParameters = typing.TypedDict('DirstatFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 DirstatConfigParameters = typing.TypedDict('DirstatConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DirstatParameters = typing.TypedDict('DirstatParameters', {
     "__STYX_TYPE__": typing.Literal["dirstat"],
     "output": typing.NotRequired[str | None],
@@ -493,7 +499,21 @@ def dirstat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DIRSTAT_METADATA)
-    params = dirstat_params(output=output, shells=shells, grad=grad, fslgrad=fslgrad, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, dirs=dirs)
+    params = dirstat_params(
+        output=output,
+        shells=shells,
+        grad=grad,
+        fslgrad=fslgrad,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        dirs=dirs,
+    )
     return dirstat_execute(params, execution)
 
 

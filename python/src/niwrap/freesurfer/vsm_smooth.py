@@ -11,6 +11,8 @@ VSM_SMOOTH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 VsmSmoothParameters = typing.TypedDict('VsmSmoothParameters', {
     "__STYX_TYPE__": typing.Literal["vsm-smooth"],
     "input_file": InputPathType,
@@ -204,7 +206,12 @@ def vsm_smooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VSM_SMOOTH_METADATA)
-    params = vsm_smooth_params(input_file=input_file, output_file=output_file, fwhm_value=fwhm_value, temp_dir=temp_dir)
+    params = vsm_smooth_params(
+        input_file=input_file,
+        output_file=output_file,
+        fwhm_value=fwhm_value,
+        temp_dir=temp_dir,
+    )
     return vsm_smooth_execute(params, execution)
 
 

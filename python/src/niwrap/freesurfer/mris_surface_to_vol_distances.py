@@ -11,6 +11,8 @@ MRIS_SURFACE_TO_VOL_DISTANCES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSurfaceToVolDistancesParameters = typing.TypedDict('MrisSurfaceToVolDistancesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_surface_to_vol_distances"],
     "average_subject": str,
@@ -180,7 +182,12 @@ def mris_surface_to_vol_distances(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SURFACE_TO_VOL_DISTANCES_METADATA)
-    params = mris_surface_to_vol_distances_params(average_subject=average_subject, hemisphere=hemisphere, subjects=subjects, output_prefix=output_prefix)
+    params = mris_surface_to_vol_distances_params(
+        average_subject=average_subject,
+        hemisphere=hemisphere,
+        subjects=subjects,
+        output_prefix=output_prefix,
+    )
     return mris_surface_to_vol_distances_execute(params, execution)
 
 

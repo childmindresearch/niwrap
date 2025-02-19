@@ -11,11 +11,15 @@ LABEL2MESH_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Label2meshConfigParameters = typing.TypedDict('Label2meshConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Label2meshParameters = typing.TypedDict('Label2meshParameters', {
     "__STYX_TYPE__": typing.Literal["label2mesh"],
     "blocky": bool,
@@ -312,7 +316,19 @@ def label2mesh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2MESH_METADATA)
-    params = label2mesh_params(blocky=blocky, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, nodes_in=nodes_in, mesh_out=mesh_out)
+    params = label2mesh_params(
+        blocky=blocky,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        nodes_in=nodes_in,
+        mesh_out=mesh_out,
+    )
     return label2mesh_execute(params, execution)
 
 

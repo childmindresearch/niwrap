@@ -11,6 +11,8 @@ AFNI_BATCH_R_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniBatchRParameters = typing.TypedDict('AfniBatchRParameters', {
     "__STYX_TYPE__": typing.Literal["AFNI_Batch_R"],
     "no_restore": bool,
@@ -194,7 +196,13 @@ def afni_batch_r(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_BATCH_R_METADATA)
-    params = afni_batch_r_params(no_restore=no_restore, save_workspace=save_workspace, no_readline=no_readline, vanilla_mode=vanilla_mode, help_=help_)
+    params = afni_batch_r_params(
+        no_restore=no_restore,
+        save_workspace=save_workspace,
+        no_readline=no_readline,
+        vanilla_mode=vanilla_mode,
+        help_=help_,
+    )
     return afni_batch_r_execute(params, execution)
 
 

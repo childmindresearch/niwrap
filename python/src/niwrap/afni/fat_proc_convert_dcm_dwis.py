@@ -11,6 +11,8 @@ FAT_PROC_CONVERT_DCM_DWIS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcConvertDcmDwisParameters = typing.TypedDict('FatProcConvertDcmDwisParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_convert_dcm_dwis"],
     "dicom_dir": str,
@@ -340,7 +342,26 @@ def fat_proc_convert_dcm_dwis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_CONVERT_DCM_DWIS_METADATA)
-    params = fat_proc_convert_dcm_dwis_params(dicom_dir=dicom_dir, output_prefix=output_prefix, nifti_files=nifti_files, bvec_files=bvec_files, bval_files=bval_files, work_dir=work_dir, orientation=orientation, origin_xyz=origin_xyz, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z, no_flip=no_flip, qc_prefix=qc_prefix, reorient_off=reorient_off, no_clean=no_clean, no_cmd_out=no_cmd_out, no_qc_view=no_qc_view, do_movie=do_movie)
+    params = fat_proc_convert_dcm_dwis_params(
+        dicom_dir=dicom_dir,
+        output_prefix=output_prefix,
+        nifti_files=nifti_files,
+        bvec_files=bvec_files,
+        bval_files=bval_files,
+        work_dir=work_dir,
+        orientation=orientation,
+        origin_xyz=origin_xyz,
+        flip_x=flip_x,
+        flip_y=flip_y,
+        flip_z=flip_z,
+        no_flip=no_flip,
+        qc_prefix=qc_prefix,
+        reorient_off=reorient_off,
+        no_clean=no_clean,
+        no_cmd_out=no_cmd_out,
+        no_qc_view=no_qc_view,
+        do_movie=do_movie,
+    )
     return fat_proc_convert_dcm_dwis_execute(params, execution)
 
 

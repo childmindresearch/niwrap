@@ -11,6 +11,8 @@ V_3D_XYZCAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dXyzcatParameters = typing.TypedDict('V3dXyzcatParameters', {
     "__STYX_TYPE__": typing.Literal["3dXYZcat"],
     "direction": typing.NotRequired[str | None],
@@ -196,7 +198,12 @@ def v_3d_xyzcat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_XYZCAT_METADATA)
-    params = v_3d_xyzcat_params(direction=direction, prefix=prefix, verbose=verbose, datasets=datasets)
+    params = v_3d_xyzcat_params(
+        direction=direction,
+        prefix=prefix,
+        verbose=verbose,
+        datasets=datasets,
+    )
     return v_3d_xyzcat_execute(params, execution)
 
 

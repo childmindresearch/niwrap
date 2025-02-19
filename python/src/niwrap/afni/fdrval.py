@@ -11,6 +11,8 @@ FDRVAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FdrvalParameters = typing.TypedDict('FdrvalParameters', {
     "__STYX_TYPE__": typing.Literal["fdrval"],
     "dset": InputPathType,
@@ -217,7 +219,16 @@ def fdrval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FDRVAL_METADATA)
-    params = fdrval_params(dset=dset, sub=sub, val_list=val_list, pval=pval, ponly=ponly, qonly=qonly, qinput=qinput, inverse=inverse)
+    params = fdrval_params(
+        dset=dset,
+        sub=sub,
+        val_list=val_list,
+        pval=pval,
+        ponly=ponly,
+        qonly=qonly,
+        qinput=qinput,
+        inverse=inverse,
+    )
     return fdrval_execute(params, execution)
 
 

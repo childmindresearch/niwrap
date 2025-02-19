@@ -11,6 +11,8 @@ UNIQ_IMAGES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 UniqImagesParameters = typing.TypedDict('UniqImagesParameters', {
     "__STYX_TYPE__": typing.Literal["uniq_images"],
     "input_files": list[InputPathType],
@@ -163,7 +165,9 @@ def uniq_images(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNIQ_IMAGES_METADATA)
-    params = uniq_images_params(input_files=input_files)
+    params = uniq_images_params(
+        input_files=input_files,
+    )
     return uniq_images_execute(params, execution)
 
 

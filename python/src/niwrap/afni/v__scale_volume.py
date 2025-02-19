@@ -11,6 +11,8 @@ V__SCALE_VOLUME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VScaleVolumeParameters = typing.TypedDict('VScaleVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["@ScaleVolume"],
     "input_dset": InputPathType,
@@ -228,7 +230,16 @@ def v__scale_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SCALE_VOLUME_METADATA)
-    params = v__scale_volume_params(input_dset=input_dset, prefix=prefix, val_clip=val_clip, perc_clip=perc_clip, scale_by_mean=scale_by_mean, scale_by_median=scale_by_median, norm=norm, mask=mask)
+    params = v__scale_volume_params(
+        input_dset=input_dset,
+        prefix=prefix,
+        val_clip=val_clip,
+        perc_clip=perc_clip,
+        scale_by_mean=scale_by_mean,
+        scale_by_median=scale_by_median,
+        norm=norm,
+        mask=mask,
+    )
     return v__scale_volume_execute(params, execution)
 
 

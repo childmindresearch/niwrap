@@ -11,6 +11,8 @@ FAT_PROC_IMIT2W_FROM_T1W_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcImit2wFromT1wParameters = typing.TypedDict('FatProcImit2wFromT1wParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_imit2w_from_t1w"],
     "t1_file": InputPathType,
@@ -259,7 +261,16 @@ def fat_proc_imit2w_from_t1w(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_IMIT2W_FROM_T1W_METADATA)
-    params = fat_proc_imit2w_from_t1w_params(t1_file=t1_file, prefix=prefix, workdir=workdir, mask=mask, ss_blur_fwhm=ss_blur_fwhm, no_clean=no_clean, no_qc_view=no_qc_view, qc_prefix=qc_prefix)
+    params = fat_proc_imit2w_from_t1w_params(
+        t1_file=t1_file,
+        prefix=prefix,
+        workdir=workdir,
+        mask=mask,
+        ss_blur_fwhm=ss_blur_fwhm,
+        no_clean=no_clean,
+        no_qc_view=no_qc_view,
+        qc_prefix=qc_prefix,
+    )
     return fat_proc_imit2w_from_t1w_execute(params, execution)
 
 

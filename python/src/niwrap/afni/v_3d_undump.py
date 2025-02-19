@@ -11,6 +11,8 @@ V_3D_UNDUMP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dUndumpParameters = typing.TypedDict('V3dUndumpParameters', {
     "__STYX_TYPE__": typing.Literal["3dUndump"],
     "input_files": list[InputPathType],
@@ -335,7 +337,23 @@ def v_3d_undump(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_UNDUMP_METADATA)
-    params = v_3d_undump_params(input_files=input_files, prefix=prefix, master=master, dimensions=dimensions, mask=mask, datatype=datatype, dval=dval, fval=fval, xyz=xyz, sphere_radius=sphere_radius, cube_mode=cube_mode, orient=orient, head_only=head_only, roimask=roimask, allow_nan=allow_nan)
+    params = v_3d_undump_params(
+        input_files=input_files,
+        prefix=prefix,
+        master=master,
+        dimensions=dimensions,
+        mask=mask,
+        datatype=datatype,
+        dval=dval,
+        fval=fval,
+        xyz=xyz,
+        sphere_radius=sphere_radius,
+        cube_mode=cube_mode,
+        orient=orient,
+        head_only=head_only,
+        roimask=roimask,
+        allow_nan=allow_nan,
+    )
     return v_3d_undump_execute(params, execution)
 
 

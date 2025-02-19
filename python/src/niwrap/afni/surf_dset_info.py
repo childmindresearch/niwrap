@@ -11,6 +11,8 @@ SURF_DSET_INFO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfDsetInfoParameters = typing.TypedDict('SurfDsetInfoParameters', {
     "__STYX_TYPE__": typing.Literal["SurfDsetInfo"],
     "input_dsets": list[InputPathType],
@@ -320,7 +322,27 @@ def surf_dset_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_DSET_INFO_METADATA)
-    params = surf_dset_info_params(input_dsets=input_dsets, debug_level=debug_level, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, extreme_trace=extreme_trace, nomall=nomall, yesmall=yesmall, mini_help=mini_help, help_=help_, extreme_help=extreme_help, help_view=help_view, help_web=help_web, help_find=help_find, help_raw=help_raw, help_spx=help_spx, help_aspx=help_aspx, all_opts=all_opts)
+    params = surf_dset_info_params(
+        input_dsets=input_dsets,
+        debug_level=debug_level,
+        novolreg=novolreg,
+        noxform=noxform,
+        setenv=setenv,
+        trace_=trace_,
+        extreme_trace=extreme_trace,
+        nomall=nomall,
+        yesmall=yesmall,
+        mini_help=mini_help,
+        help_=help_,
+        extreme_help=extreme_help,
+        help_view=help_view,
+        help_web=help_web,
+        help_find=help_find,
+        help_raw=help_raw,
+        help_spx=help_spx,
+        help_aspx=help_aspx,
+        all_opts=all_opts,
+    )
     return surf_dset_info_execute(params, execution)
 
 

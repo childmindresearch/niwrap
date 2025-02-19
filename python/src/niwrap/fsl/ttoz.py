@@ -11,6 +11,8 @@ TTOZ_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TtozParameters = typing.TypedDict('TtozParameters', {
     "__STYX_TYPE__": typing.Literal["ttoz"],
     "varsfile": InputPathType,
@@ -193,7 +195,13 @@ def ttoz(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TTOZ_METADATA)
-    params = ttoz_params(varsfile=varsfile, cbsfile=cbsfile, dof=dof, outputvol=outputvol, help_flag=help_flag)
+    params = ttoz_params(
+        varsfile=varsfile,
+        cbsfile=cbsfile,
+        dof=dof,
+        outputvol=outputvol,
+        help_flag=help_flag,
+    )
     return ttoz_execute(params, execution)
 
 

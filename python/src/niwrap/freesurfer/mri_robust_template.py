@@ -11,6 +11,8 @@ MRI_ROBUST_TEMPLATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRobustTemplateParameters = typing.TypedDict('MriRobustTemplateParameters', {
     "__STYX_TYPE__": typing.Literal["mri_robust_template"],
     "mov_files": list[InputPathType],
@@ -569,7 +571,45 @@ def mri_robust_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ROBUST_TEMPLATE_METADATA)
-    params = mri_robust_template_params(mov_files=mov_files, template_file=template_file, sat_value=sat_value, satit_flag=satit_flag, lta_files=lta_files, mapmov_files=mapmov_files, mapmovhdr_files=mapmovhdr_files, weights_files=weights_files, oneminusw_flag=oneminusw_flag, average_type=average_type, inittp=inittp, fixtp_flag=fixtp_flag, iscale_flag=iscale_flag, iscaleonly_flag=iscaleonly_flag, iscalein_files=iscalein_files, iscaleout_files=iscaleout_files, transonly_flag=transonly_flag, affine_flag=affine_flag, ixforms_files=ixforms_files, masks_files=masks_files, vox2vox_flag=vox2vox_flag, leastsquares_flag=leastsquares_flag, noit_flag=noit_flag, maxit=maxit, highit=highit, epsit=epsit, pairmaxit=pairmaxit, pairepsit=pairepsit, subsample=subsample, nomulti_flag=nomulti_flag, floattype_flag=floattype_flag, finalnearest_flag=finalnearest_flag, doubleprec_flag=doubleprec_flag, cras_flag=cras_flag, res_thresh=res_thresh, frobnorm_thresh=frobnorm_thresh, debug_flag=debug_flag)
+    params = mri_robust_template_params(
+        mov_files=mov_files,
+        template_file=template_file,
+        sat_value=sat_value,
+        satit_flag=satit_flag,
+        lta_files=lta_files,
+        mapmov_files=mapmov_files,
+        mapmovhdr_files=mapmovhdr_files,
+        weights_files=weights_files,
+        oneminusw_flag=oneminusw_flag,
+        average_type=average_type,
+        inittp=inittp,
+        fixtp_flag=fixtp_flag,
+        iscale_flag=iscale_flag,
+        iscaleonly_flag=iscaleonly_flag,
+        iscalein_files=iscalein_files,
+        iscaleout_files=iscaleout_files,
+        transonly_flag=transonly_flag,
+        affine_flag=affine_flag,
+        ixforms_files=ixforms_files,
+        masks_files=masks_files,
+        vox2vox_flag=vox2vox_flag,
+        leastsquares_flag=leastsquares_flag,
+        noit_flag=noit_flag,
+        maxit=maxit,
+        highit=highit,
+        epsit=epsit,
+        pairmaxit=pairmaxit,
+        pairepsit=pairepsit,
+        subsample=subsample,
+        nomulti_flag=nomulti_flag,
+        floattype_flag=floattype_flag,
+        finalnearest_flag=finalnearest_flag,
+        doubleprec_flag=doubleprec_flag,
+        cras_flag=cras_flag,
+        res_thresh=res_thresh,
+        frobnorm_thresh=frobnorm_thresh,
+        debug_flag=debug_flag,
+    )
     return mri_robust_template_execute(params, execution)
 
 

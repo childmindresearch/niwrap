@@ -11,6 +11,8 @@ CCOPS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 CcopsParameters = typing.TypedDict('CcopsParameters', {
     "__STYX_TYPE__": typing.Literal["ccops"],
     "basename": str,
@@ -308,7 +310,22 @@ def ccops(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CCOPS_METADATA)
-    params = ccops_params(basename=basename, infile=infile, tract_dir=tract_dir, exclusion_mask=exclusion_mask, reorder_seedspace=reorder_seedspace, reorder_tractspace=reorder_tractspace, tract_reord=tract_reord, connexity_constraint=connexity_constraint, binarise_val=binarise_val, matrix_power=matrix_power, brain_mask=brain_mask, scheme=scheme, nclusters=nclusters, help_=help_)
+    params = ccops_params(
+        basename=basename,
+        infile=infile,
+        tract_dir=tract_dir,
+        exclusion_mask=exclusion_mask,
+        reorder_seedspace=reorder_seedspace,
+        reorder_tractspace=reorder_tractspace,
+        tract_reord=tract_reord,
+        connexity_constraint=connexity_constraint,
+        binarise_val=binarise_val,
+        matrix_power=matrix_power,
+        brain_mask=brain_mask,
+        scheme=scheme,
+        nclusters=nclusters,
+        help_=help_,
+    )
     return ccops_execute(params, execution)
 
 

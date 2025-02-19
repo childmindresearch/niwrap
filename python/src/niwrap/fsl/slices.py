@@ -11,6 +11,8 @@ SLICES_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SlicesParameters = typing.TypedDict('SlicesParameters', {
     "__STYX_TYPE__": typing.Literal["slices"],
     "primary_input": InputPathType,
@@ -204,7 +206,13 @@ def slices(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICES_METADATA)
-    params = slices_params(primary_input=primary_input, secondary_input=secondary_input, scale_factor=scale_factor, intensity_range=intensity_range, output_gif=output_gif)
+    params = slices_params(
+        primary_input=primary_input,
+        secondary_input=secondary_input,
+        scale_factor=scale_factor,
+        intensity_range=intensity_range,
+        output_gif=output_gif,
+    )
     return slices_execute(params, execution)
 
 

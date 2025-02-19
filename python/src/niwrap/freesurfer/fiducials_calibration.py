@@ -11,6 +11,8 @@ FIDUCIALS_CALIBRATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FiducialsCalibrationParameters = typing.TypedDict('FiducialsCalibrationParameters', {
     "__STYX_TYPE__": typing.Literal["fiducials_calibration"],
 })
@@ -148,7 +150,8 @@ def fiducials_calibration(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIDUCIALS_CALIBRATION_METADATA)
-    params = fiducials_calibration_params()
+    params = fiducials_calibration_params(
+    )
     return fiducials_calibration_execute(params, execution)
 
 

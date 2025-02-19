@@ -11,6 +11,8 @@ V_3DROTATE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3drotateParameters = typing.TypedDict('V3drotateParameters', {
     "__STYX_TYPE__": typing.Literal["3drotate"],
     "dataset": InputPathType,
@@ -436,7 +438,33 @@ def v_3drotate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DROTATE_METADATA)
-    params = v_3drotate_params(dataset=dataset, prefix=prefix, verbose=verbose, ashift=ashift, bshift=bshift, rotate=rotate, rotparent=rotparent, gridparent=gridparent, matvec_dicom=matvec_dicom, matvec_order=matvec_order, matvec_dset=matvec_dset, dfile=dfile, v_1_dfile=v_1_dfile, points=points, origin=origin, fourier=fourier, nn=nn, linear=linear, cubic=cubic, quintic=quintic, heptic=heptic, fourier_nopad=fourier_nopad, clipit=clipit, noclip=noclip, zpad=zpad)
+    params = v_3drotate_params(
+        dataset=dataset,
+        prefix=prefix,
+        verbose=verbose,
+        ashift=ashift,
+        bshift=bshift,
+        rotate=rotate,
+        rotparent=rotparent,
+        gridparent=gridparent,
+        matvec_dicom=matvec_dicom,
+        matvec_order=matvec_order,
+        matvec_dset=matvec_dset,
+        dfile=dfile,
+        v_1_dfile=v_1_dfile,
+        points=points,
+        origin=origin,
+        fourier=fourier,
+        nn=nn,
+        linear=linear,
+        cubic=cubic,
+        quintic=quintic,
+        heptic=heptic,
+        fourier_nopad=fourier_nopad,
+        clipit=clipit,
+        noclip=noclip,
+        zpad=zpad,
+    )
     return v_3drotate_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_GETROW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dGetrowParameters = typing.TypedDict('V3dGetrowParameters', {
     "__STYX_TYPE__": typing.Literal["3dGetrow"],
     "xrow": typing.NotRequired[list[int] | None],
@@ -222,7 +224,13 @@ def v_3d_getrow(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_GETROW_METADATA)
-    params = v_3d_getrow_params(xrow=xrow, yrow=yrow, zrow=zrow, input_file=input_file, output_file=output_file)
+    params = v_3d_getrow_params(
+        xrow=xrow,
+        yrow=yrow,
+        zrow=zrow,
+        input_file=input_file,
+        output_file=output_file,
+    )
     return v_3d_getrow_execute(params, execution)
 
 

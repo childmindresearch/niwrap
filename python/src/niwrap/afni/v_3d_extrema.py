@@ -11,6 +11,8 @@ V_3D_EXTREMA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dExtremaParameters = typing.TypedDict('V3dExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["3dExtrema"],
     "input_dataset": InputPathType,
@@ -348,7 +350,28 @@ def v_3d_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EXTREMA_METADATA)
-    params = v_3d_extrema_params(input_dataset=input_dataset, output_prefix=output_prefix, output_session=output_session, quiet=quiet, mask_file=mask_file, mask_threshold=mask_threshold, data_threshold=data_threshold, n_best=n_best, separation_distance=separation_distance, minima=minima, maxima=maxima, strict=strict, partial=partial, interior=interior, closure=closure, slice_=slice_, volume=volume, remove=remove, average=average, weight=weight)
+    params = v_3d_extrema_params(
+        input_dataset=input_dataset,
+        output_prefix=output_prefix,
+        output_session=output_session,
+        quiet=quiet,
+        mask_file=mask_file,
+        mask_threshold=mask_threshold,
+        data_threshold=data_threshold,
+        n_best=n_best,
+        separation_distance=separation_distance,
+        minima=minima,
+        maxima=maxima,
+        strict=strict,
+        partial=partial,
+        interior=interior,
+        closure=closure,
+        slice_=slice_,
+        volume=volume,
+        remove=remove,
+        average=average,
+        weight=weight,
+    )
     return v_3d_extrema_execute(params, execution)
 
 

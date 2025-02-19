@@ -11,6 +11,8 @@ VOLUME_ROIS_FROM_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeRoisFromExtremaParameters = typing.TypedDict('VolumeRoisFromExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["volume-rois-from-extrema"],
     "volume_in": InputPathType,
@@ -248,7 +250,15 @@ def volume_rois_from_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_ROIS_FROM_EXTREMA_METADATA)
-    params = volume_rois_from_extrema_params(volume_in=volume_in, limit=limit, volume_out=volume_out, opt_gaussian_sigma=opt_gaussian_sigma, opt_roi_roi_volume=opt_roi_roi_volume, opt_overlap_logic_method=opt_overlap_logic_method, opt_subvolume_subvol=opt_subvolume_subvol)
+    params = volume_rois_from_extrema_params(
+        volume_in=volume_in,
+        limit=limit,
+        volume_out=volume_out,
+        opt_gaussian_sigma=opt_gaussian_sigma,
+        opt_roi_roi_volume=opt_roi_roi_volume,
+        opt_overlap_logic_method=opt_overlap_logic_method,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+    )
     return volume_rois_from_extrema_execute(params, execution)
 
 

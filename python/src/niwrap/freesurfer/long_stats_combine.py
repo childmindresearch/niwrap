@@ -11,6 +11,8 @@ LONG_STATS_COMBINE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongStatsCombineParameters = typing.TypedDict('LongStatsCombineParameters', {
     "__STYX_TYPE__": typing.Literal["long_stats_combine"],
     "qdec": InputPathType,
@@ -246,7 +248,16 @@ def long_stats_combine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_STATS_COMBINE_METADATA)
-    params = long_stats_combine_params(qdec=qdec, stats=stats, measure=measure, subject_dir=subject_dir, output_qdec=output_qdec, output_stats=output_stats, input_stats=input_stats, cross_sectional=cross_sectional)
+    params = long_stats_combine_params(
+        qdec=qdec,
+        stats=stats,
+        measure=measure,
+        subject_dir=subject_dir,
+        output_qdec=output_qdec,
+        output_stats=output_stats,
+        input_stats=input_stats,
+        cross_sectional=cross_sectional,
+    )
     return long_stats_combine_execute(params, execution)
 
 

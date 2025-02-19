@@ -11,6 +11,8 @@ GCATRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GcatrainParameters = typing.TypedDict('GcatrainParameters', {
     "__STYX_TYPE__": typing.Literal["gcatrain"],
     "gcadir": str,
@@ -332,7 +334,27 @@ def gcatrain(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GCATRAIN_METADATA)
-    params = gcatrain_params(gcadir=gcadir, subjectlistfile=subjectlistfile, init_subject_transform=init_subject_transform, seg_file=seg_file, source_subjects_dir=source_subjects_dir, num_iters=num_iters, num_threads=num_threads, exclude_file=exclude_file, exclude_subject=exclude_subject, symmetric_atlas=symmetric_atlas, color_table=color_table, no_submit=no_submit, mail_flag=mail_flag, no_strict=no_strict, gcareg_iters=gcareg_iters, prep_only=prep_only, nu10_flag=nu10_flag, nu12_flag=nu12_flag, no_emreg=no_emreg)
+    params = gcatrain_params(
+        gcadir=gcadir,
+        subjectlistfile=subjectlistfile,
+        init_subject_transform=init_subject_transform,
+        seg_file=seg_file,
+        source_subjects_dir=source_subjects_dir,
+        num_iters=num_iters,
+        num_threads=num_threads,
+        exclude_file=exclude_file,
+        exclude_subject=exclude_subject,
+        symmetric_atlas=symmetric_atlas,
+        color_table=color_table,
+        no_submit=no_submit,
+        mail_flag=mail_flag,
+        no_strict=no_strict,
+        gcareg_iters=gcareg_iters,
+        prep_only=prep_only,
+        nu10_flag=nu10_flag,
+        nu12_flag=nu12_flag,
+        no_emreg=no_emreg,
+    )
     return gcatrain_execute(params, execution)
 
 

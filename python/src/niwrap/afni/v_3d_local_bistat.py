@@ -11,6 +11,8 @@ V_3D_LOCAL_BISTAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLocalBistatParameters = typing.TypedDict('V3dLocalBistatParameters', {
     "__STYX_TYPE__": typing.Literal["3dLocalBistat"],
     "nbhd": str,
@@ -297,7 +299,20 @@ def v_3d_local_bistat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCAL_BISTAT_METADATA)
-    params = v_3d_local_bistat_params(nbhd=nbhd, stats=stats, mask=mask, automask=automask, weight=weight, prefix=prefix, histpow=histpow, histbin=histbin, hclip1=hclip1, hclip2=hclip2, dataset1=dataset1, dataset2=dataset2)
+    params = v_3d_local_bistat_params(
+        nbhd=nbhd,
+        stats=stats,
+        mask=mask,
+        automask=automask,
+        weight=weight,
+        prefix=prefix,
+        histpow=histpow,
+        histbin=histbin,
+        hclip1=hclip1,
+        hclip2=hclip2,
+        dataset1=dataset1,
+        dataset2=dataset2,
+    )
     return v_3d_local_bistat_execute(params, execution)
 
 

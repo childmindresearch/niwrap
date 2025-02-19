@@ -11,6 +11,8 @@ SAMSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SamsegParameters = typing.TypedDict('SamsegParameters', {
     "__STYX_TYPE__": typing.Literal["samseg"],
     "input_files": list[InputPathType],
@@ -623,7 +625,51 @@ def samseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SAMSEG_METADATA)
-    params = samseg_params(input_files=input_files, t1w_files=t1w_files, t2w_files=t2w_files, flair_files=flair_files, other_modality_files=other_modality_files, output_directory=output_directory, options_file=options_file, dissection_photo_mode=dissection_photo_mode, save_history=save_history, subject=subject, save_posteriors=save_posteriors, save_probabilities=save_probabilities, no_save_warp=no_save_warp, mrf=mrf, no_mrf=no_mrf, threads=threads, atlas_directory=atlas_directory, gmm_file=gmm_file, no_block_coordinate_descent=no_block_coordinate_descent, logdomain_costandgradient_calculator=logdomain_costandgradient_calculator, no_logdomain_costandgradient_calculator=no_logdomain_costandgradient_calculator, recon=recon, fill=fill, normalization2=normalization2, use_t2w=use_t2w, use_flair=use_flair, hires=hires, subjects_directory=subjects_directory, pallidum_separate=pallidum_separate, stiffness=stiffness, lesion=lesion, lesion_mask_pattern=lesion_mask_pattern, bias_field_smoothing_kernel=bias_field_smoothing_kernel, registration_file=registration_file, regmat_file=regmat_file, init_lta=init_lta, reg_only=reg_only, save_mesh=save_mesh, max_iters=max_iters, dice_file=dice_file, ignore_unknown=ignore_unknown, smooth_wm_cortex=smooth_wm_cortex, profile_file=profile_file)
+    params = samseg_params(
+        input_files=input_files,
+        t1w_files=t1w_files,
+        t2w_files=t2w_files,
+        flair_files=flair_files,
+        other_modality_files=other_modality_files,
+        output_directory=output_directory,
+        options_file=options_file,
+        dissection_photo_mode=dissection_photo_mode,
+        save_history=save_history,
+        subject=subject,
+        save_posteriors=save_posteriors,
+        save_probabilities=save_probabilities,
+        no_save_warp=no_save_warp,
+        mrf=mrf,
+        no_mrf=no_mrf,
+        threads=threads,
+        atlas_directory=atlas_directory,
+        gmm_file=gmm_file,
+        no_block_coordinate_descent=no_block_coordinate_descent,
+        logdomain_costandgradient_calculator=logdomain_costandgradient_calculator,
+        no_logdomain_costandgradient_calculator=no_logdomain_costandgradient_calculator,
+        recon=recon,
+        fill=fill,
+        normalization2=normalization2,
+        use_t2w=use_t2w,
+        use_flair=use_flair,
+        hires=hires,
+        subjects_directory=subjects_directory,
+        pallidum_separate=pallidum_separate,
+        stiffness=stiffness,
+        lesion=lesion,
+        lesion_mask_pattern=lesion_mask_pattern,
+        bias_field_smoothing_kernel=bias_field_smoothing_kernel,
+        registration_file=registration_file,
+        regmat_file=regmat_file,
+        init_lta=init_lta,
+        reg_only=reg_only,
+        save_mesh=save_mesh,
+        max_iters=max_iters,
+        dice_file=dice_file,
+        ignore_unknown=ignore_unknown,
+        smooth_wm_cortex=smooth_wm_cortex,
+        profile_file=profile_file,
+    )
     return samseg_execute(params, execution)
 
 

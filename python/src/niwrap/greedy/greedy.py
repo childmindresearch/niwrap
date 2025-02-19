@@ -11,58 +11,80 @@ GREEDY_METADATA = Metadata(
     package="greedy",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
 )
+
+
 GreedyInputImagesParameters = typing.TypedDict('GreedyInputImagesParameters', {
     "__STYX_TYPE__": typing.Literal["input_images"],
     "fixed": InputPathType,
     "moving": InputPathType,
 })
+
+
 GreedyInvertParameters = typing.TypedDict('GreedyInvertParameters', {
     "__STYX_TYPE__": typing.Literal["invert"],
     "inwarp": InputPathType,
     "outwarp": str,
 })
+
+
 GreedyRootParameters = typing.TypedDict('GreedyRootParameters', {
     "__STYX_TYPE__": typing.Literal["root"],
     "inwarp": InputPathType,
     "outwarp": str,
     "n": int,
 })
+
+
 GreedyJacobianParameters = typing.TypedDict('GreedyJacobianParameters', {
     "__STYX_TYPE__": typing.Literal["jacobian"],
     "inwarp": InputPathType,
     "outjac": str,
 })
+
+
 GreedyMetricParameters = typing.TypedDict('GreedyMetricParameters', {
     "__STYX_TYPE__": typing.Literal["metric"],
     "metric_type": typing.Literal["SSD", "MI", "NMI", "NCC", "MAHAL"],
     "metric_param": typing.NotRequired[float | None],
 })
+
+
 GreedyTjrParameters = typing.TypedDict('GreedyTjrParameters', {
     "__STYX_TYPE__": typing.Literal["tjr"],
     "mesh": InputPathType,
     "weight": float,
 })
+
+
 GreedySearchParameters = typing.TypedDict('GreedySearchParameters', {
     "__STYX_TYPE__": typing.Literal["search"],
     "n": int,
     "rot": str,
     "tran": float,
 })
+
+
 GreedyResliceMovingImageParameters = typing.TypedDict('GreedyResliceMovingImageParameters', {
     "__STYX_TYPE__": typing.Literal["reslice_moving_image"],
     "moving": InputPathType,
     "output": str,
 })
+
+
 GreedyResliceSurfaceParameters = typing.TypedDict('GreedyResliceSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["reslice_surface"],
     "inmesh": InputPathType,
     "outmesh": str,
 })
+
+
 GreedyResliceSimplexJacobianParameters = typing.TypedDict('GreedyResliceSimplexJacobianParameters', {
     "__STYX_TYPE__": typing.Literal["reslice_simplex_jacobian"],
     "inmesh": InputPathType,
     "outmesh": str,
 })
+
+
 GreedyParameters = typing.TypedDict('GreedyParameters', {
     "__STYX_TYPE__": typing.Literal["greedy"],
     "dimensions": int,
@@ -1679,7 +1701,80 @@ def greedy_(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GREEDY_METADATA)
-    params = greedy_params(dimensions=dimensions, input_images=input_images, output=output, affine=affine, brute=brute, moments=moments, reslice=reslice, invert=invert, root=root, jacobian=jacobian, metric_mode=metric_mode, defopt=defopt, weight=weight, metric=metric, step_size=step_size, iterations=iterations, threads=threads, fixed_mask=fixed_mask, gm_trim=gm_trim, moving_mask=moving_mask, wncc_mask_dilate=wncc_mask_dilate, reference_image=reference_image, ref_pad=ref_pad, background=background, input_transform=input_transform, zero_last_dimension=zero_last_dimension, time_step_mode=time_step_mode, smoothing=smoothing, inverse_warp=inverse_warp, root_warp=root_warp, warp_precision=warp_precision, noise=noise, exponent=exponent, svf_mode=svf_mode, svlb=svlb, sv_incompr=sv_incompr, initial_warp=initial_warp, tjr=tjr, wr=wr, initial_affine=initial_affine, ia_identity=ia_identity, ia_voxel_grid=ia_voxel_grid, ia_image_centers=ia_image_centers, ia_image_side=ia_image_side, ia_moments=ia_moments, affine_dof=affine_dof, jitter=jitter, search=search, det=det, cov_id=cov_id, fixed_reslicing_image=fixed_reslicing_image, reslice_moving_image=reslice_moving_image, reslice_surface=reslice_surface, interpolation=interpolation, reslice_background=reslice_background, reslice_datatype=reslice_datatype, reslice_composite=reslice_composite, reslice_jacobian=reslice_jacobian, reslice_simplex_jacobian=reslice_simplex_jacobian, reslice_mask=reslice_mask, metric_gradient=metric_gradient, debug_deriv=debug_deriv, debug_deriv_eps=debug_deriv_eps, debug_aff_obj=debug_aff_obj, dump_pyramid=dump_pyramid, dump_moving=dump_moving, dump_frequency=dump_frequency, dump_prefix=dump_prefix, powell=powell, float_=float_, version=version, verbosity=verbosity)
+    params = greedy_params(
+        dimensions=dimensions,
+        input_images=input_images,
+        output=output,
+        affine=affine,
+        brute=brute,
+        moments=moments,
+        reslice=reslice,
+        invert=invert,
+        root=root,
+        jacobian=jacobian,
+        metric_mode=metric_mode,
+        defopt=defopt,
+        weight=weight,
+        metric=metric,
+        step_size=step_size,
+        iterations=iterations,
+        threads=threads,
+        fixed_mask=fixed_mask,
+        gm_trim=gm_trim,
+        moving_mask=moving_mask,
+        wncc_mask_dilate=wncc_mask_dilate,
+        reference_image=reference_image,
+        ref_pad=ref_pad,
+        background=background,
+        input_transform=input_transform,
+        zero_last_dimension=zero_last_dimension,
+        time_step_mode=time_step_mode,
+        smoothing=smoothing,
+        inverse_warp=inverse_warp,
+        root_warp=root_warp,
+        warp_precision=warp_precision,
+        noise=noise,
+        exponent=exponent,
+        svf_mode=svf_mode,
+        svlb=svlb,
+        sv_incompr=sv_incompr,
+        initial_warp=initial_warp,
+        tjr=tjr,
+        wr=wr,
+        initial_affine=initial_affine,
+        ia_identity=ia_identity,
+        ia_voxel_grid=ia_voxel_grid,
+        ia_image_centers=ia_image_centers,
+        ia_image_side=ia_image_side,
+        ia_moments=ia_moments,
+        affine_dof=affine_dof,
+        jitter=jitter,
+        search=search,
+        det=det,
+        cov_id=cov_id,
+        fixed_reslicing_image=fixed_reslicing_image,
+        reslice_moving_image=reslice_moving_image,
+        reslice_surface=reslice_surface,
+        interpolation=interpolation,
+        reslice_background=reslice_background,
+        reslice_datatype=reslice_datatype,
+        reslice_composite=reslice_composite,
+        reslice_jacobian=reslice_jacobian,
+        reslice_simplex_jacobian=reslice_simplex_jacobian,
+        reslice_mask=reslice_mask,
+        metric_gradient=metric_gradient,
+        debug_deriv=debug_deriv,
+        debug_deriv_eps=debug_deriv_eps,
+        debug_aff_obj=debug_aff_obj,
+        dump_pyramid=dump_pyramid,
+        dump_moving=dump_moving,
+        dump_frequency=dump_frequency,
+        dump_prefix=dump_prefix,
+        powell=powell,
+        float_=float_,
+        version=version,
+        verbosity=verbosity,
+    )
     return greedy_execute(params, execution)
 
 

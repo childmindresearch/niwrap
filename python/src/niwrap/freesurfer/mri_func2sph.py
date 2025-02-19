@@ -11,6 +11,8 @@ MRI_FUNC2SPH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFunc2sphParameters = typing.TypedDict('MriFunc2sphParameters', {
     "__STYX_TYPE__": typing.Literal["mri-func2sph"],
     "instem": str,
@@ -236,7 +238,16 @@ def mri_func2sph(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FUNC2SPH_METADATA)
-    params = mri_func2sph_params(instem=instem, outstem=outstem, hemisphere=hemisphere, fvitdir=fvitdir, hole_filling_iters=hole_filling_iters, icosahedron_size=icosahedron_size, input_type=input_type, umask=umask)
+    params = mri_func2sph_params(
+        instem=instem,
+        outstem=outstem,
+        hemisphere=hemisphere,
+        fvitdir=fvitdir,
+        hole_filling_iters=hole_filling_iters,
+        icosahedron_size=icosahedron_size,
+        input_type=input_type,
+        umask=umask,
+    )
     return mri_func2sph_execute(params, execution)
 
 

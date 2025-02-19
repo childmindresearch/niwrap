@@ -11,6 +11,8 @@ FSL_BOXPLOT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslBoxplotParameters = typing.TypedDict('FslBoxplotParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_boxplot"],
     "input_files": list[InputPathType],
@@ -246,7 +248,16 @@ def fsl_boxplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_BOXPLOT_METADATA)
-    params = fsl_boxplot_params(input_files=input_files, output_image=output_image, title=title, legend_file=legend_file, x_label=x_label, y_label=y_label, plot_height=plot_height, plot_width=plot_width)
+    params = fsl_boxplot_params(
+        input_files=input_files,
+        output_image=output_image,
+        title=title,
+        legend_file=legend_file,
+        x_label=x_label,
+        y_label=y_label,
+        plot_height=plot_height,
+        plot_width=plot_width,
+    )
     return fsl_boxplot_execute(params, execution)
 
 

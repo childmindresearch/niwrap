@@ -11,6 +11,8 @@ TRAC_PATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TracPathsParameters = typing.TypedDict('TracPathsParameters', {
     "__STYX_TYPE__": typing.Literal["trac-paths"],
     "dmrirc_file": InputPathType,
@@ -276,7 +278,21 @@ def trac_paths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRAC_PATHS_METADATA)
-    params = trac_paths_params(dmrirc_file=dmrirc_file, log_file=log_file, no_log=no_log, cmd_file=cmd_file, no_cmd=no_cmd, no_isrunning=no_isrunning, umask=umask, group_id=group_id, allow_core_dump=allow_core_dump, debug=debug, dontrun=dontrun, version=version, help_=help_)
+    params = trac_paths_params(
+        dmrirc_file=dmrirc_file,
+        log_file=log_file,
+        no_log=no_log,
+        cmd_file=cmd_file,
+        no_cmd=no_cmd,
+        no_isrunning=no_isrunning,
+        umask=umask,
+        group_id=group_id,
+        allow_core_dump=allow_core_dump,
+        debug=debug,
+        dontrun=dontrun,
+        version=version,
+        help_=help_,
+    )
     return trac_paths_execute(params, execution)
 
 

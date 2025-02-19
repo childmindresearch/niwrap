@@ -11,6 +11,8 @@ CIFTI_RESTRICT_DENSE_MAP_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiRestrictDenseMapParameters = typing.TypedDict('CiftiRestrictDenseMapParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-restrict-dense-map"],
     "cifti_in": InputPathType,
@@ -258,7 +260,16 @@ def cifti_restrict_dense_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_RESTRICT_DENSE_MAP_METADATA)
-    params = cifti_restrict_dense_map_params(cifti_in=cifti_in, direction=direction, cifti_out=cifti_out, opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti, opt_left_roi_roi_metric=opt_left_roi_roi_metric, opt_right_roi_roi_metric=opt_right_roi_roi_metric, opt_cerebellum_roi_roi_metric=opt_cerebellum_roi_roi_metric, opt_vol_roi_roi_vol=opt_vol_roi_roi_vol)
+    params = cifti_restrict_dense_map_params(
+        cifti_in=cifti_in,
+        direction=direction,
+        cifti_out=cifti_out,
+        opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti,
+        opt_left_roi_roi_metric=opt_left_roi_roi_metric,
+        opt_right_roi_roi_metric=opt_right_roi_roi_metric,
+        opt_cerebellum_roi_roi_metric=opt_cerebellum_roi_roi_metric,
+        opt_vol_roi_roi_vol=opt_vol_roi_roi_vol,
+    )
     return cifti_restrict_dense_map_execute(params, execution)
 
 

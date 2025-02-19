@@ -11,6 +11,8 @@ MRI_GLMFIT_SIM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGlmfitSimParameters = typing.TypedDict('MriGlmfitSimParameters', {
     "__STYX_TYPE__": typing.Literal["mri_glmfit-sim"],
     "glmdir": str,
@@ -492,7 +494,37 @@ def mri_glmfit_sim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GLMFIT_SIM_METADATA)
-    params = mri_glmfit_sim_params(glmdir=glmdir, cwp=cwp, mczsim=mczsim, mczsim_dir=mczsim_dir, mczsim_label=mczsim_label, perm=perm, perm_resid=perm_resid, perm_signflip=perm_signflip, grf=grf, spaces_2=spaces_2, spaces_3=spaces_3, overwrite=overwrite, bg=bg, sleep=sleep, a2009s=a2009s, annot=annot, log=log, base=base, no_sim=no_sim, seed=seed, fwhm_override=fwhm_override, fwhm_add=fwhm_add, uniform=uniform, no_out_annot=no_out_annot, no_cluster_mean=no_cluster_mean, y_file=y_file, centroid=centroid, spatial_sum=spatial_sum, help_=help_)
+    params = mri_glmfit_sim_params(
+        glmdir=glmdir,
+        cwp=cwp,
+        mczsim=mczsim,
+        mczsim_dir=mczsim_dir,
+        mczsim_label=mczsim_label,
+        perm=perm,
+        perm_resid=perm_resid,
+        perm_signflip=perm_signflip,
+        grf=grf,
+        spaces_2=spaces_2,
+        spaces_3=spaces_3,
+        overwrite=overwrite,
+        bg=bg,
+        sleep=sleep,
+        a2009s=a2009s,
+        annot=annot,
+        log=log,
+        base=base,
+        no_sim=no_sim,
+        seed=seed,
+        fwhm_override=fwhm_override,
+        fwhm_add=fwhm_add,
+        uniform=uniform,
+        no_out_annot=no_out_annot,
+        no_cluster_mean=no_cluster_mean,
+        y_file=y_file,
+        centroid=centroid,
+        spatial_sum=spatial_sum,
+        help_=help_,
+    )
     return mri_glmfit_sim_execute(params, execution)
 
 

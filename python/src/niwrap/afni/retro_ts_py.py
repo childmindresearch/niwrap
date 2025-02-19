@@ -11,6 +11,8 @@ RETRO_TS_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RetroTsPyParameters = typing.TypedDict('RetroTsPyParameters', {
     "__STYX_TYPE__": typing.Literal["RetroTS.py"],
     "resp_file": typing.NotRequired[InputPathType | None],
@@ -436,7 +438,33 @@ def retro_ts_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RETRO_TS_PY_METADATA)
-    params = retro_ts_py_params(resp_file=resp_file, card_file=card_file, phys_fs=phys_fs, num_slices=num_slices, volume_tr=volume_tr, phys_file=phys_file, phys_json=phys_json, prefix=prefix, rvt_shifts=rvt_shifts, rvt_out=rvt_out, resp_cutoff_freq=resp_cutoff_freq, cardiac_cutoff_freq=cardiac_cutoff_freq, cardiac_out=cardiac_out, respiration_out=respiration_out, interp_style=interp_style, fir_order=fir_order, quiet=quiet, demo=demo, show_graphs=show_graphs, debug=debug, slice_offset=slice_offset, slice_major=slice_major, slice_order=slice_order, zero_phase_offset=zero_phase_offset, legacy_transform=legacy_transform)
+    params = retro_ts_py_params(
+        resp_file=resp_file,
+        card_file=card_file,
+        phys_fs=phys_fs,
+        num_slices=num_slices,
+        volume_tr=volume_tr,
+        phys_file=phys_file,
+        phys_json=phys_json,
+        prefix=prefix,
+        rvt_shifts=rvt_shifts,
+        rvt_out=rvt_out,
+        resp_cutoff_freq=resp_cutoff_freq,
+        cardiac_cutoff_freq=cardiac_cutoff_freq,
+        cardiac_out=cardiac_out,
+        respiration_out=respiration_out,
+        interp_style=interp_style,
+        fir_order=fir_order,
+        quiet=quiet,
+        demo=demo,
+        show_graphs=show_graphs,
+        debug=debug,
+        slice_offset=slice_offset,
+        slice_major=slice_major,
+        slice_order=slice_order,
+        zero_phase_offset=zero_phase_offset,
+        legacy_transform=legacy_transform,
+    )
     return retro_ts_py_execute(params, execution)
 
 

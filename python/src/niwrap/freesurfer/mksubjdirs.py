@@ -11,6 +11,8 @@ MKSUBJDIRS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MksubjdirsParameters = typing.TypedDict('MksubjdirsParameters', {
     "__STYX_TYPE__": typing.Literal["mksubjdirs"],
     "subj_name": str,
@@ -209,7 +211,15 @@ def mksubjdirs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKSUBJDIRS_METADATA)
-    params = mksubjdirs_params(subj_name=subj_name, mode=mode, parents=parents, verbose=verbose, selinux_context=selinux_context, help_=help_, version=version)
+    params = mksubjdirs_params(
+        subj_name=subj_name,
+        mode=mode,
+        parents=parents,
+        verbose=verbose,
+        selinux_context=selinux_context,
+        help_=help_,
+        version=version,
+    )
     return mksubjdirs_execute(params, execution)
 
 

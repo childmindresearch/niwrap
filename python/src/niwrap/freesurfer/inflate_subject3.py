@@ -11,6 +11,8 @@ INFLATE_SUBJECT3_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 InflateSubject3Parameters = typing.TypedDict('InflateSubject3Parameters', {
     "__STYX_TYPE__": typing.Literal["inflate_subject3"],
     "subjects_dir": str,
@@ -162,7 +164,10 @@ def inflate_subject3(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT3_METADATA)
-    params = inflate_subject3_params(subjects_dir=subjects_dir, script_name=script_name)
+    params = inflate_subject3_params(
+        subjects_dir=subjects_dir,
+        script_name=script_name,
+    )
     return inflate_subject3_execute(params, execution)
 
 

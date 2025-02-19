@@ -11,6 +11,8 @@ VOLUME_REORIENT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeReorientParameters = typing.TypedDict('VolumeReorientParameters', {
     "__STYX_TYPE__": typing.Literal["volume-reorient"],
     "volume": InputPathType,
@@ -194,7 +196,11 @@ def volume_reorient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_REORIENT_METADATA)
-    params = volume_reorient_params(volume=volume, orient_string=orient_string, volume_out=volume_out)
+    params = volume_reorient_params(
+        volume=volume,
+        orient_string=orient_string,
+        volume_out=volume_out,
+    )
     return volume_reorient_execute(params, execution)
 
 

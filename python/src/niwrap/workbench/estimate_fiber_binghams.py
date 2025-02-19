@@ -11,6 +11,8 @@ ESTIMATE_FIBER_BINGHAMS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 EstimateFiberBinghamsParameters = typing.TypedDict('EstimateFiberBinghamsParameters', {
     "__STYX_TYPE__": typing.Literal["estimate-fiber-binghams"],
     "merged_f1samples": InputPathType,
@@ -308,7 +310,19 @@ def estimate_fiber_binghams(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ESTIMATE_FIBER_BINGHAMS_METADATA)
-    params = estimate_fiber_binghams_params(merged_f1samples=merged_f1samples, merged_th1samples=merged_th1samples, merged_ph1samples=merged_ph1samples, merged_f2samples=merged_f2samples, merged_th2samples=merged_th2samples, merged_ph2samples=merged_ph2samples, merged_f3samples=merged_f3samples, merged_th3samples=merged_th3samples, merged_ph3samples=merged_ph3samples, label_volume=label_volume, cifti_out=cifti_out)
+    params = estimate_fiber_binghams_params(
+        merged_f1samples=merged_f1samples,
+        merged_th1samples=merged_th1samples,
+        merged_ph1samples=merged_ph1samples,
+        merged_f2samples=merged_f2samples,
+        merged_th2samples=merged_th2samples,
+        merged_ph2samples=merged_ph2samples,
+        merged_f3samples=merged_f3samples,
+        merged_th3samples=merged_th3samples,
+        merged_ph3samples=merged_ph3samples,
+        label_volume=label_volume,
+        cifti_out=cifti_out,
+    )
     return estimate_fiber_binghams_execute(params, execution)
 
 

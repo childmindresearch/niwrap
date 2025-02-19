@@ -11,6 +11,8 @@ SIENA_DIFF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SienaDiffParameters = typing.TypedDict('SienaDiffParameters', {
     "__STYX_TYPE__": typing.Literal["siena_diff"],
     "input1_basename": str,
@@ -228,7 +230,16 @@ def siena_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIENA_DIFF_METADATA)
-    params = siena_diff_params(input1_basename=input1_basename, input2_basename=input2_basename, debug_flag=debug_flag, no_seg_flag=no_seg_flag, self_corr_factor=self_corr_factor, ignore_z_flow_flag=ignore_z_flow_flag, apply_std_mask_flag=apply_std_mask_flag, segment_options=segment_options)
+    params = siena_diff_params(
+        input1_basename=input1_basename,
+        input2_basename=input2_basename,
+        debug_flag=debug_flag,
+        no_seg_flag=no_seg_flag,
+        self_corr_factor=self_corr_factor,
+        ignore_z_flow_flag=ignore_z_flow_flag,
+        apply_std_mask_flag=apply_std_mask_flag,
+        segment_options=segment_options,
+    )
     return siena_diff_execute(params, execution)
 
 

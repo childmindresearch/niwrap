@@ -11,11 +11,15 @@ TSFMULT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TsfmultConfigParameters = typing.TypedDict('TsfmultConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TsfmultParameters = typing.TypedDict('TsfmultParameters', {
     "__STYX_TYPE__": typing.Literal["tsfmult"],
     "info": bool,
@@ -309,7 +313,19 @@ def tsfmult(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TSFMULT_METADATA)
-    params = tsfmult_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input1=input1, input1_1=input1_1, output=output)
+    params = tsfmult_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input1=input1,
+        input1_1=input1_1,
+        output=output,
+    )
     return tsfmult_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_ERRTS_CORMAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dErrtsCormatParameters = typing.TypedDict('V3dErrtsCormatParameters', {
     "__STYX_TYPE__": typing.Literal["3dErrtsCormat"],
     "dset": InputPathType,
@@ -221,7 +223,14 @@ def v_3d_errts_cormat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ERRTS_CORMAT_METADATA)
-    params = v_3d_errts_cormat_params(dset=dset, concat=concat, input_=input_, mask=mask, maxlag=maxlag, polort=polort)
+    params = v_3d_errts_cormat_params(
+        dset=dset,
+        concat=concat,
+        input_=input_,
+        mask=mask,
+        maxlag=maxlag,
+        polort=polort,
+    )
     return v_3d_errts_cormat_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ GET_AFNI_MODEL_PRF_6_BAD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GetAfniModelPrf6BadParameters = typing.TypedDict('GetAfniModelPrf6BadParameters', {
     "__STYX_TYPE__": typing.Literal["get_afni_model_PRF_6_BAD"],
     "amplitude": float,
@@ -190,7 +192,14 @@ def get_afni_model_prf_6_bad(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GET_AFNI_MODEL_PRF_6_BAD_METADATA)
-    params = get_afni_model_prf_6_bad_params(amplitude=amplitude, x_coord=x_coord, y_coord=y_coord, sigma=sigma, sigrat=sigrat, theta=theta)
+    params = get_afni_model_prf_6_bad_params(
+        amplitude=amplitude,
+        x_coord=x_coord,
+        y_coord=y_coord,
+        sigma=sigma,
+        sigrat=sigrat,
+        theta=theta,
+    )
     return get_afni_model_prf_6_bad_execute(params, execution)
 
 

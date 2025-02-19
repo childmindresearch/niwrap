@@ -11,6 +11,8 @@ V_3D_MEPFM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMepfmParameters = typing.TypedDict('V3dMepfmParameters', {
     "__STYX_TYPE__": typing.Literal["3dMEPFM"],
     "input_files": list[str],
@@ -235,7 +237,13 @@ def v_3d_mepfm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MEPFM_METADATA)
-    params = v_3d_mepfm_params(input_files=input_files, dbg_args=dbg_args, mask=mask, hrf_model=hrf_model, verbosity=verbosity)
+    params = v_3d_mepfm_params(
+        input_files=input_files,
+        dbg_args=dbg_args,
+        mask=mask,
+        hrf_model=hrf_model,
+        verbosity=verbosity,
+    )
     return v_3d_mepfm_execute(params, execution)
 
 

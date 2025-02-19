@@ -11,6 +11,8 @@ DESIGN_TTEST2_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 DesignTtest2Parameters = typing.TypedDict('DesignTtest2Parameters', {
     "__STYX_TYPE__": typing.Literal["design_ttest2"],
     "design_files_rootname": str,
@@ -177,7 +179,12 @@ def design_ttest2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DESIGN_TTEST2_METADATA)
-    params = design_ttest2_params(design_files_rootname=design_files_rootname, ngroupa=ngroupa, ngroupb=ngroupb, include_mean_contrasts=include_mean_contrasts)
+    params = design_ttest2_params(
+        design_files_rootname=design_files_rootname,
+        ngroupa=ngroupa,
+        ngroupb=ngroupb,
+        include_mean_contrasts=include_mean_contrasts,
+    )
     return design_ttest2_execute(params, execution)
 
 

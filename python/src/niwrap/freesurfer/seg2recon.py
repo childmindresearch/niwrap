@@ -11,6 +11,8 @@ SEG2RECON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Seg2reconParameters = typing.TypedDict('Seg2reconParameters', {
     "__STYX_TYPE__": typing.Literal["seg2recon"],
     "subject": str,
@@ -314,7 +316,22 @@ def seg2recon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEG2RECON_METADATA)
-    params = seg2recon_params(subject=subject, segvol=segvol, inputvol=inputvol, ctab=ctab, ndilate=ndilate, threads=threads, force_update=force_update, no_cc=no_cc, mask=mask, headmask=headmask, thresh=thresh, expert=expert, rca=rca, no_bias_field_cor=no_bias_field_cor)
+    params = seg2recon_params(
+        subject=subject,
+        segvol=segvol,
+        inputvol=inputvol,
+        ctab=ctab,
+        ndilate=ndilate,
+        threads=threads,
+        force_update=force_update,
+        no_cc=no_cc,
+        mask=mask,
+        headmask=headmask,
+        thresh=thresh,
+        expert=expert,
+        rca=rca,
+        no_bias_field_cor=no_bias_field_cor,
+    )
     return seg2recon_execute(params, execution)
 
 

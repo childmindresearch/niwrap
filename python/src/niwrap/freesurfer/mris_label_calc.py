@@ -11,6 +11,8 @@ MRIS_LABEL_CALC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisLabelCalcParameters = typing.TypedDict('MrisLabelCalcParameters', {
     "__STYX_TYPE__": typing.Literal["mris_label_calc"],
     "command": typing.Literal["union", "intersect", "invert", "erode", "dilate"],
@@ -182,7 +184,12 @@ def mris_label_calc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LABEL_CALC_METADATA)
-    params = mris_label_calc_params(command=command, input1=input1, input2=input2, output=output)
+    params = mris_label_calc_params(
+        command=command,
+        input1=input1,
+        input2=input2,
+        output=output,
+    )
     return mris_label_calc_execute(params, execution)
 
 

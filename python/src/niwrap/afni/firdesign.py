@@ -11,6 +11,8 @@ FIRDESIGN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FirdesignParameters = typing.TypedDict('FirdesignParameters', {
     "__STYX_TYPE__": typing.Literal["FIRdesign"],
     "fbot": float,
@@ -213,7 +215,14 @@ def firdesign(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRDESIGN_METADATA)
-    params = firdesign_params(fbot=fbot, ftop=ftop, ntap=ntap, tr=tr, alternative_band=alternative_band, alternative_ntap=alternative_ntap)
+    params = firdesign_params(
+        fbot=fbot,
+        ftop=ftop,
+        ntap=ntap,
+        tr=tr,
+        alternative_band=alternative_band,
+        alternative_ntap=alternative_ntap,
+    )
     return firdesign_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ METRIC_FALSE_CORRELATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricFalseCorrelationParameters = typing.TypedDict('MetricFalseCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["metric-false-correlation"],
     "surface": InputPathType,
@@ -237,7 +239,16 @@ def metric_false_correlation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_FALSE_CORRELATION_METADATA)
-    params = metric_false_correlation_params(surface=surface, metric_in=metric_in, v_3d_dist=v_3d_dist, geo_outer=geo_outer, geo_inner=geo_inner, metric_out=metric_out, opt_roi_roi_metric=opt_roi_roi_metric, opt_dump_text_text_out=opt_dump_text_text_out)
+    params = metric_false_correlation_params(
+        surface=surface,
+        metric_in=metric_in,
+        v_3d_dist=v_3d_dist,
+        geo_outer=geo_outer,
+        geo_inner=geo_inner,
+        metric_out=metric_out,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_dump_text_text_out=opt_dump_text_text_out,
+    )
     return metric_false_correlation_execute(params, execution)
 
 

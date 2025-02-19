@@ -11,6 +11,8 @@ GRAD_UNWARP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GradUnwarpParameters = typing.TypedDict('GradUnwarpParameters', {
     "__STYX_TYPE__": typing.Literal["grad_unwarp"],
     "infile": InputPathType,
@@ -248,7 +250,17 @@ def grad_unwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GRAD_UNWARP_METADATA)
-    params = grad_unwarp_params(infile=infile, seriesno=seriesno, unwarp_type=unwarp_type, nojac=nojac, corfov=corfov, cor=cor, interp=interp, outfile=outfile, matlab_binary=matlab_binary)
+    params = grad_unwarp_params(
+        infile=infile,
+        seriesno=seriesno,
+        unwarp_type=unwarp_type,
+        nojac=nojac,
+        corfov=corfov,
+        cor=cor,
+        interp=interp,
+        outfile=outfile,
+        matlab_binary=matlab_binary,
+    )
     return grad_unwarp_execute(params, execution)
 
 

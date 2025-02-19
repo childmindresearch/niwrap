@@ -11,6 +11,8 @@ ANTSINTEGRATE_VECTOR_FIELD_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsintegrateVectorFieldParameters = typing.TypedDict('AntsintegrateVectorFieldParameters', {
     "__STYX_TYPE__": typing.Literal["ANTSIntegrateVectorField"],
     "vector_field_input": InputPathType,
@@ -191,7 +193,12 @@ def antsintegrate_vector_field(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTSINTEGRATE_VECTOR_FIELD_METADATA)
-    params = antsintegrate_vector_field_params(vector_field_input=vector_field_input, roi_mask_input=roi_mask_input, fibers_output=fibers_output, length_image_output=length_image_output)
+    params = antsintegrate_vector_field_params(
+        vector_field_input=vector_field_input,
+        roi_mask_input=roi_mask_input,
+        fibers_output=fibers_output,
+        length_image_output=length_image_output,
+    )
     return antsintegrate_vector_field_execute(params, execution)
 
 

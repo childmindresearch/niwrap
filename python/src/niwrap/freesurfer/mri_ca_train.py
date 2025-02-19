@@ -11,6 +11,8 @@ MRI_CA_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCaTrainParameters = typing.TypedDict('MriCaTrainParameters', {
     "__STYX_TYPE__": typing.Literal["mri_ca_train"],
     "subjects": list[str],
@@ -304,7 +306,21 @@ def mri_ca_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_TRAIN_METADATA)
-    params = mri_ca_train_params(subjects=subjects, output_gca=output_gca, segmentation=segmentation, transform=transform, mask_volume=mask_volume, node_spacing=node_spacing, prior_spacing=prior_spacing, input_training=input_training, makesym=makesym, check_symmetry=check_symmetry, sanity_check=sanity_check, threads=threads, done_file=done_file)
+    params = mri_ca_train_params(
+        subjects=subjects,
+        output_gca=output_gca,
+        segmentation=segmentation,
+        transform=transform,
+        mask_volume=mask_volume,
+        node_spacing=node_spacing,
+        prior_spacing=prior_spacing,
+        input_training=input_training,
+        makesym=makesym,
+        check_symmetry=check_symmetry,
+        sanity_check=sanity_check,
+        threads=threads,
+        done_file=done_file,
+    )
     return mri_ca_train_execute(params, execution)
 
 

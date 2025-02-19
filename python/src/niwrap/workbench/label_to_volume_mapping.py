@@ -11,6 +11,8 @@ LABEL_TO_VOLUME_MAPPING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelToVolumeMappingRibbonConstrainedParameters = typing.TypedDict('LabelToVolumeMappingRibbonConstrainedParameters', {
     "__STYX_TYPE__": typing.Literal["ribbon_constrained"],
     "inner_surf": InputPathType,
@@ -19,6 +21,8 @@ LabelToVolumeMappingRibbonConstrainedParameters = typing.TypedDict('LabelToVolum
     "opt_greedy": bool,
     "opt_thick_columns": bool,
 })
+
+
 LabelToVolumeMappingParameters = typing.TypedDict('LabelToVolumeMappingParameters', {
     "__STYX_TYPE__": typing.Literal["label-to-volume-mapping"],
     "label": InputPathType,
@@ -289,7 +293,14 @@ def label_to_volume_mapping(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_TO_VOLUME_MAPPING_METADATA)
-    params = label_to_volume_mapping_params(label=label, surface=surface, volume_space=volume_space, volume_out=volume_out, opt_nearest_vertex_distance=opt_nearest_vertex_distance, ribbon_constrained=ribbon_constrained)
+    params = label_to_volume_mapping_params(
+        label=label,
+        surface=surface,
+        volume_space=volume_space,
+        volume_out=volume_out,
+        opt_nearest_vertex_distance=opt_nearest_vertex_distance,
+        ribbon_constrained=ribbon_constrained,
+    )
     return label_to_volume_mapping_execute(params, execution)
 
 

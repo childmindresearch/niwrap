@@ -11,6 +11,8 @@ V_3D_STAT_CLUST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dStatClustParameters = typing.TypedDict('V3dStatClustParameters', {
     "__STYX_TYPE__": typing.Literal["3dStatClust"],
     "prefix": typing.NotRequired[str | None],
@@ -234,7 +236,15 @@ def v_3d_stat_clust(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_STAT_CLUST_METADATA)
-    params = v_3d_stat_clust_params(prefix=prefix, session_dir=session_dir, verbose=verbose, dist_cor=dist_cor, thresh=thresh, nclust=nclust, datasets=datasets)
+    params = v_3d_stat_clust_params(
+        prefix=prefix,
+        session_dir=session_dir,
+        verbose=verbose,
+        dist_cor=dist_cor,
+        thresh=thresh,
+        nclust=nclust,
+        datasets=datasets,
+    )
     return v_3d_stat_clust_execute(params, execution)
 
 

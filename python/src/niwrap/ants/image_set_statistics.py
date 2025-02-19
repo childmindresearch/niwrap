@@ -11,6 +11,8 @@ IMAGE_SET_STATISTICS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ImageSetStatisticsParameters = typing.TypedDict('ImageSetStatisticsParameters', {
     "__STYX_TYPE__": typing.Literal["ImageSetStatistics"],
     "image_dimension": int,
@@ -231,7 +233,14 @@ def image_set_statistics(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAGE_SET_STATISTICS_METADATA)
-    params = image_set_statistics_params(image_dimension=image_dimension, controls_list=controls_list, output_image=output_image, which_stat=which_stat, roi=roi, imagelist2=imagelist2)
+    params = image_set_statistics_params(
+        image_dimension=image_dimension,
+        controls_list=controls_list,
+        output_image=output_image,
+        which_stat=which_stat,
+        roi=roi,
+        imagelist2=imagelist2,
+    )
     return image_set_statistics_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_COMPUTE_OVERLAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriComputeOverlapParameters = typing.TypedDict('MriComputeOverlapParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compute_overlap"],
     "volumes": list[InputPathType],
@@ -258,7 +260,19 @@ def mri_compute_overlap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_OVERLAP_METADATA)
-    params = mri_compute_overlap_params(volumes=volumes, label_numbers=label_numbers, all_labels=all_labels, show_label=show_label, total_overlap=total_overlap, no_summary=no_summary, mask=mask, output_file=output_file, quiet_mode=quiet_mode, translate_label=translate_label, help_=help_)
+    params = mri_compute_overlap_params(
+        volumes=volumes,
+        label_numbers=label_numbers,
+        all_labels=all_labels,
+        show_label=show_label,
+        total_overlap=total_overlap,
+        no_summary=no_summary,
+        mask=mask,
+        output_file=output_file,
+        quiet_mode=quiet_mode,
+        translate_label=translate_label,
+        help_=help_,
+    )
     return mri_compute_overlap_execute(params, execution)
 
 

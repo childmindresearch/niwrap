@@ -11,6 +11,8 @@ MRI_REFINE_SEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRefineSegParameters = typing.TypedDict('MriRefineSegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_refine_seg"],
     "input_segmentation": InputPathType,
@@ -182,7 +184,11 @@ def mri_refine_seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_REFINE_SEG_METADATA)
-    params = mri_refine_seg_params(input_segmentation=input_segmentation, output_segmentation=output_segmentation, debug=debug)
+    params = mri_refine_seg_params(
+        input_segmentation=input_segmentation,
+        output_segmentation=output_segmentation,
+        debug=debug,
+    )
     return mri_refine_seg_execute(params, execution)
 
 

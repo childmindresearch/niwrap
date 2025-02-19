@@ -11,6 +11,8 @@ MRIS_COMPUTE_OVERLAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisComputeOverlapParameters = typing.TypedDict('MrisComputeOverlapParameters', {
     "__STYX_TYPE__": typing.Literal["mris_compute_overlap"],
     "subject": str,
@@ -215,7 +217,16 @@ def mris_compute_overlap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COMPUTE_OVERLAP_METADATA)
-    params = mris_compute_overlap_params(subject=subject, hemi=hemi, surface=surface, annotation=annotation, labels=labels, percentage=percentage, log_file=log_file, brain_volume=brain_volume)
+    params = mris_compute_overlap_params(
+        subject=subject,
+        hemi=hemi,
+        surface=surface,
+        annotation=annotation,
+        labels=labels,
+        percentage=percentage,
+        log_file=log_file,
+        brain_volume=brain_volume,
+    )
     return mris_compute_overlap_execute(params, execution)
 
 

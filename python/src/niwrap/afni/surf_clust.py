@@ -11,6 +11,8 @@ SURF_CLUST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfClustParameters = typing.TypedDict('SurfClustParameters', {
     "__STYX_TYPE__": typing.Literal["SurfClust"],
     "specfile": typing.NotRequired[InputPathType | None],
@@ -556,7 +558,47 @@ def surf_clust(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_CLUST_METADATA)
-    params = surf_clust_params(specfile=specfile, input_surface=input_surface, input_surf_name=input_surf_name, input_dataset=input_dataset, rmm=rmm, amm2=amm2, min_nodes=min_nodes, prefix=prefix, out_clusterdset=out_clusterdset, out_roidset=out_roidset, out_fulllist=out_fulllist, sort_none=sort_none, sort_n_nodes=sort_n_nodes, sort_area=sort_area, thresh_col=thresh_col, thresh=thresh, athresh=athresh, ir_range=ir_range, ex_range=ex_range, prepend_node_index=prepend_node_index, update_=update_, no_cent=no_cent, cent=cent, novolreg=novolreg, noxform=noxform, set_env=set_env, trace_=trace_, trace_extreme=trace_extreme, no_memory_trace=no_memory_trace, yes_memory_trace=yes_memory_trace, mini_help=mini_help, help_=help_, extreme_help=extreme_help, view_help=view_help, web_help=web_help, find_help=find_help, raw_help=raw_help, spx_help=spx_help, aspx_help=aspx_help)
+    params = surf_clust_params(
+        specfile=specfile,
+        input_surface=input_surface,
+        input_surf_name=input_surf_name,
+        input_dataset=input_dataset,
+        rmm=rmm,
+        amm2=amm2,
+        min_nodes=min_nodes,
+        prefix=prefix,
+        out_clusterdset=out_clusterdset,
+        out_roidset=out_roidset,
+        out_fulllist=out_fulllist,
+        sort_none=sort_none,
+        sort_n_nodes=sort_n_nodes,
+        sort_area=sort_area,
+        thresh_col=thresh_col,
+        thresh=thresh,
+        athresh=athresh,
+        ir_range=ir_range,
+        ex_range=ex_range,
+        prepend_node_index=prepend_node_index,
+        update_=update_,
+        no_cent=no_cent,
+        cent=cent,
+        novolreg=novolreg,
+        noxform=noxform,
+        set_env=set_env,
+        trace_=trace_,
+        trace_extreme=trace_extreme,
+        no_memory_trace=no_memory_trace,
+        yes_memory_trace=yes_memory_trace,
+        mini_help=mini_help,
+        help_=help_,
+        extreme_help=extreme_help,
+        view_help=view_help,
+        web_help=web_help,
+        find_help=find_help,
+        raw_help=raw_help,
+        spx_help=spx_help,
+        aspx_help=aspx_help,
+    )
     return surf_clust_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ RCBF_PREP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RcbfPrepParameters = typing.TypedDict('RcbfPrepParameters', {
     "__STYX_TYPE__": typing.Literal["rcbf-prep"],
     "outdir": str,
@@ -232,7 +234,14 @@ def rcbf_prep(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCBF_PREP_METADATA)
-    params = rcbf_prep_params(outdir=outdir, rcbfvol=rcbfvol, subject=subject, roitab=roitab, register=register, template=template)
+    params = rcbf_prep_params(
+        outdir=outdir,
+        rcbfvol=rcbfvol,
+        subject=subject,
+        roitab=roitab,
+        register=register,
+        template=template,
+    )
     return rcbf_prep_execute(params, execution)
 
 

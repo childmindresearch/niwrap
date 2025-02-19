@@ -11,6 +11,8 @@ IFH2HDR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Ifh2hdrParameters = typing.TypedDict('Ifh2hdrParameters', {
     "__STYX_TYPE__": typing.Literal["ifh2hdr"],
     "input_file": InputPathType,
@@ -169,7 +171,10 @@ def ifh2hdr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IFH2HDR_METADATA)
-    params = ifh2hdr_params(input_file=input_file, range_=range_)
+    params = ifh2hdr_params(
+        input_file=input_file,
+        range_=range_,
+    )
     return ifh2hdr_execute(params, execution)
 
 

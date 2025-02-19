@@ -11,6 +11,8 @@ BIANCA_CLUSTER_STATS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BiancaClusterStatsParameters = typing.TypedDict('BiancaClusterStatsParameters', {
     "__STYX_TYPE__": typing.Literal["bianca_cluster_stats"],
     "bianca_output_map": InputPathType,
@@ -178,7 +180,12 @@ def bianca_cluster_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BIANCA_CLUSTER_STATS_METADATA)
-    params = bianca_cluster_stats_params(bianca_output_map=bianca_output_map, threshold=threshold, min_cluster_size=min_cluster_size, mask=mask)
+    params = bianca_cluster_stats_params(
+        bianca_output_map=bianca_output_map,
+        threshold=threshold,
+        min_cluster_size=min_cluster_size,
+        mask=mask,
+    )
     return bianca_cluster_stats_execute(params, execution)
 
 

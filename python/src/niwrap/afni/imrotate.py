@@ -11,6 +11,8 @@ IMROTATE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImrotateParameters = typing.TypedDict('ImrotateParameters', {
     "__STYX_TYPE__": typing.Literal["imrotate"],
     "fourier_interpolation": bool,
@@ -195,7 +197,14 @@ def imrotate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMROTATE_METADATA)
-    params = imrotate_params(fourier_interpolation=fourier_interpolation, dx=dx, dy=dy, phi=phi, input_image=input_image, output_image=output_image)
+    params = imrotate_params(
+        fourier_interpolation=fourier_interpolation,
+        dx=dx,
+        dy=dy,
+        phi=phi,
+        input_image=input_image,
+        output_image=output_image,
+    )
     return imrotate_execute(params, execution)
 
 

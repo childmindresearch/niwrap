@@ -11,6 +11,8 @@ MRIS_LEFT_RIGHT_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisLeftRightRegisterParameters = typing.TypedDict('MrisLeftRightRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mris_left_right_register"],
     "lh_sphere": InputPathType,
@@ -187,7 +189,12 @@ def mris_left_right_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LEFT_RIGHT_REGISTER_METADATA)
-    params = mris_left_right_register_params(lh_sphere=lh_sphere, rh_sphere=rh_sphere, lh_sphere_left_right=lh_sphere_left_right, rh_sphere_left_right=rh_sphere_left_right)
+    params = mris_left_right_register_params(
+        lh_sphere=lh_sphere,
+        rh_sphere=rh_sphere,
+        lh_sphere_left_right=lh_sphere_left_right,
+        rh_sphere_left_right=rh_sphere_left_right,
+    )
     return mris_left_right_register_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ APPLY_MORPH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ApplyMorphParameters = typing.TypedDict('ApplyMorphParameters', {
     "__STYX_TYPE__": typing.Literal["applyMorph"],
     "inputs": list[InputPathType],
@@ -199,7 +201,13 @@ def apply_morph(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APPLY_MORPH_METADATA)
-    params = apply_morph_params(inputs=inputs, template=template, transform=transform, zlib_buffer=zlib_buffer, dbg_coords=dbg_coords)
+    params = apply_morph_params(
+        inputs=inputs,
+        template=template,
+        transform=transform,
+        zlib_buffer=zlib_buffer,
+        dbg_coords=dbg_coords,
+    )
     return apply_morph_execute(params, execution)
 
 

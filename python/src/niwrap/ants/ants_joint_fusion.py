@@ -11,6 +11,8 @@ ANTS_JOINT_FUSION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsJointFusionParameters = typing.TypedDict('AntsJointFusionParameters', {
     "__STYX_TYPE__": typing.Literal["antsJointFusion"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -357,7 +359,22 @@ def ants_joint_fusion(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_JOINT_FUSION_METADATA)
-    params = ants_joint_fusion_params(image_dimensionality=image_dimensionality, target_image=target_image, atlas_image=atlas_image, atlas_segmentation=atlas_segmentation, alpha=alpha, beta=beta, constrain_nonnegative=constrain_nonnegative, patch_radius=patch_radius, patch_metric=patch_metric, search_radius=search_radius, exclusion_image=exclusion_image, mask_image=mask_image, output=output, verbose=verbose)
+    params = ants_joint_fusion_params(
+        image_dimensionality=image_dimensionality,
+        target_image=target_image,
+        atlas_image=atlas_image,
+        atlas_segmentation=atlas_segmentation,
+        alpha=alpha,
+        beta=beta,
+        constrain_nonnegative=constrain_nonnegative,
+        patch_radius=patch_radius,
+        patch_metric=patch_metric,
+        search_radius=search_radius,
+        exclusion_image=exclusion_image,
+        mask_image=mask_image,
+        output=output,
+        verbose=verbose,
+    )
     return ants_joint_fusion_execute(params, execution)
 
 

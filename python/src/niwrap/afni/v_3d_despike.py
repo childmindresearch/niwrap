@@ -11,6 +11,8 @@ V_3D_DESPIKE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDespikeParameters = typing.TypedDict('V3dDespikeParameters', {
     "__STYX_TYPE__": typing.Literal["3dDespike"],
     "prefix": typing.NotRequired[str | None],
@@ -173,7 +175,10 @@ def v_3d_despike(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DESPIKE_METADATA)
-    params = v_3d_despike_params(prefix=prefix, in_file=in_file)
+    params = v_3d_despike_params(
+        prefix=prefix,
+        in_file=in_file,
+    )
     return v_3d_despike_execute(params, execution)
 
 

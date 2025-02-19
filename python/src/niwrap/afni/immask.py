@@ -11,6 +11,8 @@ IMMASK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImmaskParameters = typing.TypedDict('ImmaskParameters', {
     "__STYX_TYPE__": typing.Literal["immask"],
     "threshold": typing.NotRequired[float | None],
@@ -202,7 +204,13 @@ def immask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMMASK_METADATA)
-    params = immask_params(threshold=threshold, mask_image=mask_image, positive_only=positive_only, input_image=input_image, output_image=output_image)
+    params = immask_params(
+        threshold=threshold,
+        mask_image=mask_image,
+        positive_only=positive_only,
+        input_image=input_image,
+        output_image=output_image,
+    )
     return immask_execute(params, execution)
 
 

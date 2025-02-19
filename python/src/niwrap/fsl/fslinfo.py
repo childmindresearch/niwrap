@@ -11,6 +11,8 @@ FSLINFO_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslinfoParameters = typing.TypedDict('FslinfoParameters', {
     "__STYX_TYPE__": typing.Literal["fslinfo"],
     "filename": InputPathType,
@@ -155,7 +157,9 @@ def fslinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLINFO_METADATA)
-    params = fslinfo_params(filename=filename)
+    params = fslinfo_params(
+        filename=filename,
+    )
     return fslinfo_execute(params, execution)
 
 

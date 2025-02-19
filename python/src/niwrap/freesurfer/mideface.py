@@ -11,6 +11,8 @@ MIDEFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MidefaceParameters = typing.TypedDict('MidefaceParameters', {
     "__STYX_TYPE__": typing.Literal["mideface"],
     "input_volume": InputPathType,
@@ -379,7 +381,27 @@ def mideface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MIDEFACE_METADATA)
-    params = mideface_params(input_volume=input_volume, output_volume=output_volume, facemask=facemask, output_dir=output_dir, exclusion_mask=exclusion_mask, samseg_ndilations=samseg_ndilations, samseg_json=samseg_json, init_reg=init_reg, synthseg_ndilations=synthseg_ndilations, fill_const=fill_const, fhi=fhi, code_=code_, image_convert=image_convert, threads=threads, display_no=display_no, apply_volume=apply_volume, check_volume=check_volume, check_output_file=check_output_file, output_format=output_format)
+    params = mideface_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        facemask=facemask,
+        output_dir=output_dir,
+        exclusion_mask=exclusion_mask,
+        samseg_ndilations=samseg_ndilations,
+        samseg_json=samseg_json,
+        init_reg=init_reg,
+        synthseg_ndilations=synthseg_ndilations,
+        fill_const=fill_const,
+        fhi=fhi,
+        code_=code_,
+        image_convert=image_convert,
+        threads=threads,
+        display_no=display_no,
+        apply_volume=apply_volume,
+        check_volume=check_volume,
+        check_output_file=check_output_file,
+        output_format=output_format,
+    )
     return mideface_execute(params, execution)
 
 

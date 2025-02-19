@@ -11,6 +11,8 @@ DMRI_AC_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriAcShParameters = typing.TypedDict('DmriAcShParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_ac.sh"],
     "additional_args": typing.NotRequired[str | None],
@@ -157,7 +159,9 @@ def dmri_ac_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_AC_SH_METADATA)
-    params = dmri_ac_sh_params(additional_args=additional_args)
+    params = dmri_ac_sh_params(
+        additional_args=additional_args,
+    )
     return dmri_ac_sh_execute(params, execution)
 
 

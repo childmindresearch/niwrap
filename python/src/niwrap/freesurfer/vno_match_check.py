@@ -11,6 +11,8 @@ VNO_MATCH_CHECK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 VnoMatchCheckParameters = typing.TypedDict('VnoMatchCheckParameters', {
     "__STYX_TYPE__": typing.Literal["vno_match_check"],
     "subjid": str,
@@ -181,7 +183,12 @@ def vno_match_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VNO_MATCH_CHECK_METADATA)
-    params = vno_match_check_params(subjid=subjid, debug=debug, right_hemi=right_hemi, left_hemi=left_hemi)
+    params = vno_match_check_params(
+        subjid=subjid,
+        debug=debug,
+        right_hemi=right_hemi,
+        left_hemi=left_hemi,
+    )
     return vno_match_check_execute(params, execution)
 
 

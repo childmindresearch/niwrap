@@ -11,6 +11,8 @@ DMRI_FORREST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriForrestParameters = typing.TypedDict('DmriForrestParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_forrest"],
     "test_dir": str,
@@ -232,7 +234,16 @@ def dmri_forrest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_FORREST_METADATA)
-    params = dmri_forrest_params(test_dir=test_dir, train_file=train_file, mask_file=mask_file, tract_files=tract_files, seg_file=seg_file, diff_file=diff_file, debug=debug, checkopts=checkopts)
+    params = dmri_forrest_params(
+        test_dir=test_dir,
+        train_file=train_file,
+        mask_file=mask_file,
+        tract_files=tract_files,
+        seg_file=seg_file,
+        diff_file=diff_file,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return dmri_forrest_execute(params, execution)
 
 

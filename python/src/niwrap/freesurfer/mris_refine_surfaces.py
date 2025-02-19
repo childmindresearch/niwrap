@@ -11,6 +11,8 @@ MRIS_REFINE_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRefineSurfacesParameters = typing.TypedDict('MrisRefineSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_refine_surfaces"],
     "subject_name": str,
@@ -226,7 +228,16 @@ def mris_refine_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REFINE_SURFACES_METADATA)
-    params = mris_refine_surfaces_params(subject_name=subject_name, hemi=hemi, hires_volume=hires_volume, label_file=label_file, low_to_hires_xfm=low_to_hires_xfm, sdir=sdir, use_mgz=use_mgz, suffix=suffix)
+    params = mris_refine_surfaces_params(
+        subject_name=subject_name,
+        hemi=hemi,
+        hires_volume=hires_volume,
+        label_file=label_file,
+        low_to_hires_xfm=low_to_hires_xfm,
+        sdir=sdir,
+        use_mgz=use_mgz,
+        suffix=suffix,
+    )
     return mris_refine_surfaces_execute(params, execution)
 
 

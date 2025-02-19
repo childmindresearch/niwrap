@@ -11,11 +11,15 @@ ANNOTATION_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 AnnotationResampleSurfacePairParameters = typing.TypedDict('AnnotationResampleSurfacePairParameters', {
     "__STYX_TYPE__": typing.Literal["surface_pair"],
     "source_surface": InputPathType,
     "target_surface": InputPathType,
 })
+
+
 AnnotationResampleParameters = typing.TypedDict('AnnotationResampleParameters', {
     "__STYX_TYPE__": typing.Literal["annotation-resample"],
     "annotation_in": InputPathType,
@@ -235,7 +239,11 @@ def annotation_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANNOTATION_RESAMPLE_METADATA)
-    params = annotation_resample_params(annotation_in=annotation_in, annotation_out=annotation_out, surface_pair=surface_pair)
+    params = annotation_resample_params(
+        annotation_in=annotation_in,
+        annotation_out=annotation_out,
+        surface_pair=surface_pair,
+    )
     return annotation_resample_execute(params, execution)
 
 

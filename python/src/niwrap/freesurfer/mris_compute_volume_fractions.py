@@ -11,6 +11,8 @@ MRIS_COMPUTE_VOLUME_FRACTIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisComputeVolumeFractionsParameters = typing.TypedDict('MrisComputeVolumeFractionsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_compute_volume_fractions"],
     "volume_file": InputPathType,
@@ -208,7 +210,14 @@ def mris_compute_volume_fractions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COMPUTE_VOLUME_FRACTIONS_METADATA)
-    params = mris_compute_volume_fractions_params(volume_file=volume_file, surface_file=surface_file, accuracy=accuracy, output_file=output_file, debug=debug, checkopts=checkopts)
+    params = mris_compute_volume_fractions_params(
+        volume_file=volume_file,
+        surface_file=surface_file,
+        accuracy=accuracy,
+        output_file=output_file,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return mris_compute_volume_fractions_execute(params, execution)
 
 

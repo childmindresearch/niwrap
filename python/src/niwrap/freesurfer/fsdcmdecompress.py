@@ -11,6 +11,8 @@ FSDCMDECOMPRESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsdcmdecompressParameters = typing.TypedDict('FsdcmdecompressParameters', {
     "__STYX_TYPE__": typing.Literal["fsdcmdecompress"],
     "indcmfile": InputPathType,
@@ -204,7 +206,14 @@ def fsdcmdecompress(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSDCMDECOMPRESS_METADATA)
-    params = fsdcmdecompress_params(indcmfile=indcmfile, outdcmfile=outdcmfile, dcmtk=dcmtk, jpeg=jpeg, rle=rle, gdcm=gdcm)
+    params = fsdcmdecompress_params(
+        indcmfile=indcmfile,
+        outdcmfile=outdcmfile,
+        dcmtk=dcmtk,
+        jpeg=jpeg,
+        rle=rle,
+        gdcm=gdcm,
+    )
     return fsdcmdecompress_execute(params, execution)
 
 

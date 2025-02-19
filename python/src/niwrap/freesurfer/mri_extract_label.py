@@ -11,6 +11,8 @@ MRI_EXTRACT_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriExtractLabelParameters = typing.TypedDict('MriExtractLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_extract_label"],
     "input_volume": InputPathType,
@@ -233,7 +235,16 @@ def mri_extract_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EXTRACT_LABEL_METADATA)
-    params = mri_extract_label_params(input_volume=input_volume, labels=labels, output_name=output_name, gaussian_smoothing=gaussian_smoothing, transform_file=transform_file, exit_none_found=exit_none_found, dilate=dilate, erode=erode)
+    params = mri_extract_label_params(
+        input_volume=input_volume,
+        labels=labels,
+        output_name=output_name,
+        gaussian_smoothing=gaussian_smoothing,
+        transform_file=transform_file,
+        exit_none_found=exit_none_found,
+        dilate=dilate,
+        erode=erode,
+    )
     return mri_extract_label_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FABBER_DWI_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FabberDwiParameters = typing.TypedDict('FabberDwiParameters', {
     "__STYX_TYPE__": typing.Literal["fabber_dwi"],
     "output_dir": str,
@@ -536,7 +538,44 @@ def fabber_dwi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_DWI_METADATA)
-    params = fabber_dwi_params(output_dir=output_dir, method=method, model=model, data_file=data_file, help_flag=help_flag, listmethods_flag=listmethods_flag, listmodels_flag=listmodels_flag, listparams_flag=listparams_flag, descparams_flag=descparams_flag, listoutputs_flag=listoutputs_flag, evaluate=evaluate, evaluate_params=evaluate_params, evaluate_nt=evaluate_nt, simple_output_flag=simple_output_flag, overwrite_flag=overwrite_flag, link_to_latest_flag=link_to_latest_flag, loadmodels=loadmodels, multiple_data_files=multiple_data_files, data_order=data_order, mask_file=mask_file, masked_timepoints=masked_timepoints, supp_data=supp_data, dump_param_names_flag=dump_param_names_flag, save_model_fit_flag=save_model_fit_flag, save_residuals_flag=save_residuals_flag, save_model_extras_flag=save_model_extras_flag, save_mvn_flag=save_mvn_flag, save_mean_flag=save_mean_flag, save_std_flag=save_std_flag, save_var_flag=save_var_flag, save_zstat_flag=save_zstat_flag, save_noise_mean_flag=save_noise_mean_flag, save_noise_std_flag=save_noise_std_flag, save_free_energy_flag=save_free_energy_flag, optfile=optfile, debug_flag=debug_flag)
+    params = fabber_dwi_params(
+        output_dir=output_dir,
+        method=method,
+        model=model,
+        data_file=data_file,
+        help_flag=help_flag,
+        listmethods_flag=listmethods_flag,
+        listmodels_flag=listmodels_flag,
+        listparams_flag=listparams_flag,
+        descparams_flag=descparams_flag,
+        listoutputs_flag=listoutputs_flag,
+        evaluate=evaluate,
+        evaluate_params=evaluate_params,
+        evaluate_nt=evaluate_nt,
+        simple_output_flag=simple_output_flag,
+        overwrite_flag=overwrite_flag,
+        link_to_latest_flag=link_to_latest_flag,
+        loadmodels=loadmodels,
+        multiple_data_files=multiple_data_files,
+        data_order=data_order,
+        mask_file=mask_file,
+        masked_timepoints=masked_timepoints,
+        supp_data=supp_data,
+        dump_param_names_flag=dump_param_names_flag,
+        save_model_fit_flag=save_model_fit_flag,
+        save_residuals_flag=save_residuals_flag,
+        save_model_extras_flag=save_model_extras_flag,
+        save_mvn_flag=save_mvn_flag,
+        save_mean_flag=save_mean_flag,
+        save_std_flag=save_std_flag,
+        save_var_flag=save_var_flag,
+        save_zstat_flag=save_zstat_flag,
+        save_noise_mean_flag=save_noise_mean_flag,
+        save_noise_std_flag=save_noise_std_flag,
+        save_free_energy_flag=save_free_energy_flag,
+        optfile=optfile,
+        debug_flag=debug_flag,
+    )
     return fabber_dwi_execute(params, execution)
 
 

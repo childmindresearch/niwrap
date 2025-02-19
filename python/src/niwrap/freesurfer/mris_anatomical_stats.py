@@ -11,6 +11,8 @@ MRIS_ANATOMICAL_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisAnatomicalStatsParameters = typing.TypedDict('MrisAnatomicalStatsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_anatomical_stats"],
     "subjectname": str,
@@ -307,7 +309,22 @@ def mris_anatomical_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ANATOMICAL_STATS_METADATA)
-    params = mris_anatomical_stats_params(subjectname=subjectname, hemisphere=hemisphere, surfacename=surfacename, thickness_range=thickness_range, label_file=label_file, thickness_file=thickness_file, annotation_file=annotation_file, tabular_output=tabular_output, tablefile=tablefile, logfile=logfile, nsmooth=nsmooth, color_table=color_table, noglobal=noglobal, th3_computation=th3_computation)
+    params = mris_anatomical_stats_params(
+        subjectname=subjectname,
+        hemisphere=hemisphere,
+        surfacename=surfacename,
+        thickness_range=thickness_range,
+        label_file=label_file,
+        thickness_file=thickness_file,
+        annotation_file=annotation_file,
+        tabular_output=tabular_output,
+        tablefile=tablefile,
+        logfile=logfile,
+        nsmooth=nsmooth,
+        color_table=color_table,
+        noglobal=noglobal,
+        th3_computation=th3_computation,
+    )
     return mris_anatomical_stats_execute(params, execution)
 
 

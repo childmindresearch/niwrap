@@ -11,6 +11,8 @@ MRIS_SPHERICAL_AVERAGE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSphericalAverageParameters = typing.TypedDict('MrisSphericalAverageParameters', {
     "__STYX_TYPE__": typing.Literal["mris_spherical_average"],
     "summary_statistics": typing.NotRequired[str | None],
@@ -204,7 +206,15 @@ def mris_spherical_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SPHERICAL_AVERAGE_METADATA)
-    params = mris_spherical_average_params(summary_statistics=summary_statistics, which=which, fname=fname, hemi=hemi, spherical_surf=spherical_surf, subjects=subjects, output=output)
+    params = mris_spherical_average_params(
+        summary_statistics=summary_statistics,
+        which=which,
+        fname=fname,
+        hemi=hemi,
+        spherical_surf=spherical_surf,
+        subjects=subjects,
+        output=output,
+    )
     return mris_spherical_average_execute(params, execution)
 
 

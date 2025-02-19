@@ -11,6 +11,8 @@ CBLUMWMGYRI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CblumwmgyriParameters = typing.TypedDict('CblumwmgyriParameters', {
     "__STYX_TYPE__": typing.Literal["cblumwmgyri"],
     "subject": str,
@@ -220,7 +222,14 @@ def cblumwmgyri(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CBLUMWMGYRI_METADATA)
-    params = cblumwmgyri_params(subject=subject, source_seg=source_seg, n_erodes_dilates=n_erodes_dilates, out_seg=out_seg, no_segstats=no_segstats, subjects_dir=subjects_dir)
+    params = cblumwmgyri_params(
+        subject=subject,
+        source_seg=source_seg,
+        n_erodes_dilates=n_erodes_dilates,
+        out_seg=out_seg,
+        no_segstats=no_segstats,
+        subjects_dir=subjects_dir,
+    )
     return cblumwmgyri_execute(params, execution)
 
 

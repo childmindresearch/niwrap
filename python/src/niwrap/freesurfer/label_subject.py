@@ -11,6 +11,8 @@ LABEL_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LabelSubjectParameters = typing.TypedDict('LabelSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["label_subject"],
     "nu_file": typing.NotRequired[InputPathType | None],
@@ -172,7 +174,10 @@ def label_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_SUBJECT_METADATA)
-    params = label_subject_params(nu_file=nu_file, orig_dir=orig_dir)
+    params = label_subject_params(
+        nu_file=nu_file,
+        orig_dir=orig_dir,
+    )
     return label_subject_execute(params, execution)
 
 

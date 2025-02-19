@@ -11,6 +11,8 @@ V_3D_TRACK_ID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTrackIdParameters = typing.TypedDict('V3dTrackIdParameters', {
     "__STYX_TYPE__": typing.Literal["3dTrackID"],
     "mode": typing.Literal["DET", "MINIP", "PROB"],
@@ -568,7 +570,52 @@ def v_3d_track_id(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TRACK_ID_METADATA)
-    params = v_3d_track_id_params(mode=mode, netrois=netrois, prefix=prefix, dti_in=dti_in, dti_list=dti_list, dti_extra=dti_extra, dti_search_no=dti_search_no, hardi_gfa=hardi_gfa, hardi_dirs=hardi_dirs, hardi_pars=hardi_pars, mask=mask, thru_mask=thru_mask, targ_surf_stop=targ_surf_stop, targ_surf_twixt=targ_surf_twixt, logic=logic, mini_num=mini_num, uncert=uncert, unc_min_fa=unc_min_fa, unc_min_v=unc_min_v, algopt=algopt, alg_thresh_fa=alg_thresh_fa, alg_thresh_ang=alg_thresh_ang, alg_thresh_len=alg_thresh_len, alg_nseed_x=alg_nseed_x, alg_nseed_y=alg_nseed_y, alg_nseed_z=alg_nseed_z, alg_thresh_frac=alg_thresh_frac, alg_nseed_vox=alg_nseed_vox, alg_nmonte=alg_nmonte, extra_tr_par=extra_tr_par, uncut_at_rois=uncut_at_rois, dump_rois=dump_rois, dump_no_labtab=dump_no_labtab, dump_lab_consec=dump_lab_consec, posteriori=posteriori, rec_orig=rec_orig, do_trk_out=do_trk_out, trk_opp_orient=trk_opp_orient, nifti=nifti, no_indipair_out=no_indipair_out, write_rois=write_rois, write_opts=write_opts, pair_out_power=pair_out_power, verb=verb)
+    params = v_3d_track_id_params(
+        mode=mode,
+        netrois=netrois,
+        prefix=prefix,
+        dti_in=dti_in,
+        dti_list=dti_list,
+        dti_extra=dti_extra,
+        dti_search_no=dti_search_no,
+        hardi_gfa=hardi_gfa,
+        hardi_dirs=hardi_dirs,
+        hardi_pars=hardi_pars,
+        mask=mask,
+        thru_mask=thru_mask,
+        targ_surf_stop=targ_surf_stop,
+        targ_surf_twixt=targ_surf_twixt,
+        logic=logic,
+        mini_num=mini_num,
+        uncert=uncert,
+        unc_min_fa=unc_min_fa,
+        unc_min_v=unc_min_v,
+        algopt=algopt,
+        alg_thresh_fa=alg_thresh_fa,
+        alg_thresh_ang=alg_thresh_ang,
+        alg_thresh_len=alg_thresh_len,
+        alg_nseed_x=alg_nseed_x,
+        alg_nseed_y=alg_nseed_y,
+        alg_nseed_z=alg_nseed_z,
+        alg_thresh_frac=alg_thresh_frac,
+        alg_nseed_vox=alg_nseed_vox,
+        alg_nmonte=alg_nmonte,
+        extra_tr_par=extra_tr_par,
+        uncut_at_rois=uncut_at_rois,
+        dump_rois=dump_rois,
+        dump_no_labtab=dump_no_labtab,
+        dump_lab_consec=dump_lab_consec,
+        posteriori=posteriori,
+        rec_orig=rec_orig,
+        do_trk_out=do_trk_out,
+        trk_opp_orient=trk_opp_orient,
+        nifti=nifti,
+        no_indipair_out=no_indipair_out,
+        write_rois=write_rois,
+        write_opts=write_opts,
+        pair_out_power=pair_out_power,
+        verb=verb,
+    )
     return v_3d_track_id_execute(params, execution)
 
 

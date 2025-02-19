@@ -11,6 +11,8 @@ PRINT_UNIQUE_LABELS_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 PrintUniqueLabelsCshParameters = typing.TypedDict('PrintUniqueLabelsCshParameters', {
     "__STYX_TYPE__": typing.Literal["print_unique_labels.csh"],
     "label_volume": InputPathType,
@@ -170,7 +172,10 @@ def print_unique_labels_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PRINT_UNIQUE_LABELS_CSH_METADATA)
-    params = print_unique_labels_csh_params(label_volume=label_volume, list_only=list_only)
+    params = print_unique_labels_csh_params(
+        label_volume=label_volume,
+        list_only=list_only,
+    )
     return print_unique_labels_csh_execute(params, execution)
 
 

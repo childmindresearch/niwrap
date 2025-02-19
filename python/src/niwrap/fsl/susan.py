@@ -11,6 +11,8 @@ SUSAN_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SusanParameters = typing.TypedDict('SusanParameters', {
     "__STYX_TYPE__": typing.Literal["susan"],
     "input_file": InputPathType,
@@ -247,7 +249,19 @@ def susan(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SUSAN_METADATA)
-    params = susan_params(input_file=input_file, brightness_threshold=brightness_threshold, spatial_size=spatial_size, dimensionality=dimensionality, use_median_filter=use_median_filter, n_usans=n_usans, usan1=usan1, brightness_threshold1=brightness_threshold1, usan2=usan2, brightness_threshold2=brightness_threshold2, output_file=output_file)
+    params = susan_params(
+        input_file=input_file,
+        brightness_threshold=brightness_threshold,
+        spatial_size=spatial_size,
+        dimensionality=dimensionality,
+        use_median_filter=use_median_filter,
+        n_usans=n_usans,
+        usan1=usan1,
+        brightness_threshold1=brightness_threshold1,
+        usan2=usan2,
+        brightness_threshold2=brightness_threshold2,
+        output_file=output_file,
+    )
     return susan_execute(params, execution)
 
 

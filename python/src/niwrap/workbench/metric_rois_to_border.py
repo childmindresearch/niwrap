@@ -11,6 +11,8 @@ METRIC_ROIS_TO_BORDER_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricRoisToBorderParameters = typing.TypedDict('MetricRoisToBorderParameters', {
     "__STYX_TYPE__": typing.Literal["metric-rois-to-border"],
     "surface": InputPathType,
@@ -215,7 +217,14 @@ def metric_rois_to_border(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_ROIS_TO_BORDER_METADATA)
-    params = metric_rois_to_border_params(surface=surface, metric=metric, class_name=class_name, border_out=border_out, opt_placement_fraction=opt_placement_fraction, opt_column_column=opt_column_column)
+    params = metric_rois_to_border_params(
+        surface=surface,
+        metric=metric,
+        class_name=class_name,
+        border_out=border_out,
+        opt_placement_fraction=opt_placement_fraction,
+        opt_column_column=opt_column_column,
+    )
     return metric_rois_to_border_execute(params, execution)
 
 

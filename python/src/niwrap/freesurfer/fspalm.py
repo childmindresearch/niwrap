@@ -11,6 +11,8 @@ FSPALM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FspalmParameters = typing.TypedDict('FspalmParameters', {
     "__STYX_TYPE__": typing.Literal["fspalm"],
     "glmdir": str,
@@ -280,7 +282,22 @@ def fspalm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSPALM_METADATA)
-    params = fspalm_params(glmdir=glmdir, cft=cft, cwp=cwp, onetail=onetail, twotail=twotail, name=name, iters=iters, monly=monly, pponly=pponly, octave=octave, centroid=centroid, v_2spaces=v_2spaces, v_3spaces=v_3spaces, pargs=pargs)
+    params = fspalm_params(
+        glmdir=glmdir,
+        cft=cft,
+        cwp=cwp,
+        onetail=onetail,
+        twotail=twotail,
+        name=name,
+        iters=iters,
+        monly=monly,
+        pponly=pponly,
+        octave=octave,
+        centroid=centroid,
+        v_2spaces=v_2spaces,
+        v_3spaces=v_3spaces,
+        pargs=pargs,
+    )
     return fspalm_execute(params, execution)
 
 

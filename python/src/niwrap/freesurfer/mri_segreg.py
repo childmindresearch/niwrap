@@ -11,6 +11,8 @@ MRI_SEGREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegregParameters = typing.TypedDict('MriSegregParameters', {
     "__STYX_TYPE__": typing.Literal["mri_segreg"],
     "input_file": InputPathType,
@@ -168,7 +170,10 @@ def mri_segreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGREG_METADATA)
-    params = mri_segreg_params(input_file=input_file, output_file=output_file)
+    params = mri_segreg_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return mri_segreg_execute(params, execution)
 
 

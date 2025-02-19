@@ -11,6 +11,8 @@ V_3D_SEG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSegParameters = typing.TypedDict('V3dSegParameters', {
     "__STYX_TYPE__": typing.Literal["3dSeg"],
     "anat": InputPathType,
@@ -402,7 +404,27 @@ def v_3d_seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SEG_METADATA)
-    params = v_3d_seg_params(anat=anat, mask=mask, blur_meth=blur_meth, bias_fwhm=bias_fwhm, classes=classes, bmrf=bmrf, bias_classes=bias_classes, prefix=prefix, overwrite=overwrite, debug=debug, mixfrac=mixfrac, mixfloor=mixfloor, gold=gold, gold_bias=gold_bias, main_n=main_n, cset=cset, labeltable=labeltable, vox_debug=vox_debug, vox_debug_file=vox_debug_file)
+    params = v_3d_seg_params(
+        anat=anat,
+        mask=mask,
+        blur_meth=blur_meth,
+        bias_fwhm=bias_fwhm,
+        classes=classes,
+        bmrf=bmrf,
+        bias_classes=bias_classes,
+        prefix=prefix,
+        overwrite=overwrite,
+        debug=debug,
+        mixfrac=mixfrac,
+        mixfloor=mixfloor,
+        gold=gold,
+        gold_bias=gold_bias,
+        main_n=main_n,
+        cset=cset,
+        labeltable=labeltable,
+        vox_debug=vox_debug,
+        vox_debug_file=vox_debug_file,
+    )
     return v_3d_seg_execute(params, execution)
 
 

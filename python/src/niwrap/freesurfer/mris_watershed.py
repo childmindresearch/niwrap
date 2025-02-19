@@ -11,6 +11,8 @@ MRIS_WATERSHED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisWatershedParameters = typing.TypedDict('MrisWatershedParameters', {
     "__STYX_TYPE__": typing.Literal["mris_watershed"],
     "input_surface": InputPathType,
@@ -201,7 +203,13 @@ def mris_watershed(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_WATERSHED_METADATA)
-    params = mris_watershed_params(input_surface=input_surface, input_gradient_field=input_gradient_field, output_annotation=output_annotation, max_clusters=max_clusters, mask_label=mask_label)
+    params = mris_watershed_params(
+        input_surface=input_surface,
+        input_gradient_field=input_gradient_field,
+        output_annotation=output_annotation,
+        max_clusters=max_clusters,
+        mask_label=mask_label,
+    )
     return mris_watershed_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3DRESAMPLE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dresampleParameters = typing.TypedDict('V3dresampleParameters', {
     "__STYX_TYPE__": typing.Literal["3dresample"],
     "in_file": InputPathType,
@@ -233,7 +235,15 @@ def v_3dresample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DRESAMPLE_METADATA)
-    params = v_3dresample_params(in_file=in_file, master=master, orientation=orientation, prefix=prefix, outputtype=outputtype, resample_mode=resample_mode, voxel_size=voxel_size)
+    params = v_3dresample_params(
+        in_file=in_file,
+        master=master,
+        orientation=orientation,
+        prefix=prefix,
+        outputtype=outputtype,
+        resample_mode=resample_mode,
+        voxel_size=voxel_size,
+    )
     return v_3dresample_execute(params, execution)
 
 

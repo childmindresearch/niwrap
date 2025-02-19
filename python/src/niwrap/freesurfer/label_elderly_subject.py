@@ -11,6 +11,8 @@ LABEL_ELDERLY_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LabelElderlySubjectParameters = typing.TypedDict('LabelElderlySubjectParameters', {
     "__STYX_TYPE__": typing.Literal["label_elderly_subject"],
     "norm_volume": InputPathType,
@@ -184,7 +186,12 @@ def label_elderly_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_ELDERLY_SUBJECT_METADATA)
-    params = label_elderly_subject_params(norm_volume=norm_volume, transform_lta=transform_lta, classifier_array=classifier_array, aseg_volume=aseg_volume)
+    params = label_elderly_subject_params(
+        norm_volume=norm_volume,
+        transform_lta=transform_lta,
+        classifier_array=classifier_array,
+        aseg_volume=aseg_volume,
+    )
     return label_elderly_subject_execute(params, execution)
 
 

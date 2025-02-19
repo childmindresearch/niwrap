@@ -11,6 +11,8 @@ REG_RESAMPLE_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+
+
 RegResampleParameters = typing.TypedDict('RegResampleParameters', {
     "__STYX_TYPE__": typing.Literal["reg_resample"],
     "reference_image": InputPathType,
@@ -277,7 +279,18 @@ def reg_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_RESAMPLE_METADATA)
-    params = reg_resample_params(reference_image=reference_image, floating_image=floating_image, affine_transform=affine_transform, flirt_affine_transform=flirt_affine_transform, control_point_grid=control_point_grid, deformation_field=deformation_field, resampled_image=resampled_image, resampled_blank=resampled_blank, nearest_neighbor=nearest_neighbor, linear_interpolation=linear_interpolation)
+    params = reg_resample_params(
+        reference_image=reference_image,
+        floating_image=floating_image,
+        affine_transform=affine_transform,
+        flirt_affine_transform=flirt_affine_transform,
+        control_point_grid=control_point_grid,
+        deformation_field=deformation_field,
+        resampled_image=resampled_image,
+        resampled_blank=resampled_blank,
+        nearest_neighbor=nearest_neighbor,
+        linear_interpolation=linear_interpolation,
+    )
     return reg_resample_execute(params, execution)
 
 

@@ -11,21 +11,29 @@ CIFTI_GRADIENT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiGradientLeftSurfaceParameters = typing.TypedDict('CiftiGradientLeftSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["left_surface"],
     "surface": InputPathType,
     "opt_left_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiGradientRightSurfaceParameters = typing.TypedDict('CiftiGradientRightSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["right_surface"],
     "surface": InputPathType,
     "opt_right_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiGradientCerebellumSurfaceParameters = typing.TypedDict('CiftiGradientCerebellumSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_surface"],
     "surface": InputPathType,
     "opt_cerebellum_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiGradientParameters = typing.TypedDict('CiftiGradientParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-gradient"],
     "cifti": InputPathType,
@@ -444,7 +452,19 @@ def cifti_gradient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_GRADIENT_METADATA)
-    params = cifti_gradient_params(cifti=cifti, direction=direction, cifti_out=cifti_out, left_surface=left_surface, right_surface=right_surface, cerebellum_surface=cerebellum_surface, opt_surface_presmooth_surface_kernel=opt_surface_presmooth_surface_kernel, opt_volume_presmooth_volume_kernel=opt_volume_presmooth_volume_kernel, opt_presmooth_fwhm=opt_presmooth_fwhm, opt_average_output=opt_average_output, opt_vectors_vectors_out=opt_vectors_vectors_out)
+    params = cifti_gradient_params(
+        cifti=cifti,
+        direction=direction,
+        cifti_out=cifti_out,
+        left_surface=left_surface,
+        right_surface=right_surface,
+        cerebellum_surface=cerebellum_surface,
+        opt_surface_presmooth_surface_kernel=opt_surface_presmooth_surface_kernel,
+        opt_volume_presmooth_volume_kernel=opt_volume_presmooth_volume_kernel,
+        opt_presmooth_fwhm=opt_presmooth_fwhm,
+        opt_average_output=opt_average_output,
+        opt_vectors_vectors_out=opt_vectors_vectors_out,
+    )
     return cifti_gradient_execute(params, execution)
 
 

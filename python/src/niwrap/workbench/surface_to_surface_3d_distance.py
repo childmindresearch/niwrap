@@ -11,6 +11,8 @@ SURFACE_TO_SURFACE_3D_DISTANCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceToSurface3dDistanceParameters = typing.TypedDict('SurfaceToSurface3dDistanceParameters', {
     "__STYX_TYPE__": typing.Literal["surface-to-surface-3d-distance"],
     "surface_comp": InputPathType,
@@ -199,7 +201,12 @@ def surface_to_surface_3d_distance(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_TO_SURFACE_3D_DISTANCE_METADATA)
-    params = surface_to_surface_3d_distance_params(surface_comp=surface_comp, surface_ref=surface_ref, dists_out=dists_out, opt_vectors_vectors_out=opt_vectors_vectors_out)
+    params = surface_to_surface_3d_distance_params(
+        surface_comp=surface_comp,
+        surface_ref=surface_ref,
+        dists_out=dists_out,
+        opt_vectors_vectors_out=opt_vectors_vectors_out,
+    )
     return surface_to_surface_3d_distance_execute(params, execution)
 
 

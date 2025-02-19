@@ -11,6 +11,8 @@ HISTO_SYNTHESIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 HistoSynthesizeParameters = typing.TypedDict('HistoSynthesizeParameters', {
     "__STYX_TYPE__": typing.Literal["histo_synthesize"],
     "mri_volume": InputPathType,
@@ -174,7 +176,11 @@ def histo_synthesize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HISTO_SYNTHESIZE_METADATA)
-    params = histo_synthesize_params(mri_volume=mri_volume, histo_volume=histo_volume, synthetic_histo=synthetic_histo)
+    params = histo_synthesize_params(
+        mri_volume=mri_volume,
+        histo_volume=histo_volume,
+        synthetic_histo=synthetic_histo,
+    )
     return histo_synthesize_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_ZREGRID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dZregridParameters = typing.TypedDict('V3dZregridParameters', {
     "__STYX_TYPE__": typing.Literal["3dZregrid"],
     "z_thickness": typing.NotRequired[float | None],
@@ -220,7 +222,14 @@ def v_3d_zregrid(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ZREGRID_METADATA)
-    params = v_3d_zregrid_params(z_thickness=z_thickness, slice_count=slice_count, z_size=z_size, prefix=prefix, infile=infile, verbose=verbose)
+    params = v_3d_zregrid_params(
+        z_thickness=z_thickness,
+        slice_count=slice_count,
+        z_size=z_size,
+        prefix=prefix,
+        infile=infile,
+        verbose=verbose,
+    )
     return v_3d_zregrid_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ HISTO_REGISTER_BLOCK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 HistoRegisterBlockParameters = typing.TypedDict('HistoRegisterBlockParameters', {
     "__STYX_TYPE__": typing.Literal["histo_register_block"],
     "seg_time1": InputPathType,
@@ -207,7 +209,15 @@ def histo_register_block(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HISTO_REGISTER_BLOCK_METADATA)
-    params = histo_register_block_params(seg_time1=seg_time1, seg_time2=seg_time2, transform1=transform1, transform2=transform2, output_file=output_file, out_like=out_like, invert_transform=invert_transform)
+    params = histo_register_block_params(
+        seg_time1=seg_time1,
+        seg_time2=seg_time2,
+        transform1=transform1,
+        transform2=transform2,
+        output_file=output_file,
+        out_like=out_like,
+        invert_transform=invert_transform,
+    )
     return histo_register_block_execute(params, execution)
 
 

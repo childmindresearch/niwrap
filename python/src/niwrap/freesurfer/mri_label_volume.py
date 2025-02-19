@@ -11,6 +11,8 @@ MRI_LABEL_VOLUME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLabelVolumeParameters = typing.TypedDict('MriLabelVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_label_volume"],
     "volume": InputPathType,
@@ -334,7 +336,24 @@ def mri_label_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LABEL_VOLUME_METADATA)
-    params = mri_label_volume_params(volume=volume, labels=labels, partial_volume_effects=partial_volume_effects, intracranial_volume=intracranial_volume, spreadsheet_subject=spreadsheet_subject, non_zero_voxels=non_zero_voxels, replace_label_in=replace_label_in, replace_label_out=replace_label_out, brain_volume=brain_volume, percentage=percentage, log_results=log_results, atlas_transform_file=atlas_transform_file, atlas_scalefactor=atlas_scalefactor, etiv_transform_file=etiv_transform_file, etiv_scalefactor=etiv_scalefactor, etiv_subject=etiv_subject)
+    params = mri_label_volume_params(
+        volume=volume,
+        labels=labels,
+        partial_volume_effects=partial_volume_effects,
+        intracranial_volume=intracranial_volume,
+        spreadsheet_subject=spreadsheet_subject,
+        non_zero_voxels=non_zero_voxels,
+        replace_label_in=replace_label_in,
+        replace_label_out=replace_label_out,
+        brain_volume=brain_volume,
+        percentage=percentage,
+        log_results=log_results,
+        atlas_transform_file=atlas_transform_file,
+        atlas_scalefactor=atlas_scalefactor,
+        etiv_transform_file=etiv_transform_file,
+        etiv_scalefactor=etiv_scalefactor,
+        etiv_subject=etiv_subject,
+    )
     return mri_label_volume_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ LTA_DIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LtaDiffParameters = typing.TypedDict('LtaDiffParameters', {
     "__STYX_TYPE__": typing.Literal["lta_diff"],
     "transform1": InputPathType,
@@ -236,7 +238,16 @@ def lta_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LTA_DIFF_METADATA)
-    params = lta_diff_params(transform1=transform1, transform2=transform2, dist_type=dist_type, invert1=invert1, invert2=invert2, vox=vox, normdiv=normdiv, radius=radius)
+    params = lta_diff_params(
+        transform1=transform1,
+        transform2=transform2,
+        dist_type=dist_type,
+        invert1=invert1,
+        invert2=invert2,
+        vox=vox,
+        normdiv=normdiv,
+        radius=radius,
+    )
     return lta_diff_execute(params, execution)
 
 

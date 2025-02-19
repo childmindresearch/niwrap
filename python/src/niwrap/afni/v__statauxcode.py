@@ -11,6 +11,8 @@ V__STATAUXCODE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VStatauxcodeParameters = typing.TypedDict('VStatauxcodeParameters', {
     "__STYX_TYPE__": typing.Literal["@statauxcode"],
     "code": str,
@@ -161,7 +163,9 @@ def v__statauxcode(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__STATAUXCODE_METADATA)
-    params = v__statauxcode_params(code_=code_)
+    params = v__statauxcode_params(
+        code_=code_,
+    )
     return v__statauxcode_execute(params, execution)
 
 

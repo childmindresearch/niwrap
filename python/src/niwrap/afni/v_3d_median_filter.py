@@ -11,6 +11,8 @@ V_3D_MEDIAN_FILTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMedianFilterParameters = typing.TypedDict('V3dMedianFilterParameters', {
     "__STYX_TYPE__": typing.Literal["3dMedianFilter"],
     "irad": typing.NotRequired[float | None],
@@ -216,7 +218,14 @@ def v_3d_median_filter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MEDIAN_FILTER_METADATA)
-    params = v_3d_median_filter_params(irad=irad, iter_=iter_, verbose=verbose, prefix=prefix, automask=automask, dataset=dataset)
+    params = v_3d_median_filter_params(
+        irad=irad,
+        iter_=iter_,
+        verbose=verbose,
+        prefix=prefix,
+        automask=automask,
+        dataset=dataset,
+    )
     return v_3d_median_filter_execute(params, execution)
 
 

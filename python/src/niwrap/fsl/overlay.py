@@ -11,6 +11,8 @@ OVERLAY_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 OverlayParameters = typing.TypedDict('OverlayParameters', {
     "__STYX_TYPE__": typing.Literal["overlay"],
     "auto_thresh_bg": bool,
@@ -259,7 +261,20 @@ def overlay(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(OVERLAY_METADATA)
-    params = overlay_params(auto_thresh_bg=auto_thresh_bg, background_image=background_image, bg_thresh=bg_thresh, full_bg_range=full_bg_range, out_file=out_file, out_type=out_type, output_type=output_type, stat_image=stat_image, stat_image2=stat_image2, stat_thresh=stat_thresh, stat_thresh2=stat_thresh2, use_checkerboard=use_checkerboard)
+    params = overlay_params(
+        auto_thresh_bg=auto_thresh_bg,
+        background_image=background_image,
+        bg_thresh=bg_thresh,
+        full_bg_range=full_bg_range,
+        out_file=out_file,
+        out_type=out_type,
+        output_type=output_type,
+        stat_image=stat_image,
+        stat_image2=stat_image2,
+        stat_thresh=stat_thresh,
+        stat_thresh2=stat_thresh2,
+        use_checkerboard=use_checkerboard,
+    )
     return overlay_execute(params, execution)
 
 

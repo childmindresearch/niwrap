@@ -11,6 +11,8 @@ SURF_LOCALSTAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfLocalstatParameters = typing.TypedDict('SurfLocalstatParameters', {
     "__STYX_TYPE__": typing.Literal["SurfLocalstat"],
     "hood": typing.NotRequired[float | None],
@@ -220,7 +222,14 @@ def surf_localstat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_LOCALSTAT_METADATA)
-    params = surf_localstat_params(hood=hood, nbhd_rad=nbhd_rad, prefix=prefix, stat_=stat_, input_dataset=input_dataset, surface=surface)
+    params = surf_localstat_params(
+        hood=hood,
+        nbhd_rad=nbhd_rad,
+        prefix=prefix,
+        stat_=stat_,
+        input_dataset=input_dataset,
+        surface=surface,
+    )
     return surf_localstat_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ FIXELREORIENT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 FixelreorientConfigParameters = typing.TypedDict('FixelreorientConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 FixelreorientParameters = typing.TypedDict('FixelreorientParameters', {
     "__STYX_TYPE__": typing.Literal["fixelreorient"],
     "info": bool,
@@ -330,7 +334,19 @@ def fixelreorient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELREORIENT_METADATA)
-    params = fixelreorient_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_in=fixel_in, warp=warp, fixel_out=fixel_out)
+    params = fixelreorient_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        fixel_in=fixel_in,
+        warp=warp,
+        fixel_out=fixel_out,
+    )
     return fixelreorient_execute(params, execution)
 
 

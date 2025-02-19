@@ -11,6 +11,8 @@ METADATA_REMOVE_PROVENANCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetadataRemoveProvenanceParameters = typing.TypedDict('MetadataRemoveProvenanceParameters', {
     "__STYX_TYPE__": typing.Literal["metadata-remove-provenance"],
     "input_file": str,
@@ -167,7 +169,10 @@ def metadata_remove_provenance(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METADATA_REMOVE_PROVENANCE_METADATA)
-    params = metadata_remove_provenance_params(input_file=input_file, output_file=output_file)
+    params = metadata_remove_provenance_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return metadata_remove_provenance_execute(params, execution)
 
 

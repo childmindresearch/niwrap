@@ -11,6 +11,8 @@ MEANVAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MeanvalParameters = typing.TypedDict('MeanvalParameters', {
     "__STYX_TYPE__": typing.Literal["meanval"],
     "input_file": InputPathType,
@@ -190,7 +192,12 @@ def meanval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MEANVAL_METADATA)
-    params = meanval_params(input_file=input_file, mask_file=mask_file, output_file=output_file, avgwf_flag=avgwf_flag)
+    params = meanval_params(
+        input_file=input_file,
+        mask_file=mask_file,
+        output_file=output_file,
+        avgwf_flag=avgwf_flag,
+    )
     return meanval_execute(params, execution)
 
 

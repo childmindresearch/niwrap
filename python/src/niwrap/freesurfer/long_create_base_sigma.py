@@ -11,6 +11,8 @@ LONG_CREATE_BASE_SIGMA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongCreateBaseSigmaParameters = typing.TypedDict('LongCreateBaseSigmaParameters', {
     "__STYX_TYPE__": typing.Literal["long_create_base_sigma"],
     "base_id": str,
@@ -166,7 +168,10 @@ def long_create_base_sigma(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_CREATE_BASE_SIGMA_METADATA)
-    params = long_create_base_sigma_params(base_id=base_id, sigma=sigma)
+    params = long_create_base_sigma_params(
+        base_id=base_id,
+        sigma=sigma,
+    )
     return long_create_base_sigma_execute(params, execution)
 
 

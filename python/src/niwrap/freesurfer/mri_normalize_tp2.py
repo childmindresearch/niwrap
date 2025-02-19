@@ -11,6 +11,8 @@ MRI_NORMALIZE_TP2_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriNormalizeTp2Parameters = typing.TypedDict('MriNormalizeTp2Parameters', {
     "__STYX_TYPE__": typing.Literal["mri_normalize_tp2"],
     "input_vol": InputPathType,
@@ -270,7 +272,19 @@ def mri_normalize_tp2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_NORMALIZE_TP2_METADATA)
-    params = mri_normalize_tp2_params(input_vol=input_vol, normalized_vol=normalized_vol, t1_volume=t1_volume, mask1=mask1, mask2=mask2, threshold=threshold, ctrl=ctrl, xform=xform, invert_flag=invert_flag, lta_src=lta_src, lta_dst=lta_dst)
+    params = mri_normalize_tp2_params(
+        input_vol=input_vol,
+        normalized_vol=normalized_vol,
+        t1_volume=t1_volume,
+        mask1=mask1,
+        mask2=mask2,
+        threshold=threshold,
+        ctrl=ctrl,
+        xform=xform,
+        invert_flag=invert_flag,
+        lta_src=lta_src,
+        lta_dst=lta_dst,
+    )
     return mri_normalize_tp2_execute(params, execution)
 
 

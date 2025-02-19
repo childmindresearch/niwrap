@@ -11,6 +11,8 @@ V_3D_XCLUST_SIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dXclustSimParameters = typing.TypedDict('V3dXclustSimParameters', {
     "__STYX_TYPE__": typing.Literal["3dXClustSim"],
     "inset": InputPathType,
@@ -336,7 +338,26 @@ def v_3d_xclust_sim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_XCLUST_SIM_METADATA)
-    params = v_3d_xclust_sim_params(inset=inset, insdat=insdat, nn=nn, sid=sid, hpow=hpow, ncase=ncase, pthr=pthr, fpr=fpr, multi_fpr=multi_fpr, minclust=minclust, local=local, global_=global_, nolocal=nolocal, noglobal=noglobal, splitfrac=splitfrac, prefix=prefix, verbose=verbose, quiet=quiet)
+    params = v_3d_xclust_sim_params(
+        inset=inset,
+        insdat=insdat,
+        nn=nn,
+        sid=sid,
+        hpow=hpow,
+        ncase=ncase,
+        pthr=pthr,
+        fpr=fpr,
+        multi_fpr=multi_fpr,
+        minclust=minclust,
+        local=local,
+        global_=global_,
+        nolocal=nolocal,
+        noglobal=noglobal,
+        splitfrac=splitfrac,
+        prefix=prefix,
+        verbose=verbose,
+        quiet=quiet,
+    )
     return v_3d_xclust_sim_execute(params, execution)
 
 

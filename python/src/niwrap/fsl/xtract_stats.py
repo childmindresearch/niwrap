@@ -11,6 +11,8 @@ XTRACT_STATS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 XtractStatsParameters = typing.TypedDict('XtractStatsParameters', {
     "__STYX_TYPE__": typing.Literal["xtract_stats"],
     "folder_basename": str,
@@ -192,7 +194,11 @@ def xtract_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XTRACT_STATS_METADATA)
-    params = xtract_stats_params(folder_basename=folder_basename, xtract_dir=xtract_dir, xtract2diff=xtract2diff)
+    params = xtract_stats_params(
+        folder_basename=folder_basename,
+        xtract_dir=xtract_dir,
+        xtract2diff=xtract2diff,
+    )
     return xtract_stats_execute(params, execution)
 
 

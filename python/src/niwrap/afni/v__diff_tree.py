@@ -11,6 +11,8 @@ V__DIFF_TREE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDiffTreeParameters = typing.TypedDict('VDiffTreeParameters', {
     "__STYX_TYPE__": typing.Literal["@diff.tree"],
     "new_dir": str,
@@ -324,7 +326,26 @@ def v__diff_tree(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DIFF_TREE_METADATA)
-    params = v__diff_tree_params(new_dir=new_dir, old_dir=old_dir, diff_opts=diff_opts, ignore_append=ignore_append, ia=ia, ignore_list=ignore_list, il=il, ignore_missing=ignore_missing, no_diffs=no_diffs, quiet=quiet, save=save, show=show, show_list_comp=show_list_comp, skip_data=skip_data, verb=verb, diff_prog=diff_prog, xxdiff=xxdiff, x_option=x_option)
+    params = v__diff_tree_params(
+        new_dir=new_dir,
+        old_dir=old_dir,
+        diff_opts=diff_opts,
+        ignore_append=ignore_append,
+        ia=ia,
+        ignore_list=ignore_list,
+        il=il,
+        ignore_missing=ignore_missing,
+        no_diffs=no_diffs,
+        quiet=quiet,
+        save=save,
+        show=show,
+        show_list_comp=show_list_comp,
+        skip_data=skip_data,
+        verb=verb,
+        diff_prog=diff_prog,
+        xxdiff=xxdiff,
+        x_option=x_option,
+    )
     return v__diff_tree_execute(params, execution)
 
 

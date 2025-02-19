@@ -11,6 +11,8 @@ FSLNVOLS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslnvolsParameters = typing.TypedDict('FslnvolsParameters', {
     "__STYX_TYPE__": typing.Literal["fslnvols"],
     "infile": InputPathType,
@@ -155,7 +157,9 @@ def fslnvols(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLNVOLS_METADATA)
-    params = fslnvols_params(infile=infile)
+    params = fslnvols_params(
+        infile=infile,
+    )
     return fslnvols_execute(params, execution)
 
 

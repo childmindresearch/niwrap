@@ -11,6 +11,8 @@ THRESHOLD_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ThresholdImageParameters = typing.TypedDict('ThresholdImageParameters', {
     "__STYX_TYPE__": typing.Literal["ThresholdImage"],
     "image_dimension": int,
@@ -244,7 +246,18 @@ def threshold_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(THRESHOLD_IMAGE_METADATA)
-    params = threshold_image_params(image_dimension=image_dimension, image_in=image_in, out_image=out_image, threshlo=threshlo, threshhi=threshhi, inside_value=inside_value, outside_value=outside_value, otsu_number_of_thresholds=otsu_number_of_thresholds, kmeans_number_of_thresholds=kmeans_number_of_thresholds, mask_image=mask_image)
+    params = threshold_image_params(
+        image_dimension=image_dimension,
+        image_in=image_in,
+        out_image=out_image,
+        threshlo=threshlo,
+        threshhi=threshhi,
+        inside_value=inside_value,
+        outside_value=outside_value,
+        otsu_number_of_thresholds=otsu_number_of_thresholds,
+        kmeans_number_of_thresholds=kmeans_number_of_thresholds,
+        mask_image=mask_image,
+    )
     return threshold_image_execute(params, execution)
 
 

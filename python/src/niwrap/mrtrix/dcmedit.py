@@ -11,17 +11,23 @@ DCMEDIT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DcmeditTagParameters = typing.TypedDict('DcmeditTagParameters', {
     "__STYX_TYPE__": typing.Literal["tag"],
     "group": str,
     "element": str,
     "newvalue": str,
 })
+
+
 DcmeditConfigParameters = typing.TypedDict('DcmeditConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DcmeditParameters = typing.TypedDict('DcmeditParameters', {
     "__STYX_TYPE__": typing.Literal["dcmedit"],
     "anonymise": bool,
@@ -404,7 +410,20 @@ def dcmedit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMEDIT_METADATA)
-    params = dcmedit_params(anonymise=anonymise, id_=id_, tag=tag, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, file=file)
+    params = dcmedit_params(
+        anonymise=anonymise,
+        id_=id_,
+        tag=tag,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        file=file,
+    )
     return dcmedit_execute(params, execution)
 
 

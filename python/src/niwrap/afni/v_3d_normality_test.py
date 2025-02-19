@@ -11,6 +11,8 @@ V_3D_NORMALITY_TEST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNormalityTestParameters = typing.TypedDict('V3dNormalityTestParameters', {
     "__STYX_TYPE__": typing.Literal["3dNormalityTest"],
     "input": InputPathType,
@@ -189,7 +191,12 @@ def v_3d_normality_test(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NORMALITY_TEST_METADATA)
-    params = v_3d_normality_test_params(input_=input_, prefix=prefix, noexp=noexp, pval=pval)
+    params = v_3d_normality_test_params(
+        input_=input_,
+        prefix=prefix,
+        noexp=noexp,
+        pval=pval,
+    )
     return v_3d_normality_test_execute(params, execution)
 
 

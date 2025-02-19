@@ -11,6 +11,8 @@ MRIS_LABEL_AREA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisLabelAreaParameters = typing.TypedDict('MrisLabelAreaParameters', {
     "__STYX_TYPE__": typing.Literal["mris_label_area"],
     "pct_flag": bool,
@@ -217,7 +219,16 @@ def mris_label_area(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LABEL_AREA_METADATA)
-    params = mris_label_area_params(pct_flag=pct_flag, log_file=log_file, brain_vol=brain_vol, subject_name=subject_name, hemi=hemi, surf_name=surf_name, annot_name=annot_name, labels=labels)
+    params = mris_label_area_params(
+        pct_flag=pct_flag,
+        log_file=log_file,
+        brain_vol=brain_vol,
+        subject_name=subject_name,
+        hemi=hemi,
+        surf_name=surf_name,
+        annot_name=annot_name,
+        labels=labels,
+    )
     return mris_label_area_execute(params, execution)
 
 

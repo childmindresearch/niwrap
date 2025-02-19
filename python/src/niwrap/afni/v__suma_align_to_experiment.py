@@ -11,6 +11,8 @@ V__SUMA_ALIGN_TO_EXPERIMENT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSumaAlignToExperimentParameters = typing.TypedDict('VSumaAlignToExperimentParameters', {
     "__STYX_TYPE__": typing.Literal["@SUMA_AlignToExperiment"],
     "exp_anat": InputPathType,
@@ -385,7 +387,28 @@ def v__suma_align_to_experiment(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_ALIGN_TO_EXPERIMENT_METADATA)
-    params = v__suma_align_to_experiment_params(exp_anat=exp_anat, surf_anat=surf_anat, dxyz=dxyz, out_dxyz=out_dxyz, wd=wd, al=al, al_opt=al_opt, ok_change_view=ok_change_view, strip_skull=strip_skull, skull_strip_opt=skull_strip_opt, align_centers=align_centers, init_xform=init_xform, ea_clip_below=ea_clip_below, prefix=prefix, surf_anat_followers=surf_anat_followers, followers_interp=followers_interp, atlas_followers=atlas_followers, echo=echo, keep_tmp=keep_tmp, overwrite_resp=overwrite_resp)
+    params = v__suma_align_to_experiment_params(
+        exp_anat=exp_anat,
+        surf_anat=surf_anat,
+        dxyz=dxyz,
+        out_dxyz=out_dxyz,
+        wd=wd,
+        al=al,
+        al_opt=al_opt,
+        ok_change_view=ok_change_view,
+        strip_skull=strip_skull,
+        skull_strip_opt=skull_strip_opt,
+        align_centers=align_centers,
+        init_xform=init_xform,
+        ea_clip_below=ea_clip_below,
+        prefix=prefix,
+        surf_anat_followers=surf_anat_followers,
+        followers_interp=followers_interp,
+        atlas_followers=atlas_followers,
+        echo=echo,
+        keep_tmp=keep_tmp,
+        overwrite_resp=overwrite_resp,
+    )
     return v__suma_align_to_experiment_execute(params, execution)
 
 

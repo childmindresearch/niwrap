@@ -11,6 +11,8 @@ SAMP_BIAS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SampBiasParameters = typing.TypedDict('SampBiasParameters', {
     "__STYX_TYPE__": typing.Literal["SampBias"],
     "specfile": InputPathType,
@@ -223,7 +225,14 @@ def samp_bias(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SAMP_BIAS_METADATA)
-    params = samp_bias_params(specfile=specfile, surfname=surfname, plimit=plimit, dlimit=dlimit, outfile=outfile, prefix=prefix)
+    params = samp_bias_params(
+        specfile=specfile,
+        surfname=surfname,
+        plimit=plimit,
+        dlimit=dlimit,
+        outfile=outfile,
+        prefix=prefix,
+    )
     return samp_bias_execute(params, execution)
 
 

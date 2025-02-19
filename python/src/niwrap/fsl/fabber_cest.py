@@ -11,6 +11,8 @@ FABBER_CEST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FabberCestParameters = typing.TypedDict('FabberCestParameters', {
     "__STYX_TYPE__": typing.Literal["fabber_cest"],
 })
@@ -189,7 +191,8 @@ def fabber_cest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_CEST_METADATA)
-    params = fabber_cest_params()
+    params = fabber_cest_params(
+    )
     return fabber_cest_execute(params, execution)
 
 

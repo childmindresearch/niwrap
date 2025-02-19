@@ -11,6 +11,8 @@ PERFUSION_SUBTRACT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PerfusionSubtractParameters = typing.TypedDict('PerfusionSubtractParameters', {
     "__STYX_TYPE__": typing.Literal["perfusion_subtract"],
     "four_d_input": InputPathType,
@@ -178,7 +180,11 @@ def perfusion_subtract(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PERFUSION_SUBTRACT_METADATA)
-    params = perfusion_subtract_params(four_d_input=four_d_input, four_d_output=four_d_output, control_first_flag=control_first_flag)
+    params = perfusion_subtract_params(
+        four_d_input=four_d_input,
+        four_d_output=four_d_output,
+        control_first_flag=control_first_flag,
+    )
     return perfusion_subtract_execute(params, execution)
 
 

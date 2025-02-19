@@ -11,6 +11,8 @@ MATCH_SMOOTHING_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MatchSmoothingParameters = typing.TypedDict('MatchSmoothingParameters', {
     "__STYX_TYPE__": typing.Literal["match_smoothing"],
     "example_func": InputPathType,
@@ -182,7 +184,12 @@ def match_smoothing(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MATCH_SMOOTHING_METADATA)
-    params = match_smoothing_params(example_func=example_func, func_smoothing_fwhm=func_smoothing_fwhm, example_structural=example_structural, standard_space_resolution=standard_space_resolution)
+    params = match_smoothing_params(
+        example_func=example_func,
+        func_smoothing_fwhm=func_smoothing_fwhm,
+        example_structural=example_structural,
+        standard_space_resolution=standard_space_resolution,
+    )
     return match_smoothing_execute(params, execution)
 
 

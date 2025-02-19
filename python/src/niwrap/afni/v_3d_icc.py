@@ -11,6 +11,8 @@ V_3D_ICC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dIccParameters = typing.TypedDict('V3dIccParameters', {
     "__STYX_TYPE__": typing.Literal["3dICC"],
     "model": str,
@@ -208,7 +210,12 @@ def v_3d_icc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ICC_METADATA)
-    params = v_3d_icc_params(model=model, prefix=prefix, mask=mask, data_table=data_table)
+    params = v_3d_icc_params(
+        model=model,
+        prefix=prefix,
+        mask=mask,
+        data_table=data_table,
+    )
     return v_3d_icc_execute(params, execution)
 
 

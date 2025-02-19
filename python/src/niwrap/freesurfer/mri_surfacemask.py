@@ -11,6 +11,8 @@ MRI_SURFACEMASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSurfacemaskParameters = typing.TypedDict('MriSurfacemaskParameters', {
     "__STYX_TYPE__": typing.Literal["mri_surfacemask"],
     "input_volume": InputPathType,
@@ -177,7 +179,11 @@ def mri_surfacemask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SURFACEMASK_METADATA)
-    params = mri_surfacemask_params(input_volume=input_volume, input_surface=input_surface, output_volume=output_volume)
+    params = mri_surfacemask_params(
+        input_volume=input_volume,
+        input_surface=input_surface,
+        output_volume=output_volume,
+    )
     return mri_surfacemask_execute(params, execution)
 
 

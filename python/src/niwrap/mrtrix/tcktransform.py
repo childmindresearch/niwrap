@@ -11,11 +11,15 @@ TCKTRANSFORM_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TcktransformConfigParameters = typing.TypedDict('TcktransformConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TcktransformParameters = typing.TypedDict('TcktransformParameters', {
     "__STYX_TYPE__": typing.Literal["tcktransform"],
     "info": bool,
@@ -309,7 +313,19 @@ def tcktransform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKTRANSFORM_METADATA)
-    params = tcktransform_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks, transform=transform, output=output)
+    params = tcktransform_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks=tracks,
+        transform=transform,
+        output=output,
+    )
     return tcktransform_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3DINFILL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dinfillParameters = typing.TypedDict('V3dinfillParameters', {
     "__STYX_TYPE__": typing.Literal["3dinfill"],
     "input": InputPathType,
@@ -276,7 +278,18 @@ def v_3dinfill(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DINFILL_METADATA)
-    params = v_3dinfill_params(input_=input_, prefix=prefix, niter=niter, blend=blend, minhits=minhits, ed=ed, mask=mask, mask_range=mask_range, mrange=mrange, cmask=cmask)
+    params = v_3dinfill_params(
+        input_=input_,
+        prefix=prefix,
+        niter=niter,
+        blend=blend,
+        minhits=minhits,
+        ed=ed,
+        mask=mask,
+        mask_range=mask_range,
+        mrange=mrange,
+        cmask=cmask,
+    )
     return v_3dinfill_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SAMSEGMESH2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Samsegmesh2surfParameters = typing.TypedDict('Samsegmesh2surfParameters', {
     "__STYX_TYPE__": typing.Literal["samsegmesh2surf"],
     "atlas_mesh": InputPathType,
@@ -225,7 +227,14 @@ def samsegmesh2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SAMSEGMESH2SURF_METADATA)
-    params = samsegmesh2surf_params(atlas_mesh=atlas_mesh, template=template, lta_transform=lta_transform, output_surface=output_surface, output_priors=output_priors, invert_flag=invert_flag)
+    params = samsegmesh2surf_params(
+        atlas_mesh=atlas_mesh,
+        template=template,
+        lta_transform=lta_transform,
+        output_surface=output_surface,
+        output_priors=output_priors,
+        invert_flag=invert_flag,
+    )
     return samsegmesh2surf_execute(params, execution)
 
 

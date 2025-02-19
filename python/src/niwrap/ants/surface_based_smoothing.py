@@ -11,6 +11,8 @@ SURFACE_BASED_SMOOTHING_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SurfaceBasedSmoothingParameters = typing.TypedDict('SurfaceBasedSmoothingParameters', {
     "__STYX_TYPE__": typing.Literal["SurfaceBasedSmoothing"],
     "image_to_smooth": InputPathType,
@@ -193,7 +195,13 @@ def surface_based_smoothing(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_BASED_SMOOTHING_METADATA)
-    params = surface_based_smoothing_params(image_to_smooth=image_to_smooth, sigma=sigma, surface_image=surface_image, outname=outname, num_repeats=num_repeats)
+    params = surface_based_smoothing_params(
+        image_to_smooth=image_to_smooth,
+        sigma=sigma,
+        surface_image=surface_image,
+        outname=outname,
+        num_repeats=num_repeats,
+    )
     return surface_based_smoothing_execute(params, execution)
 
 

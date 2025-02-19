@@ -11,11 +11,15 @@ V_5TTCHECK_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 V5ttcheckConfigParameters = typing.TypedDict('V5ttcheckConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 V5ttcheckParameters = typing.TypedDict('V5ttcheckParameters', {
     "__STYX_TYPE__": typing.Literal["5ttcheck"],
     "voxels": typing.NotRequired[str | None],
@@ -307,7 +311,18 @@ def v_5ttcheck(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TTCHECK_METADATA)
-    params = v_5ttcheck_params(voxels=voxels, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_)
+    params = v_5ttcheck_params(
+        voxels=voxels,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+    )
     return v_5ttcheck_execute(params, execution)
 
 

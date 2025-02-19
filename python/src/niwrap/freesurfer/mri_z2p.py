@@ -11,6 +11,8 @@ MRI_Z2P_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriZ2pParameters = typing.TypedDict('MriZ2pParameters', {
     "__STYX_TYPE__": typing.Literal["mri_z2p"],
     "z_volume": InputPathType,
@@ -271,7 +273,20 @@ def mri_z2p(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_Z2P_METADATA)
-    params = mri_z2p_params(z_volume=z_volume, p_volume=p_volume, sig_volume=sig_volume, mask_volume=mask_volume, two_sided=two_sided, one_sided=one_sided, signed=signed, feat=feat, feat_format=feat_format, img_format=img_format, debug=debug, check_opts=check_opts)
+    params = mri_z2p_params(
+        z_volume=z_volume,
+        p_volume=p_volume,
+        sig_volume=sig_volume,
+        mask_volume=mask_volume,
+        two_sided=two_sided,
+        one_sided=one_sided,
+        signed=signed,
+        feat=feat,
+        feat_format=feat_format,
+        img_format=img_format,
+        debug=debug,
+        check_opts=check_opts,
+    )
     return mri_z2p_execute(params, execution)
 
 

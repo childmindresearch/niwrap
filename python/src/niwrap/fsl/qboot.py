@@ -11,6 +11,8 @@ QBOOT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 QbootParameters = typing.TypedDict('QbootParameters', {
     "__STYX_TYPE__": typing.Literal["qboot"],
     "data_file": InputPathType,
@@ -390,7 +392,29 @@ def qboot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QBOOT_METADATA)
-    params = qboot_params(data_file=data_file, mask_file=mask_file, bvecs_file=bvecs_file, bvals_file=bvals_file, log_dir=log_dir, forcedir_flag=forcedir_flag, q_file=q_file, model_type=model_type, lmax_order=lmax_order, npeaks=npeaks, threshold=threshold, num_samples=num_samples, lambda_param=lambda_param, delta_param=delta_param, alpha_param=alpha_param, seed_param=seed_param, gfa_flag=gfa_flag, savecoeff_flag=savecoeff_flag, savemeancoeff_flag=savemeancoeff_flag, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = qboot_params(
+        data_file=data_file,
+        mask_file=mask_file,
+        bvecs_file=bvecs_file,
+        bvals_file=bvals_file,
+        log_dir=log_dir,
+        forcedir_flag=forcedir_flag,
+        q_file=q_file,
+        model_type=model_type,
+        lmax_order=lmax_order,
+        npeaks=npeaks,
+        threshold=threshold,
+        num_samples=num_samples,
+        lambda_param=lambda_param,
+        delta_param=delta_param,
+        alpha_param=alpha_param,
+        seed_param=seed_param,
+        gfa_flag=gfa_flag,
+        savecoeff_flag=savecoeff_flag,
+        savemeancoeff_flag=savemeancoeff_flag,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return qboot_execute(params, execution)
 
 

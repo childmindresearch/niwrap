@@ -11,27 +11,37 @@ CIFTI_REPLACE_STRUCTURE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiReplaceStructureVolumeAllParameters = typing.TypedDict('CiftiReplaceStructureVolumeAllParameters', {
     "__STYX_TYPE__": typing.Literal["volume_all"],
     "volume": InputPathType,
     "opt_from_cropped": bool,
 })
+
+
 CiftiReplaceStructureLabelParameters = typing.TypedDict('CiftiReplaceStructureLabelParameters', {
     "__STYX_TYPE__": typing.Literal["label"],
     "structure": str,
     "label": InputPathType,
 })
+
+
 CiftiReplaceStructureMetricParameters = typing.TypedDict('CiftiReplaceStructureMetricParameters', {
     "__STYX_TYPE__": typing.Literal["metric"],
     "structure": str,
     "metric": InputPathType,
 })
+
+
 CiftiReplaceStructureVolumeParameters = typing.TypedDict('CiftiReplaceStructureVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "structure": str,
     "volume": InputPathType,
     "opt_from_cropped": bool,
 })
+
+
 CiftiReplaceStructureParameters = typing.TypedDict('CiftiReplaceStructureParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-replace-structure"],
     "cifti": str,
@@ -512,7 +522,16 @@ def cifti_replace_structure(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_REPLACE_STRUCTURE_METADATA)
-    params = cifti_replace_structure_params(cifti=cifti, direction=direction, volume_all=volume_all, opt_discard_unused_labels=opt_discard_unused_labels, opt_label_collision_action=opt_label_collision_action, label=label, metric=metric, volume=volume)
+    params = cifti_replace_structure_params(
+        cifti=cifti,
+        direction=direction,
+        volume_all=volume_all,
+        opt_discard_unused_labels=opt_discard_unused_labels,
+        opt_label_collision_action=opt_label_collision_action,
+        label=label,
+        metric=metric,
+        volume=volume,
+    )
     return cifti_replace_structure_execute(params, execution)
 
 

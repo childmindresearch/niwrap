@@ -11,6 +11,8 @@ POSSUM_MATRIX_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PossumMatrixParameters = typing.TypedDict('PossumMatrixParameters', {
     "__STYX_TYPE__": typing.Literal["possum_matrix"],
     "pulse_sequence": str,
@@ -230,7 +232,15 @@ def possum_matrix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_MATRIX_METADATA)
-    params = possum_matrix_params(pulse_sequence=pulse_sequence, motion_matrix=motion_matrix, output_matrix=output_matrix, verbose_flag=verbose_flag, help_flag=help_flag, old_version_flag=old_version_flag, segment_size=segment_size)
+    params = possum_matrix_params(
+        pulse_sequence=pulse_sequence,
+        motion_matrix=motion_matrix,
+        output_matrix=output_matrix,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+        old_version_flag=old_version_flag,
+        segment_size=segment_size,
+    )
     return possum_matrix_execute(params, execution)
 
 

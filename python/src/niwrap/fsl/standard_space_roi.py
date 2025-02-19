@@ -11,6 +11,8 @@ STANDARD_SPACE_ROI_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 StandardSpaceRoiParameters = typing.TypedDict('StandardSpaceRoiParameters', {
     "__STYX_TYPE__": typing.Literal["standard_space_roi"],
     "infile": InputPathType,
@@ -274,7 +276,20 @@ def standard_space_roi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(STANDARD_SPACE_ROI_METADATA)
-    params = standard_space_roi_params(infile=infile, outfile=outfile, mask_fov_flag=mask_fov_flag, mask_mask=mask_mask, mask_none_flag=mask_none_flag, roi_fov_flag=roi_fov_flag, roi_mask=roi_mask, roi_none_flag=roi_none_flag, ss_ref=ss_ref, alt_input=alt_input, debug_flag=debug_flag, bet_premask_flag=bet_premask_flag)
+    params = standard_space_roi_params(
+        infile=infile,
+        outfile=outfile,
+        mask_fov_flag=mask_fov_flag,
+        mask_mask=mask_mask,
+        mask_none_flag=mask_none_flag,
+        roi_fov_flag=roi_fov_flag,
+        roi_mask=roi_mask,
+        roi_none_flag=roi_none_flag,
+        ss_ref=ss_ref,
+        alt_input=alt_input,
+        debug_flag=debug_flag,
+        bet_premask_flag=bet_premask_flag,
+    )
     return standard_space_roi_execute(params, execution)
 
 

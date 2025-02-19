@@ -11,6 +11,8 @@ V_1DGEN_ARMA11_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dgenArma11Parameters = typing.TypedDict('V1dgenArma11Parameters', {
     "__STYX_TYPE__": typing.Literal["1dgenARMA11"],
     "length_alt": typing.NotRequired[float | None],
@@ -292,7 +294,19 @@ def v_1dgen_arma11(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DGEN_ARMA11_METADATA)
-    params = v_1dgen_arma11_params(length_alt=length_alt, num_series=num_series, param_a=param_a, param_b=param_b, param_lam=param_lam, std_dev=std_dev, normalize=normalize, seed=seed, corcut=corcut, arma31=arma31, arma51=arma51)
+    params = v_1dgen_arma11_params(
+        length_alt=length_alt,
+        num_series=num_series,
+        param_a=param_a,
+        param_b=param_b,
+        param_lam=param_lam,
+        std_dev=std_dev,
+        normalize=normalize,
+        seed=seed,
+        corcut=corcut,
+        arma31=arma31,
+        arma51=arma51,
+    )
     return v_1dgen_arma11_execute(params, execution)
 
 

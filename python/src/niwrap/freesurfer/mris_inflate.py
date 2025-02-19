@@ -11,6 +11,8 @@ MRIS_INFLATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisInflateParameters = typing.TypedDict('MrisInflateParameters', {
     "__STYX_TYPE__": typing.Literal["mris_inflate"],
     "input_surface": InputPathType,
@@ -248,7 +250,17 @@ def mris_inflate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INFLATE_METADATA)
-    params = mris_inflate_params(input_surface=input_surface, output_surface=output_surface, max_iterations=max_iterations, snapshot_interval=snapshot_interval, dist_coefficient=dist_coefficient, no_save_sulc=no_save_sulc, sulcname=sulcname, mm_flag=mm_flag, scale_flag=scale_flag)
+    params = mris_inflate_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        max_iterations=max_iterations,
+        snapshot_interval=snapshot_interval,
+        dist_coefficient=dist_coefficient,
+        no_save_sulc=no_save_sulc,
+        sulcname=sulcname,
+        mm_flag=mm_flag,
+        scale_flag=scale_flag,
+    )
     return mris_inflate_execute(params, execution)
 
 

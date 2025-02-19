@@ -11,6 +11,8 @@ SURF_FWHM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfFwhmParameters = typing.TypedDict('SurfFwhmParameters', {
     "__STYX_TYPE__": typing.Literal["SurfFWHM"],
     "input_file": InputPathType,
@@ -320,7 +322,22 @@ def surf_fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_FWHM_METADATA)
-    params = surf_fwhm_params(input_file=input_file, mask=mask, surf_1=surf_1, surf_sphere=surf_sphere, clean=clean, detrend=detrend, detpoly=detpoly, detprefix=detprefix, prefix=prefix, vox_size=vox_size, neighborhood=neighborhood, ok_warn=ok_warn, examples=examples, slice_=slice_)
+    params = surf_fwhm_params(
+        input_file=input_file,
+        mask=mask,
+        surf_1=surf_1,
+        surf_sphere=surf_sphere,
+        clean=clean,
+        detrend=detrend,
+        detpoly=detpoly,
+        detprefix=detprefix,
+        prefix=prefix,
+        vox_size=vox_size,
+        neighborhood=neighborhood,
+        ok_warn=ok_warn,
+        examples=examples,
+        slice_=slice_,
+    )
     return surf_fwhm_execute(params, execution)
 
 

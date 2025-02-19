@@ -11,6 +11,8 @@ MRIS_SMOOTH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSmoothParameters = typing.TypedDict('MrisSmoothParameters', {
     "__STYX_TYPE__": typing.Literal["mris_smooth"],
     "input_surface": InputPathType,
@@ -282,7 +284,19 @@ def mris_smooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SMOOTH_METADATA)
-    params = mris_smooth_params(input_surface=input_surface, output_surface=output_surface, average_iters=average_iters, smoothing_iters=smoothing_iters, no_write=no_write, curvature_name=curvature_name, area_name=area_name, gaussian_params=gaussian_params, normalize_area=normalize_area, momentum=momentum, snapshot_interval=snapshot_interval)
+    params = mris_smooth_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        average_iters=average_iters,
+        smoothing_iters=smoothing_iters,
+        no_write=no_write,
+        curvature_name=curvature_name,
+        area_name=area_name,
+        gaussian_params=gaussian_params,
+        normalize_area=normalize_area,
+        momentum=momentum,
+        snapshot_interval=snapshot_interval,
+    )
     return mris_smooth_execute(params, execution)
 
 

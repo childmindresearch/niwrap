@@ -11,6 +11,8 @@ AIV_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AivParameters = typing.TypedDict('AivParameters', {
     "__STYX_TYPE__": typing.Literal["aiv"],
     "verbose": bool,
@@ -209,7 +211,14 @@ def aiv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AIV_METADATA)
-    params = aiv_params(verbose=verbose, quiet=quiet, title=title, port=port, pad=pad, input_images=input_images)
+    params = aiv_params(
+        verbose=verbose,
+        quiet=quiet,
+        title=title,
+        port=port,
+        pad=pad,
+        input_images=input_images,
+    )
     return aiv_execute(params, execution)
 
 

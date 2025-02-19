@@ -11,6 +11,8 @@ LABEL_MODIFY_KEYS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelModifyKeysParameters = typing.TypedDict('LabelModifyKeysParameters', {
     "__STYX_TYPE__": typing.Literal["label-modify-keys"],
     "label_in": InputPathType,
@@ -216,7 +218,12 @@ def label_modify_keys(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_MODIFY_KEYS_METADATA)
-    params = label_modify_keys_params(label_in=label_in, remap_file=remap_file, label_out=label_out, opt_column_column=opt_column_column)
+    params = label_modify_keys_params(
+        label_in=label_in,
+        remap_file=remap_file,
+        label_out=label_out,
+        opt_column_column=opt_column_column,
+    )
     return label_modify_keys_execute(params, execution)
 
 

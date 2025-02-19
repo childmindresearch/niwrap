@@ -11,6 +11,8 @@ IMCP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ImcpParameters = typing.TypedDict('ImcpParameters', {
     "__STYX_TYPE__": typing.Literal["imcp"],
     "infiles": list[InputPathType],
@@ -166,7 +168,10 @@ def imcp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMCP_METADATA)
-    params = imcp_params(infiles=infiles, output_location=output_location)
+    params = imcp_params(
+        infiles=infiles,
+        output_location=output_location,
+    )
     return imcp_execute(params, execution)
 
 

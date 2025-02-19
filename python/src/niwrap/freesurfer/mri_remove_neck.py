@@ -11,6 +11,8 @@ MRI_REMOVE_NECK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRemoveNeckParameters = typing.TypedDict('MriRemoveNeckParameters', {
     "__STYX_TYPE__": typing.Literal["mri_remove_neck"],
     "input_volume": InputPathType,
@@ -180,7 +182,12 @@ def mri_remove_neck(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_REMOVE_NECK_METADATA)
-    params = mri_remove_neck_params(input_volume=input_volume, transform=transform, gca=gca, output_volume=output_volume)
+    params = mri_remove_neck_params(
+        input_volume=input_volume,
+        transform=transform,
+        gca=gca,
+        output_volume=output_volume,
+    )
     return mri_remove_neck_execute(params, execution)
 
 

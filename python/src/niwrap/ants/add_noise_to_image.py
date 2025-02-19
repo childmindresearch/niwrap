@@ -11,6 +11,8 @@ ADD_NOISE_TO_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AddNoiseToImageParameters = typing.TypedDict('AddNoiseToImageParameters', {
     "__STYX_TYPE__": typing.Literal["AddNoiseToImage"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -214,7 +216,13 @@ def add_noise_to_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADD_NOISE_TO_IMAGE_METADATA)
-    params = add_noise_to_image_params(image_dimensionality=image_dimensionality, input_image=input_image, noise_model=noise_model, output=output, verbose=verbose)
+    params = add_noise_to_image_params(
+        image_dimensionality=image_dimensionality,
+        input_image=input_image,
+        noise_model=noise_model,
+        output=output,
+        verbose=verbose,
+    )
     return add_noise_to_image_execute(params, execution)
 
 

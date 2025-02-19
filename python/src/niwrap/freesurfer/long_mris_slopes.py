@@ -11,6 +11,8 @@ LONG_MRIS_SLOPES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongMrisSlopesParameters = typing.TypedDict('LongMrisSlopesParameters', {
     "__STYX_TYPE__": typing.Literal["long_mris_slopes"],
     "qdec": InputPathType,
@@ -524,7 +526,42 @@ def long_mris_slopes(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_MRIS_SLOPES_METADATA)
-    params = long_mris_slopes_params(qdec=qdec, meas=meas, hemi=hemi, sd=sd, do_avg=do_avg, do_rate=do_rate, do_pc1fit=do_pc1fit, do_pc1=do_pc1, do_spc=do_spc, do_stack=do_stack, do_label=do_label, qcache=qcache, resid=resid, fwhm=fwhm, nosmooth=nosmooth, time_=time_, generic_time=generic_time, in_label=in_label, jac=jac, name_avg=name_avg, name_rate=name_rate, name_pc1fit=name_pc1fit, name_pc1=name_pc1, name_spc=name_spc, name_resid=name_resid, out_stack=out_stack, out_label=out_label, isec_labels=isec_labels, stack_avg=stack_avg, stack_rate=stack_rate, stack_pc1fit=stack_pc1fit, stack_pc1=stack_pc1, stack_spc=stack_spc, stack_resid=stack_resid)
+    params = long_mris_slopes_params(
+        qdec=qdec,
+        meas=meas,
+        hemi=hemi,
+        sd=sd,
+        do_avg=do_avg,
+        do_rate=do_rate,
+        do_pc1fit=do_pc1fit,
+        do_pc1=do_pc1,
+        do_spc=do_spc,
+        do_stack=do_stack,
+        do_label=do_label,
+        qcache=qcache,
+        resid=resid,
+        fwhm=fwhm,
+        nosmooth=nosmooth,
+        time_=time_,
+        generic_time=generic_time,
+        in_label=in_label,
+        jac=jac,
+        name_avg=name_avg,
+        name_rate=name_rate,
+        name_pc1fit=name_pc1fit,
+        name_pc1=name_pc1,
+        name_spc=name_spc,
+        name_resid=name_resid,
+        out_stack=out_stack,
+        out_label=out_label,
+        isec_labels=isec_labels,
+        stack_avg=stack_avg,
+        stack_rate=stack_rate,
+        stack_pc1fit=stack_pc1fit,
+        stack_pc1=stack_pc1,
+        stack_spc=stack_spc,
+        stack_resid=stack_resid,
+    )
     return long_mris_slopes_execute(params, execution)
 
 

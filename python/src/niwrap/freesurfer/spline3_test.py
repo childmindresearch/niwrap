@@ -11,6 +11,8 @@ SPLINE3_TEST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Spline3TestParameters = typing.TypedDict('Spline3TestParameters', {
     "__STYX_TYPE__": typing.Literal["Spline3_test"],
     "x_values": list[float],
@@ -176,7 +178,11 @@ def spline3_test(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPLINE3_TEST_METADATA)
-    params = spline3_test_params(x_values=x_values, y_values=y_values, x_new_values=x_new_values)
+    params = spline3_test_params(
+        x_values=x_values,
+        y_values=y_values,
+        x_new_values=x_new_values,
+    )
     return spline3_test_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ APQC_MAKE_TCSH_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ApqcMakeTcshPyParameters = typing.TypedDict('ApqcMakeTcshPyParameters', {
     "__STYX_TYPE__": typing.Literal["apqc_make_tcsh.py"],
     "uvar_json": InputPathType,
@@ -224,7 +226,13 @@ def apqc_make_tcsh_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APQC_MAKE_TCSH_PY_METADATA)
-    params = apqc_make_tcsh_py_params(uvar_json=uvar_json, subj_dir=subj_dir, review_style=review_style, mot_grayplot_off=mot_grayplot_off, vstat_list=vstat_list)
+    params = apqc_make_tcsh_py_params(
+        uvar_json=uvar_json,
+        subj_dir=subj_dir,
+        review_style=review_style,
+        mot_grayplot_off=mot_grayplot_off,
+        vstat_list=vstat_list,
+    )
     return apqc_make_tcsh_py_execute(params, execution)
 
 

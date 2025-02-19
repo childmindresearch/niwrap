@@ -11,6 +11,8 @@ AFNI_RUN_R_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniRunRParameters = typing.TypedDict('AfniRunRParameters', {
     "__STYX_TYPE__": typing.Literal["afni_run_R"],
     "r_script": InputPathType,
@@ -162,7 +164,10 @@ def afni_run_r(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_RUN_R_METADATA)
-    params = afni_run_r_params(r_script=r_script, r_args=r_args)
+    params = afni_run_r_params(
+        r_script=r_script,
+        r_args=r_args,
+    )
     return afni_run_r_execute(params, execution)
 
 

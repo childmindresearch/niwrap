@@ -11,6 +11,8 @@ MRI_RF_LONG_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRfLongTrainParameters = typing.TypedDict('MriRfLongTrainParameters', {
     "__STYX_TYPE__": typing.Literal["mri_rf_long_train"],
     "seg_dir": str,
@@ -246,7 +248,17 @@ def mri_rf_long_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RF_LONG_TRAIN_METADATA)
-    params = mri_rf_long_train_params(seg_dir=seg_dir, xform=xform, mask=mask, node_spacing=node_spacing, prior_spacing=prior_spacing, input_data=input_data, check=check, subjects=subjects, output_rfa=output_rfa)
+    params = mri_rf_long_train_params(
+        seg_dir=seg_dir,
+        xform=xform,
+        mask=mask,
+        node_spacing=node_spacing,
+        prior_spacing=prior_spacing,
+        input_data=input_data,
+        check=check,
+        subjects=subjects,
+        output_rfa=output_rfa,
+    )
     return mri_rf_long_train_execute(params, execution)
 
 

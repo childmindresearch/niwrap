@@ -11,6 +11,8 @@ METRIC_FIND_CLUSTERS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricFindClustersParameters = typing.TypedDict('MetricFindClustersParameters', {
     "__STYX_TYPE__": typing.Literal["metric-find-clusters"],
     "surface": InputPathType,
@@ -300,7 +302,20 @@ def metric_find_clusters(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_FIND_CLUSTERS_METADATA)
-    params = metric_find_clusters_params(surface=surface, metric_in=metric_in, value_threshold=value_threshold, minimum_area=minimum_area, metric_out=metric_out, opt_less_than=opt_less_than, opt_roi_roi_metric=opt_roi_roi_metric, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric, opt_column_column=opt_column_column, opt_size_ratio_ratio=opt_size_ratio_ratio, opt_distance_distance=opt_distance_distance, opt_start_startval=opt_start_startval)
+    params = metric_find_clusters_params(
+        surface=surface,
+        metric_in=metric_in,
+        value_threshold=value_threshold,
+        minimum_area=minimum_area,
+        metric_out=metric_out,
+        opt_less_than=opt_less_than,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+        opt_column_column=opt_column_column,
+        opt_size_ratio_ratio=opt_size_ratio_ratio,
+        opt_distance_distance=opt_distance_distance,
+        opt_start_startval=opt_start_startval,
+    )
     return metric_find_clusters_execute(params, execution)
 
 

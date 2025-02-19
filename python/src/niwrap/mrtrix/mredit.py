@@ -11,28 +11,38 @@ MREDIT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MreditPlaneParameters = typing.TypedDict('MreditPlaneParameters', {
     "__STYX_TYPE__": typing.Literal["plane"],
     "axis": int,
     "coord": list[int],
     "value": float,
 })
+
+
 MreditSphereParameters = typing.TypedDict('MreditSphereParameters', {
     "__STYX_TYPE__": typing.Literal["sphere"],
     "position": list[float],
     "radius": float,
     "value": float,
 })
+
+
 MreditVoxelParameters = typing.TypedDict('MreditVoxelParameters', {
     "__STYX_TYPE__": typing.Literal["voxel"],
     "position": list[float],
     "value": float,
 })
+
+
 MreditConfigParameters = typing.TypedDict('MreditConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MreditParameters = typing.TypedDict('MreditParameters', {
     "__STYX_TYPE__": typing.Literal["mredit"],
     "plane": typing.NotRequired[list[MreditPlaneParameters] | None],
@@ -500,7 +510,22 @@ def mredit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MREDIT_METADATA)
-    params = mredit_params(plane=plane, sphere=sphere, voxel=voxel, scanner=scanner, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = mredit_params(
+        plane=plane,
+        sphere=sphere,
+        voxel=voxel,
+        scanner=scanner,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return mredit_execute(params, execution)
 
 

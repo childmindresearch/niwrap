@@ -11,6 +11,8 @@ CONVERT_TRANSFORM_FILE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ConvertTransformFileParameters = typing.TypedDict('ConvertTransformFileParameters', {
     "__STYX_TYPE__": typing.Literal["ConvertTransformFile"],
     "dimensions": int,
@@ -176,7 +178,11 @@ def convert_transform_file(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_TRANSFORM_FILE_METADATA)
-    params = convert_transform_file_params(dimensions=dimensions, input_transform_file=input_transform_file, output_transform_file=output_transform_file)
+    params = convert_transform_file_params(
+        dimensions=dimensions,
+        input_transform_file=input_transform_file,
+        output_transform_file=output_transform_file,
+    )
     return convert_transform_file_execute(params, execution)
 
 

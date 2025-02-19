@@ -11,6 +11,8 @@ MRIS_MULTISCALE_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMultiscaleStatsParameters = typing.TypedDict('MrisMultiscaleStatsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_multiscale_stats"],
     "output_subject": str,
@@ -195,7 +197,14 @@ def mris_multiscale_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MULTISCALE_STATS_METADATA)
-    params = mris_multiscale_stats_params(output_subject=output_subject, hemi=hemi, surf=surf, curv=curv, class1_subjects=class1_subjects, class2_subjects=class2_subjects)
+    params = mris_multiscale_stats_params(
+        output_subject=output_subject,
+        hemi=hemi,
+        surf=surf,
+        curv=curv,
+        class1_subjects=class1_subjects,
+        class2_subjects=class2_subjects,
+    )
     return mris_multiscale_stats_execute(params, execution)
 
 

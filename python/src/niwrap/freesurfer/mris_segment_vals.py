@@ -11,6 +11,8 @@ MRIS_SEGMENT_VALS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSegmentValsParameters = typing.TypedDict('MrisSegmentValsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_segment_vals"],
     "input_surface": InputPathType,
@@ -197,7 +199,13 @@ def mris_segment_vals(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SEGMENT_VALS_METADATA)
-    params = mris_segment_vals_params(input_surface=input_surface, input_curv_file=input_curv_file, output_curv_file=output_curv_file, threshold=threshold, area_thresh=area_thresh)
+    params = mris_segment_vals_params(
+        input_surface=input_surface,
+        input_curv_file=input_curv_file,
+        output_curv_file=output_curv_file,
+        threshold=threshold,
+        area_thresh=area_thresh,
+    )
     return mris_segment_vals_execute(params, execution)
 
 

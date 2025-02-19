@@ -11,6 +11,8 @@ V__FIND_AFNI_DSET_PATH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFindAfniDsetPathParameters = typing.TypedDict('VFindAfniDsetPathParameters', {
     "__STYX_TYPE__": typing.Literal["@FindAfniDsetPath"],
     "dsetname": str,
@@ -179,7 +181,12 @@ def v__find_afni_dset_path(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FIND_AFNI_DSET_PATH_METADATA)
-    params = v__find_afni_dset_path_params(dsetname=dsetname, append_file=append_file, full_path=full_path, help_=help_)
+    params = v__find_afni_dset_path_params(
+        dsetname=dsetname,
+        append_file=append_file,
+        full_path=full_path,
+        help_=help_,
+    )
     return v__find_afni_dset_path_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CIFTI_LABEL_ADJACENCY_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiLabelAdjacencyParameters = typing.TypedDict('CiftiLabelAdjacencyParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-label-adjacency"],
     "label_in": InputPathType,
@@ -219,7 +221,13 @@ def cifti_label_adjacency(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_LABEL_ADJACENCY_METADATA)
-    params = cifti_label_adjacency_params(label_in=label_in, adjacency_out=adjacency_out, opt_left_surface_surface=opt_left_surface_surface, opt_right_surface_surface=opt_right_surface_surface, opt_cerebellum_surface_surface=opt_cerebellum_surface_surface)
+    params = cifti_label_adjacency_params(
+        label_in=label_in,
+        adjacency_out=adjacency_out,
+        opt_left_surface_surface=opt_left_surface_surface,
+        opt_right_surface_surface=opt_right_surface_surface,
+        opt_cerebellum_surface_surface=opt_cerebellum_surface_surface,
+    )
     return cifti_label_adjacency_execute(params, execution)
 
 

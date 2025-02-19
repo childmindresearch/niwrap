@@ -11,6 +11,8 @@ DMRI_VOX2VOX_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriVox2voxParameters = typing.TypedDict('DmriVox2voxParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_vox2vox"],
     "input_files": list[InputPathType],
@@ -280,7 +282,21 @@ def dmri_vox2vox(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_VOX2VOX_METADATA)
-    params = dmri_vox2vox_params(input_files=input_files, input_directory=input_directory, output_files=output_files, output_directory=output_directory, input_reference=input_reference, output_reference=output_reference, affine_registration=affine_registration, nonlinear_registration=nonlinear_registration, inverse_nonlinear=inverse_nonlinear, debug=debug, check_options=check_options, help_=help_, version=version)
+    params = dmri_vox2vox_params(
+        input_files=input_files,
+        input_directory=input_directory,
+        output_files=output_files,
+        output_directory=output_directory,
+        input_reference=input_reference,
+        output_reference=output_reference,
+        affine_registration=affine_registration,
+        nonlinear_registration=nonlinear_registration,
+        inverse_nonlinear=inverse_nonlinear,
+        debug=debug,
+        check_options=check_options,
+        help_=help_,
+        version=version,
+    )
     return dmri_vox2vox_execute(params, execution)
 
 

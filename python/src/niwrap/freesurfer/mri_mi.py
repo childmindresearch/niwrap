@@ -11,6 +11,8 @@ MRI_MI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMiParameters = typing.TypedDict('MriMiParameters', {
     "__STYX_TYPE__": typing.Literal["mri_mi"],
     "input_file1": InputPathType,
@@ -184,7 +186,12 @@ def mri_mi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MI_METADATA)
-    params = mri_mi_params(input_file1=input_file1, input_file2=input_file2, bins=bins, silent=silent)
+    params = mri_mi_params(
+        input_file1=input_file1,
+        input_file2=input_file2,
+        bins=bins,
+        silent=silent,
+    )
     return mri_mi_execute(params, execution)
 
 

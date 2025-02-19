@@ -11,6 +11,8 @@ MRI_MC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMcParameters = typing.TypedDict('MriMcParameters', {
     "__STYX_TYPE__": typing.Literal["mri_mc"],
     "input_volume": InputPathType,
@@ -185,7 +187,12 @@ def mri_mc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MC_METADATA)
-    params = mri_mc_params(input_volume=input_volume, label_value=label_value, output_surface=output_surface, connectivity=connectivity)
+    params = mri_mc_params(
+        input_volume=input_volume,
+        label_value=label_value,
+        output_surface=output_surface,
+        connectivity=connectivity,
+    )
     return mri_mc_execute(params, execution)
 
 

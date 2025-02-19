@@ -11,6 +11,8 @@ CP_DICOM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CpDicomParameters = typing.TypedDict('CpDicomParameters', {
     "__STYX_TYPE__": typing.Literal["cp-dicom"],
     "dicom_dir": str,
@@ -178,7 +180,11 @@ def cp_dicom(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CP_DICOM_METADATA)
-    params = cp_dicom_params(dicom_dir=dicom_dir, output_dir=output_dir, debug=debug)
+    params = cp_dicom_params(
+        dicom_dir=dicom_dir,
+        output_dir=output_dir,
+        debug=debug,
+    )
     return cp_dicom_execute(params, execution)
 
 

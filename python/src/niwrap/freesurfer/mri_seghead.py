@@ -11,6 +11,8 @@ MRI_SEGHEAD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegheadParameters = typing.TypedDict('MriSegheadParameters', {
     "__STYX_TYPE__": typing.Literal["mri_seghead"],
     "input_volume": str,
@@ -320,7 +322,23 @@ def mri_seghead(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGHEAD_METADATA)
-    params = mri_seghead_params(input_volume=input_volume, output_volume=output_volume, fill_value=fill_value, fhi_value=fhi_value, thresh1_value=thresh1_value, thresh2_value=thresh2_value, threshold=threshold, nhitsmin_value=nhitsmin_value, hvoldat_file=hvoldat_file, signal_behind_head=signal_behind_head, rescale=rescale, fill_holes_islands=fill_holes_islands, seed_point=seed_point, or_mask_file=or_mask_file, gdiag_option=gdiag_option)
+    params = mri_seghead_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        fill_value=fill_value,
+        fhi_value=fhi_value,
+        thresh1_value=thresh1_value,
+        thresh2_value=thresh2_value,
+        threshold=threshold,
+        nhitsmin_value=nhitsmin_value,
+        hvoldat_file=hvoldat_file,
+        signal_behind_head=signal_behind_head,
+        rescale=rescale,
+        fill_holes_islands=fill_holes_islands,
+        seed_point=seed_point,
+        or_mask_file=or_mask_file,
+        gdiag_option=gdiag_option,
+    )
     return mri_seghead_execute(params, execution)
 
 

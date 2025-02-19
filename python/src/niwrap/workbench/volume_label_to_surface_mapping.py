@@ -11,6 +11,8 @@ VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeLabelToSurfaceMappingRibbonConstrainedParameters = typing.TypedDict('VolumeLabelToSurfaceMappingRibbonConstrainedParameters', {
     "__STYX_TYPE__": typing.Literal["ribbon_constrained"],
     "inner_surf": InputPathType,
@@ -19,6 +21,8 @@ VolumeLabelToSurfaceMappingRibbonConstrainedParameters = typing.TypedDict('Volum
     "opt_voxel_subdiv_subdiv_num": typing.NotRequired[int | None],
     "opt_thin_columns": bool,
 })
+
+
 VolumeLabelToSurfaceMappingParameters = typing.TypedDict('VolumeLabelToSurfaceMappingParameters', {
     "__STYX_TYPE__": typing.Literal["volume-label-to-surface-mapping"],
     "volume": InputPathType,
@@ -305,7 +309,13 @@ def volume_label_to_surface_mapping(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA)
-    params = volume_label_to_surface_mapping_params(volume=volume, surface=surface, label_out=label_out, ribbon_constrained=ribbon_constrained, opt_subvol_select_subvol=opt_subvol_select_subvol)
+    params = volume_label_to_surface_mapping_params(
+        volume=volume,
+        surface=surface,
+        label_out=label_out,
+        ribbon_constrained=ribbon_constrained,
+        opt_subvol_select_subvol=opt_subvol_select_subvol,
+    )
     return volume_label_to_surface_mapping_execute(params, execution)
 
 

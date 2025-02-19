@@ -11,6 +11,8 @@ MRIS_AA_SHRINKWRAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisAaShrinkwrapParameters = typing.TypedDict('MrisAaShrinkwrapParameters', {
     "__STYX_TYPE__": typing.Literal["mris_AA_shrinkwrap"],
     "t1_vol": InputPathType,
@@ -217,7 +219,15 @@ def mris_aa_shrinkwrap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_AA_SHRINKWRAP_METADATA)
-    params = mris_aa_shrinkwrap_params(t1_vol=t1_vol, pd_vol=pd_vol, output_dir=output_dir, omit_self_intersection=omit_self_intersection, create_curvature_area=create_curvature_area, average_curvature=average_curvature, white_only=white_only)
+    params = mris_aa_shrinkwrap_params(
+        t1_vol=t1_vol,
+        pd_vol=pd_vol,
+        output_dir=output_dir,
+        omit_self_intersection=omit_self_intersection,
+        create_curvature_area=create_curvature_area,
+        average_curvature=average_curvature,
+        white_only=white_only,
+    )
     return mris_aa_shrinkwrap_execute(params, execution)
 
 

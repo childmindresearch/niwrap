@@ -11,6 +11,8 @@ VERTEXVOL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 VertexvolParameters = typing.TypedDict('VertexvolParameters', {
     "__STYX_TYPE__": typing.Literal["vertexvol"],
     "subject": str,
@@ -190,7 +192,12 @@ def vertexvol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VERTEXVOL_METADATA)
-    params = vertexvol_params(subject=subject, right_hemisphere=right_hemisphere, output_file=output_file, no_th3=no_th3)
+    params = vertexvol_params(
+        subject=subject,
+        right_hemisphere=right_hemisphere,
+        output_file=output_file,
+        no_th3=no_th3,
+    )
     return vertexvol_execute(params, execution)
 
 

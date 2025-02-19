@@ -11,6 +11,8 @@ V__GET_AFNI_RES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VGetAfniResParameters = typing.TypedDict('VGetAfniResParameters', {
     "__STYX_TYPE__": typing.Literal["@GetAfniRes"],
     "output_type": typing.NotRequired[typing.Literal["-min", "-max", "-mean"] | None],
@@ -165,7 +167,10 @@ def v__get_afni_res(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_RES_METADATA)
-    params = v__get_afni_res_params(output_type=output_type, input_dataset=input_dataset)
+    params = v__get_afni_res_params(
+        output_type=output_type,
+        input_dataset=input_dataset,
+    )
     return v__get_afni_res_execute(params, execution)
 
 

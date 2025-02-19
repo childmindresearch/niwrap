@@ -11,6 +11,8 @@ FABBER_QBOLD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FabberQboldParameters = typing.TypedDict('FabberQboldParameters', {
     "__STYX_TYPE__": typing.Literal["fabber_qbold"],
     "output_dir": str,
@@ -556,7 +558,43 @@ def fabber_qbold(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_QBOLD_METADATA)
-    params = fabber_qbold_params(output_dir=output_dir, method=method, model=model, data=data, data_n=data_n, data_order=data_order, mask=mask, mt_n=mt_n, suppdata=suppdata, listmethods=listmethods, listmodels=listmodels, listparams=listparams, descparams=descparams, listoutputs=listoutputs, evaluate=evaluate, evaluate_params=evaluate_params, evaluate_nt=evaluate_nt, simple_output=simple_output, overwrite=overwrite, link_latest=link_latest, loadmodels=loadmodels, dump_param_names=dump_param_names, save_model_fit=save_model_fit, save_residuals=save_residuals, save_model_extras=save_model_extras, save_mvn=save_mvn, save_mean=save_mean, save_std=save_std, save_var=save_var, save_zstat=save_zstat, save_noise_mean=save_noise_mean, save_noise_std=save_noise_std, save_free_energy=save_free_energy, optfile=optfile, debug=debug)
+    params = fabber_qbold_params(
+        output_dir=output_dir,
+        method=method,
+        model=model,
+        data=data,
+        data_n=data_n,
+        data_order=data_order,
+        mask=mask,
+        mt_n=mt_n,
+        suppdata=suppdata,
+        listmethods=listmethods,
+        listmodels=listmodels,
+        listparams=listparams,
+        descparams=descparams,
+        listoutputs=listoutputs,
+        evaluate=evaluate,
+        evaluate_params=evaluate_params,
+        evaluate_nt=evaluate_nt,
+        simple_output=simple_output,
+        overwrite=overwrite,
+        link_latest=link_latest,
+        loadmodels=loadmodels,
+        dump_param_names=dump_param_names,
+        save_model_fit=save_model_fit,
+        save_residuals=save_residuals,
+        save_model_extras=save_model_extras,
+        save_mvn=save_mvn,
+        save_mean=save_mean,
+        save_std=save_std,
+        save_var=save_var,
+        save_zstat=save_zstat,
+        save_noise_mean=save_noise_mean,
+        save_noise_std=save_noise_std,
+        save_free_energy=save_free_energy,
+        optfile=optfile,
+        debug=debug,
+    )
     return fabber_qbold_execute(params, execution)
 
 

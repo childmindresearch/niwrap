@@ -11,19 +11,27 @@ TCKMAP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckmapVariousStringParameters = typing.TypedDict('TckmapVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 TckmapVariousFileParameters = typing.TypedDict('TckmapVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 TckmapConfigParameters = typing.TypedDict('TckmapConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckmapParameters = typing.TypedDict('TckmapParameters', {
     "__STYX_TYPE__": typing.Literal["tckmap"],
     "template": typing.NotRequired[InputPathType | None],
@@ -716,7 +724,36 @@ def tckmap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKMAP_METADATA)
-    params = tckmap_params(template=template, vox=vox, datatype=datatype, dec=dec, dixel=dixel, tod=tod, contrast=contrast, image=image, vector_file=vector_file, stat_vox=stat_vox, stat_tck=stat_tck, fwhm_tck=fwhm_tck, map_zero=map_zero, backtrack=backtrack, upsample=upsample, precise=precise, ends_only=ends_only, tck_weights_in=tck_weights_in, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks, output=output)
+    params = tckmap_params(
+        template=template,
+        vox=vox,
+        datatype=datatype,
+        dec=dec,
+        dixel=dixel,
+        tod=tod,
+        contrast=contrast,
+        image=image,
+        vector_file=vector_file,
+        stat_vox=stat_vox,
+        stat_tck=stat_tck,
+        fwhm_tck=fwhm_tck,
+        map_zero=map_zero,
+        backtrack=backtrack,
+        upsample=upsample,
+        precise=precise,
+        ends_only=ends_only,
+        tck_weights_in=tck_weights_in,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks=tracks,
+        output=output,
+    )
     return tckmap_execute(params, execution)
 
 

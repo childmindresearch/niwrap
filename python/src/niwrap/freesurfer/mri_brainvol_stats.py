@@ -11,6 +11,8 @@ MRI_BRAINVOL_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriBrainvolStatsParameters = typing.TypedDict('MriBrainvolStatsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_brainvol_stats"],
     "subject_id": str,
@@ -210,7 +212,13 @@ def mri_brainvol_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_BRAINVOL_STATS_METADATA)
-    params = mri_brainvol_stats_params(subject_id=subject_id, xml_string=xml_string, no_surface=no_surface, include_segmentation=include_segmentation, output_file=output_file)
+    params = mri_brainvol_stats_params(
+        subject_id=subject_id,
+        xml_string=xml_string,
+        no_surface=no_surface,
+        include_segmentation=include_segmentation,
+        output_file=output_file,
+    )
     return mri_brainvol_stats_execute(params, execution)
 
 

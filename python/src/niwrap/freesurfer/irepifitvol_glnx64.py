@@ -11,6 +11,8 @@ IREPIFITVOL_GLNX64_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IrepifitvolGlnx64Parameters = typing.TypedDict('IrepifitvolGlnx64Parameters', {
     "__STYX_TYPE__": typing.Literal["irepifitvol.glnx64"],
     "input_file": InputPathType,
@@ -168,7 +170,10 @@ def irepifitvol_glnx64(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IREPIFITVOL_GLNX64_METADATA)
-    params = irepifitvol_glnx64_params(input_file=input_file, output_file=output_file)
+    params = irepifitvol_glnx64_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return irepifitvol_glnx64_execute(params, execution)
 
 

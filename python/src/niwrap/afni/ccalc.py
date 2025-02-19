@@ -11,6 +11,8 @@ CCALC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 CcalcParameters = typing.TypedDict('CcalcParameters', {
     "__STYX_TYPE__": typing.Literal["ccalc"],
     "format": typing.NotRequired[str | None],
@@ -174,7 +176,10 @@ def ccalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CCALC_METADATA)
-    params = ccalc_params(format_=format_, expr=expr)
+    params = ccalc_params(
+        format_=format_,
+        expr=expr,
+    )
     return ccalc_execute(params, execution)
 
 

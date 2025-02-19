@@ -11,6 +11,8 @@ FNAME2EXT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Fname2extParameters = typing.TypedDict('Fname2extParameters', {
     "__STYX_TYPE__": typing.Literal["fname2ext"],
     "filename": str,
@@ -161,7 +163,9 @@ def fname2ext(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FNAME2EXT_METADATA)
-    params = fname2ext_params(filename=filename)
+    params = fname2ext_params(
+        filename=filename,
+    )
     return fname2ext_execute(params, execution)
 
 

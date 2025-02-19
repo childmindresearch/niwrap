@@ -11,6 +11,8 @@ DTIFIT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 DtifitParameters = typing.TypedDict('DtifitParameters', {
     "__STYX_TYPE__": typing.Literal["dtifit"],
     "data_file": InputPathType,
@@ -371,7 +373,28 @@ def dtifit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DTIFIT_METADATA)
-    params = dtifit_params(data_file=data_file, output_basename=output_basename, mask_file=mask_file, bvec_file=bvec_file, bval_file=bval_file, verbose_flag=verbose_flag, sse_flag=sse_flag, wls_flag=wls_flag, kurt_flag=kurt_flag, kurtdir_flag=kurtdir_flag, littlebit_flag=littlebit_flag, save_tensor_flag=save_tensor_flag, zmin=zmin, zmax=zmax, ymin=ymin, ymax=ymax, xmin=xmin, xmax=xmax, gradnonlin_file=gradnonlin_file, confound_regressors=confound_regressors)
+    params = dtifit_params(
+        data_file=data_file,
+        output_basename=output_basename,
+        mask_file=mask_file,
+        bvec_file=bvec_file,
+        bval_file=bval_file,
+        verbose_flag=verbose_flag,
+        sse_flag=sse_flag,
+        wls_flag=wls_flag,
+        kurt_flag=kurt_flag,
+        kurtdir_flag=kurtdir_flag,
+        littlebit_flag=littlebit_flag,
+        save_tensor_flag=save_tensor_flag,
+        zmin=zmin,
+        zmax=zmax,
+        ymin=ymin,
+        ymax=ymax,
+        xmin=xmin,
+        xmax=xmax,
+        gradnonlin_file=gradnonlin_file,
+        confound_regressors=confound_regressors,
+    )
     return dtifit_execute(params, execution)
 
 

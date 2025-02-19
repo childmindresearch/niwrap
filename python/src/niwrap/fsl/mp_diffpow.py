@@ -11,6 +11,8 @@ MP_DIFFPOW_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MpDiffpowParameters = typing.TypedDict('MpDiffpowParameters', {
     "__STYX_TYPE__": typing.Literal["mp_diffpow"],
     "reg_file": InputPathType,
@@ -175,7 +177,10 @@ def mp_diffpow(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MP_DIFFPOW_METADATA)
-    params = mp_diffpow_params(reg_file=reg_file, diff_reg_file=diff_reg_file)
+    params = mp_diffpow_params(
+        reg_file=reg_file,
+        diff_reg_file=diff_reg_file,
+    )
     return mp_diffpow_execute(params, execution)
 
 

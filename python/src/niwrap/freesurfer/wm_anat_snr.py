@@ -11,6 +11,8 @@ WM_ANAT_SNR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 WmAnatSnrParameters = typing.TypedDict('WmAnatSnrParameters', {
     "__STYX_TYPE__": typing.Literal["wm-anat-snr"],
     "subject": str,
@@ -222,7 +224,15 @@ def wm_anat_snr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WM_ANAT_SNR_METADATA)
-    params = wm_anat_snr_params(subject=subject, output_file=output_file, force=force, nerode=nerode, tmp_dir=tmp_dir, cleanup=cleanup, no_cleanup=no_cleanup)
+    params = wm_anat_snr_params(
+        subject=subject,
+        output_file=output_file,
+        force=force,
+        nerode=nerode,
+        tmp_dir=tmp_dir,
+        cleanup=cleanup,
+        no_cleanup=no_cleanup,
+    )
     return wm_anat_snr_execute(params, execution)
 
 

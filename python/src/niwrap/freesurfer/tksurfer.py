@@ -11,6 +11,8 @@ TKSURFER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TksurferParameters = typing.TypedDict('TksurferParameters', {
     "__STYX_TYPE__": typing.Literal["tksurfer"],
     "subject_id": str,
@@ -178,7 +180,12 @@ def tksurfer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKSURFER_METADATA)
-    params = tksurfer_params(subject_id=subject_id, hemisphere=hemisphere, surface_name=surface_name, options=options)
+    params = tksurfer_params(
+        subject_id=subject_id,
+        hemisphere=hemisphere,
+        surface_name=surface_name,
+        options=options,
+    )
     return tksurfer_execute(params, execution)
 
 

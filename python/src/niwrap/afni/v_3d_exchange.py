@@ -11,6 +11,8 @@ V_3D_EXCHANGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dExchangeParameters = typing.TypedDict('V3dExchangeParameters', {
     "__STYX_TYPE__": typing.Literal["3dExchange"],
     "prefix": str,
@@ -205,7 +207,13 @@ def v_3d_exchange(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EXCHANGE_METADATA)
-    params = v_3d_exchange_params(prefix=prefix, infile=infile, mapfile=mapfile, version=version, help_=help_)
+    params = v_3d_exchange_params(
+        prefix=prefix,
+        infile=infile,
+        mapfile=mapfile,
+        version=version,
+        help_=help_,
+    )
     return v_3d_exchange_execute(params, execution)
 
 

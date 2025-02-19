@@ -11,6 +11,8 @@ DCMDJPEG_FS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DcmdjpegFsParameters = typing.TypedDict('DcmdjpegFsParameters', {
     "__STYX_TYPE__": typing.Literal["dcmdjpeg.fs"],
     "input_file": InputPathType,
@@ -498,7 +500,49 @@ def dcmdjpeg_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMDJPEG_FS_METADATA)
-    params = dcmdjpeg_fs_params(input_file=input_file, output_file=output_file, help_=help_, version=version, arguments=arguments, quiet=quiet, verbose=verbose, debug=debug, log_level=log_level, log_config=log_config, read_file=read_file, read_file_only=read_file_only, read_dataset=read_dataset, conv_photometric=conv_photometric, conv_lossy=conv_lossy, conv_guess=conv_guess, conv_guess_lossy=conv_guess_lossy, conv_always=conv_always, conv_never=conv_never, planar_auto=planar_auto, color_by_pixel=color_by_pixel, color_by_plane=color_by_plane, uid_default=uid_default, uid_always=uid_always, workaround_pred6=workaround_pred6, workaround_incpl=workaround_incpl, write_file=write_file, write_dataset=write_dataset, write_xfer_little=write_xfer_little, write_xfer_big=write_xfer_big, write_xfer_implicit=write_xfer_implicit, enable_new_vr=enable_new_vr, disable_new_vr=disable_new_vr, group_length_recalc=group_length_recalc, group_length_create=group_length_create, group_length_remove=group_length_remove, length_explicit=length_explicit, length_undefined=length_undefined, padding_retain=padding_retain, padding_off=padding_off, padding_create=padding_create)
+    params = dcmdjpeg_fs_params(
+        input_file=input_file,
+        output_file=output_file,
+        help_=help_,
+        version=version,
+        arguments=arguments,
+        quiet=quiet,
+        verbose=verbose,
+        debug=debug,
+        log_level=log_level,
+        log_config=log_config,
+        read_file=read_file,
+        read_file_only=read_file_only,
+        read_dataset=read_dataset,
+        conv_photometric=conv_photometric,
+        conv_lossy=conv_lossy,
+        conv_guess=conv_guess,
+        conv_guess_lossy=conv_guess_lossy,
+        conv_always=conv_always,
+        conv_never=conv_never,
+        planar_auto=planar_auto,
+        color_by_pixel=color_by_pixel,
+        color_by_plane=color_by_plane,
+        uid_default=uid_default,
+        uid_always=uid_always,
+        workaround_pred6=workaround_pred6,
+        workaround_incpl=workaround_incpl,
+        write_file=write_file,
+        write_dataset=write_dataset,
+        write_xfer_little=write_xfer_little,
+        write_xfer_big=write_xfer_big,
+        write_xfer_implicit=write_xfer_implicit,
+        enable_new_vr=enable_new_vr,
+        disable_new_vr=disable_new_vr,
+        group_length_recalc=group_length_recalc,
+        group_length_create=group_length_create,
+        group_length_remove=group_length_remove,
+        length_explicit=length_explicit,
+        length_undefined=length_undefined,
+        padding_retain=padding_retain,
+        padding_off=padding_off,
+        padding_create=padding_create,
+    )
     return dcmdjpeg_fs_execute(params, execution)
 
 

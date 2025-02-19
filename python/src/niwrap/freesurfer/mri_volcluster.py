@@ -11,6 +11,8 @@ MRI_VOLCLUSTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriVolclusterParameters = typing.TypedDict('MriVolclusterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_volcluster"],
     "input_file": InputPathType,
@@ -701,7 +703,56 @@ def mri_volcluster(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOLCLUSTER_METADATA)
-    params = mri_volcluster_params(input_file=input_file, summary_file=summary_file, output_volid=output_volid, output_cluster_num_volid=output_cluster_num_volid, cwsig_volid=cwsig_volid, pointset_file=pointset_file, min_threshold=min_threshold, max_threshold=max_threshold, sign=sign, no_adjust_flag=no_adjust_flag, match_value=match_value, cwpval_threshold=cwpval_threshold, registration_file=registration_file, mni152reg_flag=mni152reg_flag, regheader_subject=regheader_subject, fsaverage_flag=fsaverage_flag, frame_number=frame_number, csd_files=csd_files, cwsig_map=cwsig_map, vwsig_map=vwsig_map, max_cwpval_file=max_cwpval_file, csdpdf_file=csdpdf_file, csdpdf_only_flag=csdpdf_only_flag, fwhm_value=fwhm_value, fwhm_file=fwhm_file, min_size=min_size, min_size_vox=min_size_vox, min_distance=min_distance, allow_diag_flag=allow_diag_flag, bonferroni_number=bonferroni_number, bonferroni_max_number=bonferroni_max_number, sig2p_max_flag=sig2p_max_flag, gte_flag=gte_flag, mask_volid=mask_volid, mask_type=mask_type, mask_frame=mask_frame, mask_threshold=mask_threshold, mask_sign=mask_sign, mask_invert_flag=mask_invert_flag, out_mask_volid=out_mask_volid, out_mask_type=out_mask_type, label_file=label_file, nlabel_cluster=nlabel_cluster, label_base=label_base, synth_func=synth_func, diagnostic_level=diagnostic_level, fill_params=fill_params, help_flag=help_flag)
+    params = mri_volcluster_params(
+        input_file=input_file,
+        summary_file=summary_file,
+        output_volid=output_volid,
+        output_cluster_num_volid=output_cluster_num_volid,
+        cwsig_volid=cwsig_volid,
+        pointset_file=pointset_file,
+        min_threshold=min_threshold,
+        max_threshold=max_threshold,
+        sign=sign,
+        no_adjust_flag=no_adjust_flag,
+        match_value=match_value,
+        cwpval_threshold=cwpval_threshold,
+        registration_file=registration_file,
+        mni152reg_flag=mni152reg_flag,
+        regheader_subject=regheader_subject,
+        fsaverage_flag=fsaverage_flag,
+        frame_number=frame_number,
+        csd_files=csd_files,
+        cwsig_map=cwsig_map,
+        vwsig_map=vwsig_map,
+        max_cwpval_file=max_cwpval_file,
+        csdpdf_file=csdpdf_file,
+        csdpdf_only_flag=csdpdf_only_flag,
+        fwhm_value=fwhm_value,
+        fwhm_file=fwhm_file,
+        min_size=min_size,
+        min_size_vox=min_size_vox,
+        min_distance=min_distance,
+        allow_diag_flag=allow_diag_flag,
+        bonferroni_number=bonferroni_number,
+        bonferroni_max_number=bonferroni_max_number,
+        sig2p_max_flag=sig2p_max_flag,
+        gte_flag=gte_flag,
+        mask_volid=mask_volid,
+        mask_type=mask_type,
+        mask_frame=mask_frame,
+        mask_threshold=mask_threshold,
+        mask_sign=mask_sign,
+        mask_invert_flag=mask_invert_flag,
+        out_mask_volid=out_mask_volid,
+        out_mask_type=out_mask_type,
+        label_file=label_file,
+        nlabel_cluster=nlabel_cluster,
+        label_base=label_base,
+        synth_func=synth_func,
+        diagnostic_level=diagnostic_level,
+        fill_params=fill_params,
+        help_flag=help_flag,
+    )
     return mri_volcluster_execute(params, execution)
 
 

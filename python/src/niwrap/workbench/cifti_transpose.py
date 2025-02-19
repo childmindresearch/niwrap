@@ -11,6 +11,8 @@ CIFTI_TRANSPOSE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiTransposeParameters = typing.TypedDict('CiftiTransposeParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-transpose"],
     "cifti_in": InputPathType,
@@ -187,7 +189,11 @@ def cifti_transpose(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_TRANSPOSE_METADATA)
-    params = cifti_transpose_params(cifti_in=cifti_in, cifti_out=cifti_out, opt_mem_limit_limit_gb=opt_mem_limit_limit_gb)
+    params = cifti_transpose_params(
+        cifti_in=cifti_in,
+        cifti_out=cifti_out,
+        opt_mem_limit_limit_gb=opt_mem_limit_limit_gb,
+    )
     return cifti_transpose_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSLCPGEOM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslcpgeomParameters = typing.TypedDict('FslcpgeomParameters', {
     "__STYX_TYPE__": typing.Literal["fslcpgeom"],
     "source_file": InputPathType,
@@ -170,7 +172,11 @@ def fslcpgeom(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLCPGEOM_METADATA)
-    params = fslcpgeom_params(source_file=source_file, destination_file=destination_file, dimensions_flag=dimensions_flag)
+    params = fslcpgeom_params(
+        source_file=source_file,
+        destination_file=destination_file,
+        dimensions_flag=dimensions_flag,
+    )
     return fslcpgeom_execute(params, execution)
 
 

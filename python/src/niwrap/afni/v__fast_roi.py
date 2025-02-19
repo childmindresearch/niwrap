@@ -11,6 +11,8 @@ V__FAST_ROI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFastRoiParameters = typing.TypedDict('VFastRoiParameters', {
     "__STYX_TYPE__": typing.Literal["@fast_roi"],
     "region": list[str],
@@ -264,7 +266,18 @@ def v__fast_roi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FAST_ROI_METADATA)
-    params = v__fast_roi_params(region=region, drawn_roi=drawn_roi, anat=anat, anat_ns=anat_ns, base=base, roi_grid=roi_grid, prefix=prefix, time_=time_, twopass=twopass, help_=help_)
+    params = v__fast_roi_params(
+        region=region,
+        drawn_roi=drawn_roi,
+        anat=anat,
+        anat_ns=anat_ns,
+        base=base,
+        roi_grid=roi_grid,
+        prefix=prefix,
+        time_=time_,
+        twopass=twopass,
+        help_=help_,
+    )
     return v__fast_roi_execute(params, execution)
 
 

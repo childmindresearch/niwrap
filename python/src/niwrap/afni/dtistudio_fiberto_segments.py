@@ -11,6 +11,8 @@ DTISTUDIO_FIBERTO_SEGMENTS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 DtistudioFibertoSegmentsParameters = typing.TypedDict('DtistudioFibertoSegmentsParameters', {
     "__STYX_TYPE__": typing.Literal["DTIStudioFibertoSegments"],
     "dataset": InputPathType,
@@ -179,7 +181,11 @@ def dtistudio_fiberto_segments(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DTISTUDIO_FIBERTO_SEGMENTS_METADATA)
-    params = dtistudio_fiberto_segments_params(dataset=dataset, output_file=output_file, swap_flag=swap_flag)
+    params = dtistudio_fiberto_segments_params(
+        dataset=dataset,
+        output_file=output_file,
+        swap_flag=swap_flag,
+    )
     return dtistudio_fiberto_segments_execute(params, execution)
 
 

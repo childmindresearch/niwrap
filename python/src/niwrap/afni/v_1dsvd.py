@@ -11,6 +11,8 @@ V_1DSVD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dsvdParameters = typing.TypedDict('V1dsvdParameters', {
     "__STYX_TYPE__": typing.Literal["1dsvd"],
     "one": bool,
@@ -245,7 +247,19 @@ def v_1dsvd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DSVD_METADATA)
-    params = v_1dsvd_params(one=one, vmean=vmean, vnorm=vnorm, cond=cond, sing=sing, sort=sort, nosort=nosort, asort=asort, left_eigenvectors=left_eigenvectors, num_eigenvectors=num_eigenvectors, input_files=input_files)
+    params = v_1dsvd_params(
+        one=one,
+        vmean=vmean,
+        vnorm=vnorm,
+        cond=cond,
+        sing=sing,
+        sort=sort,
+        nosort=nosort,
+        asort=asort,
+        left_eigenvectors=left_eigenvectors,
+        num_eigenvectors=num_eigenvectors,
+        input_files=input_files,
+    )
     return v_1dsvd_execute(params, execution)
 
 

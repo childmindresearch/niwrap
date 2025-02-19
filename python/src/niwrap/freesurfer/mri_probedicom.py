@@ -11,6 +11,8 @@ MRI_PROBEDICOM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriProbedicomParameters = typing.TypedDict('MriProbedicomParameters', {
     "__STYX_TYPE__": typing.Literal["mri_probedicom"],
     "dicom_file": InputPathType,
@@ -183,7 +185,11 @@ def mri_probedicom(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PROBEDICOM_METADATA)
-    params = mri_probedicom_params(dicom_file=dicom_file, option1=option1, option2=option2)
+    params = mri_probedicom_params(
+        dicom_file=dicom_file,
+        option1=option1,
+        option2=option2,
+    )
     return mri_probedicom_execute(params, execution)
 
 

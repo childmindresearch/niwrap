@@ -11,26 +11,36 @@ CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCreateDenseScalarVolumeParameters = typing.TypedDict('CiftiCreateDenseScalarVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "volume_data": InputPathType,
     "structure_label_volume": InputPathType,
 })
+
+
 CiftiCreateDenseScalarLeftMetricParameters = typing.TypedDict('CiftiCreateDenseScalarLeftMetricParameters', {
     "__STYX_TYPE__": typing.Literal["left_metric"],
     "metric": InputPathType,
     "opt_roi_left_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateDenseScalarRightMetricParameters = typing.TypedDict('CiftiCreateDenseScalarRightMetricParameters', {
     "__STYX_TYPE__": typing.Literal["right_metric"],
     "metric": InputPathType,
     "opt_roi_right_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateDenseScalarCerebellumMetricParameters = typing.TypedDict('CiftiCreateDenseScalarCerebellumMetricParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_metric"],
     "metric": InputPathType,
     "opt_roi_cerebellum_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateDenseScalarParameters = typing.TypedDict('CiftiCreateDenseScalarParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-create-dense-scalar"],
     "cifti_out": str,
@@ -502,7 +512,14 @@ def cifti_create_dense_scalar(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_DENSE_SCALAR_METADATA)
-    params = cifti_create_dense_scalar_params(cifti_out=cifti_out, volume=volume, left_metric=left_metric, right_metric=right_metric, cerebellum_metric=cerebellum_metric, opt_name_file_file=opt_name_file_file)
+    params = cifti_create_dense_scalar_params(
+        cifti_out=cifti_out,
+        volume=volume,
+        left_metric=left_metric,
+        right_metric=right_metric,
+        cerebellum_metric=cerebellum_metric,
+        opt_name_file_file=opt_name_file_file,
+    )
     return cifti_create_dense_scalar_execute(params, execution)
 
 

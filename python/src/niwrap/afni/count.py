@@ -11,6 +11,8 @@ COUNT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 CountParameters = typing.TypedDict('CountParameters', {
     "__STYX_TYPE__": typing.Literal["count"],
     "bot": str,
@@ -297,7 +299,22 @@ def count(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COUNT_METADATA)
-    params = count_params(bot=bot, top=top, step=step, seed=seed, sseed=sseed, column=column, digits=digits, form=form, root=root, sep=sep, suffix=suffix, scale=scale, comma=comma, skipnmodm=skipnmodm)
+    params = count_params(
+        bot=bot,
+        top=top,
+        step=step,
+        seed=seed,
+        sseed=sseed,
+        column=column,
+        digits=digits,
+        form=form,
+        root=root,
+        sep=sep,
+        suffix=suffix,
+        scale=scale,
+        comma=comma,
+        skipnmodm=skipnmodm,
+    )
     return count_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ VOLUME_LABEL_TO_ROI_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeLabelToRoiParameters = typing.TypedDict('VolumeLabelToRoiParameters', {
     "__STYX_TYPE__": typing.Literal["volume-label-to-roi"],
     "label_in": InputPathType,
@@ -217,7 +219,13 @@ def volume_label_to_roi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_LABEL_TO_ROI_METADATA)
-    params = volume_label_to_roi_params(label_in=label_in, volume_out=volume_out, opt_name_label_name=opt_name_label_name, opt_key_label_key=opt_key_label_key, opt_map_map=opt_map_map)
+    params = volume_label_to_roi_params(
+        label_in=label_in,
+        volume_out=volume_out,
+        opt_name_label_name=opt_name_label_name,
+        opt_key_label_key=opt_key_label_key,
+        opt_map_map=opt_map_map,
+    )
     return volume_label_to_roi_execute(params, execution)
 
 

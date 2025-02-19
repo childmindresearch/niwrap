@@ -11,6 +11,8 @@ TBSS_3_POSTREG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Tbss3PostregParameters = typing.TypedDict('Tbss3PostregParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_3_postreg"],
     "derive_mean_from_study": bool,
@@ -168,7 +170,10 @@ def tbss_3_postreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_3_POSTREG_METADATA)
-    params = tbss_3_postreg_params(derive_mean_from_study=derive_mean_from_study, use_fmrib58=use_fmrib58)
+    params = tbss_3_postreg_params(
+        derive_mean_from_study=derive_mean_from_study,
+        use_fmrib58=use_fmrib58,
+    )
     return tbss_3_postreg_execute(params, execution)
 
 

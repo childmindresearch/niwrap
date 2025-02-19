@@ -11,6 +11,8 @@ N3_BIAS_FIELD_CORRECTION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 N3BiasFieldCorrectionParameters = typing.TypedDict('N3BiasFieldCorrectionParameters', {
     "__STYX_TYPE__": typing.Literal["N3BiasFieldCorrection"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -323,7 +325,19 @@ def n3_bias_field_correction(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(N3_BIAS_FIELD_CORRECTION_METADATA)
-    params = n3_bias_field_correction_params(image_dimensionality=image_dimensionality, input_image=input_image, mask_image=mask_image, rescale_intensities=rescale_intensities, weight_image=weight_image, shrink_factor=shrink_factor, convergence=convergence, bspline_fitting=bspline_fitting, histogram_sharpening=histogram_sharpening, output=output, verbose=verbose)
+    params = n3_bias_field_correction_params(
+        image_dimensionality=image_dimensionality,
+        input_image=input_image,
+        mask_image=mask_image,
+        rescale_intensities=rescale_intensities,
+        weight_image=weight_image,
+        shrink_factor=shrink_factor,
+        convergence=convergence,
+        bspline_fitting=bspline_fitting,
+        histogram_sharpening=histogram_sharpening,
+        output=output,
+        verbose=verbose,
+    )
     return n3_bias_field_correction_execute(params, execution)
 
 

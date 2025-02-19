@@ -11,6 +11,8 @@ MAKE_AVERAGE_VOLUME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeAverageVolumeParameters = typing.TypedDict('MakeAverageVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["make_average_volume"],
     "subjects": list[str],
@@ -280,7 +282,21 @@ def make_average_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_AVERAGE_VOLUME_METADATA)
-    params = make_average_volume_params(subjects=subjects, fsgd=fsgd, out=out, topdir=topdir, xform=xform, sdir=sdir, force_flag=force_flag, keep_all_orig_flag=keep_all_orig_flag, no_aseg_flag=no_aseg_flag, ctab=ctab, ctab_default_flag=ctab_default_flag, echo_flag=echo_flag, nocleanup_flag=nocleanup_flag)
+    params = make_average_volume_params(
+        subjects=subjects,
+        fsgd=fsgd,
+        out=out,
+        topdir=topdir,
+        xform=xform,
+        sdir=sdir,
+        force_flag=force_flag,
+        keep_all_orig_flag=keep_all_orig_flag,
+        no_aseg_flag=no_aseg_flag,
+        ctab=ctab,
+        ctab_default_flag=ctab_default_flag,
+        echo_flag=echo_flag,
+        nocleanup_flag=nocleanup_flag,
+    )
     return make_average_volume_execute(params, execution)
 
 

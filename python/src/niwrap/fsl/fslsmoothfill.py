@@ -11,6 +11,8 @@ FSLSMOOTHFILL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslsmoothfillParameters = typing.TypedDict('FslsmoothfillParameters', {
     "__STYX_TYPE__": typing.Literal["fslsmoothfill"],
     "input_image": InputPathType,
@@ -211,7 +213,14 @@ def fslsmoothfill(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSMOOTHFILL_METADATA)
-    params = fslsmoothfill_params(input_image=input_image, mask_image=mask_image, output_image=output_image, number_of_iterations=number_of_iterations, debug_flag=debug_flag, verbose_flag=verbose_flag)
+    params = fslsmoothfill_params(
+        input_image=input_image,
+        mask_image=mask_image,
+        output_image=output_image,
+        number_of_iterations=number_of_iterations,
+        debug_flag=debug_flag,
+        verbose_flag=verbose_flag,
+    )
     return fslsmoothfill_execute(params, execution)
 
 

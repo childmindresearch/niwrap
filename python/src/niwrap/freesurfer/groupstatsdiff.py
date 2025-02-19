@@ -11,6 +11,8 @@ GROUPSTATSDIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GroupstatsdiffParameters = typing.TypedDict('GroupstatsdiffParameters', {
     "__STYX_TYPE__": typing.Literal["groupstatsdiff"],
     "group1_dir": str,
@@ -340,7 +342,28 @@ def groupstatsdiff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GROUPSTATSDIFF_METADATA)
-    params = groupstatsdiff_params(group1_dir=group1_dir, group2_dir=group2_dir, output_dir=output_dir, no_maps=no_maps, osgm=osgm, no_common=no_common, allow_subj_diff=allow_subj_diff, no_area=no_area, no_volume=no_volume, no_ba=no_ba, no_aparcstats=no_aparcstats, no_asegstats=no_asegstats, no_wparcstats=no_wparcstats, no_stats=no_stats, no_prune=no_prune, fwhm_value=fwhm_value, subjects_dir1=subjects_dir1, subjects_dir2=subjects_dir2, no_dice=no_dice, dice_ctab=dice_ctab)
+    params = groupstatsdiff_params(
+        group1_dir=group1_dir,
+        group2_dir=group2_dir,
+        output_dir=output_dir,
+        no_maps=no_maps,
+        osgm=osgm,
+        no_common=no_common,
+        allow_subj_diff=allow_subj_diff,
+        no_area=no_area,
+        no_volume=no_volume,
+        no_ba=no_ba,
+        no_aparcstats=no_aparcstats,
+        no_asegstats=no_asegstats,
+        no_wparcstats=no_wparcstats,
+        no_stats=no_stats,
+        no_prune=no_prune,
+        fwhm_value=fwhm_value,
+        subjects_dir1=subjects_dir1,
+        subjects_dir2=subjects_dir2,
+        no_dice=no_dice,
+        dice_ctab=dice_ctab,
+    )
     return groupstatsdiff_execute(params, execution)
 
 

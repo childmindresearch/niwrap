@@ -11,6 +11,8 @@ MRIS_CURVATURE_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCurvatureStatsParameters = typing.TypedDict('MrisCurvatureStatsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_curvature_stats"],
     "subject_name": str,
@@ -168,7 +170,10 @@ def mris_curvature_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CURVATURE_STATS_METADATA)
-    params = mris_curvature_stats_params(subject_name=subject_name, hemisphere=hemisphere)
+    params = mris_curvature_stats_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+    )
     return mris_curvature_stats_execute(params, execution)
 
 

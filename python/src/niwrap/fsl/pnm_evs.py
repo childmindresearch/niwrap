@@ -11,6 +11,8 @@ PNM_EVS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PnmEvsParameters = typing.TypedDict('PnmEvsParameters', {
     "__STYX_TYPE__": typing.Literal["pnm_evs"],
     "input_file": InputPathType,
@@ -392,7 +394,28 @@ def pnm_evs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PNM_EVS_METADATA)
-    params = pnm_evs_params(input_file=input_file, output_file=output_file, tr_value=tr_value, cardiac_file=cardiac_file, respiratory_file=respiratory_file, order_cardiac=order_cardiac, order_respiratory=order_respiratory, order_mult_cardiac=order_mult_cardiac, order_mult_respiratory=order_mult_respiratory, csf_mask=csf_mask, rvt_file=rvt_file, heartrate_file=heartrate_file, rvt_smooth=rvt_smooth, heartrate_smooth=heartrate_smooth, slice_direction=slice_direction, slice_order=slice_order, slice_timing_file=slice_timing_file, debug_flag=debug_flag, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = pnm_evs_params(
+        input_file=input_file,
+        output_file=output_file,
+        tr_value=tr_value,
+        cardiac_file=cardiac_file,
+        respiratory_file=respiratory_file,
+        order_cardiac=order_cardiac,
+        order_respiratory=order_respiratory,
+        order_mult_cardiac=order_mult_cardiac,
+        order_mult_respiratory=order_mult_respiratory,
+        csf_mask=csf_mask,
+        rvt_file=rvt_file,
+        heartrate_file=heartrate_file,
+        rvt_smooth=rvt_smooth,
+        heartrate_smooth=heartrate_smooth,
+        slice_direction=slice_direction,
+        slice_order=slice_order,
+        slice_timing_file=slice_timing_file,
+        debug_flag=debug_flag,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return pnm_evs_execute(params, execution)
 
 

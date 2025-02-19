@@ -11,6 +11,8 @@ FSL_REG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslRegParameters = typing.TypedDict('FslRegParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_reg"],
     "input_file": InputPathType,
@@ -221,7 +223,16 @@ def fsl_reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_REG_METADATA)
-    params = fsl_reg_params(input_file=input_file, reference_file=reference_file, output_file=output_file, estimate_only_flag=estimate_only_flag, affine_only_flag=affine_only_flag, fnirt_fa_config_flag=fnirt_fa_config_flag, flirt_options=flirt_options, fnirt_options=fnirt_options)
+    params = fsl_reg_params(
+        input_file=input_file,
+        reference_file=reference_file,
+        output_file=output_file,
+        estimate_only_flag=estimate_only_flag,
+        affine_only_flag=affine_only_flag,
+        fnirt_fa_config_flag=fnirt_fa_config_flag,
+        flirt_options=flirt_options,
+        fnirt_options=fnirt_options,
+    )
     return fsl_reg_execute(params, execution)
 
 

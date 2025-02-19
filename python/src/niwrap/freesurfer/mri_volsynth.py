@@ -11,6 +11,8 @@ MRI_VOLSYNTH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriVolsynthParameters = typing.TypedDict('MriVolsynthParameters', {
     "__STYX_TYPE__": typing.Literal["mri_volsynth"],
     "output_volid": str,
@@ -646,7 +648,51 @@ def mri_volsynth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOLSYNTH_METADATA)
-    params = mri_volsynth_params(output_volid=output_volid, template=template, nframes=nframes, offset_flag=offset_flag, offset_mid_flag=offset_mid_flag, curv=curv, dim=dim, res=res, vox_size=vox_size, tr=tr, cdircos=cdircos, rdircos=rdircos, sdircos=sdircos, c_ras=c_ras, p0=p0, precision=precision, seed=seed, seedfile=seedfile, pdf=pdf, bb=bb, gmean=gmean, gstd=gstd, delta_crsf=delta_crsf, delta_val=delta_val, delta_val_off=delta_val_off, grid=grid, dof=dof, dof_num=dof_num, dof_den=dof_den, rescale_flag=rescale_flag, val_a=val_a, val_b=val_b, vox_radius=vox_radius, mm_radius=mm_radius, sphere_center=sphere_center, hsc=hsc, abs_flag=abs_flag, cp=cp, spike=spike, fwhm=fwhm, sum2=sum2, dim_surf_flag=dim_surf_flag, ctab=ctab)
+    params = mri_volsynth_params(
+        output_volid=output_volid,
+        template=template,
+        nframes=nframes,
+        offset_flag=offset_flag,
+        offset_mid_flag=offset_mid_flag,
+        curv=curv,
+        dim=dim,
+        res=res,
+        vox_size=vox_size,
+        tr=tr,
+        cdircos=cdircos,
+        rdircos=rdircos,
+        sdircos=sdircos,
+        c_ras=c_ras,
+        p0=p0,
+        precision=precision,
+        seed=seed,
+        seedfile=seedfile,
+        pdf=pdf,
+        bb=bb,
+        gmean=gmean,
+        gstd=gstd,
+        delta_crsf=delta_crsf,
+        delta_val=delta_val,
+        delta_val_off=delta_val_off,
+        grid=grid,
+        dof=dof,
+        dof_num=dof_num,
+        dof_den=dof_den,
+        rescale_flag=rescale_flag,
+        val_a=val_a,
+        val_b=val_b,
+        vox_radius=vox_radius,
+        mm_radius=mm_radius,
+        sphere_center=sphere_center,
+        hsc=hsc,
+        abs_flag=abs_flag,
+        cp=cp,
+        spike=spike,
+        fwhm=fwhm,
+        sum2=sum2,
+        dim_surf_flag=dim_surf_flag,
+        ctab=ctab,
+    )
     return mri_volsynth_execute(params, execution)
 
 

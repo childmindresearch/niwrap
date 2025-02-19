@@ -11,6 +11,8 @@ FSL_HISTOGRAM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslHistogramParameters = typing.TypedDict('FslHistogramParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_histogram"],
     "input_file_duplicate": InputPathType,
@@ -306,7 +308,21 @@ def fsl_histogram(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_HISTOGRAM_METADATA)
-    params = fsl_histogram_params(input_file_duplicate=input_file_duplicate, output_file_duplicate=output_file_duplicate, mask_file_duplicate=mask_file_duplicate, gmmfit_file_duplicate=gmmfit_file_duplicate, plot_title_duplicate=plot_title_duplicate, legend_file_duplicate=legend_file_duplicate, xlabel_duplicate=xlabel_duplicate, ylabel_duplicate=ylabel_duplicate, plot_height_duplicate=plot_height_duplicate, plot_width_duplicate=plot_width_duplicate, num_bins_duplicate=num_bins_duplicate, zoom_factor_duplicate=zoom_factor_duplicate, use_gmm_flag=use_gmm_flag)
+    params = fsl_histogram_params(
+        input_file_duplicate=input_file_duplicate,
+        output_file_duplicate=output_file_duplicate,
+        mask_file_duplicate=mask_file_duplicate,
+        gmmfit_file_duplicate=gmmfit_file_duplicate,
+        plot_title_duplicate=plot_title_duplicate,
+        legend_file_duplicate=legend_file_duplicate,
+        xlabel_duplicate=xlabel_duplicate,
+        ylabel_duplicate=ylabel_duplicate,
+        plot_height_duplicate=plot_height_duplicate,
+        plot_width_duplicate=plot_width_duplicate,
+        num_bins_duplicate=num_bins_duplicate,
+        zoom_factor_duplicate=zoom_factor_duplicate,
+        use_gmm_flag=use_gmm_flag,
+    )
     return fsl_histogram_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SURFACE_GENERATE_INFLATED_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceGenerateInflatedParameters = typing.TypedDict('SurfaceGenerateInflatedParameters', {
     "__STYX_TYPE__": typing.Literal["surface-generate-inflated"],
     "anatomical_surface_in": InputPathType,
@@ -203,7 +205,12 @@ def surface_generate_inflated(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_GENERATE_INFLATED_METADATA)
-    params = surface_generate_inflated_params(anatomical_surface_in=anatomical_surface_in, inflated_surface_out=inflated_surface_out, very_inflated_surface_out=very_inflated_surface_out, opt_iterations_scale_iterations_scale_value=opt_iterations_scale_iterations_scale_value)
+    params = surface_generate_inflated_params(
+        anatomical_surface_in=anatomical_surface_in,
+        inflated_surface_out=inflated_surface_out,
+        very_inflated_surface_out=very_inflated_surface_out,
+        opt_iterations_scale_iterations_scale_value=opt_iterations_scale_iterations_scale_value,
+    )
     return surface_generate_inflated_execute(params, execution)
 
 

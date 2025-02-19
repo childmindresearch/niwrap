@@ -11,6 +11,8 @@ V__ATLASIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAtlasizeParameters = typing.TypedDict('VAtlasizeParameters', {
     "__STYX_TYPE__": typing.Literal["@Atlasize"],
     "dset": typing.NotRequired[InputPathType | None],
@@ -368,7 +370,26 @@ def v__atlasize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ATLASIZE_METADATA)
-    params = v__atlasize_params(dset=dset, space=space, lab_file=lab_file, lab_file_delim=lab_file_delim, longnames=longnames, last_longname_col=last_longname_col, atlas_type=atlas_type, atlas_description=atlas_description, atlas_name=atlas_name, auto_backup=auto_backup, centers=centers, centertype=centertype, centermask=centermask, skip_novoxels=skip_novoxels, h_web=h_web, h_view=h_view, all_opts=all_opts, h_find=h_find)
+    params = v__atlasize_params(
+        dset=dset,
+        space=space,
+        lab_file=lab_file,
+        lab_file_delim=lab_file_delim,
+        longnames=longnames,
+        last_longname_col=last_longname_col,
+        atlas_type=atlas_type,
+        atlas_description=atlas_description,
+        atlas_name=atlas_name,
+        auto_backup=auto_backup,
+        centers=centers,
+        centertype=centertype,
+        centermask=centermask,
+        skip_novoxels=skip_novoxels,
+        h_web=h_web,
+        h_view=h_view,
+        all_opts=all_opts,
+        h_find=h_find,
+    )
     return v__atlasize_execute(params, execution)
 
 

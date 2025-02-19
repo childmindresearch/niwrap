@@ -11,6 +11,8 @@ FSLVBM_3_PROC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Fslvbm3ProcParameters = typing.TypedDict('Fslvbm3ProcParameters', {
     "__STYX_TYPE__": typing.Literal["fslvbm_3_proc"],
     "arch": typing.NotRequired[str | None],
@@ -504,7 +506,40 @@ def fslvbm_3_proc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLVBM_3_PROC_METADATA)
-    params = fslvbm_3_proc_params(arch=arch, coprocessor=coprocessor, coprocessor_multi=coprocessor_multi, coprocessor_class=coprocessor_class, coprocessor_class_strict=coprocessor_class_strict, coprocessor_toolkit=coprocessor_toolkit, not_requeueable=not_requeueable, jobhold=jobhold, array_hold=array_hold, logdir=logdir, mailoptions=mailoptions, mailto=mailto, name=name, priority=priority, queue_=queue_, resource_=resource_, delete_job=delete_job, memory_gb=memory_gb, parallel_env_threads=parallel_env_threads, array_task=array_task, array_native=array_native, number_jobscripts=number_jobscripts, keep_jobscript=keep_jobscript, coprocessor_name=coprocessor_name, has_queues=has_queues, project=project, submit_scheduler=submit_scheduler, runtime_limit=runtime_limit, show_config=show_config, verbose=verbose, version=version, config_file=config_file)
+    params = fslvbm_3_proc_params(
+        arch=arch,
+        coprocessor=coprocessor,
+        coprocessor_multi=coprocessor_multi,
+        coprocessor_class=coprocessor_class,
+        coprocessor_class_strict=coprocessor_class_strict,
+        coprocessor_toolkit=coprocessor_toolkit,
+        not_requeueable=not_requeueable,
+        jobhold=jobhold,
+        array_hold=array_hold,
+        logdir=logdir,
+        mailoptions=mailoptions,
+        mailto=mailto,
+        name=name,
+        priority=priority,
+        queue_=queue_,
+        resource_=resource_,
+        delete_job=delete_job,
+        memory_gb=memory_gb,
+        parallel_env_threads=parallel_env_threads,
+        array_task=array_task,
+        array_native=array_native,
+        number_jobscripts=number_jobscripts,
+        keep_jobscript=keep_jobscript,
+        coprocessor_name=coprocessor_name,
+        has_queues=has_queues,
+        project=project,
+        submit_scheduler=submit_scheduler,
+        runtime_limit=runtime_limit,
+        show_config=show_config,
+        verbose=verbose,
+        version=version,
+        config_file=config_file,
+    )
     return fslvbm_3_proc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ DICOM_TO_RAW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 DicomToRawParameters = typing.TypedDict('DicomToRawParameters', {
     "__STYX_TYPE__": typing.Literal["dicom_to_raw"],
     "input_dicom": InputPathType,
@@ -159,7 +161,9 @@ def dicom_to_raw(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DICOM_TO_RAW_METADATA)
-    params = dicom_to_raw_params(input_dicom=input_dicom)
+    params = dicom_to_raw_params(
+        input_dicom=input_dicom,
+    )
     return dicom_to_raw_execute(params, execution)
 
 

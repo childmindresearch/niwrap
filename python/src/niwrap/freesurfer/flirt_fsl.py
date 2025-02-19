@@ -11,6 +11,8 @@ FLIRT_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FlirtFslParameters = typing.TypedDict('FlirtFslParameters', {
     "__STYX_TYPE__": typing.Literal["flirt.fsl"],
     "input_volume": InputPathType,
@@ -550,7 +552,46 @@ def flirt_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLIRT_FSL_METADATA)
-    params = flirt_fsl_params(input_volume=input_volume, reference_volume=reference_volume, output_volume=output_volume, output_matrix=output_matrix, initial_matrix=initial_matrix, data_type=data_type, cost_function=cost_function, search_cost_function=search_cost_function, use_sform_qform=use_sform_qform, display_initial_matrix=display_initial_matrix, angle_representation=angle_representation, interpolation_method=interpolation_method, sinc_width=sinc_width, sinc_window=sinc_window, histogram_bins=histogram_bins, degrees_of_freedom=degrees_of_freedom, no_resample=no_resample, force_scaling=force_scaling, min_voxel_dimension=min_voxel_dimension, apply_transform=apply_transform, apply_isotropic_transform=apply_isotropic_transform, padding_size=padding_size, search_range_x=search_range_x, search_range_y=search_range_y, search_range_z=search_range_z, no_search=no_search, coarse_search_angle=coarse_search_angle, fine_search_angle=fine_search_angle, schedule_file=schedule_file, reference_weight=reference_weight, input_weight=input_weight, no_clamp=no_clamp, no_resample_blur=no_resample_blur, rigid_body_mode=rigid_body_mode, verbose=verbose, verbose_level=verbose_level, pause_stages=pause_stages, version_flag=version_flag)
+    params = flirt_fsl_params(
+        input_volume=input_volume,
+        reference_volume=reference_volume,
+        output_volume=output_volume,
+        output_matrix=output_matrix,
+        initial_matrix=initial_matrix,
+        data_type=data_type,
+        cost_function=cost_function,
+        search_cost_function=search_cost_function,
+        use_sform_qform=use_sform_qform,
+        display_initial_matrix=display_initial_matrix,
+        angle_representation=angle_representation,
+        interpolation_method=interpolation_method,
+        sinc_width=sinc_width,
+        sinc_window=sinc_window,
+        histogram_bins=histogram_bins,
+        degrees_of_freedom=degrees_of_freedom,
+        no_resample=no_resample,
+        force_scaling=force_scaling,
+        min_voxel_dimension=min_voxel_dimension,
+        apply_transform=apply_transform,
+        apply_isotropic_transform=apply_isotropic_transform,
+        padding_size=padding_size,
+        search_range_x=search_range_x,
+        search_range_y=search_range_y,
+        search_range_z=search_range_z,
+        no_search=no_search,
+        coarse_search_angle=coarse_search_angle,
+        fine_search_angle=fine_search_angle,
+        schedule_file=schedule_file,
+        reference_weight=reference_weight,
+        input_weight=input_weight,
+        no_clamp=no_clamp,
+        no_resample_blur=no_resample_blur,
+        rigid_body_mode=rigid_body_mode,
+        verbose=verbose,
+        verbose_level=verbose_level,
+        pause_stages=pause_stages,
+        version_flag=version_flag,
+    )
     return flirt_fsl_execute(params, execution)
 
 

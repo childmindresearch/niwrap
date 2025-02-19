@@ -11,6 +11,8 @@ MRI_SEGCENTROIDS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegcentroidsParameters = typing.TypedDict('MriSegcentroidsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_segcentroids"],
     "input_segmentation": InputPathType,
@@ -224,7 +226,15 @@ def mri_segcentroids(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGCENTROIDS_METADATA)
-    params = mri_segcentroids_params(input_segmentation=input_segmentation, output_file=output_file, pointset_flag=pointset_flag, registration_file=registration_file, weights_file=weights_file, lut_file=lut_file, default_lut_flag=default_lut_flag)
+    params = mri_segcentroids_params(
+        input_segmentation=input_segmentation,
+        output_file=output_file,
+        pointset_flag=pointset_flag,
+        registration_file=registration_file,
+        weights_file=weights_file,
+        lut_file=lut_file,
+        default_lut_flag=default_lut_flag,
+    )
     return mri_segcentroids_execute(params, execution)
 
 

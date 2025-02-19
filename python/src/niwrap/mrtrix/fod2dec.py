@@ -11,11 +11,15 @@ FOD2DEC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Fod2decConfigParameters = typing.TypedDict('Fod2decConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Fod2decParameters = typing.TypedDict('Fod2decParameters', {
     "__STYX_TYPE__": typing.Literal["fod2dec"],
     "mask": typing.NotRequired[InputPathType | None],
@@ -432,7 +436,25 @@ def fod2dec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FOD2DEC_METADATA)
-    params = fod2dec_params(mask=mask, contrast=contrast, lum=lum, lum_coefs=lum_coefs, lum_gamma=lum_gamma, threshold=threshold, no_weight=no_weight, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = fod2dec_params(
+        mask=mask,
+        contrast=contrast,
+        lum=lum,
+        lum_coefs=lum_coefs,
+        lum_gamma=lum_gamma,
+        threshold=threshold,
+        no_weight=no_weight,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return fod2dec_execute(params, execution)
 
 

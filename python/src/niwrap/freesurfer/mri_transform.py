@@ -11,6 +11,8 @@ MRI_TRANSFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriTransformParameters = typing.TypedDict('MriTransformParameters', {
     "__STYX_TYPE__": typing.Literal["mri_transform"],
     "input_volume": InputPathType,
@@ -193,7 +195,13 @@ def mri_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_TRANSFORM_METADATA)
-    params = mri_transform_params(input_volume=input_volume, lta_file=lta_file, output_file=output_file, out_like=out_like, invert=invert)
+    params = mri_transform_params(
+        input_volume=input_volume,
+        lta_file=lta_file,
+        output_file=output_file,
+        out_like=out_like,
+        invert=invert,
+    )
     return mri_transform_execute(params, execution)
 
 

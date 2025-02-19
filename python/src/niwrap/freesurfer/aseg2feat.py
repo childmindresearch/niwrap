@@ -11,6 +11,8 @@ ASEG2FEAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Aseg2featParameters = typing.TypedDict('Aseg2featParameters', {
     "__STYX_TYPE__": typing.Literal["aseg2feat"],
     "feat": str,
@@ -243,7 +245,17 @@ def aseg2feat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ASEG2FEAT_METADATA)
-    params = aseg2feat_params(feat=feat, featdirfile=featdirfile, seg=seg, aparc_aseg=aparc_aseg, svstats=svstats, standard=standard, debug=debug, help_=help_, version=version)
+    params = aseg2feat_params(
+        feat=feat,
+        featdirfile=featdirfile,
+        seg=seg,
+        aparc_aseg=aparc_aseg,
+        svstats=svstats,
+        standard=standard,
+        debug=debug,
+        help_=help_,
+        version=version,
+    )
     return aseg2feat_execute(params, execution)
 
 

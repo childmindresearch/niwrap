@@ -11,6 +11,8 @@ MRI_FILL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFillParameters = typing.TypedDict('MriFillParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fill"],
     "input_mr_dir": str,
@@ -359,7 +361,25 @@ def mri_fill(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FILL_METADATA)
-    params = mri_fill_params(input_mr_dir=input_mr_dir, output_mr_dir=output_mr_dir, threshold=threshold, xform_name=xform_name, segmentation_file=segmentation_file, atlas_file=atlas_file, fill_ven=fill_ven, seed_cc_tal=seed_cc_tal, seed_pons_tal=seed_pons_tal, seed_lh_tal=seed_lh_tal, seed_rh_tal=seed_rh_tal, seed_cc_vox=seed_cc_vox, seed_pons_vox=seed_pons_vox, auto_man_files=auto_man_files, no_auto_man=no_auto_man, pointset_args=pointset_args, ctab_file=ctab_file)
+    params = mri_fill_params(
+        input_mr_dir=input_mr_dir,
+        output_mr_dir=output_mr_dir,
+        threshold=threshold,
+        xform_name=xform_name,
+        segmentation_file=segmentation_file,
+        atlas_file=atlas_file,
+        fill_ven=fill_ven,
+        seed_cc_tal=seed_cc_tal,
+        seed_pons_tal=seed_pons_tal,
+        seed_lh_tal=seed_lh_tal,
+        seed_rh_tal=seed_rh_tal,
+        seed_cc_vox=seed_cc_vox,
+        seed_pons_vox=seed_pons_vox,
+        auto_man_files=auto_man_files,
+        no_auto_man=no_auto_man,
+        pointset_args=pointset_args,
+        ctab_file=ctab_file,
+    )
     return mri_fill_execute(params, execution)
 
 

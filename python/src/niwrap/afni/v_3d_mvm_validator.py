@@ -11,6 +11,8 @@ V_3D_MVM_VALIDATOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMvmValidatorParameters = typing.TypedDict('V3dMvmValidatorParameters', {
     "__STYX_TYPE__": typing.Literal["3dMVM_validator"],
     "datatable": InputPathType,
@@ -173,7 +175,10 @@ def v_3d_mvm_validator(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MVM_VALIDATOR_METADATA)
-    params = v_3d_mvm_validator_params(datatable=datatable, shinyfolder=shinyfolder)
+    params = v_3d_mvm_validator_params(
+        datatable=datatable,
+        shinyfolder=shinyfolder,
+    )
     return v_3d_mvm_validator_execute(params, execution)
 
 

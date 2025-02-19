@@ -11,6 +11,8 @@ V_3D_OVERLAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dOverlapParameters = typing.TypedDict('V3dOverlapParameters', {
     "__STYX_TYPE__": typing.Literal["3dOverlap"],
     "dataset1": InputPathType,
@@ -170,7 +172,10 @@ def v_3d_overlap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_OVERLAP_METADATA)
-    params = v_3d_overlap_params(dataset1=dataset1, dataset2=dataset2)
+    params = v_3d_overlap_params(
+        dataset1=dataset1,
+        dataset2=dataset2,
+    )
     return v_3d_overlap_execute(params, execution)
 
 

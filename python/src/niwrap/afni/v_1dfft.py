@@ -11,6 +11,8 @@ V_1DFFT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dfftParameters = typing.TypedDict('V1dfftParameters', {
     "__STYX_TYPE__": typing.Literal["1dfft"],
     "infile": InputPathType,
@@ -244,7 +246,17 @@ def v_1dfft(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DFFT_METADATA)
-    params = v_1dfft_params(infile=infile, outfile=outfile, ignore=ignore, use=use, nfft=nfft, tocx=tocx, fromcx=fromcx, hilbert=hilbert, nodetrend=nodetrend)
+    params = v_1dfft_params(
+        infile=infile,
+        outfile=outfile,
+        ignore=ignore,
+        use=use,
+        nfft=nfft,
+        tocx=tocx,
+        fromcx=fromcx,
+        hilbert=hilbert,
+        nodetrend=nodetrend,
+    )
     return v_1dfft_execute(params, execution)
 
 

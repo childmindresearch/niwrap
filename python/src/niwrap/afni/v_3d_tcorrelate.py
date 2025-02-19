@@ -11,6 +11,8 @@ V_3D_TCORRELATE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTcorrelateParameters = typing.TypedDict('V3dTcorrelateParameters', {
     "__STYX_TYPE__": typing.Literal["3dTcorrelate"],
     "xset": InputPathType,
@@ -336,7 +338,24 @@ def v_3d_tcorrelate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TCORRELATE_METADATA)
-    params = v_3d_tcorrelate_params(xset=xset, yset=yset, pearson=pearson, spearman=spearman, quadrant=quadrant, ktaub=ktaub, covariance=covariance, partial=partial, ycoef=ycoef, fisher=fisher, polort=polort, ort=ort, autoclip=autoclip, automask=automask, zcensor=zcensor, prefix=prefix)
+    params = v_3d_tcorrelate_params(
+        xset=xset,
+        yset=yset,
+        pearson=pearson,
+        spearman=spearman,
+        quadrant=quadrant,
+        ktaub=ktaub,
+        covariance=covariance,
+        partial=partial,
+        ycoef=ycoef,
+        fisher=fisher,
+        polort=polort,
+        ort=ort,
+        autoclip=autoclip,
+        automask=automask,
+        zcensor=zcensor,
+        prefix=prefix,
+    )
     return v_3d_tcorrelate_execute(params, execution)
 
 

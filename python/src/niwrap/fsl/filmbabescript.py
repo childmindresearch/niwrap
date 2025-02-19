@@ -11,6 +11,8 @@ FILMBABESCRIPT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FilmbabescriptParameters = typing.TypedDict('FilmbabescriptParameters', {
     "__STYX_TYPE__": typing.Literal["filmbabescript"],
     "feat_dir": str,
@@ -162,7 +164,10 @@ def filmbabescript(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILMBABESCRIPT_METADATA)
-    params = filmbabescript_params(feat_dir=feat_dir, flobs_dir=flobs_dir)
+    params = filmbabescript_params(
+        feat_dir=feat_dir,
+        flobs_dir=flobs_dir,
+    )
     return filmbabescript_execute(params, execution)
 
 

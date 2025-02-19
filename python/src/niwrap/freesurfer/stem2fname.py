@@ -11,6 +11,8 @@ STEM2FNAME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Stem2fnameParameters = typing.TypedDict('Stem2fnameParameters', {
     "__STYX_TYPE__": typing.Literal["stem2fname"],
     "stem": str,
@@ -162,7 +164,9 @@ def stem2fname(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(STEM2FNAME_METADATA)
-    params = stem2fname_params(stem=stem)
+    params = stem2fname_params(
+        stem=stem,
+    )
     return stem2fname_execute(params, execution)
 
 

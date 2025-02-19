@@ -11,6 +11,8 @@ RUN_SAMSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunSamsegParameters = typing.TypedDict('RunSamsegParameters', {
     "__STYX_TYPE__": typing.Literal["run_samseg"],
     "output_dir": str,
@@ -496,7 +498,40 @@ def run_samseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SAMSEG_METADATA)
-    params = run_samseg_params(output_dir=output_dir, input_files=input_files, input_mode=input_mode, threads=threads, reg_only=reg_only, reg_file=reg_file, init_reg_file=init_reg_file, atlas_dir=atlas_dir, gmm_file=gmm_file, ignore_unknown=ignore_unknown, options_file=options_file, pallidum_separate=pallidum_separate, mesh_stiffness=mesh_stiffness, smooth_wm_cortex_priors=smooth_wm_cortex_priors, bias_field_smoothing_kernel=bias_field_smoothing_kernel, lesion=lesion, threshold=threshold, samples=samples, burnin=burnin, lesion_pseudo_samples=lesion_pseudo_samples, lesion_rho=lesion_rho, lesion_mask_structure=lesion_mask_structure, lesion_mask_pattern=lesion_mask_pattern, random_seed=random_seed, dissection_photo=dissection_photo, history=history, save_posteriors=save_posteriors, save_probabilities=save_probabilities, showfigs=showfigs, save_mesh=save_mesh, save_warp=save_warp, movie=movie)
+    params = run_samseg_params(
+        output_dir=output_dir,
+        input_files=input_files,
+        input_mode=input_mode,
+        threads=threads,
+        reg_only=reg_only,
+        reg_file=reg_file,
+        init_reg_file=init_reg_file,
+        atlas_dir=atlas_dir,
+        gmm_file=gmm_file,
+        ignore_unknown=ignore_unknown,
+        options_file=options_file,
+        pallidum_separate=pallidum_separate,
+        mesh_stiffness=mesh_stiffness,
+        smooth_wm_cortex_priors=smooth_wm_cortex_priors,
+        bias_field_smoothing_kernel=bias_field_smoothing_kernel,
+        lesion=lesion,
+        threshold=threshold,
+        samples=samples,
+        burnin=burnin,
+        lesion_pseudo_samples=lesion_pseudo_samples,
+        lesion_rho=lesion_rho,
+        lesion_mask_structure=lesion_mask_structure,
+        lesion_mask_pattern=lesion_mask_pattern,
+        random_seed=random_seed,
+        dissection_photo=dissection_photo,
+        history=history,
+        save_posteriors=save_posteriors,
+        save_probabilities=save_probabilities,
+        showfigs=showfigs,
+        save_mesh=save_mesh,
+        save_warp=save_warp,
+        movie=movie,
+    )
     return run_samseg_execute(params, execution)
 
 

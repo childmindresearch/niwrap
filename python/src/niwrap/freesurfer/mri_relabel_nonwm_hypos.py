@@ -11,6 +11,8 @@ MRI_RELABEL_NONWM_HYPOS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRelabelNonwmHyposParameters = typing.TypedDict('MriRelabelNonwmHyposParameters', {
     "__STYX_TYPE__": typing.Literal["mri_relabel_nonwm_hypos"],
     "inputseg": InputPathType,
@@ -212,7 +214,14 @@ def mri_relabel_nonwm_hypos(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RELABEL_NONWM_HYPOS_METADATA)
-    params = mri_relabel_nonwm_hypos_params(inputseg=inputseg, outputseg=outputseg, segments=segments, seg_default=seg_default, debug=debug, checkopts=checkopts)
+    params = mri_relabel_nonwm_hypos_params(
+        inputseg=inputseg,
+        outputseg=outputseg,
+        segments=segments,
+        seg_default=seg_default,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return mri_relabel_nonwm_hypos_execute(params, execution)
 
 

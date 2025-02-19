@@ -11,6 +11,8 @@ V_3D_TRFIX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTrfixParameters = typing.TypedDict('V3dTrfixParameters', {
     "__STYX_TYPE__": typing.Literal["3dTRfix"],
     "input_file": InputPathType,
@@ -213,7 +215,13 @@ def v_3d_trfix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TRFIX_METADATA)
-    params = v_3d_trfix_params(input_file=input_file, tr_list=tr_list, time_list=time_list, prefix=prefix, output_tr=output_tr)
+    params = v_3d_trfix_params(
+        input_file=input_file,
+        tr_list=tr_list,
+        time_list=time_list,
+        prefix=prefix,
+        output_tr=output_tr,
+    )
     return v_3d_trfix_execute(params, execution)
 
 

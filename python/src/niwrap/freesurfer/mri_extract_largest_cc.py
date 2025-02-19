@@ -11,6 +11,8 @@ MRI_EXTRACT_LARGEST_CC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriExtractLargestCcParameters = typing.TypedDict('MriExtractLargestCcParameters', {
     "__STYX_TYPE__": typing.Literal["mri_extract_largest_CC"],
     "input_volume": InputPathType,
@@ -226,7 +228,15 @@ def mri_extract_largest_cc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EXTRACT_LARGEST_CC_METADATA)
-    params = mri_extract_largest_cc_params(input_volume=input_volume, output_volume=output_volume, threshold=threshold, hemisphere=hemisphere, largest_cc_in_bg=largest_cc_in_bg, original_volume=original_volume, label_value=label_value)
+    params = mri_extract_largest_cc_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        threshold=threshold,
+        hemisphere=hemisphere,
+        largest_cc_in_bg=largest_cc_in_bg,
+        original_volume=original_volume,
+        label_value=label_value,
+    )
     return mri_extract_largest_cc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ICO_SUPERSAMPLE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IcoSupersampleParameters = typing.TypedDict('IcoSupersampleParameters', {
     "__STYX_TYPE__": typing.Literal["ico_supersample"],
     "refine": bool,
@@ -180,7 +182,11 @@ def ico_supersample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ICO_SUPERSAMPLE_METADATA)
-    params = ico_supersample_params(refine=refine, radius=radius, projection_point=projection_point)
+    params = ico_supersample_params(
+        refine=refine,
+        radius=radius,
+        projection_point=projection_point,
+    )
     return ico_supersample_execute(params, execution)
 
 

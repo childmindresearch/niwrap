@@ -11,6 +11,8 @@ V_3DCLUST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dclustParameters = typing.TypedDict('V3dclustParameters', {
     "__STYX_TYPE__": typing.Literal["3dclust"],
     "rmm": typing.NotRequired[float | None],
@@ -344,7 +346,28 @@ def v_3dclust(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DCLUST_METADATA)
-    params = v_3dclust_params(rmm=rmm, vmul=vmul, datasets=datasets, nn1=nn1, nn2=nn2, nn3=nn3, noabs=noabs, summarize=summarize, nosum=nosum, verb=verb, oned_format=oned_format, no_oned_format=no_oned_format, quiet=quiet, mni=mni, isovalue=isovalue, isomerge=isomerge, inmask=inmask, prefix=prefix, savemask=savemask, binary=binary)
+    params = v_3dclust_params(
+        rmm=rmm,
+        vmul=vmul,
+        datasets=datasets,
+        nn1=nn1,
+        nn2=nn2,
+        nn3=nn3,
+        noabs=noabs,
+        summarize=summarize,
+        nosum=nosum,
+        verb=verb,
+        oned_format=oned_format,
+        no_oned_format=no_oned_format,
+        quiet=quiet,
+        mni=mni,
+        isovalue=isovalue,
+        isomerge=isomerge,
+        inmask=inmask,
+        prefix=prefix,
+        savemask=savemask,
+        binary=binary,
+    )
     return v_3dclust_execute(params, execution)
 
 

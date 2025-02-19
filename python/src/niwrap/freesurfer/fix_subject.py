@@ -11,6 +11,8 @@ FIX_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FixSubjectParameters = typing.TypedDict('FixSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["fix_subject"],
     "arguments": typing.NotRequired[str | None],
@@ -161,7 +163,9 @@ def fix_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIX_SUBJECT_METADATA)
-    params = fix_subject_params(arguments=arguments)
+    params = fix_subject_params(
+        arguments=arguments,
+    )
     return fix_subject_execute(params, execution)
 
 

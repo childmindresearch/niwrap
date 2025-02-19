@@ -11,6 +11,8 @@ DMRI_SPLINE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriSplineParameters = typing.TypedDict('DmriSplineParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_spline"],
     "control_points_file": InputPathType,
@@ -250,7 +252,16 @@ def dmri_spline(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_SPLINE_METADATA)
-    params = dmri_spline_params(control_points_file=control_points_file, mask_volume=mask_volume, output_volume=output_volume, show_points=show_points, output_points=output_points, output_vectors_base=output_vectors_base, debug=debug, check_options=check_options)
+    params = dmri_spline_params(
+        control_points_file=control_points_file,
+        mask_volume=mask_volume,
+        output_volume=output_volume,
+        show_points=show_points,
+        output_points=output_points,
+        output_vectors_base=output_vectors_base,
+        debug=debug,
+        check_options=check_options,
+    )
     return dmri_spline_execute(params, execution)
 
 

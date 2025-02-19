@@ -11,6 +11,8 @@ MRI_CAL_RENORMALIZE_GCA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCalRenormalizeGcaParameters = typing.TypedDict('MriCalRenormalizeGcaParameters', {
     "__STYX_TYPE__": typing.Literal["mri_cal_renormalize_gca"],
     "timepoint_file": InputPathType,
@@ -187,7 +189,13 @@ def mri_cal_renormalize_gca(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CAL_RENORMALIZE_GCA_METADATA)
-    params = mri_cal_renormalize_gca_params(timepoint_file=timepoint_file, in_vol=in_vol, input_atlas=input_atlas, transform_file=transform_file, output_atlas=output_atlas)
+    params = mri_cal_renormalize_gca_params(
+        timepoint_file=timepoint_file,
+        in_vol=in_vol,
+        input_atlas=input_atlas,
+        transform_file=transform_file,
+        output_atlas=output_atlas,
+    )
     return mri_cal_renormalize_gca_execute(params, execution)
 
 

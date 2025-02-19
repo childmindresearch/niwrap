@@ -11,6 +11,8 @@ MRIS_ESTIMATE_WM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisEstimateWmParameters = typing.TypedDict('MrisEstimateWmParameters', {
     "__STYX_TYPE__": typing.Literal["mris_estimate_wm"],
     "subjs": list[str],
@@ -240,7 +242,17 @@ def mris_estimate_wm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ESTIMATE_WM_METADATA)
-    params = mris_estimate_wm_params(subjs=subjs, hemi=hemi, sdir=sdir, model=model, suffix=suffix, gpu=gpu, rsi=rsi, single_iter=single_iter, vol=vol)
+    params = mris_estimate_wm_params(
+        subjs=subjs,
+        hemi=hemi,
+        sdir=sdir,
+        model=model,
+        suffix=suffix,
+        gpu=gpu,
+        rsi=rsi,
+        single_iter=single_iter,
+        vol=vol,
+    )
     return mris_estimate_wm_execute(params, execution)
 
 

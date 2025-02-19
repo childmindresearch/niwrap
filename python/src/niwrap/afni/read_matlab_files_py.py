@@ -11,6 +11,8 @@ READ_MATLAB_FILES_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ReadMatlabFilesPyParameters = typing.TypedDict('ReadMatlabFilesPyParameters', {
     "__STYX_TYPE__": typing.Literal["read_matlab_files.py"],
     "infiles": list[str],
@@ -203,7 +205,14 @@ def read_matlab_files_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(READ_MATLAB_FILES_PY_METADATA)
-    params = read_matlab_files_py_params(infiles=infiles, prefix=prefix, overwrite=overwrite, help_=help_, history=history, version=version)
+    params = read_matlab_files_py_params(
+        infiles=infiles,
+        prefix=prefix,
+        overwrite=overwrite,
+        help_=help_,
+        history=history,
+        version=version,
+    )
     return read_matlab_files_py_execute(params, execution)
 
 

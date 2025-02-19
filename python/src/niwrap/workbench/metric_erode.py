@@ -11,6 +11,8 @@ METRIC_ERODE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricErodeParameters = typing.TypedDict('MetricErodeParameters', {
     "__STYX_TYPE__": typing.Literal["metric-erode"],
     "metric": InputPathType,
@@ -239,7 +241,15 @@ def metric_erode(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_ERODE_METADATA)
-    params = metric_erode_params(metric=metric, surface=surface, distance=distance, metric_out=metric_out, opt_roi_roi_metric=opt_roi_roi_metric, opt_column_column=opt_column_column, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    params = metric_erode_params(
+        metric=metric,
+        surface=surface,
+        distance=distance,
+        metric_out=metric_out,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_column_column=opt_column_column,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+    )
     return metric_erode_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ POSSUM_SUM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PossumSumParameters = typing.TypedDict('PossumSumParameters', {
     "__STYX_TYPE__": typing.Literal["possum_sum"],
     "input_signal": InputPathType,
@@ -194,7 +196,12 @@ def possum_sum(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_SUM_METADATA)
-    params = possum_sum_params(input_signal=input_signal, output_signal=output_signal, num_processors=num_processors, verbose_flag=verbose_flag)
+    params = possum_sum_params(
+        input_signal=input_signal,
+        output_signal=output_signal,
+        num_processors=num_processors,
+        verbose_flag=verbose_flag,
+    )
     return possum_sum_execute(params, execution)
 
 

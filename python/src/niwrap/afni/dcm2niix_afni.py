@@ -11,6 +11,8 @@ DCM2NIIX_AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 Dcm2niixAfniParameters = typing.TypedDict('Dcm2niixAfniParameters', {
     "__STYX_TYPE__": typing.Literal["dcm2niix_afni"],
     "input_folder": str,
@@ -505,7 +507,37 @@ def dcm2niix_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCM2NIIX_AFNI_METADATA)
-    params = dcm2niix_afni_params(input_folder=input_folder, compression_level=compression_level, adjacent_dicoms=adjacent_dicoms, bids_sidecar=bids_sidecar, anonymize_bids=anonymize_bids, comment=comment, directory_search_depth=directory_search_depth, export_format=export_format, filename_template=filename_template, generate_defaults=generate_defaults, ignore_images=ignore_images, lossless_scale=lossless_scale, merge_slices=merge_slices, series_crc_number=series_crc_number, output_directory=output_directory, phillips_scaling=phillips_scaling, rename_dicoms=rename_dicoms, single_file_mode=single_file_mode, up_to_date=up_to_date, verbose=verbose, write_behavior=write_behavior, crop_3d=crop_3d, gz_compress=gz_compress, big_endian=big_endian, progress=progress, ignore_trigger_times=ignore_trigger_times, terse=terse, version=version, xml_=xml_)
+    params = dcm2niix_afni_params(
+        input_folder=input_folder,
+        compression_level=compression_level,
+        adjacent_dicoms=adjacent_dicoms,
+        bids_sidecar=bids_sidecar,
+        anonymize_bids=anonymize_bids,
+        comment=comment,
+        directory_search_depth=directory_search_depth,
+        export_format=export_format,
+        filename_template=filename_template,
+        generate_defaults=generate_defaults,
+        ignore_images=ignore_images,
+        lossless_scale=lossless_scale,
+        merge_slices=merge_slices,
+        series_crc_number=series_crc_number,
+        output_directory=output_directory,
+        phillips_scaling=phillips_scaling,
+        rename_dicoms=rename_dicoms,
+        single_file_mode=single_file_mode,
+        up_to_date=up_to_date,
+        verbose=verbose,
+        write_behavior=write_behavior,
+        crop_3d=crop_3d,
+        gz_compress=gz_compress,
+        big_endian=big_endian,
+        progress=progress,
+        ignore_trigger_times=ignore_trigger_times,
+        terse=terse,
+        version=version,
+        xml_=xml_,
+    )
     return dcm2niix_afni_execute(params, execution)
 
 

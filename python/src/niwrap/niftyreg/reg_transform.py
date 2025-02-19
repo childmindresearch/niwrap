@@ -11,6 +11,8 @@ REG_TRANSFORM_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+
+
 RegTransformParameters = typing.TypedDict('RegTransformParameters', {
     "__STYX_TYPE__": typing.Literal["reg_transform"],
     "reference_image": InputPathType,
@@ -504,7 +506,36 @@ def reg_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_TRANSFORM_METADATA)
-    params = reg_transform_params(reference_image=reference_image, cpp2def_input=cpp2def_input, cpp2def_output=cpp2def_output, comp1_cpp2=comp1_cpp2, comp1_cpp1=comp1_cpp1, comp1_output=comp1_output, comp2_cpp=comp2_cpp, comp2_def=comp2_def, comp2_output=comp2_output, comp3_def2=comp3_def2, comp3_def1=comp3_def1, comp3_output=comp3_output, def2disp_input=def2disp_input, def2disp_output=def2disp_output, disp2def_input=disp2def_input, disp2def_output=disp2def_output, upd_sform_image=upd_sform_image, upd_sform_affine=upd_sform_affine, upd_sform_output=upd_sform_output, aff2def_affine=aff2def_affine, aff2def_target=aff2def_target, aff2def_cpp_or_def=aff2def_cpp_or_def, aff2def_output=aff2def_output, inv_affine_input=inv_affine_input, inv_affine_output=inv_affine_output, comp_aff_1st=comp_aff_1st, comp_aff_2nd=comp_aff_2nd, comp_aff_output=comp_aff_output)
+    params = reg_transform_params(
+        reference_image=reference_image,
+        cpp2def_input=cpp2def_input,
+        cpp2def_output=cpp2def_output,
+        comp1_cpp2=comp1_cpp2,
+        comp1_cpp1=comp1_cpp1,
+        comp1_output=comp1_output,
+        comp2_cpp=comp2_cpp,
+        comp2_def=comp2_def,
+        comp2_output=comp2_output,
+        comp3_def2=comp3_def2,
+        comp3_def1=comp3_def1,
+        comp3_output=comp3_output,
+        def2disp_input=def2disp_input,
+        def2disp_output=def2disp_output,
+        disp2def_input=disp2def_input,
+        disp2def_output=disp2def_output,
+        upd_sform_image=upd_sform_image,
+        upd_sform_affine=upd_sform_affine,
+        upd_sform_output=upd_sform_output,
+        aff2def_affine=aff2def_affine,
+        aff2def_target=aff2def_target,
+        aff2def_cpp_or_def=aff2def_cpp_or_def,
+        aff2def_output=aff2def_output,
+        inv_affine_input=inv_affine_input,
+        inv_affine_output=inv_affine_output,
+        comp_aff_1st=comp_aff_1st,
+        comp_aff_2nd=comp_aff_2nd,
+        comp_aff_output=comp_aff_output,
+    )
     return reg_transform_execute(params, execution)
 
 

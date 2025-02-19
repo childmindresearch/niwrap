@@ -11,6 +11,8 @@ NMOVIE_QT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 NmovieQtParameters = typing.TypedDict('NmovieQtParameters', {
     "__STYX_TYPE__": typing.Literal["nmovie_qt"],
     "images": list[InputPathType],
@@ -157,7 +159,9 @@ def nmovie_qt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NMOVIE_QT_METADATA)
-    params = nmovie_qt_params(images=images)
+    params = nmovie_qt_params(
+        images=images,
+    )
     return nmovie_qt_execute(params, execution)
 
 

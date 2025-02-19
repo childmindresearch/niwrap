@@ -11,6 +11,8 @@ SURF2SURF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Surf2surfParameters = typing.TypedDict('Surf2surfParameters', {
     "__STYX_TYPE__": typing.Literal["surf2surf"],
     "input_surface": InputPathType,
@@ -264,7 +266,17 @@ def surf2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF2SURF_METADATA)
-    params = surf2surf_params(input_surface=input_surface, output_surface=output_surface, input_convention=input_convention, output_convention=output_convention, input_ref_volume=input_ref_volume, output_ref_volume=output_ref_volume, transform=transform, output_type=output_type, output_values=output_values)
+    params = surf2surf_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        input_convention=input_convention,
+        output_convention=output_convention,
+        input_ref_volume=input_ref_volume,
+        output_ref_volume=output_ref_volume,
+        transform=transform,
+        output_type=output_type,
+        output_values=output_values,
+    )
     return surf2surf_execute(params, execution)
 
 

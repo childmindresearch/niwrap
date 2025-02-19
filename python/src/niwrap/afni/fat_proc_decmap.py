@@ -11,6 +11,8 @@ FAT_PROC_DECMAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcDecmapParameters = typing.TypedDict('FatProcDecmapParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_decmap"],
     "in_fa": InputPathType,
@@ -294,7 +296,19 @@ def fat_proc_decmap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_DECMAP_METADATA)
-    params = fat_proc_decmap_params(in_fa=in_fa, in_v1=in_v1, prefix=prefix, mask=mask, fa_thr=fa_thr, fa_sca=fa_sca, workdir=workdir, no_clean=no_clean, qc_prefix=qc_prefix, no_cmd_out=no_cmd_out, no_qc_view=no_qc_view)
+    params = fat_proc_decmap_params(
+        in_fa=in_fa,
+        in_v1=in_v1,
+        prefix=prefix,
+        mask=mask,
+        fa_thr=fa_thr,
+        fa_sca=fa_sca,
+        workdir=workdir,
+        no_clean=no_clean,
+        qc_prefix=qc_prefix,
+        no_cmd_out=no_cmd_out,
+        no_qc_view=no_qc_view,
+    )
     return fat_proc_decmap_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ADD_TO_SPEC_FILE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 AddToSpecFileParameters = typing.TypedDict('AddToSpecFileParameters', {
     "__STYX_TYPE__": typing.Literal["add-to-spec-file"],
     "specfile": str,
@@ -248,7 +250,11 @@ def add_to_spec_file(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADD_TO_SPEC_FILE_METADATA)
-    params = add_to_spec_file_params(specfile=specfile, structure=structure, filename=filename)
+    params = add_to_spec_file_params(
+        specfile=specfile,
+        structure=structure,
+        filename=filename,
+    )
     return add_to_spec_file_execute(params, execution)
 
 

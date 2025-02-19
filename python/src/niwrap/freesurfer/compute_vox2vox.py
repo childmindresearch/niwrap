@@ -11,6 +11,8 @@ COMPUTE_VOX2VOX_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ComputeVox2voxParameters = typing.TypedDict('ComputeVox2voxParameters', {
     "__STYX_TYPE__": typing.Literal["compute_vox2vox"],
     "source": InputPathType,
@@ -173,7 +175,11 @@ def compute_vox2vox(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COMPUTE_VOX2VOX_METADATA)
-    params = compute_vox2vox_params(source=source, t4file=t4file, target=target)
+    params = compute_vox2vox_params(
+        source=source,
+        t4file=t4file,
+        target=target,
+    )
     return compute_vox2vox_execute(params, execution)
 
 

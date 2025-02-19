@@ -11,6 +11,8 @@ V_3D_VOL2_SURF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dVol2SurfParameters = typing.TypedDict('V3dVol2SurfParameters', {
     "__STYX_TYPE__": typing.Literal["3dVol2Surf"],
     "spec_file": InputPathType,
@@ -595,7 +597,50 @@ def v_3d_vol2_surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_VOL2_SURF_METADATA)
-    params = v_3d_vol2_surf_params(spec_file=spec_file, sv=sv, grid_parent=grid_parent, map_func=map_func, surf_a=surf_a, surf_b=surf_b, out_1_d=out_1_d, out_niml=out_niml, use_norms=use_norms, norm_len=norm_len, first_node=first_node, last_node=last_node, debug_level=debug_level, dnode=dnode, f_steps=f_steps, f_index=f_index, f_p1_mm=f_p1_mm, f_pn_mm=f_pn_mm, f_p1_fr=f_p1_fr, f_pn_fr=f_pn_fr, skip_col_nodes=skip_col_nodes, skip_col_1dindex=skip_col_1dindex, skip_col_i=skip_col_i, skip_col_j=skip_col_j, skip_col_k=skip_col_k, skip_col_vals=skip_col_vals, no_headers=no_headers, save_seg_coords=save_seg_coords, cmask=cmask, gp_index=gp_index, oob_index=oob_index, oob_value=oob_value, oom_value=oom_value, outcols_afni_nsd=outcols_afni_nsd, outcols_1_result=outcols_1_result, outcols_results=outcols_results, outcols_nsd_format=outcols_nsd_format, help_=help_, hist=hist, version=version, keep_norm_dir=keep_norm_dir, reverse_norm_dir=reverse_norm_dir)
+    params = v_3d_vol2_surf_params(
+        spec_file=spec_file,
+        sv=sv,
+        grid_parent=grid_parent,
+        map_func=map_func,
+        surf_a=surf_a,
+        surf_b=surf_b,
+        out_1_d=out_1_d,
+        out_niml=out_niml,
+        use_norms=use_norms,
+        norm_len=norm_len,
+        first_node=first_node,
+        last_node=last_node,
+        debug_level=debug_level,
+        dnode=dnode,
+        f_steps=f_steps,
+        f_index=f_index,
+        f_p1_mm=f_p1_mm,
+        f_pn_mm=f_pn_mm,
+        f_p1_fr=f_p1_fr,
+        f_pn_fr=f_pn_fr,
+        skip_col_nodes=skip_col_nodes,
+        skip_col_1dindex=skip_col_1dindex,
+        skip_col_i=skip_col_i,
+        skip_col_j=skip_col_j,
+        skip_col_k=skip_col_k,
+        skip_col_vals=skip_col_vals,
+        no_headers=no_headers,
+        save_seg_coords=save_seg_coords,
+        cmask=cmask,
+        gp_index=gp_index,
+        oob_index=oob_index,
+        oob_value=oob_value,
+        oom_value=oom_value,
+        outcols_afni_nsd=outcols_afni_nsd,
+        outcols_1_result=outcols_1_result,
+        outcols_results=outcols_results,
+        outcols_nsd_format=outcols_nsd_format,
+        help_=help_,
+        hist=hist,
+        version=version,
+        keep_norm_dir=keep_norm_dir,
+        reverse_norm_dir=reverse_norm_dir,
+    )
     return v_3d_vol2_surf_execute(params, execution)
 
 

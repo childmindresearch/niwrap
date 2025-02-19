@@ -11,6 +11,8 @@ V_3D_AFNITO_ANALYZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAfnitoAnalyzeParameters = typing.TypedDict('V3dAfnitoAnalyzeParameters', {
     "__STYX_TYPE__": typing.Literal["3dAFNItoANALYZE"],
     "4d_option": bool,
@@ -199,7 +201,12 @@ def v_3d_afnito_analyze(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_AFNITO_ANALYZE_METADATA)
-    params = v_3d_afnito_analyze_params(v_4d_option=v_4d_option, orient_option=orient_option, output_name=output_name, afni_dataset=afni_dataset)
+    params = v_3d_afnito_analyze_params(
+        v_4d_option=v_4d_option,
+        orient_option=orient_option,
+        output_name=output_name,
+        afni_dataset=afni_dataset,
+    )
     return v_3d_afnito_analyze_execute(params, execution)
 
 

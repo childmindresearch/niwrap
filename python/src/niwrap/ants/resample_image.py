@@ -11,6 +11,8 @@ RESAMPLE_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ResampleImageParameters = typing.TypedDict('ResampleImageParameters', {
     "__STYX_TYPE__": typing.Literal["ResampleImage"],
     "image_dimension": int,
@@ -208,7 +210,14 @@ def resample_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RESAMPLE_IMAGE_METADATA)
-    params = resample_image_params(image_dimension=image_dimension, input_image=input_image, output_image=output_image, size_spacing=size_spacing, interpolate_type=interpolate_type, pixeltype=pixeltype)
+    params = resample_image_params(
+        image_dimension=image_dimension,
+        input_image=input_image,
+        output_image=output_image,
+        size_spacing=size_spacing,
+        interpolate_type=interpolate_type,
+        pixeltype=pixeltype,
+    )
     return resample_image_execute(params, execution)
 
 

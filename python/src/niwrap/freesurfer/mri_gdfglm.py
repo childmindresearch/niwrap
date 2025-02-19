@@ -11,6 +11,8 @@ MRI_GDFGLM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGdfglmParameters = typing.TypedDict('MriGdfglmParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gdfglm"],
 })
@@ -153,7 +155,8 @@ def mri_gdfglm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GDFGLM_METADATA)
-    params = mri_gdfglm_params()
+    params = mri_gdfglm_params(
+    )
     return mri_gdfglm_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MKHEADSURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MkheadsurfParameters = typing.TypedDict('MkheadsurfParameters', {
     "__STYX_TYPE__": typing.Literal["mkheadsurf"],
     "input_vol": InputPathType,
@@ -448,7 +450,35 @@ def mkheadsurf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKHEADSURF_METADATA)
-    params = mkheadsurf_params(input_vol=input_vol, output_vol=output_vol, output_surf=output_surf, subject_id=subject_id, nsmooth=nsmooth, noseghead=noseghead, thresh1=thresh1, thresh2=thresh2, nhitsmin=nhitsmin, ndilate=ndilate, nerode=nerode, fillval=fillval, fhi=fhi, no_rescale=no_rescale, no_fill_holes_islands=no_fill_holes_islands, or_mask=or_mask, tessellation_method=tessellation_method, inflate=inflate, curv=curv, srcvol=srcvol, headvol=headvol, headsurf=headsurf, smheadsurf=smheadsurf, hemi=hemi, subjects_dir=subjects_dir, umask=umask, logfile=logfile)
+    params = mkheadsurf_params(
+        input_vol=input_vol,
+        output_vol=output_vol,
+        output_surf=output_surf,
+        subject_id=subject_id,
+        nsmooth=nsmooth,
+        noseghead=noseghead,
+        thresh1=thresh1,
+        thresh2=thresh2,
+        nhitsmin=nhitsmin,
+        ndilate=ndilate,
+        nerode=nerode,
+        fillval=fillval,
+        fhi=fhi,
+        no_rescale=no_rescale,
+        no_fill_holes_islands=no_fill_holes_islands,
+        or_mask=or_mask,
+        tessellation_method=tessellation_method,
+        inflate=inflate,
+        curv=curv,
+        srcvol=srcvol,
+        headvol=headvol,
+        headsurf=headsurf,
+        smheadsurf=smheadsurf,
+        hemi=hemi,
+        subjects_dir=subjects_dir,
+        umask=umask,
+        logfile=logfile,
+    )
     return mkheadsurf_execute(params, execution)
 
 

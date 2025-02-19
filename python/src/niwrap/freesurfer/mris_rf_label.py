@@ -11,6 +11,8 @@ MRIS_RF_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRfLabelParameters = typing.TypedDict('MrisRfLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mris_rf_label"],
     "subject": str,
@@ -193,7 +195,13 @@ def mris_rf_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_RF_LABEL_METADATA)
-    params = mris_rf_label_params(subject=subject, rf_classifier=rf_classifier, output_name=output_name, hemi=hemi, surf=surf)
+    params = mris_rf_label_params(
+        subject=subject,
+        rf_classifier=rf_classifier,
+        output_name=output_name,
+        hemi=hemi,
+        surf=surf,
+    )
     return mris_rf_label_execute(params, execution)
 
 

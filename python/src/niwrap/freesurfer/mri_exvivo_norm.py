@@ -11,6 +11,8 @@ MRI_EXVIVO_NORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriExvivoNormParameters = typing.TypedDict('MriExvivoNormParameters', {
     "__STYX_TYPE__": typing.Literal["mri_exvivo_norm"],
     "input_volume": InputPathType,
@@ -314,7 +316,23 @@ def mri_exvivo_norm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EXVIVO_NORM_METADATA)
-    params = mri_exvivo_norm_params(input_volume=input_volume, output_volume=output_volume, hemi=hemi, prediction_volume=prediction_volume, normalized_volume=normalized_volume, freeview=freeview, normalize_output_mean=normalize_output_mean, write_normalization_rounds=write_normalization_rounds, upper_threshold=upper_threshold, bias_field_sigma=bias_field_sigma, normalization_rounds=normalization_rounds, multichannel=multichannel, model_file=model_file, weights_file=weights_file, gpu_number=gpu_number)
+    params = mri_exvivo_norm_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        hemi=hemi,
+        prediction_volume=prediction_volume,
+        normalized_volume=normalized_volume,
+        freeview=freeview,
+        normalize_output_mean=normalize_output_mean,
+        write_normalization_rounds=write_normalization_rounds,
+        upper_threshold=upper_threshold,
+        bias_field_sigma=bias_field_sigma,
+        normalization_rounds=normalization_rounds,
+        multichannel=multichannel,
+        model_file=model_file,
+        weights_file=weights_file,
+        gpu_number=gpu_number,
+    )
     return mri_exvivo_norm_execute(params, execution)
 
 

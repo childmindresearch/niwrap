@@ -11,6 +11,8 @@ RMSDIFF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 RmsdiffParameters = typing.TypedDict('RmsdiffParameters', {
     "__STYX_TYPE__": typing.Literal["rmsdiff"],
     "matrixfile1": InputPathType,
@@ -178,7 +180,12 @@ def rmsdiff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RMSDIFF_METADATA)
-    params = rmsdiff_params(matrixfile1=matrixfile1, matrixfile2=matrixfile2, refvol=refvol, mask=mask)
+    params = rmsdiff_params(
+        matrixfile1=matrixfile1,
+        matrixfile2=matrixfile2,
+        refvol=refvol,
+        mask=mask,
+    )
     return rmsdiff_execute(params, execution)
 
 

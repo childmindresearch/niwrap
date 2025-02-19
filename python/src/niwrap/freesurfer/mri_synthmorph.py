@@ -11,6 +11,8 @@ MRI_SYNTHMORPH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSynthmorphParameters = typing.TypedDict('MriSynthmorphParameters', {
     "__STYX_TYPE__": typing.Literal["mri_synthmorph"],
     "moving_image": InputPathType,
@@ -313,7 +315,21 @@ def mri_synthmorph(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHMORPH_METADATA)
-    params = mri_synthmorph_params(moving_image=moving_image, fixed_image=fixed_image, moved_output=moved_output, transform_output=transform_output, header_only=header_only, transformation_model=transformation_model, init_transform=init_transform, threads=threads, gpu_flag=gpu_flag, smooth=smooth, extent=extent, model_weights=model_weights, inspect_directory=inspect_directory)
+    params = mri_synthmorph_params(
+        moving_image=moving_image,
+        fixed_image=fixed_image,
+        moved_output=moved_output,
+        transform_output=transform_output,
+        header_only=header_only,
+        transformation_model=transformation_model,
+        init_transform=init_transform,
+        threads=threads,
+        gpu_flag=gpu_flag,
+        smooth=smooth,
+        extent=extent,
+        model_weights=model_weights,
+        inspect_directory=inspect_directory,
+    )
     return mri_synthmorph_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ANTSJACOBIAN_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsjacobianParameters = typing.TypedDict('AntsjacobianParameters', {
     "__STYX_TYPE__": typing.Literal["ANTSJacobian"],
     "imagedim": int,
@@ -211,7 +213,15 @@ def antsjacobian(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTSJACOBIAN_METADATA)
-    params = antsjacobian_params(imagedim=imagedim, gwarp=gwarp, outfile=outfile, uselog=uselog, maskfn=maskfn, normbytotalbool=normbytotalbool, projectionvector=projectionvector)
+    params = antsjacobian_params(
+        imagedim=imagedim,
+        gwarp=gwarp,
+        outfile=outfile,
+        uselog=uselog,
+        maskfn=maskfn,
+        normbytotalbool=normbytotalbool,
+        projectionvector=projectionvector,
+    )
     return antsjacobian_execute(params, execution)
 
 

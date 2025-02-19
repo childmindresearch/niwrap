@@ -11,11 +11,15 @@ MRCOLOUR_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrcolourConfigParameters = typing.TypedDict('MrcolourConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrcolourParameters = typing.TypedDict('MrcolourParameters', {
     "__STYX_TYPE__": typing.Literal["mrcolour"],
     "upper": typing.NotRequired[float | None],
@@ -367,7 +371,22 @@ def mrcolour(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRCOLOUR_METADATA)
-    params = mrcolour_params(upper=upper, lower=lower, colour=colour, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, map_=map_, output=output)
+    params = mrcolour_params(
+        upper=upper,
+        lower=lower,
+        colour=colour,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        map_=map_,
+        output=output,
+    )
     return mrcolour_execute(params, execution)
 
 

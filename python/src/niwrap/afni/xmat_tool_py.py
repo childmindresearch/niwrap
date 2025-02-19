@@ -11,6 +11,8 @@ XMAT_TOOL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 XmatToolPyParameters = typing.TypedDict('XmatToolPyParameters', {
     "__STYX_TYPE__": typing.Literal["xmat_tool.py"],
     "no_gui": bool,
@@ -344,7 +346,29 @@ def xmat_tool_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XMAT_TOOL_PY_METADATA)
-    params = xmat_tool_py_params(no_gui=no_gui, load_xmat=load_xmat, load_1d=load_1d, choose_cols=choose_cols, choose_nonzero_cols=choose_nonzero_cols, chrono=chrono, cormat_cutoff=cormat_cutoff, cosmat_cutoff=cosmat_cutoff, cosmat_motion=cosmat_motion, verb=verb, show_col_types=show_col_types, show_conds=show_conds, show_cormat=show_cormat, show_cormat_warnings=show_cormat_warnings, show_cosmat=show_cosmat, show_cosmat_warnings=show_cosmat_warnings, show_fit_betas=show_fit_betas, show_fit_ts=show_fit_ts, show_xmat=show_xmat, show_1d=show_1d, gui_plot_xmat_as_one=gui_plot_xmat_as_one)
+    params = xmat_tool_py_params(
+        no_gui=no_gui,
+        load_xmat=load_xmat,
+        load_1d=load_1d,
+        choose_cols=choose_cols,
+        choose_nonzero_cols=choose_nonzero_cols,
+        chrono=chrono,
+        cormat_cutoff=cormat_cutoff,
+        cosmat_cutoff=cosmat_cutoff,
+        cosmat_motion=cosmat_motion,
+        verb=verb,
+        show_col_types=show_col_types,
+        show_conds=show_conds,
+        show_cormat=show_cormat,
+        show_cormat_warnings=show_cormat_warnings,
+        show_cosmat=show_cosmat,
+        show_cosmat_warnings=show_cosmat_warnings,
+        show_fit_betas=show_fit_betas,
+        show_fit_ts=show_fit_ts,
+        show_xmat=show_xmat,
+        show_1d=show_1d,
+        gui_plot_xmat_as_one=gui_plot_xmat_as_one,
+    )
     return xmat_tool_py_execute(params, execution)
 
 

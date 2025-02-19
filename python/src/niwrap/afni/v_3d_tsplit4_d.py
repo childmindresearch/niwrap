@@ -11,6 +11,8 @@ V_3D_TSPLIT4_D_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTsplit4DParameters = typing.TypedDict('V3dTsplit4DParameters', {
     "__STYX_TYPE__": typing.Literal["3dTsplit4D"],
     "prefix": str,
@@ -189,7 +191,12 @@ def v_3d_tsplit4_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSPLIT4_D_METADATA)
-    params = v_3d_tsplit4_d_params(prefix=prefix, infile=infile, keep_datum=keep_datum, digits=digits)
+    params = v_3d_tsplit4_d_params(
+        prefix=prefix,
+        infile=infile,
+        keep_datum=keep_datum,
+        digits=digits,
+    )
     return v_3d_tsplit4_d_execute(params, execution)
 
 

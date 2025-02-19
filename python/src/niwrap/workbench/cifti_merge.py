@@ -11,21 +11,29 @@ CIFTI_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiMergeUpToParameters = typing.TypedDict('CiftiMergeUpToParameters', {
     "__STYX_TYPE__": typing.Literal["up_to"],
     "last_index": str,
     "opt_reverse": bool,
 })
+
+
 CiftiMergeIndexParameters = typing.TypedDict('CiftiMergeIndexParameters', {
     "__STYX_TYPE__": typing.Literal["index"],
     "index": str,
     "up_to": typing.NotRequired[CiftiMergeUpToParameters | None],
 })
+
+
 CiftiMergeCiftiParameters = typing.TypedDict('CiftiMergeCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti"],
     "cifti_in": InputPathType,
     "index": typing.NotRequired[list[CiftiMergeIndexParameters] | None],
 })
+
+
 CiftiMergeParameters = typing.TypedDict('CiftiMergeParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-merge"],
     "cifti_out": str,
@@ -373,7 +381,12 @@ def cifti_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_MERGE_METADATA)
-    params = cifti_merge_params(cifti_out=cifti_out, opt_direction_direction=opt_direction_direction, opt_mem_limit_limit_gb=opt_mem_limit_limit_gb, cifti=cifti)
+    params = cifti_merge_params(
+        cifti_out=cifti_out,
+        opt_direction_direction=opt_direction_direction,
+        opt_mem_limit_limit_gb=opt_mem_limit_limit_gb,
+        cifti=cifti,
+    )
     return cifti_merge_execute(params, execution)
 
 

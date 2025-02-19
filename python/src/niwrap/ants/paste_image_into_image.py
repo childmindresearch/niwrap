@@ -11,6 +11,8 @@ PASTE_IMAGE_INTO_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 PasteImageIntoImageParameters = typing.TypedDict('PasteImageIntoImageParameters', {
     "__STYX_TYPE__": typing.Literal["PasteImageIntoImage"],
     "image_dimension": int,
@@ -228,7 +230,16 @@ def paste_image_into_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PASTE_IMAGE_INTO_IMAGE_METADATA)
-    params = paste_image_into_image_params(image_dimension=image_dimension, input_canvas_image=input_canvas_image, input_image=input_image, output_image=output_image, start_index=start_index, background_label=background_label, paint_over_non_background_voxels=paint_over_non_background_voxels, conflict_label=conflict_label)
+    params = paste_image_into_image_params(
+        image_dimension=image_dimension,
+        input_canvas_image=input_canvas_image,
+        input_image=input_image,
+        output_image=output_image,
+        start_index=start_index,
+        background_label=background_label,
+        paint_over_non_background_voxels=paint_over_non_background_voxels,
+        conflict_label=conflict_label,
+    )
     return paste_image_into_image_execute(params, execution)
 
 

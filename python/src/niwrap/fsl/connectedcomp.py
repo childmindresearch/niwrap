@@ -11,6 +11,8 @@ CONNECTEDCOMP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ConnectedcompParameters = typing.TypedDict('ConnectedcompParameters', {
     "__STYX_TYPE__": typing.Literal["connectedcomp"],
     "in_volume": InputPathType,
@@ -177,7 +179,11 @@ def connectedcomp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONNECTEDCOMP_METADATA)
-    params = connectedcomp_params(in_volume=in_volume, output_volume=output_volume, num_connect=num_connect)
+    params = connectedcomp_params(
+        in_volume=in_volume,
+        output_volume=output_volume,
+        num_connect=num_connect,
+    )
     return connectedcomp_execute(params, execution)
 
 

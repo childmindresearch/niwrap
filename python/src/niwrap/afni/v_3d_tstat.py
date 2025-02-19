@@ -11,6 +11,8 @@ V_3D_TSTAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTstatParameters = typing.TypedDict('V3dTstatParameters', {
     "__STYX_TYPE__": typing.Literal["3dTstat"],
     "mask": typing.NotRequired[InputPathType | None],
@@ -695,7 +697,68 @@ def v_3d_tstat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSTAT_METADATA)
-    params = v_3d_tstat_params(mask=mask, num_threads=num_threads, sum_=sum_, abssum=abssum, sos=sos, l2norm=l2norm, mean=mean, slope=slope, stdev=stdev, stdev_nod=stdev_nod, cvar=cvar, cvar_nod=cvar_nod, cvarinv=cvarinv, cvarinv_nod=cvarinv_nod, tsnr=tsnr, mad=mad, dw=dw, median=median, nzmedian=nzmedian, nzstdev=nzstdev, bmv=bmv, mssd=mssd, mssdsqrt=mssdsqrt, masdx=masdx, min_=min_, max_=max_, absmax=absmax, signed_absmax=signed_absmax, percentile=percentile, argmin=argmin, argmin1=argmin1, argmax=argmax, argmax1=argmax1, argabsmax=argabsmax, argabsmax1=argabsmax1, duration=duration, onset=onset, offset=offset, centroid=centroid, centduration=centduration, nzmean=nzmean, zcount=zcount, nzcount=nzcount, autocorr=autocorr, autoreg=autoreg, accumulate=accumulate, centromean=centromean, skewness=skewness, kurtosis=kurtosis, firstvalue=firstvalue, tdiff=tdiff, prefix=prefix, datum=datum, nscale=nscale, basepercent=basepercent, mask_mset=mask_mset, mrange=mrange, cmask=cmask, outputtype=outputtype, in_file=in_file)
+    params = v_3d_tstat_params(
+        mask=mask,
+        num_threads=num_threads,
+        sum_=sum_,
+        abssum=abssum,
+        sos=sos,
+        l2norm=l2norm,
+        mean=mean,
+        slope=slope,
+        stdev=stdev,
+        stdev_nod=stdev_nod,
+        cvar=cvar,
+        cvar_nod=cvar_nod,
+        cvarinv=cvarinv,
+        cvarinv_nod=cvarinv_nod,
+        tsnr=tsnr,
+        mad=mad,
+        dw=dw,
+        median=median,
+        nzmedian=nzmedian,
+        nzstdev=nzstdev,
+        bmv=bmv,
+        mssd=mssd,
+        mssdsqrt=mssdsqrt,
+        masdx=masdx,
+        min_=min_,
+        max_=max_,
+        absmax=absmax,
+        signed_absmax=signed_absmax,
+        percentile=percentile,
+        argmin=argmin,
+        argmin1=argmin1,
+        argmax=argmax,
+        argmax1=argmax1,
+        argabsmax=argabsmax,
+        argabsmax1=argabsmax1,
+        duration=duration,
+        onset=onset,
+        offset=offset,
+        centroid=centroid,
+        centduration=centduration,
+        nzmean=nzmean,
+        zcount=zcount,
+        nzcount=nzcount,
+        autocorr=autocorr,
+        autoreg=autoreg,
+        accumulate=accumulate,
+        centromean=centromean,
+        skewness=skewness,
+        kurtosis=kurtosis,
+        firstvalue=firstvalue,
+        tdiff=tdiff,
+        prefix=prefix,
+        datum=datum,
+        nscale=nscale,
+        basepercent=basepercent,
+        mask_mset=mask_mset,
+        mrange=mrange,
+        cmask=cmask,
+        outputtype=outputtype,
+        in_file=in_file,
+    )
     return v_3d_tstat_execute(params, execution)
 
 

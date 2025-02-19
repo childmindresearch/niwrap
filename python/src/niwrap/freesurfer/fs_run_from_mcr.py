@@ -11,6 +11,8 @@ FS_RUN_FROM_MCR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsRunFromMcrParameters = typing.TypedDict('FsRunFromMcrParameters', {
     "__STYX_TYPE__": typing.Literal["fs_run_from_mcr"],
     "name": typing.NotRequired[str | None],
@@ -185,7 +187,12 @@ def fs_run_from_mcr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_RUN_FROM_MCR_METADATA)
-    params = fs_run_from_mcr_params(name=name, command=command, zeroth_flag=zeroth_flag, empty_env_flag=empty_env_flag)
+    params = fs_run_from_mcr_params(
+        name=name,
+        command=command,
+        zeroth_flag=zeroth_flag,
+        empty_env_flag=empty_env_flag,
+    )
     return fs_run_from_mcr_execute(params, execution)
 
 

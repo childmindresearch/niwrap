@@ -11,6 +11,8 @@ JKGCATRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 JkgcatrainParameters = typing.TypedDict('JkgcatrainParameters', {
     "__STYX_TYPE__": typing.Literal["jkgcatrain"],
     "gca_directory": str,
@@ -198,7 +200,13 @@ def jkgcatrain(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(JKGCATRAIN_METADATA)
-    params = jkgcatrain_params(gca_directory=gca_directory, iteration_number=iteration_number, num_threads=num_threads, no_submit=no_submit, mail_flag=mail_flag)
+    params = jkgcatrain_params(
+        gca_directory=gca_directory,
+        iteration_number=iteration_number,
+        num_threads=num_threads,
+        no_submit=no_submit,
+        mail_flag=mail_flag,
+    )
     return jkgcatrain_execute(params, execution)
 
 

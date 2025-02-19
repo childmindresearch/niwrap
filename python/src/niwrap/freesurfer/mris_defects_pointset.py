@@ -11,6 +11,8 @@ MRIS_DEFECTS_POINTSET_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisDefectsPointsetParameters = typing.TypedDict('MrisDefectsPointsetParameters', {
     "__STYX_TYPE__": typing.Literal["mris_defects_pointset"],
     "surface": InputPathType,
@@ -204,7 +206,13 @@ def mris_defects_pointset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DEFECTS_POINTSET_METADATA)
-    params = mris_defects_pointset_params(surface=surface, defects=defects, out=out, label=label, control=control)
+    params = mris_defects_pointset_params(
+        surface=surface,
+        defects=defects,
+        out=out,
+        label=label,
+        control=control,
+    )
     return mris_defects_pointset_execute(params, execution)
 
 

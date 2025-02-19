@@ -11,6 +11,8 @@ V__DEBLANK_FILE_NAMES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDeblankFileNamesParameters = typing.TypedDict('VDeblankFileNamesParameters', {
     "__STYX_TYPE__": typing.Literal["@DeblankFileNames"],
     "move": bool,
@@ -189,7 +191,13 @@ def v__deblank_file_names(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DEBLANK_FILE_NAMES_METADATA)
-    params = v__deblank_file_names_params(move=move, nobrac=nobrac, demo_set=demo_set, echo=echo, help_=help_)
+    params = v__deblank_file_names_params(
+        move=move,
+        nobrac=nobrac,
+        demo_set=demo_set,
+        echo=echo,
+        help_=help_,
+    )
     return v__deblank_file_names_execute(params, execution)
 
 

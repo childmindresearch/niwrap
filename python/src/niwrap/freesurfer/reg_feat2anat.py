@@ -11,6 +11,8 @@ REG_FEAT2ANAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RegFeat2anatParameters = typing.TypedDict('RegFeat2anatParameters', {
     "__STYX_TYPE__": typing.Literal["reg-feat2anat"],
     "feat_dir": str,
@@ -335,7 +337,24 @@ def reg_feat2anat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_FEAT2ANAT_METADATA)
-    params = reg_feat2anat_params(feat_dir=feat_dir, subject_id=subject_id, overwrite_exf2std=overwrite_exf2std, manual=manual, manxfm_type=manxfm_type, dof=dof, bins=bins, cost=cost, max_angle=max_angle, bet=bet, title=title, no_bbr=no_bbr, spm=spm, no_inorm=no_inorm, fmov=fmov, debug=debug)
+    params = reg_feat2anat_params(
+        feat_dir=feat_dir,
+        subject_id=subject_id,
+        overwrite_exf2std=overwrite_exf2std,
+        manual=manual,
+        manxfm_type=manxfm_type,
+        dof=dof,
+        bins=bins,
+        cost=cost,
+        max_angle=max_angle,
+        bet=bet,
+        title=title,
+        no_bbr=no_bbr,
+        spm=spm,
+        no_inorm=no_inorm,
+        fmov=fmov,
+        debug=debug,
+    )
     return reg_feat2anat_execute(params, execution)
 
 

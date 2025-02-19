@@ -11,6 +11,8 @@ MRI_GTMPVC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGtmpvcParameters = typing.TypedDict('MriGtmpvcParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gtmpvc"],
     "input_volume": InputPathType,
@@ -785,7 +787,68 @@ def mri_gtmpvc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GTMPVC_METADATA)
-    params = mri_gtmpvc_params(input_volume=input_volume, frame=frame, psf=psf, segmentation=segmentation, registration=registration, output_directory=output_directory, mask=mask, auto_mask=auto_mask, no_reduce_fov=no_reduce_fov, reduce_fov_eqodd=reduce_fov_eqodd, contrast_matrix=contrast_matrix, default_seg_merge=default_seg_merge, merge_hypos=merge_hypos, merge_cblum_wm_gyri=merge_cblum_wm_gyri, tt_reduce=tt_reduce, replace_seg=replace_seg, replace_file=replace_file, rescale=rescale, no_rescale=no_rescale, scale_refval=scale_refval, ctab=ctab, ctab_default=ctab_default, tt_update=tt_update, lateralization=lateralization, no_tfe=no_tfe, no_pvc=no_pvc, segpvfres=segpvfres, rbv=rbv, rbv_res=rbv_res, mueller_pvc=mueller_pvc, mg_ref_cerebral_wm=mg_ref_cerebral_wm, mg_ref_lobes_wm=mg_ref_lobes_wm, glm_mg_pvc=glm_mg_pvc, km_ref=km_ref, km_hb=km_hb, steady_state=steady_state, save_x=save_x, save_y=save_y, save_beta=save_beta, save_x0=save_x0, save_input=save_input, save_eres=save_eres, save_yhat=save_yhat, save_yhat_noise=save_yhat_noise, save_yhat_full_fov=save_yhat_full_fov, save_yhat0=save_yhat0, synth=synth, synth_only=synth_only, synth_save=synth_save, save_text=save_text, threads=threads, max_threads=max_threads, max_threads_minus_one=max_threads_minus_one, subjects_dir=subjects_dir, vg_thresh=vg_thresh, gdiag=gdiag, debug=debug, checkopts=checkopts, help_=help_, version=version)
+    params = mri_gtmpvc_params(
+        input_volume=input_volume,
+        frame=frame,
+        psf=psf,
+        segmentation=segmentation,
+        registration=registration,
+        output_directory=output_directory,
+        mask=mask,
+        auto_mask=auto_mask,
+        no_reduce_fov=no_reduce_fov,
+        reduce_fov_eqodd=reduce_fov_eqodd,
+        contrast_matrix=contrast_matrix,
+        default_seg_merge=default_seg_merge,
+        merge_hypos=merge_hypos,
+        merge_cblum_wm_gyri=merge_cblum_wm_gyri,
+        tt_reduce=tt_reduce,
+        replace_seg=replace_seg,
+        replace_file=replace_file,
+        rescale=rescale,
+        no_rescale=no_rescale,
+        scale_refval=scale_refval,
+        ctab=ctab,
+        ctab_default=ctab_default,
+        tt_update=tt_update,
+        lateralization=lateralization,
+        no_tfe=no_tfe,
+        no_pvc=no_pvc,
+        segpvfres=segpvfres,
+        rbv=rbv,
+        rbv_res=rbv_res,
+        mueller_pvc=mueller_pvc,
+        mg_ref_cerebral_wm=mg_ref_cerebral_wm,
+        mg_ref_lobes_wm=mg_ref_lobes_wm,
+        glm_mg_pvc=glm_mg_pvc,
+        km_ref=km_ref,
+        km_hb=km_hb,
+        steady_state=steady_state,
+        save_x=save_x,
+        save_y=save_y,
+        save_beta=save_beta,
+        save_x0=save_x0,
+        save_input=save_input,
+        save_eres=save_eres,
+        save_yhat=save_yhat,
+        save_yhat_noise=save_yhat_noise,
+        save_yhat_full_fov=save_yhat_full_fov,
+        save_yhat0=save_yhat0,
+        synth=synth,
+        synth_only=synth_only,
+        synth_save=synth_save,
+        save_text=save_text,
+        threads=threads,
+        max_threads=max_threads,
+        max_threads_minus_one=max_threads_minus_one,
+        subjects_dir=subjects_dir,
+        vg_thresh=vg_thresh,
+        gdiag=gdiag,
+        debug=debug,
+        checkopts=checkopts,
+        help_=help_,
+        version=version,
+    )
     return mri_gtmpvc_execute(params, execution)
 
 

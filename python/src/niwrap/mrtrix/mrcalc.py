@@ -11,169 +11,277 @@ MRCALC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrcalcAbsParameters = typing.TypedDict('MrcalcAbsParameters', {
     "__STYX_TYPE__": typing.Literal["abs"],
 })
+
+
 MrcalcNegParameters = typing.TypedDict('MrcalcNegParameters', {
     "__STYX_TYPE__": typing.Literal["neg"],
 })
+
+
 MrcalcAddParameters = typing.TypedDict('MrcalcAddParameters', {
     "__STYX_TYPE__": typing.Literal["add"],
 })
+
+
 MrcalcSubtractParameters = typing.TypedDict('MrcalcSubtractParameters', {
     "__STYX_TYPE__": typing.Literal["subtract"],
 })
+
+
 MrcalcMultiplyParameters = typing.TypedDict('MrcalcMultiplyParameters', {
     "__STYX_TYPE__": typing.Literal["multiply"],
 })
+
+
 MrcalcDivideParameters = typing.TypedDict('MrcalcDivideParameters', {
     "__STYX_TYPE__": typing.Literal["divide"],
 })
+
+
 MrcalcMinParameters = typing.TypedDict('MrcalcMinParameters', {
     "__STYX_TYPE__": typing.Literal["min"],
 })
+
+
 MrcalcMaxParameters = typing.TypedDict('MrcalcMaxParameters', {
     "__STYX_TYPE__": typing.Literal["max"],
 })
+
+
 MrcalcLtParameters = typing.TypedDict('MrcalcLtParameters', {
     "__STYX_TYPE__": typing.Literal["lt"],
 })
+
+
 MrcalcGtParameters = typing.TypedDict('MrcalcGtParameters', {
     "__STYX_TYPE__": typing.Literal["gt"],
 })
+
+
 MrcalcLeParameters = typing.TypedDict('MrcalcLeParameters', {
     "__STYX_TYPE__": typing.Literal["le"],
 })
+
+
 MrcalcGeParameters = typing.TypedDict('MrcalcGeParameters', {
     "__STYX_TYPE__": typing.Literal["ge"],
 })
+
+
 MrcalcEqParameters = typing.TypedDict('MrcalcEqParameters', {
     "__STYX_TYPE__": typing.Literal["eq"],
 })
+
+
 MrcalcNeqParameters = typing.TypedDict('MrcalcNeqParameters', {
     "__STYX_TYPE__": typing.Literal["neq"],
 })
+
+
 MrcalcIfParameters = typing.TypedDict('MrcalcIfParameters', {
     "__STYX_TYPE__": typing.Literal["if"],
 })
+
+
 MrcalcReplaceParameters = typing.TypedDict('MrcalcReplaceParameters', {
     "__STYX_TYPE__": typing.Literal["replace"],
 })
+
+
 MrcalcSqrtParameters = typing.TypedDict('MrcalcSqrtParameters', {
     "__STYX_TYPE__": typing.Literal["sqrt"],
 })
+
+
 MrcalcPowParameters = typing.TypedDict('MrcalcPowParameters', {
     "__STYX_TYPE__": typing.Literal["pow"],
 })
+
+
 MrcalcRoundParameters = typing.TypedDict('MrcalcRoundParameters', {
     "__STYX_TYPE__": typing.Literal["round"],
 })
+
+
 MrcalcCeilParameters = typing.TypedDict('MrcalcCeilParameters', {
     "__STYX_TYPE__": typing.Literal["ceil"],
 })
+
+
 MrcalcFloorParameters = typing.TypedDict('MrcalcFloorParameters', {
     "__STYX_TYPE__": typing.Literal["floor"],
 })
+
+
 MrcalcNotParameters = typing.TypedDict('MrcalcNotParameters', {
     "__STYX_TYPE__": typing.Literal["not"],
 })
+
+
 MrcalcAndParameters = typing.TypedDict('MrcalcAndParameters', {
     "__STYX_TYPE__": typing.Literal["and"],
 })
+
+
 MrcalcOrParameters = typing.TypedDict('MrcalcOrParameters', {
     "__STYX_TYPE__": typing.Literal["or"],
 })
+
+
 MrcalcXorParameters = typing.TypedDict('MrcalcXorParameters', {
     "__STYX_TYPE__": typing.Literal["xor"],
 })
+
+
 MrcalcIsnanParameters = typing.TypedDict('MrcalcIsnanParameters', {
     "__STYX_TYPE__": typing.Literal["isnan"],
 })
+
+
 MrcalcIsinfParameters = typing.TypedDict('MrcalcIsinfParameters', {
     "__STYX_TYPE__": typing.Literal["isinf"],
 })
+
+
 MrcalcFiniteParameters = typing.TypedDict('MrcalcFiniteParameters', {
     "__STYX_TYPE__": typing.Literal["finite"],
 })
+
+
 MrcalcComplexParameters = typing.TypedDict('MrcalcComplexParameters', {
     "__STYX_TYPE__": typing.Literal["complex"],
 })
+
+
 MrcalcPolarParameters = typing.TypedDict('MrcalcPolarParameters', {
     "__STYX_TYPE__": typing.Literal["polar"],
 })
+
+
 MrcalcRealParameters = typing.TypedDict('MrcalcRealParameters', {
     "__STYX_TYPE__": typing.Literal["real"],
 })
+
+
 MrcalcImagParameters = typing.TypedDict('MrcalcImagParameters', {
     "__STYX_TYPE__": typing.Literal["imag"],
 })
+
+
 MrcalcPhaseParameters = typing.TypedDict('MrcalcPhaseParameters', {
     "__STYX_TYPE__": typing.Literal["phase"],
 })
+
+
 MrcalcConjParameters = typing.TypedDict('MrcalcConjParameters', {
     "__STYX_TYPE__": typing.Literal["conj"],
 })
+
+
 MrcalcProjParameters = typing.TypedDict('MrcalcProjParameters', {
     "__STYX_TYPE__": typing.Literal["proj"],
 })
+
+
 MrcalcExpParameters = typing.TypedDict('MrcalcExpParameters', {
     "__STYX_TYPE__": typing.Literal["exp"],
 })
+
+
 MrcalcLogParameters = typing.TypedDict('MrcalcLogParameters', {
     "__STYX_TYPE__": typing.Literal["log"],
 })
+
+
 MrcalcLog10Parameters = typing.TypedDict('MrcalcLog10Parameters', {
     "__STYX_TYPE__": typing.Literal["log10"],
 })
+
+
 MrcalcCosParameters = typing.TypedDict('MrcalcCosParameters', {
     "__STYX_TYPE__": typing.Literal["cos"],
 })
+
+
 MrcalcSinParameters = typing.TypedDict('MrcalcSinParameters', {
     "__STYX_TYPE__": typing.Literal["sin"],
 })
+
+
 MrcalcTanParameters = typing.TypedDict('MrcalcTanParameters', {
     "__STYX_TYPE__": typing.Literal["tan"],
 })
+
+
 MrcalcAcosParameters = typing.TypedDict('MrcalcAcosParameters', {
     "__STYX_TYPE__": typing.Literal["acos"],
 })
+
+
 MrcalcAsinParameters = typing.TypedDict('MrcalcAsinParameters', {
     "__STYX_TYPE__": typing.Literal["asin"],
 })
+
+
 MrcalcAtanParameters = typing.TypedDict('MrcalcAtanParameters', {
     "__STYX_TYPE__": typing.Literal["atan"],
 })
+
+
 MrcalcCoshParameters = typing.TypedDict('MrcalcCoshParameters', {
     "__STYX_TYPE__": typing.Literal["cosh"],
 })
+
+
 MrcalcSinhParameters = typing.TypedDict('MrcalcSinhParameters', {
     "__STYX_TYPE__": typing.Literal["sinh"],
 })
+
+
 MrcalcTanhParameters = typing.TypedDict('MrcalcTanhParameters', {
     "__STYX_TYPE__": typing.Literal["tanh"],
 })
+
+
 MrcalcAcoshParameters = typing.TypedDict('MrcalcAcoshParameters', {
     "__STYX_TYPE__": typing.Literal["acosh"],
 })
+
+
 MrcalcAsinhParameters = typing.TypedDict('MrcalcAsinhParameters', {
     "__STYX_TYPE__": typing.Literal["asinh"],
 })
+
+
 MrcalcAtanhParameters = typing.TypedDict('MrcalcAtanhParameters', {
     "__STYX_TYPE__": typing.Literal["atanh"],
 })
+
+
 MrcalcConfigParameters = typing.TypedDict('MrcalcConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrcalcVariousStringParameters = typing.TypedDict('MrcalcVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 MrcalcVariousFileParameters = typing.TypedDict('MrcalcVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 MrcalcParameters = typing.TypedDict('MrcalcParameters', {
     "__STYX_TYPE__": typing.Literal["mrcalc"],
     "abs": typing.NotRequired[list[MrcalcAbsParameters] | None],
@@ -2759,7 +2867,68 @@ def mrcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRCALC_METADATA)
-    params = mrcalc_params(abs_=abs_, neg=neg, add=add, subtract=subtract, multiply=multiply, divide=divide, min_=min_, max_=max_, lt=lt, gt=gt, le=le, ge=ge, eq=eq, neq=neq, if_=if_, replace=replace, sqrt=sqrt, pow_=pow_, round_=round_, ceil=ceil, floor=floor, not_=not_, and_=and_, or_=or_, xor=xor, isnan=isnan, isinf=isinf, finite=finite, complex_=complex_, polar=polar, real=real, imag=imag, phase=phase, conj=conj, proj=proj, exp=exp, log=log, log10=log10, cos=cos, sin=sin, tan=tan, acos=acos, asin=asin, atan=atan, cosh=cosh, sinh=sinh, tanh=tanh, acosh=acosh, asinh=asinh, atanh=atanh, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, operand=operand)
+    params = mrcalc_params(
+        abs_=abs_,
+        neg=neg,
+        add=add,
+        subtract=subtract,
+        multiply=multiply,
+        divide=divide,
+        min_=min_,
+        max_=max_,
+        lt=lt,
+        gt=gt,
+        le=le,
+        ge=ge,
+        eq=eq,
+        neq=neq,
+        if_=if_,
+        replace=replace,
+        sqrt=sqrt,
+        pow_=pow_,
+        round_=round_,
+        ceil=ceil,
+        floor=floor,
+        not_=not_,
+        and_=and_,
+        or_=or_,
+        xor=xor,
+        isnan=isnan,
+        isinf=isinf,
+        finite=finite,
+        complex_=complex_,
+        polar=polar,
+        real=real,
+        imag=imag,
+        phase=phase,
+        conj=conj,
+        proj=proj,
+        exp=exp,
+        log=log,
+        log10=log10,
+        cos=cos,
+        sin=sin,
+        tan=tan,
+        acos=acos,
+        asin=asin,
+        atan=atan,
+        cosh=cosh,
+        sinh=sinh,
+        tanh=tanh,
+        acosh=acosh,
+        asinh=asinh,
+        atanh=atanh,
+        datatype=datatype,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        operand=operand,
+    )
     return mrcalc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CREATE_DTICOHORT_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 CreateDticohortParameters = typing.TypedDict('CreateDticohortParameters', {
     "__STYX_TYPE__": typing.Literal["CreateDTICohort"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
@@ -285,7 +287,16 @@ def create_dticohort(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_DTICOHORT_METADATA)
-    params = create_dticohort_params(image_dimensionality=image_dimensionality, dti_atlas=dti_atlas, label_mask_image=label_mask_image, noise_sigma=noise_sigma, pathology=pathology, dwi_parameters=dwi_parameters, registered_population=registered_population, output=output)
+    params = create_dticohort_params(
+        image_dimensionality=image_dimensionality,
+        dti_atlas=dti_atlas,
+        label_mask_image=label_mask_image,
+        noise_sigma=noise_sigma,
+        pathology=pathology,
+        dwi_parameters=dwi_parameters,
+        registered_population=registered_population,
+        output=output,
+    )
     return create_dticohort_execute(params, execution)
 
 

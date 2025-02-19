@@ -11,6 +11,8 @@ SURFACE_APPLY_WARPFIELD_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceApplyWarpfieldParameters = typing.TypedDict('SurfaceApplyWarpfieldParameters', {
     "__STYX_TYPE__": typing.Literal["surface-apply-warpfield"],
     "in_surf": InputPathType,
@@ -204,7 +206,12 @@ def surface_apply_warpfield(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_APPLY_WARPFIELD_METADATA)
-    params = surface_apply_warpfield_params(in_surf=in_surf, warpfield=warpfield, out_surf=out_surf, opt_fnirt_forward_warp=opt_fnirt_forward_warp)
+    params = surface_apply_warpfield_params(
+        in_surf=in_surf,
+        warpfield=warpfield,
+        out_surf=out_surf,
+        opt_fnirt_forward_warp=opt_fnirt_forward_warp,
+    )
     return surface_apply_warpfield_execute(params, execution)
 
 

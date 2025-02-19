@@ -11,6 +11,8 @@ TTOLOGP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TtologpParameters = typing.TypedDict('TtologpParameters', {
     "__STYX_TYPE__": typing.Literal["ttologp"],
     "varsfile": InputPathType,
@@ -193,7 +195,13 @@ def ttologp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TTOLOGP_METADATA)
-    params = ttologp_params(varsfile=varsfile, cbsfile=cbsfile, dof=dof, outputvol=outputvol, help_flag=help_flag)
+    params = ttologp_params(
+        varsfile=varsfile,
+        cbsfile=cbsfile,
+        dof=dof,
+        outputvol=outputvol,
+        help_flag=help_flag,
+    )
     return ttologp_execute(params, execution)
 
 

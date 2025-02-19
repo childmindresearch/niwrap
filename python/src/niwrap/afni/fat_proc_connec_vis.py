@@ -11,6 +11,8 @@ FAT_PROC_CONNEC_VIS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcConnecVisParameters = typing.TypedDict('FatProcConnecVisParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_connec_vis"],
     "in_rois": str,
@@ -319,7 +321,19 @@ def fat_proc_connec_vis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_CONNEC_VIS_METADATA)
-    params = fat_proc_connec_vis_params(in_rois=in_rois, prefix=prefix, prefix_file=prefix_file, tsmoo_kpb=tsmoo_kpb, tsmoo_niter=tsmoo_niter, iso_opt=iso_opt, trackid_no_or=trackid_no_or, output_tcat=output_tcat, output_tstat=output_tstat, wdir=wdir, no_clean=no_clean)
+    params = fat_proc_connec_vis_params(
+        in_rois=in_rois,
+        prefix=prefix,
+        prefix_file=prefix_file,
+        tsmoo_kpb=tsmoo_kpb,
+        tsmoo_niter=tsmoo_niter,
+        iso_opt=iso_opt,
+        trackid_no_or=trackid_no_or,
+        output_tcat=output_tcat,
+        output_tstat=output_tstat,
+        wdir=wdir,
+        no_clean=no_clean,
+    )
     return fat_proc_connec_vis_execute(params, execution)
 
 

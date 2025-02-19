@@ -11,6 +11,8 @@ SET_STRUCTURE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SetStructureParameters = typing.TypedDict('SetStructureParameters', {
     "__STYX_TYPE__": typing.Literal["set-structure"],
     "data_file": str,
@@ -309,7 +311,12 @@ def set_structure(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SET_STRUCTURE_METADATA)
-    params = set_structure_params(data_file=data_file, structure=structure, opt_surface_type_type=opt_surface_type_type, opt_surface_secondary_type_secondary_type=opt_surface_secondary_type_secondary_type)
+    params = set_structure_params(
+        data_file=data_file,
+        structure=structure,
+        opt_surface_type_type=opt_surface_type_type,
+        opt_surface_secondary_type_secondary_type=opt_surface_secondary_type_secondary_type,
+    )
     return set_structure_execute(params, execution)
 
 

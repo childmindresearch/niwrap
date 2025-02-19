@@ -11,6 +11,8 @@ SURFACE_CURVATURE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SurfaceCurvatureParameters = typing.TypedDict('SurfaceCurvatureParameters', {
     "__STYX_TYPE__": typing.Literal["SurfaceCurvature"],
     "filename_in": InputPathType,
@@ -180,7 +182,12 @@ def surface_curvature(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CURVATURE_METADATA)
-    params = surface_curvature_params(filename_in=filename_in, filename_out=filename_out, sigma=sigma, option=option)
+    params = surface_curvature_params(
+        filename_in=filename_in,
+        filename_out=filename_out,
+        sigma=sigma,
+        option=option,
+    )
     return surface_curvature_execute(params, execution)
 
 

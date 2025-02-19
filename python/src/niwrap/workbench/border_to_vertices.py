@@ -11,6 +11,8 @@ BORDER_TO_VERTICES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BorderToVerticesParameters = typing.TypedDict('BorderToVerticesParameters', {
     "__STYX_TYPE__": typing.Literal["border-to-vertices"],
     "surface": InputPathType,
@@ -192,7 +194,12 @@ def border_to_vertices(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_TO_VERTICES_METADATA)
-    params = border_to_vertices_params(surface=surface, border_file=border_file, metric_out=metric_out, opt_border_name=opt_border_name)
+    params = border_to_vertices_params(
+        surface=surface,
+        border_file=border_file,
+        metric_out=metric_out,
+        opt_border_name=opt_border_name,
+    )
     return border_to_vertices_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FS_TUTORIAL_DATA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsTutorialDataParameters = typing.TypedDict('FsTutorialDataParameters', {
     "__STYX_TYPE__": typing.Literal["fs_tutorial_data"],
     "rsync_options": typing.NotRequired[list[str] | None],
@@ -161,7 +163,9 @@ def fs_tutorial_data(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_TUTORIAL_DATA_METADATA)
-    params = fs_tutorial_data_params(rsync_options=rsync_options)
+    params = fs_tutorial_data_params(
+        rsync_options=rsync_options,
+    )
     return fs_tutorial_data_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MKIMA_INDEX_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MkimaIndexTclParameters = typing.TypedDict('MkimaIndexTclParameters', {
     "__STYX_TYPE__": typing.Literal["mkima_index.tcl"],
     "input_file": InputPathType,
@@ -167,7 +169,10 @@ def mkima_index_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKIMA_INDEX_TCL_METADATA)
-    params = mkima_index_tcl_params(input_file=input_file, output_flag=output_flag)
+    params = mkima_index_tcl_params(
+        input_file=input_file,
+        output_flag=output_flag,
+    )
     return mkima_index_tcl_execute(params, execution)
 
 

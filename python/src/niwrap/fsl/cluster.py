@@ -11,6 +11,8 @@ CLUSTER_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ClusterParameters = typing.TypedDict('ClusterParameters', {
     "__STYX_TYPE__": typing.Literal["cluster"],
     "connectivity": typing.NotRequired[int | None],
@@ -410,7 +412,34 @@ def cluster(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CLUSTER_METADATA)
-    params = cluster_params(connectivity=connectivity, cope_file=cope_file, dlh=dlh, find_min=find_min, fractional=fractional, in_file=in_file, minclustersize=minclustersize, no_table=no_table, num_maxima=num_maxima, out_index_file_2=out_index_file_2, out_localmax_txt_file_2=out_localmax_txt_file_2, out_localmax_vol_file_2=out_localmax_vol_file_2, out_max_file_2=out_max_file_2, out_mean_file_2=out_mean_file_2, out_pval_file_2=out_pval_file_2, out_size_file_2=out_size_file_2, out_threshold_file_2=out_threshold_file_2, output_type=output_type, peak_distance=peak_distance, pthreshold=pthreshold, std_space_file=std_space_file, threshold=threshold, use_mm=use_mm, volume=volume, warpfield_file=warpfield_file, xfm_file=xfm_file)
+    params = cluster_params(
+        connectivity=connectivity,
+        cope_file=cope_file,
+        dlh=dlh,
+        find_min=find_min,
+        fractional=fractional,
+        in_file=in_file,
+        minclustersize=minclustersize,
+        no_table=no_table,
+        num_maxima=num_maxima,
+        out_index_file_2=out_index_file_2,
+        out_localmax_txt_file_2=out_localmax_txt_file_2,
+        out_localmax_vol_file_2=out_localmax_vol_file_2,
+        out_max_file_2=out_max_file_2,
+        out_mean_file_2=out_mean_file_2,
+        out_pval_file_2=out_pval_file_2,
+        out_size_file_2=out_size_file_2,
+        out_threshold_file_2=out_threshold_file_2,
+        output_type=output_type,
+        peak_distance=peak_distance,
+        pthreshold=pthreshold,
+        std_space_file=std_space_file,
+        threshold=threshold,
+        use_mm=use_mm,
+        volume=volume,
+        warpfield_file=warpfield_file,
+        xfm_file=xfm_file,
+    )
     return cluster_execute(params, execution)
 
 

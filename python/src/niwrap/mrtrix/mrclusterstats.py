@@ -11,15 +11,21 @@ MRCLUSTERSTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrclusterstatsColumnParameters = typing.TypedDict('MrclusterstatsColumnParameters', {
     "__STYX_TYPE__": typing.Literal["column"],
     "path": InputPathType,
 })
+
+
 MrclusterstatsConfigParameters = typing.TypedDict('MrclusterstatsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrclusterstatsParameters = typing.TypedDict('MrclusterstatsParameters', {
     "__STYX_TYPE__": typing.Literal["mrclusterstats"],
     "notest": bool,
@@ -679,7 +685,41 @@ def mrclusterstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRCLUSTERSTATS_METADATA)
-    params = mrclusterstats_params(notest=notest, errors=errors, exchange_within=exchange_within, exchange_whole=exchange_whole, strong=strong, nshuffles=nshuffles, permutations=permutations, nonstationarity=nonstationarity, skew_nonstationarity=skew_nonstationarity, nshuffles_nonstationarity=nshuffles_nonstationarity, permutations_nonstationarity=permutations_nonstationarity, tfce_dh=tfce_dh, tfce_e=tfce_e, tfce_h=tfce_h, variance=variance, ftests=ftests, fonly=fonly, column=column, threshold=threshold, connectivity=connectivity, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, design=design, contrast=contrast, mask=mask, output=output)
+    params = mrclusterstats_params(
+        notest=notest,
+        errors=errors,
+        exchange_within=exchange_within,
+        exchange_whole=exchange_whole,
+        strong=strong,
+        nshuffles=nshuffles,
+        permutations=permutations,
+        nonstationarity=nonstationarity,
+        skew_nonstationarity=skew_nonstationarity,
+        nshuffles_nonstationarity=nshuffles_nonstationarity,
+        permutations_nonstationarity=permutations_nonstationarity,
+        tfce_dh=tfce_dh,
+        tfce_e=tfce_e,
+        tfce_h=tfce_h,
+        variance=variance,
+        ftests=ftests,
+        fonly=fonly,
+        column=column,
+        threshold=threshold,
+        connectivity=connectivity,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        design=design,
+        contrast=contrast,
+        mask=mask,
+        output=output,
+    )
     return mrclusterstats_execute(params, execution)
 
 

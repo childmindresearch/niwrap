@@ -11,6 +11,8 @@ V_3DVOLREG_AFNI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 V3dvolregAfniParameters = typing.TypedDict('V3dvolregAfniParameters', {
     "__STYX_TYPE__": typing.Literal["3dvolreg.afni"],
     "input_file": InputPathType,
@@ -175,7 +177,11 @@ def v_3dvolreg_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DVOLREG_AFNI_METADATA)
-    params = v_3dvolreg_afni_params(input_file=input_file, output_file=output_file, options=options)
+    params = v_3dvolreg_afni_params(
+        input_file=input_file,
+        output_file=output_file,
+        options=options,
+    )
     return v_3dvolreg_afni_execute(params, execution)
 
 

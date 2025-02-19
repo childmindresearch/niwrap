@@ -11,6 +11,8 @@ V__ANATICOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAnaticorParameters = typing.TypedDict('VAnaticorParameters', {
     "__STYX_TYPE__": typing.Literal["@ANATICOR"],
     "ts": InputPathType,
@@ -296,7 +298,22 @@ def v__anaticor(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ANATICOR_METADATA)
-    params = v__anaticor_params(ts=ts, polort=polort, motion=motion, aseg=aseg, prefix=prefix, radius=radius, view=view, nuisance=nuisance, no_ventricles=no_ventricles, rsq_wme=rsq_wme, coverage=coverage, verb=verb, dirty=dirty, echo=echo)
+    params = v__anaticor_params(
+        ts=ts,
+        polort=polort,
+        motion=motion,
+        aseg=aseg,
+        prefix=prefix,
+        radius=radius,
+        view=view,
+        nuisance=nuisance,
+        no_ventricles=no_ventricles,
+        rsq_wme=rsq_wme,
+        coverage=coverage,
+        verb=verb,
+        dirty=dirty,
+        echo=echo,
+    )
     return v__anaticor_execute(params, execution)
 
 

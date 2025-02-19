@@ -11,6 +11,8 @@ RCA_CONFIG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RcaConfigParameters = typing.TypedDict('RcaConfigParameters', {
     "__STYX_TYPE__": typing.Literal["rca-config"],
     "source_config": InputPathType,
@@ -182,7 +184,12 @@ def rca_config(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_CONFIG_METADATA)
-    params = rca_config_params(source_config=source_config, updated_config=updated_config, unknown_args_file=unknown_args_file, args=args)
+    params = rca_config_params(
+        source_config=source_config,
+        updated_config=updated_config,
+        unknown_args_file=unknown_args_file,
+        args=args,
+    )
     return rca_config_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ RESPONSEMEAN_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 ResponsemeanParameters = typing.TypedDict('ResponsemeanParameters', {
     "__STYX_TYPE__": typing.Literal["responsemean"],
     "input_response": list[InputPathType],
@@ -286,7 +288,22 @@ def responsemean(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RESPONSEMEAN_METADATA)
-    params = responsemean_params(input_response=input_response, output_response=output_response, legacy=legacy, nocleanup=nocleanup, scratch_dir=scratch_dir, continue_scratch_dir=continue_scratch_dir, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version)
+    params = responsemean_params(
+        input_response=input_response,
+        output_response=output_response,
+        legacy=legacy,
+        nocleanup=nocleanup,
+        scratch_dir=scratch_dir,
+        continue_scratch_dir=continue_scratch_dir,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+    )
     return responsemean_execute(params, execution)
 
 

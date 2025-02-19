@@ -11,6 +11,8 @@ XCEREBRALSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 XcerebralsegParameters = typing.TypedDict('XcerebralsegParameters', {
     "__STYX_TYPE__": typing.Literal["xcerebralseg"],
     "subject": str,
@@ -266,7 +268,18 @@ def xcerebralseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XCEREBRALSEG_METADATA)
-    params = xcerebralseg_params(subject=subject, output_volume=output_volume, atlas=atlas, mergevol=mergevol, source_volume=source_volume, no_stats=no_stats, seg1_name=seg1_name, no_pons=no_pons, no_vermis=no_vermis, threads=threads)
+    params = xcerebralseg_params(
+        subject=subject,
+        output_volume=output_volume,
+        atlas=atlas,
+        mergevol=mergevol,
+        source_volume=source_volume,
+        no_stats=no_stats,
+        seg1_name=seg1_name,
+        no_pons=no_pons,
+        no_vermis=no_vermis,
+        threads=threads,
+    )
     return xcerebralseg_execute(params, execution)
 
 

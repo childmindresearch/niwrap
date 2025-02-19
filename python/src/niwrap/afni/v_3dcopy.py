@@ -11,6 +11,8 @@ V_3DCOPY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dcopyParameters = typing.TypedDict('V3dcopyParameters', {
     "__STYX_TYPE__": typing.Literal["3dcopy"],
     "verbose": bool,
@@ -166,7 +168,10 @@ def v_3dcopy(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DCOPY_METADATA)
-    params = v_3dcopy_params(verbose=verbose, denote=denote)
+    params = v_3dcopy_params(
+        verbose=verbose,
+        denote=denote,
+    )
     return v_3dcopy_execute(params, execution)
 
 

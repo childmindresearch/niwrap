@@ -11,6 +11,8 @@ COMPARE_SURFACES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 CompareSurfacesParameters = typing.TypedDict('CompareSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["CompareSurfaces"],
     "spec_file": InputPathType,
@@ -313,7 +315,23 @@ def compare_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COMPARE_SURFACES_METADATA)
-    params = compare_surfaces_params(spec_file=spec_file, hemisphere=hemisphere, volume_parent_1=volume_parent_1, volume_parent_2=volume_parent_2, file_prefix=file_prefix, one_node=one_node, node_range=node_range, no_consistency_check=no_consistency_check, no_volreg=no_volreg, no_transform=no_transform, set_environment_variable=set_environment_variable, trace_=trace_, extreme_trace=extreme_trace, no_memory_trace=no_memory_trace, yes_memory_trace=yes_memory_trace)
+    params = compare_surfaces_params(
+        spec_file=spec_file,
+        hemisphere=hemisphere,
+        volume_parent_1=volume_parent_1,
+        volume_parent_2=volume_parent_2,
+        file_prefix=file_prefix,
+        one_node=one_node,
+        node_range=node_range,
+        no_consistency_check=no_consistency_check,
+        no_volreg=no_volreg,
+        no_transform=no_transform,
+        set_environment_variable=set_environment_variable,
+        trace_=trace_,
+        extreme_trace=extreme_trace,
+        no_memory_trace=no_memory_trace,
+        yes_memory_trace=yes_memory_trace,
+    )
     return compare_surfaces_execute(params, execution)
 
 

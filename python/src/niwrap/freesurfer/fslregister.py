@@ -11,6 +11,8 @@ FSLREGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FslregisterParameters = typing.TypedDict('FslregisterParameters', {
     "__STYX_TYPE__": typing.Literal["fslregister"],
     "subjid": str,
@@ -474,7 +476,38 @@ def fslregister(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLREGISTER_METADATA)
-    params = fslregister_params(subjid=subjid, mov_vol=mov_vol, reg_file=reg_file, fsl_matrix=fsl_matrix, init_fsl_matrix=init_fsl_matrix, no_init_xfm=no_init_xfm, niters=niters, dof=dof, bins=bins, cost=cost, max_angle=max_angle, no_new_schedule=no_new_schedule, no_allow_swap=no_allow_swap, no_trans=no_trans, bet_mov=bet_mov, bet_fvalue=bet_fvalue, bet_func=bet_func, bet_ref=bet_ref, frame=frame, mid_frame=mid_frame, freesurfer_volume=freesurfer_volume, template_output=template_output, output_volume=output_volume, verbose=verbose, tmp_dir=tmp_dir, no_cleanup=no_cleanup, no_log=no_log, version=version, help_=help_, lta_format=lta_format)
+    params = fslregister_params(
+        subjid=subjid,
+        mov_vol=mov_vol,
+        reg_file=reg_file,
+        fsl_matrix=fsl_matrix,
+        init_fsl_matrix=init_fsl_matrix,
+        no_init_xfm=no_init_xfm,
+        niters=niters,
+        dof=dof,
+        bins=bins,
+        cost=cost,
+        max_angle=max_angle,
+        no_new_schedule=no_new_schedule,
+        no_allow_swap=no_allow_swap,
+        no_trans=no_trans,
+        bet_mov=bet_mov,
+        bet_fvalue=bet_fvalue,
+        bet_func=bet_func,
+        bet_ref=bet_ref,
+        frame=frame,
+        mid_frame=mid_frame,
+        freesurfer_volume=freesurfer_volume,
+        template_output=template_output,
+        output_volume=output_volume,
+        verbose=verbose,
+        tmp_dir=tmp_dir,
+        no_cleanup=no_cleanup,
+        no_log=no_log,
+        version=version,
+        help_=help_,
+        lta_format=lta_format,
+    )
     return fslregister_execute(params, execution)
 
 

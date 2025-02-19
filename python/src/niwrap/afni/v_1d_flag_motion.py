@@ -11,6 +11,8 @@ V_1D_FLAG_MOTION_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dFlagMotionParameters = typing.TypedDict('V1dFlagMotionParameters', {
     "__STYX_TYPE__": typing.Literal["1dFlagMotion"],
     "input_motion_file": InputPathType,
@@ -193,7 +195,11 @@ def v_1d_flag_motion(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_FLAG_MOTION_METADATA)
-    params = v_1d_flag_motion_params(input_motion_file=input_motion_file, max_translation=max_translation, max_rotation=max_rotation)
+    params = v_1d_flag_motion_params(
+        input_motion_file=input_motion_file,
+        max_translation=max_translation,
+        max_rotation=max_rotation,
+    )
     return v_1d_flag_motion_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ LONG_QDEC_TABLE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongQdecTableParameters = typing.TypedDict('LongQdecTableParameters', {
     "__STYX_TYPE__": typing.Literal["long_qdec_table"],
     "qdec_table": InputPathType,
@@ -208,7 +210,13 @@ def long_qdec_table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_QDEC_TABLE_METADATA)
-    params = long_qdec_table_params(qdec_table=qdec_table, split=split, cross_flag=cross_flag, sort=sort, out=out)
+    params = long_qdec_table_params(
+        qdec_table=qdec_table,
+        split=split,
+        cross_flag=cross_flag,
+        sort=sort,
+        out=out,
+    )
     return long_qdec_table_execute(params, execution)
 
 

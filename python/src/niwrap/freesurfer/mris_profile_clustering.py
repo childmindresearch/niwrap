@@ -11,6 +11,8 @@ MRIS_PROFILE_CLUSTERING_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisProfileClusteringParameters = typing.TypedDict('MrisProfileClusteringParameters', {
     "__STYX_TYPE__": typing.Literal["mris_profileClustering"],
     "input_file": InputPathType,
@@ -175,7 +177,11 @@ def mris_profile_clustering(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PROFILE_CLUSTERING_METADATA)
-    params = mris_profile_clustering_params(input_file=input_file, output_file=output_file, other_options=other_options)
+    params = mris_profile_clustering_params(
+        input_file=input_file,
+        output_file=output_file,
+        other_options=other_options,
+    )
     return mris_profile_clustering_execute(params, execution)
 
 

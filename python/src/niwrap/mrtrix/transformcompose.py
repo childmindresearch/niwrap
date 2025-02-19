@@ -11,19 +11,27 @@ TRANSFORMCOMPOSE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TransformcomposeConfigParameters = typing.TypedDict('TransformcomposeConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TransformcomposeVariousStringParameters = typing.TypedDict('TransformcomposeVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 TransformcomposeVariousFileParameters = typing.TypedDict('TransformcomposeVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 TransformcomposeParameters = typing.TypedDict('TransformcomposeParameters', {
     "__STYX_TYPE__": typing.Literal["transformcompose"],
     "template": typing.NotRequired[InputPathType | None],
@@ -426,7 +434,19 @@ def transformcompose(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRANSFORMCOMPOSE_METADATA)
-    params = transformcompose_params(template=template, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = transformcompose_params(
+        template=template,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return transformcompose_execute(params, execution)
 
 

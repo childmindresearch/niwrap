@@ -11,6 +11,8 @@ CONVERT_SCALAR_IMAGE_TO_RGB_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ConvertScalarImageToRgbParameters = typing.TypedDict('ConvertScalarImageToRgbParameters', {
     "__STYX_TYPE__": typing.Literal["ConvertScalarImageToRGB"],
     "image_dimension": int,
@@ -251,7 +253,19 @@ def convert_scalar_image_to_rgb(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_SCALAR_IMAGE_TO_RGB_METADATA)
-    params = convert_scalar_image_to_rgb_params(image_dimension=image_dimension, input_image=input_image, output_image=output_image, mask=mask, colormap=colormap, custom_colormap_file=custom_colormap_file, minimum_input=minimum_input, maximum_input=maximum_input, minimum_rgb_output=minimum_rgb_output, maximum_rgb_output=maximum_rgb_output, vtk_lookup_table=vtk_lookup_table)
+    params = convert_scalar_image_to_rgb_params(
+        image_dimension=image_dimension,
+        input_image=input_image,
+        output_image=output_image,
+        mask=mask,
+        colormap=colormap,
+        custom_colormap_file=custom_colormap_file,
+        minimum_input=minimum_input,
+        maximum_input=maximum_input,
+        minimum_rgb_output=minimum_rgb_output,
+        maximum_rgb_output=maximum_rgb_output,
+        vtk_lookup_table=vtk_lookup_table,
+    )
     return convert_scalar_image_to_rgb_execute(params, execution)
 
 

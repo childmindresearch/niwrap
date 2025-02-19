@@ -11,6 +11,8 @@ REG_JACOBIAN_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+
+
 RegJacobianParameters = typing.TypedDict('RegJacobianParameters', {
     "__STYX_TYPE__": typing.Literal["reg_jacobian"],
     "reference_image": InputPathType,
@@ -252,7 +254,15 @@ def reg_jacobian(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_JACOBIAN_METADATA)
-    params = reg_jacobian_params(reference_image=reference_image, deformation_field=deformation_field, control_point_lattice=control_point_lattice, output_jacobian=output_jacobian, output_jacobian_matrix=output_jacobian_matrix, output_log_jacobian=output_log_jacobian, affine_matrix=affine_matrix)
+    params = reg_jacobian_params(
+        reference_image=reference_image,
+        deformation_field=deformation_field,
+        control_point_lattice=control_point_lattice,
+        output_jacobian=output_jacobian,
+        output_jacobian_matrix=output_jacobian_matrix,
+        output_log_jacobian=output_log_jacobian,
+        affine_matrix=affine_matrix,
+    )
     return reg_jacobian_execute(params, execution)
 
 

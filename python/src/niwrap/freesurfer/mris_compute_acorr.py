@@ -11,6 +11,8 @@ MRIS_COMPUTE_ACORR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisComputeAcorrParameters = typing.TypedDict('MrisComputeAcorrParameters', {
     "__STYX_TYPE__": typing.Literal["mris_compute_acorr"],
     "output_subject": str,
@@ -195,7 +197,14 @@ def mris_compute_acorr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COMPUTE_ACORR_METADATA)
-    params = mris_compute_acorr_params(output_subject=output_subject, hemi=hemi, surf=surf, curv=curv, c1_subjects=c1_subjects, c2_subjects=c2_subjects)
+    params = mris_compute_acorr_params(
+        output_subject=output_subject,
+        hemi=hemi,
+        surf=surf,
+        curv=curv,
+        c1_subjects=c1_subjects,
+        c2_subjects=c2_subjects,
+    )
     return mris_compute_acorr_execute(params, execution)
 
 

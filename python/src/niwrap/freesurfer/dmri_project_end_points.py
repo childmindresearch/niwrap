@@ -11,6 +11,8 @@ DMRI_PROJECT_END_POINTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriProjectEndPointsParameters = typing.TypedDict('DmriProjectEndPointsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_projectEndPoints"],
     "streamline_file": InputPathType,
@@ -221,7 +223,14 @@ def dmri_project_end_points(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_PROJECT_END_POINTS_METADATA)
-    params = dmri_project_end_points_params(streamline_file=streamline_file, left_surface_file=left_surface_file, right_surface_file=right_surface_file, left_overlay_file=left_overlay_file, right_overlay_file=right_overlay_file, reference_image=reference_image)
+    params = dmri_project_end_points_params(
+        streamline_file=streamline_file,
+        left_surface_file=left_surface_file,
+        right_surface_file=right_surface_file,
+        left_overlay_file=left_overlay_file,
+        right_overlay_file=right_overlay_file,
+        reference_image=reference_image,
+    )
     return dmri_project_end_points_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ BIANCA_OVERLAP_MEASURES_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BiancaOverlapMeasuresParameters = typing.TypedDict('BiancaOverlapMeasuresParameters', {
     "__STYX_TYPE__": typing.Literal["bianca_overlap_measures"],
     "lesion_mask": InputPathType,
@@ -194,7 +196,11 @@ def bianca_overlap_measures(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BIANCA_OVERLAP_MEASURES_METADATA)
-    params = bianca_overlap_measures_params(lesion_mask=lesion_mask, manual_mask=manual_mask, output_dir=output_dir)
+    params = bianca_overlap_measures_params(
+        lesion_mask=lesion_mask,
+        manual_mask=manual_mask,
+        output_dir=output_dir,
+    )
     return bianca_overlap_measures_execute(params, execution)
 
 

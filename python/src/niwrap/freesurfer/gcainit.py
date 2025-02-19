@@ -11,6 +11,8 @@ GCAINIT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GcainitParameters = typing.TypedDict('GcainitParameters', {
     "__STYX_TYPE__": typing.Literal["gcainit"],
     "gcadir": str,
@@ -158,7 +160,9 @@ def gcainit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GCAINIT_METADATA)
-    params = gcainit_params(gcadir=gcadir)
+    params = gcainit_params(
+        gcadir=gcadir,
+    )
     return gcainit_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_GRAYPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dGrayplotParameters = typing.TypedDict('V3dGrayplotParameters', {
     "__STYX_TYPE__": typing.Literal["3dGrayplot"],
     "input": InputPathType,
@@ -313,7 +315,22 @@ def v_3d_grayplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_GRAYPLOT_METADATA)
-    params = v_3d_grayplot_params(input_=input_, mask=mask, prefix=prefix, dimensions=dimensions, resample_old=resample_old, polort=polort, fwhm=fwhm, pvorder=pvorder, ljorder=ljorder, peelorder=peelorder, ijkorder=ijkorder, range_=range_, percent=percent, raw_with_bounds=raw_with_bounds)
+    params = v_3d_grayplot_params(
+        input_=input_,
+        mask=mask,
+        prefix=prefix,
+        dimensions=dimensions,
+        resample_old=resample_old,
+        polort=polort,
+        fwhm=fwhm,
+        pvorder=pvorder,
+        ljorder=ljorder,
+        peelorder=peelorder,
+        ijkorder=ijkorder,
+        range_=range_,
+        percent=percent,
+        raw_with_bounds=raw_with_bounds,
+    )
     return v_3d_grayplot_execute(params, execution)
 
 

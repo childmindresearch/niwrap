@@ -11,6 +11,8 @@ V_1D_TSORT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dTsortParameters = typing.TypedDict('V1dTsortParameters', {
     "__STYX_TYPE__": typing.Literal["1dTsort"],
     "dec_order": bool,
@@ -195,7 +197,13 @@ def v_1d_tsort(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_TSORT_METADATA)
-    params = v_1d_tsort_params(dec_order=dec_order, transpose=transpose, column=column, imode=imode, infile=infile)
+    params = v_1d_tsort_params(
+        dec_order=dec_order,
+        transpose=transpose,
+        column=column,
+        imode=imode,
+        infile=infile,
+    )
     return v_1d_tsort_execute(params, execution)
 
 

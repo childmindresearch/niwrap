@@ -11,6 +11,8 @@ V__CHAUFFEUR_AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VChauffeurAfniParameters = typing.TypedDict('VChauffeurAfniParameters', {
     "__STYX_TYPE__": typing.Literal["@chauffeur_afni"],
     "ulay": InputPathType,
@@ -185,7 +187,11 @@ def v__chauffeur_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CHAUFFEUR_AFNI_METADATA)
-    params = v__chauffeur_afni_params(ulay=ulay, olay=olay, prefix=prefix)
+    params = v__chauffeur_afni_params(
+        ulay=ulay,
+        olay=olay,
+        prefix=prefix,
+    )
     return v__chauffeur_afni_execute(params, execution)
 
 

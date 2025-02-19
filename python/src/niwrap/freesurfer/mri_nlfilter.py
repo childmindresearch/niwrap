@@ -11,6 +11,8 @@ MRI_NLFILTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriNlfilterParameters = typing.TypedDict('MriNlfilterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_nlfilter"],
     "input_image": InputPathType,
@@ -268,7 +270,20 @@ def mri_nlfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_NLFILTER_METADATA)
-    params = mri_nlfilter_params(input_image=input_image, output_image=output_image, blur_sigma=blur_sigma, gaussian_sigma=gaussian_sigma, mean_flag=mean_flag, window_size=window_size, cplov_flag=cplov_flag, minmax_flag=minmax_flag, no_offsets_flag=no_offsets_flag, no_crop_flag=no_crop_flag, version_flag=version_flag, help_flag=help_flag)
+    params = mri_nlfilter_params(
+        input_image=input_image,
+        output_image=output_image,
+        blur_sigma=blur_sigma,
+        gaussian_sigma=gaussian_sigma,
+        mean_flag=mean_flag,
+        window_size=window_size,
+        cplov_flag=cplov_flag,
+        minmax_flag=minmax_flag,
+        no_offsets_flag=no_offsets_flag,
+        no_crop_flag=no_crop_flag,
+        version_flag=version_flag,
+        help_flag=help_flag,
+    )
     return mri_nlfilter_execute(params, execution)
 
 

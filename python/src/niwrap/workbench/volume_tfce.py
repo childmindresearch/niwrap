@@ -11,16 +11,22 @@ VOLUME_TFCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeTfcePresmoothParameters = typing.TypedDict('VolumeTfcePresmoothParameters', {
     "__STYX_TYPE__": typing.Literal["presmooth"],
     "kernel": float,
     "opt_fwhm": bool,
 })
+
+
 VolumeTfceParametersParameters = typing.TypedDict('VolumeTfceParametersParameters', {
     "__STYX_TYPE__": typing.Literal["parameters"],
     "e": float,
     "h": float,
 })
+
+
 VolumeTfceParameters = typing.TypedDict('VolumeTfceParameters', {
     "__STYX_TYPE__": typing.Literal["volume-tfce"],
     "volume_in": InputPathType,
@@ -347,7 +353,14 @@ def volume_tfce(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_TFCE_METADATA)
-    params = volume_tfce_params(volume_in=volume_in, volume_out=volume_out, presmooth=presmooth, opt_roi_roi_volume=opt_roi_roi_volume, parameters=parameters, opt_subvolume_subvolume=opt_subvolume_subvolume)
+    params = volume_tfce_params(
+        volume_in=volume_in,
+        volume_out=volume_out,
+        presmooth=presmooth,
+        opt_roi_roi_volume=opt_roi_roi_volume,
+        parameters=parameters,
+        opt_subvolume_subvolume=opt_subvolume_subvolume,
+    )
     return volume_tfce_execute(params, execution)
 
 

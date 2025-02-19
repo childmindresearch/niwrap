@@ -11,6 +11,8 @@ PVMFIT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PvmfitParameters = typing.TypedDict('PvmfitParameters', {
     "__STYX_TYPE__": typing.Literal["pvmfit"],
     "data_file": InputPathType,
@@ -306,7 +308,23 @@ def pvmfit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PVMFIT_METADATA)
-    params = pvmfit_params(data_file=data_file, mask_file=mask_file, bvec_file=bvec_file, bval_file=bval_file, output_basename=output_basename, number_of_fibres=number_of_fibres, model_type=model_type, fit_all_models=fit_all_models, constrained_nonlinear=constrained_nonlinear, constrained_nonlinear_f=constrained_nonlinear_f, grid_search=grid_search, include_noise_floor=include_noise_floor, save_bic=save_bic, verbose=verbose, help_=help_)
+    params = pvmfit_params(
+        data_file=data_file,
+        mask_file=mask_file,
+        bvec_file=bvec_file,
+        bval_file=bval_file,
+        output_basename=output_basename,
+        number_of_fibres=number_of_fibres,
+        model_type=model_type,
+        fit_all_models=fit_all_models,
+        constrained_nonlinear=constrained_nonlinear,
+        constrained_nonlinear_f=constrained_nonlinear_f,
+        grid_search=grid_search,
+        include_noise_floor=include_noise_floor,
+        save_bic=save_bic,
+        verbose=verbose,
+        help_=help_,
+    )
     return pvmfit_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSLVBM_1_BET_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Fslvbm1BetParameters = typing.TypedDict('Fslvbm1BetParameters', {
     "__STYX_TYPE__": typing.Literal["fslvbm_1_bet"],
     "increased_robustness": bool,
@@ -167,7 +169,10 @@ def fslvbm_1_bet(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLVBM_1_BET_METADATA)
-    params = fslvbm_1_bet_params(increased_robustness=increased_robustness, bet_parameters=bet_parameters)
+    params = fslvbm_1_bet_params(
+        increased_robustness=increased_robustness,
+        bet_parameters=bet_parameters,
+    )
     return fslvbm_1_bet_execute(params, execution)
 
 

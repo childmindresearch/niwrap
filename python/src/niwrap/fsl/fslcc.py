@@ -11,6 +11,8 @@ FSLCC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslccParameters = typing.TypedDict('FslccParameters', {
     "__STYX_TYPE__": typing.Literal["fslcc"],
     "first_input": InputPathType,
@@ -216,7 +218,15 @@ def fslcc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLCC_METADATA)
-    params = fslcc_params(first_input=first_input, second_input=second_input, mask=mask, noabs_flag=noabs_flag, nodemean_flag=nodemean_flag, threshold=threshold, decimal_places=decimal_places)
+    params = fslcc_params(
+        first_input=first_input,
+        second_input=second_input,
+        mask=mask,
+        noabs_flag=noabs_flag,
+        nodemean_flag=nodemean_flag,
+        threshold=threshold,
+        decimal_places=decimal_places,
+    )
     return fslcc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ THICKDIFFMAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ThickdiffmapParameters = typing.TypedDict('ThickdiffmapParameters', {
     "__STYX_TYPE__": typing.Literal["thickdiffmap"],
     "subjscan1": InputPathType,
@@ -185,7 +187,13 @@ def thickdiffmap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(THICKDIFFMAP_METADATA)
-    params = thickdiffmap_params(subjscan1=subjscan1, subjscan2=subjscan2, commonsubj=commonsubj, hemi=hemi, steps=steps)
+    params = thickdiffmap_params(
+        subjscan1=subjscan1,
+        subjscan2=subjscan2,
+        commonsubj=commonsubj,
+        hemi=hemi,
+        steps=steps,
+    )
     return thickdiffmap_execute(params, execution)
 
 

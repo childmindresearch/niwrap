@@ -11,6 +11,8 @@ IS_SURFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IsSurfaceParameters = typing.TypedDict('IsSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["is-surface"],
     "infile": InputPathType,
@@ -159,7 +161,9 @@ def is_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IS_SURFACE_METADATA)
-    params = is_surface_params(infile=infile)
+    params = is_surface_params(
+        infile=infile,
+    )
     return is_surface_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ INSPEC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 InspecParameters = typing.TypedDict('InspecParameters', {
     "__STYX_TYPE__": typing.Literal["inspec"],
     "specfile": InputPathType,
@@ -232,7 +234,15 @@ def inspec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INSPEC_METADATA)
-    params = inspec_params(specfile=specfile, newspecname=newspecname, detail=detail, leftspec=leftspec, rightspec=rightspec, state_rm=state_rm, help_=help_)
+    params = inspec_params(
+        specfile=specfile,
+        newspecname=newspecname,
+        detail=detail,
+        leftspec=leftspec,
+        rightspec=rightspec,
+        state_rm=state_rm,
+        help_=help_,
+    )
     return inspec_execute(params, execution)
 
 

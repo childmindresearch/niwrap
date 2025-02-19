@@ -11,6 +11,8 @@ IMSTACK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImstackParameters = typing.TypedDict('ImstackParameters', {
     "__STYX_TYPE__": typing.Literal["imstack"],
     "image_files": list[InputPathType],
@@ -190,7 +192,11 @@ def imstack(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMSTACK_METADATA)
-    params = imstack_params(image_files=image_files, data_type=data_type, output_prefix=output_prefix)
+    params = imstack_params(
+        image_files=image_files,
+        data_type=data_type,
+        output_prefix=output_prefix,
+    )
     return imstack_execute(params, execution)
 
 

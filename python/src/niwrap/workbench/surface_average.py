@@ -11,11 +11,15 @@ SURFACE_AVERAGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceAverageSurfParameters = typing.TypedDict('SurfaceAverageSurfParameters', {
     "__STYX_TYPE__": typing.Literal["surf"],
     "surface": InputPathType,
     "opt_weight_weight": typing.NotRequired[float | None],
 })
+
+
 SurfaceAverageParameters = typing.TypedDict('SurfaceAverageParameters', {
     "__STYX_TYPE__": typing.Literal["surface-average"],
     "surface_out": str,
@@ -275,7 +279,12 @@ def surface_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_AVERAGE_METADATA)
-    params = surface_average_params(surface_out=surface_out, opt_stddev_stddev_metric_out=opt_stddev_stddev_metric_out, opt_uncertainty_uncert_metric_out=opt_uncertainty_uncert_metric_out, surf=surf)
+    params = surface_average_params(
+        surface_out=surface_out,
+        opt_stddev_stddev_metric_out=opt_stddev_stddev_metric_out,
+        opt_uncertainty_uncert_metric_out=opt_uncertainty_uncert_metric_out,
+        surf=surf,
+    )
     return surface_average_execute(params, execution)
 
 

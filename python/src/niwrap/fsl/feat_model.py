@@ -11,6 +11,8 @@ FEAT_MODEL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FeatModelParameters = typing.TypedDict('FeatModelParameters', {
     "__STYX_TYPE__": typing.Literal["feat_model"],
     "design_name_root": str,
@@ -164,7 +166,10 @@ def feat_model(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEAT_MODEL_METADATA)
-    params = feat_model_params(design_name_root=design_name_root, confound_matrix=confound_matrix)
+    params = feat_model_params(
+        design_name_root=design_name_root,
+        confound_matrix=confound_matrix,
+    )
     return feat_model_execute(params, execution)
 
 

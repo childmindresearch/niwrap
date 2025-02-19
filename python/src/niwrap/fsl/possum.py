@@ -11,6 +11,8 @@ POSSUM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PossumParameters = typing.TypedDict('PossumParameters', {
     "__STYX_TYPE__": typing.Literal["possum"],
     "input_volume": InputPathType,
@@ -418,7 +420,32 @@ def possum(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_METADATA)
-    params = possum_params(input_volume=input_volume, mr_parameters=mr_parameters, motion_matrix=motion_matrix, pulse_sequence=pulse_sequence, rf_slice_profile=rf_slice_profile, output_signal=output_signal, event_matrix=event_matrix, verbose=verbose, help_=help_, kcoord=kcoord, b0_inhomogeneities=b0_inhomogeneities, extra_b0_inhomogeneities=extra_b0_inhomogeneities, b0_inhomogeneities_timecourse=b0_inhomogeneities_timecourse, rf_inhomogeneity_receive=rf_inhomogeneity_receive, rf_inhomogeneity_transmit=rf_inhomogeneity_transmit, activation_volume=activation_volume, activation_timecourse=activation_timecourse, activation_4d_volume=activation_4d_volume, activation_4d_timecourse=activation_4d_timecourse, level=level, num_procs=num_procs, proc_id=proc_id, no_speedup=no_speedup, rf_average=rf_average)
+    params = possum_params(
+        input_volume=input_volume,
+        mr_parameters=mr_parameters,
+        motion_matrix=motion_matrix,
+        pulse_sequence=pulse_sequence,
+        rf_slice_profile=rf_slice_profile,
+        output_signal=output_signal,
+        event_matrix=event_matrix,
+        verbose=verbose,
+        help_=help_,
+        kcoord=kcoord,
+        b0_inhomogeneities=b0_inhomogeneities,
+        extra_b0_inhomogeneities=extra_b0_inhomogeneities,
+        b0_inhomogeneities_timecourse=b0_inhomogeneities_timecourse,
+        rf_inhomogeneity_receive=rf_inhomogeneity_receive,
+        rf_inhomogeneity_transmit=rf_inhomogeneity_transmit,
+        activation_volume=activation_volume,
+        activation_timecourse=activation_timecourse,
+        activation_4d_volume=activation_4d_volume,
+        activation_4d_timecourse=activation_4d_timecourse,
+        level=level,
+        num_procs=num_procs,
+        proc_id=proc_id,
+        no_speedup=no_speedup,
+        rf_average=rf_average,
+    )
     return possum_execute(params, execution)
 
 

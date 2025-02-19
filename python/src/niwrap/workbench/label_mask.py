@@ -11,6 +11,8 @@ LABEL_MASK_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelMaskParameters = typing.TypedDict('LabelMaskParameters', {
     "__STYX_TYPE__": typing.Literal["label-mask"],
     "label": InputPathType,
@@ -196,7 +198,12 @@ def label_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_MASK_METADATA)
-    params = label_mask_params(label=label, mask=mask, label_out=label_out, opt_column_column=opt_column_column)
+    params = label_mask_params(
+        label=label,
+        mask=mask,
+        label_out=label_out,
+        opt_column_column=opt_column_column,
+    )
     return label_mask_execute(params, execution)
 
 

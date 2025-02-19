@@ -11,6 +11,8 @@ MORPH_KERNEL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MorphKernelParameters = typing.TypedDict('MorphKernelParameters', {
     "__STYX_TYPE__": typing.Literal["morph_kernel"],
     "cube_side_length": float,
@@ -166,7 +168,10 @@ def morph_kernel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_KERNEL_METADATA)
-    params = morph_kernel_params(cube_side_length=cube_side_length, sphere_radius=sphere_radius)
+    params = morph_kernel_params(
+        cube_side_length=cube_side_length,
+        sphere_radius=sphere_radius,
+    )
     return morph_kernel_execute(params, execution)
 
 

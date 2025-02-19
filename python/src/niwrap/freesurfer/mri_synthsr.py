@@ -11,6 +11,8 @@ MRI_SYNTHSR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSynthsrParameters = typing.TypedDict('MriSynthsrParameters', {
     "__STYX_TYPE__": typing.Literal["mri_synthsr"],
     "input": str,
@@ -246,7 +248,18 @@ def mri_synthsr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHSR_METADATA)
-    params = mri_synthsr_params(input_=input_, output=output, ct=ct, disable_sharpening=disable_sharpening, disable_flipping=disable_flipping, lowfield=lowfield, v1=v1, threads=threads, cpu=cpu, model=model)
+    params = mri_synthsr_params(
+        input_=input_,
+        output=output,
+        ct=ct,
+        disable_sharpening=disable_sharpening,
+        disable_flipping=disable_flipping,
+        lowfield=lowfield,
+        v1=v1,
+        threads=threads,
+        cpu=cpu,
+        model=model,
+    )
     return mri_synthsr_execute(params, execution)
 
 

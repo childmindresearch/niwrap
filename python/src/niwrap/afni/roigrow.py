@@ -11,6 +11,8 @@ ROIGROW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RoigrowParameters = typing.TypedDict('RoigrowParameters', {
     "__STYX_TYPE__": typing.Literal["ROIgrow"],
     "input_surface": str,
@@ -252,7 +254,16 @@ def roigrow(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ROIGROW_METADATA)
-    params = roigrow_params(input_surface=input_surface, roi_labels=roi_labels, lim_distance=lim_distance, output_prefix=output_prefix, full_list=full_list, grow_from_edge=grow_from_edge, insphere_diameter=insphere_diameter, inbox_edges=inbox_edges)
+    params = roigrow_params(
+        input_surface=input_surface,
+        roi_labels=roi_labels,
+        lim_distance=lim_distance,
+        output_prefix=output_prefix,
+        full_list=full_list,
+        grow_from_edge=grow_from_edge,
+        insphere_diameter=insphere_diameter,
+        inbox_edges=inbox_edges,
+    )
     return roigrow_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ POPP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PoppParameters = typing.TypedDict('PoppParameters', {
     "__STYX_TYPE__": typing.Literal["popp"],
     "input_file": InputPathType,
@@ -533,7 +535,41 @@ def popp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POPP_METADATA)
-    params = popp_params(input_file=input_file, output_basename=output_basename, sampling_rate=sampling_rate, tr_value=tr_value, resp_column=resp_column, cardiac_column=cardiac_column, trigger_column=trigger_column, rvt_flag=rvt_flag, heart_rate_flag=heart_rate_flag, pulseox_trigger_flag=pulseox_trigger_flag, smooth_card=smooth_card, smooth_resp=smooth_resp, high_freq_cutoff=high_freq_cutoff, low_freq_cutoff=low_freq_cutoff, init_thresh_c=init_thresh_c, n_thresh_c=n_thresh_c, init_thresh_r=init_thresh_r, n_thresh_r=n_thresh_r, invert_resp_flag=invert_resp_flag, invert_cardiac_flag=invert_cardiac_flag, noclean1_flag=noclean1_flag, noclean2_flag=noclean2_flag, load_card_phase=load_card_phase, load_resp_phase=load_resp_phase, vol_file=vol_file, start_sample=start_sample, resp_add=resp_add, resp_del=resp_del, card_add=card_add, card_del=card_del, verbose_flag=verbose_flag, debug_flag=debug_flag, help_flag=help_flag)
+    params = popp_params(
+        input_file=input_file,
+        output_basename=output_basename,
+        sampling_rate=sampling_rate,
+        tr_value=tr_value,
+        resp_column=resp_column,
+        cardiac_column=cardiac_column,
+        trigger_column=trigger_column,
+        rvt_flag=rvt_flag,
+        heart_rate_flag=heart_rate_flag,
+        pulseox_trigger_flag=pulseox_trigger_flag,
+        smooth_card=smooth_card,
+        smooth_resp=smooth_resp,
+        high_freq_cutoff=high_freq_cutoff,
+        low_freq_cutoff=low_freq_cutoff,
+        init_thresh_c=init_thresh_c,
+        n_thresh_c=n_thresh_c,
+        init_thresh_r=init_thresh_r,
+        n_thresh_r=n_thresh_r,
+        invert_resp_flag=invert_resp_flag,
+        invert_cardiac_flag=invert_cardiac_flag,
+        noclean1_flag=noclean1_flag,
+        noclean2_flag=noclean2_flag,
+        load_card_phase=load_card_phase,
+        load_resp_phase=load_resp_phase,
+        vol_file=vol_file,
+        start_sample=start_sample,
+        resp_add=resp_add,
+        resp_del=resp_del,
+        card_add=card_add,
+        card_del=card_del,
+        verbose_flag=verbose_flag,
+        debug_flag=debug_flag,
+        help_flag=help_flag,
+    )
     return popp_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_TFILTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTfilterParameters = typing.TypedDict('V3dTfilterParameters', {
     "__STYX_TYPE__": typing.Literal["3dTfilter"],
     "inputdataset": InputPathType,
@@ -184,7 +186,11 @@ def v_3d_tfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TFILTER_METADATA)
-    params = v_3d_tfilter_params(inputdataset=inputdataset, outputdataset=outputdataset, filters=filters)
+    params = v_3d_tfilter_params(
+        inputdataset=inputdataset,
+        outputdataset=outputdataset,
+        filters=filters,
+    )
     return v_3d_tfilter_execute(params, execution)
 
 

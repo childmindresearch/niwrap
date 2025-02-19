@@ -11,6 +11,8 @@ SURF_MEASURES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfMeasuresParameters = typing.TypedDict('SurfMeasuresParameters', {
     "__STYX_TYPE__": typing.Literal["SurfMeasures"],
     "spec_file": InputPathType,
@@ -339,7 +341,26 @@ def surf_measures(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_MEASURES_METADATA)
-    params = surf_measures_params(spec_file=spec_file, surf_a=surf_a, surf_b=surf_b, out_1_d=out_1_d, out_dset=out_dset, func=func, surf_volume=surf_volume, cmask=cmask, debug=debug, dnode=dnode, nodes_1_d=nodes_1_d, info_all=info_all, info_area=info_area, info_norms=info_norms, info_thick=info_thick, info_vol=info_vol, info_volg=info_volg, ver=ver)
+    params = surf_measures_params(
+        spec_file=spec_file,
+        surf_a=surf_a,
+        surf_b=surf_b,
+        out_1_d=out_1_d,
+        out_dset=out_dset,
+        func=func,
+        surf_volume=surf_volume,
+        cmask=cmask,
+        debug=debug,
+        dnode=dnode,
+        nodes_1_d=nodes_1_d,
+        info_all=info_all,
+        info_area=info_area,
+        info_norms=info_norms,
+        info_thick=info_thick,
+        info_vol=info_vol,
+        info_volg=info_volg,
+        ver=ver,
+    )
     return surf_measures_execute(params, execution)
 
 

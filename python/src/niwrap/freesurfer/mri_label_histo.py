@@ -11,6 +11,8 @@ MRI_LABEL_HISTO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLabelHistoParameters = typing.TypedDict('MriLabelHistoParameters', {
     "__STYX_TYPE__": typing.Literal["mri_label_histo"],
     "t1_volume": InputPathType,
@@ -180,7 +182,12 @@ def mri_label_histo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LABEL_HISTO_METADATA)
-    params = mri_label_histo_params(t1_volume=t1_volume, labeled_volume=labeled_volume, label=label, output=output)
+    params = mri_label_histo_params(
+        t1_volume=t1_volume,
+        labeled_volume=labeled_volume,
+        label=label,
+        output=output,
+    )
     return mri_label_histo_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ASL_MFREE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 AslMfreeParameters = typing.TypedDict('AslMfreeParameters', {
     "__STYX_TYPE__": typing.Literal["asl_mfree"],
     "datafile": InputPathType,
@@ -356,7 +358,26 @@ def asl_mfree(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ASL_MFREE_METADATA)
-    params = asl_mfree_params(datafile=datafile, mask=mask, out=out, aif=aif, dt=dt, metric=metric, mthresh=mthresh, tcorrect=tcorrect, bata=bata, batt=batt, bat=bat, bat_grad_thr=bat_grad_thr, t1=t1, fa=fa, std=std, nwb=nwb, turbo_quasar=turbo_quasar, shift_factor=shift_factor)
+    params = asl_mfree_params(
+        datafile=datafile,
+        mask=mask,
+        out=out,
+        aif=aif,
+        dt=dt,
+        metric=metric,
+        mthresh=mthresh,
+        tcorrect=tcorrect,
+        bata=bata,
+        batt=batt,
+        bat=bat,
+        bat_grad_thr=bat_grad_thr,
+        t1=t1,
+        fa=fa,
+        std=std,
+        nwb=nwb,
+        turbo_quasar=turbo_quasar,
+        shift_factor=shift_factor,
+    )
     return asl_mfree_execute(params, execution)
 
 

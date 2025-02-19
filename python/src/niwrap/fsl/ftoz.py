@@ -11,6 +11,8 @@ FTOZ_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FtozParameters = typing.TypedDict('FtozParameters', {
     "__STYX_TYPE__": typing.Literal["ftoz"],
     "input_file": InputPathType,
@@ -185,7 +187,12 @@ def ftoz(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FTOZ_METADATA)
-    params = ftoz_params(input_file=input_file, dof1=dof1, dof2=dof2, output_file=output_file)
+    params = ftoz_params(
+        input_file=input_file,
+        dof1=dof1,
+        dof2=dof2,
+        output_file=output_file,
+    )
     return ftoz_execute(params, execution)
 
 

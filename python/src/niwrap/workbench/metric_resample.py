@@ -11,16 +11,22 @@ METRIC_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricResampleAreaSurfsParameters = typing.TypedDict('MetricResampleAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 MetricResampleAreaMetricsParameters = typing.TypedDict('MetricResampleAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 MetricResampleParameters = typing.TypedDict('MetricResampleParameters', {
     "__STYX_TYPE__": typing.Literal["metric-resample"],
     "metric_in": InputPathType,
@@ -404,7 +410,19 @@ def metric_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_RESAMPLE_METADATA)
-    params = metric_resample_params(metric_in=metric_in, current_sphere=current_sphere, new_sphere=new_sphere, method=method, metric_out=metric_out, area_surfs=area_surfs, area_metrics=area_metrics, opt_current_roi_roi_metric=opt_current_roi_roi_metric, opt_valid_roi_out_roi_out=opt_valid_roi_out_roi_out, opt_largest=opt_largest, opt_bypass_sphere_check=opt_bypass_sphere_check)
+    params = metric_resample_params(
+        metric_in=metric_in,
+        current_sphere=current_sphere,
+        new_sphere=new_sphere,
+        method=method,
+        metric_out=metric_out,
+        area_surfs=area_surfs,
+        area_metrics=area_metrics,
+        opt_current_roi_roi_metric=opt_current_roi_roi_metric,
+        opt_valid_roi_out_roi_out=opt_valid_roi_out_roi_out,
+        opt_largest=opt_largest,
+        opt_bypass_sphere_check=opt_bypass_sphere_check,
+    )
     return metric_resample_execute(params, execution)
 
 

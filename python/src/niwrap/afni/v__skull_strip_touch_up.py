@@ -11,6 +11,8 @@ V__SKULL_STRIP_TOUCH_UP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSkullStripTouchUpParameters = typing.TypedDict('VSkullStripTouchUpParameters', {
     "__STYX_TYPE__": typing.Literal["@SkullStrip_TouchUp"],
     "prefix": str,
@@ -203,7 +205,13 @@ def v__skull_strip_touch_up(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SKULL_STRIP_TOUCH_UP_METADATA)
-    params = v__skull_strip_touch_up_params(prefix=prefix, brain_dataset=brain_dataset, head_dataset=head_dataset, mask_out=mask_out, orig_dim=orig_dim)
+    params = v__skull_strip_touch_up_params(
+        prefix=prefix,
+        brain_dataset=brain_dataset,
+        head_dataset=head_dataset,
+        mask_out=mask_out,
+        orig_dim=orig_dim,
+    )
     return v__skull_strip_touch_up_execute(params, execution)
 
 

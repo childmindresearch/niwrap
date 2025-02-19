@@ -11,6 +11,8 @@ ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters = typing.TypedDict('AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters', {
     "__STYX_TYPE__": typing.Literal["ANTSUseLandmarkImagesToGetBSplineDisplacementField"],
     "fixed_image_with_labeled_landmarks": InputPathType,
@@ -238,7 +240,16 @@ def antsuse_landmark_images_to_get_bspline_displacement_field(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA)
-    params = antsuse_landmark_images_to_get_bspline_displacement_field_params(fixed_image_with_labeled_landmarks=fixed_image_with_labeled_landmarks, moving_image_with_labeled_landmarks=moving_image_with_labeled_landmarks, output_displacement_field=output_displacement_field, mesh_size=mesh_size, number_of_levels=number_of_levels, order=order, enforce_stationary_boundaries=enforce_stationary_boundaries, landmark_weights=landmark_weights)
+    params = antsuse_landmark_images_to_get_bspline_displacement_field_params(
+        fixed_image_with_labeled_landmarks=fixed_image_with_labeled_landmarks,
+        moving_image_with_labeled_landmarks=moving_image_with_labeled_landmarks,
+        output_displacement_field=output_displacement_field,
+        mesh_size=mesh_size,
+        number_of_levels=number_of_levels,
+        order=order,
+        enforce_stationary_boundaries=enforce_stationary_boundaries,
+        landmark_weights=landmark_weights,
+    )
     return antsuse_landmark_images_to_get_bspline_displacement_field_execute(params, execution)
 
 

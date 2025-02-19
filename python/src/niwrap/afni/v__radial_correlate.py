@@ -11,6 +11,8 @@ V__RADIAL_CORRELATE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VRadialCorrelateParameters = typing.TypedDict('VRadialCorrelateParameters', {
     "__STYX_TYPE__": typing.Literal["@radial_correlate"],
     "input_files": list[InputPathType],
@@ -371,7 +373,28 @@ def v__radial_correlate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__RADIAL_CORRELATE_METADATA)
-    params = v__radial_correlate_params(input_files=input_files, results_dir=results_dir, do_corr=do_corr, do_clust=do_clust, mask_dset=mask_dset, cthresh=cthresh, frac_limit=frac_limit, sphere_rad=sphere_rad, use_3dmerge=use_3dmerge, percentile=percentile, min_thr=min_thr, nfirst=nfirst, ver=ver, verbose=verbose, help_=help_, hist=hist, corr_mask=corr_mask, do_clean=do_clean, polort=polort, merge_frad=merge_frad)
+    params = v__radial_correlate_params(
+        input_files=input_files,
+        results_dir=results_dir,
+        do_corr=do_corr,
+        do_clust=do_clust,
+        mask_dset=mask_dset,
+        cthresh=cthresh,
+        frac_limit=frac_limit,
+        sphere_rad=sphere_rad,
+        use_3dmerge=use_3dmerge,
+        percentile=percentile,
+        min_thr=min_thr,
+        nfirst=nfirst,
+        ver=ver,
+        verbose=verbose,
+        help_=help_,
+        hist=hist,
+        corr_mask=corr_mask,
+        do_clean=do_clean,
+        polort=polort,
+        merge_frad=merge_frad,
+    )
     return v__radial_correlate_execute(params, execution)
 
 

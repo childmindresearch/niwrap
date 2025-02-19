@@ -11,6 +11,8 @@ FAT_PROC_SELECT_VOLS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcSelectVolsParameters = typing.TypedDict('FatProcSelectVolsParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_select_vols"],
     "dwi_input": InputPathType,
@@ -242,7 +244,16 @@ def fat_proc_select_vols(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_SELECT_VOLS_METADATA)
-    params = fat_proc_select_vols_params(dwi_input=dwi_input, img_input=img_input, prefix=prefix, in_bads=in_bads, apply_to_vols=apply_to_vols, do_movie=do_movie, workdir=workdir, no_cmd_out=no_cmd_out)
+    params = fat_proc_select_vols_params(
+        dwi_input=dwi_input,
+        img_input=img_input,
+        prefix=prefix,
+        in_bads=in_bads,
+        apply_to_vols=apply_to_vols,
+        do_movie=do_movie,
+        workdir=workdir,
+        no_cmd_out=no_cmd_out,
+    )
     return fat_proc_select_vols_execute(params, execution)
 
 

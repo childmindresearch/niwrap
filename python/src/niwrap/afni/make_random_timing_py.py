@@ -11,6 +11,8 @@ MAKE_RANDOM_TIMING_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MakeRandomTimingPyParameters = typing.TypedDict('MakeRandomTimingPyParameters', {
     "__STYX_TYPE__": typing.Literal["make_random_timing.py"],
     "num_runs": float,
@@ -430,7 +432,33 @@ def make_random_timing_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_RANDOM_TIMING_PY_METADATA)
-    params = make_random_timing_py_params(num_runs=num_runs, run_time=run_time, num_stim=num_stim, num_reps=num_reps, prefix=prefix, stim_dur=stim_dur, across_runs=across_runs, max_consec=max_consec, max_rest=max_rest, min_rest=min_rest, not_first=not_first, not_last=not_last, offset=offset, ordered_stimuli=ordered_stimuli, pre_stim_rest=pre_stim_rest, post_stim_rest=post_stim_rest, save_3dd_cmd=save_3dd_cmd, seed=seed, stim_labels=stim_labels, t_digits=t_digits, t_gran=t_gran, tr=tr, tr_locked=tr_locked, verb=verb, show_timing_stats=show_timing_stats)
+    params = make_random_timing_py_params(
+        num_runs=num_runs,
+        run_time=run_time,
+        num_stim=num_stim,
+        num_reps=num_reps,
+        prefix=prefix,
+        stim_dur=stim_dur,
+        across_runs=across_runs,
+        max_consec=max_consec,
+        max_rest=max_rest,
+        min_rest=min_rest,
+        not_first=not_first,
+        not_last=not_last,
+        offset=offset,
+        ordered_stimuli=ordered_stimuli,
+        pre_stim_rest=pre_stim_rest,
+        post_stim_rest=post_stim_rest,
+        save_3dd_cmd=save_3dd_cmd,
+        seed=seed,
+        stim_labels=stim_labels,
+        t_digits=t_digits,
+        t_gran=t_gran,
+        tr=tr,
+        tr_locked=tr_locked,
+        verb=verb,
+        show_timing_stats=show_timing_stats,
+    )
     return make_random_timing_py_execute(params, execution)
 
 

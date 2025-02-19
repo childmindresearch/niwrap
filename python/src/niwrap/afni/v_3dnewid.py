@@ -11,6 +11,8 @@ V_3DNEWID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dnewidParameters = typing.TypedDict('V3dnewidParameters', {
     "__STYX_TYPE__": typing.Literal["3dnewid"],
     "datasets": list[InputPathType],
@@ -217,7 +219,14 @@ def v_3dnewid(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DNEWID_METADATA)
-    params = v_3dnewid_params(datasets=datasets, fun=fun, fun11=fun11, int_=int_, hash_=hash_, md5=md5)
+    params = v_3dnewid_params(
+        datasets=datasets,
+        fun=fun,
+        fun11=fun11,
+        int_=int_,
+        hash_=hash_,
+        md5=md5,
+    )
     return v_3dnewid_execute(params, execution)
 
 

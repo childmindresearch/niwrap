@@ -11,6 +11,8 @@ AFNI_SYSTEM_CHECK_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniSystemCheckPyParameters = typing.TypedDict('AfniSystemCheckPyParameters', {
     "__STYX_TYPE__": typing.Literal["afni_system_check.py"],
     "check_all": bool,
@@ -248,7 +250,18 @@ def afni_system_check_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_SYSTEM_CHECK_PY_METADATA)
-    params = afni_system_check_py_params(check_all=check_all, find_prog=find_prog, exact=exact, disp_num_cpu=disp_num_cpu, disp_ver_matplotlib=disp_ver_matplotlib, dot_file_list=dot_file_list, dot_file_show=dot_file_show, dot_file_pack=dot_file_pack, casematch=casematch, data_root=data_root)
+    params = afni_system_check_py_params(
+        check_all=check_all,
+        find_prog=find_prog,
+        exact=exact,
+        disp_num_cpu=disp_num_cpu,
+        disp_ver_matplotlib=disp_ver_matplotlib,
+        dot_file_list=dot_file_list,
+        dot_file_show=dot_file_show,
+        dot_file_pack=dot_file_pack,
+        casematch=casematch,
+        data_root=data_root,
+    )
     return afni_system_check_py_execute(params, execution)
 
 

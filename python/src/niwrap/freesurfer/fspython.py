@@ -11,6 +11,8 @@ FSPYTHON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FspythonParameters = typing.TypedDict('FspythonParameters', {
     "__STYX_TYPE__": typing.Literal["fspython"],
     "args": typing.NotRequired[list[str] | None],
@@ -158,7 +160,9 @@ def fspython(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSPYTHON_METADATA)
-    params = fspython_params(args=args)
+    params = fspython_params(
+        args=args,
+    )
     return fspython_execute(params, execution)
 
 

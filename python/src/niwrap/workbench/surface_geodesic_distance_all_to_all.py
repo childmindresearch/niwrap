@@ -11,6 +11,8 @@ SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceGeodesicDistanceAllToAllParameters = typing.TypedDict('SurfaceGeodesicDistanceAllToAllParameters', {
     "__STYX_TYPE__": typing.Literal["surface-geodesic-distance-all-to-all"],
     "surface": InputPathType,
@@ -259,7 +261,14 @@ def surface_geodesic_distance_all_to_all(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA)
-    params = surface_geodesic_distance_all_to_all_params(surface=surface, cifti_out=cifti_out, opt_roi_roi_metric=opt_roi_roi_metric, opt_limit_limit_mm=opt_limit_limit_mm, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric, opt_naive=opt_naive)
+    params = surface_geodesic_distance_all_to_all_params(
+        surface=surface,
+        cifti_out=cifti_out,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_limit_limit_mm=opt_limit_limit_mm,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+        opt_naive=opt_naive,
+    )
     return surface_geodesic_distance_all_to_all_execute(params, execution)
 
 

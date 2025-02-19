@@ -11,6 +11,8 @@ MRI_SBBR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSbbrParameters = typing.TypedDict('MriSbbrParameters', {
     "__STYX_TYPE__": typing.Literal["mri_sbbr"],
     "template_volume": InputPathType,
@@ -412,7 +414,32 @@ def mri_sbbr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SBBR_METADATA)
-    params = mri_sbbr_params(template_volume=template_volume, surface_file=surface_file, init_reg_file=init_reg_file, t1=t1, t2=t2, optimization_type=optimization_type, distance_in=distance_in, distance_out=distance_out, slope=slope, ftol=ftol, linmintol=linmintol, niters_max=niters_max, search=search, search1d=search1d, parameter_set=parameter_set, increment=increment, slice_number=slice_number, threads=threads, output_registration=output_registration, inverted_output_registration=inverted_output_registration, output_surface=output_surface, debug=debug, diagnostic=diagnostic, check_options=check_options)
+    params = mri_sbbr_params(
+        template_volume=template_volume,
+        surface_file=surface_file,
+        init_reg_file=init_reg_file,
+        t1=t1,
+        t2=t2,
+        optimization_type=optimization_type,
+        distance_in=distance_in,
+        distance_out=distance_out,
+        slope=slope,
+        ftol=ftol,
+        linmintol=linmintol,
+        niters_max=niters_max,
+        search=search,
+        search1d=search1d,
+        parameter_set=parameter_set,
+        increment=increment,
+        slice_number=slice_number,
+        threads=threads,
+        output_registration=output_registration,
+        inverted_output_registration=inverted_output_registration,
+        output_surface=output_surface,
+        debug=debug,
+        diagnostic=diagnostic,
+        check_options=check_options,
+    )
     return mri_sbbr_execute(params, execution)
 
 

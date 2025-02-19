@@ -11,6 +11,8 @@ ISNIFTI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IsniftiParameters = typing.TypedDict('IsniftiParameters', {
     "__STYX_TYPE__": typing.Literal["isnifti"],
     "infile": InputPathType,
@@ -155,7 +157,9 @@ def isnifti(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ISNIFTI_METADATA)
-    params = isnifti_params(infile=infile)
+    params = isnifti_params(
+        infile=infile,
+    )
     return isnifti_execute(params, execution)
 
 

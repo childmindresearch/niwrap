@@ -11,6 +11,8 @@ REGISTER_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RegisterCshParameters = typing.TypedDict('RegisterCshParameters', {
     "__STYX_TYPE__": typing.Literal["register.csh"],
     "base_image": InputPathType,
@@ -175,7 +177,11 @@ def register_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_CSH_METADATA)
-    params = register_csh_params(base_image=base_image, new_image=new_image, options=options)
+    params = register_csh_params(
+        base_image=base_image,
+        new_image=new_image,
+        options=options,
+    )
     return register_csh_execute(params, execution)
 
 

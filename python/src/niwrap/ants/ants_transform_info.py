@@ -11,6 +11,8 @@ ANTS_TRANSFORM_INFO_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsTransformInfoParameters = typing.TypedDict('AntsTransformInfoParameters', {
     "__STYX_TYPE__": typing.Literal["antsTransformInfo"],
     "transform_file": InputPathType,
@@ -164,7 +166,9 @@ def ants_transform_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_TRANSFORM_INFO_METADATA)
-    params = ants_transform_info_params(transform_file=transform_file)
+    params = ants_transform_info_params(
+        transform_file=transform_file,
+    )
     return ants_transform_info_execute(params, execution)
 
 

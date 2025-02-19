@@ -11,16 +11,22 @@ TCKDFC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckdfcDynamicParameters = typing.TypedDict('TckdfcDynamicParameters', {
     "__STYX_TYPE__": typing.Literal["dynamic"],
     "shape": str,
     "width": int,
 })
+
+
 TckdfcConfigParameters = typing.TypedDict('TckdfcConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckdfcParameters = typing.TypedDict('TckdfcParameters', {
     "__STYX_TYPE__": typing.Literal["tckdfc"],
     "static": bool,
@@ -509,7 +515,26 @@ def tckdfc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKDFC_METADATA)
-    params = tckdfc_params(static=static, dynamic=dynamic, template=template, vox=vox, stat_vox=stat_vox, backtrack=backtrack, upsample=upsample, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks, fmri=fmri, output=output)
+    params = tckdfc_params(
+        static=static,
+        dynamic=dynamic,
+        template=template,
+        vox=vox,
+        stat_vox=stat_vox,
+        backtrack=backtrack,
+        upsample=upsample,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks=tracks,
+        fmri=fmri,
+        output=output,
+    )
     return tckdfc_execute(params, execution)
 
 

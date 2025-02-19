@@ -11,6 +11,8 @@ MAKEROT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MakerotParameters = typing.TypedDict('MakerotParameters', {
     "__STYX_TYPE__": typing.Literal["makerot"],
     "axis": typing.NotRequired[str | None],
@@ -226,7 +228,15 @@ def makerot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKEROT_METADATA)
-    params = makerot_params(axis=axis, cov=cov, center=center, output_file=output_file, verbose_flag=verbose_flag, help_flag=help_flag, theta=theta)
+    params = makerot_params(
+        axis=axis,
+        cov=cov,
+        center=center,
+        output_file=output_file,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+        theta=theta,
+    )
     return makerot_execute(params, execution)
 
 

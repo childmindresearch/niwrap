@@ -11,6 +11,8 @@ V_1D_SEM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dSemParameters = typing.TypedDict('V1dSemParameters', {
     "__STYX_TYPE__": typing.Literal["1dSEM"],
     "theta": InputPathType,
@@ -195,7 +197,12 @@ def v_1d_sem(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_SEM_METADATA)
-    params = v_1d_sem_params(theta=theta, correlation_matrix=correlation_matrix, residual_variance=residual_variance, degrees_of_freedom=degrees_of_freedom)
+    params = v_1d_sem_params(
+        theta=theta,
+        correlation_matrix=correlation_matrix,
+        residual_variance=residual_variance,
+        degrees_of_freedom=degrees_of_freedom,
+    )
     return v_1d_sem_execute(params, execution)
 
 

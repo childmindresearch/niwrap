@@ -11,6 +11,8 @@ BEDPOSTX_DATACHECK_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BedpostxDatacheckParameters = typing.TypedDict('BedpostxDatacheckParameters', {
     "__STYX_TYPE__": typing.Literal["bedpostx_datacheck"],
     "data_dir": str,
@@ -155,7 +157,9 @@ def bedpostx_datacheck(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BEDPOSTX_DATACHECK_METADATA)
-    params = bedpostx_datacheck_params(data_dir=data_dir)
+    params = bedpostx_datacheck_params(
+        data_dir=data_dir,
+    )
     return bedpostx_datacheck_execute(params, execution)
 
 

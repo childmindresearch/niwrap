@@ -11,6 +11,8 @@ MRIS_MAKE_AVERAGE_SURFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMakeAverageSurfaceParameters = typing.TypedDict('MrisMakeAverageSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["mris_make_average_surface"],
     "hemi": str,
@@ -305,7 +307,23 @@ def mris_make_average_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MAKE_AVERAGE_SURFACE_METADATA)
-    params = mris_make_average_surface_params(hemi=hemi, outsurfname=outsurfname, cansurfname=cansurfname, outsubject=outsubject, subjects=subjects, sdir=sdir, sdir_out=sdir_out, nonorm_flag=nonorm_flag, icoorder=icoorder, xfmname=xfmname, templatename=templatename, surfname=surfname, surf2surf_flag=surf2surf_flag, simple=simple, diagno=diagno)
+    params = mris_make_average_surface_params(
+        hemi=hemi,
+        outsurfname=outsurfname,
+        cansurfname=cansurfname,
+        outsubject=outsubject,
+        subjects=subjects,
+        sdir=sdir,
+        sdir_out=sdir_out,
+        nonorm_flag=nonorm_flag,
+        icoorder=icoorder,
+        xfmname=xfmname,
+        templatename=templatename,
+        surfname=surfname,
+        surf2surf_flag=surf2surf_flag,
+        simple=simple,
+        diagno=diagno,
+    )
     return mris_make_average_surface_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ TCKSIFT2_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Tcksift2ConfigParameters = typing.TypedDict('Tcksift2ConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Tcksift2Parameters = typing.TypedDict('Tcksift2Parameters', {
     "__STYX_TYPE__": typing.Literal["tcksift2"],
     "proc_mask": typing.NotRequired[InputPathType | None],
@@ -676,7 +680,42 @@ def tcksift2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKSIFT2_METADATA)
-    params = tcksift2_params(proc_mask=proc_mask, act=act, fd_scale_gm=fd_scale_gm, no_dilate_lut=no_dilate_lut, make_null_lobes=make_null_lobes, remove_untracked=remove_untracked, fd_thresh=fd_thresh, csv_=csv_, out_mu=out_mu, output_debug=output_debug, out_coeffs=out_coeffs, reg_tikhonov=reg_tikhonov, reg_tv=reg_tv, min_td_frac=min_td_frac, min_iters=min_iters, max_iters=max_iters, min_factor=min_factor, min_coeff=min_coeff, max_factor=max_factor, max_coeff=max_coeff, max_coeff_step=max_coeff_step, min_cf_decrease=min_cf_decrease, linear=linear, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_tracks=in_tracks, in_fod=in_fod, out_weights=out_weights)
+    params = tcksift2_params(
+        proc_mask=proc_mask,
+        act=act,
+        fd_scale_gm=fd_scale_gm,
+        no_dilate_lut=no_dilate_lut,
+        make_null_lobes=make_null_lobes,
+        remove_untracked=remove_untracked,
+        fd_thresh=fd_thresh,
+        csv_=csv_,
+        out_mu=out_mu,
+        output_debug=output_debug,
+        out_coeffs=out_coeffs,
+        reg_tikhonov=reg_tikhonov,
+        reg_tv=reg_tv,
+        min_td_frac=min_td_frac,
+        min_iters=min_iters,
+        max_iters=max_iters,
+        min_factor=min_factor,
+        min_coeff=min_coeff,
+        max_factor=max_factor,
+        max_coeff=max_coeff,
+        max_coeff_step=max_coeff_step,
+        min_cf_decrease=min_cf_decrease,
+        linear=linear,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_tracks=in_tracks,
+        in_fod=in_fod,
+        out_weights=out_weights,
+    )
     return tcksift2_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FLIRT_NEWDEFAULT_20080811_SCH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FlirtNewdefault20080811SchParameters = typing.TypedDict('FlirtNewdefault20080811SchParameters', {
     "__STYX_TYPE__": typing.Literal["flirt.newdefault.20080811.sch"],
     "term_option": typing.NotRequired[str | None],
@@ -176,7 +178,11 @@ def flirt_newdefault_20080811_sch(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLIRT_NEWDEFAULT_20080811_SCH_METADATA)
-    params = flirt_newdefault_20080811_sch_params(term_option=term_option, curses_flag=curses_flag, scrollback_flag=scrollback_flag)
+    params = flirt_newdefault_20080811_sch_params(
+        term_option=term_option,
+        curses_flag=curses_flag,
+        scrollback_flag=scrollback_flag,
+    )
     return flirt_newdefault_20080811_sch_execute(params, execution)
 
 

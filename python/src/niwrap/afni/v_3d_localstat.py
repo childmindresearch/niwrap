@@ -11,6 +11,8 @@ V_3D_LOCALSTAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLocalstatParameters = typing.TypedDict('V3dLocalstatParameters', {
     "__STYX_TYPE__": typing.Literal["3dLocalstat"],
     "dataset": InputPathType,
@@ -391,7 +393,28 @@ def v_3d_localstat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCALSTAT_METADATA)
-    params = v_3d_localstat_params(dataset=dataset, nbhd=nbhd, stat_=stat_, mask=mask, automask=automask, use_nonmask=use_nonmask, prefix=prefix, datum=datum, label_ext=label_ext, reduce_grid=reduce_grid, reduce_restore_grid=reduce_restore_grid, reduce_max_vox=reduce_max_vox, grid_rmode=grid_rmode, quiet=quiet, verbose=verbose, proceed_small_n=proceed_small_n, fillvalue=fillvalue, unfillvalue=unfillvalue, maskvalue=maskvalue, maskvalue2=maskvalue2)
+    params = v_3d_localstat_params(
+        dataset=dataset,
+        nbhd=nbhd,
+        stat_=stat_,
+        mask=mask,
+        automask=automask,
+        use_nonmask=use_nonmask,
+        prefix=prefix,
+        datum=datum,
+        label_ext=label_ext,
+        reduce_grid=reduce_grid,
+        reduce_restore_grid=reduce_restore_grid,
+        reduce_max_vox=reduce_max_vox,
+        grid_rmode=grid_rmode,
+        quiet=quiet,
+        verbose=verbose,
+        proceed_small_n=proceed_small_n,
+        fillvalue=fillvalue,
+        unfillvalue=unfillvalue,
+        maskvalue=maskvalue,
+        maskvalue2=maskvalue2,
+    )
     return v_3d_localstat_execute(params, execution)
 
 

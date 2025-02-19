@@ -11,6 +11,8 @@ REGISTER_ELDERLY_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RegisterElderlySubjectParameters = typing.TypedDict('RegisterElderlySubjectParameters', {
     "__STYX_TYPE__": typing.Literal["register_elderly_subject"],
     "sampling_percentage": typing.NotRequired[float | None],
@@ -212,7 +214,14 @@ def register_elderly_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_ELDERLY_SUBJECT_METADATA)
-    params = register_elderly_subject_params(sampling_percentage=sampling_percentage, output_fsamples=output_fsamples, output_norm=output_norm, input_volume=input_volume, gca_file=gca_file, transform_file=transform_file)
+    params = register_elderly_subject_params(
+        sampling_percentage=sampling_percentage,
+        output_fsamples=output_fsamples,
+        output_norm=output_norm,
+        input_volume=input_volume,
+        gca_file=gca_file,
+        transform_file=transform_file,
+    )
     return register_elderly_subject_execute(params, execution)
 
 

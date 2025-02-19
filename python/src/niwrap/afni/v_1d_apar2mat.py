@@ -11,6 +11,8 @@ V_1D_APAR2MAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dApar2matParameters = typing.TypedDict('V1dApar2matParameters', {
     "__STYX_TYPE__": typing.Literal["1dApar2mat"],
     "x_shift": float,
@@ -234,7 +236,20 @@ def v_1d_apar2mat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_APAR2MAT_METADATA)
-    params = v_1d_apar2mat_params(x_shift=x_shift, y_shift=y_shift, z_shift=z_shift, z_angle=z_angle, x_angle=x_angle, y_angle=y_angle, x_scale=x_scale, y_scale=y_scale, z_scale=z_scale, y_x_shear=y_x_shear, z_x_shear=z_x_shear, z_y_shear=z_y_shear)
+    params = v_1d_apar2mat_params(
+        x_shift=x_shift,
+        y_shift=y_shift,
+        z_shift=z_shift,
+        z_angle=z_angle,
+        x_angle=x_angle,
+        y_angle=y_angle,
+        x_scale=x_scale,
+        y_scale=y_scale,
+        z_scale=z_scale,
+        y_x_shear=y_x_shear,
+        z_x_shear=z_x_shear,
+        z_y_shear=z_y_shear,
+    )
     return v_1d_apar2mat_execute(params, execution)
 
 

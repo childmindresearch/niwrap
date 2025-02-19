@@ -11,6 +11,8 @@ MRI_AVERAGE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAverageParameters = typing.TypedDict('MriAverageParameters', {
     "__STYX_TYPE__": typing.Literal["mri_average"],
     "input_volumes": list[InputPathType],
@@ -352,7 +354,28 @@ def mri_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_AVERAGE_METADATA)
-    params = mri_average_params(input_volumes=input_volumes, output_volume=output_volume, rigid_alignment=rigid_alignment, read_from_file=read_from_file, dt=dt, tol=tol, conform=conform, noconform=noconform, reduce=reduce, sinc_interpolation=sinc_interpolation, trilinear=trilinear, window=window, snapshots=snapshots, translation=translation, rotation=rotation, momentum=momentum, rms_alt=rms_alt, percent=percent, binarize=binarize, absolute=absolute)
+    params = mri_average_params(
+        input_volumes=input_volumes,
+        output_volume=output_volume,
+        rigid_alignment=rigid_alignment,
+        read_from_file=read_from_file,
+        dt=dt,
+        tol=tol,
+        conform=conform,
+        noconform=noconform,
+        reduce=reduce,
+        sinc_interpolation=sinc_interpolation,
+        trilinear=trilinear,
+        window=window,
+        snapshots=snapshots,
+        translation=translation,
+        rotation=rotation,
+        momentum=momentum,
+        rms_alt=rms_alt,
+        percent=percent,
+        binarize=binarize,
+        absolute=absolute,
+    )
     return mri_average_execute(params, execution)
 
 

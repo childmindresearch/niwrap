@@ -11,6 +11,8 @@ PLUGOUT_DRIVE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 PlugoutDriveParameters = typing.TypedDict('PlugoutDriveParameters', {
     "__STYX_TYPE__": typing.Literal["plugout_drive"],
     "host": typing.NotRequired[str | None],
@@ -236,7 +238,15 @@ def plugout_drive(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLUGOUT_DRIVE_METADATA)
-    params = plugout_drive_params(host=host, verbose=verbose, port=port, maxwait=maxwait, name=name, command=command, quit_=quit_)
+    params = plugout_drive_params(
+        host=host,
+        verbose=verbose,
+        port=port,
+        maxwait=maxwait,
+        name=name,
+        command=command,
+        quit_=quit_,
+    )
     return plugout_drive_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ REG_MNI305_2MM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RegMni3052mmParameters = typing.TypedDict('RegMni3052mmParameters', {
     "__STYX_TYPE__": typing.Literal["reg-mni305.2mm"],
     "subject_id": str,
@@ -176,7 +178,10 @@ def reg_mni305_2mm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_MNI305_2MM_METADATA)
-    params = reg_mni305_2mm_params(subject_id=subject_id, regfile=regfile)
+    params = reg_mni305_2mm_params(
+        subject_id=subject_id,
+        regfile=regfile,
+    )
     return reg_mni305_2mm_execute(params, execution)
 
 

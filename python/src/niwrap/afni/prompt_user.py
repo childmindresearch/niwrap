@@ -11,6 +11,8 @@ PROMPT_USER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 PromptUserParameters = typing.TypedDict('PromptUserParameters', {
     "__STYX_TYPE__": typing.Literal["prompt_user"],
     "pause_message": str,
@@ -172,7 +174,10 @@ def prompt_user(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PROMPT_USER_METADATA)
-    params = prompt_user_params(pause_message=pause_message, timeout_alias=timeout_alias)
+    params = prompt_user_params(
+        pause_message=pause_message,
+        timeout_alias=timeout_alias,
+    )
     return prompt_user_execute(params, execution)
 
 

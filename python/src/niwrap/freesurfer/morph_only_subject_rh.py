@@ -11,6 +11,8 @@ MORPH_ONLY_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MorphOnlySubjectRhParameters = typing.TypedDict('MorphOnlySubjectRhParameters', {
     "__STYX_TYPE__": typing.Literal["morph_only_subject-rh"],
     "subject_dir": InputPathType,
@@ -166,7 +168,9 @@ def morph_only_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_ONLY_SUBJECT_RH_METADATA)
-    params = morph_only_subject_rh_params(subject_dir=subject_dir)
+    params = morph_only_subject_rh_params(
+        subject_dir=subject_dir,
+    )
     return morph_only_subject_rh_execute(params, execution)
 
 

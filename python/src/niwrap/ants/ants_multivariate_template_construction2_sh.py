@@ -11,6 +11,8 @@ ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsMultivariateTemplateConstruction2ShParameters = typing.TypedDict('AntsMultivariateTemplateConstruction2ShParameters', {
     "__STYX_TYPE__": typing.Literal["antsMultivariateTemplateConstruction2.sh"],
     "input": str,
@@ -165,7 +167,9 @@ def ants_multivariate_template_construction2_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA)
-    params = ants_multivariate_template_construction2_sh_params(input_=input_)
+    params = ants_multivariate_template_construction2_sh_params(
+        input_=input_,
+    )
     return ants_multivariate_template_construction2_sh_execute(params, execution)
 
 

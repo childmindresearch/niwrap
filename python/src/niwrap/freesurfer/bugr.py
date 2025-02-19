@@ -11,6 +11,8 @@ BUGR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BugrParameters = typing.TypedDict('BugrParameters', {
     "__STYX_TYPE__": typing.Literal["bugr"],
     "subject_name": str,
@@ -190,7 +192,12 @@ def bugr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BUGR_METADATA)
-    params = bugr_params(subject_name=subject_name, command_line=command_line, error_message=error_message, log_file=log_file)
+    params = bugr_params(
+        subject_name=subject_name,
+        command_line=command_line,
+        error_message=error_message,
+        log_file=log_file,
+    )
     return bugr_execute(params, execution)
 
 

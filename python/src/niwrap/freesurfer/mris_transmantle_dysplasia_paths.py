@@ -11,6 +11,8 @@ MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisTransmantleDysplasiaPathsParameters = typing.TypedDict('MrisTransmantleDysplasiaPathsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_transmantle_dysplasia_paths"],
     "surface": InputPathType,
@@ -209,7 +211,15 @@ def mris_transmantle_dysplasia_paths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA)
-    params = mris_transmantle_dysplasia_paths_params(surface=surface, aseg_volume=aseg_volume, intensity_volume=intensity_volume, xform=xform, output_volume=output_volume, filter_=filter_, noise_sensitivity=noise_sensitivity)
+    params = mris_transmantle_dysplasia_paths_params(
+        surface=surface,
+        aseg_volume=aseg_volume,
+        intensity_volume=intensity_volume,
+        xform=xform,
+        output_volume=output_volume,
+        filter_=filter_,
+        noise_sensitivity=noise_sensitivity,
+    )
     return mris_transmantle_dysplasia_paths_execute(params, execution)
 
 

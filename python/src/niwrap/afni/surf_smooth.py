@@ -11,6 +11,8 @@ SURF_SMOOTH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfSmoothParameters = typing.TypedDict('SurfSmoothParameters', {
     "__STYX_TYPE__": typing.Literal["SurfSmooth"],
     "surface": str,
@@ -356,7 +358,24 @@ def surf_smooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_SMOOTH_METADATA)
-    params = surf_smooth_params(surface=surface, method=method, input_data=input_data, target_fwhm=target_fwhm, fwhm=fwhm, number_iterations=number_iterations, output_file=output_file, band_pass_frequency=band_pass_frequency, lambda_mu=lambda_mu, interp_weights=interp_weights, node_mask=node_mask, surface_output=surface_output, dbg_node=dbg_node, use_neighbors_outside_mask=use_neighbors_outside_mask, talk_suma=talk_suma, refresh_rate=refresh_rate)
+    params = surf_smooth_params(
+        surface=surface,
+        method=method,
+        input_data=input_data,
+        target_fwhm=target_fwhm,
+        fwhm=fwhm,
+        number_iterations=number_iterations,
+        output_file=output_file,
+        band_pass_frequency=band_pass_frequency,
+        lambda_mu=lambda_mu,
+        interp_weights=interp_weights,
+        node_mask=node_mask,
+        surface_output=surface_output,
+        dbg_node=dbg_node,
+        use_neighbors_outside_mask=use_neighbors_outside_mask,
+        talk_suma=talk_suma,
+        refresh_rate=refresh_rate,
+    )
     return surf_smooth_execute(params, execution)
 
 

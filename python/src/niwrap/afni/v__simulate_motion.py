@@ -11,6 +11,8 @@ V__SIMULATE_MOTION_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSimulateMotionParameters = typing.TypedDict('VSimulateMotionParameters', {
     "__STYX_TYPE__": typing.Literal["@simulate_motion"],
     "epi": InputPathType,
@@ -318,7 +320,24 @@ def v__simulate_motion(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SIMULATE_MOTION_METADATA)
-    params = v__simulate_motion_params(epi=epi, motion_file=motion_file, epi_timing=epi_timing, prefix=prefix, save_workdir=save_workdir, test=test, verb_level=verb_level, vr_base=vr_base, warp_method=warp_method, warp_1_d=warp_1_d, warp_master=warp_master, wsinc5=wsinc5, help_=help_, hist=hist, todo=todo, ver=ver)
+    params = v__simulate_motion_params(
+        epi=epi,
+        motion_file=motion_file,
+        epi_timing=epi_timing,
+        prefix=prefix,
+        save_workdir=save_workdir,
+        test=test,
+        verb_level=verb_level,
+        vr_base=vr_base,
+        warp_method=warp_method,
+        warp_1_d=warp_1_d,
+        warp_master=warp_master,
+        wsinc5=wsinc5,
+        help_=help_,
+        hist=hist,
+        todo=todo,
+        ver=ver,
+    )
     return v__simulate_motion_execute(params, execution)
 
 

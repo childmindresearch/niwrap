@@ -11,6 +11,8 @@ DIMON_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 DimonParameters = typing.TypedDict('DimonParameters', {
     "__STYX_TYPE__": typing.Literal["Dimon"],
     "infile_prefix": str,
@@ -261,7 +263,17 @@ def dimon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DIMON_METADATA)
-    params = dimon_params(infile_prefix=infile_prefix, infile_pattern=infile_pattern, infile_list=infile_list, rt_cmd=rt_cmd, host=host, drive_afni=drive_afni, drive_wait=drive_wait, te_list=te_list, sort_method=sort_method)
+    params = dimon_params(
+        infile_prefix=infile_prefix,
+        infile_pattern=infile_pattern,
+        infile_list=infile_list,
+        rt_cmd=rt_cmd,
+        host=host,
+        drive_afni=drive_afni,
+        drive_wait=drive_wait,
+        te_list=te_list,
+        sort_method=sort_method,
+    )
     return dimon_execute(params, execution)
 
 

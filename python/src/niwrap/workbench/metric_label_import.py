@@ -11,6 +11,8 @@ METRIC_LABEL_IMPORT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricLabelImportParameters = typing.TypedDict('MetricLabelImportParameters', {
     "__STYX_TYPE__": typing.Literal["metric-label-import"],
     "input": InputPathType,
@@ -270,7 +272,15 @@ def metric_label_import(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_LABEL_IMPORT_METADATA)
-    params = metric_label_import_params(input_=input_, label_list_file=label_list_file, output=output, opt_discard_others=opt_discard_others, opt_unlabeled_value_value=opt_unlabeled_value_value, opt_column_column=opt_column_column, opt_drop_unused_labels=opt_drop_unused_labels)
+    params = metric_label_import_params(
+        input_=input_,
+        label_list_file=label_list_file,
+        output=output,
+        opt_discard_others=opt_discard_others,
+        opt_unlabeled_value_value=opt_unlabeled_value_value,
+        opt_column_column=opt_column_column,
+        opt_drop_unused_labels=opt_drop_unused_labels,
+    )
     return metric_label_import_execute(params, execution)
 
 

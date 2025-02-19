@@ -11,6 +11,8 @@ RUN_FASTSURFER_SH_METADATA = Metadata(
     package="fastsurfer",
     container_image_tag="deepmi/fastsurfer:cpu-v2.3.3",
 )
+
+
 RunFastsurferShParameters = typing.TypedDict('RunFastsurferShParameters', {
     "__STYX_TYPE__": typing.Literal["run_fastsurfer.sh"],
     "sid": str,
@@ -510,7 +512,43 @@ def run_fastsurfer_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_FASTSURFER_SH_METADATA)
-    params = run_fastsurfer_sh_params(sid=sid, subjects_dir=subjects_dir, t1_input=t1_input, fs_license=fs_license, asegdkt_segfile=asegdkt_segfile, vox_size=vox_size, seg_only=seg_only, seg_log=seg_log, conformed_name=conformed_name, norm_name=norm_name, t2_input=t2_input, reg_mode=reg_mode, threads=threads, device=device, viewagg_device=viewagg_device, batch_size=batch_size, python_cmd=python_cmd, surf_only=surf_only, no_biasfield=no_biasfield, tal_reg=tal_reg, no_asegdkt=no_asegdkt, no_cereb=no_cereb, cereb_segfile=cereb_segfile, no_hypothal=no_hypothal, qc_snap=qc_snap, three_t=three_t, parallel=parallel, ignore_fs_version=ignore_fs_version, fstess=fstess, fsqsphere=fsqsphere, fsaparc=fsaparc, no_fs_t1=no_fs_t1, no_surfreg=no_surfreg, allow_root=allow_root, version=version)
+    params = run_fastsurfer_sh_params(
+        sid=sid,
+        subjects_dir=subjects_dir,
+        t1_input=t1_input,
+        fs_license=fs_license,
+        asegdkt_segfile=asegdkt_segfile,
+        vox_size=vox_size,
+        seg_only=seg_only,
+        seg_log=seg_log,
+        conformed_name=conformed_name,
+        norm_name=norm_name,
+        t2_input=t2_input,
+        reg_mode=reg_mode,
+        threads=threads,
+        device=device,
+        viewagg_device=viewagg_device,
+        batch_size=batch_size,
+        python_cmd=python_cmd,
+        surf_only=surf_only,
+        no_biasfield=no_biasfield,
+        tal_reg=tal_reg,
+        no_asegdkt=no_asegdkt,
+        no_cereb=no_cereb,
+        cereb_segfile=cereb_segfile,
+        no_hypothal=no_hypothal,
+        qc_snap=qc_snap,
+        three_t=three_t,
+        parallel=parallel,
+        ignore_fs_version=ignore_fs_version,
+        fstess=fstess,
+        fsqsphere=fsqsphere,
+        fsaparc=fsaparc,
+        no_fs_t1=no_fs_t1,
+        no_surfreg=no_surfreg,
+        allow_root=allow_root,
+        version=version,
+    )
     return run_fastsurfer_sh_execute(params, execution)
 
 

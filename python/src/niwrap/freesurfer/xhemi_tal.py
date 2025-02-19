@@ -11,6 +11,8 @@ XHEMI_TAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 XhemiTalParameters = typing.TypedDict('XhemiTalParameters', {
     "__STYX_TYPE__": typing.Literal["xhemi-tal"],
     "subject": str,
@@ -160,7 +162,9 @@ def xhemi_tal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XHEMI_TAL_METADATA)
-    params = xhemi_tal_params(subject=subject)
+    params = xhemi_tal_params(
+        subject=subject,
+    )
     return xhemi_tal_execute(params, execution)
 
 

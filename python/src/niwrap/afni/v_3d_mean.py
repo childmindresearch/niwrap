@@ -11,6 +11,8 @@ V_3D_MEAN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMeanParameters = typing.TypedDict('V3dMeanParameters', {
     "__STYX_TYPE__": typing.Literal["3dMean"],
     "input_files": list[InputPathType],
@@ -329,7 +331,27 @@ def v_3d_mean(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MEAN_METADATA)
-    params = v_3d_mean_params(input_files=input_files, verbose=verbose, prefix=prefix, datum=datum, fscale=fscale, gscale=gscale, nscale=nscale, non_zero=non_zero, stdev=stdev, sqr=sqr, sum_=sum_, count=count, max_=max_, min_=min_, absmax=absmax, signed_absmax=signed_absmax, mask_inter=mask_inter, mask_union=mask_union, weightset=weightset)
+    params = v_3d_mean_params(
+        input_files=input_files,
+        verbose=verbose,
+        prefix=prefix,
+        datum=datum,
+        fscale=fscale,
+        gscale=gscale,
+        nscale=nscale,
+        non_zero=non_zero,
+        stdev=stdev,
+        sqr=sqr,
+        sum_=sum_,
+        count=count,
+        max_=max_,
+        min_=min_,
+        absmax=absmax,
+        signed_absmax=signed_absmax,
+        mask_inter=mask_inter,
+        mask_union=mask_union,
+        weightset=weightset,
+    )
     return v_3d_mean_execute(params, execution)
 
 

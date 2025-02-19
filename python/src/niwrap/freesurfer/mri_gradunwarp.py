@@ -11,6 +11,8 @@ MRI_GRADUNWARP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGradunwarpParameters = typing.TypedDict('MriGradunwarpParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gradunwarp"],
     "gradient_coeff": typing.NotRequired[InputPathType | None],
@@ -277,7 +279,19 @@ def mri_gradunwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GRADUNWARP_METADATA)
-    params = mri_gradunwarp_params(gradient_coeff=gradient_coeff, load_transtbl=load_transtbl, input_file=input_file, output_file=output_file, out_transtbl=out_transtbl, save_transtbl_only=save_transtbl_only, interpolation_type=interpolation_type, nthreads=nthreads, checkopts=checkopts, version=version, help_=help_)
+    params = mri_gradunwarp_params(
+        gradient_coeff=gradient_coeff,
+        load_transtbl=load_transtbl,
+        input_file=input_file,
+        output_file=output_file,
+        out_transtbl=out_transtbl,
+        save_transtbl_only=save_transtbl_only,
+        interpolation_type=interpolation_type,
+        nthreads=nthreads,
+        checkopts=checkopts,
+        version=version,
+        help_=help_,
+    )
     return mri_gradunwarp_execute(params, execution)
 
 

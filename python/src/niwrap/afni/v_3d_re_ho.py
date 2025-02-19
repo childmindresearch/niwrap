@@ -11,6 +11,8 @@ V_3D_RE_HO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dReHoParameters = typing.TypedDict('V3dReHoParameters', {
     "__STYX_TYPE__": typing.Literal["3dReHo"],
     "prefix": str,
@@ -346,7 +348,22 @@ def v_3d_re_ho(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_RE_HO_METADATA)
-    params = v_3d_re_ho_params(prefix=prefix, inset=inset, nneigh=nneigh, chi_sq=chi_sq, mask=mask, neigh_rad=neigh_rad, neigh_x=neigh_x, neigh_y=neigh_y, neigh_z=neigh_z, box_rad=box_rad, box_x=box_x, box_y=box_y, box_z=box_z, in_rois=in_rois)
+    params = v_3d_re_ho_params(
+        prefix=prefix,
+        inset=inset,
+        nneigh=nneigh,
+        chi_sq=chi_sq,
+        mask=mask,
+        neigh_rad=neigh_rad,
+        neigh_x=neigh_x,
+        neigh_y=neigh_y,
+        neigh_z=neigh_z,
+        box_rad=box_rad,
+        box_x=box_x,
+        box_y=box_y,
+        box_z=box_z,
+        in_rois=in_rois,
+    )
     return v_3d_re_ho_execute(params, execution)
 
 

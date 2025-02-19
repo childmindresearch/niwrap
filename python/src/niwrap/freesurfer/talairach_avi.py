@@ -11,6 +11,8 @@ TALAIRACH_AVI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TalairachAviParameters = typing.TypedDict('TalairachAviParameters', {
     "__STYX_TYPE__": typing.Literal["talairach_avi"],
     "input_file": InputPathType,
@@ -206,7 +208,13 @@ def talairach_avi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH_AVI_METADATA)
-    params = talairach_avi_params(input_file=input_file, output_xfm=output_xfm, atlas=atlas, log=log, debug=debug)
+    params = talairach_avi_params(
+        input_file=input_file,
+        output_xfm=output_xfm,
+        atlas=atlas,
+        log=log,
+        debug=debug,
+    )
     return talairach_avi_execute(params, execution)
 
 

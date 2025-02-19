@@ -11,6 +11,8 @@ DCMDIR_INFO_MGH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DcmdirInfoMghParameters = typing.TypedDict('DcmdirInfoMghParameters', {
     "__STYX_TYPE__": typing.Literal["dcmdir-info-mgh"],
     "dicomdir": str,
@@ -197,7 +199,13 @@ def dcmdir_info_mgh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMDIR_INFO_MGH_METADATA)
-    params = dcmdir_info_mgh_params(dicomdir=dicomdir, unpackdir=unpackdir, version=version, help_=help_, nopre=nopre)
+    params = dcmdir_info_mgh_params(
+        dicomdir=dicomdir,
+        unpackdir=unpackdir,
+        version=version,
+        help_=help_,
+        nopre=nopre,
+    )
     return dcmdir_info_mgh_execute(params, execution)
 
 

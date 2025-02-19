@@ -11,6 +11,8 @@ VOLUME_CREATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeCreatePlumbParameters = typing.TypedDict('VolumeCreatePlumbParameters', {
     "__STYX_TYPE__": typing.Literal["plumb"],
     "axis_order": str,
@@ -21,6 +23,8 @@ VolumeCreatePlumbParameters = typing.TypedDict('VolumeCreatePlumbParameters', {
     "y_offset": float,
     "z_offset": float,
 })
+
+
 VolumeCreateSformParameters = typing.TypedDict('VolumeCreateSformParameters', {
     "__STYX_TYPE__": typing.Literal["sform"],
     "xi_spacing": float,
@@ -36,6 +40,8 @@ VolumeCreateSformParameters = typing.TypedDict('VolumeCreateSformParameters', {
     "zk_spacing": float,
     "z_offset": float,
 })
+
+
 VolumeCreateParameters = typing.TypedDict('VolumeCreateParameters', {
     "__STYX_TYPE__": typing.Literal["volume-create"],
     "i_dim": int,
@@ -375,7 +381,14 @@ def volume_create(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_CREATE_METADATA)
-    params = volume_create_params(i_dim=i_dim, j_dim=j_dim, k_dim=k_dim, volume_out=volume_out, plumb=plumb, sform=sform)
+    params = volume_create_params(
+        i_dim=i_dim,
+        j_dim=j_dim,
+        k_dim=k_dim,
+        volume_out=volume_out,
+        plumb=plumb,
+        sform=sform,
+    )
     return volume_create_execute(params, execution)
 
 

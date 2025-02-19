@@ -11,6 +11,8 @@ V_3D_COMPARE_AFFINE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dCompareAffineParameters = typing.TypedDict('V3dCompareAffineParameters', {
     "__STYX_TYPE__": typing.Literal["3dCompareAffine"],
     "mask": typing.NotRequired[str | None],
@@ -196,7 +198,11 @@ def v_3d_compare_affine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_COMPARE_AFFINE_METADATA)
-    params = v_3d_compare_affine_params(mask=mask, dset=dset, affine=affine)
+    params = v_3d_compare_affine_params(
+        mask=mask,
+        dset=dset,
+        affine=affine,
+    )
     return v_3d_compare_affine_execute(params, execution)
 
 

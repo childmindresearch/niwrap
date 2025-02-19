@@ -11,6 +11,8 @@ V_3D_TWOTO_COMPLEX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTwotoComplexParameters = typing.TypedDict('V3dTwotoComplexParameters', {
     "__STYX_TYPE__": typing.Literal["3dTwotoComplex"],
     "dataset1": InputPathType,
@@ -219,7 +221,14 @@ def v_3d_twoto_complex(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TWOTO_COMPLEX_METADATA)
-    params = v_3d_twoto_complex_params(dataset1=dataset1, dataset2=dataset2, prefix=prefix, ri=ri, mp=mp, mask=mask)
+    params = v_3d_twoto_complex_params(
+        dataset1=dataset1,
+        dataset2=dataset2,
+        prefix=prefix,
+        ri=ri,
+        mp=mp,
+        mask=mask,
+    )
     return v_3d_twoto_complex_execute(params, execution)
 
 

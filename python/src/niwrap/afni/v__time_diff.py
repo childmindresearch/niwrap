@@ -11,6 +11,8 @@ V__TIME_DIFF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VTimeDiffParameters = typing.TypedDict('VTimeDiffParameters', {
     "__STYX_TYPE__": typing.Literal["@TimeDiff"],
     "file1": InputPathType,
@@ -162,7 +164,10 @@ def v__time_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__TIME_DIFF_METADATA)
-    params = v__time_diff_params(file1=file1, file2=file2)
+    params = v__time_diff_params(
+        file1=file1,
+        file2=file2,
+    )
     return v__time_diff_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FIDUCIALS_CORRECTION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FiducialsCorrectionParameters = typing.TypedDict('FiducialsCorrectionParameters', {
     "__STYX_TYPE__": typing.Literal["fiducials_correction"],
     "input_file": InputPathType,
@@ -166,7 +168,9 @@ def fiducials_correction(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIDUCIALS_CORRECTION_METADATA)
-    params = fiducials_correction_params(input_file=input_file)
+    params = fiducials_correction_params(
+        input_file=input_file,
+    )
     return fiducials_correction_execute(params, execution)
 
 

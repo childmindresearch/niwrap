@@ -11,6 +11,8 @@ SURFACE_COORDINATES_TO_METRIC_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceCoordinatesToMetricParameters = typing.TypedDict('SurfaceCoordinatesToMetricParameters', {
     "__STYX_TYPE__": typing.Literal["surface-coordinates-to-metric"],
     "surface": InputPathType,
@@ -171,7 +173,10 @@ def surface_coordinates_to_metric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_COORDINATES_TO_METRIC_METADATA)
-    params = surface_coordinates_to_metric_params(surface=surface, metric_out=metric_out)
+    params = surface_coordinates_to_metric_params(
+        surface=surface,
+        metric_out=metric_out,
+    )
     return surface_coordinates_to_metric_execute(params, execution)
 
 

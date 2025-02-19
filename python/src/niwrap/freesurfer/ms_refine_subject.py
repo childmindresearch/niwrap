@@ -11,6 +11,8 @@ MS_REFINE_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MsRefineSubjectParameters = typing.TypedDict('MsRefineSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["ms_refine_subject"],
     "subjects_dir": str,
@@ -157,7 +159,9 @@ def ms_refine_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MS_REFINE_SUBJECT_METADATA)
-    params = ms_refine_subject_params(subjects_dir=subjects_dir)
+    params = ms_refine_subject_params(
+        subjects_dir=subjects_dir,
+    )
     return ms_refine_subject_execute(params, execution)
 
 

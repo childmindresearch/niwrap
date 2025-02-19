@@ -11,6 +11,8 @@ SURFACE_SET_COORDINATES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceSetCoordinatesParameters = typing.TypedDict('SurfaceSetCoordinatesParameters', {
     "__STYX_TYPE__": typing.Literal["surface-set-coordinates"],
     "surface_in": InputPathType,
@@ -186,7 +188,11 @@ def surface_set_coordinates(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_SET_COORDINATES_METADATA)
-    params = surface_set_coordinates_params(surface_in=surface_in, coord_metric=coord_metric, surface_out=surface_out)
+    params = surface_set_coordinates_params(
+        surface_in=surface_in,
+        coord_metric=coord_metric,
+        surface_out=surface_out,
+    )
     return surface_set_coordinates_execute(params, execution)
 
 

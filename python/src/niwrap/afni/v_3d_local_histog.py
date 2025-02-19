@@ -11,6 +11,8 @@ V_3D_LOCAL_HISTOG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLocalHistogParameters = typing.TypedDict('V3dLocalHistogParameters', {
     "__STYX_TYPE__": typing.Literal["3dLocalHistog"],
     "nbhd_option": typing.NotRequired[str | None],
@@ -245,7 +247,15 @@ def v_3d_local_histog(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCAL_HISTOG_METADATA)
-    params = v_3d_local_histog_params(nbhd_option=nbhd_option, prefix=prefix, hsave=hsave, lab_file=lab_file, exclude=exclude, mincount=mincount, input_datasets=input_datasets)
+    params = v_3d_local_histog_params(
+        nbhd_option=nbhd_option,
+        prefix=prefix,
+        hsave=hsave,
+        lab_file=lab_file,
+        exclude=exclude,
+        mincount=mincount,
+        input_datasets=input_datasets,
+    )
     return v_3d_local_histog_execute(params, execution)
 
 

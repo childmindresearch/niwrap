@@ -11,6 +11,8 @@ EXVIVO_HEMI_PROC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ExvivoHemiProcParameters = typing.TypedDict('ExvivoHemiProcParameters', {
     "__STYX_TYPE__": typing.Literal["exvivo-hemi-proc"],
     "flashdir": str,
@@ -280,7 +282,22 @@ def exvivo_hemi_proc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXVIVO_HEMI_PROC_METADATA)
-    params = exvivo_hemi_proc_params(flashdir=flashdir, outdir=outdir, subject=subject, right_hemi=right_hemi, suptent=suptent, no_rotate=no_rotate, t1thresh=t1thresh, threads=threads, check_only=check_only, prep_only=prep_only, mask_only=mask_only, samseg_only=samseg_only, stop_mmppsp_after=stop_mmppsp_after, force=force)
+    params = exvivo_hemi_proc_params(
+        flashdir=flashdir,
+        outdir=outdir,
+        subject=subject,
+        right_hemi=right_hemi,
+        suptent=suptent,
+        no_rotate=no_rotate,
+        t1thresh=t1thresh,
+        threads=threads,
+        check_only=check_only,
+        prep_only=prep_only,
+        mask_only=mask_only,
+        samseg_only=samseg_only,
+        stop_mmppsp_after=stop_mmppsp_after,
+        force=force,
+    )
     return exvivo_hemi_proc_execute(params, execution)
 
 

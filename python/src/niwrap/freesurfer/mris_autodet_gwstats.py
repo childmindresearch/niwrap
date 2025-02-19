@@ -11,6 +11,8 @@ MRIS_AUTODET_GWSTATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisAutodetGwstatsParameters = typing.TypedDict('MrisAutodetGwstatsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_autodet_gwstats"],
     "output_file": str,
@@ -324,7 +326,23 @@ def mris_autodet_gwstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_AUTODET_GWSTATS_METADATA)
-    params = mris_autodet_gwstats_params(output_file=output_file, t1w_volume=t1w_volume, wm_volume=wm_volume, surf=surf, lhsurf=lhsurf, rhsurf=rhsurf, subject=subject, subjects_dir=subjects_dir, min_border_white=min_border_white, max_border_white=max_border_white, min_gray_at_white_border=min_gray_at_white_border, max_gray=max_gray, max_gray_at_csf_border=max_gray_at_csf_border, min_gray_at_csf_border=min_gray_at_csf_border, max_csf=max_csf)
+    params = mris_autodet_gwstats_params(
+        output_file=output_file,
+        t1w_volume=t1w_volume,
+        wm_volume=wm_volume,
+        surf=surf,
+        lhsurf=lhsurf,
+        rhsurf=rhsurf,
+        subject=subject,
+        subjects_dir=subjects_dir,
+        min_border_white=min_border_white,
+        max_border_white=max_border_white,
+        min_gray_at_white_border=min_gray_at_white_border,
+        max_gray=max_gray,
+        max_gray_at_csf_border=max_gray_at_csf_border,
+        min_gray_at_csf_border=min_gray_at_csf_border,
+        max_csf=max_csf,
+    )
     return mris_autodet_gwstats_execute(params, execution)
 
 

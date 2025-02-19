@@ -11,6 +11,8 @@ RENORMALIZE_SUBJECT_KEEP_EDITTING_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RenormalizeSubjectKeepEdittingParameters = typing.TypedDict('RenormalizeSubjectKeepEdittingParameters', {
     "__STYX_TYPE__": typing.Literal["renormalize_subject_keep_editting"],
 })
@@ -154,7 +156,8 @@ def renormalize_subject_keep_editting(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RENORMALIZE_SUBJECT_KEEP_EDITTING_METADATA)
-    params = renormalize_subject_keep_editting_params()
+    params = renormalize_subject_keep_editting_params(
+    )
     return renormalize_subject_keep_editting_execute(params, execution)
 
 

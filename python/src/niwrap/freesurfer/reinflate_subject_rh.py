@@ -11,6 +11,8 @@ REINFLATE_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ReinflateSubjectRhParameters = typing.TypedDict('ReinflateSubjectRhParameters', {
     "__STYX_TYPE__": typing.Literal["reinflate_subject-rh"],
     "subject_dir": str,
@@ -170,7 +172,10 @@ def reinflate_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REINFLATE_SUBJECT_RH_METADATA)
-    params = reinflate_subject_rh_params(subject_dir=subject_dir, additional_options=additional_options)
+    params = reinflate_subject_rh_params(
+        subject_dir=subject_dir,
+        additional_options=additional_options,
+    )
     return reinflate_subject_rh_execute(params, execution)
 
 

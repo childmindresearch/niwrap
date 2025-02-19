@@ -11,6 +11,8 @@ V_3D_NOTES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNotesParameters = typing.TypedDict('V3dNotesParameters', {
     "__STYX_TYPE__": typing.Literal["3dNotes"],
     "add_note": typing.NotRequired[str | None],
@@ -223,7 +225,15 @@ def v_3d_notes(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NOTES_METADATA)
-    params = v_3d_notes_params(add_note=add_note, append_history=append_history, replace_history=replace_history, delete_note=delete_note, print_notes=print_notes, help_=help_, dataset=dataset)
+    params = v_3d_notes_params(
+        add_note=add_note,
+        append_history=append_history,
+        replace_history=replace_history,
+        delete_note=delete_note,
+        print_notes=print_notes,
+        help_=help_,
+        dataset=dataset,
+    )
     return v_3d_notes_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ MRCHECKERBOARDMASK_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrcheckerboardmaskConfigParameters = typing.TypedDict('MrcheckerboardmaskConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrcheckerboardmaskParameters = typing.TypedDict('MrcheckerboardmaskParameters', {
     "__STYX_TYPE__": typing.Literal["mrcheckerboardmask"],
     "tiles": typing.NotRequired[int | None],
@@ -330,7 +334,21 @@ def mrcheckerboardmask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRCHECKERBOARDMASK_METADATA)
-    params = mrcheckerboardmask_params(tiles=tiles, invert=invert, nan=nan, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = mrcheckerboardmask_params(
+        tiles=tiles,
+        invert=invert,
+        nan=nan,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return mrcheckerboardmask_execute(params, execution)
 
 

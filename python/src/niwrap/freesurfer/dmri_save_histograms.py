@@ -11,6 +11,8 @@ DMRI_SAVE_HISTOGRAMS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriSaveHistogramsParameters = typing.TypedDict('DmriSaveHistogramsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_saveHistograms"],
     "parcellation": InputPathType,
@@ -197,7 +199,13 @@ def dmri_save_histograms(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_SAVE_HISTOGRAMS_METADATA)
-    params = dmri_save_histograms_params(parcellation=parcellation, number_of_bundles=number_of_bundles, vtk_bundle_list=vtk_bundle_list, output_csv=output_csv, brain_bundle_flag=brain_bundle_flag)
+    params = dmri_save_histograms_params(
+        parcellation=parcellation,
+        number_of_bundles=number_of_bundles,
+        vtk_bundle_list=vtk_bundle_list,
+        output_csv=output_csv,
+        brain_bundle_flag=brain_bundle_flag,
+    )
     return dmri_save_histograms_execute(params, execution)
 
 

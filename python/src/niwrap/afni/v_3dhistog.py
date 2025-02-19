@@ -11,6 +11,8 @@ V_3DHISTOG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dhistogParameters = typing.TypedDict('V3dhistogParameters', {
     "__STYX_TYPE__": typing.Literal["3dhistog"],
     "dataset": InputPathType,
@@ -331,7 +333,26 @@ def v_3dhistog(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DHISTOG_METADATA)
-    params = v_3dhistog_params(dataset=dataset, nbin=nbin, dind=dind, omit=omit, mask=mask, roi_mask=roi_mask, doall=doall, noempty=noempty, notitle=notitle, log10=log10, pdf=pdf, min_=min_, max_=max_, igfac=igfac, int_=int_, float_=float_, unq=unq, prefix=prefix)
+    params = v_3dhistog_params(
+        dataset=dataset,
+        nbin=nbin,
+        dind=dind,
+        omit=omit,
+        mask=mask,
+        roi_mask=roi_mask,
+        doall=doall,
+        noempty=noempty,
+        notitle=notitle,
+        log10=log10,
+        pdf=pdf,
+        min_=min_,
+        max_=max_,
+        igfac=igfac,
+        int_=int_,
+        float_=float_,
+        unq=unq,
+        prefix=prefix,
+    )
     return v_3dhistog_execute(params, execution)
 
 

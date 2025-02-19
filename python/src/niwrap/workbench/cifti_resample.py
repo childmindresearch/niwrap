@@ -11,22 +11,30 @@ CIFTI_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiResampleWeightedParameters = typing.TypedDict('CiftiResampleWeightedParameters', {
     "__STYX_TYPE__": typing.Literal["weighted"],
     "opt_exponent_exponent": typing.NotRequired[float | None],
     "opt_legacy_cutoff": bool,
 })
+
+
 CiftiResampleVolumePredilateParameters = typing.TypedDict('CiftiResampleVolumePredilateParameters', {
     "__STYX_TYPE__": typing.Literal["volume_predilate"],
     "dilate_mm": float,
     "opt_nearest": bool,
     "weighted": typing.NotRequired[CiftiResampleWeightedParameters | None],
 })
+
+
 CiftiResampleWeighted1Parameters = typing.TypedDict('CiftiResampleWeighted1Parameters', {
     "__STYX_TYPE__": typing.Literal["weighted_1"],
     "opt_exponent_exponent": typing.NotRequired[float | None],
     "opt_legacy_cutoff": bool,
 })
+
+
 CiftiResampleSurfacePostdilateParameters = typing.TypedDict('CiftiResampleSurfacePostdilateParameters', {
     "__STYX_TYPE__": typing.Literal["surface_postdilate"],
     "dilate_mm": float,
@@ -34,31 +42,43 @@ CiftiResampleSurfacePostdilateParameters = typing.TypedDict('CiftiResampleSurfac
     "opt_linear": bool,
     "weighted": typing.NotRequired[CiftiResampleWeighted1Parameters | None],
 })
+
+
 CiftiResampleFlirtParameters = typing.TypedDict('CiftiResampleFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["flirt"],
     "source_volume": str,
     "target_volume": str,
 })
+
+
 CiftiResampleAffineParameters = typing.TypedDict('CiftiResampleAffineParameters', {
     "__STYX_TYPE__": typing.Literal["affine"],
     "affine_file": str,
     "flirt": typing.NotRequired[CiftiResampleFlirtParameters | None],
 })
+
+
 CiftiResampleWarpfieldParameters = typing.TypedDict('CiftiResampleWarpfieldParameters', {
     "__STYX_TYPE__": typing.Literal["warpfield"],
     "warpfield": str,
     "opt_fnirt_source_volume": typing.NotRequired[str | None],
 })
+
+
 CiftiResampleLeftAreaSurfsParameters = typing.TypedDict('CiftiResampleLeftAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["left_area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleLeftAreaMetricsParameters = typing.TypedDict('CiftiResampleLeftAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["left_area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleLeftSpheresParameters = typing.TypedDict('CiftiResampleLeftSpheresParameters', {
     "__STYX_TYPE__": typing.Literal["left_spheres"],
     "current_sphere": InputPathType,
@@ -66,16 +86,22 @@ CiftiResampleLeftSpheresParameters = typing.TypedDict('CiftiResampleLeftSpheresP
     "left_area_surfs": typing.NotRequired[CiftiResampleLeftAreaSurfsParameters | None],
     "left_area_metrics": typing.NotRequired[CiftiResampleLeftAreaMetricsParameters | None],
 })
+
+
 CiftiResampleRightAreaSurfsParameters = typing.TypedDict('CiftiResampleRightAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["right_area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleRightAreaMetricsParameters = typing.TypedDict('CiftiResampleRightAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["right_area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleRightSpheresParameters = typing.TypedDict('CiftiResampleRightSpheresParameters', {
     "__STYX_TYPE__": typing.Literal["right_spheres"],
     "current_sphere": InputPathType,
@@ -83,16 +109,22 @@ CiftiResampleRightSpheresParameters = typing.TypedDict('CiftiResampleRightSphere
     "right_area_surfs": typing.NotRequired[CiftiResampleRightAreaSurfsParameters | None],
     "right_area_metrics": typing.NotRequired[CiftiResampleRightAreaMetricsParameters | None],
 })
+
+
 CiftiResampleCerebellumAreaSurfsParameters = typing.TypedDict('CiftiResampleCerebellumAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleCerebellumAreaMetricsParameters = typing.TypedDict('CiftiResampleCerebellumAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleCerebellumSpheresParameters = typing.TypedDict('CiftiResampleCerebellumSpheresParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_spheres"],
     "current_sphere": InputPathType,
@@ -100,6 +132,8 @@ CiftiResampleCerebellumSpheresParameters = typing.TypedDict('CiftiResampleCerebe
     "cerebellum_area_surfs": typing.NotRequired[CiftiResampleCerebellumAreaSurfsParameters | None],
     "cerebellum_area_metrics": typing.NotRequired[CiftiResampleCerebellumAreaMetricsParameters | None],
 })
+
+
 CiftiResampleParameters = typing.TypedDict('CiftiResampleParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-resample"],
     "cifti_in": InputPathType,
@@ -1197,7 +1231,23 @@ def cifti_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_RESAMPLE_METADATA)
-    params = cifti_resample_params(cifti_in=cifti_in, direction=direction, cifti_template=cifti_template, template_direction=template_direction, surface_method=surface_method, volume_method=volume_method, cifti_out=cifti_out, opt_surface_largest=opt_surface_largest, volume_predilate=volume_predilate, surface_postdilate=surface_postdilate, affine=affine, warpfield=warpfield, left_spheres=left_spheres, right_spheres=right_spheres, cerebellum_spheres=cerebellum_spheres)
+    params = cifti_resample_params(
+        cifti_in=cifti_in,
+        direction=direction,
+        cifti_template=cifti_template,
+        template_direction=template_direction,
+        surface_method=surface_method,
+        volume_method=volume_method,
+        cifti_out=cifti_out,
+        opt_surface_largest=opt_surface_largest,
+        volume_predilate=volume_predilate,
+        surface_postdilate=surface_postdilate,
+        affine=affine,
+        warpfield=warpfield,
+        left_spheres=left_spheres,
+        right_spheres=right_spheres,
+        cerebellum_spheres=cerebellum_spheres,
+    )
     return cifti_resample_execute(params, execution)
 
 

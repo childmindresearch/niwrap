@@ -11,6 +11,8 @@ SURFACE_WEDGE_VOLUME_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceWedgeVolumeParameters = typing.TypedDict('SurfaceWedgeVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["surface-wedge-volume"],
     "inner_surface": InputPathType,
@@ -182,7 +184,11 @@ def surface_wedge_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_WEDGE_VOLUME_METADATA)
-    params = surface_wedge_volume_params(inner_surface=inner_surface, outer_surface=outer_surface, metric=metric)
+    params = surface_wedge_volume_params(
+        inner_surface=inner_surface,
+        outer_surface=outer_surface,
+        metric=metric,
+    )
     return surface_wedge_volume_execute(params, execution)
 
 

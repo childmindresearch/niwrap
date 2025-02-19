@@ -11,6 +11,8 @@ SEGMENT_THALAMIC_NUCLEI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentThalamicNucleiParameters = typing.TypedDict('SegmentThalamicNucleiParameters', {
     "__STYX_TYPE__": typing.Literal["SegmentThalamicNuclei"],
     "t1_image": InputPathType,
@@ -166,7 +168,10 @@ def segment_thalamic_nuclei(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_THALAMIC_NUCLEI_METADATA)
-    params = segment_thalamic_nuclei_params(t1_image=t1_image, output_dir=output_dir)
+    params = segment_thalamic_nuclei_params(
+        t1_image=t1_image,
+        output_dir=output_dir,
+    )
     return segment_thalamic_nuclei_execute(params, execution)
 
 

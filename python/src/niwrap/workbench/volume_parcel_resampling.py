@@ -11,6 +11,8 @@ VOLUME_PARCEL_RESAMPLING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeParcelResamplingParameters = typing.TypedDict('VolumeParcelResamplingParameters', {
     "__STYX_TYPE__": typing.Literal["volume-parcel-resampling"],
     "volume_in": InputPathType,
@@ -242,7 +244,16 @@ def volume_parcel_resampling(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_PARCEL_RESAMPLING_METADATA)
-    params = volume_parcel_resampling_params(volume_in=volume_in, cur_parcels=cur_parcels, new_parcels=new_parcels, kernel=kernel, volume_out=volume_out, opt_fix_zeros=opt_fix_zeros, opt_fwhm=opt_fwhm, opt_subvolume_subvol=opt_subvolume_subvol)
+    params = volume_parcel_resampling_params(
+        volume_in=volume_in,
+        cur_parcels=cur_parcels,
+        new_parcels=new_parcels,
+        kernel=kernel,
+        volume_out=volume_out,
+        opt_fix_zeros=opt_fix_zeros,
+        opt_fwhm=opt_fwhm,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+    )
     return volume_parcel_resampling_execute(params, execution)
 
 

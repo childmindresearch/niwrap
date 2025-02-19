@@ -11,6 +11,8 @@ ANTS_LANDMARK_BASED_TRANSFORM_INITIALIZER_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsLandmarkBasedTransformInitializerParameters = typing.TypedDict('AntsLandmarkBasedTransformInitializerParameters', {
     "__STYX_TYPE__": typing.Literal["antsLandmarkBasedTransformInitializer"],
     "dimension": int,
@@ -246,7 +248,18 @@ def ants_landmark_based_transform_initializer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_LANDMARK_BASED_TRANSFORM_INITIALIZER_METADATA)
-    params = ants_landmark_based_transform_initializer_params(dimension=dimension, fixed_image=fixed_image, moving_image=moving_image, transform_type=transform_type, output_transform=output_transform, mesh_size=mesh_size, number_of_levels=number_of_levels, order=order, enforce_stationary_boundaries=enforce_stationary_boundaries, landmark_weights=landmark_weights)
+    params = ants_landmark_based_transform_initializer_params(
+        dimension=dimension,
+        fixed_image=fixed_image,
+        moving_image=moving_image,
+        transform_type=transform_type,
+        output_transform=output_transform,
+        mesh_size=mesh_size,
+        number_of_levels=number_of_levels,
+        order=order,
+        enforce_stationary_boundaries=enforce_stationary_boundaries,
+        landmark_weights=landmark_weights,
+    )
     return ants_landmark_based_transform_initializer_execute(params, execution)
 
 

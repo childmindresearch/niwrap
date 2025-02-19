@@ -11,6 +11,8 @@ ANTS_MOTION_CORR_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsMotionCorrParameters = typing.TypedDict('AntsMotionCorrParameters', {
     "__STYX_TYPE__": typing.Literal["antsMotionCorr"],
     "dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
@@ -372,7 +374,24 @@ def ants_motion_corr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_MOTION_CORR_METADATA)
-    params = ants_motion_corr_params(dimensionality=dimensionality, n_images=n_images, metric=metric, use_fixed_reference_image=use_fixed_reference_image, use_scales_estimator=use_scales_estimator, transform=transform, iterations=iterations, smoothing_sigmas=smoothing_sigmas, shrink_factors=shrink_factors, output=output, average_image=average_image, write_displacement=write_displacement, use_histogram_matching=use_histogram_matching, random_seed=random_seed, interpolation=interpolation, verbose=verbose)
+    params = ants_motion_corr_params(
+        dimensionality=dimensionality,
+        n_images=n_images,
+        metric=metric,
+        use_fixed_reference_image=use_fixed_reference_image,
+        use_scales_estimator=use_scales_estimator,
+        transform=transform,
+        iterations=iterations,
+        smoothing_sigmas=smoothing_sigmas,
+        shrink_factors=shrink_factors,
+        output=output,
+        average_image=average_image,
+        write_displacement=write_displacement,
+        use_histogram_matching=use_histogram_matching,
+        random_seed=random_seed,
+        interpolation=interpolation,
+        verbose=verbose,
+    )
     return ants_motion_corr_execute(params, execution)
 
 

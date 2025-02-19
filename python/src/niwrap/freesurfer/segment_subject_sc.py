@@ -11,6 +11,8 @@ SEGMENT_SUBJECT_SC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentSubjectScParameters = typing.TypedDict('SegmentSubjectScParameters', {
     "__STYX_TYPE__": typing.Literal["segment_subject_sc"],
     "invol": InputPathType,
@@ -194,7 +196,12 @@ def segment_subject_sc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBJECT_SC_METADATA)
-    params = segment_subject_sc_params(invol=invol, outxfm=outxfm, log=log, debug=debug)
+    params = segment_subject_sc_params(
+        invol=invol,
+        outxfm=outxfm,
+        log=log,
+        debug=debug,
+    )
     return segment_subject_sc_execute(params, execution)
 
 

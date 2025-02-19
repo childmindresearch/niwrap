@@ -11,6 +11,8 @@ STIMBAND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 StimbandParameters = typing.TypedDict('StimbandParameters', {
     "__STYX_TYPE__": typing.Literal["stimband"],
     "verbose_flag": bool,
@@ -209,7 +211,12 @@ def stimband(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(STIMBAND_METADATA)
-    params = stimband_params(verbose_flag=verbose_flag, min_freq=min_freq, min_bwidth=min_bwidth, min_pow=min_pow)
+    params = stimband_params(
+        verbose_flag=verbose_flag,
+        min_freq=min_freq,
+        min_bwidth=min_bwidth,
+        min_pow=min_pow,
+    )
     return stimband_execute(params, execution)
 
 

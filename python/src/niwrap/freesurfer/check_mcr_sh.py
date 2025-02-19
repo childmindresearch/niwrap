@@ -11,6 +11,8 @@ CHECK_MCR_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CheckMcrShParameters = typing.TypedDict('CheckMcrShParameters', {
     "__STYX_TYPE__": typing.Literal["checkMCR.sh"],
     "help": bool,
@@ -158,7 +160,9 @@ def check_mcr_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CHECK_MCR_SH_METADATA)
-    params = check_mcr_sh_params(help_=help_)
+    params = check_mcr_sh_params(
+        help_=help_,
+    )
     return check_mcr_sh_execute(params, execution)
 
 

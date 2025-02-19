@@ -11,6 +11,8 @@ MINC2SEQINFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Minc2seqinfoParameters = typing.TypedDict('Minc2seqinfoParameters', {
     "__STYX_TYPE__": typing.Literal["minc2seqinfo"],
     "mincfile": InputPathType,
@@ -166,7 +168,10 @@ def minc2seqinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MINC2SEQINFO_METADATA)
-    params = minc2seqinfo_params(mincfile=mincfile, seqinfofile=seqinfofile)
+    params = minc2seqinfo_params(
+        mincfile=mincfile,
+        seqinfofile=seqinfofile,
+    )
     return minc2seqinfo_execute(params, execution)
 
 

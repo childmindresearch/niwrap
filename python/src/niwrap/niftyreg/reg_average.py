@@ -11,6 +11,8 @@ REG_AVERAGE_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+
+
 RegAverageParameters = typing.TypedDict('RegAverageParameters', {
     "__STYX_TYPE__": typing.Literal["reg_average"],
     "output_file": str,
@@ -168,7 +170,10 @@ def reg_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_AVERAGE_METADATA)
-    params = reg_average_params(output_file=output_file, input_files=input_files)
+    params = reg_average_params(
+        output_file=output_file,
+        input_files=input_files,
+    )
     return reg_average_execute(params, execution)
 
 

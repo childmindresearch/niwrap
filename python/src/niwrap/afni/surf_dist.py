@@ -11,6 +11,8 @@ SURF_DIST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfDistParameters = typing.TypedDict('SurfDistParameters', {
     "__STYX_TYPE__": typing.Literal["SurfDist"],
     "surface": InputPathType,
@@ -188,7 +190,12 @@ def surf_dist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_DIST_METADATA)
-    params = surf_dist_params(surface=surface, nodepairs=nodepairs, node_path_do=node_path_do, graph=graph)
+    params = surf_dist_params(
+        surface=surface,
+        nodepairs=nodepairs,
+        node_path_do=node_path_do,
+        graph=graph,
+    )
     return surf_dist_execute(params, execution)
 
 

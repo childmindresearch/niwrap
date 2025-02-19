@@ -11,6 +11,8 @@ DRIVE_SUMA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 DriveSumaParameters = typing.TypedDict('DriveSumaParameters', {
     "__STYX_TYPE__": typing.Literal["DriveSuma"],
     "command": str,
@@ -473,7 +475,39 @@ def drive_suma(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DRIVE_SUMA_METADATA)
-    params = drive_suma_params(command=command, surf_label=surf_label, surface_file=surface_file, surf_state=surf_state, surf_winding=surf_winding, coordinates=coordinates, autorecord=autorecord, background_color=background_color, view_file=view_file, do_file=do_file, do_draw_mask=do_draw_mask, fixed_do=fixed_do, mobile_do=mobile_do, key_press=key_press, viewer=viewer, anim_dup=anim_dup, save_as=save_as, save_index=save_index, save_range=save_range, save_last=save_last, save_last_n=save_last_n, save_all=save_all, echo_edu=echo_edu, echo_nel_stdout=echo_nel_stdout, echo_nel_stderr=echo_nel_stderr, examples=examples, help_=help_, h=h, help_nido=help_nido, c_demo=c_demo, viewer_cont=viewer_cont)
+    params = drive_suma_params(
+        command=command,
+        surf_label=surf_label,
+        surface_file=surface_file,
+        surf_state=surf_state,
+        surf_winding=surf_winding,
+        coordinates=coordinates,
+        autorecord=autorecord,
+        background_color=background_color,
+        view_file=view_file,
+        do_file=do_file,
+        do_draw_mask=do_draw_mask,
+        fixed_do=fixed_do,
+        mobile_do=mobile_do,
+        key_press=key_press,
+        viewer=viewer,
+        anim_dup=anim_dup,
+        save_as=save_as,
+        save_index=save_index,
+        save_range=save_range,
+        save_last=save_last,
+        save_last_n=save_last_n,
+        save_all=save_all,
+        echo_edu=echo_edu,
+        echo_nel_stdout=echo_nel_stdout,
+        echo_nel_stderr=echo_nel_stderr,
+        examples=examples,
+        help_=help_,
+        h=h,
+        help_nido=help_nido,
+        c_demo=c_demo,
+        viewer_cont=viewer_cont,
+    )
     return drive_suma_execute(params, execution)
 
 

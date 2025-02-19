@@ -11,6 +11,8 @@ MRI_APARC2ASEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAparc2asegParameters = typing.TypedDict('MriAparc2asegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_aparc2aseg"],
     "subject": typing.NotRequired[str | None],
@@ -366,7 +368,28 @@ def mri_aparc2aseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_APARC2ASEG_METADATA)
-    params = mri_aparc2aseg_params(subject=subject, output_volfile=output_volfile, old_ribbon=old_ribbon, new_ribbon=new_ribbon, a2005s=a2005s, a2009s=a2009s, annot_name=annot_name, annot_table=annot_table, base_offset=base_offset, label_wm=label_wm, wmparc_dmax=wmparc_dmax, rip_unknown=rip_unknown, hypo_as_wm=hypo_as_wm, no_fix_parahip=no_fix_parahip, smooth_normals=smooth_normals, crs_test=crs_test, right_hemisphere=right_hemisphere, threads=threads, help_=help_, version=version)
+    params = mri_aparc2aseg_params(
+        subject=subject,
+        output_volfile=output_volfile,
+        old_ribbon=old_ribbon,
+        new_ribbon=new_ribbon,
+        a2005s=a2005s,
+        a2009s=a2009s,
+        annot_name=annot_name,
+        annot_table=annot_table,
+        base_offset=base_offset,
+        label_wm=label_wm,
+        wmparc_dmax=wmparc_dmax,
+        rip_unknown=rip_unknown,
+        hypo_as_wm=hypo_as_wm,
+        no_fix_parahip=no_fix_parahip,
+        smooth_normals=smooth_normals,
+        crs_test=crs_test,
+        right_hemisphere=right_hemisphere,
+        threads=threads,
+        help_=help_,
+        version=version,
+    )
     return mri_aparc2aseg_execute(params, execution)
 
 

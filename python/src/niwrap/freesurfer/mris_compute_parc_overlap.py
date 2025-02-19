@@ -11,6 +11,8 @@ MRIS_COMPUTE_PARC_OVERLAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisComputeParcOverlapParameters = typing.TypedDict('MrisComputeParcOverlapParameters', {
     "__STYX_TYPE__": typing.Literal["mris_compute_parc_overlap"],
     "subject": str,
@@ -314,7 +316,24 @@ def mris_compute_parc_overlap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COMPUTE_PARC_OVERLAP_METADATA)
-    params = mris_compute_parc_overlap_params(subject=subject, hemi=hemi, annot1=annot1, annot2=annot2, label1=label1, label2=label2, subj_dir=subj_dir, log_file=log_file, label_list=label_list, nocheck_label1_xyz=nocheck_label1_xyz, nocheck_label2_xyz=nocheck_label2_xyz, nocheck_label_xyz=nocheck_label_xyz, use_label1_xyz=use_label1_xyz, use_label2_xyz=use_label2_xyz, use_label_xyz=use_label_xyz, debug_overlap=debug_overlap)
+    params = mris_compute_parc_overlap_params(
+        subject=subject,
+        hemi=hemi,
+        annot1=annot1,
+        annot2=annot2,
+        label1=label1,
+        label2=label2,
+        subj_dir=subj_dir,
+        log_file=log_file,
+        label_list=label_list,
+        nocheck_label1_xyz=nocheck_label1_xyz,
+        nocheck_label2_xyz=nocheck_label2_xyz,
+        nocheck_label_xyz=nocheck_label_xyz,
+        use_label1_xyz=use_label1_xyz,
+        use_label2_xyz=use_label2_xyz,
+        use_label_xyz=use_label_xyz,
+        debug_overlap=debug_overlap,
+    )
     return mris_compute_parc_overlap_execute(params, execution)
 
 

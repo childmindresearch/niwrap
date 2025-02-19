@@ -11,11 +11,15 @@ MRMETRIC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrmetricConfigParameters = typing.TypedDict('MrmetricConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrmetricParameters = typing.TypedDict('MrmetricParameters', {
     "__STYX_TYPE__": typing.Literal["mrmetric"],
     "space": typing.NotRequired[str | None],
@@ -388,7 +392,25 @@ def mrmetric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRMETRIC_METADATA)
-    params = mrmetric_params(space=space, interp=interp, metric=metric, mask1=mask1, mask2=mask2, nonormalisation=nonormalisation, overlap=overlap, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image1=image1, image2=image2)
+    params = mrmetric_params(
+        space=space,
+        interp=interp,
+        metric=metric,
+        mask1=mask1,
+        mask2=mask2,
+        nonormalisation=nonormalisation,
+        overlap=overlap,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        image1=image1,
+        image2=image2,
+    )
     return mrmetric_execute(params, execution)
 
 

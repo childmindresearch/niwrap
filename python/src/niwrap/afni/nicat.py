@@ -11,6 +11,8 @@ NICAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 NicatParameters = typing.TypedDict('NicatParameters', {
     "__STYX_TYPE__": typing.Literal["nicat"],
     "stream_spec": str,
@@ -187,7 +189,12 @@ def nicat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NICAT_METADATA)
-    params = nicat_params(stream_spec=stream_spec, reopen=reopen, copy_stream=copy_stream, read_only=read_only)
+    params = nicat_params(
+        stream_spec=stream_spec,
+        reopen=reopen,
+        copy_stream=copy_stream,
+        read_only=read_only,
+    )
     return nicat_execute(params, execution)
 
 

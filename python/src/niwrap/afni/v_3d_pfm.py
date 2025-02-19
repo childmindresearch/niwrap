@@ -11,6 +11,8 @@ V_3D_PFM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dPfmParameters = typing.TypedDict('V3dPfmParameters', {
     "__STYX_TYPE__": typing.Literal["3dPFM"],
 })
@@ -232,7 +234,8 @@ def v_3d_pfm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PFM_METADATA)
-    params = v_3d_pfm_params()
+    params = v_3d_pfm_params(
+    )
     return v_3d_pfm_execute(params, execution)
 
 

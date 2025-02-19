@@ -11,6 +11,8 @@ MAKEVOL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakevolParameters = typing.TypedDict('MakevolParameters', {
     "__STYX_TYPE__": typing.Literal["makevol"],
     "filename": typing.NotRequired[str | None],
@@ -250,7 +252,16 @@ def makevol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKEVOL_METADATA)
-    params = makevol_params(filename=filename, width=width, height=height, depth=depth, sizex=sizex, sizey=sizey, sizez=sizez, set_method=set_method)
+    params = makevol_params(
+        filename=filename,
+        width=width,
+        height=height,
+        depth=depth,
+        sizex=sizex,
+        sizey=sizey,
+        sizez=sizez,
+        set_method=set_method,
+    )
     return makevol_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ GET_AFNI_MODEL_PRF_6_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GetAfniModelPrf6Parameters = typing.TypedDict('GetAfniModelPrf6Parameters', {
     "__STYX_TYPE__": typing.Literal["get_afni_model_PRF_6"],
     "NT": float,
@@ -199,7 +201,15 @@ def get_afni_model_prf_6(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GET_AFNI_MODEL_PRF_6_METADATA)
-    params = get_afni_model_prf_6_params(nt_=nt_, amp=amp, x=x, y=y, sigma=sigma, sigrat=sigrat, theta=theta)
+    params = get_afni_model_prf_6_params(
+        nt_=nt_,
+        amp=amp,
+        x=x,
+        y=y,
+        sigma=sigma,
+        sigrat=sigrat,
+        theta=theta,
+    )
     return get_afni_model_prf_6_execute(params, execution)
 
 

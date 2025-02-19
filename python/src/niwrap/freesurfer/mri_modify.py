@@ -11,6 +11,8 @@ MRI_MODIFY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriModifyParameters = typing.TypedDict('MriModifyParameters', {
     "__STYX_TYPE__": typing.Literal["mri_modify"],
     "x_ras": list[float],
@@ -282,7 +284,22 @@ def mri_modify(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MODIFY_METADATA)
-    params = mri_modify_params(x_ras=x_ras, y_ras=y_ras, z_ras=z_ras, cras=cras, x_size=x_size, y_size=y_size, z_size=z_size, tr=tr, te=te, ti=ti, fa=fa, xform=xform, input_volume=input_volume, output_volume=output_volume)
+    params = mri_modify_params(
+        x_ras=x_ras,
+        y_ras=y_ras,
+        z_ras=z_ras,
+        cras=cras,
+        x_size=x_size,
+        y_size=y_size,
+        z_size=z_size,
+        tr=tr,
+        te=te,
+        ti=ti,
+        fa=fa,
+        xform=xform,
+        input_volume=input_volume,
+        output_volume=output_volume,
+    )
     return mri_modify_execute(params, execution)
 
 

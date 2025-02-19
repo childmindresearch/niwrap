@@ -11,6 +11,8 @@ MRI_PRETESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriPretessParameters = typing.TypedDict('MriPretessParameters', {
     "__STYX_TYPE__": typing.Literal["mri_pretess"],
     "filledvol": InputPathType,
@@ -228,7 +230,17 @@ def mri_pretess(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PRETESS_METADATA)
-    params = mri_pretess_params(filledvol=filledvol, labelstring=labelstring, normvol=normvol, newfilledvol=newfilledvol, debug_voxel=debug_voxel, nocorners=nocorners, write=write, keep=keep, test=test)
+    params = mri_pretess_params(
+        filledvol=filledvol,
+        labelstring=labelstring,
+        normvol=normvol,
+        newfilledvol=newfilledvol,
+        debug_voxel=debug_voxel,
+        nocorners=nocorners,
+        write=write,
+        keep=keep,
+        test=test,
+    )
     return mri_pretess_execute(params, execution)
 
 

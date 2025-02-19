@@ -11,6 +11,8 @@ SURFACE_AFFINE_REGRESSION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceAffineRegressionParameters = typing.TypedDict('SurfaceAffineRegressionParameters', {
     "__STYX_TYPE__": typing.Literal["surface-affine-regression"],
     "source": InputPathType,
@@ -182,7 +184,11 @@ def surface_affine_regression(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_AFFINE_REGRESSION_METADATA)
-    params = surface_affine_regression_params(source=source, target=target, affine_out=affine_out)
+    params = surface_affine_regression_params(
+        source=source,
+        target=target,
+        affine_out=affine_out,
+    )
     return surface_affine_regression_execute(params, execution)
 
 

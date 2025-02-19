@@ -11,6 +11,8 @@ FSLREORIENT2STD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Fslreorient2stdParameters = typing.TypedDict('Fslreorient2stdParameters', {
     "__STYX_TYPE__": typing.Literal["fslreorient2std"],
     "input_image": InputPathType,
@@ -191,7 +193,11 @@ def fslreorient2std(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLREORIENT2STD_METADATA)
-    params = fslreorient2std_params(input_image=input_image, output_image=output_image, matrix_file=matrix_file)
+    params = fslreorient2std_params(
+        input_image=input_image,
+        output_image=output_image,
+        matrix_file=matrix_file,
+    )
     return fslreorient2std_execute(params, execution)
 
 

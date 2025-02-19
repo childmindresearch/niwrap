@@ -11,6 +11,8 @@ MRI_COMPUTE_LAYER_FRACTIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriComputeLayerFractionsParameters = typing.TypedDict('MriComputeLayerFractionsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compute_layer_fractions"],
     "reg_file": InputPathType,
@@ -294,7 +296,22 @@ def mri_compute_layer_fractions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_LAYER_FRACTIONS_METADATA)
-    params = mri_compute_layer_fractions_params(reg_file=reg_file, input_volume=input_volume, output_stem=output_stem, output_directory=output_directory, aseg_file=aseg_file, target_volume=target_volume, hemi_flag=hemi_flag, fs_names_flag=fs_names_flag, subject_id=subject_id, n_layers=n_layers, synth_flag=synth_flag, thickness=thickness, random_file=random_file, identity_file=identity_file)
+    params = mri_compute_layer_fractions_params(
+        reg_file=reg_file,
+        input_volume=input_volume,
+        output_stem=output_stem,
+        output_directory=output_directory,
+        aseg_file=aseg_file,
+        target_volume=target_volume,
+        hemi_flag=hemi_flag,
+        fs_names_flag=fs_names_flag,
+        subject_id=subject_id,
+        n_layers=n_layers,
+        synth_flag=synth_flag,
+        thickness=thickness,
+        random_file=random_file,
+        identity_file=identity_file,
+    )
     return mri_compute_layer_fractions_execute(params, execution)
 
 

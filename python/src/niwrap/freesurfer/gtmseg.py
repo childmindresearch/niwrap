@@ -11,6 +11,8 @@ GTMSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GtmsegParameters = typing.TypedDict('GtmsegParameters', {
     "__STYX_TYPE__": typing.Literal["gtmseg"],
     "subject": str,
@@ -339,7 +341,26 @@ def gtmseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GTMSEG_METADATA)
-    params = gtmseg_params(subject=subject, outvol=outvol, usf=usf, subsegwm=subsegwm, keep_hypo=keep_hypo, keep_cc=keep_cc, dmax=dmax, ctx_annot=ctx_annot, wm_annot=wm_annot, output_usf=output_usf, head=head, subseg_cbwm=subseg_cbwm, no_pons=no_pons, no_vermis=no_vermis, ctab=ctab, no_seg_stats=no_seg_stats, xcerseg=xcerseg, debug=debug)
+    params = gtmseg_params(
+        subject=subject,
+        outvol=outvol,
+        usf=usf,
+        subsegwm=subsegwm,
+        keep_hypo=keep_hypo,
+        keep_cc=keep_cc,
+        dmax=dmax,
+        ctx_annot=ctx_annot,
+        wm_annot=wm_annot,
+        output_usf=output_usf,
+        head=head,
+        subseg_cbwm=subseg_cbwm,
+        no_pons=no_pons,
+        no_vermis=no_vermis,
+        ctab=ctab,
+        no_seg_stats=no_seg_stats,
+        xcerseg=xcerseg,
+        debug=debug,
+    )
     return gtmseg_execute(params, execution)
 
 

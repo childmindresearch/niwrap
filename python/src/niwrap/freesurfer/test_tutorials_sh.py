@@ -11,6 +11,8 @@ TEST_TUTORIALS_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TestTutorialsShParameters = typing.TypedDict('TestTutorialsShParameters', {
     "__STYX_TYPE__": typing.Literal["test_tutorials.sh"],
     "all_tutorials": bool,
@@ -282,7 +284,24 @@ def test_tutorials_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TEST_TUTORIALS_SH_METADATA)
-    params = test_tutorials_sh_params(all_tutorials=all_tutorials, quick_test=quick_test, auto_quit_freeview=auto_quit_freeview, skip_all_guis=skip_all_guis, skip_tk_guis=skip_tk_guis, skip_qdec_guis=skip_qdec_guis, individual_subject=individual_subject, troubleshooting=troubleshooting, group_analysis=group_analysis, qdec=qdec, longitudinal=longitudinal, roi_analysis=roi_analysis, diffusion=diffusion, tracula=tracula, fsfast=fsfast, multimodal=multimodal)
+    params = test_tutorials_sh_params(
+        all_tutorials=all_tutorials,
+        quick_test=quick_test,
+        auto_quit_freeview=auto_quit_freeview,
+        skip_all_guis=skip_all_guis,
+        skip_tk_guis=skip_tk_guis,
+        skip_qdec_guis=skip_qdec_guis,
+        individual_subject=individual_subject,
+        troubleshooting=troubleshooting,
+        group_analysis=group_analysis,
+        qdec=qdec,
+        longitudinal=longitudinal,
+        roi_analysis=roi_analysis,
+        diffusion=diffusion,
+        tracula=tracula,
+        fsfast=fsfast,
+        multimodal=multimodal,
+    )
     return test_tutorials_sh_execute(params, execution)
 
 

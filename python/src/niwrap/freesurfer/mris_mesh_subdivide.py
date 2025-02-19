@@ -11,6 +11,8 @@ MRIS_MESH_SUBDIVIDE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMeshSubdivideParameters = typing.TypedDict('MrisMeshSubdivideParameters', {
     "__STYX_TYPE__": typing.Literal["mris_mesh_subdivide"],
     "input_surface": InputPathType,
@@ -200,7 +202,12 @@ def mris_mesh_subdivide(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MESH_SUBDIVIDE_METADATA)
-    params = mris_mesh_subdivide_params(input_surface=input_surface, output_surface=output_surface, subdivision_method=subdivision_method, iterations=iterations)
+    params = mris_mesh_subdivide_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        subdivision_method=subdivision_method,
+        iterations=iterations,
+    )
     return mris_mesh_subdivide_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_CURVATURE2IMAGE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCurvature2imageParameters = typing.TypedDict('MrisCurvature2imageParameters', {
     "__STYX_TYPE__": typing.Literal["mris_curvature2image"],
     "surface": InputPathType,
@@ -233,7 +235,16 @@ def mris_curvature2image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CURVATURE2IMAGE_METADATA)
-    params = mris_curvature2image_params(surface=surface, mask=mask, output_overlay=output_overlay, output_distance=output_distance, overlay=overlay, label=label, invert_flag=invert_flag, radius=radius)
+    params = mris_curvature2image_params(
+        surface=surface,
+        mask=mask,
+        output_overlay=output_overlay,
+        output_distance=output_distance,
+        overlay=overlay,
+        label=label,
+        invert_flag=invert_flag,
+        radius=radius,
+    )
     return mris_curvature2image_execute(params, execution)
 
 

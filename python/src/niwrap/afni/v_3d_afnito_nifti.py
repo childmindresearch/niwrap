@@ -11,6 +11,8 @@ V_3D_AFNITO_NIFTI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAfnitoNiftiParameters = typing.TypedDict('V3dAfnitoNiftiParameters', {
     "__STYX_TYPE__": typing.Literal["3dAFNItoNIFTI"],
     "input_dataset": InputPathType,
@@ -221,7 +223,16 @@ def v_3d_afnito_nifti(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_AFNITO_NIFTI_METADATA)
-    params = v_3d_afnito_nifti_params(input_dataset=input_dataset, prefix=prefix, verbose=verbose, force_float=force_float, pure=pure, denote=denote, oldid=oldid, newid=newid)
+    params = v_3d_afnito_nifti_params(
+        input_dataset=input_dataset,
+        prefix=prefix,
+        verbose=verbose,
+        force_float=force_float,
+        pure=pure,
+        denote=denote,
+        oldid=oldid,
+        newid=newid,
+    )
     return v_3d_afnito_nifti_execute(params, execution)
 
 

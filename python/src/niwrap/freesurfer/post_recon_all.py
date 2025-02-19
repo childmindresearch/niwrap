@@ -11,6 +11,8 @@ POST_RECON_ALL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 PostReconAllParameters = typing.TypedDict('PostReconAllParameters', {
     "__STYX_TYPE__": typing.Literal["post-recon-all"],
     "subject": str,
@@ -281,7 +283,24 @@ def post_recon_all(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POST_RECON_ALL_METADATA)
-    params = post_recon_all_params(subject=subject, no_subfields=no_subfields, no_subregions=no_subregions, no_cvs=no_cvs, no_qcache=no_qcache, no_sclimbic=no_sclimbic, no_hthsu=no_hthsu, no_synthstrip=no_synthstrip, no_synthseg=no_synthseg, no_qastats=no_qastats, no_samseg=no_samseg, no_xhemi=no_xhemi, no_cos7=no_cos7, threads=threads, force=force, exit_on_error=exit_on_error)
+    params = post_recon_all_params(
+        subject=subject,
+        no_subfields=no_subfields,
+        no_subregions=no_subregions,
+        no_cvs=no_cvs,
+        no_qcache=no_qcache,
+        no_sclimbic=no_sclimbic,
+        no_hthsu=no_hthsu,
+        no_synthstrip=no_synthstrip,
+        no_synthseg=no_synthseg,
+        no_qastats=no_qastats,
+        no_samseg=no_samseg,
+        no_xhemi=no_xhemi,
+        no_cos7=no_cos7,
+        threads=threads,
+        force=force,
+        exit_on_error=exit_on_error,
+    )
     return post_recon_all_execute(params, execution)
 
 

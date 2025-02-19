@@ -11,6 +11,8 @@ NON_LOCAL_SUPER_RESOLUTION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 NonLocalSuperResolutionParameters = typing.TypedDict('NonLocalSuperResolutionParameters', {
     "__STYX_TYPE__": typing.Literal["NonLocalSuperResolution"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -308,7 +310,20 @@ def non_local_super_resolution(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NON_LOCAL_SUPER_RESOLUTION_METADATA)
-    params = non_local_super_resolution_params(image_dimensionality=image_dimensionality, input_image=input_image, interpolated_image=interpolated_image, reference_image=reference_image, patch_radius=patch_radius, search_radius=search_radius, intensity_difference_sigma=intensity_difference_sigma, patch_similarity_sigma=patch_similarity_sigma, scale_levels=scale_levels, interpolation=interpolation, output=output, verbose=verbose)
+    params = non_local_super_resolution_params(
+        image_dimensionality=image_dimensionality,
+        input_image=input_image,
+        interpolated_image=interpolated_image,
+        reference_image=reference_image,
+        patch_radius=patch_radius,
+        search_radius=search_radius,
+        intensity_difference_sigma=intensity_difference_sigma,
+        patch_similarity_sigma=patch_similarity_sigma,
+        scale_levels=scale_levels,
+        interpolation=interpolation,
+        output=output,
+        verbose=verbose,
+    )
     return non_local_super_resolution_execute(params, execution)
 
 

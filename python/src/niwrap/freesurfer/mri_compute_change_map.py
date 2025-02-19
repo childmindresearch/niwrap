@@ -11,6 +11,8 @@ MRI_COMPUTE_CHANGE_MAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriComputeChangeMapParameters = typing.TypedDict('MriComputeChangeMapParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compute_change_map"],
     "mean_filter": bool,
@@ -206,7 +208,14 @@ def mri_compute_change_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_CHANGE_MAP_METADATA)
-    params = mri_compute_change_map_params(mean_filter=mean_filter, gaussian_sigma=gaussian_sigma, volume1=volume1, volume2=volume2, transform=transform, outvolume=outvolume)
+    params = mri_compute_change_map_params(
+        mean_filter=mean_filter,
+        gaussian_sigma=gaussian_sigma,
+        volume1=volume1,
+        volume2=volume2,
+        transform=transform,
+        outvolume=outvolume,
+    )
     return mri_compute_change_map_execute(params, execution)
 
 

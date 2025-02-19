@@ -11,6 +11,8 @@ UNPACK_MNC_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 UnpackMncTclParameters = typing.TypedDict('UnpackMncTclParameters', {
     "__STYX_TYPE__": typing.Literal["unpack_mnc.tcl"],
     "verbose": bool,
@@ -184,7 +186,11 @@ def unpack_mnc_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNPACK_MNC_TCL_METADATA)
-    params = unpack_mnc_tcl_params(verbose=verbose, output_dir=output_dir, input_file=input_file)
+    params = unpack_mnc_tcl_params(
+        verbose=verbose,
+        output_dir=output_dir,
+        input_file=input_file,
+    )
     return unpack_mnc_tcl_execute(params, execution)
 
 

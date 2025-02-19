@@ -11,6 +11,8 @@ V__QUIET_TALKERS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VQuietTalkersParameters = typing.TypedDict('VQuietTalkersParameters', {
     "__STYX_TYPE__": typing.Literal["@Quiet_Talkers"],
     "sudo": bool,
@@ -232,7 +234,16 @@ def v__quiet_talkers(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__QUIET_TALKERS_METADATA)
-    params = v__quiet_talkers_params(sudo=sudo, prog=prog, npb_val=npb_val, npb_range=npb_range, pif_key=pif_key, no_npb=no_npb, list_=list_, quiet=quiet)
+    params = v__quiet_talkers_params(
+        sudo=sudo,
+        prog=prog,
+        npb_val=npb_val,
+        npb_range=npb_range,
+        pif_key=pif_key,
+        no_npb=no_npb,
+        list_=list_,
+        quiet=quiet,
+    )
     return v__quiet_talkers_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SURFACE_GEODESIC_ROIS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceGeodesicRoisParameters = typing.TypedDict('SurfaceGeodesicRoisParameters', {
     "__STYX_TYPE__": typing.Literal["surface-geodesic-rois"],
     "surface": InputPathType,
@@ -267,7 +269,16 @@ def surface_geodesic_rois(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_GEODESIC_ROIS_METADATA)
-    params = surface_geodesic_rois_params(surface=surface, limit=limit, vertex_list_file=vertex_list_file, metric_out=metric_out, opt_gaussian_sigma=opt_gaussian_sigma, opt_overlap_logic_method=opt_overlap_logic_method, opt_names_name_list_file=opt_names_name_list_file, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    params = surface_geodesic_rois_params(
+        surface=surface,
+        limit=limit,
+        vertex_list_file=vertex_list_file,
+        metric_out=metric_out,
+        opt_gaussian_sigma=opt_gaussian_sigma,
+        opt_overlap_logic_method=opt_overlap_logic_method,
+        opt_names_name_list_file=opt_names_name_list_file,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+    )
     return surface_geodesic_rois_execute(params, execution)
 
 

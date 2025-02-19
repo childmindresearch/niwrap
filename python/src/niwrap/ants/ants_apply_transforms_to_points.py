@@ -11,13 +11,19 @@ ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsApplyTransformsToPointsSingleTransformParameters = typing.TypedDict('AntsApplyTransformsToPointsSingleTransformParameters', {
     "__STYX_TYPE__": typing.Literal["single_transform"],
 })
+
+
 AntsApplyTransformsToPointsInverseTransformParameters = typing.TypedDict('AntsApplyTransformsToPointsInverseTransformParameters', {
     "__STYX_TYPE__": typing.Literal["inverse_transform"],
     "transform_file": InputPathType,
 })
+
+
 AntsApplyTransformsToPointsParameters = typing.TypedDict('AntsApplyTransformsToPointsParameters', {
     "__STYX_TYPE__": typing.Literal["antsApplyTransformsToPoints"],
     "dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
@@ -312,7 +318,14 @@ def ants_apply_transforms_to_points(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA)
-    params = ants_apply_transforms_to_points_params(dimensionality=dimensionality, precision=precision, forantsr=forantsr, input_=input_, output=output, transform=transform)
+    params = ants_apply_transforms_to_points_params(
+        dimensionality=dimensionality,
+        precision=precision,
+        forantsr=forantsr,
+        input_=input_,
+        output=output,
+        transform=transform,
+    )
     return ants_apply_transforms_to_points_execute(params, execution)
 
 

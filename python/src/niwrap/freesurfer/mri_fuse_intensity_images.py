@@ -11,6 +11,8 @@ MRI_FUSE_INTENSITY_IMAGES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFuseIntensityImagesParameters = typing.TypedDict('MriFuseIntensityImagesParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fuse_intensity_images"],
     "longitudinal_time_point_file": InputPathType,
@@ -182,7 +184,12 @@ def mri_fuse_intensity_images(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FUSE_INTENSITY_IMAGES_METADATA)
-    params = mri_fuse_intensity_images_params(longitudinal_time_point_file=longitudinal_time_point_file, input_volume=input_volume, transform_file=transform_file, output_volume=output_volume)
+    params = mri_fuse_intensity_images_params(
+        longitudinal_time_point_file=longitudinal_time_point_file,
+        input_volume=input_volume,
+        transform_file=transform_file,
+        output_volume=output_volume,
+    )
     return mri_fuse_intensity_images_execute(params, execution)
 
 

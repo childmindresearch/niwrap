@@ -11,6 +11,8 @@ ADWARP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdwarpParameters = typing.TypedDict('AdwarpParameters', {
     "__STYX_TYPE__": typing.Literal["adwarp"],
     "apar": InputPathType,
@@ -271,7 +273,17 @@ def adwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADWARP_METADATA)
-    params = adwarp_params(apar=apar, dpar=dpar, prefix=prefix, dxyz=dxyz, verbose=verbose, force=force, resam=resam, thr=thr, func=func)
+    params = adwarp_params(
+        apar=apar,
+        dpar=dpar,
+        prefix=prefix,
+        dxyz=dxyz,
+        verbose=verbose,
+        force=force,
+        resam=resam,
+        thr=thr,
+        func=func,
+    )
     return adwarp_execute(params, execution)
 
 

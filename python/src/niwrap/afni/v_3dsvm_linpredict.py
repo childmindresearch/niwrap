@@ -11,6 +11,8 @@ V_3DSVM_LINPREDICT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dsvmLinpredictParameters = typing.TypedDict('V3dsvmLinpredictParameters', {
     "__STYX_TYPE__": typing.Literal["3dsvm_linpredict"],
     "mask_dataset": typing.NotRequired[InputPathType | None],
@@ -184,7 +186,11 @@ def v_3dsvm_linpredict(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DSVM_LINPREDICT_METADATA)
-    params = v_3dsvm_linpredict_params(mask_dataset=mask_dataset, weight_vector=weight_vector, input_dataset=input_dataset)
+    params = v_3dsvm_linpredict_params(
+        mask_dataset=mask_dataset,
+        weight_vector=weight_vector,
+        input_dataset=input_dataset,
+    )
     return v_3dsvm_linpredict_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ TIMING_TOOL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 TimingToolPyParameters = typing.TypedDict('TimingToolPyParameters', {
     "__STYX_TYPE__": typing.Literal["timing_tool.py"],
     "timing_file": typing.NotRequired[InputPathType | None],
@@ -371,7 +373,27 @@ def timing_tool_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TIMING_TOOL_PY_METADATA)
-    params = timing_tool_py_params(timing_file=timing_file, output_file=output_file, run_length=run_length, tr=tr, offset=offset, extend_file=extend_file, sort=sort, scale_data=scale_data, shift_to_run_offset=shift_to_run_offset, timing_to_1_d_file=timing_to_1_d_file, stim_duration=stim_duration, multi_timing_files=multi_timing_files, multi_show_isi_stats=multi_show_isi_stats, multi_show_timing=multi_show_timing, show_timing=show_timing, multi_stim_duration=multi_stim_duration, round_times_frac=round_times_frac, truncate_times=truncate_times, multi_timing_event_list=multi_timing_event_list)
+    params = timing_tool_py_params(
+        timing_file=timing_file,
+        output_file=output_file,
+        run_length=run_length,
+        tr=tr,
+        offset=offset,
+        extend_file=extend_file,
+        sort=sort,
+        scale_data=scale_data,
+        shift_to_run_offset=shift_to_run_offset,
+        timing_to_1_d_file=timing_to_1_d_file,
+        stim_duration=stim_duration,
+        multi_timing_files=multi_timing_files,
+        multi_show_isi_stats=multi_show_isi_stats,
+        multi_show_timing=multi_show_timing,
+        show_timing=show_timing,
+        multi_stim_duration=multi_stim_duration,
+        round_times_frac=round_times_frac,
+        truncate_times=truncate_times,
+        multi_timing_event_list=multi_timing_event_list,
+    )
     return timing_tool_py_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FILE_TOOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FileToolParameters = typing.TypedDict('FileToolParameters', {
     "__STYX_TYPE__": typing.Literal["file_tool"],
     "help": bool,
@@ -522,7 +524,50 @@ def file_tool(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILE_TOOL_METADATA)
-    params = file_tool_params(help_=help_, version=version, hist=hist, debug=debug, infiles=infiles, ge_all=ge_all, ge_header=ge_header, ge_extras=ge_extras, ge_uv17=ge_uv17, ge_run=ge_run, ge_off=ge_off, ge4_all=ge4_all, ge4_image=ge4_image, ge4_series=ge4_series, ge4_study=ge4_study, def_ana_hdr=def_ana_hdr, diff_ana_hdrs=diff_ana_hdrs, disp_ana_hdr=disp_ana_hdr, hex_=hex_, mod_ana_hdr=mod_ana_hdr, mod_field=mod_field, prefix=prefix, overwrite=overwrite, show_bad_all=show_bad_all, show_bad_backslash=show_bad_backslash, show_bad_char=show_bad_char, show_file_type=show_file_type, fix_rich_quotes=fix_rich_quotes, test=test, length=length, mod_data=mod_data, mod_type=mod_type, offset=offset, quiet=quiet, disp_hex=disp_hex, disp_hex1=disp_hex1, disp_hex2=disp_hex2, disp_hex4=disp_hex4, disp_int2=disp_int2, disp_int4=disp_int4, disp_real4=disp_real4, swap_bytes=swap_bytes)
+    params = file_tool_params(
+        help_=help_,
+        version=version,
+        hist=hist,
+        debug=debug,
+        infiles=infiles,
+        ge_all=ge_all,
+        ge_header=ge_header,
+        ge_extras=ge_extras,
+        ge_uv17=ge_uv17,
+        ge_run=ge_run,
+        ge_off=ge_off,
+        ge4_all=ge4_all,
+        ge4_image=ge4_image,
+        ge4_series=ge4_series,
+        ge4_study=ge4_study,
+        def_ana_hdr=def_ana_hdr,
+        diff_ana_hdrs=diff_ana_hdrs,
+        disp_ana_hdr=disp_ana_hdr,
+        hex_=hex_,
+        mod_ana_hdr=mod_ana_hdr,
+        mod_field=mod_field,
+        prefix=prefix,
+        overwrite=overwrite,
+        show_bad_all=show_bad_all,
+        show_bad_backslash=show_bad_backslash,
+        show_bad_char=show_bad_char,
+        show_file_type=show_file_type,
+        fix_rich_quotes=fix_rich_quotes,
+        test=test,
+        length=length,
+        mod_data=mod_data,
+        mod_type=mod_type,
+        offset=offset,
+        quiet=quiet,
+        disp_hex=disp_hex,
+        disp_hex1=disp_hex1,
+        disp_hex2=disp_hex2,
+        disp_hex4=disp_hex4,
+        disp_int2=disp_int2,
+        disp_int4=disp_int4,
+        disp_real4=disp_real4,
+        swap_bytes=swap_bytes,
+    )
     return file_tool_execute(params, execution)
 
 

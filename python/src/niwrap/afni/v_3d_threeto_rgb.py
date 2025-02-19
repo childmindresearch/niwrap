@@ -11,6 +11,8 @@ V_3D_THREETO_RGB_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dThreetoRgbParameters = typing.TypedDict('V3dThreetoRgbParameters', {
     "__STYX_TYPE__": typing.Literal["3dThreetoRGB"],
     "output_prefix": typing.NotRequired[str | None],
@@ -241,7 +243,16 @@ def v_3d_threeto_rgb(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_THREETO_RGB_METADATA)
-    params = v_3d_threeto_rgb_params(output_prefix=output_prefix, scale_factor=scale_factor, mask_dataset=mask_dataset, fim=fim, anat=anat, input_dataset=input_dataset, input_dataset2=input_dataset2, input_dataset3=input_dataset3)
+    params = v_3d_threeto_rgb_params(
+        output_prefix=output_prefix,
+        scale_factor=scale_factor,
+        mask_dataset=mask_dataset,
+        fim=fim,
+        anat=anat,
+        input_dataset=input_dataset,
+        input_dataset2=input_dataset2,
+        input_dataset3=input_dataset3,
+    )
     return v_3d_threeto_rgb_execute(params, execution)
 
 

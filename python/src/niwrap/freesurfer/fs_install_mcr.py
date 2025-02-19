@@ -11,6 +11,8 @@ FS_INSTALL_MCR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsInstallMcrParameters = typing.TypedDict('FsInstallMcrParameters', {
     "__STYX_TYPE__": typing.Literal["fs_install_mcr"],
     "mcr_version": str,
@@ -157,7 +159,9 @@ def fs_install_mcr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_INSTALL_MCR_METADATA)
-    params = fs_install_mcr_params(mcr_version=mcr_version)
+    params = fs_install_mcr_params(
+        mcr_version=mcr_version,
+    )
     return fs_install_mcr_execute(params, execution)
 
 

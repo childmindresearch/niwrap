@@ -11,6 +11,8 @@ TBSS_1_PREPROC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Tbss1PreprocParameters = typing.TypedDict('Tbss1PreprocParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_1_preproc"],
     "images": list[InputPathType],
@@ -155,7 +157,9 @@ def tbss_1_preproc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_1_PREPROC_METADATA)
-    params = tbss_1_preproc_params(images=images)
+    params = tbss_1_preproc_params(
+        images=images,
+    )
     return tbss_1_preproc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SURFACE_FLIP_NORMALS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceFlipNormalsParameters = typing.TypedDict('SurfaceFlipNormalsParameters', {
     "__STYX_TYPE__": typing.Literal["surface-flip-normals"],
     "surface": InputPathType,
@@ -181,7 +183,10 @@ def surface_flip_normals(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_FLIP_NORMALS_METADATA)
-    params = surface_flip_normals_params(surface=surface, surface_out=surface_out)
+    params = surface_flip_normals_params(
+        surface=surface,
+        surface_out=surface_out,
+    )
     return surface_flip_normals_execute(params, execution)
 
 

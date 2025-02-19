@@ -11,6 +11,8 @@ FAT_PROC_FILTER_DWIS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcFilterDwisParameters = typing.TypedDict('FatProcFilterDwisParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_filter_dwis"],
     "input_dwi": InputPathType,
@@ -294,7 +296,19 @@ def fat_proc_filter_dwis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_FILTER_DWIS_METADATA)
-    params = fat_proc_filter_dwis_params(input_dwi=input_dwi, input_gradient=input_gradient, select_string=select_string, select_file=select_file, output_prefix=output_prefix, input_bvals=input_bvals, unit_mag_out=unit_mag_out, qc_prefix=qc_prefix, no_qc_view=no_qc_view, no_cmd_out=no_cmd_out, do_movie=do_movie)
+    params = fat_proc_filter_dwis_params(
+        input_dwi=input_dwi,
+        input_gradient=input_gradient,
+        select_string=select_string,
+        select_file=select_file,
+        output_prefix=output_prefix,
+        input_bvals=input_bvals,
+        unit_mag_out=unit_mag_out,
+        qc_prefix=qc_prefix,
+        no_qc_view=no_qc_view,
+        no_cmd_out=no_cmd_out,
+        do_movie=do_movie,
+    )
     return fat_proc_filter_dwis_execute(params, execution)
 
 

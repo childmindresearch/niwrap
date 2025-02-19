@@ -11,6 +11,8 @@ UBER_ALIGN_TEST_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 UberAlignTestPyParameters = typing.TypedDict('UberAlignTestPyParameters', {
     "__STYX_TYPE__": typing.Literal["uber_align_test.py"],
     "no_gui": bool,
@@ -240,7 +242,18 @@ def uber_align_test_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_ALIGN_TEST_PY_METADATA)
-    params = uber_align_test_py_params(no_gui=no_gui, print_script=print_script, save_script=save_script, user_variable=user_variable, qt_opts=qt_opts, help_=help_, help_gui=help_gui, history=history, show_valid_opts=show_valid_opts, version=version)
+    params = uber_align_test_py_params(
+        no_gui=no_gui,
+        print_script=print_script,
+        save_script=save_script,
+        user_variable=user_variable,
+        qt_opts=qt_opts,
+        help_=help_,
+        help_gui=help_gui,
+        history=history,
+        show_valid_opts=show_valid_opts,
+        version=version,
+    )
     return uber_align_test_py_execute(params, execution)
 
 

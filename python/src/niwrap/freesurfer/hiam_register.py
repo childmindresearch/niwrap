@@ -11,6 +11,8 @@ HIAM_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 HiamRegisterParameters = typing.TypedDict('HiamRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["hiam_register"],
     "input_surface": InputPathType,
@@ -175,7 +177,11 @@ def hiam_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIAM_REGISTER_METADATA)
-    params = hiam_register_params(input_surface=input_surface, average_surface=average_surface, output_surface=output_surface)
+    params = hiam_register_params(
+        input_surface=input_surface,
+        average_surface=average_surface,
+        output_surface=output_surface,
+    )
     return hiam_register_execute(params, execution)
 
 

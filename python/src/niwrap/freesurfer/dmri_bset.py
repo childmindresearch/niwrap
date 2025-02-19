@@ -11,6 +11,8 @@ DMRI_BSET_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriBsetParameters = typing.TypedDict('DmriBsetParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_bset"],
     "input_dwi": InputPathType,
@@ -265,7 +267,17 @@ def dmri_bset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_BSET_METADATA)
-    params = dmri_bset_params(input_dwi=input_dwi, output_dwi=output_dwi, btol=btol, bsort=bsort, bmax=bmax, input_b_table=input_b_table, input_g_table=input_g_table, output_b_table=output_b_table, output_g_table=output_g_table)
+    params = dmri_bset_params(
+        input_dwi=input_dwi,
+        output_dwi=output_dwi,
+        btol=btol,
+        bsort=bsort,
+        bmax=bmax,
+        input_b_table=input_b_table,
+        input_g_table=input_g_table,
+        output_b_table=output_b_table,
+        output_g_table=output_g_table,
+    )
     return dmri_bset_execute(params, execution)
 
 

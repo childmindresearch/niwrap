@@ -11,6 +11,8 @@ GET_LABEL_THICKNESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GetLabelThicknessParameters = typing.TypedDict('GetLabelThicknessParameters', {
     "__STYX_TYPE__": typing.Literal["get_label_thickness"],
     "infile": InputPathType,
@@ -156,7 +158,9 @@ def get_label_thickness(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GET_LABEL_THICKNESS_METADATA)
-    params = get_label_thickness_params(infile=infile)
+    params = get_label_thickness_params(
+        infile=infile,
+    )
     return get_label_thickness_execute(params, execution)
 
 

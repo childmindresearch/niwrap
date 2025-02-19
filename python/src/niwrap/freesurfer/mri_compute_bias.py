@@ -11,6 +11,8 @@ MRI_COMPUTE_BIAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriComputeBiasParameters = typing.TypedDict('MriComputeBiasParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compute_bias"],
     "subjects": list[str],
@@ -168,7 +170,10 @@ def mri_compute_bias(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_BIAS_METADATA)
-    params = mri_compute_bias_params(subjects=subjects, output_volume=output_volume)
+    params = mri_compute_bias_params(
+        subjects=subjects,
+        output_volume=output_volume,
+    )
     return mri_compute_bias_execute(params, execution)
 
 

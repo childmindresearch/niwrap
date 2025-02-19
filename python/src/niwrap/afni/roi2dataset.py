@@ -11,6 +11,8 @@ ROI2DATASET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 Roi2datasetParameters = typing.TypedDict('Roi2datasetParameters', {
     "__STYX_TYPE__": typing.Literal["ROI2dataset"],
     "prefix": str,
@@ -283,7 +285,19 @@ def roi2dataset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ROI2DATASET_METADATA)
-    params = roi2dataset_params(prefix=prefix, input_rois=input_rois, keep_separate=keep_separate, nodelist=nodelist, nodelist_nodups=nodelist_nodups, nodelist_with_roival=nodelist_with_roival, label_dset=label_dset, output_format=output_format, domain_parent_id=domain_parent_id, pad_to_node=pad_to_node, pad_label=pad_label)
+    params = roi2dataset_params(
+        prefix=prefix,
+        input_rois=input_rois,
+        keep_separate=keep_separate,
+        nodelist=nodelist,
+        nodelist_nodups=nodelist_nodups,
+        nodelist_with_roival=nodelist_with_roival,
+        label_dset=label_dset,
+        output_format=output_format,
+        domain_parent_id=domain_parent_id,
+        pad_to_node=pad_to_node,
+        pad_label=pad_label,
+    )
     return roi2dataset_execute(params, execution)
 
 

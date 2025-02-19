@@ -11,16 +11,22 @@ DWI2MASK_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Dwi2maskFslgradParameters = typing.TypedDict('Dwi2maskFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 Dwi2maskConfigParameters = typing.TypedDict('Dwi2maskConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Dwi2maskParameters = typing.TypedDict('Dwi2maskParameters', {
     "__STYX_TYPE__": typing.Literal["dwi2mask"],
     "clean_scale": typing.NotRequired[int | None],
@@ -426,7 +432,21 @@ def dwi2mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWI2MASK_METADATA)
-    params = dwi2mask_params(clean_scale=clean_scale, grad=grad, fslgrad=fslgrad, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = dwi2mask_params(
+        clean_scale=clean_scale,
+        grad=grad,
+        fslgrad=fslgrad,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return dwi2mask_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_ANOVA2_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAnova2Parameters = typing.TypedDict('V3dAnova2Parameters', {
     "__STYX_TYPE__": typing.Literal["3dANOVA2"],
     "type": int,
@@ -475,7 +477,32 @@ def v_3d_anova2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ANOVA2_METADATA)
-    params = v_3d_anova2_params(type_=type_, alevels=alevels, blevels=blevels, dataset=dataset, voxel=voxel, diskspace=diskspace, mask=mask, ftr=ftr, fa=fa, fb=fb, fab=fab, amean=amean, bmean=bmean, xmean=xmean, adiff=adiff, bdiff=bdiff, xdiff=xdiff, acontr=acontr, bcontr=bcontr, xcontr=xcontr, bucket=bucket, old_method=old_method, ok=ok, assume_sph=assume_sph)
+    params = v_3d_anova2_params(
+        type_=type_,
+        alevels=alevels,
+        blevels=blevels,
+        dataset=dataset,
+        voxel=voxel,
+        diskspace=diskspace,
+        mask=mask,
+        ftr=ftr,
+        fa=fa,
+        fb=fb,
+        fab=fab,
+        amean=amean,
+        bmean=bmean,
+        xmean=xmean,
+        adiff=adiff,
+        bdiff=bdiff,
+        xdiff=xdiff,
+        acontr=acontr,
+        bcontr=bcontr,
+        xcontr=xcontr,
+        bucket=bucket,
+        old_method=old_method,
+        ok=ok,
+        assume_sph=assume_sph,
+    )
     return v_3d_anova2_execute(params, execution)
 
 

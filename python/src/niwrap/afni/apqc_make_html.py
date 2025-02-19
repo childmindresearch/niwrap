@@ -11,6 +11,8 @@ APQC_MAKE_HTML_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ApqcMakeHtmlParameters = typing.TypedDict('ApqcMakeHtmlParameters', {
     "__STYX_TYPE__": typing.Literal["apqc_make_html"],
     "qc_dir": str,
@@ -158,7 +160,9 @@ def apqc_make_html(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APQC_MAKE_HTML_METADATA)
-    params = apqc_make_html_params(qc_dir=qc_dir)
+    params = apqc_make_html_params(
+        qc_dir=qc_dir,
+    )
     return apqc_make_html_execute(params, execution)
 
 

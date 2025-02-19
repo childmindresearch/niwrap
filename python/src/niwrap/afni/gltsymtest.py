@@ -11,6 +11,8 @@ GLTSYMTEST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GltsymtestParameters = typing.TypedDict('GltsymtestParameters', {
     "__STYX_TYPE__": typing.Literal["GLTsymtest"],
     "badonly": bool,
@@ -174,7 +176,11 @@ def gltsymtest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GLTSYMTEST_METADATA)
-    params = gltsymtest_params(badonly=badonly, varlist=varlist, expr=expr)
+    params = gltsymtest_params(
+        badonly=badonly,
+        varlist=varlist,
+        expr=expr,
+    )
     return gltsymtest_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_CA_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCaTrainParameters = typing.TypedDict('MrisCaTrainParameters', {
     "__STYX_TYPE__": typing.Literal["mris_ca_train"],
     "hemi": str,
@@ -411,7 +413,34 @@ def mris_ca_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CA_TRAIN_METADATA)
-    params = mris_ca_train_params(hemi=hemi, canonsurf=canonsurf, annot_file=annot_file, subjects=subjects, output_file=output_file, sdir=sdir, nbrs=nbrs, orig=orig, norm1=norm1, norm2=norm2, norm3=norm3, ic=ic, sulc=sulc, sulconly=sulconly, a=a, parcellation_table=parcellation_table, n=n, verbose=verbose, debug_vertex=debug_vertex, gcs_means=gcs_means, gcs_priors=gcs_priors, gcs_diff=gcs_diff, nfill=nfill, no_fill=no_fill, help_=help_, version=version)
+    params = mris_ca_train_params(
+        hemi=hemi,
+        canonsurf=canonsurf,
+        annot_file=annot_file,
+        subjects=subjects,
+        output_file=output_file,
+        sdir=sdir,
+        nbrs=nbrs,
+        orig=orig,
+        norm1=norm1,
+        norm2=norm2,
+        norm3=norm3,
+        ic=ic,
+        sulc=sulc,
+        sulconly=sulconly,
+        a=a,
+        parcellation_table=parcellation_table,
+        n=n,
+        verbose=verbose,
+        debug_vertex=debug_vertex,
+        gcs_means=gcs_means,
+        gcs_priors=gcs_priors,
+        gcs_diff=gcs_diff,
+        nfill=nfill,
+        no_fill=no_fill,
+        help_=help_,
+        version=version,
+    )
     return mris_ca_train_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MAKE_EXVIVO_FILLED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeExvivoFilledParameters = typing.TypedDict('MakeExvivoFilledParameters', {
     "__STYX_TYPE__": typing.Literal["make_exvivo_filled"],
     "subject_name": str,
@@ -176,7 +178,12 @@ def make_exvivo_filled(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_EXVIVO_FILLED_METADATA)
-    params = make_exvivo_filled_params(subject_name=subject_name, input_samseg=input_samseg, input_intensity_vol=input_intensity_vol, hemi_both=hemi_both)
+    params = make_exvivo_filled_params(
+        subject_name=subject_name,
+        input_samseg=input_samseg,
+        input_intensity_vol=input_intensity_vol,
+        hemi_both=hemi_both,
+    )
     return make_exvivo_filled_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__ROI_DECLUSTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VRoiDeclusterParameters = typing.TypedDict('VRoiDeclusterParameters', {
     "__STYX_TYPE__": typing.Literal["@ROI_decluster"],
     "input_dset": InputPathType,
@@ -230,7 +232,14 @@ def v__roi_decluster(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ROI_DECLUSTER_METADATA)
-    params = v__roi_decluster_params(input_dset=input_dset, output_dir=output_dir, nvox_thresh=nvox_thresh, frac_thresh=frac_thresh, prefix=prefix, neighborhood_type=neighborhood_type)
+    params = v__roi_decluster_params(
+        input_dset=input_dset,
+        output_dir=output_dir,
+        nvox_thresh=nvox_thresh,
+        frac_thresh=frac_thresh,
+        prefix=prefix,
+        neighborhood_type=neighborhood_type,
+    )
     return v__roi_decluster_execute(params, execution)
 
 

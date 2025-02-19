@@ -11,6 +11,8 @@ V_3DBUCKET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dbucketParameters = typing.TypedDict('V3dbucketParameters', {
     "__STYX_TYPE__": typing.Literal["3dbucket"],
     "prefix": typing.NotRequired[str | None],
@@ -241,7 +243,17 @@ def v_3dbucket(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DBUCKET_METADATA)
-    params = v_3dbucket_params(prefix=prefix, session=session, glueto=glueto, aglueto=aglueto, dry=dry, verbose=verbose, fbuc=fbuc, abuc=abuc, input_files=input_files)
+    params = v_3dbucket_params(
+        prefix=prefix,
+        session=session,
+        glueto=glueto,
+        aglueto=aglueto,
+        dry=dry,
+        verbose=verbose,
+        fbuc=fbuc,
+        abuc=abuc,
+        input_files=input_files,
+    )
     return v_3dbucket_execute(params, execution)
 
 

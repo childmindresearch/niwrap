@@ -11,11 +11,15 @@ CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters = typing.TypedDict('ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters', {
     "__STYX_TYPE__": typing.Literal["volume_seeds"],
     "cifti_template": InputPathType,
     "direction": str,
 })
+
+
 ConvertMatrix4ToWorkbenchSparseParameters = typing.TypedDict('ConvertMatrix4ToWorkbenchSparseParameters', {
     "__STYX_TYPE__": typing.Literal["convert-matrix4-to-workbench-sparse"],
     "matrix4_1": str,
@@ -272,7 +276,16 @@ def convert_matrix4_to_workbench_sparse(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA)
-    params = convert_matrix4_to_workbench_sparse_params(matrix4_1=matrix4_1, matrix4_2=matrix4_2, matrix4_3=matrix4_3, orientation_file=orientation_file, voxel_list=voxel_list, wb_sparse_out=wb_sparse_out, opt_surface_seeds_seed_roi=opt_surface_seeds_seed_roi, volume_seeds=volume_seeds)
+    params = convert_matrix4_to_workbench_sparse_params(
+        matrix4_1=matrix4_1,
+        matrix4_2=matrix4_2,
+        matrix4_3=matrix4_3,
+        orientation_file=orientation_file,
+        voxel_list=voxel_list,
+        wb_sparse_out=wb_sparse_out,
+        opt_surface_seeds_seed_roi=opt_surface_seeds_seed_roi,
+        volume_seeds=volume_seeds,
+    )
     return convert_matrix4_to_workbench_sparse_execute(params, execution)
 
 

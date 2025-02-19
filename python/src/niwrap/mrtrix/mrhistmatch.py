@@ -11,11 +11,15 @@ MRHISTMATCH_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrhistmatchConfigParameters = typing.TypedDict('MrhistmatchConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrhistmatchParameters = typing.TypedDict('MrhistmatchParameters', {
     "__STYX_TYPE__": typing.Literal["mrhistmatch"],
     "mask_input": typing.NotRequired[InputPathType | None],
@@ -368,7 +372,23 @@ def mrhistmatch(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRHISTMATCH_METADATA)
-    params = mrhistmatch_params(mask_input=mask_input, mask_target=mask_target, bins=bins, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, type_=type_, input_=input_, target=target, output=output)
+    params = mrhistmatch_params(
+        mask_input=mask_input,
+        mask_target=mask_target,
+        bins=bins,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        type_=type_,
+        input_=input_,
+        target=target,
+        output=output,
+    )
     return mrhistmatch_execute(params, execution)
 
 

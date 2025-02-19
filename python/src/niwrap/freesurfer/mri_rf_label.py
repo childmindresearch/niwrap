@@ -11,6 +11,8 @@ MRI_RF_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRfLabelParameters = typing.TypedDict('MriRfLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_rf_label"],
     "input_volumes": list[InputPathType],
@@ -585,7 +587,48 @@ def mri_rf_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RF_LABEL_METADATA)
-    params = mri_rf_label_params(input_volumes=input_volumes, transform_file=transform_file, gcafile=gcafile, output_volume=output_volume, cross_sequence_flag=cross_sequence_flag, nogibbs_flag=nogibbs_flag, wm_path=wm_path, conform_flag=conform_flag, normpd_flag=normpd_flag, gca_tl=gca_tl, debug_voxel=debug_voxel, debug_node=debug_node, debug_label=debug_label, tr=tr, te=te, alpha=alpha, example=example, pthresh=pthresh, niter=niter, novar_flag=novar_flag, regularize=regularize, nohippo_flag=nohippo_flag, fwm=fwm, mri_vol=mri_vol, heq=heq, renorm=renorm, flash_flag=flash_flag, flash_params=flash_params, renormalize=renormalize, set_input=set_input, histogram_flag=histogram_flag, cond_density_mean=cond_density_mean, snapshots=snapshots, mask=mask, expand=expand, max_iter=max_iter, filter_mode=filter_mode, longitudinal_vol=longitudinal_vol, longitudinal_lta=longitudinal_lta, relabel_unlikely_flag=relabel_unlikely_flag)
+    params = mri_rf_label_params(
+        input_volumes=input_volumes,
+        transform_file=transform_file,
+        gcafile=gcafile,
+        output_volume=output_volume,
+        cross_sequence_flag=cross_sequence_flag,
+        nogibbs_flag=nogibbs_flag,
+        wm_path=wm_path,
+        conform_flag=conform_flag,
+        normpd_flag=normpd_flag,
+        gca_tl=gca_tl,
+        debug_voxel=debug_voxel,
+        debug_node=debug_node,
+        debug_label=debug_label,
+        tr=tr,
+        te=te,
+        alpha=alpha,
+        example=example,
+        pthresh=pthresh,
+        niter=niter,
+        novar_flag=novar_flag,
+        regularize=regularize,
+        nohippo_flag=nohippo_flag,
+        fwm=fwm,
+        mri_vol=mri_vol,
+        heq=heq,
+        renorm=renorm,
+        flash_flag=flash_flag,
+        flash_params=flash_params,
+        renormalize=renormalize,
+        set_input=set_input,
+        histogram_flag=histogram_flag,
+        cond_density_mean=cond_density_mean,
+        snapshots=snapshots,
+        mask=mask,
+        expand=expand,
+        max_iter=max_iter,
+        filter_mode=filter_mode,
+        longitudinal_vol=longitudinal_vol,
+        longitudinal_lta=longitudinal_lta,
+        relabel_unlikely_flag=relabel_unlikely_flag,
+    )
     return mri_rf_label_execute(params, execution)
 
 

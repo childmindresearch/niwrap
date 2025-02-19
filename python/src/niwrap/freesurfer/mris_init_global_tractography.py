@@ -11,6 +11,8 @@ MRIS_INIT_GLOBAL_TRACTOGRAPHY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisInitGlobalTractographyParameters = typing.TypedDict('MrisInitGlobalTractographyParameters', {
     "__STYX_TYPE__": typing.Literal["mris_init_global_tractography"],
     "subject": str,
@@ -169,7 +171,11 @@ def mris_init_global_tractography(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INIT_GLOBAL_TRACTOGRAPHY_METADATA)
-    params = mris_init_global_tractography_params(subject=subject, parcellation=parcellation, output_volume=output_volume)
+    params = mris_init_global_tractography_params(
+        subject=subject,
+        parcellation=parcellation,
+        output_volume=output_volume,
+    )
     return mris_init_global_tractography_execute(params, execution)
 
 

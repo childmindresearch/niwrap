@@ -11,6 +11,8 @@ MRI_COR2LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCor2labelParameters = typing.TypedDict('MriCor2labelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_cor2label"],
     "input_file": InputPathType,
@@ -297,7 +299,20 @@ def mri_cor2label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COR2LABEL_METADATA)
-    params = mri_cor2label_params(input_file=input_file, label_id=label_id, label_file=label_file, threshold=threshold, volume_file=volume_file, surface_overlay=surface_overlay, surface_path=surface_path, optimize=optimize, remove_holes_islands=remove_holes_islands, dilate=dilate, erode=erode, help_=help_)
+    params = mri_cor2label_params(
+        input_file=input_file,
+        label_id=label_id,
+        label_file=label_file,
+        threshold=threshold,
+        volume_file=volume_file,
+        surface_overlay=surface_overlay,
+        surface_path=surface_path,
+        optimize=optimize,
+        remove_holes_islands=remove_holes_islands,
+        dilate=dilate,
+        erode=erode,
+        help_=help_,
+    )
     return mri_cor2label_execute(params, execution)
 
 

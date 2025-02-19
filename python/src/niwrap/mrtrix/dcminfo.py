@@ -11,16 +11,22 @@ DCMINFO_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DcminfoTagParameters = typing.TypedDict('DcminfoTagParameters', {
     "__STYX_TYPE__": typing.Literal["tag"],
     "group": str,
     "element": str,
 })
+
+
 DcminfoConfigParameters = typing.TypedDict('DcminfoConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DcminfoParameters = typing.TypedDict('DcminfoParameters', {
     "__STYX_TYPE__": typing.Literal["dcminfo"],
     "all": bool,
@@ -379,7 +385,21 @@ def dcminfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMINFO_METADATA)
-    params = dcminfo_params(all_=all_, csa=csa, phoenix=phoenix, tag=tag, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, file=file)
+    params = dcminfo_params(
+        all_=all_,
+        csa=csa,
+        phoenix=phoenix,
+        tag=tag,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        file=file,
+    )
     return dcminfo_execute(params, execution)
 
 

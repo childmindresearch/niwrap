@@ -11,6 +11,8 @@ CIFTI_CORRELATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCorrelationRoiOverrideParameters = typing.TypedDict('CiftiCorrelationRoiOverrideParameters', {
     "__STYX_TYPE__": typing.Literal["roi_override"],
     "opt_left_roi_roi_metric": typing.NotRequired[InputPathType | None],
@@ -19,6 +21,8 @@ CiftiCorrelationRoiOverrideParameters = typing.TypedDict('CiftiCorrelationRoiOve
     "opt_vol_roi_roi_vol": typing.NotRequired[InputPathType | None],
     "opt_cifti_roi_roi_cifti": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCorrelationParameters = typing.TypedDict('CiftiCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-correlation"],
     "cifti": InputPathType,
@@ -353,7 +357,16 @@ def cifti_correlation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CORRELATION_METADATA)
-    params = cifti_correlation_params(cifti=cifti, cifti_out=cifti_out, roi_override=roi_override, opt_weights_weight_file=opt_weights_weight_file, opt_fisher_z=opt_fisher_z, opt_no_demean=opt_no_demean, opt_covariance=opt_covariance, opt_mem_limit_limit_gb=opt_mem_limit_limit_gb)
+    params = cifti_correlation_params(
+        cifti=cifti,
+        cifti_out=cifti_out,
+        roi_override=roi_override,
+        opt_weights_weight_file=opt_weights_weight_file,
+        opt_fisher_z=opt_fisher_z,
+        opt_no_demean=opt_no_demean,
+        opt_covariance=opt_covariance,
+        opt_mem_limit_limit_gb=opt_mem_limit_limit_gb,
+    )
     return cifti_correlation_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ UNCONFOUND_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 UnconfoundParameters = typing.TypedDict('UnconfoundParameters', {
     "__STYX_TYPE__": typing.Literal["unconfound"],
     "in4d": InputPathType,
@@ -175,7 +177,11 @@ def unconfound(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNCONFOUND_METADATA)
-    params = unconfound_params(in4d=in4d, out4d=out4d, confound_mat=confound_mat)
+    params = unconfound_params(
+        in4d=in4d,
+        out4d=out4d,
+        confound_mat=confound_mat,
+    )
     return unconfound_execute(params, execution)
 
 

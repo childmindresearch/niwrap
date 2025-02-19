@@ -11,6 +11,8 @@ V_3D_LSS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLssParameters = typing.TypedDict('V3dLssParameters', {
     "__STYX_TYPE__": typing.Literal["3dLSS"],
 })
@@ -159,7 +161,8 @@ def v_3d_lss(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LSS_METADATA)
-    params = v_3d_lss_params()
+    params = v_3d_lss_params(
+    )
     return v_3d_lss_execute(params, execution)
 
 

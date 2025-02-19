@@ -11,6 +11,8 @@ SURFACE_INFLATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceInflationParameters = typing.TypedDict('SurfaceInflationParameters', {
     "__STYX_TYPE__": typing.Literal["surface-inflation"],
     "anatomical_surface_in": InputPathType,
@@ -208,7 +210,15 @@ def surface_inflation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_INFLATION_METADATA)
-    params = surface_inflation_params(anatomical_surface_in=anatomical_surface_in, surface_in=surface_in, number_of_smoothing_cycles=number_of_smoothing_cycles, smoothing_strength=smoothing_strength, smoothing_iterations=smoothing_iterations, inflation_factor=inflation_factor, surface_out=surface_out)
+    params = surface_inflation_params(
+        anatomical_surface_in=anatomical_surface_in,
+        surface_in=surface_in,
+        number_of_smoothing_cycles=number_of_smoothing_cycles,
+        smoothing_strength=smoothing_strength,
+        smoothing_iterations=smoothing_iterations,
+        inflation_factor=inflation_factor,
+        surface_out=surface_out,
+    )
     return surface_inflation_execute(params, execution)
 
 

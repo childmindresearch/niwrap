@@ -11,11 +11,15 @@ METRIC_STATS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricStatsRoiParameters = typing.TypedDict('MetricStatsRoiParameters', {
     "__STYX_TYPE__": typing.Literal["roi"],
     "roi_metric": InputPathType,
     "opt_match_maps": bool,
 })
+
+
 MetricStatsParameters = typing.TypedDict('MetricStatsParameters', {
     "__STYX_TYPE__": typing.Literal["metric-stats"],
     "metric_in": InputPathType,
@@ -318,7 +322,14 @@ def metric_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_STATS_METADATA)
-    params = metric_stats_params(metric_in=metric_in, opt_reduce_operation=opt_reduce_operation, opt_percentile_percent=opt_percentile_percent, opt_column_column=opt_column_column, roi=roi, opt_show_map_name=opt_show_map_name)
+    params = metric_stats_params(
+        metric_in=metric_in,
+        opt_reduce_operation=opt_reduce_operation,
+        opt_percentile_percent=opt_percentile_percent,
+        opt_column_column=opt_column_column,
+        roi=roi,
+        opt_show_map_name=opt_show_map_name,
+    )
     return metric_stats_execute(params, execution)
 
 

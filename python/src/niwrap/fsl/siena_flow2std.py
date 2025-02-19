@@ -11,6 +11,8 @@ SIENA_FLOW2STD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SienaFlow2stdParameters = typing.TypedDict('SienaFlow2stdParameters', {
     "__STYX_TYPE__": typing.Literal["siena_flow2std"],
     "fileroot1": str,
@@ -184,7 +186,12 @@ def siena_flow2std(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIENA_FLOW2STD_METADATA)
-    params = siena_flow2std_params(fileroot1=fileroot1, fileroot2=fileroot2, sigma=sigma, debug_flag=debug_flag)
+    params = siena_flow2std_params(
+        fileroot1=fileroot1,
+        fileroot2=fileroot2,
+        sigma=sigma,
+        debug_flag=debug_flag,
+    )
     return siena_flow2std_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CREATE_LUT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 CreateLutParameters = typing.TypedDict('CreateLutParameters', {
     "__STYX_TYPE__": typing.Literal["create_lut"],
     "output_file_root": str,
@@ -159,7 +161,9 @@ def create_lut(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_LUT_METADATA)
-    params = create_lut_params(output_file_root=output_file_root)
+    params = create_lut_params(
+        output_file_root=output_file_root,
+    )
     return create_lut_execute(params, execution)
 
 

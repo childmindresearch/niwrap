@@ -11,6 +11,8 @@ EXAMINE_XMAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ExamineXmatParameters = typing.TypedDict('ExamineXmatParameters', {
     "__STYX_TYPE__": typing.Literal["ExamineXmat"],
     "input_file": typing.NotRequired[InputPathType | None],
@@ -256,7 +258,16 @@ def examine_xmat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXAMINE_XMAT_METADATA)
-    params = examine_xmat_params(input_file=input_file, interactive=interactive, prefix=prefix, cprefix=cprefix, pprefix=pprefix, select_=select_, msg_trace=msg_trace, verbosity=verbosity)
+    params = examine_xmat_params(
+        input_file=input_file,
+        interactive=interactive,
+        prefix=prefix,
+        cprefix=cprefix,
+        pprefix=pprefix,
+        select_=select_,
+        msg_trace=msg_trace,
+        verbosity=verbosity,
+    )
     return examine_xmat_execute(params, execution)
 
 

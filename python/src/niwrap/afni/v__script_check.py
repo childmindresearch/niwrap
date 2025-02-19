@@ -11,6 +11,8 @@ V__SCRIPT_CHECK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VScriptCheckParameters = typing.TypedDict('VScriptCheckParameters', {
     "__STYX_TYPE__": typing.Literal["@ScriptCheck"],
     "clean": bool,
@@ -182,7 +184,11 @@ def v__script_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SCRIPT_CHECK_METADATA)
-    params = v__script_check_params(clean=clean, suffix=suffix, scripts=scripts)
+    params = v__script_check_params(
+        clean=clean,
+        suffix=suffix,
+        scripts=scripts,
+    )
     return v__script_check_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_RIGID_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRigidRegisterParameters = typing.TypedDict('MriRigidRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_rigid_register"],
     "source_volume": InputPathType,
@@ -173,7 +175,11 @@ def mri_rigid_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RIGID_REGISTER_METADATA)
-    params = mri_rigid_register_params(source_volume=source_volume, target_volume=target_volume, transform_output=transform_output)
+    params = mri_rigid_register_params(
+        source_volume=source_volume,
+        target_volume=target_volume,
+        transform_output=transform_output,
+    )
     return mri_rigid_register_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3DTO_XDATASET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dtoXdatasetParameters = typing.TypedDict('V3dtoXdatasetParameters', {
     "__STYX_TYPE__": typing.Literal["3dtoXdataset"],
     "prefix": str,
@@ -176,7 +178,11 @@ def v_3dto_xdataset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DTO_XDATASET_METADATA)
-    params = v_3dto_xdataset_params(prefix=prefix, mask=mask, input_files=input_files)
+    params = v_3dto_xdataset_params(
+        prefix=prefix,
+        mask=mask,
+        input_files=input_files,
+    )
     return v_3dto_xdataset_execute(params, execution)
 
 

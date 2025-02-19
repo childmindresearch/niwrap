@@ -11,6 +11,8 @@ SAMSEG2RECON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Samseg2reconParameters = typing.TypedDict('Samseg2reconParameters', {
     "__STYX_TYPE__": typing.Literal["samseg2recon"],
     "subject": str,
@@ -275,7 +277,20 @@ def samseg2recon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SAMSEG2RECON_METADATA)
-    params = samseg2recon_params(subject=subject, samseg_dir=samseg_dir, no_cc=no_cc, fill=fill, normalization2=normalization2, uchar=uchar, no_keep_exc=no_keep_exc, long_tp=long_tp, base=base, mask_file=mask_file, from_recon_all=from_recon_all, force_update=force_update)
+    params = samseg2recon_params(
+        subject=subject,
+        samseg_dir=samseg_dir,
+        no_cc=no_cc,
+        fill=fill,
+        normalization2=normalization2,
+        uchar=uchar,
+        no_keep_exc=no_keep_exc,
+        long_tp=long_tp,
+        base=base,
+        mask_file=mask_file,
+        from_recon_all=from_recon_all,
+        force_update=force_update,
+    )
     return samseg2recon_execute(params, execution)
 
 

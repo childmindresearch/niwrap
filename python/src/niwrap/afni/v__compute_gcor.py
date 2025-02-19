@@ -11,6 +11,8 @@ V__COMPUTE_GCOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VComputeGcorParameters = typing.TypedDict('VComputeGcorParameters', {
     "__STYX_TYPE__": typing.Literal["@compute_gcor"],
     "input": InputPathType,
@@ -223,7 +225,15 @@ def v__compute_gcor(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__COMPUTE_GCOR_METADATA)
-    params = v__compute_gcor_params(input_=input_, mask=mask, corr_vol_prefix=corr_vol_prefix, initial_trs=initial_trs, no_demean=no_demean, save_tmp=save_tmp, verbose=verbose)
+    params = v__compute_gcor_params(
+        input_=input_,
+        mask=mask,
+        corr_vol_prefix=corr_vol_prefix,
+        initial_trs=initial_trs,
+        no_demean=no_demean,
+        save_tmp=save_tmp,
+        verbose=verbose,
+    )
     return v__compute_gcor_execute(params, execution)
 
 

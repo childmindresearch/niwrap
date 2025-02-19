@@ -11,6 +11,8 @@ FDR_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FdrParameters = typing.TypedDict('FdrParameters', {
     "__STYX_TYPE__": typing.Literal["fdr"],
     "infile": InputPathType,
@@ -272,7 +274,20 @@ def fdr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FDR_METADATA)
-    params = fdr_params(infile=infile, maskfile=maskfile, qvalue=qvalue, adjustedimage=adjustedimage, othresh_flag=othresh_flag, order_flag=order_flag, oneminusp_flag=oneminusp_flag, positive_corr_flag=positive_corr_flag, independent_flag=independent_flag, conservative_flag=conservative_flag, debug_flag=debug_flag, verbose_flag=verbose_flag)
+    params = fdr_params(
+        infile=infile,
+        maskfile=maskfile,
+        qvalue=qvalue,
+        adjustedimage=adjustedimage,
+        othresh_flag=othresh_flag,
+        order_flag=order_flag,
+        oneminusp_flag=oneminusp_flag,
+        positive_corr_flag=positive_corr_flag,
+        independent_flag=independent_flag,
+        conservative_flag=conservative_flag,
+        debug_flag=debug_flag,
+        verbose_flag=verbose_flag,
+    )
     return fdr_execute(params, execution)
 
 

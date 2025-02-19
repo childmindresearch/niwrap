@@ -11,6 +11,8 @@ FAT_MVM_SCRIPTER_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatMvmScripterPyParameters = typing.TypedDict('FatMvmScripterPyParameters', {
     "__STYX_TYPE__": typing.Literal["fat_mvm_scripter.py"],
     "prefix": str,
@@ -324,7 +326,21 @@ def fat_mvm_scripter_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MVM_SCRIPTER_PY_METADATA)
-    params = fat_mvm_scripter_py_params(prefix=prefix, table=table, log=log, vars_=vars_, file_vars=file_vars, pars=pars, file_pars=file_pars, rois=rois, file_rois=file_rois, no_posthoc=no_posthoc, na_warn_off=na_warn_off, subnet_pref=subnet_pref, cat_pair_off=cat_pair_off)
+    params = fat_mvm_scripter_py_params(
+        prefix=prefix,
+        table=table,
+        log=log,
+        vars_=vars_,
+        file_vars=file_vars,
+        pars=pars,
+        file_pars=file_pars,
+        rois=rois,
+        file_rois=file_rois,
+        no_posthoc=no_posthoc,
+        na_warn_off=na_warn_off,
+        subnet_pref=subnet_pref,
+        cat_pair_off=cat_pair_off,
+    )
     return fat_mvm_scripter_py_execute(params, execution)
 
 

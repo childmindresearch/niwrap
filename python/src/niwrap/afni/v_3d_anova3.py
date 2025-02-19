@@ -11,6 +11,8 @@ V_3D_ANOVA3_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAnova3Parameters = typing.TypedDict('V3dAnova3Parameters', {
     "__STYX_TYPE__": typing.Literal["3dANOVA3"],
     "type": int,
@@ -277,7 +279,17 @@ def v_3d_anova3(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ANOVA3_METADATA)
-    params = v_3d_anova3_params(type_=type_, alevels=alevels, blevels=blevels, clevels=clevels, dsets=dsets, voxel_num=voxel_num, diskspace=diskspace, mask=mask, anova_options=anova_options)
+    params = v_3d_anova3_params(
+        type_=type_,
+        alevels=alevels,
+        blevels=blevels,
+        clevels=clevels,
+        dsets=dsets,
+        voxel_num=voxel_num,
+        diskspace=diskspace,
+        mask=mask,
+        anova_options=anova_options,
+    )
     return v_3d_anova3_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MSM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MsmParameters = typing.TypedDict('MsmParameters', {
     "__STYX_TYPE__": typing.Literal["msm"],
     "inmesh": InputPathType,
@@ -357,7 +359,24 @@ def msm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MSM_METADATA)
-    params = msm_params(inmesh=inmesh, out=out, refmesh=refmesh, indata=indata, refdata=refdata, trans=trans, in_register=in_register, inweight=inweight, refweight=refweight, format_=format_, conf=conf, levels=levels, smoothout=smoothout, help_=help_, verbose=verbose, printoptions=printoptions)
+    params = msm_params(
+        inmesh=inmesh,
+        out=out,
+        refmesh=refmesh,
+        indata=indata,
+        refdata=refdata,
+        trans=trans,
+        in_register=in_register,
+        inweight=inweight,
+        refweight=refweight,
+        format_=format_,
+        conf=conf,
+        levels=levels,
+        smoothout=smoothout,
+        help_=help_,
+        verbose=verbose,
+        printoptions=printoptions,
+    )
     return msm_execute(params, execution)
 
 

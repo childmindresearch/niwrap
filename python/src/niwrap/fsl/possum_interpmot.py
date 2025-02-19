@@ -11,6 +11,8 @@ POSSUM_INTERPMOT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PossumInterpmotParameters = typing.TypedDict('PossumInterpmotParameters', {
     "__STYX_TYPE__": typing.Literal["possum_interpmot"],
     "motion_type": int,
@@ -203,7 +205,15 @@ def possum_interpmot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_INTERPMOT_METADATA)
-    params = possum_interpmot_params(motion_type=motion_type, tr=tr, tr_slice=tr_slice, nslices=nslices, nvols=nvols, custom_motion_file=custom_motion_file, output_file=output_file)
+    params = possum_interpmot_params(
+        motion_type=motion_type,
+        tr=tr,
+        tr_slice=tr_slice,
+        nslices=nslices,
+        nvols=nvols,
+        custom_motion_file=custom_motion_file,
+        output_file=output_file,
+    )
     return possum_interpmot_execute(params, execution)
 
 

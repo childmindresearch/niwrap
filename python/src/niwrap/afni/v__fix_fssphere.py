@@ -11,6 +11,8 @@ V__FIX_FSSPHERE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFixFssphereParameters = typing.TypedDict('VFixFssphereParameters', {
     "__STYX_TYPE__": typing.Literal["@fix_FSsphere"],
     "spec_file": InputPathType,
@@ -214,7 +216,14 @@ def v__fix_fssphere(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FIX_FSSPHERE_METADATA)
-    params = v__fix_fssphere_params(spec_file=spec_file, sphere_file=sphere_file, num_iterations=num_iterations, extent_lim=extent_lim, project_first=project_first, keep_temp=keep_temp)
+    params = v__fix_fssphere_params(
+        spec_file=spec_file,
+        sphere_file=sphere_file,
+        num_iterations=num_iterations,
+        extent_lim=extent_lim,
+        project_first=project_first,
+        keep_temp=keep_temp,
+    )
     return v__fix_fssphere_execute(params, execution)
 
 

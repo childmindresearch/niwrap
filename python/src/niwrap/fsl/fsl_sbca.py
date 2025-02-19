@@ -11,6 +11,8 @@ FSL_SBCA_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslSbcaParameters = typing.TypedDict('FslSbcaParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_sbca"],
     "infile": InputPathType,
@@ -329,7 +331,25 @@ def fsl_sbca(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_SBCA_METADATA)
-    params = fsl_sbca_params(infile=infile, seed=seed, target=target, out=out, reg_flag=reg_flag, conf_files=conf_files, seed_data=seed_data, binarise_flag=binarise_flag, mean_flag=mean_flag, abs_cc_flag=abs_cc_flag, order=order, out_seeds_flag=out_seeds_flag, out_seedmask_flag=out_seedmask_flag, out_ttcs_flag=out_ttcs_flag, out_conf_flag=out_conf_flag, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = fsl_sbca_params(
+        infile=infile,
+        seed=seed,
+        target=target,
+        out=out,
+        reg_flag=reg_flag,
+        conf_files=conf_files,
+        seed_data=seed_data,
+        binarise_flag=binarise_flag,
+        mean_flag=mean_flag,
+        abs_cc_flag=abs_cc_flag,
+        order=order,
+        out_seeds_flag=out_seeds_flag,
+        out_seedmask_flag=out_seedmask_flag,
+        out_ttcs_flag=out_ttcs_flag,
+        out_conf_flag=out_conf_flag,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return fsl_sbca_execute(params, execution)
 
 

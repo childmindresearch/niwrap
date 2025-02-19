@@ -11,6 +11,8 @@ V_3D_LRFLIP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLrflipParameters = typing.TypedDict('V3dLrflipParameters', {
     "__STYX_TYPE__": typing.Literal["3dLRflip"],
     "flip_z": bool,
@@ -183,7 +185,11 @@ def v_3d_lrflip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LRFLIP_METADATA)
-    params = v_3d_lrflip_params(flip_z=flip_z, output_prefix=output_prefix, datasets=datasets)
+    params = v_3d_lrflip_params(
+        flip_z=flip_z,
+        output_prefix=output_prefix,
+        datasets=datasets,
+    )
     return v_3d_lrflip_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_REGISTER_TO_VOLUME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRegisterToVolumeParameters = typing.TypedDict('MrisRegisterToVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["mris_register_to_volume"],
     "surface": str,
@@ -464,7 +466,36 @@ def mris_register_to_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REGISTER_TO_VOLUME_METADATA)
-    params = mris_register_to_volume_params(surface=surface, pial=pial, pial_only=pial_only, reg=reg, noglobal=noglobal, median=median, mri_reg=mri_reg, tx_mmd=tx_mmd, ty_mmd=ty_mmd, tz_mmd=tz_mmd, ax_mmd=ax_mmd, ay_mmd=ay_mmd, az_mmd=az_mmd, cost=cost, interp=interp, noise=noise, seed=seed, skip=skip, sigma=sigma, cnr=cnr, max_rot=max_rot, max_trans=max_trans, border=border, subject=subject, dilate=dilate, patch=patch, label=label, out_reg=out_reg)
+    params = mris_register_to_volume_params(
+        surface=surface,
+        pial=pial,
+        pial_only=pial_only,
+        reg=reg,
+        noglobal=noglobal,
+        median=median,
+        mri_reg=mri_reg,
+        tx_mmd=tx_mmd,
+        ty_mmd=ty_mmd,
+        tz_mmd=tz_mmd,
+        ax_mmd=ax_mmd,
+        ay_mmd=ay_mmd,
+        az_mmd=az_mmd,
+        cost=cost,
+        interp=interp,
+        noise=noise,
+        seed=seed,
+        skip=skip,
+        sigma=sigma,
+        cnr=cnr,
+        max_rot=max_rot,
+        max_trans=max_trans,
+        border=border,
+        subject=subject,
+        dilate=dilate,
+        patch=patch,
+        label=label,
+        out_reg=out_reg,
+    )
     return mris_register_to_volume_execute(params, execution)
 
 

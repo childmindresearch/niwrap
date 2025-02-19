@@ -11,6 +11,8 @@ MRIS_VOLSMOOTH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisVolsmoothParameters = typing.TypedDict('MrisVolsmoothParameters', {
     "__STYX_TYPE__": typing.Literal["mris_volsmooth"],
     "input_volume": InputPathType,
@@ -310,7 +312,21 @@ def mris_volsmooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_VOLSMOOTH_METADATA)
-    params = mris_volsmooth_params(input_volume=input_volume, output_volume=output_volume, registration=registration, projfrac=projfrac, projfrac_avg=projfrac_avg, fill_ribbon=fill_ribbon, surf_out=surf_out, fwhm=fwhm, niters=niters, vol_fwhm=vol_fwhm, log=log, nocleanup=nocleanup, debug=debug)
+    params = mris_volsmooth_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        registration=registration,
+        projfrac=projfrac,
+        projfrac_avg=projfrac_avg,
+        fill_ribbon=fill_ribbon,
+        surf_out=surf_out,
+        fwhm=fwhm,
+        niters=niters,
+        vol_fwhm=vol_fwhm,
+        log=log,
+        nocleanup=nocleanup,
+        debug=debug,
+    )
     return mris_volsmooth_execute(params, execution)
 
 

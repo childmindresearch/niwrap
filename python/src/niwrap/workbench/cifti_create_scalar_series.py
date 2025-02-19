@@ -11,12 +11,16 @@ CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCreateScalarSeriesSeriesParameters = typing.TypedDict('CiftiCreateScalarSeriesSeriesParameters', {
     "__STYX_TYPE__": typing.Literal["series"],
     "unit": str,
     "start": float,
     "step": float,
 })
+
+
 CiftiCreateScalarSeriesParameters = typing.TypedDict('CiftiCreateScalarSeriesParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-create-scalar-series"],
     "input": str,
@@ -274,7 +278,13 @@ def cifti_create_scalar_series(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_SCALAR_SERIES_METADATA)
-    params = cifti_create_scalar_series_params(input_=input_, cifti_out=cifti_out, opt_transpose=opt_transpose, opt_name_file_file=opt_name_file_file, series=series)
+    params = cifti_create_scalar_series_params(
+        input_=input_,
+        cifti_out=cifti_out,
+        opt_transpose=opt_transpose,
+        opt_name_file_file=opt_name_file_file,
+        series=series,
+    )
     return cifti_create_scalar_series_execute(params, execution)
 
 

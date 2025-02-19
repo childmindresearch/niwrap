@@ -11,6 +11,8 @@ V__COMMAND_GLOBB_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VCommandGlobbParameters = typing.TypedDict('VCommandGlobbParameters', {
     "__STYX_TYPE__": typing.Literal["@CommandGlobb"],
     "program_command": str,
@@ -200,7 +202,12 @@ def v__command_globb(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__COMMAND_GLOBB_METADATA)
-    params = v__command_globb_params(program_command=program_command, output_dir=output_dir, extension=extension, brick_list=brick_list)
+    params = v__command_globb_params(
+        program_command=program_command,
+        output_dir=output_dir,
+        extension=extension,
+        brick_list=brick_list,
+    )
     return v__command_globb_execute(params, execution)
 
 

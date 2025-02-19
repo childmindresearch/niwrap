@@ -11,6 +11,8 @@ MRI_EXTRACT_FCD_FEATURES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriExtractFcdFeaturesParameters = typing.TypedDict('MriExtractFcdFeaturesParameters', {
     "__STYX_TYPE__": typing.Literal["mri_extract_fcd_features"],
     "subject": str,
@@ -183,7 +185,12 @@ def mri_extract_fcd_features(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EXTRACT_FCD_FEATURES_METADATA)
-    params = mri_extract_fcd_features_params(subject=subject, hemi=hemi, output_file=output_file, subjects_dir=subjects_dir)
+    params = mri_extract_fcd_features_params(
+        subject=subject,
+        hemi=hemi,
+        output_file=output_file,
+        subjects_dir=subjects_dir,
+    )
     return mri_extract_fcd_features_execute(params, execution)
 
 

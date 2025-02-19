@@ -11,6 +11,8 @@ FSL_SUB_MGH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FslSubMghParameters = typing.TypedDict('FslSubMghParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_sub_mgh"],
     "estimated_time": typing.NotRequired[int | None],
@@ -307,7 +309,21 @@ def fsl_sub_mgh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_SUB_MGH_METADATA)
-    params = fsl_sub_mgh_params(estimated_time=estimated_time, queue_name=queue_name, architecture=architecture, job_priority=job_priority, email_address=email_address, hold_job=hold_job, task_file=task_file, job_name=job_name, log_dir=log_dir, mail_options=mail_options, flags_in_scripts=flags_in_scripts, verbose=verbose, shell_path=shell_path)
+    params = fsl_sub_mgh_params(
+        estimated_time=estimated_time,
+        queue_name=queue_name,
+        architecture=architecture,
+        job_priority=job_priority,
+        email_address=email_address,
+        hold_job=hold_job,
+        task_file=task_file,
+        job_name=job_name,
+        log_dir=log_dir,
+        mail_options=mail_options,
+        flags_in_scripts=flags_in_scripts,
+        verbose=verbose,
+        shell_path=shell_path,
+    )
     return fsl_sub_mgh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ANNOT2STD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Annot2stdParameters = typing.TypedDict('Annot2stdParameters', {
     "__STYX_TYPE__": typing.Literal["annot2std"],
     "output_annot_path": str,
@@ -322,7 +324,23 @@ def annot2std(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANNOT2STD_METADATA)
-    params = annot2std_params(output_annot_path=output_annot_path, subjects=subjects, fsgd_file=fsgd_file, subject_list_file=subject_list_file, target=target, right_hemisphere=right_hemisphere, xhemi=xhemi, surfreg=surfreg, srcsurfreg=srcsurfreg, trgsurfreg=trgsurfreg, a2009s=a2009s, segmentation=segmentation, stack=stack, help_=help_, version=version)
+    params = annot2std_params(
+        output_annot_path=output_annot_path,
+        subjects=subjects,
+        fsgd_file=fsgd_file,
+        subject_list_file=subject_list_file,
+        target=target,
+        right_hemisphere=right_hemisphere,
+        xhemi=xhemi,
+        surfreg=surfreg,
+        srcsurfreg=srcsurfreg,
+        trgsurfreg=trgsurfreg,
+        a2009s=a2009s,
+        segmentation=segmentation,
+        stack=stack,
+        help_=help_,
+        version=version,
+    )
     return annot2std_execute(params, execution)
 
 

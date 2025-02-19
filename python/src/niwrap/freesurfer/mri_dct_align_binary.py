@@ -11,6 +11,8 @@ MRI_DCT_ALIGN_BINARY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriDctAlignBinaryParameters = typing.TypedDict('MriDctAlignBinaryParameters', {
     "__STYX_TYPE__": typing.Literal["mri_dct_align_binary"],
     "source_image": InputPathType,
@@ -173,7 +175,11 @@ def mri_dct_align_binary(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DCT_ALIGN_BINARY_METADATA)
-    params = mri_dct_align_binary_params(source_image=source_image, destination_image=destination_image, output_transformation=output_transformation)
+    params = mri_dct_align_binary_params(
+        source_image=source_image,
+        destination_image=destination_image,
+        output_transformation=output_transformation,
+    )
     return mri_dct_align_binary_execute(params, execution)
 
 

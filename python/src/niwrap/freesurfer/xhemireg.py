@@ -11,6 +11,8 @@ XHEMIREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 XhemiregParameters = typing.TypedDict('XhemiregParameters', {
     "__STYX_TYPE__": typing.Literal["xhemireg"],
     "subject": str,
@@ -268,7 +270,21 @@ def xhemireg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XHEMIREG_METADATA)
-    params = xhemireg_params(subject=subject, output_dir=output_dir, map_lh=map_lh, map_rh=map_rh, perform_reg=perform_reg, tal_compute=tal_compute, no_tal_compute=no_tal_compute, tal_estimate=tal_estimate, no_tal_estimate=no_tal_estimate, gcaprep=gcaprep, threads=threads, version=version, help_=help_)
+    params = xhemireg_params(
+        subject=subject,
+        output_dir=output_dir,
+        map_lh=map_lh,
+        map_rh=map_rh,
+        perform_reg=perform_reg,
+        tal_compute=tal_compute,
+        no_tal_compute=no_tal_compute,
+        tal_estimate=tal_estimate,
+        no_tal_estimate=no_tal_estimate,
+        gcaprep=gcaprep,
+        threads=threads,
+        version=version,
+        help_=help_,
+    )
     return xhemireg_execute(params, execution)
 
 

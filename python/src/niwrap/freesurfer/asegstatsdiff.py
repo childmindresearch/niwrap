@@ -11,6 +11,8 @@ ASEGSTATSDIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 AsegstatsdiffParameters = typing.TypedDict('AsegstatsdiffParameters', {
     "__STYX_TYPE__": typing.Literal["asegstatsdiff"],
     "subject1": str,
@@ -178,7 +180,11 @@ def asegstatsdiff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ASEGSTATSDIFF_METADATA)
-    params = asegstatsdiff_params(subject1=subject1, subject2=subject2, outdir=outdir)
+    params = asegstatsdiff_params(
+        subject1=subject1,
+        subject2=subject2,
+        outdir=outdir,
+    )
     return asegstatsdiff_execute(params, execution)
 
 

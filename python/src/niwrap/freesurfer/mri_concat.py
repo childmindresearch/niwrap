@@ -11,6 +11,8 @@ MRI_CONCAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriConcatParameters = typing.TypedDict('MriConcatParameters', {
     "__STYX_TYPE__": typing.Literal["mri_concat"],
     "input_files": list[InputPathType],
@@ -589,7 +591,56 @@ def mri_concat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CONCAT_METADATA)
-    params = mri_concat_params(input_files=input_files, output_file=output_file, file_list=file_list, paired_sum=paired_sum, paired_avg=paired_avg, paired_diff=paired_diff, paired_diff_norm=paired_diff_norm, paired_diff_norm1=paired_diff_norm1, paired_diff_norm2=paired_diff_norm2, norm_mean=norm_mean, norm1=norm1, matrix=matrix, frame_weight=frame_weight, norm_weight=norm_weight, group_mean=group_mean, combine=combine, keep_datatype=keep_datatype, abs_=abs_, pos=pos, neg=neg, mean=mean, median=median, mean_div_n=mean_div_n, sum_=sum_, var=var, std=std, max_=max_, max_index=max_index, max_index_prune=max_index_prune, max_index_add=max_index_add, min_=min_, replicate_times=replicate_times, fnorm=fnorm, conjunction=conjunction, vote=vote, sort=sort, temporal_ar1=temporal_ar1, prune=prune, pca=pca, pca_mask=pca_mask, scm=scm, zconcat=zconcat, max_bonfcor=max_bonfcor, multiply=multiply, add=add, mask_file=mask_file, rms=rms, no_check=no_check)
+    params = mri_concat_params(
+        input_files=input_files,
+        output_file=output_file,
+        file_list=file_list,
+        paired_sum=paired_sum,
+        paired_avg=paired_avg,
+        paired_diff=paired_diff,
+        paired_diff_norm=paired_diff_norm,
+        paired_diff_norm1=paired_diff_norm1,
+        paired_diff_norm2=paired_diff_norm2,
+        norm_mean=norm_mean,
+        norm1=norm1,
+        matrix=matrix,
+        frame_weight=frame_weight,
+        norm_weight=norm_weight,
+        group_mean=group_mean,
+        combine=combine,
+        keep_datatype=keep_datatype,
+        abs_=abs_,
+        pos=pos,
+        neg=neg,
+        mean=mean,
+        median=median,
+        mean_div_n=mean_div_n,
+        sum_=sum_,
+        var=var,
+        std=std,
+        max_=max_,
+        max_index=max_index,
+        max_index_prune=max_index_prune,
+        max_index_add=max_index_add,
+        min_=min_,
+        replicate_times=replicate_times,
+        fnorm=fnorm,
+        conjunction=conjunction,
+        vote=vote,
+        sort=sort,
+        temporal_ar1=temporal_ar1,
+        prune=prune,
+        pca=pca,
+        pca_mask=pca_mask,
+        scm=scm,
+        zconcat=zconcat,
+        max_bonfcor=max_bonfcor,
+        multiply=multiply,
+        add=add,
+        mask_file=mask_file,
+        rms=rms,
+        no_check=no_check,
+    )
     return mri_concat_execute(params, execution)
 
 

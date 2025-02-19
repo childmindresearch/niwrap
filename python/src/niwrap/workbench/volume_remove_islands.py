@@ -11,6 +11,8 @@ VOLUME_REMOVE_ISLANDS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeRemoveIslandsParameters = typing.TypedDict('VolumeRemoveIslandsParameters', {
     "__STYX_TYPE__": typing.Literal["volume-remove-islands"],
     "volume_in": InputPathType,
@@ -173,7 +175,10 @@ def volume_remove_islands(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_REMOVE_ISLANDS_METADATA)
-    params = volume_remove_islands_params(volume_in=volume_in, volume_out=volume_out)
+    params = volume_remove_islands_params(
+        volume_in=volume_in,
+        volume_out=volume_out,
+    )
     return volume_remove_islands_execute(params, execution)
 
 

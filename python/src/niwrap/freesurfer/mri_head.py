@@ -11,6 +11,8 @@ MRI_HEAD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriHeadParameters = typing.TypedDict('MriHeadParameters', {
     "__STYX_TYPE__": typing.Literal["mri_head"],
     "identify": bool,
@@ -181,7 +183,12 @@ def mri_head(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_HEAD_METADATA)
-    params = mri_head_params(identify=identify, read=read, filename=filename, question_mark_help=question_mark_help)
+    params = mri_head_params(
+        identify=identify,
+        read=read,
+        filename=filename,
+        question_mark_help=question_mark_help,
+    )
     return mri_head_execute(params, execution)
 
 

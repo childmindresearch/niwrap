@@ -11,6 +11,8 @@ OXFORD_ASL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 OxfordAslParameters = typing.TypedDict('OxfordAslParameters', {
     "__STYX_TYPE__": typing.Literal["oxford_asl"],
     "asl_data": InputPathType,
@@ -173,7 +175,10 @@ def oxford_asl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(OXFORD_ASL_METADATA)
-    params = oxford_asl_params(asl_data=asl_data, output_dir_name=output_dir_name)
+    params = oxford_asl_params(
+        asl_data=asl_data,
+        output_dir_name=output_dir_name,
+    )
     return oxford_asl_execute(params, execution)
 
 

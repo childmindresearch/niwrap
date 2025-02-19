@@ -11,6 +11,8 @@ SEGMENT_SUBJECT_NOTAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentSubjectNotalParameters = typing.TypedDict('SegmentSubjectNotalParameters', {
     "__STYX_TYPE__": typing.Literal["segment_subject_notal"],
     "subject_path": str,
@@ -155,7 +157,9 @@ def segment_subject_notal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBJECT_NOTAL_METADATA)
-    params = segment_subject_notal_params(subject_path=subject_path)
+    params = segment_subject_notal_params(
+        subject_path=subject_path,
+    )
     return segment_subject_notal_execute(params, execution)
 
 

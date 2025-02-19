@@ -11,6 +11,8 @@ PARSE_FS_LT_LOG_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ParseFsLtLogPyParameters = typing.TypedDict('ParseFsLtLogPyParameters', {
     "__STYX_TYPE__": typing.Literal["parse_fs_lt_log.py"],
     "logfile": InputPathType,
@@ -196,7 +198,13 @@ def parse_fs_lt_log_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PARSE_FS_LT_LOG_PY_METADATA)
-    params = parse_fs_lt_log_py_params(logfile=logfile, labels=labels, show_orig=show_orig, show_all_orig=show_all_orig, verbosity=verbosity)
+    params = parse_fs_lt_log_py_params(
+        logfile=logfile,
+        labels=labels,
+        show_orig=show_orig,
+        show_all_orig=show_all_orig,
+        verbosity=verbosity,
+    )
     return parse_fs_lt_log_py_execute(params, execution)
 
 

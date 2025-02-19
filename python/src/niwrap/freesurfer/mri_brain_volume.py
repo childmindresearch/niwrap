@@ -11,6 +11,8 @@ MRI_BRAIN_VOLUME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriBrainVolumeParameters = typing.TypedDict('MriBrainVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_brain_volume"],
     "input_file": InputPathType,
@@ -169,7 +171,10 @@ def mri_brain_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_BRAIN_VOLUME_METADATA)
-    params = mri_brain_volume_params(input_file=input_file, output_file=output_file)
+    params = mri_brain_volume_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return mri_brain_volume_execute(params, execution)
 
 

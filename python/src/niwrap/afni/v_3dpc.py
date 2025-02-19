@@ -11,6 +11,8 @@ V_3DPC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dpcParameters = typing.TypedDict('V3dpcParameters', {
     "__STYX_TYPE__": typing.Literal["3dpc"],
     "datasets": list[InputPathType],
@@ -309,7 +311,23 @@ def v_3dpc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DPC_METADATA)
-    params = v_3dpc_params(datasets=datasets, dmean=dmean, vmean=vmean, vnorm=vnorm, normalize=normalize, nscale=nscale, pcsave=pcsave, reduce=reduce, prefix=prefix, dummy_lines=dummy_lines, verbose=verbose, quiet=quiet, eigonly=eigonly, float_=float_, mask=mask)
+    params = v_3dpc_params(
+        datasets=datasets,
+        dmean=dmean,
+        vmean=vmean,
+        vnorm=vnorm,
+        normalize=normalize,
+        nscale=nscale,
+        pcsave=pcsave,
+        reduce=reduce,
+        prefix=prefix,
+        dummy_lines=dummy_lines,
+        verbose=verbose,
+        quiet=quiet,
+        eigonly=eigonly,
+        float_=float_,
+        mask=mask,
+    )
     return v_3dpc_execute(params, execution)
 
 

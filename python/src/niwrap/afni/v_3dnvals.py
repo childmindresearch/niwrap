@@ -11,6 +11,8 @@ V_3DNVALS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dnvalsParameters = typing.TypedDict('V3dnvalsParameters', {
     "__STYX_TYPE__": typing.Literal["3dnvals"],
     "datasets": list[InputPathType],
@@ -171,7 +173,11 @@ def v_3dnvals(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DNVALS_METADATA)
-    params = v_3dnvals_params(datasets=datasets, all_flag=all_flag, verbose_flag=verbose_flag)
+    params = v_3dnvals_params(
+        datasets=datasets,
+        all_flag=all_flag,
+        verbose_flag=verbose_flag,
+    )
     return v_3dnvals_execute(params, execution)
 
 

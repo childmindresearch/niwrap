@@ -11,10 +11,14 @@ VOLUME_ESTIMATE_FWHM_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeEstimateFwhmWholeFileParameters = typing.TypedDict('VolumeEstimateFwhmWholeFileParameters', {
     "__STYX_TYPE__": typing.Literal["whole_file"],
     "opt_demean": bool,
 })
+
+
 VolumeEstimateFwhmParameters = typing.TypedDict('VolumeEstimateFwhmParameters', {
     "__STYX_TYPE__": typing.Literal["volume-estimate-fwhm"],
     "volume": InputPathType,
@@ -248,7 +252,12 @@ def volume_estimate_fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_ESTIMATE_FWHM_METADATA)
-    params = volume_estimate_fwhm_params(volume=volume, opt_roi_roivol=opt_roi_roivol, opt_subvolume_subvol=opt_subvolume_subvol, whole_file=whole_file)
+    params = volume_estimate_fwhm_params(
+        volume=volume,
+        opt_roi_roivol=opt_roi_roivol,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+        whole_file=whole_file,
+    )
     return volume_estimate_fwhm_execute(params, execution)
 
 

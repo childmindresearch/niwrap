@@ -11,6 +11,8 @@ MRISP_WRITE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrispWriteParameters = typing.TypedDict('MrispWriteParameters', {
     "__STYX_TYPE__": typing.Literal["mrisp_write"],
     "input_surface": InputPathType,
@@ -266,7 +268,19 @@ def mrisp_write(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRISP_WRITE_METADATA)
-    params = mrisp_write_params(input_surface=input_surface, overlay_filename=overlay_filename, output_name=output_name, subjects_dir=subjects_dir, coords=coords, average_curvature=average_curvature, correlation_matrix=correlation_matrix, scale_factor=scale_factor, normalize_curvature=normalize_curvature, verbose_vertex=verbose_vertex, write_diagnostics=write_diagnostics)
+    params = mrisp_write_params(
+        input_surface=input_surface,
+        overlay_filename=overlay_filename,
+        output_name=output_name,
+        subjects_dir=subjects_dir,
+        coords=coords,
+        average_curvature=average_curvature,
+        correlation_matrix=correlation_matrix,
+        scale_factor=scale_factor,
+        normalize_curvature=normalize_curvature,
+        verbose_vertex=verbose_vertex,
+        write_diagnostics=write_diagnostics,
+    )
     return mrisp_write_execute(params, execution)
 
 

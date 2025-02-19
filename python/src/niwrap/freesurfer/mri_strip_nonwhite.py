@@ -11,6 +11,8 @@ MRI_STRIP_NONWHITE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriStripNonwhiteParameters = typing.TypedDict('MriStripNonwhiteParameters', {
     "__STYX_TYPE__": typing.Literal["mri_strip_nonwhite"],
     "input_volume": InputPathType,
@@ -184,7 +186,12 @@ def mri_strip_nonwhite(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_STRIP_NONWHITE_METADATA)
-    params = mri_strip_nonwhite_params(input_volume=input_volume, transform=transform, template_volume=template_volume, output_volume=output_volume)
+    params = mri_strip_nonwhite_params(
+        input_volume=input_volume,
+        transform=transform,
+        template_volume=template_volume,
+        output_volume=output_volume,
+    )
     return mri_strip_nonwhite_execute(params, execution)
 
 

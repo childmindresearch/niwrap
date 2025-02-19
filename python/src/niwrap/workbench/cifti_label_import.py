@@ -11,6 +11,8 @@ CIFTI_LABEL_IMPORT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiLabelImportParameters = typing.TypedDict('CiftiLabelImportParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-label-import"],
     "input": InputPathType,
@@ -256,7 +258,14 @@ def cifti_label_import(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_LABEL_IMPORT_METADATA)
-    params = cifti_label_import_params(input_=input_, label_list_file=label_list_file, output=output, opt_discard_others=opt_discard_others, opt_unlabeled_value_value=opt_unlabeled_value_value, opt_drop_unused_labels=opt_drop_unused_labels)
+    params = cifti_label_import_params(
+        input_=input_,
+        label_list_file=label_list_file,
+        output=output,
+        opt_discard_others=opt_discard_others,
+        opt_unlabeled_value_value=opt_unlabeled_value_value,
+        opt_drop_unused_labels=opt_drop_unused_labels,
+    )
     return cifti_label_import_execute(params, execution)
 
 

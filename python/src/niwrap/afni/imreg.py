@@ -11,6 +11,8 @@ IMREG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImregParameters = typing.TypedDict('ImregParameters', {
     "__STYX_TYPE__": typing.Literal["imreg"],
     "base_image": str,
@@ -353,7 +355,28 @@ def imreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMREG_METADATA)
-    params = imreg_params(base_image=base_image, image_sequence=image_sequence, nowrite=nowrite, prefix=prefix, suffix=suffix, start=start, step=step, flim=flim, keepsize=keepsize, quiet=quiet, debug=debug, dprefix=dprefix, bilinear=bilinear, modes=modes, mlcf=mlcf, wtim=wtim, dfspace=dfspace, cmass=cmass, fine=fine, nofine=nofine)
+    params = imreg_params(
+        base_image=base_image,
+        image_sequence=image_sequence,
+        nowrite=nowrite,
+        prefix=prefix,
+        suffix=suffix,
+        start=start,
+        step=step,
+        flim=flim,
+        keepsize=keepsize,
+        quiet=quiet,
+        debug=debug,
+        dprefix=dprefix,
+        bilinear=bilinear,
+        modes=modes,
+        mlcf=mlcf,
+        wtim=wtim,
+        dfspace=dfspace,
+        cmass=cmass,
+        fine=fine,
+        nofine=nofine,
+    )
     return imreg_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FAT_ROI_ROW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatRoiRowParameters = typing.TypedDict('FatRoiRowParameters', {
     "__STYX_TYPE__": typing.Literal["fat_roi_row"],
     "roi": str,
@@ -213,7 +215,12 @@ def fat_roi_row(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_ROI_ROW_METADATA)
-    params = fat_roi_row_params(roi=roi, matrix_files=matrix_files, list_file=list_file, extern_labs_no=extern_labs_no)
+    params = fat_roi_row_params(
+        roi=roi,
+        matrix_files=matrix_files,
+        list_file=list_file,
+        extern_labs_no=extern_labs_no,
+    )
     return fat_roi_row_execute(params, execution)
 
 

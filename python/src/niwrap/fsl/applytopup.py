@@ -11,6 +11,8 @@ APPLYTOPUP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ApplytopupParameters = typing.TypedDict('ApplytopupParameters', {
     "__STYX_TYPE__": typing.Literal["applytopup"],
     "imain": list[InputPathType],
@@ -228,7 +230,17 @@ def applytopup(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APPLYTOPUP_METADATA)
-    params = applytopup_params(imain=imain, datain=datain, inindex=inindex, topup=topup, out=out, method=method, interp=interp, datatype=datatype, verbose=verbose)
+    params = applytopup_params(
+        imain=imain,
+        datain=datain,
+        inindex=inindex,
+        topup=topup,
+        out=out,
+        method=method,
+        interp=interp,
+        datatype=datatype,
+        verbose=verbose,
+    )
     return applytopup_execute(params, execution)
 
 

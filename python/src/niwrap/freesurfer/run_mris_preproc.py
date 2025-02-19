@@ -11,6 +11,8 @@ RUN_MRIS_PREPROC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunMrisPreprocParameters = typing.TypedDict('RunMrisPreprocParameters', {
     "__STYX_TYPE__": typing.Literal["run_mris_preproc"],
     "qdec_table": InputPathType,
@@ -166,7 +168,10 @@ def run_mris_preproc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_MRIS_PREPROC_METADATA)
-    params = run_mris_preproc_params(qdec_table=qdec_table, target_average=target_average)
+    params = run_mris_preproc_params(
+        qdec_table=qdec_table,
+        target_average=target_average,
+    )
     return run_mris_preproc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSL_PREPARE_FIELDMAP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslPrepareFieldmapParameters = typing.TypedDict('FslPrepareFieldmapParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_prepare_fieldmap"],
     "scanner": str,
@@ -199,7 +201,14 @@ def fsl_prepare_fieldmap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_PREPARE_FIELDMAP_METADATA)
-    params = fsl_prepare_fieldmap_params(scanner=scanner, phase_image=phase_image, magnitude_image=magnitude_image, out_image=out_image, delta_te=delta_te, nocheck_flag=nocheck_flag)
+    params = fsl_prepare_fieldmap_params(
+        scanner=scanner,
+        phase_image=phase_image,
+        magnitude_image=magnitude_image,
+        out_image=out_image,
+        delta_te=delta_te,
+        nocheck_flag=nocheck_flag,
+    )
     return fsl_prepare_fieldmap_execute(params, execution)
 
 

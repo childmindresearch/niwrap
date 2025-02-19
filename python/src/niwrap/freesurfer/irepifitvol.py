@@ -11,6 +11,8 @@ IREPIFITVOL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IrepifitvolParameters = typing.TypedDict('IrepifitvolParameters', {
     "__STYX_TYPE__": typing.Literal["irepifitvol"],
     "input_file": InputPathType,
@@ -166,7 +168,10 @@ def irepifitvol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IREPIFITVOL_METADATA)
-    params = irepifitvol_params(input_file=input_file, output_file=output_file)
+    params = irepifitvol_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return irepifitvol_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_CURVATURE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCurvatureParameters = typing.TypedDict('MrisCurvatureParameters', {
     "__STYX_TYPE__": typing.Literal["mris_curvature"],
     "save_curvature_files": bool,
@@ -322,7 +324,22 @@ def mris_curvature(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CURVATURE_METADATA)
-    params = mris_curvature_params(save_curvature_files=save_curvature_files, max_principal_curvature=max_principal_curvature, mgh_output_format=mgh_output_format, min_principal_curvature=min_principal_curvature, iterative_averages=iterative_averages, neighborhood_size=neighborhood_size, random_seed=random_seed, curvatures=curvatures, h_curvature=h_curvature, k_curvature=k_curvature, k1_curvature=k1_curvature, k2_curvature=k2_curvature, k1k2_curvature=k1k2_curvature, input_surface=input_surface)
+    params = mris_curvature_params(
+        save_curvature_files=save_curvature_files,
+        max_principal_curvature=max_principal_curvature,
+        mgh_output_format=mgh_output_format,
+        min_principal_curvature=min_principal_curvature,
+        iterative_averages=iterative_averages,
+        neighborhood_size=neighborhood_size,
+        random_seed=random_seed,
+        curvatures=curvatures,
+        h_curvature=h_curvature,
+        k_curvature=k_curvature,
+        k1_curvature=k1_curvature,
+        k2_curvature=k2_curvature,
+        k1k2_curvature=k1k2_curvature,
+        input_surface=input_surface,
+    )
     return mris_curvature_execute(params, execution)
 
 

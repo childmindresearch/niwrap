@@ -11,6 +11,8 @@ PLUGOUT_TT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 PlugoutTtParameters = typing.TypedDict('PlugoutTtParameters', {
     "__STYX_TYPE__": typing.Literal["plugout_tt"],
     "host": typing.NotRequired[str | None],
@@ -298,7 +300,20 @@ def plugout_tt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLUGOUT_TT_METADATA)
-    params = plugout_tt_params(host=host, ijk_option=ijk_option, verbose=verbose, port=port, name=name, port_offset=port_offset, port_offset_quiet=port_offset_quiet, port_bloc=port_bloc, max_port_bloc=max_port_bloc, max_port_bloc_quiet=max_port_bloc_quiet, num_assigned_ports=num_assigned_ports, num_assigned_ports_quiet=num_assigned_ports_quiet)
+    params = plugout_tt_params(
+        host=host,
+        ijk_option=ijk_option,
+        verbose=verbose,
+        port=port,
+        name=name,
+        port_offset=port_offset,
+        port_offset_quiet=port_offset_quiet,
+        port_bloc=port_bloc,
+        max_port_bloc=max_port_bloc,
+        max_port_bloc_quiet=max_port_bloc_quiet,
+        num_assigned_ports=num_assigned_ports,
+        num_assigned_ports_quiet=num_assigned_ports_quiet,
+    )
     return plugout_tt_execute(params, execution)
 
 

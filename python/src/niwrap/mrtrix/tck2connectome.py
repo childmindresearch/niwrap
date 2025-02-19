@@ -11,11 +11,15 @@ TCK2CONNECTOME_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Tck2connectomeConfigParameters = typing.TypedDict('Tck2connectomeConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Tck2connectomeParameters = typing.TypedDict('Tck2connectomeParameters', {
     "__STYX_TYPE__": typing.Literal["tck2connectome"],
     "assignment_end_voxels": bool,
@@ -533,7 +537,35 @@ def tck2connectome(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCK2CONNECTOME_METADATA)
-    params = tck2connectome_params(assignment_end_voxels=assignment_end_voxels, assignment_radial_search=assignment_radial_search, assignment_reverse_search=assignment_reverse_search, assignment_forward_search=assignment_forward_search, assignment_all_voxels=assignment_all_voxels, scale_length=scale_length, scale_invlength=scale_invlength, scale_invnodevol=scale_invnodevol, scale_file=scale_file, symmetric=symmetric, zero_diagonal=zero_diagonal, stat_edge=stat_edge, tck_weights_in=tck_weights_in, keep_unassigned=keep_unassigned, out_assignments=out_assignments, vector=vector, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks_in=tracks_in, nodes_in=nodes_in, connectome_out=connectome_out)
+    params = tck2connectome_params(
+        assignment_end_voxels=assignment_end_voxels,
+        assignment_radial_search=assignment_radial_search,
+        assignment_reverse_search=assignment_reverse_search,
+        assignment_forward_search=assignment_forward_search,
+        assignment_all_voxels=assignment_all_voxels,
+        scale_length=scale_length,
+        scale_invlength=scale_invlength,
+        scale_invnodevol=scale_invnodevol,
+        scale_file=scale_file,
+        symmetric=symmetric,
+        zero_diagonal=zero_diagonal,
+        stat_edge=stat_edge,
+        tck_weights_in=tck_weights_in,
+        keep_unassigned=keep_unassigned,
+        out_assignments=out_assignments,
+        vector=vector,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks_in=tracks_in,
+        nodes_in=nodes_in,
+        connectome_out=connectome_out,
+    )
     return tck2connectome_execute(params, execution)
 
 

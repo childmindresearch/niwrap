@@ -11,11 +11,15 @@ DIRORDER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DirorderConfigParameters = typing.TypedDict('DirorderConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DirorderParameters = typing.TypedDict('DirorderParameters', {
     "__STYX_TYPE__": typing.Literal["dirorder"],
     "cartesian": bool,
@@ -316,7 +320,19 @@ def dirorder(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DIRORDER_METADATA)
-    params = dirorder_params(cartesian=cartesian, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = dirorder_params(
+        cartesian=cartesian,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return dirorder_execute(params, execution)
 
 

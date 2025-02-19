@@ -11,6 +11,8 @@ MRIS_EXVIVO_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisExvivoSurfacesParameters = typing.TypedDict('MrisExvivoSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_exvivo_surfaces"],
     "subject_name": str,
@@ -233,7 +235,15 @@ def mris_exvivo_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXVIVO_SURFACES_METADATA)
-    params = mris_exvivo_surfaces_params(subject_name=subject_name, hemisphere=hemisphere, omit_self_intersection=omit_self_intersection, create_curvature_area=create_curvature_area, average_curvature=average_curvature, white_only=white_only, formalin=formalin)
+    params = mris_exvivo_surfaces_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        omit_self_intersection=omit_self_intersection,
+        create_curvature_area=create_curvature_area,
+        average_curvature=average_curvature,
+        white_only=white_only,
+        formalin=formalin,
+    )
     return mris_exvivo_surfaces_execute(params, execution)
 
 

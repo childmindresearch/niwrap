@@ -11,6 +11,8 @@ V_24SWAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V24swapParameters = typing.TypedDict('V24swapParameters', {
     "__STYX_TYPE__": typing.Literal["24swap"],
     "quiet": bool,
@@ -175,7 +177,11 @@ def v_24swap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_24SWAP_METADATA)
-    params = v_24swap_params(quiet=quiet, pattern=pattern, input_files=input_files)
+    params = v_24swap_params(
+        quiet=quiet,
+        pattern=pattern,
+        input_files=input_files,
+    )
     return v_24swap_execute(params, execution)
 
 

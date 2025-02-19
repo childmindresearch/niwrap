@@ -11,6 +11,8 @@ V__CLIP_VOLUME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VClipVolumeParameters = typing.TypedDict('VClipVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["@clip_volume"],
     "input_volume": InputPathType,
@@ -354,7 +356,26 @@ def v__clip_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CLIP_VOLUME_METADATA)
-    params = v__clip_volume_params(input_volume=input_volume, below_zmm=below_zmm, above_zmm=above_zmm, left_xmm=left_xmm, right_xmm=right_xmm, anterior_ymm=anterior_ymm, posterior_ymm=posterior_ymm, box=box, mask_box=mask_box, and_logic=and_logic, or_logic=or_logic, verbosity=verbosity, crop_allzero=crop_allzero, crop_greedy=crop_greedy, crop=crop, crop_npad=crop_npad, output_prefix=output_prefix, followers=followers)
+    params = v__clip_volume_params(
+        input_volume=input_volume,
+        below_zmm=below_zmm,
+        above_zmm=above_zmm,
+        left_xmm=left_xmm,
+        right_xmm=right_xmm,
+        anterior_ymm=anterior_ymm,
+        posterior_ymm=posterior_ymm,
+        box=box,
+        mask_box=mask_box,
+        and_logic=and_logic,
+        or_logic=or_logic,
+        verbosity=verbosity,
+        crop_allzero=crop_allzero,
+        crop_greedy=crop_greedy,
+        crop=crop,
+        crop_npad=crop_npad,
+        output_prefix=output_prefix,
+        followers=followers,
+    )
     return v__clip_volume_execute(params, execution)
 
 

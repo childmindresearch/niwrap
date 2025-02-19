@@ -11,6 +11,8 @@ V_3D_DEGREE_CENTRALITY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDegreeCentralityParameters = typing.TypedDict('V3dDegreeCentralityParameters', {
     "__STYX_TYPE__": typing.Literal["3dDegreeCentrality"],
     "autoclip": bool,
@@ -246,7 +248,16 @@ def v_3d_degree_centrality(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DEGREE_CENTRALITY_METADATA)
-    params = v_3d_degree_centrality_params(autoclip=autoclip, automask=automask, in_file=in_file, mask=mask, oned_file=oned_file, polort=polort, sparsity=sparsity, thresh=thresh)
+    params = v_3d_degree_centrality_params(
+        autoclip=autoclip,
+        automask=automask,
+        in_file=in_file,
+        mask=mask,
+        oned_file=oned_file,
+        polort=polort,
+        sparsity=sparsity,
+        thresh=thresh,
+    )
     return v_3d_degree_centrality_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ APPLYXFM4_D_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Applyxfm4DParameters = typing.TypedDict('Applyxfm4DParameters', {
     "__STYX_TYPE__": typing.Literal["applyxfm4D"],
     "input_volume": InputPathType,
@@ -182,7 +184,12 @@ def applyxfm4_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APPLYXFM4_D_METADATA)
-    params = applyxfm4_d_params(input_volume=input_volume, ref_volume=ref_volume, output_volume=output_volume, transformation_matrix=transformation_matrix)
+    params = applyxfm4_d_params(
+        input_volume=input_volume,
+        ref_volume=ref_volume,
+        output_volume=output_volume,
+        transformation_matrix=transformation_matrix,
+    )
     return applyxfm4_d_execute(params, execution)
 
 

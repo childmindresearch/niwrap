@@ -11,6 +11,8 @@ V_1DSOUND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dsoundParameters = typing.TypedDict('V1dsoundParameters', {
     "__STYX_TYPE__": typing.Literal["1dsound"],
     "tsfile": InputPathType,
@@ -265,7 +267,19 @@ def v_1dsound(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DSOUND_METADATA)
-    params = v_1dsound_params(tsfile=tsfile, prefix=prefix, encoding_16_pcm=encoding_16_pcm, encoding_8_pcm=encoding_8_pcm, encoding_8ulaw=encoding_8ulaw, tper_option=tper_option, fm_option=fm_option, notes_option=notes_option, notewave_option=notewave_option, despike_option=despike_option, play_option=play_option)
+    params = v_1dsound_params(
+        tsfile=tsfile,
+        prefix=prefix,
+        encoding_16_pcm=encoding_16_pcm,
+        encoding_8_pcm=encoding_8_pcm,
+        encoding_8ulaw=encoding_8ulaw,
+        tper_option=tper_option,
+        fm_option=fm_option,
+        notes_option=notes_option,
+        notewave_option=notewave_option,
+        despike_option=despike_option,
+        play_option=play_option,
+    )
     return v_1dsound_execute(params, execution)
 
 

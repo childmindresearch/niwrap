@@ -11,6 +11,8 @@ BEDPOSTX_MGH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BedpostxMghParameters = typing.TypedDict('BedpostxMghParameters', {
     "__STYX_TYPE__": typing.Literal["bedpostx_mgh"],
     "subject_directory": str,
@@ -243,7 +245,16 @@ def bedpostx_mgh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BEDPOSTX_MGH_METADATA)
-    params = bedpostx_mgh_params(subject_directory=subject_directory, fibres=fibres, ard_weight=ard_weight, burnin=burnin, jumps=jumps, sample_every=sample_every, deconv_model=deconv_model, gradient_nonlin=gradient_nonlin)
+    params = bedpostx_mgh_params(
+        subject_directory=subject_directory,
+        fibres=fibres,
+        ard_weight=ard_weight,
+        burnin=burnin,
+        jumps=jumps,
+        sample_every=sample_every,
+        deconv_model=deconv_model,
+        gradient_nonlin=gradient_nonlin,
+    )
     return bedpostx_mgh_execute(params, execution)
 
 

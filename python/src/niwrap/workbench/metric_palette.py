@@ -11,26 +11,36 @@ METRIC_PALETTE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricPalettePosPercentParameters = typing.TypedDict('MetricPalettePosPercentParameters', {
     "__STYX_TYPE__": typing.Literal["pos_percent"],
     "pos_min__": float,
     "pos_max__": float,
 })
+
+
 MetricPaletteNegPercentParameters = typing.TypedDict('MetricPaletteNegPercentParameters', {
     "__STYX_TYPE__": typing.Literal["neg_percent"],
     "neg_min__": float,
     "neg_max__": float,
 })
+
+
 MetricPalettePosUserParameters = typing.TypedDict('MetricPalettePosUserParameters', {
     "__STYX_TYPE__": typing.Literal["pos_user"],
     "pos_min_user": float,
     "pos_max_user": float,
 })
+
+
 MetricPaletteNegUserParameters = typing.TypedDict('MetricPaletteNegUserParameters', {
     "__STYX_TYPE__": typing.Literal["neg_user"],
     "neg_min_user": float,
     "neg_max_user": float,
 })
+
+
 MetricPaletteThresholdingParameters = typing.TypedDict('MetricPaletteThresholdingParameters', {
     "__STYX_TYPE__": typing.Literal["thresholding"],
     "type": str,
@@ -38,6 +48,8 @@ MetricPaletteThresholdingParameters = typing.TypedDict('MetricPaletteThresholdin
     "min": float,
     "max": float,
 })
+
+
 MetricPaletteParameters = typing.TypedDict('MetricPaletteParameters', {
     "__STYX_TYPE__": typing.Literal["metric-palette"],
     "metric": str,
@@ -697,7 +709,22 @@ def metric_palette(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_PALETTE_METADATA)
-    params = metric_palette_params(metric=metric, mode=mode, opt_column_column=opt_column_column, pos_percent=pos_percent, neg_percent=neg_percent, pos_user=pos_user, neg_user=neg_user, opt_interpolate_interpolate=opt_interpolate_interpolate, opt_disp_pos_display=opt_disp_pos_display, opt_disp_neg_display=opt_disp_neg_display, opt_disp_zero_display=opt_disp_zero_display, opt_palette_name_name=opt_palette_name_name, thresholding=thresholding, opt_inversion_type=opt_inversion_type)
+    params = metric_palette_params(
+        metric=metric,
+        mode=mode,
+        opt_column_column=opt_column_column,
+        pos_percent=pos_percent,
+        neg_percent=neg_percent,
+        pos_user=pos_user,
+        neg_user=neg_user,
+        opt_interpolate_interpolate=opt_interpolate_interpolate,
+        opt_disp_pos_display=opt_disp_pos_display,
+        opt_disp_neg_display=opt_disp_neg_display,
+        opt_disp_zero_display=opt_disp_zero_display,
+        opt_palette_name_name=opt_palette_name_name,
+        thresholding=thresholding,
+        opt_inversion_type=opt_inversion_type,
+    )
     return metric_palette_execute(params, execution)
 
 

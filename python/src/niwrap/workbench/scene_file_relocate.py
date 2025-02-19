@@ -11,6 +11,8 @@ SCENE_FILE_RELOCATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SceneFileRelocateParameters = typing.TypedDict('SceneFileRelocateParameters', {
     "__STYX_TYPE__": typing.Literal["scene-file-relocate"],
     "input_scene": str,
@@ -173,7 +175,10 @@ def scene_file_relocate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SCENE_FILE_RELOCATE_METADATA)
-    params = scene_file_relocate_params(input_scene=input_scene, output_scene=output_scene)
+    params = scene_file_relocate_params(
+        input_scene=input_scene,
+        output_scene=output_scene,
+    )
     return scene_file_relocate_execute(params, execution)
 
 

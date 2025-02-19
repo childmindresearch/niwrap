@@ -11,6 +11,8 @@ V__SURF_TO_VOL_SPACKLE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSurfToVolSpackleParameters = typing.TypedDict('VSurfToVolSpackleParameters', {
     "__STYX_TYPE__": typing.Literal["@surf_to_vol_spackle"],
     "maskset": InputPathType,
@@ -292,7 +294,22 @@ def v__surf_to_vol_spackle(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SURF_TO_VOL_SPACKLE_METADATA)
-    params = v__surf_to_vol_spackle_params(maskset=maskset, spec=spec, surf_a=surf_a, surf_b=surf_b, surfset=surfset, prefix=prefix, normal_vector_length=normal_vector_length, search_radius=search_radius, num_steps=num_steps, keep_temp_files=keep_temp_files, max_iters=max_iters, use_mode=use_mode, datum_type=datum_type, ignore_unknown_options=ignore_unknown_options)
+    params = v__surf_to_vol_spackle_params(
+        maskset=maskset,
+        spec=spec,
+        surf_a=surf_a,
+        surf_b=surf_b,
+        surfset=surfset,
+        prefix=prefix,
+        normal_vector_length=normal_vector_length,
+        search_radius=search_radius,
+        num_steps=num_steps,
+        keep_temp_files=keep_temp_files,
+        max_iters=max_iters,
+        use_mode=use_mode,
+        datum_type=datum_type,
+        ignore_unknown_options=ignore_unknown_options,
+    )
     return v__surf_to_vol_spackle_execute(params, execution)
 
 

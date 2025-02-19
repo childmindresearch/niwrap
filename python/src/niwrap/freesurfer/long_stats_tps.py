@@ -11,6 +11,8 @@ LONG_STATS_TPS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongStatsTpsParameters = typing.TypedDict('LongStatsTpsParameters', {
     "__STYX_TYPE__": typing.Literal["long_stats_tps"],
     "qdec_table": InputPathType,
@@ -234,7 +236,16 @@ def long_stats_tps(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_STATS_TPS_METADATA)
-    params = long_stats_tps_params(qdec_table=qdec_table, stats_file=stats_file, measure=measure, subjects_dir=subjects_dir, time_point=time_point, output_file=output_file, qcolumn=qcolumn, cross_sectional=cross_sectional)
+    params = long_stats_tps_params(
+        qdec_table=qdec_table,
+        stats_file=stats_file,
+        measure=measure,
+        subjects_dir=subjects_dir,
+        time_point=time_point,
+        output_file=output_file,
+        qcolumn=qcolumn,
+        cross_sectional=cross_sectional,
+    )
     return long_stats_tps_execute(params, execution)
 
 

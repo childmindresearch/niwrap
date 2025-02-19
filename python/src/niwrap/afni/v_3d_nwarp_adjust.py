@@ -11,6 +11,8 @@ V_3D_NWARP_ADJUST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNwarpAdjustParameters = typing.TypedDict('V3dNwarpAdjustParameters', {
     "__STYX_TYPE__": typing.Literal["3dNwarpAdjust"],
     "input_warps": list[InputPathType],
@@ -199,7 +201,11 @@ def v_3d_nwarp_adjust(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NWARP_ADJUST_METADATA)
-    params = v_3d_nwarp_adjust_params(input_warps=input_warps, source_datasets=source_datasets, output_prefix=output_prefix)
+    params = v_3d_nwarp_adjust_params(
+        input_warps=input_warps,
+        source_datasets=source_datasets,
+        output_prefix=output_prefix,
+    )
     return v_3d_nwarp_adjust_execute(params, execution)
 
 

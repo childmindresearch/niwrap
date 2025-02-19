@@ -11,6 +11,8 @@ BACKEND_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BackendAverageRoiCorrelationParameters = typing.TypedDict('BackendAverageRoiCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["backend-average-roi-correlation"],
     "index_list": str,
@@ -175,7 +177,10 @@ def backend_average_roi_correlation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BACKEND_AVERAGE_ROI_CORRELATION_METADATA)
-    params = backend_average_roi_correlation_params(index_list=index_list, out_file=out_file)
+    params = backend_average_roi_correlation_params(
+        index_list=index_list,
+        out_file=out_file,
+    )
     return backend_average_roi_correlation_execute(params, execution)
 
 

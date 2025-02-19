@@ -11,6 +11,8 @@ APARC_STATS_ASEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 AparcStatsAsegParameters = typing.TypedDict('AparcStatsAsegParameters', {
     "__STYX_TYPE__": typing.Literal["aparc_stats_aseg"],
     "subject_name": str,
@@ -364,7 +366,30 @@ def aparc_stats_aseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APARC_STATS_ASEG_METADATA)
-    params = aparc_stats_aseg_params(subject_name=subject_name, gcs_name=gcs_name, subject_dir=subject_dir, gcs_dir=gcs_dir, parc_name=parc_name, output_dir=output_dir, log_file=log_file, lh_flag=lh_flag, rh_flag=rh_flag, a2009s_flag=a2009s_flag, no_aseg_flag=no_aseg_flag, no_cortparc_flag=no_cortparc_flag, no_parcstats_flag=no_parcstats_flag, no_aparc2aseg_flag=no_aparc2aseg_flag, random_seed=random_seed, th3_flag=th3_flag, no_th3_flag=no_th3_flag, longitudinal=longitudinal, expert_file=expert_file, expert_use_flag=expert_use_flag, expert_clean_flag=expert_clean_flag, expert_overwrite_flag=expert_overwrite_flag)
+    params = aparc_stats_aseg_params(
+        subject_name=subject_name,
+        gcs_name=gcs_name,
+        subject_dir=subject_dir,
+        gcs_dir=gcs_dir,
+        parc_name=parc_name,
+        output_dir=output_dir,
+        log_file=log_file,
+        lh_flag=lh_flag,
+        rh_flag=rh_flag,
+        a2009s_flag=a2009s_flag,
+        no_aseg_flag=no_aseg_flag,
+        no_cortparc_flag=no_cortparc_flag,
+        no_parcstats_flag=no_parcstats_flag,
+        no_aparc2aseg_flag=no_aparc2aseg_flag,
+        random_seed=random_seed,
+        th3_flag=th3_flag,
+        no_th3_flag=no_th3_flag,
+        longitudinal=longitudinal,
+        expert_file=expert_file,
+        expert_use_flag=expert_use_flag,
+        expert_clean_flag=expert_clean_flag,
+        expert_overwrite_flag=expert_overwrite_flag,
+    )
     return aparc_stats_aseg_execute(params, execution)
 
 

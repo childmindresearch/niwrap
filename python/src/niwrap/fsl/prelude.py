@@ -11,6 +11,8 @@ PRELUDE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PreludeParameters = typing.TypedDict('PreludeParameters', {
     "__STYX_TYPE__": typing.Literal["prelude"],
     "output_unwrap": str,
@@ -477,7 +479,38 @@ def prelude(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PRELUDE_METADATA)
-    params = prelude_params(output_unwrap=output_unwrap, output_unwrap_alias=output_unwrap_alias, complex_phase=complex_phase, complex_phase_alias=complex_phase_alias, absolute_volume=absolute_volume, absolute_volume_alias=absolute_volume_alias, phase_volume=phase_volume, phase_volume_alias=phase_volume_alias, num_phase_split=num_phase_split, label_slices=label_slices, slice_processing=slice_processing, slice_processing_alias=slice_processing_alias, force_3d=force_3d, force_3d_alias=force_3d_alias, threshold=threshold, threshold_alias=threshold_alias, mask_volume=mask_volume, mask_volume_alias=mask_volume_alias, start_image=start_image, end_image=end_image, save_mask=save_mask, save_raw_phase=save_raw_phase, save_raw_phase_alias=save_raw_phase_alias, save_labels=save_labels, save_labels_alias=save_labels_alias, remove_ramps=remove_ramps, verbose=verbose, verbose_alias=verbose_alias, help_=help_, help_alias=help_alias)
+    params = prelude_params(
+        output_unwrap=output_unwrap,
+        output_unwrap_alias=output_unwrap_alias,
+        complex_phase=complex_phase,
+        complex_phase_alias=complex_phase_alias,
+        absolute_volume=absolute_volume,
+        absolute_volume_alias=absolute_volume_alias,
+        phase_volume=phase_volume,
+        phase_volume_alias=phase_volume_alias,
+        num_phase_split=num_phase_split,
+        label_slices=label_slices,
+        slice_processing=slice_processing,
+        slice_processing_alias=slice_processing_alias,
+        force_3d=force_3d,
+        force_3d_alias=force_3d_alias,
+        threshold=threshold,
+        threshold_alias=threshold_alias,
+        mask_volume=mask_volume,
+        mask_volume_alias=mask_volume_alias,
+        start_image=start_image,
+        end_image=end_image,
+        save_mask=save_mask,
+        save_raw_phase=save_raw_phase,
+        save_raw_phase_alias=save_raw_phase_alias,
+        save_labels=save_labels,
+        save_labels_alias=save_labels_alias,
+        remove_ramps=remove_ramps,
+        verbose=verbose,
+        verbose_alias=verbose_alias,
+        help_=help_,
+        help_alias=help_alias,
+    )
     return prelude_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ TRAC_PREPROC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TracPreprocParameters = typing.TypedDict('TracPreprocParameters', {
     "__STYX_TYPE__": typing.Literal["trac-preproc"],
     "dmrirc_file": InputPathType,
@@ -264,7 +266,20 @@ def trac_preproc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRAC_PREPROC_METADATA)
-    params = trac_preproc_params(dmrirc_file=dmrirc_file, log_file=log_file, nolog=nolog, cmd_file=cmd_file, nocmd=nocmd, no_isrunning=no_isrunning, umask=umask, group_id=group_id, allow_core_dump=allow_core_dump, debug=debug, dontrun=dontrun, version=version)
+    params = trac_preproc_params(
+        dmrirc_file=dmrirc_file,
+        log_file=log_file,
+        nolog=nolog,
+        cmd_file=cmd_file,
+        nocmd=nocmd,
+        no_isrunning=no_isrunning,
+        umask=umask,
+        group_id=group_id,
+        allow_core_dump=allow_core_dump,
+        debug=debug,
+        dontrun=dontrun,
+        version=version,
+    )
     return trac_preproc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctAwTableizeRoiInfoPyParameters = typing.TypedDict('AdjunctAwTableizeRoiInfoPyParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_aw_tableize_roi_info.py"],
     "output_file": str,
@@ -202,7 +204,14 @@ def adjunct_aw_tableize_roi_info_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA)
-    params = adjunct_aw_tableize_roi_info_py_params(output_file=output_file, warped_atlas=warped_atlas, warped_mask=warped_mask, reference_atlas=reference_atlas, reference_mask=reference_mask, modesmooth_value=modesmooth_value)
+    params = adjunct_aw_tableize_roi_info_py_params(
+        output_file=output_file,
+        warped_atlas=warped_atlas,
+        warped_mask=warped_mask,
+        reference_atlas=reference_atlas,
+        reference_mask=reference_mask,
+        modesmooth_value=modesmooth_value,
+    )
     return adjunct_aw_tableize_roi_info_py_execute(params, execution)
 
 

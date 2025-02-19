@@ -11,6 +11,8 @@ FS_LIB_CHECK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsLibCheckParameters = typing.TypedDict('FsLibCheckParameters', {
     "__STYX_TYPE__": typing.Literal["fs_lib_check"],
     "use_ldconfig": bool,
@@ -192,7 +194,12 @@ def fs_lib_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_LIB_CHECK_METADATA)
-    params = fs_lib_check_params(use_ldconfig=use_ldconfig, use_rpm=use_rpm, show_help=show_help, show_version=show_version)
+    params = fs_lib_check_params(
+        use_ldconfig=use_ldconfig,
+        use_rpm=use_rpm,
+        show_help=show_help,
+        show_version=show_version,
+    )
     return fs_lib_check_execute(params, execution)
 
 

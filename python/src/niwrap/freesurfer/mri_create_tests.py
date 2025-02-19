@@ -11,6 +11,8 @@ MRI_CREATE_TESTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCreateTestsParameters = typing.TypedDict('MriCreateTestsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_create_tests"],
     "input_file": InputPathType,
@@ -366,7 +368,27 @@ def mri_create_tests(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CREATE_TESTS_METADATA)
-    params = mri_create_tests_params(input_file=input_file, out_src=out_src, out_target=out_target, input_target=input_target, lta_in=lta_in, mask=mask, noise=noise, outlier=outlier, outlier_box=outlier_box, translation_flag=translation_flag, transdist=transdist, rotation_flag=rotation_flag, maxdeg=maxdeg, intensity_flag=intensity_flag, iscale=iscale, lta_out=lta_out, lta_outs=lta_outs, lta_outt=lta_outt, iscale_out=iscale_out)
+    params = mri_create_tests_params(
+        input_file=input_file,
+        out_src=out_src,
+        out_target=out_target,
+        input_target=input_target,
+        lta_in=lta_in,
+        mask=mask,
+        noise=noise,
+        outlier=outlier,
+        outlier_box=outlier_box,
+        translation_flag=translation_flag,
+        transdist=transdist,
+        rotation_flag=rotation_flag,
+        maxdeg=maxdeg,
+        intensity_flag=intensity_flag,
+        iscale=iscale,
+        lta_out=lta_out,
+        lta_outs=lta_outs,
+        lta_outt=lta_outt,
+        iscale_out=iscale_out,
+    )
     return mri_create_tests_execute(params, execution)
 
 

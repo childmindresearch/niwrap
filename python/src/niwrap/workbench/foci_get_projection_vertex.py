@@ -11,6 +11,8 @@ FOCI_GET_PROJECTION_VERTEX_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 FociGetProjectionVertexParameters = typing.TypedDict('FociGetProjectionVertexParameters', {
     "__STYX_TYPE__": typing.Literal["foci-get-projection-vertex"],
     "foci": InputPathType,
@@ -194,7 +196,12 @@ def foci_get_projection_vertex(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FOCI_GET_PROJECTION_VERTEX_METADATA)
-    params = foci_get_projection_vertex_params(foci=foci, surface=surface, metric_out=metric_out, opt_name_name=opt_name_name)
+    params = foci_get_projection_vertex_params(
+        foci=foci,
+        surface=surface,
+        metric_out=metric_out,
+        opt_name_name=opt_name_name,
+    )
     return foci_get_projection_vertex_execute(params, execution)
 
 

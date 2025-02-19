@@ -11,6 +11,8 @@ ANTS_MOTION_CORR_STATS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsMotionCorrStatsParameters = typing.TypedDict('AntsMotionCorrStatsParameters', {
     "__STYX_TYPE__": typing.Literal["antsMotionCorrStats"],
     "mask": InputPathType,
@@ -232,7 +234,15 @@ def ants_motion_corr_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_MOTION_CORR_STATS_METADATA)
-    params = ants_motion_corr_stats_params(mask=mask, moco_params=moco_params, output=output, transform_index=transform_index, framewise=framewise, spatial_map=spatial_map, timeseries_displacement=timeseries_displacement)
+    params = ants_motion_corr_stats_params(
+        mask=mask,
+        moco_params=moco_params,
+        output=output,
+        transform_index=transform_index,
+        framewise=framewise,
+        spatial_map=spatial_map,
+        timeseries_displacement=timeseries_displacement,
+    )
     return ants_motion_corr_stats_execute(params, execution)
 
 

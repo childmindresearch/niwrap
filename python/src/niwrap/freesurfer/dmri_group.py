@@ -11,6 +11,8 @@ DMRI_GROUP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriGroupParameters = typing.TypedDict('DmriGroupParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_group"],
     "input_list": InputPathType,
@@ -218,7 +220,15 @@ def dmri_group(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_GROUP_METADATA)
-    params = dmri_group_params(input_list=input_list, reference_volume=reference_volume, output_base=output_base, no_interpolation=no_interpolation, sections_num=sections_num, debug_mode=debug_mode, check_options=check_options)
+    params = dmri_group_params(
+        input_list=input_list,
+        reference_volume=reference_volume,
+        output_base=output_base,
+        no_interpolation=no_interpolation,
+        sections_num=sections_num,
+        debug_mode=debug_mode,
+        check_options=check_options,
+    )
     return dmri_group_execute(params, execution)
 
 

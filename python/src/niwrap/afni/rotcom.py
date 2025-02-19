@@ -11,6 +11,8 @@ ROTCOM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RotcomParameters = typing.TypedDict('RotcomParameters', {
     "__STYX_TYPE__": typing.Literal["rotcom"],
     "rotate_ashift": str,
@@ -172,7 +174,10 @@ def rotcom(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ROTCOM_METADATA)
-    params = rotcom_params(rotate_ashift=rotate_ashift, dataset=dataset)
+    params = rotcom_params(
+        rotate_ashift=rotate_ashift,
+        dataset=dataset,
+    )
     return rotcom_execute(params, execution)
 
 

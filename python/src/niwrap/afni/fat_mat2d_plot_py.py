@@ -11,6 +11,8 @@ FAT_MAT2D_PLOT_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatMat2dPlotPyParameters = typing.TypedDict('FatMat2dPlotPyParameters', {
     "__STYX_TYPE__": typing.Literal["fat_mat2d_plot.py"],
     "input_file": InputPathType,
@@ -387,7 +389,33 @@ def fat_mat2d_plot_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MAT2D_PLOT_PY_METADATA)
-    params = fat_mat2d_plot_py_params(input_file=input_file, matrices=matrices, prefix=prefix, file_type=file_type, dpi=dpi, min_colorbar=min_colorbar, max_colorbar=max_colorbar, fs_xticks=fs_xticks, fs_yticks=fs_yticks, fs_title=fs_title, fs_cbar=fs_cbar, cbar_n_intervals=cbar_n_intervals, cbar=cbar, cbar_width_perc=cbar_width_perc, no_colorbar=no_colorbar, figsize_x=figsize_x, figsize_y=figsize_y, hold_image=hold_image, tight_layout=tight_layout, xticks_off=xticks_off, yticks_off=yticks_off, version=version, date=date, help_=help_, help_view=help_view)
+    params = fat_mat2d_plot_py_params(
+        input_file=input_file,
+        matrices=matrices,
+        prefix=prefix,
+        file_type=file_type,
+        dpi=dpi,
+        min_colorbar=min_colorbar,
+        max_colorbar=max_colorbar,
+        fs_xticks=fs_xticks,
+        fs_yticks=fs_yticks,
+        fs_title=fs_title,
+        fs_cbar=fs_cbar,
+        cbar_n_intervals=cbar_n_intervals,
+        cbar=cbar,
+        cbar_width_perc=cbar_width_perc,
+        no_colorbar=no_colorbar,
+        figsize_x=figsize_x,
+        figsize_y=figsize_y,
+        hold_image=hold_image,
+        tight_layout=tight_layout,
+        xticks_off=xticks_off,
+        yticks_off=yticks_off,
+        version=version,
+        date=date,
+        help_=help_,
+        help_view=help_view,
+    )
     return fat_mat2d_plot_py_execute(params, execution)
 
 

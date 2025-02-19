@@ -11,6 +11,8 @@ EXTRACT_REGION_FROM_IMAGE_BY_MASK_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ExtractRegionFromImageByMaskParameters = typing.TypedDict('ExtractRegionFromImageByMaskParameters', {
     "__STYX_TYPE__": typing.Literal["ExtractRegionFromImageByMask"],
     "image_dimension": int,
@@ -200,7 +202,14 @@ def extract_region_from_image_by_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXTRACT_REGION_FROM_IMAGE_BY_MASK_METADATA)
-    params = extract_region_from_image_by_mask_params(image_dimension=image_dimension, input_image=input_image, output_image=output_image, label_mask_image=label_mask_image, label=label, pad_radius=pad_radius)
+    params = extract_region_from_image_by_mask_params(
+        image_dimension=image_dimension,
+        input_image=input_image,
+        output_image=output_image,
+        label_mask_image=label_mask_image,
+        label=label,
+        pad_radius=pad_radius,
+    )
     return extract_region_from_image_by_mask_execute(params, execution)
 
 

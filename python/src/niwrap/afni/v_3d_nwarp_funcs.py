@@ -11,6 +11,8 @@ V_3D_NWARP_FUNCS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNwarpFuncsParameters = typing.TypedDict('V3dNwarpFuncsParameters', {
     "__STYX_TYPE__": typing.Literal["3dNwarpFuncs"],
     "input_warp": InputPathType,
@@ -210,7 +212,14 @@ def v_3d_nwarp_funcs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NWARP_FUNCS_METADATA)
-    params = v_3d_nwarp_funcs_params(input_warp=input_warp, output_prefix=output_prefix, bulk_flag=bulk_flag, shear_flag=shear_flag, vorticity_flag=vorticity_flag, all_flag=all_flag)
+    params = v_3d_nwarp_funcs_params(
+        input_warp=input_warp,
+        output_prefix=output_prefix,
+        bulk_flag=bulk_flag,
+        shear_flag=shear_flag,
+        vorticity_flag=vorticity_flag,
+        all_flag=all_flag,
+    )
     return v_3d_nwarp_funcs_execute(params, execution)
 
 

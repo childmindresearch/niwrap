@@ -11,22 +11,30 @@ CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiResampleDconnMemoryWeightedParameters = typing.TypedDict('CiftiResampleDconnMemoryWeightedParameters', {
     "__STYX_TYPE__": typing.Literal["weighted"],
     "opt_exponent_exponent": typing.NotRequired[float | None],
     "opt_legacy_cutoff": bool,
 })
+
+
 CiftiResampleDconnMemoryVolumePredilateParameters = typing.TypedDict('CiftiResampleDconnMemoryVolumePredilateParameters', {
     "__STYX_TYPE__": typing.Literal["volume_predilate"],
     "dilate_mm": float,
     "opt_nearest": bool,
     "weighted": typing.NotRequired[CiftiResampleDconnMemoryWeightedParameters | None],
 })
+
+
 CiftiResampleDconnMemoryWeighted1Parameters = typing.TypedDict('CiftiResampleDconnMemoryWeighted1Parameters', {
     "__STYX_TYPE__": typing.Literal["weighted_1"],
     "opt_exponent_exponent": typing.NotRequired[float | None],
     "opt_legacy_cutoff": bool,
 })
+
+
 CiftiResampleDconnMemorySurfacePostdilateParameters = typing.TypedDict('CiftiResampleDconnMemorySurfacePostdilateParameters', {
     "__STYX_TYPE__": typing.Literal["surface_postdilate"],
     "dilate_mm": float,
@@ -34,31 +42,43 @@ CiftiResampleDconnMemorySurfacePostdilateParameters = typing.TypedDict('CiftiRes
     "opt_linear": bool,
     "weighted": typing.NotRequired[CiftiResampleDconnMemoryWeighted1Parameters | None],
 })
+
+
 CiftiResampleDconnMemoryFlirtParameters = typing.TypedDict('CiftiResampleDconnMemoryFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["flirt"],
     "source_volume": str,
     "target_volume": str,
 })
+
+
 CiftiResampleDconnMemoryAffineParameters = typing.TypedDict('CiftiResampleDconnMemoryAffineParameters', {
     "__STYX_TYPE__": typing.Literal["affine"],
     "affine_file": str,
     "flirt": typing.NotRequired[CiftiResampleDconnMemoryFlirtParameters | None],
 })
+
+
 CiftiResampleDconnMemoryWarpfieldParameters = typing.TypedDict('CiftiResampleDconnMemoryWarpfieldParameters', {
     "__STYX_TYPE__": typing.Literal["warpfield"],
     "warpfield": str,
     "opt_fnirt_source_volume": typing.NotRequired[str | None],
 })
+
+
 CiftiResampleDconnMemoryLeftAreaSurfsParameters = typing.TypedDict('CiftiResampleDconnMemoryLeftAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["left_area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleDconnMemoryLeftAreaMetricsParameters = typing.TypedDict('CiftiResampleDconnMemoryLeftAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["left_area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleDconnMemoryLeftSpheresParameters = typing.TypedDict('CiftiResampleDconnMemoryLeftSpheresParameters', {
     "__STYX_TYPE__": typing.Literal["left_spheres"],
     "current_sphere": InputPathType,
@@ -66,16 +86,22 @@ CiftiResampleDconnMemoryLeftSpheresParameters = typing.TypedDict('CiftiResampleD
     "left_area_surfs": typing.NotRequired[CiftiResampleDconnMemoryLeftAreaSurfsParameters | None],
     "left_area_metrics": typing.NotRequired[CiftiResampleDconnMemoryLeftAreaMetricsParameters | None],
 })
+
+
 CiftiResampleDconnMemoryRightAreaSurfsParameters = typing.TypedDict('CiftiResampleDconnMemoryRightAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["right_area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleDconnMemoryRightAreaMetricsParameters = typing.TypedDict('CiftiResampleDconnMemoryRightAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["right_area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleDconnMemoryRightSpheresParameters = typing.TypedDict('CiftiResampleDconnMemoryRightSpheresParameters', {
     "__STYX_TYPE__": typing.Literal["right_spheres"],
     "current_sphere": InputPathType,
@@ -83,16 +109,22 @@ CiftiResampleDconnMemoryRightSpheresParameters = typing.TypedDict('CiftiResample
     "right_area_surfs": typing.NotRequired[CiftiResampleDconnMemoryRightAreaSurfsParameters | None],
     "right_area_metrics": typing.NotRequired[CiftiResampleDconnMemoryRightAreaMetricsParameters | None],
 })
+
+
 CiftiResampleDconnMemoryCerebellumAreaSurfsParameters = typing.TypedDict('CiftiResampleDconnMemoryCerebellumAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleDconnMemoryCerebellumAreaMetricsParameters = typing.TypedDict('CiftiResampleDconnMemoryCerebellumAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 CiftiResampleDconnMemoryCerebellumSpheresParameters = typing.TypedDict('CiftiResampleDconnMemoryCerebellumSpheresParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_spheres"],
     "current_sphere": InputPathType,
@@ -100,6 +132,8 @@ CiftiResampleDconnMemoryCerebellumSpheresParameters = typing.TypedDict('CiftiRes
     "cerebellum_area_surfs": typing.NotRequired[CiftiResampleDconnMemoryCerebellumAreaSurfsParameters | None],
     "cerebellum_area_metrics": typing.NotRequired[CiftiResampleDconnMemoryCerebellumAreaMetricsParameters | None],
 })
+
+
 CiftiResampleDconnMemoryParameters = typing.TypedDict('CiftiResampleDconnMemoryParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-resample-dconn-memory"],
     "cifti_in": InputPathType,
@@ -1180,7 +1214,22 @@ def cifti_resample_dconn_memory(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_RESAMPLE_DCONN_MEMORY_METADATA)
-    params = cifti_resample_dconn_memory_params(cifti_in=cifti_in, cifti_template=cifti_template, template_direction=template_direction, surface_method=surface_method, volume_method=volume_method, cifti_out=cifti_out, opt_surface_largest=opt_surface_largest, volume_predilate=volume_predilate, surface_postdilate=surface_postdilate, affine=affine, warpfield=warpfield, left_spheres=left_spheres, right_spheres=right_spheres, cerebellum_spheres=cerebellum_spheres)
+    params = cifti_resample_dconn_memory_params(
+        cifti_in=cifti_in,
+        cifti_template=cifti_template,
+        template_direction=template_direction,
+        surface_method=surface_method,
+        volume_method=volume_method,
+        cifti_out=cifti_out,
+        opt_surface_largest=opt_surface_largest,
+        volume_predilate=volume_predilate,
+        surface_postdilate=surface_postdilate,
+        affine=affine,
+        warpfield=warpfield,
+        left_spheres=left_spheres,
+        right_spheres=right_spheres,
+        cerebellum_spheres=cerebellum_spheres,
+    )
     return cifti_resample_dconn_memory_execute(params, execution)
 
 

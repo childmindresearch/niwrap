@@ -11,6 +11,8 @@ MRI_SYNTHESIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSynthesizeParameters = typing.TypedDict('MriSynthesizeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_synthesize"],
     "tr": float,
@@ -206,7 +208,15 @@ def mri_synthesize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHESIZE_METADATA)
-    params = mri_synthesize_params(tr=tr, alpha=alpha, te=te, t1_volume=t1_volume, pd_volume=pd_volume, output_volume=output_volume, fixed_weight=fixed_weight)
+    params = mri_synthesize_params(
+        tr=tr,
+        alpha=alpha,
+        te=te,
+        t1_volume=t1_volume,
+        pd_volume=pd_volume,
+        output_volume=output_volume,
+        fixed_weight=fixed_weight,
+    )
     return mri_synthesize_execute(params, execution)
 
 

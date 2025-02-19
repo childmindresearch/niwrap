@@ -11,6 +11,8 @@ V_3D_TNORM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTnormParameters = typing.TypedDict('V3dTnormParameters', {
     "__STYX_TYPE__": typing.Literal["3dTnorm"],
     "prefix": typing.NotRequired[str | None],
@@ -223,7 +225,16 @@ def v_3d_tnorm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TNORM_METADATA)
-    params = v_3d_tnorm_params(prefix=prefix, norm2=norm2, norm_r=norm_r, norm1=norm1, normx=normx, polort=polort, l1fit=l1fit, input_dataset=input_dataset)
+    params = v_3d_tnorm_params(
+        prefix=prefix,
+        norm2=norm2,
+        norm_r=norm_r,
+        norm1=norm1,
+        normx=normx,
+        polort=polort,
+        l1fit=l1fit,
+        input_dataset=input_dataset,
+    )
     return v_3d_tnorm_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__SUMA_MAKE_SPEC_SF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSumaMakeSpecSfParameters = typing.TypedDict('VSumaMakeSpecSfParameters', {
     "__STYX_TYPE__": typing.Literal["@SUMA_Make_Spec_SF"],
     "debug_level": typing.NotRequired[int | None],
@@ -188,7 +190,11 @@ def v__suma_make_spec_sf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_MAKE_SPEC_SF_METADATA)
-    params = v__suma_make_spec_sf_params(debug_level=debug_level, surface_path=surface_path, subject_id=subject_id)
+    params = v__suma_make_spec_sf_params(
+        debug_level=debug_level,
+        surface_path=surface_path,
+        subject_id=subject_id,
+    )
     return v__suma_make_spec_sf_execute(params, execution)
 
 

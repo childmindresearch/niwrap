@@ -11,6 +11,8 @@ IMRM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ImrmParameters = typing.TypedDict('ImrmParameters', {
     "__STYX_TYPE__": typing.Literal["imrm"],
     "images_to_remove": list[str],
@@ -157,7 +159,9 @@ def imrm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMRM_METADATA)
-    params = imrm_params(images_to_remove=images_to_remove)
+    params = imrm_params(
+        images_to_remove=images_to_remove,
+    )
     return imrm_execute(params, execution)
 
 

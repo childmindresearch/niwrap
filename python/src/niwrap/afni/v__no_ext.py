@@ -11,6 +11,8 @@ V__NO_EXT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VNoExtParameters = typing.TypedDict('VNoExtParameters', {
     "__STYX_TYPE__": typing.Literal["@NoExt"],
     "extensions": typing.NotRequired[list[str] | None],
@@ -162,7 +164,9 @@ def v__no_ext(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__NO_EXT_METADATA)
-    params = v__no_ext_params(extensions=extensions)
+    params = v__no_ext_params(
+        extensions=extensions,
+    )
     return v__no_ext_execute(params, execution)
 
 

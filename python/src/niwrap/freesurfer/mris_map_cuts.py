@@ -11,6 +11,8 @@ MRIS_MAP_CUTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMapCutsParameters = typing.TypedDict('MrisMapCutsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_map_cuts"],
     "input_patch": InputPathType,
@@ -163,7 +165,10 @@ def mris_map_cuts(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MAP_CUTS_METADATA)
-    params = mris_map_cuts_params(input_patch=input_patch, output_patch=output_patch)
+    params = mris_map_cuts_params(
+        input_patch=input_patch,
+        output_patch=output_patch,
+    )
     return mris_map_cuts_execute(params, execution)
 
 

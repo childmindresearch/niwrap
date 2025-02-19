@@ -11,6 +11,8 @@ QDELAUNAY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 QdelaunayParameters = typing.TypedDict('QdelaunayParameters', {
     "__STYX_TYPE__": typing.Literal["qdelaunay"],
     "input_file": InputPathType,
@@ -485,7 +487,41 @@ def qdelaunay(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QDELAUNAY_METADATA)
-    params = qdelaunay_params(input_file=input_file, furthest_site=furthest_site, triangulated_output=triangulated_output, joggled_input=joggled_input, joggle_range=joggle_range, search_simplex=search_simplex, point_infinity=point_infinity, delaunay_visible=delaunay_visible, delaunay_regions=delaunay_regions, trace_level=trace_level, check=check, statistics_=statistics_, verify=verify, output_stdout=output_stdout, facets_summary=facets_summary, input_file_option=input_file_option, output_file_option=output_file_option, trace_point=trace_point, trace_merge=trace_merge, trace_merge_width=trace_merge_width, stop_point=stop_point, stop_cone_point=stop_cone_point, centrum_radius=centrum_radius, max_angle_cosine=max_angle_cosine, perturb_factor=perturb_factor, min_facet_width=min_facet_width, facet_dump=facet_dump, geomview=geomview, vertices_incident=vertices_incident, mathematica=mathematica, off_format=off_format, point_coordinates=point_coordinates, summary=summary)
+    params = qdelaunay_params(
+        input_file=input_file,
+        furthest_site=furthest_site,
+        triangulated_output=triangulated_output,
+        joggled_input=joggled_input,
+        joggle_range=joggle_range,
+        search_simplex=search_simplex,
+        point_infinity=point_infinity,
+        delaunay_visible=delaunay_visible,
+        delaunay_regions=delaunay_regions,
+        trace_level=trace_level,
+        check=check,
+        statistics_=statistics_,
+        verify=verify,
+        output_stdout=output_stdout,
+        facets_summary=facets_summary,
+        input_file_option=input_file_option,
+        output_file_option=output_file_option,
+        trace_point=trace_point,
+        trace_merge=trace_merge,
+        trace_merge_width=trace_merge_width,
+        stop_point=stop_point,
+        stop_cone_point=stop_cone_point,
+        centrum_radius=centrum_radius,
+        max_angle_cosine=max_angle_cosine,
+        perturb_factor=perturb_factor,
+        min_facet_width=min_facet_width,
+        facet_dump=facet_dump,
+        geomview=geomview,
+        vertices_incident=vertices_incident,
+        mathematica=mathematica,
+        off_format=off_format,
+        point_coordinates=point_coordinates,
+        summary=summary,
+    )
     return qdelaunay_execute(params, execution)
 
 

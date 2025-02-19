@@ -11,6 +11,8 @@ FEAT2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Feat2surfParameters = typing.TypedDict('Feat2surfParameters', {
     "__STYX_TYPE__": typing.Literal["feat2surf"],
     "feat_dirs": list[str],
@@ -279,7 +281,18 @@ def feat2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEAT2SURF_METADATA)
-    params = feat2surf_params(feat_dirs=feat_dirs, feat_dirfile=feat_dirfile, proj_frac=proj_frac, hemi=hemi, target=target, surf=surf, cope_only=cope_only, debug_flag=debug_flag, nolog_flag=nolog_flag, out_dir=out_dir)
+    params = feat2surf_params(
+        feat_dirs=feat_dirs,
+        feat_dirfile=feat_dirfile,
+        proj_frac=proj_frac,
+        hemi=hemi,
+        target=target,
+        surf=surf,
+        cope_only=cope_only,
+        debug_flag=debug_flag,
+        nolog_flag=nolog_flag,
+        out_dir=out_dir,
+    )
     return feat2surf_execute(params, execution)
 
 

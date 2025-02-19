@@ -11,22 +11,30 @@ CONVERT_WARPFIELD_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 ConvertWarpfieldFromWorldParameters = typing.TypedDict('ConvertWarpfieldFromWorldParameters', {
     "__STYX_TYPE__": typing.Literal["from_world"],
     "input": str,
     "opt_absolute": bool,
 })
+
+
 ConvertWarpfieldFromFnirtParameters = typing.TypedDict('ConvertWarpfieldFromFnirtParameters', {
     "__STYX_TYPE__": typing.Literal["from_fnirt"],
     "input": str,
     "source_volume": str,
     "opt_absolute": bool,
 })
+
+
 ConvertWarpfieldToFnirtParameters = typing.TypedDict('ConvertWarpfieldToFnirtParameters', {
     "__STYX_TYPE__": typing.Literal["to_fnirt"],
     "output": str,
     "source_volume": str,
 })
+
+
 ConvertWarpfieldParameters = typing.TypedDict('ConvertWarpfieldParameters', {
     "__STYX_TYPE__": typing.Literal["convert-warpfield"],
     "from_world": typing.NotRequired[ConvertWarpfieldFromWorldParameters | None],
@@ -393,7 +401,14 @@ def convert_warpfield(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_WARPFIELD_METADATA)
-    params = convert_warpfield_params(from_world=from_world, opt_from_itk_input=opt_from_itk_input, from_fnirt=from_fnirt, opt_to_world_output=opt_to_world_output, opt_to_itk_output=opt_to_itk_output, to_fnirt=to_fnirt)
+    params = convert_warpfield_params(
+        from_world=from_world,
+        opt_from_itk_input=opt_from_itk_input,
+        from_fnirt=from_fnirt,
+        opt_to_world_output=opt_to_world_output,
+        opt_to_itk_output=opt_to_itk_output,
+        to_fnirt=to_fnirt,
+    )
     return convert_warpfield_execute(params, execution)
 
 

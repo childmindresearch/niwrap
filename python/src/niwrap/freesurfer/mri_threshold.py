@@ -11,6 +11,8 @@ MRI_THRESHOLD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriThresholdParameters = typing.TypedDict('MriThresholdParameters', {
     "__STYX_TYPE__": typing.Literal["mri_threshold"],
     "input_vol": InputPathType,
@@ -207,7 +209,14 @@ def mri_threshold(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_THRESHOLD_METADATA)
-    params = mri_threshold_params(input_vol=input_vol, threshold=threshold, output_vol=output_vol, binarize=binarize, upper_threshold=upper_threshold, frame_number=frame_number)
+    params = mri_threshold_params(
+        input_vol=input_vol,
+        threshold=threshold,
+        output_vol=output_vol,
+        binarize=binarize,
+        upper_threshold=upper_threshold,
+        frame_number=frame_number,
+    )
     return mri_threshold_execute(params, execution)
 
 

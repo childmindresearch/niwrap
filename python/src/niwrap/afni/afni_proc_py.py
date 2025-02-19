@@ -11,6 +11,8 @@ AFNI_PROC_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniProcPyParameters = typing.TypedDict('AfniProcPyParameters', {
     "__STYX_TYPE__": typing.Literal["afni_proc.py"],
     "dsets": list[InputPathType],
@@ -256,7 +258,19 @@ def afni_proc_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_PROC_PY_METADATA)
-    params = afni_proc_py_params(dsets=dsets, subj_id=subj_id, out_dir=out_dir, blocks=blocks, anat=anat, echo_times=echo_times, stim_times=stim_times, stim_files=stim_files, copy_files=copy_files, copy_anat=copy_anat, regress_params=regress_params)
+    params = afni_proc_py_params(
+        dsets=dsets,
+        subj_id=subj_id,
+        out_dir=out_dir,
+        blocks=blocks,
+        anat=anat,
+        echo_times=echo_times,
+        stim_times=stim_times,
+        stim_files=stim_files,
+        copy_files=copy_files,
+        copy_anat=copy_anat,
+        regress_params=regress_params,
+    )
     return afni_proc_py_execute(params, execution)
 
 

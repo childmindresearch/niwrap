@@ -11,6 +11,8 @@ ADJUNCT_SUMA_FS_ROI_INFO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctSumaFsRoiInfoParameters = typing.TypedDict('AdjunctSumaFsRoiInfoParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_suma_fs_roi_info"],
     "subject_id": str,
@@ -207,7 +209,13 @@ def adjunct_suma_fs_roi_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_SUMA_FS_ROI_INFO_METADATA)
-    params = adjunct_suma_fs_roi_info_params(subject_id=subject_id, suma_directory=suma_directory, help_=help_, hview=hview, version=version)
+    params = adjunct_suma_fs_roi_info_params(
+        subject_id=subject_id,
+        suma_directory=suma_directory,
+        help_=help_,
+        hview=hview,
+        version=version,
+    )
     return adjunct_suma_fs_roi_info_execute(params, execution)
 
 

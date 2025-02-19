@@ -11,6 +11,8 @@ MRIS_THICKNESS_DIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisThicknessDiffParameters = typing.TypedDict('MrisThicknessDiffParameters', {
     "__STYX_TYPE__": typing.Literal["mris_thickness_diff"],
     "src_type": typing.NotRequired[str | None],
@@ -301,7 +303,21 @@ def mris_thickness_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_THICKNESS_DIFF_METADATA)
-    params = mris_thickness_diff_params(src_type=src_type, trg_type=trg_type, out_file=out_file, out_resampled=out_resampled, nsmooth=nsmooth, register=register, xform=xform, invert=invert, src_volume=src_volume, dst_volume=dst_volume, abs_=abs_, log_file=log_file, subject_name=subject_name)
+    params = mris_thickness_diff_params(
+        src_type=src_type,
+        trg_type=trg_type,
+        out_file=out_file,
+        out_resampled=out_resampled,
+        nsmooth=nsmooth,
+        register=register,
+        xform=xform,
+        invert=invert,
+        src_volume=src_volume,
+        dst_volume=dst_volume,
+        abs_=abs_,
+        log_file=log_file,
+        subject_name=subject_name,
+    )
     return mris_thickness_diff_execute(params, execution)
 
 

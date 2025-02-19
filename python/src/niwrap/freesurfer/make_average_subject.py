@@ -11,6 +11,8 @@ MAKE_AVERAGE_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeAverageSubjectParameters = typing.TypedDict('MakeAverageSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["make_average_subject"],
     "subjects": list[str],
@@ -364,7 +366,30 @@ def make_average_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_AVERAGE_SUBJECT_METADATA)
-    params = make_average_subject_params(subjects=subjects, fsgd_file=fsgd_file, subject_list_file=subject_list_file, average_subject_name=average_subject_name, sd_out=sd_out, no_link=no_link, sdir=sdir, ico_order=ico_order, transform_file=transform_file, surface_registration=surface_registration, no_surfaces=no_surfaces, no_volumes=no_volumes, force=force, keep_all_orig=keep_all_orig, no_symlink=no_symlink, no_ribbon=no_ribbon, no_surf2surf=no_surf2surf, rca_threads=rca_threads, help_=help_, version=version, echo=echo, debug=debug)
+    params = make_average_subject_params(
+        subjects=subjects,
+        fsgd_file=fsgd_file,
+        subject_list_file=subject_list_file,
+        average_subject_name=average_subject_name,
+        sd_out=sd_out,
+        no_link=no_link,
+        sdir=sdir,
+        ico_order=ico_order,
+        transform_file=transform_file,
+        surface_registration=surface_registration,
+        no_surfaces=no_surfaces,
+        no_volumes=no_volumes,
+        force=force,
+        keep_all_orig=keep_all_orig,
+        no_symlink=no_symlink,
+        no_ribbon=no_ribbon,
+        no_surf2surf=no_surf2surf,
+        rca_threads=rca_threads,
+        help_=help_,
+        version=version,
+        echo=echo,
+        debug=debug,
+    )
     return make_average_subject_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ RENORMALIZE_T1_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RenormalizeT1SubjectParameters = typing.TypedDict('RenormalizeT1SubjectParameters', {
     "__STYX_TYPE__": typing.Literal["renormalize_T1_subject"],
     "subject_dir": str,
@@ -157,7 +159,9 @@ def renormalize_t1_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RENORMALIZE_T1_SUBJECT_METADATA)
-    params = renormalize_t1_subject_params(subject_dir=subject_dir)
+    params = renormalize_t1_subject_params(
+        subject_dir=subject_dir,
+    )
     return renormalize_t1_subject_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_SPHERE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSphereParameters = typing.TypedDict('MrisSphereParameters', {
     "__STYX_TYPE__": typing.Literal["mris_sphere"],
     "surface_file": InputPathType,
@@ -173,7 +175,11 @@ def mris_sphere(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SPHERE_METADATA)
-    params = mris_sphere_params(surface_file=surface_file, patch_file=patch_file, output_patch=output_patch)
+    params = mris_sphere_params(
+        surface_file=surface_file,
+        patch_file=patch_file,
+        output_patch=output_patch,
+    )
     return mris_sphere_execute(params, execution)
 
 

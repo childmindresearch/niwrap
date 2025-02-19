@@ -11,6 +11,8 @@ FSL_TSPLOT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslTsplotParameters = typing.TypedDict('FslTsplotParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_tsplot"],
     "input_files": str,
@@ -338,7 +340,24 @@ def fsl_tsplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_TSPLOT_METADATA)
-    params = fsl_tsplot_params(input_files=input_files, output_file=output_file, title=title, legend_file=legend_file, labels=labels, ymin=ymin, ymax=ymax, xlabel=xlabel, ylabel=ylabel, height=height, width=width, unit=unit, precision=precision, sci_flag=sci_flag, start_col=start_col, end_col=end_col)
+    params = fsl_tsplot_params(
+        input_files=input_files,
+        output_file=output_file,
+        title=title,
+        legend_file=legend_file,
+        labels=labels,
+        ymin=ymin,
+        ymax=ymax,
+        xlabel=xlabel,
+        ylabel=ylabel,
+        height=height,
+        width=width,
+        unit=unit,
+        precision=precision,
+        sci_flag=sci_flag,
+        start_col=start_col,
+        end_col=end_col,
+    )
     return fsl_tsplot_execute(params, execution)
 
 

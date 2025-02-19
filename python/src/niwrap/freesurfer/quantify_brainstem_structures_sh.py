@@ -11,6 +11,8 @@ QUANTIFY_BRAINSTEM_STRUCTURES_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 QuantifyBrainstemStructuresShParameters = typing.TypedDict('QuantifyBrainstemStructuresShParameters', {
     "__STYX_TYPE__": typing.Literal["quantifyBrainstemStructures.sh"],
     "output_file": str,
@@ -174,7 +176,10 @@ def quantify_brainstem_structures_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUANTIFY_BRAINSTEM_STRUCTURES_SH_METADATA)
-    params = quantify_brainstem_structures_sh_params(output_file=output_file, subjects_directory=subjects_directory)
+    params = quantify_brainstem_structures_sh_params(
+        output_file=output_file,
+        subjects_directory=subjects_directory,
+    )
     return quantify_brainstem_structures_sh_execute(params, execution)
 
 

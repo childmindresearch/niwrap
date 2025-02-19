@@ -11,6 +11,8 @@ POLYORDER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 PolyorderParameters = typing.TypedDict('PolyorderParameters', {
     "__STYX_TYPE__": typing.Literal["polyorder"],
     "ntp": float,
@@ -180,7 +182,11 @@ def polyorder(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POLYORDER_METADATA)
-    params = polyorder_params(ntp=ntp, tr=tr, cutoff=cutoff)
+    params = polyorder_params(
+        ntp=ntp,
+        tr=tr,
+        cutoff=cutoff,
+    )
     return polyorder_execute(params, execution)
 
 

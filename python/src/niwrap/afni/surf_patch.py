@@ -11,6 +11,8 @@ SURF_PATCH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfPatchParameters = typing.TypedDict('SurfPatchParameters', {
     "__STYX_TYPE__": typing.Literal["SurfPatch"],
     "spec_file": InputPathType,
@@ -375,7 +377,29 @@ def surf_patch(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_PATCH_METADATA)
-    params = surf_patch_params(spec_file=spec_file, surf_a=surf_a, surf_b=surf_b, nodefile=nodefile, inode=inode, ilabel=ilabel, prefix=prefix, hits=hits, masklabel=masklabel, vol=vol, vol_only=vol_only, patch2surf=patch2surf, coord_gain=coord_gain, check_bowtie=check_bowtie, fix_bowtie=fix_bowtie, ok_bowtie=ok_bowtie, adjust_contour=adjust_contour, do_not_adjust_contour=do_not_adjust_contour, stitched_surface=stitched_surface, flip_orientation=flip_orientation, verbosity=verbosity)
+    params = surf_patch_params(
+        spec_file=spec_file,
+        surf_a=surf_a,
+        surf_b=surf_b,
+        nodefile=nodefile,
+        inode=inode,
+        ilabel=ilabel,
+        prefix=prefix,
+        hits=hits,
+        masklabel=masklabel,
+        vol=vol,
+        vol_only=vol_only,
+        patch2surf=patch2surf,
+        coord_gain=coord_gain,
+        check_bowtie=check_bowtie,
+        fix_bowtie=fix_bowtie,
+        ok_bowtie=ok_bowtie,
+        adjust_contour=adjust_contour,
+        do_not_adjust_contour=do_not_adjust_contour,
+        stitched_surface=stitched_surface,
+        flip_orientation=flip_orientation,
+        verbosity=verbosity,
+    )
     return surf_patch_execute(params, execution)
 
 

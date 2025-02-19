@@ -11,6 +11,8 @@ AFNI_OPEN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniOpenParameters = typing.TypedDict('AfniOpenParameters', {
     "__STYX_TYPE__": typing.Literal["afni_open"],
     "files": list[InputPathType],
@@ -273,7 +275,23 @@ def afni_open(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_OPEN_METADATA)
-    params = afni_open_params(files=files, method=method, editor=editor, downloader=downloader, examinexmat=examinexmat, browser=browser, readme=readme, afniweb=afniweb, global_help=global_help, gopts_help=gopts_help, help_=help_, mini_help=mini_help, extreme_help=extreme_help, h_view=h_view, h_web=h_web)
+    params = afni_open_params(
+        files=files,
+        method=method,
+        editor=editor,
+        downloader=downloader,
+        examinexmat=examinexmat,
+        browser=browser,
+        readme=readme,
+        afniweb=afniweb,
+        global_help=global_help,
+        gopts_help=gopts_help,
+        help_=help_,
+        mini_help=mini_help,
+        extreme_help=extreme_help,
+        h_view=h_view,
+        h_web=h_web,
+    )
     return afni_open_execute(params, execution)
 
 

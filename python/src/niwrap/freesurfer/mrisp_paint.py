@@ -11,6 +11,8 @@ MRISP_PAINT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrispPaintParameters = typing.TypedDict('MrispPaintParameters', {
     "__STYX_TYPE__": typing.Literal["mrisp_paint"],
     "template_file": InputPathType,
@@ -316,7 +318,24 @@ def mrisp_paint(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRISP_PAINT_METADATA)
-    params = mrisp_paint_params(template_file=template_file, input_surface=input_surface, output_name=output_name, subjects_dir=subjects_dir, vertex_coords=vertex_coords, average_flag=average_flag, normalize_flag=normalize_flag, frame_number=frame_number, square_root_flag=square_root_flag, variance_params=variance_params, usage_flag=usage_flag, birn_info_flag=birn_info_flag, help_flag=help_flag, diag_vertex=diag_vertex, version_flag=version_flag, diag_write_flag=diag_write_flag)
+    params = mrisp_paint_params(
+        template_file=template_file,
+        input_surface=input_surface,
+        output_name=output_name,
+        subjects_dir=subjects_dir,
+        vertex_coords=vertex_coords,
+        average_flag=average_flag,
+        normalize_flag=normalize_flag,
+        frame_number=frame_number,
+        square_root_flag=square_root_flag,
+        variance_params=variance_params,
+        usage_flag=usage_flag,
+        birn_info_flag=birn_info_flag,
+        help_flag=help_flag,
+        diag_vertex=diag_vertex,
+        version_flag=version_flag,
+        diag_write_flag=diag_write_flag,
+    )
     return mrisp_paint_execute(params, execution)
 
 

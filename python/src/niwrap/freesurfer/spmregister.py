@@ -11,6 +11,8 @@ SPMREGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SpmregisterParameters = typing.TypedDict('SpmregisterParameters', {
     "__STYX_TYPE__": typing.Literal["spmregister"],
     "subjid": str,
@@ -295,7 +297,21 @@ def spmregister(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPMREGISTER_METADATA)
-    params = spmregister_params(subjid=subjid, mov=mov, reg=reg, frame=frame, mid_frame=mid_frame, template_out=template_out, fsvol=fsvol, force_ras=force_ras, outvol=outvol, tmpdir=tmpdir, nocleanup=nocleanup, version=version, help_=help_)
+    params = spmregister_params(
+        subjid=subjid,
+        mov=mov,
+        reg=reg,
+        frame=frame,
+        mid_frame=mid_frame,
+        template_out=template_out,
+        fsvol=fsvol,
+        force_ras=force_ras,
+        outvol=outvol,
+        tmpdir=tmpdir,
+        nocleanup=nocleanup,
+        version=version,
+        help_=help_,
+    )
     return spmregister_execute(params, execution)
 
 

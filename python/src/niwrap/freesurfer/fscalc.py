@@ -11,6 +11,8 @@ FSCALC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FscalcParameters = typing.TypedDict('FscalcParameters', {
     "__STYX_TYPE__": typing.Literal["fscalc"],
     "input1": str,
@@ -241,7 +243,17 @@ def fscalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSCALC_METADATA)
-    params = fscalc_params(input1=input1, operation=operation, input2=input2, output_file=output_file, output_data_type=output_data_type, debug=debug, tmpdir=tmpdir, nocleanup=nocleanup, log_file=log_file)
+    params = fscalc_params(
+        input1=input1,
+        operation=operation,
+        input2=input2,
+        output_file=output_file,
+        output_data_type=output_data_type,
+        debug=debug,
+        tmpdir=tmpdir,
+        nocleanup=nocleanup,
+        log_file=log_file,
+    )
     return fscalc_execute(params, execution)
 
 

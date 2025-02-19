@@ -11,6 +11,8 @@ V_3D_TFITTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTfitterParameters = typing.TypedDict('V3dTfitterParameters', {
     "__STYX_TYPE__": typing.Literal["3dTfitter"],
     "RHS": str,
@@ -396,7 +398,26 @@ def v_3d_tfitter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TFITTER_METADATA)
-    params = v_3d_tfitter_params(rhs=rhs, lhs=lhs, polort=polort, vthr=vthr, faltung=faltung, lsqfit=lsqfit, l1fit=l1fit, l2lasso=l2lasso, lasso_centro_block=lasso_centro_block, l2sqrtlasso=l2sqrtlasso, consign=consign, cons_fal=cons_fal, prefix=prefix, label=label, fitts=fitts, errsum=errsum, mask=mask, quiet=quiet)
+    params = v_3d_tfitter_params(
+        rhs=rhs,
+        lhs=lhs,
+        polort=polort,
+        vthr=vthr,
+        faltung=faltung,
+        lsqfit=lsqfit,
+        l1fit=l1fit,
+        l2lasso=l2lasso,
+        lasso_centro_block=lasso_centro_block,
+        l2sqrtlasso=l2sqrtlasso,
+        consign=consign,
+        cons_fal=cons_fal,
+        prefix=prefix,
+        label=label,
+        fitts=fitts,
+        errsum=errsum,
+        mask=mask,
+        quiet=quiet,
+    )
     return v_3d_tfitter_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_MS_REFINE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMsRefineParameters = typing.TypedDict('MrisMsRefineParameters', {
     "__STYX_TYPE__": typing.Literal["mris_ms_refine"],
     "subject_name": str,
@@ -244,7 +246,17 @@ def mris_ms_refine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MS_REFINE_METADATA)
-    params = mris_ms_refine_params(subject_name=subject_name, hemisphere=hemisphere, xform=xform, flash_files=flash_files, residuals=residuals, omit_self_intersection=omit_self_intersection, create_curvature_files=create_curvature_files, average_curvature=average_curvature, white_only=white_only)
+    params = mris_ms_refine_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        xform=xform,
+        flash_files=flash_files,
+        residuals=residuals,
+        omit_self_intersection=omit_self_intersection,
+        create_curvature_files=create_curvature_files,
+        average_curvature=average_curvature,
+        white_only=white_only,
+    )
     return mris_ms_refine_execute(params, execution)
 
 

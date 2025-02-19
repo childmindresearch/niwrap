@@ -11,6 +11,8 @@ BBMASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BbmaskParameters = typing.TypedDict('BbmaskParameters', {
     "__STYX_TYPE__": typing.Literal["bbmask"],
     "mask": list[InputPathType],
@@ -238,7 +240,14 @@ def bbmask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BBMASK_METADATA)
-    params = bbmask_params(mask=mask, src_volumes=src_volumes, npad=npad, registration=registration, regheader=regheader, sub2src=sub2src)
+    params = bbmask_params(
+        mask=mask,
+        src_volumes=src_volumes,
+        npad=npad,
+        registration=registration,
+        regheader=regheader,
+        sub2src=sub2src,
+    )
     return bbmask_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ FIXELCORRESPONDENCE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 FixelcorrespondenceConfigParameters = typing.TypedDict('FixelcorrespondenceConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 FixelcorrespondenceParameters = typing.TypedDict('FixelcorrespondenceParameters', {
     "__STYX_TYPE__": typing.Literal["fixelcorrespondence"],
     "angle": typing.NotRequired[float | None],
@@ -338,7 +342,21 @@ def fixelcorrespondence(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELCORRESPONDENCE_METADATA)
-    params = fixelcorrespondence_params(angle=angle, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, subject_data=subject_data, template_directory=template_directory, output_directory=output_directory, output_data=output_data)
+    params = fixelcorrespondence_params(
+        angle=angle,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        subject_data=subject_data,
+        template_directory=template_directory,
+        output_directory=output_directory,
+        output_data=output_data,
+    )
     return fixelcorrespondence_execute(params, execution)
 
 

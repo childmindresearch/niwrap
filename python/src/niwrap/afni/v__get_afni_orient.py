@@ -11,6 +11,8 @@ V__GET_AFNI_ORIENT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VGetAfniOrientParameters = typing.TypedDict('VGetAfniOrientParameters', {
     "__STYX_TYPE__": typing.Literal["@GetAfniOrient"],
     "exploratory": bool,
@@ -167,7 +169,10 @@ def v__get_afni_orient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_ORIENT_METADATA)
-    params = v__get_afni_orient_params(exploratory=exploratory, infile=infile)
+    params = v__get_afni_orient_params(
+        exploratory=exploratory,
+        infile=infile,
+    )
     return v__get_afni_orient_execute(params, execution)
 
 

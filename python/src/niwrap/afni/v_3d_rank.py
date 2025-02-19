@@ -11,6 +11,8 @@ V_3D_RANK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRankParameters = typing.TypedDict('V3dRankParameters', {
     "__STYX_TYPE__": typing.Literal["3dRank"],
     "input_datasets": list[InputPathType],
@@ -202,7 +204,12 @@ def v_3d_rank(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_RANK_METADATA)
-    params = v_3d_rank_params(input_datasets=input_datasets, output_prefix=output_prefix, version_info=version_info, help_info=help_info)
+    params = v_3d_rank_params(
+        input_datasets=input_datasets,
+        output_prefix=output_prefix,
+        version_info=version_info,
+        help_info=help_info,
+    )
     return v_3d_rank_execute(params, execution)
 
 

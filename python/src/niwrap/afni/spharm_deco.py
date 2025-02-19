@@ -11,6 +11,8 @@ SPHARM_DECO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SpharmDecoParameters = typing.TypedDict('SpharmDecoParameters', {
     "__STYX_TYPE__": typing.Literal["SpharmDeco"],
     "i_type_s": InputPathType,
@@ -258,7 +260,18 @@ def spharm_deco(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPHARM_DECO_METADATA)
-    params = spharm_deco_params(i_type_s=i_type_s, unit_sph_label=unit_sph_label, order_l=order_l, i_type_sd=i_type_sd, data_d=data_d, bases_prefix=bases_prefix, prefix=prefix, o_type_sdr=o_type_sdr, debug=debug, sigma=sigma)
+    params = spharm_deco_params(
+        i_type_s=i_type_s,
+        unit_sph_label=unit_sph_label,
+        order_l=order_l,
+        i_type_sd=i_type_sd,
+        data_d=data_d,
+        bases_prefix=bases_prefix,
+        prefix=prefix,
+        o_type_sdr=o_type_sdr,
+        debug=debug,
+        sigma=sigma,
+    )
     return spharm_deco_execute(params, execution)
 
 

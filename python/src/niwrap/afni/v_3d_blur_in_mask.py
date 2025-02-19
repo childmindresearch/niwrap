@@ -11,6 +11,8 @@ V_3D_BLUR_IN_MASK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dBlurInMaskParameters = typing.TypedDict('V3dBlurInMaskParameters', {
     "__STYX_TYPE__": typing.Literal["3dBlurInMask"],
     "input_file": InputPathType,
@@ -264,7 +266,19 @@ def v_3d_blur_in_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_BLUR_IN_MASK_METADATA)
-    params = v_3d_blur_in_mask_params(input_file=input_file, output_prefix=output_prefix, fwhm=fwhm, fwhm_dataset=fwhm_dataset, mask=mask, multi_mask=multi_mask, automask=automask, preserve=preserve, quiet=quiet, float_=float_, fwhm_xyz=fwhm_xyz)
+    params = v_3d_blur_in_mask_params(
+        input_file=input_file,
+        output_prefix=output_prefix,
+        fwhm=fwhm,
+        fwhm_dataset=fwhm_dataset,
+        mask=mask,
+        multi_mask=multi_mask,
+        automask=automask,
+        preserve=preserve,
+        quiet=quiet,
+        float_=float_,
+        fwhm_xyz=fwhm_xyz,
+    )
     return v_3d_blur_in_mask_execute(params, execution)
 
 

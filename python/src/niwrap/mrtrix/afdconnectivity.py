@@ -11,11 +11,15 @@ AFDCONNECTIVITY_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 AfdconnectivityConfigParameters = typing.TypedDict('AfdconnectivityConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 AfdconnectivityParameters = typing.TypedDict('AfdconnectivityParameters', {
     "__STYX_TYPE__": typing.Literal["afdconnectivity"],
     "wbft": typing.NotRequired[InputPathType | None],
@@ -412,7 +416,21 @@ def afdconnectivity(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFDCONNECTIVITY_METADATA)
-    params = afdconnectivity_params(wbft=wbft, afd_map=afd_map, all_fixels=all_fixels, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image=image, tracks=tracks)
+    params = afdconnectivity_params(
+        wbft=wbft,
+        afd_map=afd_map,
+        all_fixels=all_fixels,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        image=image,
+        tracks=tracks,
+    )
     return afdconnectivity_execute(params, execution)
 
 

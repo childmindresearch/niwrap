@@ -11,16 +11,22 @@ VOLUME_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeExtremaPresmoothParameters = typing.TypedDict('VolumeExtremaPresmoothParameters', {
     "__STYX_TYPE__": typing.Literal["presmooth"],
     "kernel": float,
     "opt_fwhm": bool,
 })
+
+
 VolumeExtremaThresholdParameters = typing.TypedDict('VolumeExtremaThresholdParameters', {
     "__STYX_TYPE__": typing.Literal["threshold"],
     "low": float,
     "high": float,
 })
+
+
 VolumeExtremaParameters = typing.TypedDict('VolumeExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["volume-extrema"],
     "volume_in": InputPathType,
@@ -396,7 +402,19 @@ def volume_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_EXTREMA_METADATA)
-    params = volume_extrema_params(volume_in=volume_in, distance=distance, volume_out=volume_out, presmooth=presmooth, opt_roi_roi_volume=opt_roi_roi_volume, threshold=threshold, opt_sum_subvols=opt_sum_subvols, opt_consolidate_mode=opt_consolidate_mode, opt_only_maxima=opt_only_maxima, opt_only_minima=opt_only_minima, opt_subvolume_subvolume=opt_subvolume_subvolume)
+    params = volume_extrema_params(
+        volume_in=volume_in,
+        distance=distance,
+        volume_out=volume_out,
+        presmooth=presmooth,
+        opt_roi_roi_volume=opt_roi_roi_volume,
+        threshold=threshold,
+        opt_sum_subvols=opt_sum_subvols,
+        opt_consolidate_mode=opt_consolidate_mode,
+        opt_only_maxima=opt_only_maxima,
+        opt_only_minima=opt_only_minima,
+        opt_subvolume_subvolume=opt_subvolume_subvolume,
+    )
     return volume_extrema_execute(params, execution)
 
 

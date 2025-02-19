@@ -11,6 +11,8 @@ BBLABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BblabelParameters = typing.TypedDict('BblabelParameters', {
     "__STYX_TYPE__": typing.Literal["bblabel"],
     "labelfile": InputPathType,
@@ -266,7 +268,18 @@ def bblabel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BBLABEL_METADATA)
-    params = bblabel_params(labelfile=labelfile, xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, zmin=zmin, zmax=zmax, outlabelfile=outlabelfile, debug=debug, umask=umask)
+    params = bblabel_params(
+        labelfile=labelfile,
+        xmin=xmin,
+        xmax=xmax,
+        ymin=ymin,
+        ymax=ymax,
+        zmin=zmin,
+        zmax=zmax,
+        outlabelfile=outlabelfile,
+        debug=debug,
+        umask=umask,
+    )
     return bblabel_execute(params, execution)
 
 

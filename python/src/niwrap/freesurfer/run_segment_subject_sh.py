@@ -11,6 +11,8 @@ RUN_SEGMENT_SUBJECT_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunSegmentSubjectShParameters = typing.TypedDict('RunSegmentSubjectShParameters', {
     "__STYX_TYPE__": typing.Literal["run_SegmentSubject.sh"],
     "deployedMCRroot": str,
@@ -172,7 +174,10 @@ def run_segment_subject_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_SUBJECT_SH_METADATA)
-    params = run_segment_subject_sh_params(deployed_mcrroot=deployed_mcrroot, arguments=arguments)
+    params = run_segment_subject_sh_params(
+        deployed_mcrroot=deployed_mcrroot,
+        arguments=arguments,
+    )
     return run_segment_subject_sh_execute(params, execution)
 
 

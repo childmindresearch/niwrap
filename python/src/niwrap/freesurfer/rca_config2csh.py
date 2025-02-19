@@ -11,6 +11,8 @@ RCA_CONFIG2CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RcaConfig2cshParameters = typing.TypedDict('RcaConfig2cshParameters', {
     "__STYX_TYPE__": typing.Literal["rca-config2csh"],
     "configfile": InputPathType,
@@ -157,7 +159,9 @@ def rca_config2csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_CONFIG2CSH_METADATA)
-    params = rca_config2csh_params(configfile=configfile)
+    params = rca_config2csh_params(
+        configfile=configfile,
+    )
     return rca_config2csh_execute(params, execution)
 
 

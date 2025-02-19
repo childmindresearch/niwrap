@@ -11,11 +11,15 @@ TSFVALIDATE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TsfvalidateConfigParameters = typing.TypedDict('TsfvalidateConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TsfvalidateParameters = typing.TypedDict('TsfvalidateParameters', {
     "__STYX_TYPE__": typing.Literal["tsfvalidate"],
     "info": bool,
@@ -298,7 +302,18 @@ def tsfvalidate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TSFVALIDATE_METADATA)
-    params = tsfvalidate_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tsf=tsf, tracks=tracks)
+    params = tsfvalidate_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tsf=tsf,
+        tracks=tracks,
+    )
     return tsfvalidate_execute(params, execution)
 
 

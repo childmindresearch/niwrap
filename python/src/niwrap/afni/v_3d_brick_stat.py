@@ -11,6 +11,8 @@ V_3D_BRICK_STAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dBrickStatParameters = typing.TypedDict('V3dBrickStatParameters', {
     "__STYX_TYPE__": typing.Literal["3dBrickStat"],
     "dataset": str,
@@ -417,7 +419,38 @@ def v_3d_brick_stat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_BRICK_STAT_METADATA)
-    params = v_3d_brick_stat_params(dataset=dataset, quick=quick, slow=slow, min_=min_, max_=max_, mean=mean, sum_=sum_, var=var, stdev=stdev, count=count, volume=volume, positive=positive, negative=negative, zero=zero, non_positive=non_positive, non_negative=non_negative, non_zero=non_zero, absolute=absolute, nan=nan, nonan=nonan, mask=mask, mrange=mrange, mvalue=mvalue, automask=automask, percentile=percentile, perclist=perclist, median=median, perc_quiet=perc_quiet, ver=ver, help_=help_)
+    params = v_3d_brick_stat_params(
+        dataset=dataset,
+        quick=quick,
+        slow=slow,
+        min_=min_,
+        max_=max_,
+        mean=mean,
+        sum_=sum_,
+        var=var,
+        stdev=stdev,
+        count=count,
+        volume=volume,
+        positive=positive,
+        negative=negative,
+        zero=zero,
+        non_positive=non_positive,
+        non_negative=non_negative,
+        non_zero=non_zero,
+        absolute=absolute,
+        nan=nan,
+        nonan=nonan,
+        mask=mask,
+        mrange=mrange,
+        mvalue=mvalue,
+        automask=automask,
+        percentile=percentile,
+        perclist=perclist,
+        median=median,
+        perc_quiet=perc_quiet,
+        ver=ver,
+        help_=help_,
+    )
     return v_3d_brick_stat_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSL_RIGID_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FslRigidRegisterParameters = typing.TypedDict('FslRigidRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_rigid_register"],
     "refvol": InputPathType,
@@ -396,7 +398,30 @@ def fsl_rigid_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_RIGID_REGISTER_METADATA)
-    params = fsl_rigid_register_params(refvol=refvol, inputvol=inputvol, outputvol=outputvol, fslmat=fslmat, regmat=regmat, xfmmat=xfmmat, ltamat=ltamat, noinitgeom=noinitgeom, applyxfm=applyxfm, applyinitxfm=applyinitxfm, initxfm=initxfm, maxangle=maxangle, interp=interp, dof=dof, bins=bins, cost=cost, tmpdir=tmpdir, nocleanup=nocleanup, cleanup=cleanup, subject=subject, version=version, help_=help_)
+    params = fsl_rigid_register_params(
+        refvol=refvol,
+        inputvol=inputvol,
+        outputvol=outputvol,
+        fslmat=fslmat,
+        regmat=regmat,
+        xfmmat=xfmmat,
+        ltamat=ltamat,
+        noinitgeom=noinitgeom,
+        applyxfm=applyxfm,
+        applyinitxfm=applyinitxfm,
+        initxfm=initxfm,
+        maxangle=maxangle,
+        interp=interp,
+        dof=dof,
+        bins=bins,
+        cost=cost,
+        tmpdir=tmpdir,
+        nocleanup=nocleanup,
+        cleanup=cleanup,
+        subject=subject,
+        version=version,
+        help_=help_,
+    )
     return fsl_rigid_register_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ APSEARCH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ApsearchParameters = typing.TypedDict('ApsearchParameters', {
     "__STYX_TYPE__": typing.Literal["apsearch"],
     "search_term": str,
@@ -176,7 +178,11 @@ def apsearch(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APSEARCH_METADATA)
-    params = apsearch_params(search_term=search_term, file_output=file_output, verbose=verbose)
+    params = apsearch_params(
+        search_term=search_term,
+        file_output=file_output,
+        verbose=verbose,
+    )
     return apsearch_execute(params, execution)
 
 

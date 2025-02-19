@@ -11,6 +11,8 @@ MRI_AND_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAndParameters = typing.TypedDict('MriAndParameters', {
     "__STYX_TYPE__": typing.Literal["mri_and"],
     "input_files": list[InputPathType],
@@ -155,7 +157,9 @@ def mri_and(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_AND_METADATA)
-    params = mri_and_params(input_files=input_files)
+    params = mri_and_params(
+        input_files=input_files,
+    )
     return mri_and_execute(params, execution)
 
 

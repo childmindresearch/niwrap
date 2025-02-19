@@ -11,6 +11,8 @@ METRIC_ROIS_FROM_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricRoisFromExtremaParameters = typing.TypedDict('MetricRoisFromExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["metric-rois-from-extrema"],
     "surface": InputPathType,
@@ -255,7 +257,16 @@ def metric_rois_from_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_ROIS_FROM_EXTREMA_METADATA)
-    params = metric_rois_from_extrema_params(surface=surface, metric=metric, limit=limit, metric_out=metric_out, opt_gaussian_sigma=opt_gaussian_sigma, opt_roi_roi_metric=opt_roi_roi_metric, opt_overlap_logic_method=opt_overlap_logic_method, opt_column_column=opt_column_column)
+    params = metric_rois_from_extrema_params(
+        surface=surface,
+        metric=metric,
+        limit=limit,
+        metric_out=metric_out,
+        opt_gaussian_sigma=opt_gaussian_sigma,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_overlap_logic_method=opt_overlap_logic_method,
+        opt_column_column=opt_column_column,
+    )
     return metric_rois_from_extrema_execute(params, execution)
 
 

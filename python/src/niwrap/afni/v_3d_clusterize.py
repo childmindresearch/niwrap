@@ -11,6 +11,8 @@ V_3D_CLUSTERIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dClusterizeParameters = typing.TypedDict('V3dClusterizeParameters', {
     "__STYX_TYPE__": typing.Literal["3dClusterize"],
     "inset": InputPathType,
@@ -408,7 +410,32 @@ def v_3d_clusterize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CLUSTERIZE_METADATA)
-    params = v_3d_clusterize_params(inset=inset, mask=mask, mask_from_hdr=mask_from_hdr, out_mask=out_mask, ithr=ithr, idat=idat, onesided=onesided, twosided=twosided, bisided=bisided, within_range=within_range, nn=nn, clust_nvox=clust_nvox, clust_vol=clust_vol, pref_map=pref_map, pref_dat=pref_dat, one_d_format=one_d_format, no_one_d_format=no_one_d_format, summarize=summarize, nosum=nosum, quiet=quiet, outvol_if_no_clust=outvol_if_no_clust, orient=orient, abs_table_data=abs_table_data, binary=binary)
+    params = v_3d_clusterize_params(
+        inset=inset,
+        mask=mask,
+        mask_from_hdr=mask_from_hdr,
+        out_mask=out_mask,
+        ithr=ithr,
+        idat=idat,
+        onesided=onesided,
+        twosided=twosided,
+        bisided=bisided,
+        within_range=within_range,
+        nn=nn,
+        clust_nvox=clust_nvox,
+        clust_vol=clust_vol,
+        pref_map=pref_map,
+        pref_dat=pref_dat,
+        one_d_format=one_d_format,
+        no_one_d_format=no_one_d_format,
+        summarize=summarize,
+        nosum=nosum,
+        quiet=quiet,
+        outvol_if_no_clust=outvol_if_no_clust,
+        orient=orient,
+        abs_table_data=abs_table_data,
+        binary=binary,
+    )
     return v_3d_clusterize_execute(params, execution)
 
 

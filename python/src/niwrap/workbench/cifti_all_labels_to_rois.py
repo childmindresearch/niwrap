@@ -11,6 +11,8 @@ CIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiAllLabelsToRoisParameters = typing.TypedDict('CiftiAllLabelsToRoisParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-all-labels-to-rois"],
     "label_in": InputPathType,
@@ -188,7 +190,11 @@ def cifti_all_labels_to_rois(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_ALL_LABELS_TO_ROIS_METADATA)
-    params = cifti_all_labels_to_rois_params(label_in=label_in, map_=map_, cifti_out=cifti_out)
+    params = cifti_all_labels_to_rois_params(
+        label_in=label_in,
+        map_=map_,
+        cifti_out=cifti_out,
+    )
     return cifti_all_labels_to_rois_execute(params, execution)
 
 

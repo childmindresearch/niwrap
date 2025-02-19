@@ -11,6 +11,8 @@ REG2SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Reg2subjectParameters = typing.TypedDict('Reg2subjectParameters', {
     "__STYX_TYPE__": typing.Literal["reg2subject"],
     "regfile": InputPathType,
@@ -160,7 +162,9 @@ def reg2subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG2SUBJECT_METADATA)
-    params = reg2subject_params(regfile=regfile)
+    params = reg2subject_params(
+        regfile=regfile,
+    )
     return reg2subject_execute(params, execution)
 
 

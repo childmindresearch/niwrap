@@ -11,31 +11,43 @@ VOLUME_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeResampleFlirtParameters = typing.TypedDict('VolumeResampleFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["flirt"],
     "source_volume": str,
     "target_volume": str,
 })
+
+
 VolumeResampleAffineParameters = typing.TypedDict('VolumeResampleAffineParameters', {
     "__STYX_TYPE__": typing.Literal["affine"],
     "affine": str,
     "flirt": typing.NotRequired[VolumeResampleFlirtParameters | None],
 })
+
+
 VolumeResampleFlirt1Parameters = typing.TypedDict('VolumeResampleFlirt1Parameters', {
     "__STYX_TYPE__": typing.Literal["flirt_1"],
     "source_volume": str,
     "target_volume": str,
 })
+
+
 VolumeResampleAffineSeriesParameters = typing.TypedDict('VolumeResampleAffineSeriesParameters', {
     "__STYX_TYPE__": typing.Literal["affine_series"],
     "affine_series": str,
     "flirt": typing.NotRequired[VolumeResampleFlirt1Parameters | None],
 })
+
+
 VolumeResampleWarpParameters = typing.TypedDict('VolumeResampleWarpParameters', {
     "__STYX_TYPE__": typing.Literal["warp"],
     "warpfield": str,
     "opt_fnirt_source_volume": typing.NotRequired[str | None],
 })
+
+
 VolumeResampleParameters = typing.TypedDict('VolumeResampleParameters', {
     "__STYX_TYPE__": typing.Literal["volume-resample"],
     "volume_in": InputPathType,
@@ -478,7 +490,15 @@ def volume_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_RESAMPLE_METADATA)
-    params = volume_resample_params(volume_in=volume_in, volume_space=volume_space, method=method, volume_out=volume_out, affine=affine, affine_series=affine_series, warp=warp)
+    params = volume_resample_params(
+        volume_in=volume_in,
+        volume_space=volume_space,
+        method=method,
+        volume_out=volume_out,
+        affine=affine,
+        affine_series=affine_series,
+        warp=warp,
+    )
     return volume_resample_execute(params, execution)
 
 

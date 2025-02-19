@@ -11,6 +11,8 @@ MRIS_TRANSLATE_ANNOTATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisTranslateAnnotationParameters = typing.TypedDict('MrisTranslateAnnotationParameters', {
     "__STYX_TYPE__": typing.Literal["mris_translate_annotation"],
     "subject": str,
@@ -187,7 +189,13 @@ def mris_translate_annotation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TRANSLATE_ANNOTATION_METADATA)
-    params = mris_translate_annotation_params(subject=subject, hemi=hemi, in_annot=in_annot, translation_file=translation_file, out_annot=out_annot)
+    params = mris_translate_annotation_params(
+        subject=subject,
+        hemi=hemi,
+        in_annot=in_annot,
+        translation_file=translation_file,
+        out_annot=out_annot,
+    )
     return mris_translate_annotation_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ INFLATE_SUBJECT_LH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 InflateSubjectLhParameters = typing.TypedDict('InflateSubjectLhParameters', {
     "__STYX_TYPE__": typing.Literal["inflate_subject-lh"],
     "input_folder": str,
@@ -165,7 +167,10 @@ def inflate_subject_lh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT_LH_METADATA)
-    params = inflate_subject_lh_params(input_folder=input_folder, hostname_flag=hostname_flag)
+    params = inflate_subject_lh_params(
+        input_folder=input_folder,
+        hostname_flag=hostname_flag,
+    )
     return inflate_subject_lh_execute(params, execution)
 
 

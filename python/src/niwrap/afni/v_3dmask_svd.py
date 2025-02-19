@@ -11,6 +11,8 @@ V_3DMASK_SVD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmaskSvdParameters = typing.TypedDict('V3dmaskSvdParameters', {
     "__STYX_TYPE__": typing.Literal["3dmaskSVD"],
     "input_dataset": InputPathType,
@@ -162,7 +164,9 @@ def v_3dmask_svd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMASK_SVD_METADATA)
-    params = v_3dmask_svd_params(input_dataset=input_dataset)
+    params = v_3dmask_svd_params(
+        input_dataset=input_dataset,
+    )
     return v_3dmask_svd_execute(params, execution)
 
 

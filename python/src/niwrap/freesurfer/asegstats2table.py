@@ -11,6 +11,8 @@ ASEGSTATS2TABLE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Asegstats2tableParameters = typing.TypedDict('Asegstats2tableParameters', {
     "__STYX_TYPE__": typing.Literal["asegstats2table"],
     "subjects": typing.NotRequired[list[str] | None],
@@ -428,7 +430,32 @@ def asegstats2table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ASEGSTATS2TABLE_METADATA)
-    params = asegstats2table_params(subjects=subjects, inputs=inputs, tablefile=tablefile, subjectsfile=subjectsfile, qdec=qdec, qdec_long=qdec_long, fsgd=fsgd, maxsegno=maxsegno, segids_from_file=segids_from_file, segno_include=segno_include, segno_exclude=segno_exclude, measure=measure, delimiter=delimiter, statsfile=statsfile, subdir=subdir, scale=scale, write_etiv=write_etiv, debug=debug, transpose_flag=transpose_flag, common_segs_flag=common_segs_flag, all_segs_flag=all_segs_flag, no_vol_extras_flag=no_vol_extras_flag, skip_missing_flag=skip_missing_flag, replace53_flag=replace53_flag)
+    params = asegstats2table_params(
+        subjects=subjects,
+        inputs=inputs,
+        tablefile=tablefile,
+        subjectsfile=subjectsfile,
+        qdec=qdec,
+        qdec_long=qdec_long,
+        fsgd=fsgd,
+        maxsegno=maxsegno,
+        segids_from_file=segids_from_file,
+        segno_include=segno_include,
+        segno_exclude=segno_exclude,
+        measure=measure,
+        delimiter=delimiter,
+        statsfile=statsfile,
+        subdir=subdir,
+        scale=scale,
+        write_etiv=write_etiv,
+        debug=debug,
+        transpose_flag=transpose_flag,
+        common_segs_flag=common_segs_flag,
+        all_segs_flag=all_segs_flag,
+        no_vol_extras_flag=no_vol_extras_flag,
+        skip_missing_flag=skip_missing_flag,
+        replace53_flag=replace53_flag,
+    )
     return asegstats2table_execute(params, execution)
 
 

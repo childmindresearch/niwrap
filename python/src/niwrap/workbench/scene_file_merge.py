@@ -11,21 +11,29 @@ SCENE_FILE_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SceneFileMergeUpToParameters = typing.TypedDict('SceneFileMergeUpToParameters', {
     "__STYX_TYPE__": typing.Literal["up_to"],
     "last_column": str,
     "opt_reverse": bool,
 })
+
+
 SceneFileMergeSceneParameters = typing.TypedDict('SceneFileMergeSceneParameters', {
     "__STYX_TYPE__": typing.Literal["scene"],
     "scene": str,
     "up_to": typing.NotRequired[SceneFileMergeUpToParameters | None],
 })
+
+
 SceneFileMergeSceneFileParameters = typing.TypedDict('SceneFileMergeSceneFileParameters', {
     "__STYX_TYPE__": typing.Literal["scene_file"],
     "scene_file": str,
     "scene": typing.NotRequired[list[SceneFileMergeSceneParameters] | None],
 })
+
+
 SceneFileMergeParameters = typing.TypedDict('SceneFileMergeParameters', {
     "__STYX_TYPE__": typing.Literal["scene-file-merge"],
     "scene_file_out": str,
@@ -329,7 +337,10 @@ def scene_file_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SCENE_FILE_MERGE_METADATA)
-    params = scene_file_merge_params(scene_file_out=scene_file_out, scene_file=scene_file)
+    params = scene_file_merge_params(
+        scene_file_out=scene_file_out,
+        scene_file=scene_file,
+    )
     return scene_file_merge_execute(params, execution)
 
 

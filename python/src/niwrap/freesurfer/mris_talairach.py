@@ -11,6 +11,8 @@ MRIS_TALAIRACH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisTalairachParameters = typing.TypedDict('MrisTalairachParameters', {
     "__STYX_TYPE__": typing.Literal["mris_talairach"],
     "input_image": InputPathType,
@@ -155,7 +157,9 @@ def mris_talairach(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TALAIRACH_METADATA)
-    params = mris_talairach_params(input_image=input_image)
+    params = mris_talairach_params(
+        input_image=input_image,
+    )
     return mris_talairach_execute(params, execution)
 
 

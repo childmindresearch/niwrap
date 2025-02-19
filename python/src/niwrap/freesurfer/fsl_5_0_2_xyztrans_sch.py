@@ -11,6 +11,8 @@ FSL_5_0_2_XYZTRANS_SCH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Fsl502XyztransSchParameters = typing.TypedDict('Fsl502XyztransSchParameters', {
     "__STYX_TYPE__": typing.Literal["fsl.5.0.2.xyztrans.sch"],
     "term_option": typing.NotRequired[str | None],
@@ -176,7 +178,11 @@ def fsl_5_0_2_xyztrans_sch(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_5_0_2_XYZTRANS_SCH_METADATA)
-    params = fsl_5_0_2_xyztrans_sch_params(term_option=term_option, version_flag=version_flag, no_scrollback_flag=no_scrollback_flag)
+    params = fsl_5_0_2_xyztrans_sch_params(
+        term_option=term_option,
+        version_flag=version_flag,
+        no_scrollback_flag=no_scrollback_flag,
+    )
     return fsl_5_0_2_xyztrans_sch_execute(params, execution)
 
 

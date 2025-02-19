@@ -11,6 +11,8 @@ V_3DREFIT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3drefitParameters = typing.TypedDict('V3drefitParameters', {
     "__STYX_TYPE__": typing.Literal["3drefit"],
     "atrcopy": typing.NotRequired[list[str] | None],
@@ -373,7 +375,25 @@ def v_3drefit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DREFIT_METADATA)
-    params = v_3drefit_params(atrcopy=atrcopy, atrfloat=atrfloat, atrint=atrint, atrstring=atrstring, deoblique=deoblique, duporigin_file=duporigin_file, in_file=in_file, nosaveatr=nosaveatr, saveatr=saveatr, space=space, xdel=xdel, xorigin=xorigin, xyzscale=xyzscale, ydel=ydel, yorigin=yorigin, zdel=zdel, zorigin=zorigin)
+    params = v_3drefit_params(
+        atrcopy=atrcopy,
+        atrfloat=atrfloat,
+        atrint=atrint,
+        atrstring=atrstring,
+        deoblique=deoblique,
+        duporigin_file=duporigin_file,
+        in_file=in_file,
+        nosaveatr=nosaveatr,
+        saveatr=saveatr,
+        space=space,
+        xdel=xdel,
+        xorigin=xorigin,
+        xyzscale=xyzscale,
+        ydel=ydel,
+        yorigin=yorigin,
+        zdel=zdel,
+        zorigin=zorigin,
+    )
     return v_3drefit_execute(params, execution)
 
 

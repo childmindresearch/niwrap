@@ -11,6 +11,8 @@ MRIS_DISTANCE_MAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisDistanceMapParameters = typing.TypedDict('MrisDistanceMapParameters', {
     "__STYX_TYPE__": typing.Literal["mris_distance_map"],
     "input_surface_file": InputPathType,
@@ -169,7 +171,10 @@ def mris_distance_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DISTANCE_MAP_METADATA)
-    params = mris_distance_map_params(input_surface_file=input_surface_file, output_scalar_field=output_scalar_field)
+    params = mris_distance_map_params(
+        input_surface_file=input_surface_file,
+        output_scalar_field=output_scalar_field,
+    )
     return mris_distance_map_execute(params, execution)
 
 

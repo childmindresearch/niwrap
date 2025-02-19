@@ -11,6 +11,8 @@ INIT_USER_DOTFILES_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 InitUserDotfilesPyParameters = typing.TypedDict('InitUserDotfilesPyParameters', {
     "__STYX_TYPE__": typing.Literal["init_user_dotfiles.py"],
     "help": bool,
@@ -320,7 +322,25 @@ def init_user_dotfiles_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INIT_USER_DOTFILES_PY_METADATA)
-    params = init_user_dotfiles_py_params(help_=help_, help_dotfiles_all=help_dotfiles_all, help_dotfiles_mod=help_dotfiles_mod, help_shells=help_shells, hist=hist, show_valid_opts=show_valid_opts, ver=ver, dot_files_list=dot_files_list, dir_bin=dir_bin, dir_dot=dir_dot, do_updates=do_updates, dry_run=dry_run, force=force, make_backup=make_backup, shell_list=shell_list, test=test, verbosity_level=verbosity_level)
+    params = init_user_dotfiles_py_params(
+        help_=help_,
+        help_dotfiles_all=help_dotfiles_all,
+        help_dotfiles_mod=help_dotfiles_mod,
+        help_shells=help_shells,
+        hist=hist,
+        show_valid_opts=show_valid_opts,
+        ver=ver,
+        dot_files_list=dot_files_list,
+        dir_bin=dir_bin,
+        dir_dot=dir_dot,
+        do_updates=do_updates,
+        dry_run=dry_run,
+        force=force,
+        make_backup=make_backup,
+        shell_list=shell_list,
+        test=test,
+        verbosity_level=verbosity_level,
+    )
     return init_user_dotfiles_py_execute(params, execution)
 
 

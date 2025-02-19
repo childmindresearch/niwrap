@@ -11,6 +11,8 @@ LABEL_EXPORT_TABLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelExportTableParameters = typing.TypedDict('LabelExportTableParameters', {
     "__STYX_TYPE__": typing.Literal["label-export-table"],
     "label_in": InputPathType,
@@ -169,7 +171,10 @@ def label_export_table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_EXPORT_TABLE_METADATA)
-    params = label_export_table_params(label_in=label_in, table_out=table_out)
+    params = label_export_table_params(
+        label_in=label_in,
+        table_out=table_out,
+    )
     return label_export_table_execute(params, execution)
 
 

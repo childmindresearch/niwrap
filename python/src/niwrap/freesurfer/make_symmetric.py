@@ -11,6 +11,8 @@ MAKE_SYMMETRIC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeSymmetricParameters = typing.TypedDict('MakeSymmetricParameters', {
     "__STYX_TYPE__": typing.Literal["make_symmetric"],
     "hemi": str,
@@ -191,7 +193,12 @@ def make_symmetric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_SYMMETRIC_METADATA)
-    params = make_symmetric_params(hemi=hemi, input_file=input_file, output_file=output_file, transform_map=transform_map)
+    params = make_symmetric_params(
+        hemi=hemi,
+        input_file=input_file,
+        output_file=output_file,
+        transform_map=transform_map,
+    )
     return make_symmetric_execute(params, execution)
 
 

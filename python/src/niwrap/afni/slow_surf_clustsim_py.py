@@ -11,6 +11,8 @@ SLOW_SURF_CLUSTSIM_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SlowSurfClustsimPyParameters = typing.TypedDict('SlowSurfClustsimPyParameters', {
     "__STYX_TYPE__": typing.Literal["slow_surf_clustsim.py"],
     "on_surface": typing.NotRequired[str | None],
@@ -258,7 +260,19 @@ def slow_surf_clustsim_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLOW_SURF_CLUSTSIM_PY_METADATA)
-    params = slow_surf_clustsim_py_params(on_surface=on_surface, save_script=save_script, print_script=print_script, uvar=uvar, verbosity=verbosity, help_=help_, hist=hist, show_default_cvars=show_default_cvars, show_default_uvars=show_default_uvars, show_valid_opts=show_valid_opts, version=version)
+    params = slow_surf_clustsim_py_params(
+        on_surface=on_surface,
+        save_script=save_script,
+        print_script=print_script,
+        uvar=uvar,
+        verbosity=verbosity,
+        help_=help_,
+        hist=hist,
+        show_default_cvars=show_default_cvars,
+        show_default_uvars=show_default_uvars,
+        show_valid_opts=show_valid_opts,
+        version=version,
+    )
     return slow_surf_clustsim_py_execute(params, execution)
 
 

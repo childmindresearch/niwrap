@@ -11,6 +11,8 @@ AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniParameters = typing.TypedDict('AfniParameters', {
     "__STYX_TYPE__": typing.Literal["afni"],
     "session_directories": typing.NotRequired[str | None],
@@ -387,7 +389,33 @@ def afni_(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_METADATA)
-    params = afni_params(session_directories=session_directories, bysub=bysub, all_dsets=all_dsets, purge=purge, posfunc=posfunc, recursive=recursive, no1_d=no1_d, nocsv=nocsv, notsv=notsv, unique=unique, orient=orient, noplugins=noplugins, seehidden=seehidden, allow_all_plugins=allow_all_plugins, yesplugouts=yesplugouts, debug_plugouts=debug_plugouts, noplugouts=noplugouts, skip_afnirc=skip_afnirc, layout=layout, niml=niml, np=np, npq=npq, npb=npb, com=com, comsep=comsep)
+    params = afni_params(
+        session_directories=session_directories,
+        bysub=bysub,
+        all_dsets=all_dsets,
+        purge=purge,
+        posfunc=posfunc,
+        recursive=recursive,
+        no1_d=no1_d,
+        nocsv=nocsv,
+        notsv=notsv,
+        unique=unique,
+        orient=orient,
+        noplugins=noplugins,
+        seehidden=seehidden,
+        allow_all_plugins=allow_all_plugins,
+        yesplugouts=yesplugouts,
+        debug_plugouts=debug_plugouts,
+        noplugouts=noplugouts,
+        skip_afnirc=skip_afnirc,
+        layout=layout,
+        niml=niml,
+        np=np,
+        npq=npq,
+        npb=npb,
+        com=com,
+        comsep=comsep,
+    )
     return afni_execute(params, execution)
 
 

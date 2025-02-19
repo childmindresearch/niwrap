@@ -11,6 +11,8 @@ FAST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FastParameters = typing.TypedDict('FastParameters', {
     "__STYX_TYPE__": typing.Literal["fast"],
     "number_classes": typing.NotRequired[int | None],
@@ -423,7 +425,30 @@ def fast(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAST_METADATA)
-    params = fast_params(number_classes=number_classes, bias_iters=bias_iters, bias_lowpass=bias_lowpass, img_type=img_type, init_seg_smooth=init_seg_smooth, segments=segments, init_transform=init_transform, other_priors=other_priors, output_biasfield=output_biasfield, output_biascorrected=output_biascorrected, no_bias=no_bias, channels=channels, out_basename=out_basename, use_priors=use_priors, no_pve=no_pve, segment_iters=segment_iters, mixel_smooth=mixel_smooth, hyper=hyper, verbose=verbose, manual_seg=manual_seg, iters_afterbias=iters_afterbias, in_files=in_files)
+    params = fast_params(
+        number_classes=number_classes,
+        bias_iters=bias_iters,
+        bias_lowpass=bias_lowpass,
+        img_type=img_type,
+        init_seg_smooth=init_seg_smooth,
+        segments=segments,
+        init_transform=init_transform,
+        other_priors=other_priors,
+        output_biasfield=output_biasfield,
+        output_biascorrected=output_biascorrected,
+        no_bias=no_bias,
+        channels=channels,
+        out_basename=out_basename,
+        use_priors=use_priors,
+        no_pve=no_pve,
+        segment_iters=segment_iters,
+        mixel_smooth=mixel_smooth,
+        hyper=hyper,
+        verbose=verbose,
+        manual_seg=manual_seg,
+        iters_afterbias=iters_afterbias,
+        in_files=in_files,
+    )
     return fast_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ RCA_BASE_INIT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RcaBaseInitParameters = typing.TypedDict('RcaBaseInitParameters', {
     "__STYX_TYPE__": typing.Literal["rca-base-init"],
     "log_file": typing.NotRequired[str | None],
@@ -177,7 +179,11 @@ def rca_base_init(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_BASE_INIT_METADATA)
-    params = rca_base_init_params(log_file=log_file, status_file=status_file, cmd_file=cmd_file)
+    params = rca_base_init_params(
+        log_file=log_file,
+        status_file=status_file,
+        cmd_file=cmd_file,
+    )
     return rca_base_init_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MERGESEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MergesegParameters = typing.TypedDict('MergesegParameters', {
     "__STYX_TYPE__": typing.Literal["mergeseg"],
     "src_seg": InputPathType,
@@ -230,7 +232,15 @@ def mergeseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MERGESEG_METADATA)
-    params = mergeseg_params(src_seg=src_seg, merge_seg=merge_seg, out_seg=out_seg, segid=segid, segid_only=segid_only, segid_erode=segid_erode, ctab=ctab)
+    params = mergeseg_params(
+        src_seg=src_seg,
+        merge_seg=merge_seg,
+        out_seg=out_seg,
+        segid=segid,
+        segid_only=segid_only,
+        segid_erode=segid_erode,
+        ctab=ctab,
+    )
     return mergeseg_execute(params, execution)
 
 

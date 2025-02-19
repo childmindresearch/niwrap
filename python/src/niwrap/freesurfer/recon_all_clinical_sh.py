@@ -11,6 +11,8 @@ RECON_ALL_CLINICAL_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ReconAllClinicalShParameters = typing.TypedDict('ReconAllClinicalShParameters', {
     "__STYX_TYPE__": typing.Literal["recon-all-clinical.sh"],
     "input_scan": InputPathType,
@@ -182,7 +184,12 @@ def recon_all_clinical_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RECON_ALL_CLINICAL_SH_METADATA)
-    params = recon_all_clinical_sh_params(input_scan=input_scan, subject_id=subject_id, threads=threads, subject_dir=subject_dir)
+    params = recon_all_clinical_sh_params(
+        input_scan=input_scan,
+        subject_id=subject_id,
+        threads=threads,
+        subject_dir=subject_dir,
+    )
     return recon_all_clinical_sh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ADJUNCT_APQC_TSNR_GENERAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctApqcTsnrGeneralParameters = typing.TypedDict('AdjunctApqcTsnrGeneralParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_apqc_tsnr_general"],
     "montgap": typing.NotRequired[str | None],
@@ -408,7 +410,31 @@ def adjunct_apqc_tsnr_general(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_APQC_TSNR_GENERAL_METADATA)
-    params = adjunct_apqc_tsnr_general_params(montgap=montgap, montcolor=montcolor, montx=montx, monty=monty, opacity=opacity, blowup=blowup, save_ftype=save_ftype, set_dicom_xyz=set_dicom_xyz, set_ijk=set_ijk, set_subbricks=set_subbricks, olay_alpha=olay_alpha, olay_boxed=olay_boxed, thr_olay=thr_olay, ulay_range_nz=ulay_range_nz, ulay_range=ulay_range, delta_slices=delta_slices, olay_disc_hot_range=olay_disc_hot_range, olay_cont_max=olay_cont_max, cbar_cont=cbar_cont, no_cor=no_cor, no_sag=no_sag, no_axi=no_axi, echo=echo)
+    params = adjunct_apqc_tsnr_general_params(
+        montgap=montgap,
+        montcolor=montcolor,
+        montx=montx,
+        monty=monty,
+        opacity=opacity,
+        blowup=blowup,
+        save_ftype=save_ftype,
+        set_dicom_xyz=set_dicom_xyz,
+        set_ijk=set_ijk,
+        set_subbricks=set_subbricks,
+        olay_alpha=olay_alpha,
+        olay_boxed=olay_boxed,
+        thr_olay=thr_olay,
+        ulay_range_nz=ulay_range_nz,
+        ulay_range=ulay_range,
+        delta_slices=delta_slices,
+        olay_disc_hot_range=olay_disc_hot_range,
+        olay_cont_max=olay_cont_max,
+        cbar_cont=cbar_cont,
+        no_cor=no_cor,
+        no_sag=no_sag,
+        no_axi=no_axi,
+        echo=echo,
+    )
     return adjunct_apqc_tsnr_general_execute(params, execution)
 
 

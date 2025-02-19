@@ -11,6 +11,8 @@ PRINT_HEADER_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 PrintHeaderParameters = typing.TypedDict('PrintHeaderParameters', {
     "__STYX_TYPE__": typing.Literal["PrintHeader"],
     "image": InputPathType,
@@ -172,7 +174,10 @@ def print_header(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PRINT_HEADER_METADATA)
-    params = print_header_params(image=image, what_information=what_information)
+    params = print_header_params(
+        image=image,
+        what_information=what_information,
+    )
     return print_header_execute(params, execution)
 
 

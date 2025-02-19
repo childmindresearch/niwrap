@@ -11,6 +11,8 @@ ANTSUSE_DEFORMATION_FIELD_TO_GET_AFFINE_TRANSFORM_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsuseDeformationFieldToGetAffineTransformParameters = typing.TypedDict('AntsuseDeformationFieldToGetAffineTransformParameters', {
     "__STYX_TYPE__": typing.Literal["ANTSUseDeformationFieldToGetAffineTransform"],
     "deformation_field": InputPathType,
@@ -203,7 +205,13 @@ def antsuse_deformation_field_to_get_affine_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTSUSE_DEFORMATION_FIELD_TO_GET_AFFINE_TRANSFORM_METADATA)
-    params = antsuse_deformation_field_to_get_affine_transform_params(deformation_field=deformation_field, load_ratio=load_ratio, transform_type=transform_type, output_affine=output_affine, mask=mask)
+    params = antsuse_deformation_field_to_get_affine_transform_params(
+        deformation_field=deformation_field,
+        load_ratio=load_ratio,
+        transform_type=transform_type,
+        output_affine=output_affine,
+        mask=mask,
+    )
     return antsuse_deformation_field_to_get_affine_transform_execute(params, execution)
 
 

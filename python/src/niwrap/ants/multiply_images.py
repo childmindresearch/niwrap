@@ -11,6 +11,8 @@ MULTIPLY_IMAGES_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 MultiplyImagesParameters = typing.TypedDict('MultiplyImagesParameters', {
     "__STYX_TYPE__": typing.Literal["MultiplyImages"],
     "dimension": typing.Literal[3, 2],
@@ -199,7 +201,13 @@ def multiply_images(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MULTIPLY_IMAGES_METADATA)
-    params = multiply_images_params(dimension=dimension, first_input=first_input, second_input_2=second_input_2, output_product_image=output_product_image, num_threads=num_threads)
+    params = multiply_images_params(
+        dimension=dimension,
+        first_input=first_input,
+        second_input_2=second_input_2,
+        output_product_image=output_product_image,
+        num_threads=num_threads,
+    )
     return multiply_images_execute(params, execution)
 
 

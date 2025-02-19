@@ -11,6 +11,8 @@ LPCREGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LpcregisterParameters = typing.TypedDict('LpcregisterParameters', {
     "__STYX_TYPE__": typing.Literal["lpcregister"],
     "subject_id": str,
@@ -297,7 +299,21 @@ def lpcregister(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LPCREGISTER_METADATA)
-    params = lpcregister_params(subject_id=subject_id, mov_volume=mov_volume, reg_file=reg_file, dof_9=dof_9, dof_12=dof_12, frame_number=frame_number, mid_frame=mid_frame, fsvol=fsvol, output_volume=output_volume, tmp_dir=tmp_dir, no_cleanup=no_cleanup, version=version, help_=help_)
+    params = lpcregister_params(
+        subject_id=subject_id,
+        mov_volume=mov_volume,
+        reg_file=reg_file,
+        dof_9=dof_9,
+        dof_12=dof_12,
+        frame_number=frame_number,
+        mid_frame=mid_frame,
+        fsvol=fsvol,
+        output_volume=output_volume,
+        tmp_dir=tmp_dir,
+        no_cleanup=no_cleanup,
+        version=version,
+        help_=help_,
+    )
     return lpcregister_execute(params, execution)
 
 

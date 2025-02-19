@@ -11,6 +11,8 @@ ANTS_ALIGN_ORIGIN_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsAlignOriginParameters = typing.TypedDict('AntsAlignOriginParameters', {
     "__STYX_TYPE__": typing.Literal["antsAlignOrigin"],
     "dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
@@ -210,7 +212,12 @@ def ants_align_origin(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_ALIGN_ORIGIN_METADATA)
-    params = ants_align_origin_params(dimensionality=dimensionality, input_=input_, reference_image=reference_image, output=output)
+    params = ants_align_origin_params(
+        dimensionality=dimensionality,
+        input_=input_,
+        reference_image=reference_image,
+        output=output,
+    )
     return ants_align_origin_execute(params, execution)
 
 

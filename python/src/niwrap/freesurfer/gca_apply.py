@@ -11,6 +11,8 @@ GCA_APPLY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GcaApplyParameters = typing.TypedDict('GcaApplyParameters', {
     "__STYX_TYPE__": typing.Literal["gca-apply"],
     "gcafile": InputPathType,
@@ -359,7 +361,26 @@ def gca_apply(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GCA_APPLY_METADATA)
-    params = gca_apply_params(gcafile=gcafile, subject=subject, nthreads=nthreads, base=base, no_segstats=no_segstats, subjects_dir=subjects_dir, dice_seg=dice_seg, dice_file=dice_file, lta=lta, norm=norm, input_mgz=input_mgz, brainmask=brainmask, output_dir=output_dir, no_v6labopts=no_v6labopts, m3z_file=m3z_file, gca_rb_2016=gca_rb_2016, force_update=force_update, gcareg_iters=gcareg_iters)
+    params = gca_apply_params(
+        gcafile=gcafile,
+        subject=subject,
+        nthreads=nthreads,
+        base=base,
+        no_segstats=no_segstats,
+        subjects_dir=subjects_dir,
+        dice_seg=dice_seg,
+        dice_file=dice_file,
+        lta=lta,
+        norm=norm,
+        input_mgz=input_mgz,
+        brainmask=brainmask,
+        output_dir=output_dir,
+        no_v6labopts=no_v6labopts,
+        m3z_file=m3z_file,
+        gca_rb_2016=gca_rb_2016,
+        force_update=force_update,
+        gcareg_iters=gcareg_iters,
+    )
     return gca_apply_execute(params, execution)
 
 

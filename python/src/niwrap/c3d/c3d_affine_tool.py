@@ -11,6 +11,8 @@ C3D_AFFINE_TOOL_METADATA = Metadata(
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
 )
+
+
 C3dAffineToolParameters = typing.TypedDict('C3dAffineToolParameters', {
     "__STYX_TYPE__": typing.Literal["c3d_affine_tool"],
     "transform_file": typing.NotRequired[InputPathType | None],
@@ -331,7 +333,25 @@ def c3d_affine_tool(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(C3D_AFFINE_TOOL_METADATA)
-    params = c3d_affine_tool_params(transform_file=transform_file, reference_file=reference_file, source_file=source_file, sform_file=sform_file, invert=invert, determinant=determinant, multiply=multiply, sqrt=sqrt, itk_transform=itk_transform, irtk_transform=irtk_transform, fsl2ras=fsl2ras, ras2fsl=ras2fsl, out_itk_transform=out_itk_transform, out_irtk_transform=out_irtk_transform, out_matfile=out_matfile, info=info, info_full=info_full)
+    params = c3d_affine_tool_params(
+        transform_file=transform_file,
+        reference_file=reference_file,
+        source_file=source_file,
+        sform_file=sform_file,
+        invert=invert,
+        determinant=determinant,
+        multiply=multiply,
+        sqrt=sqrt,
+        itk_transform=itk_transform,
+        irtk_transform=irtk_transform,
+        fsl2ras=fsl2ras,
+        ras2fsl=ras2fsl,
+        out_itk_transform=out_itk_transform,
+        out_irtk_transform=out_irtk_transform,
+        out_matfile=out_matfile,
+        info=info,
+        info_full=info_full,
+    )
     return c3d_affine_tool_execute(params, execution)
 
 

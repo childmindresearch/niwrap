@@ -11,6 +11,8 @@ QUANTIFY_HASUBREGIONS_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 QuantifyHasubregionsShParameters = typing.TypedDict('QuantifyHasubregionsShParameters', {
     "__STYX_TYPE__": typing.Literal["quantifyHAsubregions.sh"],
     "prefix": str,
@@ -184,7 +186,12 @@ def quantify_hasubregions_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUANTIFY_HASUBREGIONS_SH_METADATA)
-    params = quantify_hasubregions_sh_params(prefix=prefix, suffix=suffix, output_file=output_file, subjects_directory=subjects_directory)
+    params = quantify_hasubregions_sh_params(
+        prefix=prefix,
+        suffix=suffix,
+        output_file=output_file,
+        subjects_directory=subjects_directory,
+    )
     return quantify_hasubregions_sh_execute(params, execution)
 
 

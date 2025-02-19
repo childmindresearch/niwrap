@@ -11,6 +11,8 @@ MRI_GCAB_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGcabTrainParameters = typing.TypedDict('MriGcabTrainParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gcab_train"],
 })
@@ -150,7 +152,8 @@ def mri_gcab_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GCAB_TRAIN_METADATA)
-    params = mri_gcab_train_params()
+    params = mri_gcab_train_params(
+    )
     return mri_gcab_train_execute(params, execution)
 
 

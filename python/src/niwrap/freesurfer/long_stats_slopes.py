@@ -11,6 +11,8 @@ LONG_STATS_SLOPES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongStatsSlopesParameters = typing.TypedDict('LongStatsSlopesParameters', {
     "__STYX_TYPE__": typing.Literal["long_stats_slopes"],
     "qdec_table": InputPathType,
@@ -456,7 +458,35 @@ def long_stats_slopes(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_STATS_SLOPES_METADATA)
-    params = long_stats_slopes_params(qdec_table=qdec_table, stats_file=stats_file, measure=measure, subjects_dir=subjects_dir, do_avg=do_avg, do_rate=do_rate, do_pc1fit=do_pc1fit, do_pc1=do_pc1, do_spc=do_spc, do_stack=do_stack, resid=resid, time_var=time_var, generic_time=generic_time, cross_sectional=cross_sectional, out_avg=out_avg, out_rate=out_rate, out_pc1fit=out_pc1fit, out_pc1=out_pc1, out_spc=out_spc, out_resid=out_resid, out_stack=out_stack, stack_avg=stack_avg, stack_rate=stack_rate, stack_pc1fit=stack_pc1fit, stack_pc1=stack_pc1, stack_spc=stack_spc, stack_resid=stack_resid)
+    params = long_stats_slopes_params(
+        qdec_table=qdec_table,
+        stats_file=stats_file,
+        measure=measure,
+        subjects_dir=subjects_dir,
+        do_avg=do_avg,
+        do_rate=do_rate,
+        do_pc1fit=do_pc1fit,
+        do_pc1=do_pc1,
+        do_spc=do_spc,
+        do_stack=do_stack,
+        resid=resid,
+        time_var=time_var,
+        generic_time=generic_time,
+        cross_sectional=cross_sectional,
+        out_avg=out_avg,
+        out_rate=out_rate,
+        out_pc1fit=out_pc1fit,
+        out_pc1=out_pc1,
+        out_spc=out_spc,
+        out_resid=out_resid,
+        out_stack=out_stack,
+        stack_avg=stack_avg,
+        stack_rate=stack_rate,
+        stack_pc1fit=stack_pc1fit,
+        stack_pc1=stack_pc1,
+        stack_spc=stack_spc,
+        stack_resid=stack_resid,
+    )
     return long_stats_slopes_execute(params, execution)
 
 

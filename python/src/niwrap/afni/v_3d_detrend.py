@@ -11,6 +11,8 @@ V_3D_DETREND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDetrendParameters = typing.TypedDict('V3dDetrendParameters', {
     "__STYX_TYPE__": typing.Literal["3dDetrend"],
     "in_file": InputPathType,
@@ -173,7 +175,10 @@ def v_3d_detrend(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DETREND_METADATA)
-    params = v_3d_detrend_params(in_file=in_file, outputtype=outputtype)
+    params = v_3d_detrend_params(
+        in_file=in_file,
+        outputtype=outputtype,
+    )
     return v_3d_detrend_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ METRIC_VECTOR_TOWARD_ROI_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricVectorTowardRoiParameters = typing.TypedDict('MetricVectorTowardRoiParameters', {
     "__STYX_TYPE__": typing.Literal["metric-vector-toward-roi"],
     "surface": InputPathType,
@@ -194,7 +196,12 @@ def metric_vector_toward_roi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_VECTOR_TOWARD_ROI_METADATA)
-    params = metric_vector_toward_roi_params(surface=surface, target_roi=target_roi, metric_out=metric_out, opt_roi_roi_metric=opt_roi_roi_metric)
+    params = metric_vector_toward_roi_params(
+        surface=surface,
+        target_roi=target_roi,
+        metric_out=metric_out,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+    )
     return metric_vector_toward_roi_execute(params, execution)
 
 

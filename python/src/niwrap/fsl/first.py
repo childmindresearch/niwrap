@@ -11,6 +11,8 @@ FIRST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FirstParameters = typing.TypedDict('FirstParameters', {
     "__STYX_TYPE__": typing.Literal["first"],
     "input_file": InputPathType,
@@ -312,7 +314,23 @@ def first(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRST_METADATA)
-    params = first_params(input_file=input_file, output_name=output_name, input_model=input_model, flirt_matrix=flirt_matrix, verbose=verbose, help_=help_, input_model2=input_model2, nmodes=nmodes, intref=intref, multi_image_input=multi_image_input, binary_surface_output=binary_surface_output, bmap_name=bmap_name, bvars=bvars, shcond=shcond, loadbvars=loadbvars)
+    params = first_params(
+        input_file=input_file,
+        output_name=output_name,
+        input_model=input_model,
+        flirt_matrix=flirt_matrix,
+        verbose=verbose,
+        help_=help_,
+        input_model2=input_model2,
+        nmodes=nmodes,
+        intref=intref,
+        multi_image_input=multi_image_input,
+        binary_surface_output=binary_surface_output,
+        bmap_name=bmap_name,
+        bvars=bvars,
+        shcond=shcond,
+        loadbvars=loadbvars,
+    )
     return first_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ DJPEG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 DjpegParameters = typing.TypedDict('DjpegParameters', {
     "__STYX_TYPE__": typing.Literal["djpeg"],
     "input_file": InputPathType,
@@ -210,7 +212,15 @@ def djpeg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DJPEG_METADATA)
-    params = djpeg_params(input_file=input_file, output_file=output_file, gray=gray, fast_dct=fast_dct, one_pixel_height=one_pixel_height, pseudo_pixel_ratio=pseudo_pixel_ratio, crop_region=crop_region)
+    params = djpeg_params(
+        input_file=input_file,
+        output_file=output_file,
+        gray=gray,
+        fast_dct=fast_dct,
+        one_pixel_height=one_pixel_height,
+        pseudo_pixel_ratio=pseudo_pixel_ratio,
+        crop_region=crop_region,
+    )
     return djpeg_execute(params, execution)
 
 

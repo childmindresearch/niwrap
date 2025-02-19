@@ -11,6 +11,8 @@ MRI_SURF2VOL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSurf2volParameters = typing.TypedDict('MriSurf2volParameters', {
     "__STYX_TYPE__": typing.Literal["mri_surf2vol"],
     "surface_overlay": typing.NotRequired[list[str] | None],
@@ -479,7 +481,37 @@ def mri_surf2vol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SURF2VOL_METADATA)
-    params = mri_surf2vol_params(surface_overlay=surface_overlay, ltafile=ltafile, outfile=outfile, subject=subject, ribbonfile=ribbonfile, merge_volume=merge_volume, surface_values=surface_values, mkmask=mkmask, hemi=hemi, surfname=surfname, projfrac=projfrac, fill_ribbon=fill_ribbon, fill_projfrac=fill_projfrac, reg_volume=reg_volume, identity=identity, template_volume=template_volume, fstal_res=fstal_res, vtxvol=vtxvol, flat2mri=flat2mri, sphpvf=sphpvf, mask_to_cortex=mask_to_cortex, mask_to_label=mask_to_label, surface_mask=surface_mask, add_const=add_const, copy_ctab=copy_ctab, subjects_dir=subjects_dir, gdiagno=gdiagno, version=version, help_=help_)
+    params = mri_surf2vol_params(
+        surface_overlay=surface_overlay,
+        ltafile=ltafile,
+        outfile=outfile,
+        subject=subject,
+        ribbonfile=ribbonfile,
+        merge_volume=merge_volume,
+        surface_values=surface_values,
+        mkmask=mkmask,
+        hemi=hemi,
+        surfname=surfname,
+        projfrac=projfrac,
+        fill_ribbon=fill_ribbon,
+        fill_projfrac=fill_projfrac,
+        reg_volume=reg_volume,
+        identity=identity,
+        template_volume=template_volume,
+        fstal_res=fstal_res,
+        vtxvol=vtxvol,
+        flat2mri=flat2mri,
+        sphpvf=sphpvf,
+        mask_to_cortex=mask_to_cortex,
+        mask_to_label=mask_to_label,
+        surface_mask=surface_mask,
+        add_const=add_const,
+        copy_ctab=copy_ctab,
+        subjects_dir=subjects_dir,
+        gdiagno=gdiagno,
+        version=version,
+        help_=help_,
+    )
     return mri_surf2vol_execute(params, execution)
 
 

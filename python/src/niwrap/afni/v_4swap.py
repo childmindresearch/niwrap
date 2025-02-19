@@ -11,6 +11,8 @@ V_4SWAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V4swapParameters = typing.TypedDict('V4swapParameters', {
     "__STYX_TYPE__": typing.Literal["4swap"],
     "files": list[InputPathType],
@@ -163,7 +165,10 @@ def v_4swap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_4SWAP_METADATA)
-    params = v_4swap_params(files=files, quiet=quiet)
+    params = v_4swap_params(
+        files=files,
+        quiet=quiet,
+    )
     return v_4swap_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_CA_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCaLabelParameters = typing.TypedDict('MriCaLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_ca_label"],
     "input_volumes": list[InputPathType],
@@ -181,7 +183,12 @@ def mri_ca_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_LABEL_METADATA)
-    params = mri_ca_label_params(input_volumes=input_volumes, transform_file=transform_file, gca_file=gca_file, output_volume=output_volume)
+    params = mri_ca_label_params(
+        input_volumes=input_volumes,
+        transform_file=transform_file,
+        gca_file=gca_file,
+        output_volume=output_volume,
+    )
     return mri_ca_label_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ LABEL_ERODE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelErodeParameters = typing.TypedDict('LabelErodeParameters', {
     "__STYX_TYPE__": typing.Literal["label-erode"],
     "label": InputPathType,
@@ -239,7 +241,15 @@ def label_erode(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_ERODE_METADATA)
-    params = label_erode_params(label=label, surface=surface, erode_dist=erode_dist, label_out=label_out, opt_roi_roi_metric=opt_roi_roi_metric, opt_column_column=opt_column_column, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    params = label_erode_params(
+        label=label,
+        surface=surface,
+        erode_dist=erode_dist,
+        label_out=label_out,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_column_column=opt_column_column,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+    )
     return label_erode_execute(params, execution)
 
 

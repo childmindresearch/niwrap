@@ -11,6 +11,8 @@ NIML_FEEDME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 NimlFeedmeParameters = typing.TypedDict('NimlFeedmeParameters', {
     "__STYX_TYPE__": typing.Literal["niml_feedme"],
     "host": typing.NotRequired[str | None],
@@ -237,7 +239,15 @@ def niml_feedme(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NIML_FEEDME_METADATA)
-    params = niml_feedme_params(host=host, interval=interval, verbose=verbose, accum=accum, target_dataset=target_dataset, drive_cmds=drive_cmds, dataset=dataset)
+    params = niml_feedme_params(
+        host=host,
+        interval=interval,
+        verbose=verbose,
+        accum=accum,
+        target_dataset=target_dataset,
+        drive_cmds=drive_cmds,
+        dataset=dataset,
+    )
     return niml_feedme_execute(params, execution)
 
 

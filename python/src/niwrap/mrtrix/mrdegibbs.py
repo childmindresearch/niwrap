@@ -11,11 +11,15 @@ MRDEGIBBS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrdegibbsConfigParameters = typing.TypedDict('MrdegibbsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrdegibbsParameters = typing.TypedDict('MrdegibbsParameters', {
     "__STYX_TYPE__": typing.Literal["mrdegibbs"],
     "axes": typing.NotRequired[list[int] | None],
@@ -408,7 +412,23 @@ def mrdegibbs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRDEGIBBS_METADATA)
-    params = mrdegibbs_params(axes=axes, nshifts=nshifts, min_w=min_w, max_w=max_w, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_=in_, out=out)
+    params = mrdegibbs_params(
+        axes=axes,
+        nshifts=nshifts,
+        min_w=min_w,
+        max_w=max_w,
+        datatype=datatype,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_=in_,
+        out=out,
+    )
     return mrdegibbs_execute(params, execution)
 
 

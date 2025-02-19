@@ -11,11 +11,15 @@ WARPINVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 WarpinvertConfigParameters = typing.TypedDict('WarpinvertConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 WarpinvertParameters = typing.TypedDict('WarpinvertParameters', {
     "__STYX_TYPE__": typing.Literal["warpinvert"],
     "template": typing.NotRequired[InputPathType | None],
@@ -338,7 +342,20 @@ def warpinvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARPINVERT_METADATA)
-    params = warpinvert_params(template=template, displacement=displacement, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_=in_, out=out)
+    params = warpinvert_params(
+        template=template,
+        displacement=displacement,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_=in_,
+        out=out,
+    )
     return warpinvert_execute(params, execution)
 
 

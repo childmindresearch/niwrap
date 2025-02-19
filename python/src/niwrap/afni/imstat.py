@@ -11,6 +11,8 @@ IMSTAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImstatParameters = typing.TypedDict('ImstatParameters', {
     "__STYX_TYPE__": typing.Literal["imstat"],
     "no_label": bool,
@@ -197,7 +199,12 @@ def imstat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMSTAT_METADATA)
-    params = imstat_params(no_label=no_label, quiet=quiet, pixstat_prefix=pixstat_prefix, image_files=image_files)
+    params = imstat_params(
+        no_label=no_label,
+        quiet=quiet,
+        pixstat_prefix=pixstat_prefix,
+        image_files=image_files,
+    )
     return imstat_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_APARC2WMSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAparc2wmsegParameters = typing.TypedDict('MriAparc2wmsegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_aparc2wmseg"],
     "subject": str,
@@ -186,7 +188,12 @@ def mri_aparc2wmseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_APARC2WMSEG_METADATA)
-    params = mri_aparc2wmseg_params(subject=subject, wmseg_file=wmseg_file, help_=help_, version=version)
+    params = mri_aparc2wmseg_params(
+        subject=subject,
+        wmseg_file=wmseg_file,
+        help_=help_,
+        version=version,
+    )
     return mri_aparc2wmseg_execute(params, execution)
 
 

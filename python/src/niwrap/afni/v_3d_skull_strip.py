@@ -11,6 +11,8 @@ V_3D_SKULL_STRIP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSkullStripParameters = typing.TypedDict('V3dSkullStripParameters', {
     "__STYX_TYPE__": typing.Literal["3dSkullStrip"],
     "in_file": InputPathType,
@@ -185,7 +187,11 @@ def v_3d_skull_strip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SKULL_STRIP_METADATA)
-    params = v_3d_skull_strip_params(in_file=in_file, num_threads=num_threads, outputtype=outputtype)
+    params = v_3d_skull_strip_params(
+        in_file=in_file,
+        num_threads=num_threads,
+        outputtype=outputtype,
+    )
     return v_3d_skull_strip_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SRATIO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SratioParameters = typing.TypedDict('SratioParameters', {
     "__STYX_TYPE__": typing.Literal["sratio"],
     "value_a": float,
@@ -188,7 +190,12 @@ def sratio(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SRATIO_METADATA)
-    params = sratio_params(value_a=value_a, value_b=value_b, abs_flag=abs_flag, mask_threshold=mask_threshold)
+    params = sratio_params(
+        value_a=value_a,
+        value_b=value_b,
+        abs_flag=abs_flag,
+        mask_threshold=mask_threshold,
+    )
     return sratio_execute(params, execution)
 
 

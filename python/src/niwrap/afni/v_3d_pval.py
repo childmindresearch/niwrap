@@ -11,6 +11,8 @@ V_3D_PVAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dPvalParameters = typing.TypedDict('V3dPvalParameters', {
     "__STYX_TYPE__": typing.Literal["3dPval"],
     "input_dataset": InputPathType,
@@ -210,7 +212,14 @@ def v_3d_pval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PVAL_METADATA)
-    params = v_3d_pval_params(input_dataset=input_dataset, zscore=zscore, log2=log2, log10=log10, qval=qval, prefix=prefix)
+    params = v_3d_pval_params(
+        input_dataset=input_dataset,
+        zscore=zscore,
+        log2=log2,
+        log10=log10,
+        qval=qval,
+        prefix=prefix,
+    )
     return v_3d_pval_execute(params, execution)
 
 

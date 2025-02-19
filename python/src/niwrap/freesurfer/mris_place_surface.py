@@ -11,6 +11,8 @@ MRIS_PLACE_SURFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisPlaceSurfaceParameters = typing.TypedDict('MrisPlaceSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["mris_place_surface"],
     "output_surface": str,
@@ -653,7 +655,52 @@ def mris_place_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PLACE_SURFACE_METADATA)
-    params = mris_place_surface_params(output_surface=output_surface, input_surface=input_surface, autodetect_gray_white_stats=autodetect_gray_white_stats, input_volume=input_volume, surface_type_group=surface_type_group, hemi_group=hemi_group, wm_segment=wm_segment, out_volume=out_volume, out_volume_only=out_volume_only, restore_255=restore_255, segmentation=segmentation, cortical_parcellation=cortical_parcellation, nsmooth=nsmooth, smooth_after_rip=smooth_after_rip, max_cbv_dist=max_cbv_dist, rip_label=rip_label, rip_midline=rip_midline, rip_bg=rip_bg, rip_bg_no_annot=rip_bg_no_annot, no_rip_freeze=no_rip_freeze, rip_wmsa=rip_wmsa, rip_lesion=rip_lesion, no_rip=no_rip, rip_overlay=rip_overlay, rip_surface=rip_surface, rip_projection=rip_projection, repulse_surface=repulse_surface, white_surface=white_surface, blend_surface=blend_surface, multimodal_input=multimodal_input, mm_refine=mm_refine, pin_medial_wall=pin_medial_wall, no_intensity_proc=no_intensity_proc, debug_vertex=debug_vertex, ripflag_out=ripflag_out, local_max=local_max, target_surf=target_surf, stop_mask=stop_mask, mm_intensity_limits=mm_intensity_limits, cover_seg=cover_seg, first_peak_d1=first_peak_d1, first_peak_d2=first_peak_d2, white_border_low_factor=white_border_low_factor, fill_lateral_ventricles=fill_lateral_ventricles)
+    params = mris_place_surface_params(
+        output_surface=output_surface,
+        input_surface=input_surface,
+        autodetect_gray_white_stats=autodetect_gray_white_stats,
+        input_volume=input_volume,
+        surface_type_group=surface_type_group,
+        hemi_group=hemi_group,
+        wm_segment=wm_segment,
+        out_volume=out_volume,
+        out_volume_only=out_volume_only,
+        restore_255=restore_255,
+        segmentation=segmentation,
+        cortical_parcellation=cortical_parcellation,
+        nsmooth=nsmooth,
+        smooth_after_rip=smooth_after_rip,
+        max_cbv_dist=max_cbv_dist,
+        rip_label=rip_label,
+        rip_midline=rip_midline,
+        rip_bg=rip_bg,
+        rip_bg_no_annot=rip_bg_no_annot,
+        no_rip_freeze=no_rip_freeze,
+        rip_wmsa=rip_wmsa,
+        rip_lesion=rip_lesion,
+        no_rip=no_rip,
+        rip_overlay=rip_overlay,
+        rip_surface=rip_surface,
+        rip_projection=rip_projection,
+        repulse_surface=repulse_surface,
+        white_surface=white_surface,
+        blend_surface=blend_surface,
+        multimodal_input=multimodal_input,
+        mm_refine=mm_refine,
+        pin_medial_wall=pin_medial_wall,
+        no_intensity_proc=no_intensity_proc,
+        debug_vertex=debug_vertex,
+        ripflag_out=ripflag_out,
+        local_max=local_max,
+        target_surf=target_surf,
+        stop_mask=stop_mask,
+        mm_intensity_limits=mm_intensity_limits,
+        cover_seg=cover_seg,
+        first_peak_d1=first_peak_d1,
+        first_peak_d2=first_peak_d2,
+        white_border_low_factor=white_border_low_factor,
+        fill_lateral_ventricles=fill_lateral_ventricles,
+    )
     return mris_place_surface_execute(params, execution)
 
 

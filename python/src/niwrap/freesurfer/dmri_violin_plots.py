@@ -11,6 +11,8 @@ DMRI_VIOLIN_PLOTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriViolinPlotsParameters = typing.TypedDict('DmriViolinPlotsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_violinPlots"],
     "input_directory": str,
@@ -178,7 +180,11 @@ def dmri_violin_plots(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_VIOLIN_PLOTS_METADATA)
-    params = dmri_violin_plots_params(input_directory=input_directory, labels=labels, structure=structure)
+    params = dmri_violin_plots_params(
+        input_directory=input_directory,
+        labels=labels,
+        structure=structure,
+    )
     return dmri_violin_plots_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_MORPHOLOGY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMorphologyParameters = typing.TypedDict('MriMorphologyParameters', {
     "__STYX_TYPE__": typing.Literal["mri_morphology"],
     "input_volume": InputPathType,
@@ -200,7 +202,13 @@ def mri_morphology(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MORPHOLOGY_METADATA)
-    params = mri_morphology_params(input_volume=input_volume, operation=operation, number_iter=number_iter, output_volume=output_volume, label_option=label_option)
+    params = mri_morphology_params(
+        input_volume=input_volume,
+        operation=operation,
+        number_iter=number_iter,
+        output_volume=output_volume,
+        label_option=label_option,
+    )
     return mri_morphology_execute(params, execution)
 
 

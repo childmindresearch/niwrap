@@ -11,6 +11,8 @@ MRIS_ENTROPY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisEntropyParameters = typing.TypedDict('MrisEntropyParameters', {
     "__STYX_TYPE__": typing.Literal["mris_entropy"],
     "subject": str,
@@ -202,7 +204,14 @@ def mris_entropy(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ENTROPY_METADATA)
-    params = mris_entropy_params(subject=subject, hemi=hemi, wfile=wfile, curvfile=curvfile, average_iterations=average_iterations, normalize=normalize)
+    params = mris_entropy_params(
+        subject=subject,
+        hemi=hemi,
+        wfile=wfile,
+        curvfile=curvfile,
+        average_iterations=average_iterations,
+        normalize=normalize,
+    )
     return mris_entropy_execute(params, execution)
 
 

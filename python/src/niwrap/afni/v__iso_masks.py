@@ -11,6 +11,8 @@ V__ISO_MASKS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VIsoMasksParameters = typing.TypedDict('VIsoMasksParameters', {
     "__STYX_TYPE__": typing.Literal["@IsoMasks"],
     "input_dataset": InputPathType,
@@ -167,7 +169,10 @@ def v__iso_masks(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ISO_MASKS_METADATA)
-    params = v__iso_masks_params(input_dataset=input_dataset, isovals=isovals)
+    params = v__iso_masks_params(
+        input_dataset=input_dataset,
+        isovals=isovals,
+    )
     return v__iso_masks_execute(params, execution)
 
 

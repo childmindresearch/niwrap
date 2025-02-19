@@ -11,6 +11,8 @@ MRI_ENTOWM_SEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEntowmSegParameters = typing.TypedDict('MriEntowmSegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_entowm_seg"],
     "input_image": typing.NotRequired[InputPathType | None],
@@ -437,7 +439,33 @@ def mri_entowm_seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ENTOWM_SEG_METADATA)
-    params = mri_entowm_seg_params(input_image=input_image, output_segmentation=output_segmentation, recon_subjects=recon_subjects, subjects_directory=subjects_directory, conform=conform, etiv=etiv, tal=tal, write_posteriors=write_posteriors, write_volumes=write_volumes, write_qa_stats=write_qa_stats, exclude_labels=exclude_labels, keep_ac=keep_ac, vox_count_volumes=vox_count_volumes, model_weights=model_weights, color_table=color_table, population_stats=population_stats, debug=debug, vmp=vmp, threads=threads, seven_tesla=seven_tesla, percentile=percentile, cuda_device=cuda_device, output_base=output_base, no_cite_sclimbic=no_cite_sclimbic, nchannels=nchannels)
+    params = mri_entowm_seg_params(
+        input_image=input_image,
+        output_segmentation=output_segmentation,
+        recon_subjects=recon_subjects,
+        subjects_directory=subjects_directory,
+        conform=conform,
+        etiv=etiv,
+        tal=tal,
+        write_posteriors=write_posteriors,
+        write_volumes=write_volumes,
+        write_qa_stats=write_qa_stats,
+        exclude_labels=exclude_labels,
+        keep_ac=keep_ac,
+        vox_count_volumes=vox_count_volumes,
+        model_weights=model_weights,
+        color_table=color_table,
+        population_stats=population_stats,
+        debug=debug,
+        vmp=vmp,
+        threads=threads,
+        seven_tesla=seven_tesla,
+        percentile=percentile,
+        cuda_device=cuda_device,
+        output_base=output_base,
+        no_cite_sclimbic=no_cite_sclimbic,
+        nchannels=nchannels,
+    )
     return mri_entowm_seg_execute(params, execution)
 
 

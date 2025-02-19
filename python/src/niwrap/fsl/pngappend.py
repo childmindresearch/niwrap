@@ -11,6 +11,8 @@ PNGAPPEND_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PngappendParameters = typing.TypedDict('PngappendParameters', {
     "__STYX_TYPE__": typing.Literal["pngappend"],
     "input_files_and_options": list[str],
@@ -164,7 +166,10 @@ def pngappend(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PNGAPPEND_METADATA)
-    params = pngappend_params(input_files_and_options=input_files_and_options, output_file=output_file)
+    params = pngappend_params(
+        input_files_and_options=input_files_and_options,
+        output_file=output_file,
+    )
     return pngappend_execute(params, execution)
 
 

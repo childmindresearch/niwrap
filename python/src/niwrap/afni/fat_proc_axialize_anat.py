@@ -11,6 +11,8 @@ FAT_PROC_AXIALIZE_ANAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcAxializeAnatParameters = typing.TypedDict('FatProcAxializeAnatParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_axialize_anat"],
     "in_file": InputPathType,
@@ -377,7 +379,30 @@ def fat_proc_axialize_anat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_AXIALIZE_ANAT_METADATA)
-    params = fat_proc_axialize_anat_params(in_file=in_file, ref_file=ref_file, prefix=prefix, mode_t2w=mode_t2w, mode_t1w=mode_t1w, workdir=workdir, out_match_ref=out_match_ref, do_ceil_out=do_ceil_out, extra_al_wtmask=extra_al_wtmask, extra_al_cost=extra_al_cost, extra_al_opts=extra_al_opts, focus_mask=focus_mask, focus_by_ss=focus_by_ss, remove_inf_sli=remove_inf_sli, pre_align_center_mass=pre_align_center_mass, pre_center_mass=pre_center_mass, post_lr_symm=post_lr_symm, no_pre_lr_symm=no_pre_lr_symm, no_clean=no_clean, qc_ulay_range=qc_ulay_range, no_qc_view=no_qc_view, qc_prefix=qc_prefix)
+    params = fat_proc_axialize_anat_params(
+        in_file=in_file,
+        ref_file=ref_file,
+        prefix=prefix,
+        mode_t2w=mode_t2w,
+        mode_t1w=mode_t1w,
+        workdir=workdir,
+        out_match_ref=out_match_ref,
+        do_ceil_out=do_ceil_out,
+        extra_al_wtmask=extra_al_wtmask,
+        extra_al_cost=extra_al_cost,
+        extra_al_opts=extra_al_opts,
+        focus_mask=focus_mask,
+        focus_by_ss=focus_by_ss,
+        remove_inf_sli=remove_inf_sli,
+        pre_align_center_mass=pre_align_center_mass,
+        pre_center_mass=pre_center_mass,
+        post_lr_symm=post_lr_symm,
+        no_pre_lr_symm=no_pre_lr_symm,
+        no_clean=no_clean,
+        qc_ulay_range=qc_ulay_range,
+        no_qc_view=no_qc_view,
+        qc_prefix=qc_prefix,
+    )
     return fat_proc_axialize_anat_execute(params, execution)
 
 

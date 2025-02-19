@@ -11,6 +11,8 @@ RUN_QDEC_GLM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunQdecGlmParameters = typing.TypedDict('RunQdecGlmParameters', {
     "__STYX_TYPE__": typing.Literal["run-qdec-glm"],
     "qdec_directory": str,
@@ -157,7 +159,9 @@ def run_qdec_glm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_QDEC_GLM_METADATA)
-    params = run_qdec_glm_params(qdec_directory=qdec_directory)
+    params = run_qdec_glm_params(
+        qdec_directory=qdec_directory,
+    )
     return run_qdec_glm_execute(params, execution)
 
 

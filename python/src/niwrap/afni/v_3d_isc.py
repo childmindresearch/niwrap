@@ -11,6 +11,8 @@ V_3D_ISC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dIscParameters = typing.TypedDict('V3dIscParameters', {
     "__STYX_TYPE__": typing.Literal["3dISC"],
     "outfile_prefix": str,
@@ -273,7 +275,17 @@ def v_3d_isc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ISC_METADATA)
-    params = v_3d_isc_params(outfile_prefix=outfile_prefix, num_jobs=num_jobs, mask_file=mask_file, model_structure=model_structure, qvar_centers=qvar_centers, quantitative_vars=quantitative_vars, fisher_transform=fisher_transform, io_functions=io_functions, data_table=data_table)
+    params = v_3d_isc_params(
+        outfile_prefix=outfile_prefix,
+        num_jobs=num_jobs,
+        mask_file=mask_file,
+        model_structure=model_structure,
+        qvar_centers=qvar_centers,
+        quantitative_vars=quantitative_vars,
+        fisher_transform=fisher_transform,
+        io_functions=io_functions,
+        data_table=data_table,
+    )
     return v_3d_isc_execute(params, execution)
 
 

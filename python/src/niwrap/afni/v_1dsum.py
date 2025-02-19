@@ -11,6 +11,8 @@ V_1DSUM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dsumParameters = typing.TypedDict('V1dsumParameters', {
     "__STYX_TYPE__": typing.Literal["1dsum"],
     "input_files": list[InputPathType],
@@ -213,7 +215,14 @@ def v_1dsum(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DSUM_METADATA)
-    params = v_1dsum_params(input_files=input_files, ignore_rows=ignore_rows, use_rows=use_rows, mean_flag=mean_flag, nocomment_flag=nocomment_flag, okempty_flag=okempty_flag)
+    params = v_1dsum_params(
+        input_files=input_files,
+        ignore_rows=ignore_rows,
+        use_rows=use_rows,
+        mean_flag=mean_flag,
+        nocomment_flag=nocomment_flag,
+        okempty_flag=okempty_flag,
+    )
     return v_1dsum_execute(params, execution)
 
 

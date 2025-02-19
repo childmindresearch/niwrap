@@ -11,6 +11,8 @@ FREEVIEW_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FreeviewParameters = typing.TypedDict('FreeviewParameters', {
     "__STYX_TYPE__": typing.Literal["freeview"],
     "args": typing.NotRequired[str | None],
@@ -157,7 +159,9 @@ def freeview(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FREEVIEW_METADATA)
-    params = freeview_params(args=args)
+    params = freeview_params(
+        args=args,
+    )
     return freeview_execute(params, execution)
 
 

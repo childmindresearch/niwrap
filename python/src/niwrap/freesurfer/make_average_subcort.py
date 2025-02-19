@@ -11,6 +11,8 @@ MAKE_AVERAGE_SUBCORT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeAverageSubcortParameters = typing.TypedDict('MakeAverageSubcortParameters', {
     "__STYX_TYPE__": typing.Literal["make_average_subcort"],
     "subjects": list[str],
@@ -171,7 +173,10 @@ def make_average_subcort(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_AVERAGE_SUBCORT_METADATA)
-    params = make_average_subcort_params(subjects=subjects, output_volume=output_volume)
+    params = make_average_subcort_params(
+        subjects=subjects,
+        output_volume=output_volume,
+    )
     return make_average_subcort_execute(params, execution)
 
 

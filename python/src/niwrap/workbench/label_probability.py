@@ -11,6 +11,8 @@ LABEL_PROBABILITY_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelProbabilityParameters = typing.TypedDict('LabelProbabilityParameters', {
     "__STYX_TYPE__": typing.Literal["label-probability"],
     "label_maps": InputPathType,
@@ -189,7 +191,11 @@ def label_probability(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_PROBABILITY_METADATA)
-    params = label_probability_params(label_maps=label_maps, probability_metric_out=probability_metric_out, opt_exclude_unlabeled=opt_exclude_unlabeled)
+    params = label_probability_params(
+        label_maps=label_maps,
+        probability_metric_out=probability_metric_out,
+        opt_exclude_unlabeled=opt_exclude_unlabeled,
+    )
     return label_probability_execute(params, execution)
 
 

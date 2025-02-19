@@ -11,6 +11,8 @@ FSL2ASCII_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Fsl2asciiParameters = typing.TypedDict('Fsl2asciiParameters', {
     "__STYX_TYPE__": typing.Literal["fsl2ascii"],
     "input_file": InputPathType,
@@ -166,7 +168,10 @@ def fsl2ascii(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL2ASCII_METADATA)
-    params = fsl2ascii_params(input_file=input_file, output_file=output_file)
+    params = fsl2ascii_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return fsl2ascii_execute(params, execution)
 
 

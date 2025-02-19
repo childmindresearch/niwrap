@@ -11,6 +11,8 @@ FSL_MVLM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslMvlmParameters = typing.TypedDict('FslMvlmParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_mvlm"],
     "input_file": InputPathType,
@@ -304,7 +306,21 @@ def fsl_mvlm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_MVLM_METADATA)
-    params = fsl_mvlm_params(input_file=input_file, basename_output_files=basename_output_files, algorithm=algorithm, design_matrix=design_matrix, mask_image=mask_image, design_normalization=design_normalization, variance_normalisation=variance_normalisation, demean=demean, nmf_dim=nmf_dim, nmf_iterations=nmf_iterations, verbose=verbose, out_data=out_data, out_vnscales=out_vnscales)
+    params = fsl_mvlm_params(
+        input_file=input_file,
+        basename_output_files=basename_output_files,
+        algorithm=algorithm,
+        design_matrix=design_matrix,
+        mask_image=mask_image,
+        design_normalization=design_normalization,
+        variance_normalisation=variance_normalisation,
+        demean=demean,
+        nmf_dim=nmf_dim,
+        nmf_iterations=nmf_iterations,
+        verbose=verbose,
+        out_data=out_data,
+        out_vnscales=out_vnscales,
+    )
     return fsl_mvlm_execute(params, execution)
 
 

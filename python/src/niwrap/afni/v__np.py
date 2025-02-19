@@ -11,6 +11,8 @@ V__NP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VNpParameters = typing.TypedDict('VNpParameters', {
     "__STYX_TYPE__": typing.Literal["@np"],
     "prefix": str,
@@ -163,7 +165,9 @@ def v__np(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__NP_METADATA)
-    params = v__np_params(prefix=prefix)
+    params = v__np_params(
+        prefix=prefix,
+    )
     return v__np_execute(params, execution)
 
 

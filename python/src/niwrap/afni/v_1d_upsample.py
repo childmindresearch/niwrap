@@ -11,6 +11,8 @@ V_1D_UPSAMPLE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dUpsampleParameters = typing.TypedDict('V1dUpsampleParameters', {
     "__STYX_TYPE__": typing.Literal["1dUpsample"],
     "upsample_factor": float,
@@ -176,7 +178,11 @@ def v_1d_upsample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_UPSAMPLE_METADATA)
-    params = v_1d_upsample_params(upsample_factor=upsample_factor, input_file=input_file, linear_interpolation=linear_interpolation)
+    params = v_1d_upsample_params(
+        upsample_factor=upsample_factor,
+        input_file=input_file,
+        linear_interpolation=linear_interpolation,
+    )
     return v_1d_upsample_execute(params, execution)
 
 

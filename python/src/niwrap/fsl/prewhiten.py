@@ -11,6 +11,8 @@ PREWHITEN_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PrewhitenParameters = typing.TypedDict('PrewhitenParameters', {
     "__STYX_TYPE__": typing.Literal["prewhiten"],
     "feat_directory": str,
@@ -173,7 +175,10 @@ def prewhiten(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PREWHITEN_METADATA)
-    params = prewhiten_params(feat_directory=feat_directory, output_directory=output_directory)
+    params = prewhiten_params(
+        feat_directory=feat_directory,
+        output_directory=output_directory,
+    )
     return prewhiten_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_DTEIG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDteigParameters = typing.TypedDict('V3dDteigParameters', {
     "__STYX_TYPE__": typing.Literal["3dDTeig"],
     "input_dataset": str,
@@ -215,7 +217,13 @@ def v_3d_dteig(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DTEIG_METADATA)
-    params = v_3d_dteig_params(input_dataset=input_dataset, prefix=prefix, datum=datum, sep_dsets=sep_dsets, uddata=uddata)
+    params = v_3d_dteig_params(
+        input_dataset=input_dataset,
+        prefix=prefix,
+        datum=datum,
+        sep_dsets=sep_dsets,
+        uddata=uddata,
+    )
     return v_3d_dteig_execute(params, execution)
 
 

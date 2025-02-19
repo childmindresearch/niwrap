@@ -11,6 +11,8 @@ MRIS_INFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisInfoParameters = typing.TypedDict('MrisInfoParameters', {
     "__STYX_TYPE__": typing.Literal["mris_info"],
     "surfacefile": InputPathType,
@@ -405,7 +407,31 @@ def mris_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INFO_METADATA)
-    params = mris_info_params(surfacefile=surfacefile, outfile=outfile, subject_hemi_surfname=subject_hemi_surfname, patchfile=patchfile, vertex_number=vertex_number, extended_vertex_number=extended_vertex_number, curvfile=curvfile, annotfile=annotfile, edge_stats_id=edge_stats_id, edge_number=edge_number, vtxno=vtxno, matrix_format=matrix_format, mask_file=mask_file, label_file=label_file, edge_file=edge_file, talairach_xfm_flag=talairach_xfm_flag, rescale_flag=rescale_flag, area_stats_flag=area_stats_flag, quality_stats_flag=quality_stats_flag, intersections_flag=intersections_flag, nogifti_flag=nogifti_flag, version_flag=version_flag, help_flag=help_flag)
+    params = mris_info_params(
+        surfacefile=surfacefile,
+        outfile=outfile,
+        subject_hemi_surfname=subject_hemi_surfname,
+        patchfile=patchfile,
+        vertex_number=vertex_number,
+        extended_vertex_number=extended_vertex_number,
+        curvfile=curvfile,
+        annotfile=annotfile,
+        edge_stats_id=edge_stats_id,
+        edge_number=edge_number,
+        vtxno=vtxno,
+        matrix_format=matrix_format,
+        mask_file=mask_file,
+        label_file=label_file,
+        edge_file=edge_file,
+        talairach_xfm_flag=talairach_xfm_flag,
+        rescale_flag=rescale_flag,
+        area_stats_flag=area_stats_flag,
+        quality_stats_flag=quality_stats_flag,
+        intersections_flag=intersections_flag,
+        nogifti_flag=nogifti_flag,
+        version_flag=version_flag,
+        help_flag=help_flag,
+    )
     return mris_info_execute(params, execution)
 
 

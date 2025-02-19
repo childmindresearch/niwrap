@@ -11,6 +11,8 @@ V_3DFIM__METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dfimParameters = typing.TypedDict('V3dfimParameters', {
     "__STYX_TYPE__": typing.Literal["3dfim+"],
     "infile": InputPathType,
@@ -322,7 +324,20 @@ def v_3dfim_(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DFIM__METADATA)
-    params = v_3dfim__params(infile=infile, input1dfile=input1dfile, maskfile=maskfile, first_image=first_image, last_image=last_image, baseline_polynomial=baseline_polynomial, threshold=threshold, cdisp_value=cdisp_value, ort_file=ort_file, ideal_file=ideal_file, output_params=output_params, output_bucket=output_bucket)
+    params = v_3dfim__params(
+        infile=infile,
+        input1dfile=input1dfile,
+        maskfile=maskfile,
+        first_image=first_image,
+        last_image=last_image,
+        baseline_polynomial=baseline_polynomial,
+        threshold=threshold,
+        cdisp_value=cdisp_value,
+        ort_file=ort_file,
+        ideal_file=ideal_file,
+        output_params=output_params,
+        output_bucket=output_bucket,
+    )
     return v_3dfim__execute(params, execution)
 
 

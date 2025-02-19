@@ -11,6 +11,8 @@ T4IMGS_4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 T4imgs4dfpParameters = typing.TypedDict('T4imgs4dfpParameters', {
     "__STYX_TYPE__": typing.Literal["t4imgs_4dfp"],
     "sqrt_normalize": bool,
@@ -262,7 +264,21 @@ def t4imgs_4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(T4IMGS_4DFP_METADATA)
-    params = t4imgs_4dfp_params(sqrt_normalize=sqrt_normalize, cubic_spline=cubic_spline, output_nan=output_nan, convert_t4=convert_t4, nearest_neighbor=nearest_neighbor, output_111_space=output_111_space, output_222_space=output_222_space, output_333n_space=output_333n_space, duplicate_dimensions=duplicate_dimensions, big_endian=big_endian, little_endian=little_endian, input_images=input_images, output_image=output_image)
+    params = t4imgs_4dfp_params(
+        sqrt_normalize=sqrt_normalize,
+        cubic_spline=cubic_spline,
+        output_nan=output_nan,
+        convert_t4=convert_t4,
+        nearest_neighbor=nearest_neighbor,
+        output_111_space=output_111_space,
+        output_222_space=output_222_space,
+        output_333n_space=output_333n_space,
+        duplicate_dimensions=duplicate_dimensions,
+        big_endian=big_endian,
+        little_endian=little_endian,
+        input_images=input_images,
+        output_image=output_image,
+    )
     return t4imgs_4dfp_execute(params, execution)
 
 

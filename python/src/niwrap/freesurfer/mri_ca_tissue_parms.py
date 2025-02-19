@@ -11,6 +11,8 @@ MRI_CA_TISSUE_PARMS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCaTissueParmsParameters = typing.TypedDict('MriCaTissueParmsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_ca_tissue_parms"],
     "subjects": list[str],
@@ -182,7 +184,12 @@ def mri_ca_tissue_parms(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_TISSUE_PARMS_METADATA)
-    params = mri_ca_tissue_parms_params(subjects=subjects, output_file=output_file, spacing_flag=spacing_flag, gradient_flag=gradient_flag)
+    params = mri_ca_tissue_parms_params(
+        subjects=subjects,
+        output_file=output_file,
+        spacing_flag=spacing_flag,
+        gradient_flag=gradient_flag,
+    )
     return mri_ca_tissue_parms_execute(params, execution)
 
 

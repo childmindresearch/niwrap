@@ -11,6 +11,8 @@ SLICER_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SlicerParameters = typing.TypedDict('SlicerParameters', {
     "__STYX_TYPE__": typing.Literal["slicer"],
     "in_file": InputPathType,
@@ -397,7 +399,31 @@ def slicer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICER_METADATA)
-    params = slicer_params(in_file=in_file, overlay_file=overlay_file, label_slices=label_slices, colour_map=colour_map, scaling=scaling, intensity_range=intensity_range, threshold_edges=threshold_edges, dither_edges=dither_edges, nearest_neighbour=nearest_neighbour, show_orientation=show_orientation, red_dot_marker=red_dot_marker, output_single_image=output_single_image, output_sagittal_slice=output_sagittal_slice, output_sagittal_slice_fname=output_sagittal_slice_fname, output_axial_slice=output_axial_slice, output_axial_slice_fname=output_axial_slice_fname, output_coronal_slice=output_coronal_slice, output_coronal_slice_fname=output_coronal_slice_fname, output_all_axial_slices=output_all_axial_slices, output_all_axial_slices_fname=output_all_axial_slices_fname, output_sample_axial_slices=output_sample_axial_slices, output_sample_axial_slices_width=output_sample_axial_slices_width, output_sample_axial_slices_fname=output_sample_axial_slices_fname)
+    params = slicer_params(
+        in_file=in_file,
+        overlay_file=overlay_file,
+        label_slices=label_slices,
+        colour_map=colour_map,
+        scaling=scaling,
+        intensity_range=intensity_range,
+        threshold_edges=threshold_edges,
+        dither_edges=dither_edges,
+        nearest_neighbour=nearest_neighbour,
+        show_orientation=show_orientation,
+        red_dot_marker=red_dot_marker,
+        output_single_image=output_single_image,
+        output_sagittal_slice=output_sagittal_slice,
+        output_sagittal_slice_fname=output_sagittal_slice_fname,
+        output_axial_slice=output_axial_slice,
+        output_axial_slice_fname=output_axial_slice_fname,
+        output_coronal_slice=output_coronal_slice,
+        output_coronal_slice_fname=output_coronal_slice_fname,
+        output_all_axial_slices=output_all_axial_slices,
+        output_all_axial_slices_fname=output_all_axial_slices_fname,
+        output_sample_axial_slices=output_sample_axial_slices,
+        output_sample_axial_slices_width=output_sample_axial_slices_width,
+        output_sample_axial_slices_fname=output_sample_axial_slices_fname,
+    )
     return slicer_execute(params, execution)
 
 

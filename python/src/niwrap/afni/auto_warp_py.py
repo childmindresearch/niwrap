@@ -11,6 +11,8 @@ AUTO_WARP_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AutoWarpPyParameters = typing.TypedDict('AutoWarpPyParameters', {
     "__STYX_TYPE__": typing.Literal["auto_warp.py"],
     "base": InputPathType,
@@ -478,7 +480,41 @@ def auto_warp_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AUTO_WARP_PY_METADATA)
-    params = auto_warp_py_params(base=base, input_=input_, skull_strip_input=skull_strip_input, qblur=qblur, qworkhard=qworkhard, qw_opts=qw_opts, keep_rm_files=keep_rm_files, prep_only=prep_only, help_=help_, hview=hview, limited_help=limited_help, option_help=option_help, version=version, ver=ver, verb=verb, save_script=save_script, skip_affine=skip_affine, skull_strip_base=skull_strip_base, ex_mode=ex_mode, overwrite=overwrite, suffix=suffix, child_anat=child_anat, warp_dxyz=warp_dxyz, affine_dxyz=affine_dxyz, affine_input_xmat=affine_input_xmat, smooth_anat=smooth_anat, smooth_base=smooth_base, unifize_input=unifize_input, output_dir=output_dir, followers=followers, affine_followers_xmat=affine_followers_xmat, skullstrip_opts=skullstrip_opts, at_opts=at_opts)
+    params = auto_warp_py_params(
+        base=base,
+        input_=input_,
+        skull_strip_input=skull_strip_input,
+        qblur=qblur,
+        qworkhard=qworkhard,
+        qw_opts=qw_opts,
+        keep_rm_files=keep_rm_files,
+        prep_only=prep_only,
+        help_=help_,
+        hview=hview,
+        limited_help=limited_help,
+        option_help=option_help,
+        version=version,
+        ver=ver,
+        verb=verb,
+        save_script=save_script,
+        skip_affine=skip_affine,
+        skull_strip_base=skull_strip_base,
+        ex_mode=ex_mode,
+        overwrite=overwrite,
+        suffix=suffix,
+        child_anat=child_anat,
+        warp_dxyz=warp_dxyz,
+        affine_dxyz=affine_dxyz,
+        affine_input_xmat=affine_input_xmat,
+        smooth_anat=smooth_anat,
+        smooth_base=smooth_base,
+        unifize_input=unifize_input,
+        output_dir=output_dir,
+        followers=followers,
+        affine_followers_xmat=affine_followers_xmat,
+        skullstrip_opts=skullstrip_opts,
+        at_opts=at_opts,
+    )
     return auto_warp_py_execute(params, execution)
 
 

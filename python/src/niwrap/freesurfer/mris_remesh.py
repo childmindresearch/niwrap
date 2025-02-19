@@ -11,6 +11,8 @@ MRIS_REMESH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRemeshParameters = typing.TypedDict('MrisRemeshParameters', {
     "__STYX_TYPE__": typing.Literal["mris_remesh"],
     "input": InputPathType,
@@ -232,7 +234,15 @@ def mris_remesh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REMESH_METADATA)
-    params = mris_remesh_params(input_=input_, output=output, edge_length=edge_length, num_vertices=num_vertices, face_area=face_area, remesh=remesh, iterations=iterations)
+    params = mris_remesh_params(
+        input_=input_,
+        output=output,
+        edge_length=edge_length,
+        num_vertices=num_vertices,
+        face_area=face_area,
+        remesh=remesh,
+        iterations=iterations,
+    )
     return mris_remesh_execute(params, execution)
 
 

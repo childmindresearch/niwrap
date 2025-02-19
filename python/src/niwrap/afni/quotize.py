@@ -11,6 +11,8 @@ QUOTIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 QuotizeParameters = typing.TypedDict('QuotizeParameters', {
     "__STYX_TYPE__": typing.Literal["quotize"],
     "name": str,
@@ -175,7 +177,11 @@ def quotize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUOTIZE_METADATA)
-    params = quotize_params(name=name, input_file=input_file, output_file=output_file)
+    params = quotize_params(
+        name=name,
+        input_file=input_file,
+        output_file=output_file,
+    )
     return quotize_execute(params, execution)
 
 

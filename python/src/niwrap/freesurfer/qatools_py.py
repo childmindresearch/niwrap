@@ -11,6 +11,8 @@ QATOOLS_PY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 QatoolsPyParameters = typing.TypedDict('QatoolsPyParameters', {
     "__STYX_TYPE__": typing.Literal["qatools.py"],
     "subjects_dir": str,
@@ -228,7 +230,15 @@ def qatools_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QATOOLS_PY_METADATA)
-    params = qatools_py_params(subjects_dir=subjects_dir, output_dir=output_dir, subjects=subjects, screenshots=screenshots, fornix=fornix, outlier=outlier, outlier_table=outlier_table)
+    params = qatools_py_params(
+        subjects_dir=subjects_dir,
+        output_dir=output_dir,
+        subjects=subjects,
+        screenshots=screenshots,
+        fornix=fornix,
+        outlier=outlier,
+        outlier_table=outlier_table,
+    )
     return qatools_py_execute(params, execution)
 
 

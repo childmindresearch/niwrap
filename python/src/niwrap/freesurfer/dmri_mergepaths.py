@@ -11,6 +11,8 @@ DMRI_MERGEPATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriMergepathsParameters = typing.TypedDict('DmriMergepathsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_mergepaths"],
     "input_volumes": list[InputPathType],
@@ -215,7 +217,15 @@ def dmri_mergepaths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_MERGEPATHS_METADATA)
-    params = dmri_mergepaths_params(input_volumes=input_volumes, input_directory=input_directory, output_volume=output_volume, color_table=color_table, threshold=threshold, debug=debug, check_opts=check_opts)
+    params = dmri_mergepaths_params(
+        input_volumes=input_volumes,
+        input_directory=input_directory,
+        output_volume=output_volume,
+        color_table=color_table,
+        threshold=threshold,
+        debug=debug,
+        check_opts=check_opts,
+    )
     return dmri_mergepaths_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ INVFEATREG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 InvfeatregParameters = typing.TypedDict('InvfeatregParameters', {
     "__STYX_TYPE__": typing.Literal["invfeatreg"],
     "feat_directory": str,
@@ -155,7 +157,9 @@ def invfeatreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INVFEATREG_METADATA)
-    params = invfeatreg_params(feat_directory=feat_directory)
+    params = invfeatreg_params(
+        feat_directory=feat_directory,
+    )
     return invfeatreg_execute(params, execution)
 
 

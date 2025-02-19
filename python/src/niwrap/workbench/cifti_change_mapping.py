@@ -11,21 +11,29 @@ CIFTI_CHANGE_MAPPING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiChangeMappingSeriesParameters = typing.TypedDict('CiftiChangeMappingSeriesParameters', {
     "__STYX_TYPE__": typing.Literal["series"],
     "step": float,
     "start": float,
     "opt_unit_unit": typing.NotRequired[str | None],
 })
+
+
 CiftiChangeMappingScalarParameters = typing.TypedDict('CiftiChangeMappingScalarParameters', {
     "__STYX_TYPE__": typing.Literal["scalar"],
     "opt_name_file_file": typing.NotRequired[str | None],
 })
+
+
 CiftiChangeMappingFromCiftiParameters = typing.TypedDict('CiftiChangeMappingFromCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["from_cifti"],
     "template_cifti": InputPathType,
     "direction": str,
 })
+
+
 CiftiChangeMappingParameters = typing.TypedDict('CiftiChangeMappingParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-change-mapping"],
     "data_cifti": InputPathType,
@@ -375,7 +383,14 @@ def cifti_change_mapping(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CHANGE_MAPPING_METADATA)
-    params = cifti_change_mapping_params(data_cifti=data_cifti, direction=direction, cifti_out=cifti_out, series=series, scalar=scalar, from_cifti=from_cifti)
+    params = cifti_change_mapping_params(
+        data_cifti=data_cifti,
+        direction=direction,
+        cifti_out=cifti_out,
+        series=series,
+        scalar=scalar,
+        from_cifti=from_cifti,
+    )
     return cifti_change_mapping_execute(params, execution)
 
 

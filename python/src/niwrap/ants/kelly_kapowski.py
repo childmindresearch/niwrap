@@ -11,6 +11,8 @@ KELLY_KAPOWSKI_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 KellyKapowskiParameters = typing.TypedDict('KellyKapowskiParameters', {
     "__STYX_TYPE__": typing.Literal["KellyKapowski"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
@@ -424,7 +426,26 @@ def kelly_kapowski(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(KELLY_KAPOWSKI_METADATA)
-    params = kelly_kapowski_params(image_dimensionality=image_dimensionality, segmentation_image=segmentation_image, gray_matter_probability_image=gray_matter_probability_image, white_matter_probability_image=white_matter_probability_image, convergence=convergence, thickness_prior_estimate=thickness_prior_estimate, thickness_prior_image=thickness_prior_image, gradient_step=gradient_step, smoothing_variance=smoothing_variance, smoothing_velocity_field_parameter=smoothing_velocity_field_parameter, use_bspline_smoothing=use_bspline_smoothing, use_masked_smoothing=use_masked_smoothing, time_points=time_points, restrict_deformation=restrict_deformation, number_of_integration_points=number_of_integration_points, maximum_number_of_invert_displacement_field_iterations=maximum_number_of_invert_displacement_field_iterations, output=output, verbose=verbose)
+    params = kelly_kapowski_params(
+        image_dimensionality=image_dimensionality,
+        segmentation_image=segmentation_image,
+        gray_matter_probability_image=gray_matter_probability_image,
+        white_matter_probability_image=white_matter_probability_image,
+        convergence=convergence,
+        thickness_prior_estimate=thickness_prior_estimate,
+        thickness_prior_image=thickness_prior_image,
+        gradient_step=gradient_step,
+        smoothing_variance=smoothing_variance,
+        smoothing_velocity_field_parameter=smoothing_velocity_field_parameter,
+        use_bspline_smoothing=use_bspline_smoothing,
+        use_masked_smoothing=use_masked_smoothing,
+        time_points=time_points,
+        restrict_deformation=restrict_deformation,
+        number_of_integration_points=number_of_integration_points,
+        maximum_number_of_invert_displacement_field_iterations=maximum_number_of_invert_displacement_field_iterations,
+        output=output,
+        verbose=verbose,
+    )
     return kelly_kapowski_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ RBA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RbaParameters = typing.TypedDict('RbaParameters', {
     "__STYX_TYPE__": typing.Literal["RBA"],
     "prefix": str,
@@ -466,7 +468,34 @@ def rba(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RBA_METADATA)
-    params = rba_params(prefix=prefix, data_table=data_table, chains=chains, iterations=iterations, model=model, eoi=eoi, wcp=wcp, tstat=tstat, stdz=stdz, c_vars=c_vars, q_vars=q_vars, dist_roi=dist_roi, dist_subj=dist_subj, dist_y=dist_y, ridge_plot=ridge_plot, roi=roi, subj=subj, scale=scale, se=se, pdp=pdp, mean=mean, sigma=sigma, debug=debug, verbose=verbose, md=md, r2z=r2z)
+    params = rba_params(
+        prefix=prefix,
+        data_table=data_table,
+        chains=chains,
+        iterations=iterations,
+        model=model,
+        eoi=eoi,
+        wcp=wcp,
+        tstat=tstat,
+        stdz=stdz,
+        c_vars=c_vars,
+        q_vars=q_vars,
+        dist_roi=dist_roi,
+        dist_subj=dist_subj,
+        dist_y=dist_y,
+        ridge_plot=ridge_plot,
+        roi=roi,
+        subj=subj,
+        scale=scale,
+        se=se,
+        pdp=pdp,
+        mean=mean,
+        sigma=sigma,
+        debug=debug,
+        verbose=verbose,
+        md=md,
+        r2z=r2z,
+    )
     return rba_execute(params, execution)
 
 

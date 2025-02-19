@@ -11,6 +11,8 @@ V_3DMASKAVE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmaskaveParameters = typing.TypedDict('V3dmaskaveParameters', {
     "__STYX_TYPE__": typing.Literal["3dmaskave"],
     "in_file": InputPathType,
@@ -202,7 +204,13 @@ def v_3dmaskave(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMASKAVE_METADATA)
-    params = v_3dmaskave_params(in_file=in_file, mask=mask, num_threads=num_threads, outputtype=outputtype, quiet=quiet)
+    params = v_3dmaskave_params(
+        in_file=in_file,
+        mask=mask,
+        num_threads=num_threads,
+        outputtype=outputtype,
+        quiet=quiet,
+    )
     return v_3dmaskave_execute(params, execution)
 
 

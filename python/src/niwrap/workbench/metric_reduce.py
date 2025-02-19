@@ -11,11 +11,15 @@ METRIC_REDUCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricReduceExcludeOutliersParameters = typing.TypedDict('MetricReduceExcludeOutliersParameters', {
     "__STYX_TYPE__": typing.Literal["exclude_outliers"],
     "sigma_below": float,
     "sigma_above": float,
 })
+
+
 MetricReduceParameters = typing.TypedDict('MetricReduceParameters', {
     "__STYX_TYPE__": typing.Literal["metric-reduce"],
     "metric_in": InputPathType,
@@ -284,7 +288,13 @@ def metric_reduce(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_REDUCE_METADATA)
-    params = metric_reduce_params(metric_in=metric_in, operation=operation, metric_out=metric_out, exclude_outliers=exclude_outliers, opt_only_numeric=opt_only_numeric)
+    params = metric_reduce_params(
+        metric_in=metric_in,
+        operation=operation,
+        metric_out=metric_out,
+        exclude_outliers=exclude_outliers,
+        opt_only_numeric=opt_only_numeric,
+    )
     return metric_reduce_execute(params, execution)
 
 

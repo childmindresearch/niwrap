@@ -11,6 +11,8 @@ MELODIC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MelodicParameters = typing.TypedDict('MelodicParameters', {
     "__STYX_TYPE__": typing.Literal["melodic"],
     "input_file": InputPathType,
@@ -690,7 +692,57 @@ def melodic(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MELODIC_METADATA)
-    params = melodic_params(input_file=input_file, output_directory=output_directory, mask_file=mask_file, dimensionality_reduction=dimensionality_reduction, generate_report=generate_report, cifti_io=cifti_io, variance_normalization=variance_normalization, no_masking=no_masking, update_masking=update_masking, no_bet=no_bet, bg_threshold=bg_threshold, dimest_technique=dimest_technique, separate_variance_normalization=separate_variance_normalization, disable_migp=disable_migp, num_internal_eigenmaps=num_internal_eigenmaps, migp_shuffle=migp_shuffle, migp_factor=migp_factor, num_ics=num_ics, nonlinearity=nonlinearity, covar_weights=covar_weights, eps_error=eps_error, eps_rank1_error=eps_rank1_error, max_iters=max_iters, max_restarts=max_restarts, mm_threshold=mm_threshold, no_mixture_modeling=no_mixture_modeling, ic_components_file=ic_components_file, mixing_matrix_file=mixing_matrix_file, session_modes_file=session_modes_file, component_filter=component_filter, background_image=background_image, tr_seconds=tr_seconds, log_power_calc=log_power_calc, time_domain_design_matrix=time_domain_design_matrix, time_domain_t_contrast_matrix=time_domain_t_contrast_matrix, subject_domain_design_matrix=subject_domain_design_matrix, subject_domain_t_contrast_matrix=subject_domain_t_contrast_matrix, output_unmixing_matrix=output_unmixing_matrix, output_stats=output_stats, output_pca=output_pca, output_whitening=output_whitening, output_original_ics=output_original_ics, output_mean_volume=output_mean_volume, version=version, copyright_=copyright_, help_=help_, debug=debug, report_maps=report_maps, keep_meanvol=keep_meanvol)
+    params = melodic_params(
+        input_file=input_file,
+        output_directory=output_directory,
+        mask_file=mask_file,
+        dimensionality_reduction=dimensionality_reduction,
+        generate_report=generate_report,
+        cifti_io=cifti_io,
+        variance_normalization=variance_normalization,
+        no_masking=no_masking,
+        update_masking=update_masking,
+        no_bet=no_bet,
+        bg_threshold=bg_threshold,
+        dimest_technique=dimest_technique,
+        separate_variance_normalization=separate_variance_normalization,
+        disable_migp=disable_migp,
+        num_internal_eigenmaps=num_internal_eigenmaps,
+        migp_shuffle=migp_shuffle,
+        migp_factor=migp_factor,
+        num_ics=num_ics,
+        nonlinearity=nonlinearity,
+        covar_weights=covar_weights,
+        eps_error=eps_error,
+        eps_rank1_error=eps_rank1_error,
+        max_iters=max_iters,
+        max_restarts=max_restarts,
+        mm_threshold=mm_threshold,
+        no_mixture_modeling=no_mixture_modeling,
+        ic_components_file=ic_components_file,
+        mixing_matrix_file=mixing_matrix_file,
+        session_modes_file=session_modes_file,
+        component_filter=component_filter,
+        background_image=background_image,
+        tr_seconds=tr_seconds,
+        log_power_calc=log_power_calc,
+        time_domain_design_matrix=time_domain_design_matrix,
+        time_domain_t_contrast_matrix=time_domain_t_contrast_matrix,
+        subject_domain_design_matrix=subject_domain_design_matrix,
+        subject_domain_t_contrast_matrix=subject_domain_t_contrast_matrix,
+        output_unmixing_matrix=output_unmixing_matrix,
+        output_stats=output_stats,
+        output_pca=output_pca,
+        output_whitening=output_whitening,
+        output_original_ics=output_original_ics,
+        output_mean_volume=output_mean_volume,
+        version=version,
+        copyright_=copyright_,
+        help_=help_,
+        debug=debug,
+        report_maps=report_maps,
+        keep_meanvol=keep_meanvol,
+    )
     return melodic_execute(params, execution)
 
 

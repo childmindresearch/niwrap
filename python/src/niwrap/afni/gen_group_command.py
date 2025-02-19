@@ -11,6 +11,8 @@ GEN_GROUP_COMMAND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GenGroupCommandParameters = typing.TypedDict('GenGroupCommandParameters', {
     "__STYX_TYPE__": typing.Literal["gen_group_command"],
     "command_name": str,
@@ -296,7 +298,20 @@ def gen_group_command(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_GROUP_COMMAND_METADATA)
-    params = gen_group_command_params(command_name=command_name, datasets=datasets, prefix=prefix, set_labels=set_labels, subj_prefix=subj_prefix, subj_suffix=subj_suffix, subs_betas=subs_betas, subs_tstats=subs_tstats, type_=type_, verb=verb, write_script=write_script, other_options=other_options)
+    params = gen_group_command_params(
+        command_name=command_name,
+        datasets=datasets,
+        prefix=prefix,
+        set_labels=set_labels,
+        subj_prefix=subj_prefix,
+        subj_suffix=subj_suffix,
+        subs_betas=subs_betas,
+        subs_tstats=subs_tstats,
+        type_=type_,
+        verb=verb,
+        write_script=write_script,
+        other_options=other_options,
+    )
     return gen_group_command_execute(params, execution)
 
 

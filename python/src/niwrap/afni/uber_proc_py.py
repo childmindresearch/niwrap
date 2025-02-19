@@ -11,6 +11,8 @@ UBER_PROC_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 UberProcPyParameters = typing.TypedDict('UberProcPyParameters', {
     "__STYX_TYPE__": typing.Literal["uber_proc.py"],
     "results_dir": typing.NotRequired[str | None],
@@ -159,7 +161,9 @@ def uber_proc_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_PROC_PY_METADATA)
-    params = uber_proc_py_params(results_dir=results_dir)
+    params = uber_proc_py_params(
+        results_dir=results_dir,
+    )
     return uber_proc_py_execute(params, execution)
 
 

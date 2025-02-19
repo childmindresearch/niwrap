@@ -11,6 +11,8 @@ SURF2_VOL_COORD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 Surf2VolCoordParameters = typing.TypedDict('Surf2VolCoordParameters', {
     "__STYX_TYPE__": typing.Literal["Surf2VolCoord"],
     "surface": str,
@@ -278,7 +280,19 @@ def surf2_vol_coord(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF2_VOL_COORD_METADATA)
-    params = surf2_vol_coord_params(surface=surface, grid_vol=grid_vol, grid_subbrick=grid_subbrick, sv=sv, one_node=one_node, closest_nodes=closest_nodes, qual=qual, lpi=lpi, rai=rai, verb_level=verb_level, prefix=prefix)
+    params = surf2_vol_coord_params(
+        surface=surface,
+        grid_vol=grid_vol,
+        grid_subbrick=grid_subbrick,
+        sv=sv,
+        one_node=one_node,
+        closest_nodes=closest_nodes,
+        qual=qual,
+        lpi=lpi,
+        rai=rai,
+        verb_level=verb_level,
+        prefix=prefix,
+    )
     return surf2_vol_coord_execute(params, execution)
 
 

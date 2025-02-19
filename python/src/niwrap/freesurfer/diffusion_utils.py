@@ -11,6 +11,8 @@ DIFFUSION_UTILS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DiffusionUtilsParameters = typing.TypedDict('DiffusionUtilsParameters', {
     "__STYX_TYPE__": typing.Literal["diffusionUtils"],
     "dummy_flag": bool,
@@ -158,7 +160,9 @@ def diffusion_utils(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DIFFUSION_UTILS_METADATA)
-    params = diffusion_utils_params(dummy_flag=dummy_flag)
+    params = diffusion_utils_params(
+        dummy_flag=dummy_flag,
+    )
     return diffusion_utils_execute(params, execution)
 
 

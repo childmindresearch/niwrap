@@ -11,6 +11,8 @@ CIFTI_WEIGHTED_STATS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiWeightedStatsSpatialWeightsParameters = typing.TypedDict('CiftiWeightedStatsSpatialWeightsParameters', {
     "__STYX_TYPE__": typing.Literal["spatial_weights"],
     "opt_left_area_surf_left_surf": typing.NotRequired[InputPathType | None],
@@ -20,15 +22,21 @@ CiftiWeightedStatsSpatialWeightsParameters = typing.TypedDict('CiftiWeightedStat
     "opt_right_area_metric_right_metric": typing.NotRequired[InputPathType | None],
     "opt_cerebellum_area_metric_cerebellum_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiWeightedStatsRoiParameters = typing.TypedDict('CiftiWeightedStatsRoiParameters', {
     "__STYX_TYPE__": typing.Literal["roi"],
     "roi_cifti": InputPathType,
     "opt_match_maps": bool,
 })
+
+
 CiftiWeightedStatsStdevParameters = typing.TypedDict('CiftiWeightedStatsStdevParameters', {
     "__STYX_TYPE__": typing.Literal["stdev"],
     "opt_sample": bool,
 })
+
+
 CiftiWeightedStatsParameters = typing.TypedDict('CiftiWeightedStatsParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-weighted-stats"],
     "cifti_in": InputPathType,
@@ -474,7 +482,18 @@ def cifti_weighted_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_WEIGHTED_STATS_METADATA)
-    params = cifti_weighted_stats_params(cifti_in=cifti_in, spatial_weights=spatial_weights, opt_cifti_weights_weight_cifti=opt_cifti_weights_weight_cifti, opt_column_column=opt_column_column, roi=roi, opt_mean=opt_mean, stdev=stdev, opt_percentile_percent=opt_percentile_percent, opt_sum=opt_sum, opt_show_map_name=opt_show_map_name)
+    params = cifti_weighted_stats_params(
+        cifti_in=cifti_in,
+        spatial_weights=spatial_weights,
+        opt_cifti_weights_weight_cifti=opt_cifti_weights_weight_cifti,
+        opt_column_column=opt_column_column,
+        roi=roi,
+        opt_mean=opt_mean,
+        stdev=stdev,
+        opt_percentile_percent=opt_percentile_percent,
+        opt_sum=opt_sum,
+        opt_show_map_name=opt_show_map_name,
+    )
     return cifti_weighted_stats_execute(params, execution)
 
 

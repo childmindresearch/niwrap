@@ -11,6 +11,8 @@ LESION_FILLING_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 LesionFillingParameters = typing.TypedDict('LesionFillingParameters', {
     "__STYX_TYPE__": typing.Literal["LesionFilling"],
     "image_dimension": int,
@@ -180,7 +182,12 @@ def lesion_filling(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LESION_FILLING_METADATA)
-    params = lesion_filling_params(image_dimension=image_dimension, t1_image=t1_image, lesion_mask=lesion_mask, output_lesion_filled=output_lesion_filled)
+    params = lesion_filling_params(
+        image_dimension=image_dimension,
+        t1_image=t1_image,
+        lesion_mask=lesion_mask,
+        output_lesion_filled=output_lesion_filled,
+    )
     return lesion_filling_execute(params, execution)
 
 

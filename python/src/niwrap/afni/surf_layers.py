@@ -11,6 +11,8 @@ SURF_LAYERS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfLayersParameters = typing.TypedDict('SurfLayersParameters', {
     "__STYX_TYPE__": typing.Literal["SurfLayers"],
     "spec_dset": typing.NotRequired[InputPathType | None],
@@ -274,7 +276,18 @@ def surf_layers(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_LAYERS_METADATA)
-    params = surf_layers_params(spec_dset=spec_dset, outdir=outdir, states=states, hemi=hemi, n_intermed_surfs=n_intermed_surfs, surf_a=surf_a, surf_b=surf_b, surf_intermed_pref=surf_intermed_pref, echo=echo, no_clean=no_clean)
+    params = surf_layers_params(
+        spec_dset=spec_dset,
+        outdir=outdir,
+        states=states,
+        hemi=hemi,
+        n_intermed_surfs=n_intermed_surfs,
+        surf_a=surf_a,
+        surf_b=surf_b,
+        surf_intermed_pref=surf_intermed_pref,
+        echo=echo,
+        no_clean=no_clean,
+    )
     return surf_layers_execute(params, execution)
 
 

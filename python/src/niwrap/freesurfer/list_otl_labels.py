@@ -11,6 +11,8 @@ LIST_OTL_LABELS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ListOtlLabelsParameters = typing.TypedDict('ListOtlLabelsParameters', {
     "__STYX_TYPE__": typing.Literal["list_otl_labels"],
     "input_file": InputPathType,
@@ -158,7 +160,9 @@ def list_otl_labels(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LIST_OTL_LABELS_METADATA)
-    params = list_otl_labels_params(input_file=input_file)
+    params = list_otl_labels_params(
+        input_file=input_file,
+    )
     return list_otl_labels_execute(params, execution)
 
 

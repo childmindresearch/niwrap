@@ -11,6 +11,8 @@ BAYES_VIEW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 BayesViewParameters = typing.TypedDict('BayesViewParameters', {
     "__STYX_TYPE__": typing.Literal["bayes_view"],
     "input_folder": str,
@@ -177,7 +179,11 @@ def bayes_view(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BAYES_VIEW_METADATA)
-    params = bayes_view_params(input_folder=input_folder, help_=help_, shiny_folder=shiny_folder)
+    params = bayes_view_params(
+        input_folder=input_folder,
+        help_=help_,
+        shiny_folder=shiny_folder,
+    )
     return bayes_view_execute(params, execution)
 
 

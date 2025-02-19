@@ -11,6 +11,8 @@ SPHARM_RM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SpharmRmParameters = typing.TypedDict('SpharmRmParameters', {
     "__STYX_TYPE__": typing.Literal["spharm_rm"],
     "input_file": InputPathType,
@@ -206,7 +208,13 @@ def spharm_rm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPHARM_RM_METADATA)
-    params = spharm_rm_params(input_file=input_file, output_file=output_file, mask_file=mask_file, number_of_terms=number_of_terms, verbose_flag=verbose_flag)
+    params = spharm_rm_params(
+        input_file=input_file,
+        output_file=output_file,
+        mask_file=mask_file,
+        number_of_terms=number_of_terms,
+        verbose_flag=verbose_flag,
+    )
     return spharm_rm_execute(params, execution)
 
 

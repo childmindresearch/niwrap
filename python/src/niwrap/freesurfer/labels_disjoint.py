@@ -11,6 +11,8 @@ LABELS_DISJOINT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LabelsDisjointParameters = typing.TypedDict('LabelsDisjointParameters', {
     "__STYX_TYPE__": typing.Literal["labels_disjoint"],
     "label1": InputPathType,
@@ -179,7 +181,11 @@ def labels_disjoint(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_DISJOINT_METADATA)
-    params = labels_disjoint_params(label1=label1, label2=label2, outputname=outputname)
+    params = labels_disjoint_params(
+        label1=label1,
+        label2=label2,
+        outputname=outputname,
+    )
     return labels_disjoint_execute(params, execution)
 
 

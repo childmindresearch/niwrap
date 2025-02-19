@@ -11,6 +11,8 @@ MRI_ROBUST_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRobustRegisterParameters = typing.TypedDict('MriRobustRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_robust_register"],
     "movable_volume": InputPathType,
@@ -710,7 +712,57 @@ def mri_robust_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ROBUST_REGISTER_METADATA)
-    params = mri_robust_register_params(movable_volume=movable_volume, target_volume=target_volume, output_registration=output_registration, outlier_sensitivity=outlier_sensitivity, satit=satit, mapped_movable=mapped_movable, mapped_movable_hdr=mapped_movable_hdr, weights=weights, oneminus_w=oneminus_w, iscale=iscale, iscale_only=iscale_only, iscale_out=iscale_out, iscale_in=iscale_in, trans_only=trans_only, affine=affine, ixform=ixform, init_orient=init_orient, no_init=no_init, vox2vox=vox2vox, cost=cost, ent_radius=ent_radius, ent_correction=ent_correction, ent_ball=ent_ball, ent_mov=ent_mov, powell_tolerance=powell_tolerance, sobel=sobel, no_sym=no_sym, maximum_iterations=maximum_iterations, ent_dst=ent_dst, high_iter=high_iter, eps_iteration=eps_iteration, no_multiscale=no_multiscale, max_size=max_size, min_size=min_size, w_limit=w_limit, sub_sample=sub_sample, float_type=float_type, white_bg_mov=white_bg_mov, white_bg_dst=white_bg_dst, uchar=uchar, mask_mov=mask_mov, mask_dst=mask_dst, half_mov=half_mov, half_dst=half_dst, half_weights=half_weights, half_mov_lta=half_mov_lta, half_dst_lta=half_dst_lta, debug=debug, verbose=verbose)
+    params = mri_robust_register_params(
+        movable_volume=movable_volume,
+        target_volume=target_volume,
+        output_registration=output_registration,
+        outlier_sensitivity=outlier_sensitivity,
+        satit=satit,
+        mapped_movable=mapped_movable,
+        mapped_movable_hdr=mapped_movable_hdr,
+        weights=weights,
+        oneminus_w=oneminus_w,
+        iscale=iscale,
+        iscale_only=iscale_only,
+        iscale_out=iscale_out,
+        iscale_in=iscale_in,
+        trans_only=trans_only,
+        affine=affine,
+        ixform=ixform,
+        init_orient=init_orient,
+        no_init=no_init,
+        vox2vox=vox2vox,
+        cost=cost,
+        ent_radius=ent_radius,
+        ent_correction=ent_correction,
+        ent_ball=ent_ball,
+        ent_mov=ent_mov,
+        powell_tolerance=powell_tolerance,
+        sobel=sobel,
+        no_sym=no_sym,
+        maximum_iterations=maximum_iterations,
+        ent_dst=ent_dst,
+        high_iter=high_iter,
+        eps_iteration=eps_iteration,
+        no_multiscale=no_multiscale,
+        max_size=max_size,
+        min_size=min_size,
+        w_limit=w_limit,
+        sub_sample=sub_sample,
+        float_type=float_type,
+        white_bg_mov=white_bg_mov,
+        white_bg_dst=white_bg_dst,
+        uchar=uchar,
+        mask_mov=mask_mov,
+        mask_dst=mask_dst,
+        half_mov=half_mov,
+        half_dst=half_dst,
+        half_weights=half_weights,
+        half_mov_lta=half_mov_lta,
+        half_dst_lta=half_dst_lta,
+        debug=debug,
+        verbose=verbose,
+    )
     return mri_robust_register_execute(params, execution)
 
 

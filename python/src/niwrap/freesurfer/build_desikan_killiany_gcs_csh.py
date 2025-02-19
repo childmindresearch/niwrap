@@ -11,6 +11,8 @@ BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BuildDesikanKillianyGcsCshParameters = typing.TypedDict('BuildDesikanKillianyGcsCshParameters', {
     "__STYX_TYPE__": typing.Literal["build_desikan_killiany_gcs.csh"],
     "hemi": str,
@@ -157,7 +159,9 @@ def build_desikan_killiany_gcs_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA)
-    params = build_desikan_killiany_gcs_csh_params(hemi=hemi)
+    params = build_desikan_killiany_gcs_csh_params(
+        hemi=hemi,
+    )
     return build_desikan_killiany_gcs_csh_execute(params, execution)
 
 

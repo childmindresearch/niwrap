@@ -11,6 +11,8 @@ V_3D_ZCAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dZcatParameters = typing.TypedDict('V3dZcatParameters', {
     "__STYX_TYPE__": typing.Literal["3dZcat"],
     "prefix": typing.NotRequired[str | None],
@@ -236,7 +238,15 @@ def v_3d_zcat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ZCAT_METADATA)
-    params = v_3d_zcat_params(prefix=prefix, datum=datum, fscale=fscale, nscale=nscale, verb=verb, frugal=frugal, input_files=input_files)
+    params = v_3d_zcat_params(
+        prefix=prefix,
+        datum=datum,
+        fscale=fscale,
+        nscale=nscale,
+        verb=verb,
+        frugal=frugal,
+        input_files=input_files,
+    )
     return v_3d_zcat_execute(params, execution)
 
 

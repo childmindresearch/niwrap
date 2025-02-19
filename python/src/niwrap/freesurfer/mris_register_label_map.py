@@ -11,6 +11,8 @@ MRIS_REGISTER_LABEL_MAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRegisterLabelMapParameters = typing.TypedDict('MrisRegisterLabelMapParameters', {
     "__STYX_TYPE__": typing.Literal["mris_register_label_map"],
     "subjects_list": str,
@@ -254,7 +256,19 @@ def mris_register_label_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REGISTER_LABEL_MAP_METADATA)
-    params = mris_register_label_map_params(subjects_list=subjects_list, target_subject=target_subject, prior=prior, label=label, template_volume=template_volume, debug=debug, check_opts=check_opts, help_=help_, subjects_dir=subjects_dir, version=version, vno=vno)
+    params = mris_register_label_map_params(
+        subjects_list=subjects_list,
+        target_subject=target_subject,
+        prior=prior,
+        label=label,
+        template_volume=template_volume,
+        debug=debug,
+        check_opts=check_opts,
+        help_=help_,
+        subjects_dir=subjects_dir,
+        version=version,
+        vno=vno,
+    )
     return mris_register_label_map_execute(params, execution)
 
 

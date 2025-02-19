@@ -11,15 +11,21 @@ SURFACE_DISTORTION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceDistortionSmoothParameters = typing.TypedDict('SurfaceDistortionSmoothParameters', {
     "__STYX_TYPE__": typing.Literal["smooth"],
     "sigma": float,
     "opt_fwhm": bool,
 })
+
+
 SurfaceDistortionLocalAffineMethodParameters = typing.TypedDict('SurfaceDistortionLocalAffineMethodParameters', {
     "__STYX_TYPE__": typing.Literal["local_affine_method"],
     "opt_log2": bool,
 })
+
+
 SurfaceDistortionParameters = typing.TypedDict('SurfaceDistortionParameters', {
     "__STYX_TYPE__": typing.Literal["surface-distortion"],
     "surface_reference": InputPathType,
@@ -341,7 +347,15 @@ def surface_distortion(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_DISTORTION_METADATA)
-    params = surface_distortion_params(surface_reference=surface_reference, surface_distorted=surface_distorted, metric_out=metric_out, smooth=smooth, opt_caret5_method=opt_caret5_method, opt_edge_method=opt_edge_method, local_affine_method=local_affine_method)
+    params = surface_distortion_params(
+        surface_reference=surface_reference,
+        surface_distorted=surface_distorted,
+        metric_out=metric_out,
+        smooth=smooth,
+        opt_caret5_method=opt_caret5_method,
+        opt_edge_method=opt_edge_method,
+        local_affine_method=local_affine_method,
+    )
     return surface_distortion_execute(params, execution)
 
 

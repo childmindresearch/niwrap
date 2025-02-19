@@ -11,6 +11,8 @@ DMRI_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriTrainParameters = typing.TypedDict('DmriTrainParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_train"],
     "slist": InputPathType,
@@ -432,7 +434,36 @@ def dmri_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_TRAIN_METADATA)
-    params = dmri_train_params(slist=slist, trk_files=trk_files, rois=rois, seg=seg, cmask=cmask, lmask=lmask, bmask_training=bmask_training, outtrk=outtrk, bmask_test=bmask_test, fa=fa, reg=reg, regnl=regnl, refnl=refnl, basereg=basereg, baseref=baseref, ncpts=ncpts, max_streamlines=max_streamlines, xstr=xstr, aprior=aprior, sprior=sprior, trunc=trunc, out_files=out_files, outdir=outdir, cptdir=cptdir, debug=debug, checkopts=checkopts, help_=help_, version=version)
+    params = dmri_train_params(
+        slist=slist,
+        trk_files=trk_files,
+        rois=rois,
+        seg=seg,
+        cmask=cmask,
+        lmask=lmask,
+        bmask_training=bmask_training,
+        outtrk=outtrk,
+        bmask_test=bmask_test,
+        fa=fa,
+        reg=reg,
+        regnl=regnl,
+        refnl=refnl,
+        basereg=basereg,
+        baseref=baseref,
+        ncpts=ncpts,
+        max_streamlines=max_streamlines,
+        xstr=xstr,
+        aprior=aprior,
+        sprior=sprior,
+        trunc=trunc,
+        out_files=out_files,
+        outdir=outdir,
+        cptdir=cptdir,
+        debug=debug,
+        checkopts=checkopts,
+        help_=help_,
+        version=version,
+    )
     return dmri_train_execute(params, execution)
 
 

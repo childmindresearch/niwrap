@@ -11,6 +11,8 @@ CREATE_TILED_MOSAIC_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 CreateTiledMosaicParameters = typing.TypedDict('CreateTiledMosaicParameters', {
     "__STYX_TYPE__": typing.Literal["CreateTiledMosaic"],
     "input_image": InputPathType,
@@ -324,7 +326,20 @@ def create_tiled_mosaic(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_TILED_MOSAIC_METADATA)
-    params = create_tiled_mosaic_params(input_image=input_image, rgb_image=rgb_image, mask_image=mask_image, alpha=alpha, functional_overlay=functional_overlay, output=output, tile_geometry=tile_geometry, direction=direction, pad_or_crop=pad_or_crop, slices=slices, flip_slice=flip_slice, permute_axes=permute_axes)
+    params = create_tiled_mosaic_params(
+        input_image=input_image,
+        rgb_image=rgb_image,
+        mask_image=mask_image,
+        alpha=alpha,
+        functional_overlay=functional_overlay,
+        output=output,
+        tile_geometry=tile_geometry,
+        direction=direction,
+        pad_or_crop=pad_or_crop,
+        slices=slices,
+        flip_slice=flip_slice,
+        permute_axes=permute_axes,
+    )
     return create_tiled_mosaic_execute(params, execution)
 
 

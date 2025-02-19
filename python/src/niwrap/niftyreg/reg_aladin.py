@@ -11,6 +11,8 @@ REG_ALADIN_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+
+
 RegAladinParameters = typing.TypedDict('RegAladinParameters', {
     "__STYX_TYPE__": typing.Literal["reg_aladin"],
     "reference_image": InputPathType,
@@ -292,7 +294,21 @@ def reg_aladin(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_ALADIN_METADATA)
-    params = reg_aladin_params(reference_image=reference_image, floating_image=floating_image, symmetric=symmetric, output_affine=output_affine, rigid_only=rigid_only, direct_affine=direct_affine, smooth_ref=smooth_ref, smooth_float=smooth_float, num_levels=num_levels, first_levels=first_levels, use_nifti_origin=use_nifti_origin, percent_block=percent_block, percent_inlier=percent_inlier)
+    params = reg_aladin_params(
+        reference_image=reference_image,
+        floating_image=floating_image,
+        symmetric=symmetric,
+        output_affine=output_affine,
+        rigid_only=rigid_only,
+        direct_affine=direct_affine,
+        smooth_ref=smooth_ref,
+        smooth_float=smooth_float,
+        num_levels=num_levels,
+        first_levels=first_levels,
+        use_nifti_origin=use_nifti_origin,
+        percent_block=percent_block,
+        percent_inlier=percent_inlier,
+    )
     return reg_aladin_execute(params, execution)
 
 

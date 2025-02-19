@@ -11,6 +11,8 @@ FSLPSPEC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslpspecParameters = typing.TypedDict('FslpspecParameters', {
     "__STYX_TYPE__": typing.Literal["fslpspec"],
     "infile": InputPathType,
@@ -168,7 +170,10 @@ def fslpspec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLPSPEC_METADATA)
-    params = fslpspec_params(infile=infile, outfile=outfile)
+    params = fslpspec_params(
+        infile=infile,
+        outfile=outfile,
+    )
     return fslpspec_execute(params, execution)
 
 

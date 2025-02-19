@@ -11,6 +11,8 @@ FS_CHECK_VERSION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsCheckVersionParameters = typing.TypedDict('FsCheckVersionParameters', {
     "__STYX_TYPE__": typing.Literal["fs-check-version"],
     "subjects_dir": str,
@@ -202,7 +204,13 @@ def fs_check_version(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_CHECK_VERSION_METADATA)
-    params = fs_check_version_params(subjects_dir=subjects_dir, outfile=outfile, subject=subject, no_require_match=no_require_match, test_debug=test_debug)
+    params = fs_check_version_params(
+        subjects_dir=subjects_dir,
+        outfile=outfile,
+        subject=subject,
+        no_require_match=no_require_match,
+        test_debug=test_debug,
+    )
     return fs_check_version_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_FWHMX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dFwhmxParameters = typing.TypedDict('V3dFwhmxParameters', {
     "__STYX_TYPE__": typing.Literal["3dFWHMx"],
     "mask": typing.NotRequired[InputPathType | None],
@@ -292,7 +294,21 @@ def v_3d_fwhmx(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_FWHMX_METADATA)
-    params = v_3d_fwhmx_params(mask=mask, automask=automask, demed=demed, unif=unif, detrend=detrend, detprefix=detprefix, geom=geom, arith=arith, combine=combine, out=out, compat=compat, acf=acf, infile=infile)
+    params = v_3d_fwhmx_params(
+        mask=mask,
+        automask=automask,
+        demed=demed,
+        unif=unif,
+        detrend=detrend,
+        detprefix=detprefix,
+        geom=geom,
+        arith=arith,
+        combine=combine,
+        out=out,
+        compat=compat,
+        acf=acf,
+        infile=infile,
+    )
     return v_3d_fwhmx_execute(params, execution)
 
 

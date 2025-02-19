@@ -11,6 +11,8 @@ CIFTI_REORDER_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiReorderParameters = typing.TypedDict('CiftiReorderParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-reorder"],
     "cifti_in": InputPathType,
@@ -199,7 +201,12 @@ def cifti_reorder(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_REORDER_METADATA)
-    params = cifti_reorder_params(cifti_in=cifti_in, direction=direction, reorder_list=reorder_list, cifti_out=cifti_out)
+    params = cifti_reorder_params(
+        cifti_in=cifti_in,
+        direction=direction,
+        reorder_list=reorder_list,
+        cifti_out=cifti_out,
+    )
     return cifti_reorder_execute(params, execution)
 
 

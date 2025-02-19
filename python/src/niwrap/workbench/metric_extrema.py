@@ -11,16 +11,22 @@ METRIC_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricExtremaPresmoothParameters = typing.TypedDict('MetricExtremaPresmoothParameters', {
     "__STYX_TYPE__": typing.Literal["presmooth"],
     "kernel": float,
     "opt_fwhm": bool,
 })
+
+
 MetricExtremaThresholdParameters = typing.TypedDict('MetricExtremaThresholdParameters', {
     "__STYX_TYPE__": typing.Literal["threshold"],
     "low": float,
     "high": float,
 })
+
+
 MetricExtremaParameters = typing.TypedDict('MetricExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["metric-extrema"],
     "surface": InputPathType,
@@ -413,7 +419,20 @@ def metric_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_EXTREMA_METADATA)
-    params = metric_extrema_params(surface=surface, metric_in=metric_in, distance=distance, metric_out=metric_out, presmooth=presmooth, opt_roi_roi_metric=opt_roi_roi_metric, threshold=threshold, opt_sum_columns=opt_sum_columns, opt_consolidate_mode=opt_consolidate_mode, opt_only_maxima=opt_only_maxima, opt_only_minima=opt_only_minima, opt_column_column=opt_column_column)
+    params = metric_extrema_params(
+        surface=surface,
+        metric_in=metric_in,
+        distance=distance,
+        metric_out=metric_out,
+        presmooth=presmooth,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        threshold=threshold,
+        opt_sum_columns=opt_sum_columns,
+        opt_consolidate_mode=opt_consolidate_mode,
+        opt_only_maxima=opt_only_maxima,
+        opt_only_minima=opt_only_minima,
+        opt_column_column=opt_column_column,
+    )
     return metric_extrema_execute(params, execution)
 
 

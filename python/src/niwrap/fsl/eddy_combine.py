@@ -11,6 +11,8 @@ EDDY_COMBINE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 EddyCombineParameters = typing.TypedDict('EddyCombineParameters', {
     "__STYX_TYPE__": typing.Literal["eddy_combine"],
     "pos_data": InputPathType,
@@ -244,7 +246,18 @@ def eddy_combine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EDDY_COMBINE_METADATA)
-    params = eddy_combine_params(pos_data=pos_data, pos_bvals=pos_bvals, pos_bvecs=pos_bvecs, pos_series_vol=pos_series_vol, neg_data=neg_data, neg_bvals=neg_bvals, neg_bvecs=neg_bvecs, neg_series_vol=neg_series_vol, output_path=output_path, only_matched_flag=only_matched_flag)
+    params = eddy_combine_params(
+        pos_data=pos_data,
+        pos_bvals=pos_bvals,
+        pos_bvecs=pos_bvecs,
+        pos_series_vol=pos_series_vol,
+        neg_data=neg_data,
+        neg_bvals=neg_bvals,
+        neg_bvecs=neg_bvecs,
+        neg_series_vol=neg_series_vol,
+        output_path=output_path,
+        only_matched_flag=only_matched_flag,
+    )
     return eddy_combine_execute(params, execution)
 
 

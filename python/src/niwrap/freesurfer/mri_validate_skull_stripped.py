@@ -11,6 +11,8 @@ MRI_VALIDATE_SKULL_STRIPPED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriValidateSkullStrippedParameters = typing.TypedDict('MriValidateSkullStrippedParameters', {
     "__STYX_TYPE__": typing.Literal["mri_validate_skull_stripped"],
     "mri_reference": InputPathType,
@@ -169,7 +171,11 @@ def mri_validate_skull_stripped(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VALIDATE_SKULL_STRIPPED_METADATA)
-    params = mri_validate_skull_stripped_params(mri_reference=mri_reference, mri_test=mri_test, weight=weight)
+    params = mri_validate_skull_stripped_params(
+        mri_reference=mri_reference,
+        mri_test=mri_test,
+        weight=weight,
+    )
     return mri_validate_skull_stripped_execute(params, execution)
 
 

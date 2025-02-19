@@ -11,6 +11,8 @@ DCMDRLE_FS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DcmdrleFsParameters = typing.TypedDict('DcmdrleFsParameters', {
     "__STYX_TYPE__": typing.Literal["dcmdrle.fs"],
     "input_file": InputPathType,
@@ -420,7 +422,40 @@ def dcmdrle_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMDRLE_FS_METADATA)
-    params = dcmdrle_fs_params(input_file=input_file, output_file=output_file, help_=help_, version=version, arguments=arguments, quiet=quiet, verbose=verbose, debug=debug, log_level=log_level, log_config=log_config, read_file=read_file, read_file_only=read_file_only, read_dataset=read_dataset, uid_default=uid_default, uid_always=uid_always, byte_order_default=byte_order_default, byte_order_reverse=byte_order_reverse, write_file=write_file, write_dataset=write_dataset, write_xfer_little=write_xfer_little, write_xfer_big=write_xfer_big, write_xfer_implicit=write_xfer_implicit, enable_new_vr=enable_new_vr, disable_new_vr=disable_new_vr, group_length_recalc=group_length_recalc, group_length_create=group_length_create, group_length_remove=group_length_remove, length_explicit=length_explicit, length_undefined=length_undefined, padding_retain=padding_retain, padding_off=padding_off, padding_create=padding_create)
+    params = dcmdrle_fs_params(
+        input_file=input_file,
+        output_file=output_file,
+        help_=help_,
+        version=version,
+        arguments=arguments,
+        quiet=quiet,
+        verbose=verbose,
+        debug=debug,
+        log_level=log_level,
+        log_config=log_config,
+        read_file=read_file,
+        read_file_only=read_file_only,
+        read_dataset=read_dataset,
+        uid_default=uid_default,
+        uid_always=uid_always,
+        byte_order_default=byte_order_default,
+        byte_order_reverse=byte_order_reverse,
+        write_file=write_file,
+        write_dataset=write_dataset,
+        write_xfer_little=write_xfer_little,
+        write_xfer_big=write_xfer_big,
+        write_xfer_implicit=write_xfer_implicit,
+        enable_new_vr=enable_new_vr,
+        disable_new_vr=disable_new_vr,
+        group_length_recalc=group_length_recalc,
+        group_length_create=group_length_create,
+        group_length_remove=group_length_remove,
+        length_explicit=length_explicit,
+        length_undefined=length_undefined,
+        padding_retain=padding_retain,
+        padding_off=padding_off,
+        padding_create=padding_create,
+    )
     return dcmdrle_fs_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__SPHARM_EXAMPLES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSpharmExamplesParameters = typing.TypedDict('VSpharmExamplesParameters', {
     "__STYX_TYPE__": typing.Literal["@Spharm.examples"],
     "help_web": bool,
@@ -204,7 +206,14 @@ def v__spharm_examples(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SPHARM_EXAMPLES_METADATA)
-    params = v__spharm_examples_params(help_web=help_web, help_web_alias=help_web_alias, help_view=help_view, help_view_alias=help_view_alias, all_opts=all_opts, help_find=help_find)
+    params = v__spharm_examples_params(
+        help_web=help_web,
+        help_web_alias=help_web_alias,
+        help_view=help_view,
+        help_view_alias=help_view_alias,
+        all_opts=all_opts,
+        help_find=help_find,
+    )
     return v__spharm_examples_execute(params, execution)
 
 

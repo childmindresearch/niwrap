@@ -11,6 +11,8 @@ COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ComputeInterraterVariabilityCshParameters = typing.TypedDict('ComputeInterraterVariabilityCshParameters', {
     "__STYX_TYPE__": typing.Literal["compute_interrater_variability.csh"],
     "label_vol1": InputPathType,
@@ -193,7 +195,11 @@ def compute_interrater_variability_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA)
-    params = compute_interrater_variability_csh_params(label_vol1=label_vol1, label_vol2=label_vol2, output_prefix=output_prefix)
+    params = compute_interrater_variability_csh_params(
+        label_vol1=label_vol1,
+        label_vol2=label_vol2,
+        output_prefix=output_prefix,
+    )
     return compute_interrater_variability_csh_execute(params, execution)
 
 

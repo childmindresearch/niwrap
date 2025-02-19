@@ -11,6 +11,8 @@ FEATREGAPPLY_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FeatregapplyParameters = typing.TypedDict('FeatregapplyParameters', {
     "__STYX_TYPE__": typing.Literal["featregapply"],
     "feat_directory": str,
@@ -231,7 +233,15 @@ def featregapply(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEATREGAPPLY_METADATA)
-    params = featregapply_params(feat_directory=feat_directory, force_flag=force_flag, cleanup_flag=cleanup_flag, upsample_trilinear=upsample_trilinear, upsample_spline=upsample_spline, standard_space_res=standard_space_res, exclude_filtered_func_flag=exclude_filtered_func_flag)
+    params = featregapply_params(
+        feat_directory=feat_directory,
+        force_flag=force_flag,
+        cleanup_flag=cleanup_flag,
+        upsample_trilinear=upsample_trilinear,
+        upsample_spline=upsample_spline,
+        standard_space_res=standard_space_res,
+        exclude_filtered_func_flag=exclude_filtered_func_flag,
+    )
     return featregapply_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_FFT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dFftParameters = typing.TypedDict('V3dFftParameters', {
     "__STYX_TYPE__": typing.Literal["3dFFT"],
     "dataset": InputPathType,
@@ -279,7 +281,20 @@ def v_3d_fft(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_FFT_METADATA)
-    params = v_3d_fft_params(dataset=dataset, abs_=abs_, phase=phase, complex_=complex_, inverse=inverse, lx=lx, ly=ly, lz=lz, alt_in=alt_in, alt_out=alt_out, input_=input_, prefix=prefix)
+    params = v_3d_fft_params(
+        dataset=dataset,
+        abs_=abs_,
+        phase=phase,
+        complex_=complex_,
+        inverse=inverse,
+        lx=lx,
+        ly=ly,
+        lz=lz,
+        alt_in=alt_in,
+        alt_out=alt_out,
+        input_=input_,
+        prefix=prefix,
+    )
     return v_3d_fft_execute(params, execution)
 
 

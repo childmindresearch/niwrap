@@ -11,6 +11,8 @@ MIST_FA_REG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MistFaRegParameters = typing.TypedDict('MistFaRegParameters', {
     "__STYX_TYPE__": typing.Literal["mist_FA_reg"],
     "fa_volume": InputPathType,
@@ -180,7 +182,12 @@ def mist_fa_reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MIST_FA_REG_METADATA)
-    params = mist_fa_reg_params(fa_volume=fa_volume, s0_volume=s0_volume, reference_t1_volume=reference_t1_volume, output_filename=output_filename)
+    params = mist_fa_reg_params(
+        fa_volume=fa_volume,
+        s0_volume=s0_volume,
+        reference_t1_volume=reference_t1_volume,
+        output_filename=output_filename,
+    )
     return mist_fa_reg_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SURFACE_CREATE_SPHERE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceCreateSphereParameters = typing.TypedDict('SurfaceCreateSphereParameters', {
     "__STYX_TYPE__": typing.Literal["surface-create-sphere"],
     "num_vertices": int,
@@ -191,7 +193,10 @@ def surface_create_sphere(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CREATE_SPHERE_METADATA)
-    params = surface_create_sphere_params(num_vertices=num_vertices, sphere_out=sphere_out)
+    params = surface_create_sphere_params(
+        num_vertices=num_vertices,
+        sphere_out=sphere_out,
+    )
     return surface_create_sphere_execute(params, execution)
 
 

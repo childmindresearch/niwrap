@@ -11,6 +11,8 @@ REALTIME_RECEIVER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RealtimeReceiverParameters = typing.TypedDict('RealtimeReceiverParameters', {
     "__STYX_TYPE__": typing.Literal["realtime_receiver"],
     "show_data": typing.NotRequired[typing.Literal["yes", "no"] | None],
@@ -282,7 +284,20 @@ def realtime_receiver(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REALTIME_RECEIVER_METADATA)
-    params = realtime_receiver_params(show_data=show_data, write_text_data=write_text_data, data_choice=data_choice, serial_port=serial_port, show_demo_gui=show_demo_gui, dc_params=dc_params, extras_on_one_line=extras_on_one_line, show_comm_times=show_comm_times, show_demo_data=show_demo_data, swap=swap, tcp_port=tcp_port, verbosity=verbosity)
+    params = realtime_receiver_params(
+        show_data=show_data,
+        write_text_data=write_text_data,
+        data_choice=data_choice,
+        serial_port=serial_port,
+        show_demo_gui=show_demo_gui,
+        dc_params=dc_params,
+        extras_on_one_line=extras_on_one_line,
+        show_comm_times=show_comm_times,
+        show_demo_data=show_demo_data,
+        swap=swap,
+        tcp_port=tcp_port,
+        verbosity=verbosity,
+    )
     return realtime_receiver_execute(params, execution)
 
 

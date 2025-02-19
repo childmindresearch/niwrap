@@ -11,11 +11,15 @@ LABELSTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 LabelstatsConfigParameters = typing.TypedDict('LabelstatsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 LabelstatsParameters = typing.TypedDict('LabelstatsParameters', {
     "__STYX_TYPE__": typing.Literal["labelstats"],
     "output": typing.NotRequired[str | None],
@@ -313,7 +317,19 @@ def labelstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELSTATS_METADATA)
-    params = labelstats_params(output=output, voxelspace=voxelspace, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_)
+    params = labelstats_params(
+        output=output,
+        voxelspace=voxelspace,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+    )
     return labelstats_execute(params, execution)
 
 

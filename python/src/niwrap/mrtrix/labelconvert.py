@@ -11,11 +11,15 @@ LABELCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 LabelconvertConfigParameters = typing.TypedDict('LabelconvertConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 LabelconvertParameters = typing.TypedDict('LabelconvertParameters', {
     "__STYX_TYPE__": typing.Literal["labelconvert"],
     "spine": typing.NotRequired[InputPathType | None],
@@ -344,7 +348,21 @@ def labelconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELCONVERT_METADATA)
-    params = labelconvert_params(spine=spine, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, path_in=path_in, lut_in=lut_in, lut_out=lut_out, image_out=image_out)
+    params = labelconvert_params(
+        spine=spine,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        path_in=path_in,
+        lut_in=lut_in,
+        lut_out=lut_out,
+        image_out=image_out,
+    )
     return labelconvert_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_PMAKE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisPmakeParameters = typing.TypedDict('MrisPmakeParameters', {
     "__STYX_TYPE__": typing.Literal["mris_pmake"],
     "options_file": typing.NotRequired[str | None],
@@ -298,7 +300,21 @@ def mris_pmake(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PMAKE_METADATA)
-    params = mris_pmake_params(options_file=options_file, working_dir=working_dir, listen_mode=listen_mode, listen_on_port=listen_on_port, subject=subject, hemisphere=hemisphere, surface0=surface0, surface1=surface1, curve0=curve0, curve1=curve1, use_abs_curvs=use_abs_curvs, mpm_prog=mpm_prog, mpm_args=mpm_args)
+    params = mris_pmake_params(
+        options_file=options_file,
+        working_dir=working_dir,
+        listen_mode=listen_mode,
+        listen_on_port=listen_on_port,
+        subject=subject,
+        hemisphere=hemisphere,
+        surface0=surface0,
+        surface1=surface1,
+        curve0=curve0,
+        curve1=curve1,
+        use_abs_curvs=use_abs_curvs,
+        mpm_prog=mpm_prog,
+        mpm_args=mpm_args,
+    )
     return mris_pmake_execute(params, execution)
 
 

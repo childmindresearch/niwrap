@@ -11,6 +11,8 @@ V_3D_LOMB_SCARGLE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLombScargleParameters = typing.TypedDict('V3dLombScargleParameters', {
     "__STYX_TYPE__": typing.Literal["3dLombScargle"],
     "prefix": str,
@@ -283,7 +285,16 @@ def v_3d_lomb_scargle(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOMB_SCARGLE_METADATA)
-    params = v_3d_lomb_scargle_params(prefix=prefix, inset=inset, censor_1d=censor_1d, censor_string=censor_string, mask_file=mask_file, out_pow_spec=out_pow_spec, nyquist_multiplier=nyquist_multiplier, nifti=nifti)
+    params = v_3d_lomb_scargle_params(
+        prefix=prefix,
+        inset=inset,
+        censor_1d=censor_1d,
+        censor_string=censor_string,
+        mask_file=mask_file,
+        out_pow_spec=out_pow_spec,
+        nyquist_multiplier=nyquist_multiplier,
+        nifti=nifti,
+    )
     return v_3d_lomb_scargle_execute(params, execution)
 
 

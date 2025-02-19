@@ -11,6 +11,8 @@ MYGET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MygetParameters = typing.TypedDict('MygetParameters', {
     "__STYX_TYPE__": typing.Literal["myget"],
     "protocol_version": typing.NotRequired[typing.Literal["-1", "-1.1"] | None],
@@ -168,7 +170,10 @@ def myget(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MYGET_METADATA)
-    params = myget_params(protocol_version=protocol_version, url=url)
+    params = myget_params(
+        protocol_version=protocol_version,
+        url=url,
+    )
     return myget_execute(params, execution)
 
 

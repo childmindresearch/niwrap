@@ -11,6 +11,8 @@ LABEL2PATCH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Label2patchParameters = typing.TypedDict('Label2patchParameters', {
     "__STYX_TYPE__": typing.Literal["label2patch"],
     "subject_name": str,
@@ -248,7 +250,18 @@ def label2patch(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2PATCH_METADATA)
-    params = label2patch_params(subject_name=subject_name, hemisphere=hemisphere, label_file=label_file, output_patch=output_patch, dilate=dilate, erode=erode, close=close, subjects_dir=subjects_dir, surface_name=surface_name, write_surface=write_surface)
+    params = label2patch_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        label_file=label_file,
+        output_patch=output_patch,
+        dilate=dilate,
+        erode=erode,
+        close=close,
+        subjects_dir=subjects_dir,
+        surface_name=surface_name,
+        write_surface=write_surface,
+    )
     return label2patch_execute(params, execution)
 
 

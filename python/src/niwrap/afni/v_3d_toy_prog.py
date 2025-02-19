@@ -11,6 +11,8 @@ V_3D_TOY_PROG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dToyProgParameters = typing.TypedDict('V3dToyProgParameters', {
     "__STYX_TYPE__": typing.Literal["3dToyProg"],
     "input_dataset": InputPathType,
@@ -196,7 +198,12 @@ def v_3d_toy_prog(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TOY_PROG_METADATA)
-    params = v_3d_toy_prog_params(input_dataset=input_dataset, output_prefix=output_prefix, mask_dataset=mask_dataset, output_datum=output_datum)
+    params = v_3d_toy_prog_params(
+        input_dataset=input_dataset,
+        output_prefix=output_prefix,
+        mask_dataset=mask_dataset,
+        output_datum=output_datum,
+    )
     return v_3d_toy_prog_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ UBER_SKEL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 UberSkelParameters = typing.TypedDict('UberSkelParameters', {
     "__STYX_TYPE__": typing.Literal["uber_skel"],
     "qt_options": typing.NotRequired[str | None],
@@ -250,7 +252,19 @@ def uber_skel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_SKEL_METADATA)
-    params = uber_skel_params(qt_options=qt_options, no_gui_flag=no_gui_flag, print_script=print_script, save_script=save_script, user_var=user_var, help_howto_program=help_howto_program, help_=help_, help_gui=help_gui, history=history, show_valid_opts=show_valid_opts, version=version)
+    params = uber_skel_params(
+        qt_options=qt_options,
+        no_gui_flag=no_gui_flag,
+        print_script=print_script,
+        save_script=save_script,
+        user_var=user_var,
+        help_howto_program=help_howto_program,
+        help_=help_,
+        help_gui=help_gui,
+        history=history,
+        show_valid_opts=show_valid_opts,
+        version=version,
+    )
     return uber_skel_execute(params, execution)
 
 

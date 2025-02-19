@@ -11,11 +11,15 @@ CIFTI_REDUCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiReduceExcludeOutliersParameters = typing.TypedDict('CiftiReduceExcludeOutliersParameters', {
     "__STYX_TYPE__": typing.Literal["exclude_outliers"],
     "sigma_below": float,
     "sigma_above": float,
 })
+
+
 CiftiReduceParameters = typing.TypedDict('CiftiReduceParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-reduce"],
     "cifti_in": InputPathType,
@@ -298,7 +302,14 @@ def cifti_reduce(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_REDUCE_METADATA)
-    params = cifti_reduce_params(cifti_in=cifti_in, operation=operation, cifti_out=cifti_out, opt_direction_direction=opt_direction_direction, exclude_outliers=exclude_outliers, opt_only_numeric=opt_only_numeric)
+    params = cifti_reduce_params(
+        cifti_in=cifti_in,
+        operation=operation,
+        cifti_out=cifti_out,
+        opt_direction_direction=opt_direction_direction,
+        exclude_outliers=exclude_outliers,
+        opt_only_numeric=opt_only_numeric,
+    )
     return cifti_reduce_execute(params, execution)
 
 

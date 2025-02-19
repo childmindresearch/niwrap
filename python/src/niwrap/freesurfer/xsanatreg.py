@@ -11,6 +11,8 @@ XSANATREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 XsanatregParameters = typing.TypedDict('XsanatregParameters', {
     "__STYX_TYPE__": typing.Literal["xsanatreg"],
     "src_cordir": str,
@@ -246,7 +248,17 @@ def xsanatreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XSANATREG_METADATA)
-    params = xsanatreg_params(src_cordir=src_cordir, targ_cordir=targ_cordir, transform_file=transform_file, temp_directory=temp_directory, source_minc=source_minc, target_minc=target_minc, no_cleanup=no_cleanup, version=version, umask=umask)
+    params = xsanatreg_params(
+        src_cordir=src_cordir,
+        targ_cordir=targ_cordir,
+        transform_file=transform_file,
+        temp_directory=temp_directory,
+        source_minc=source_minc,
+        target_minc=target_minc,
+        no_cleanup=no_cleanup,
+        version=version,
+        umask=umask,
+    )
     return xsanatreg_execute(params, execution)
 
 

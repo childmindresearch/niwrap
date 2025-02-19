@@ -11,6 +11,8 @@ V_3D_POLYFIT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dPolyfitParameters = typing.TypedDict('V3dPolyfitParameters', {
     "__STYX_TYPE__": typing.Literal["3dPolyfit"],
     "input_dataset": InputPathType,
@@ -327,7 +329,22 @@ def v_3d_polyfit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_POLYFIT_METADATA)
-    params = v_3d_polyfit_params(input_dataset=input_dataset, poly_order=poly_order, blur=blur, median_radius=median_radius, output_prefix=output_prefix, resid_prefix=resid_prefix, coeff_output=coeff_output, automask=automask, mask_dataset=mask_dataset, mean_scale=mean_scale, clip_box=clip_box, fit_method=fit_method, base_dataset=base_dataset, verbose=verbose)
+    params = v_3d_polyfit_params(
+        input_dataset=input_dataset,
+        poly_order=poly_order,
+        blur=blur,
+        median_radius=median_radius,
+        output_prefix=output_prefix,
+        resid_prefix=resid_prefix,
+        coeff_output=coeff_output,
+        automask=automask,
+        mask_dataset=mask_dataset,
+        mean_scale=mean_scale,
+        clip_box=clip_box,
+        fit_method=fit_method,
+        base_dataset=base_dataset,
+        verbose=verbose,
+    )
     return v_3d_polyfit_execute(params, execution)
 
 

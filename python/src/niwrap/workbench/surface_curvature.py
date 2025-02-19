@@ -11,6 +11,8 @@ SURFACE_CURVATURE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceCurvatureParameters = typing.TypedDict('SurfaceCurvatureParameters', {
     "__STYX_TYPE__": typing.Literal["surface-curvature"],
     "surface": InputPathType,
@@ -197,7 +199,11 @@ def surface_curvature(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CURVATURE_METADATA)
-    params = surface_curvature_params(surface=surface, opt_mean_mean_out=opt_mean_mean_out, opt_gauss_gauss_out=opt_gauss_gauss_out)
+    params = surface_curvature_params(
+        surface=surface,
+        opt_mean_mean_out=opt_mean_mean_out,
+        opt_gauss_gauss_out=opt_gauss_gauss_out,
+    )
     return surface_curvature_execute(params, execution)
 
 

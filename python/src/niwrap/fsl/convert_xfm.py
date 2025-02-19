@@ -11,6 +11,8 @@ CONVERT_XFM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ConvertXfmParameters = typing.TypedDict('ConvertXfmParameters', {
     "__STYX_TYPE__": typing.Literal["convert_xfm"],
     "out_file": typing.NotRequired[str | None],
@@ -209,7 +211,13 @@ def convert_xfm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_XFM_METADATA)
-    params = convert_xfm_params(out_file=out_file, invert_xfm=invert_xfm, concat_xfm=concat_xfm, fix_scale_skew=fix_scale_skew, in_file=in_file)
+    params = convert_xfm_params(
+        out_file=out_file,
+        invert_xfm=invert_xfm,
+        concat_xfm=concat_xfm,
+        fix_scale_skew=fix_scale_skew,
+        in_file=in_file,
+    )
     return convert_xfm_execute(params, execution)
 
 

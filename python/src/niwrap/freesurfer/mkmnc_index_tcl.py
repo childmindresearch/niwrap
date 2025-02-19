@@ -11,6 +11,8 @@ MKMNC_INDEX_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MkmncIndexTclParameters = typing.TypedDict('MkmncIndexTclParameters', {
     "__STYX_TYPE__": typing.Literal["mkmnc_index.tcl"],
     "infile": InputPathType,
@@ -166,7 +168,10 @@ def mkmnc_index_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKMNC_INDEX_TCL_METADATA)
-    params = mkmnc_index_tcl_params(infile=infile, outfile=outfile)
+    params = mkmnc_index_tcl_params(
+        infile=infile,
+        outfile=outfile,
+    )
     return mkmnc_index_tcl_execute(params, execution)
 
 

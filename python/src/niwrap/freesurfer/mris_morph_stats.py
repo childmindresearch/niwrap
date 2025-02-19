@@ -11,6 +11,8 @@ MRIS_MORPH_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMorphStatsParameters = typing.TypedDict('MrisMorphStatsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_morph_stats"],
     "subject_name": str,
@@ -184,7 +186,12 @@ def mris_morph_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MORPH_STATS_METADATA)
-    params = mris_morph_stats_params(subject_name=subject_name, hemisphere=hemisphere, morphed_surface=morphed_surface, output_name=output_name)
+    params = mris_morph_stats_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        morphed_surface=morphed_surface,
+        output_name=output_name,
+    )
     return mris_morph_stats_execute(params, execution)
 
 

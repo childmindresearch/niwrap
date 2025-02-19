@@ -11,6 +11,8 @@ FS_TEMP_FILE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsTempFileParameters = typing.TypedDict('FsTempFileParameters', {
     "__STYX_TYPE__": typing.Literal["fs_temp_file"],
     "base_dir_alt": typing.NotRequired[str | None],
@@ -192,7 +194,12 @@ def fs_temp_file(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_TEMP_FILE_METADATA)
-    params = fs_temp_file_params(base_dir_alt=base_dir_alt, suffix_alt=suffix_alt, scratch=scratch, help_alt=help_alt)
+    params = fs_temp_file_params(
+        base_dir_alt=base_dir_alt,
+        suffix_alt=suffix_alt,
+        scratch=scratch,
+        help_alt=help_alt,
+    )
     return fs_temp_file_execute(params, execution)
 
 

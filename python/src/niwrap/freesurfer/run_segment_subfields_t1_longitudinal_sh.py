@@ -11,6 +11,8 @@ RUN_SEGMENT_SUBFIELDS_T1_LONGITUDINAL_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunSegmentSubfieldsT1LongitudinalShParameters = typing.TypedDict('RunSegmentSubfieldsT1LongitudinalShParameters', {
     "__STYX_TYPE__": typing.Literal["run_SegmentSubfieldsT1Longitudinal.sh"],
     "deployed_mcr_root": str,
@@ -168,7 +170,10 @@ def run_segment_subfields_t1_longitudinal_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_SUBFIELDS_T1_LONGITUDINAL_SH_METADATA)
-    params = run_segment_subfields_t1_longitudinal_sh_params(deployed_mcr_root=deployed_mcr_root, additional_args=additional_args)
+    params = run_segment_subfields_t1_longitudinal_sh_params(
+        deployed_mcr_root=deployed_mcr_root,
+        additional_args=additional_args,
+    )
     return run_segment_subfields_t1_longitudinal_sh_execute(params, execution)
 
 

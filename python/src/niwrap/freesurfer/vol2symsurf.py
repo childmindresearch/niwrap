@@ -11,6 +11,8 @@ VOL2SYMSURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Vol2symsurfParameters = typing.TypedDict('Vol2symsurfParameters', {
     "__STYX_TYPE__": typing.Literal["vol2symsurf"],
     "registration_file": InputPathType,
@@ -245,7 +247,16 @@ def vol2symsurf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOL2SYMSURF_METADATA)
-    params = vol2symsurf_params(registration_file=registration_file, input_volume=input_volume, fwhm=fwhm, output_stem=output_stem, regheader=regheader, projection_fraction=projection_fraction, no_diff=no_diff, laterality_index=laterality_index)
+    params = vol2symsurf_params(
+        registration_file=registration_file,
+        input_volume=input_volume,
+        fwhm=fwhm,
+        output_stem=output_stem,
+        regheader=regheader,
+        projection_fraction=projection_fraction,
+        no_diff=no_diff,
+        laterality_index=laterality_index,
+    )
     return vol2symsurf_execute(params, execution)
 
 

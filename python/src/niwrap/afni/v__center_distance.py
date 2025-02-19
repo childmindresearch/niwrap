@@ -11,6 +11,8 @@ V__CENTER_DISTANCE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VCenterDistanceParameters = typing.TypedDict('VCenterDistanceParameters', {
     "__STYX_TYPE__": typing.Literal["@Center_Distance"],
     "dset1": InputPathType,
@@ -169,7 +171,10 @@ def v__center_distance(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CENTER_DISTANCE_METADATA)
-    params = v__center_distance_params(dset1=dset1, dset2=dset2)
+    params = v__center_distance_params(
+        dset1=dset1,
+        dset2=dset2,
+    )
     return v__center_distance_execute(params, execution)
 
 

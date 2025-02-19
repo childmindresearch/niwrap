@@ -11,11 +11,15 @@ TENSOR2METRIC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Tensor2metricConfigParameters = typing.TypedDict('Tensor2metricConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Tensor2metricParameters = typing.TypedDict('Tensor2metricParameters', {
     "__STYX_TYPE__": typing.Literal["tensor2metric"],
     "adc": typing.NotRequired[str | None],
@@ -503,7 +507,29 @@ def tensor2metric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TENSOR2METRIC_METADATA)
-    params = tensor2metric_params(adc=adc, fa=fa, ad=ad, rd=rd, cl=cl, cp=cp, cs=cs, value=value, vector=vector, num=num, modulate=modulate, mask=mask, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tensor=tensor)
+    params = tensor2metric_params(
+        adc=adc,
+        fa=fa,
+        ad=ad,
+        rd=rd,
+        cl=cl,
+        cp=cp,
+        cs=cs,
+        value=value,
+        vector=vector,
+        num=num,
+        modulate=modulate,
+        mask=mask,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tensor=tensor,
+    )
     return tensor2metric_execute(params, execution)
 
 

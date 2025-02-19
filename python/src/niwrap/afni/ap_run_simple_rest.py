@@ -11,6 +11,8 @@ AP_RUN_SIMPLE_REST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ApRunSimpleRestParameters = typing.TypedDict('ApRunSimpleRestParameters', {
     "__STYX_TYPE__": typing.Literal["ap_run_simple_rest"],
     "anat": typing.NotRequired[InputPathType | None],
@@ -267,7 +269,18 @@ def ap_run_simple_rest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AP_RUN_SIMPLE_REST_METADATA)
-    params = ap_run_simple_rest_params(anat=anat, epi=epi, nt_rm=nt_rm, run_ap=run_ap, run_proc=run_proc, subjid=subjid, template=template, compressor=compressor, verb=verb, echo=echo)
+    params = ap_run_simple_rest_params(
+        anat=anat,
+        epi=epi,
+        nt_rm=nt_rm,
+        run_ap=run_ap,
+        run_proc=run_proc,
+        subjid=subjid,
+        template=template,
+        compressor=compressor,
+        verb=verb,
+        echo=echo,
+    )
     return ap_run_simple_rest_execute(params, execution)
 
 

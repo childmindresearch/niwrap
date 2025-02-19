@@ -11,6 +11,8 @@ POINTFLIRT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PointflirtParameters = typing.TypedDict('PointflirtParameters', {
     "__STYX_TYPE__": typing.Literal["pointflirt"],
     "invol_coords": InputPathType,
@@ -226,7 +228,15 @@ def pointflirt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POINTFLIRT_METADATA)
-    params = pointflirt_params(invol_coords=invol_coords, refvol_coords=refvol_coords, out_matrix=out_matrix, use_vox=use_vox, vol_input=vol_input, vol_ref=vol_ref, verbose_flag=verbose_flag)
+    params = pointflirt_params(
+        invol_coords=invol_coords,
+        refvol_coords=refvol_coords,
+        out_matrix=out_matrix,
+        use_vox=use_vox,
+        vol_input=vol_input,
+        vol_ref=vol_ref,
+        verbose_flag=verbose_flag,
+    )
     return pointflirt_execute(params, execution)
 
 

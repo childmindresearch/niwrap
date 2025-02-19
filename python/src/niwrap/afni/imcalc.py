@@ -11,6 +11,8 @@ IMCALC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImcalcParameters = typing.TypedDict('ImcalcParameters', {
     "__STYX_TYPE__": typing.Literal["imcalc"],
     "datum_type": typing.NotRequired[str | None],
@@ -215,7 +217,12 @@ def imcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMCALC_METADATA)
-    params = imcalc_params(datum_type=datum_type, image_inputs=image_inputs, expression=expression, output_name=output_name)
+    params = imcalc_params(
+        datum_type=datum_type,
+        image_inputs=image_inputs,
+        expression=expression,
+        output_name=output_name,
+    )
     return imcalc_execute(params, execution)
 
 

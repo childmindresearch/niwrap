@@ -11,11 +11,15 @@ TCK2FIXEL_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Tck2fixelConfigParameters = typing.TypedDict('Tck2fixelConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Tck2fixelParameters = typing.TypedDict('Tck2fixelParameters', {
     "__STYX_TYPE__": typing.Literal["tck2fixel"],
     "angle": typing.NotRequired[float | None],
@@ -330,7 +334,21 @@ def tck2fixel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCK2FIXEL_METADATA)
-    params = tck2fixel_params(angle=angle, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks, fixel_folder_in=fixel_folder_in, fixel_folder_out=fixel_folder_out, fixel_data_out=fixel_data_out)
+    params = tck2fixel_params(
+        angle=angle,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks=tracks,
+        fixel_folder_in=fixel_folder_in,
+        fixel_folder_out=fixel_folder_out,
+        fixel_data_out=fixel_data_out,
+    )
     return tck2fixel_execute(params, execution)
 
 

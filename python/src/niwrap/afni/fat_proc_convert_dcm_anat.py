@@ -11,6 +11,8 @@ FAT_PROC_CONVERT_DCM_ANAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcConvertDcmAnatParameters = typing.TypedDict('FatProcConvertDcmAnatParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_convert_dcm_anat"],
     "nifti_input": typing.NotRequired[InputPathType | None],
@@ -258,7 +260,17 @@ def fat_proc_convert_dcm_anat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_CONVERT_DCM_ANAT_METADATA)
-    params = fat_proc_convert_dcm_anat_params(nifti_input=nifti_input, prefix=prefix, workdir=workdir, orient=orient, no_clean=no_clean, reorig_reorient_off=reorig_reorient_off, qc_prefix=qc_prefix, no_cmd_out=no_cmd_out, no_qc_view=no_qc_view)
+    params = fat_proc_convert_dcm_anat_params(
+        nifti_input=nifti_input,
+        prefix=prefix,
+        workdir=workdir,
+        orient=orient,
+        no_clean=no_clean,
+        reorig_reorient_off=reorig_reorient_off,
+        qc_prefix=qc_prefix,
+        no_cmd_out=no_cmd_out,
+        no_qc_view=no_qc_view,
+    )
     return fat_proc_convert_dcm_anat_execute(params, execution)
 
 

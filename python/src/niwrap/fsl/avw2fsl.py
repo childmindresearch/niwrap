@@ -11,6 +11,8 @@ AVW2FSL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Avw2fslParameters = typing.TypedDict('Avw2fslParameters', {
     "__STYX_TYPE__": typing.Literal["avw2fsl"],
     "source": list[str],
@@ -464,7 +466,44 @@ def avw2fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AVW2FSL_METADATA)
-    params = avw2fsl_params(source=source, destination=destination, archive=archive, attributes_only=attributes_only, backup=backup, backup_noarg=backup_noarg, copy_contents=copy_contents, no_dereference_preserve_links=no_dereference_preserve_links, force=force, interactive=interactive, follow_symlinks_cmdline=follow_symlinks_cmdline, hard_link=hard_link, dereference=dereference, no_clobber=no_clobber, no_dereference=no_dereference, preserve=preserve, preserve_attr=preserve_attr, preserve_context=preserve_context, no_preserve=no_preserve, parents=parents, recursive=recursive, reflink=reflink, remove_destination=remove_destination, sparse=sparse, strip_trailing_slashes=strip_trailing_slashes, symbolic_link=symbolic_link, suffix=suffix, target_directory=target_directory, no_target_directory=no_target_directory, update_=update_, verbose=verbose, one_file_system=one_file_system, selinux_context=selinux_context, context=context, help_=help_, version=version)
+    params = avw2fsl_params(
+        source=source,
+        destination=destination,
+        archive=archive,
+        attributes_only=attributes_only,
+        backup=backup,
+        backup_noarg=backup_noarg,
+        copy_contents=copy_contents,
+        no_dereference_preserve_links=no_dereference_preserve_links,
+        force=force,
+        interactive=interactive,
+        follow_symlinks_cmdline=follow_symlinks_cmdline,
+        hard_link=hard_link,
+        dereference=dereference,
+        no_clobber=no_clobber,
+        no_dereference=no_dereference,
+        preserve=preserve,
+        preserve_attr=preserve_attr,
+        preserve_context=preserve_context,
+        no_preserve=no_preserve,
+        parents=parents,
+        recursive=recursive,
+        reflink=reflink,
+        remove_destination=remove_destination,
+        sparse=sparse,
+        strip_trailing_slashes=strip_trailing_slashes,
+        symbolic_link=symbolic_link,
+        suffix=suffix,
+        target_directory=target_directory,
+        no_target_directory=no_target_directory,
+        update_=update_,
+        verbose=verbose,
+        one_file_system=one_file_system,
+        selinux_context=selinux_context,
+        context=context,
+        help_=help_,
+        version=version,
+    )
     return avw2fsl_execute(params, execution)
 
 

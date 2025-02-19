@@ -11,6 +11,8 @@ MRIS_HAUSDORFF_DIST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisHausdorffDistParameters = typing.TypedDict('MrisHausdorffDistParameters', {
     "__STYX_TYPE__": typing.Literal["mris_hausdorff_dist"],
     "surface": InputPathType,
@@ -187,7 +189,12 @@ def mris_hausdorff_dist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_HAUSDORFF_DIST_METADATA)
-    params = mris_hausdorff_dist_params(surface=surface, label1=label1, label2=label2, annot_name=annot_name)
+    params = mris_hausdorff_dist_params(
+        surface=surface,
+        label1=label1,
+        label2=label2,
+        annot_name=annot_name,
+    )
     return mris_hausdorff_dist_execute(params, execution)
 
 

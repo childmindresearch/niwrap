@@ -11,6 +11,8 @@ TEXTURE_RUN_LENGTH_FEATURES_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 TextureRunLengthFeaturesParameters = typing.TypedDict('TextureRunLengthFeaturesParameters', {
     "__STYX_TYPE__": typing.Literal["TextureRunLengthFeatures"],
     "image_dimension": int,
@@ -220,7 +222,13 @@ def texture_run_length_features(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TEXTURE_RUN_LENGTH_FEATURES_METADATA)
-    params = texture_run_length_features_params(image_dimension=image_dimension, input_image=input_image, number_of_bins_per_axis=number_of_bins_per_axis, mask_image=mask_image, mask_label=mask_label)
+    params = texture_run_length_features_params(
+        image_dimension=image_dimension,
+        input_image=input_image,
+        number_of_bins_per_axis=number_of_bins_per_axis,
+        mask_image=mask_image,
+        mask_label=mask_label,
+    )
     return texture_run_length_features_execute(params, execution)
 
 

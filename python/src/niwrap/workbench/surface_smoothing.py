@@ -11,6 +11,8 @@ SURFACE_SMOOTHING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceSmoothingParameters = typing.TypedDict('SurfaceSmoothingParameters', {
     "__STYX_TYPE__": typing.Literal["surface-smoothing"],
     "surface_in": InputPathType,
@@ -187,7 +189,12 @@ def surface_smoothing(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_SMOOTHING_METADATA)
-    params = surface_smoothing_params(surface_in=surface_in, smoothing_strength=smoothing_strength, smoothing_iterations=smoothing_iterations, surface_out=surface_out)
+    params = surface_smoothing_params(
+        surface_in=surface_in,
+        smoothing_strength=smoothing_strength,
+        smoothing_iterations=smoothing_iterations,
+        surface_out=surface_out,
+    )
     return surface_smoothing_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_ADD_NEW_TP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAddNewTpParameters = typing.TypedDict('MriAddNewTpParameters', {
     "__STYX_TYPE__": typing.Literal["mri_add_new_tp"],
     "base_id": str,
@@ -164,7 +166,10 @@ def mri_add_new_tp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ADD_NEW_TP_METADATA)
-    params = mri_add_new_tp_params(base_id=base_id, newtp_id=newtp_id)
+    params = mri_add_new_tp_params(
+        base_id=base_id,
+        newtp_id=newtp_id,
+    )
     return mri_add_new_tp_execute(params, execution)
 
 

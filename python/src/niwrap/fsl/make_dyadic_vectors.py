@@ -11,6 +11,8 @@ MAKE_DYADIC_VECTORS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MakeDyadicVectorsParameters = typing.TypedDict('MakeDyadicVectorsParameters', {
     "__STYX_TYPE__": typing.Literal["make_dyadic_vectors"],
     "theta_vol": InputPathType,
@@ -193,7 +195,13 @@ def make_dyadic_vectors(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_DYADIC_VECTORS_METADATA)
-    params = make_dyadic_vectors_params(theta_vol=theta_vol, phi_vol=phi_vol, mask=mask, output=output, perc=perc)
+    params = make_dyadic_vectors_params(
+        theta_vol=theta_vol,
+        phi_vol=phi_vol,
+        mask=mask,
+        output=output,
+        perc=perc,
+    )
     return make_dyadic_vectors_execute(params, execution)
 
 

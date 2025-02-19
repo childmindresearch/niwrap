@@ -11,6 +11,8 @@ MRI_WBC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriWbcParameters = typing.TypedDict('MriWbcParameters', {
     "__STYX_TYPE__": typing.Literal["mri_wbc"],
     "functional_volume": InputPathType,
@@ -334,7 +336,25 @@ def mri_wbc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_WBC_METADATA)
-    params = mri_wbc_params(functional_volume=functional_volume, volume_mask=volume_mask, lh_functional_surface=lh_functional_surface, lh_surface=lh_surface, lh_inflated=lh_inflated, lh_mask=lh_mask, lh_label=lh_label, rh_functional_surface=rh_functional_surface, rh_surface=rh_surface, rh_inflated=rh_inflated, rh_mask=rh_mask, rh_label=rh_label, rho_threshold=rho_threshold, dist_threshold=dist_threshold, threads=threads, debug=debug, checkopts=checkopts)
+    params = mri_wbc_params(
+        functional_volume=functional_volume,
+        volume_mask=volume_mask,
+        lh_functional_surface=lh_functional_surface,
+        lh_surface=lh_surface,
+        lh_inflated=lh_inflated,
+        lh_mask=lh_mask,
+        lh_label=lh_label,
+        rh_functional_surface=rh_functional_surface,
+        rh_surface=rh_surface,
+        rh_inflated=rh_inflated,
+        rh_mask=rh_mask,
+        rh_label=rh_label,
+        rho_threshold=rho_threshold,
+        dist_threshold=dist_threshold,
+        threads=threads,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return mri_wbc_execute(params, execution)
 
 

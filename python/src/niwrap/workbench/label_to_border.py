@@ -11,6 +11,8 @@ LABEL_TO_BORDER_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelToBorderParameters = typing.TypedDict('LabelToBorderParameters', {
     "__STYX_TYPE__": typing.Literal["label-to-border"],
     "surface": InputPathType,
@@ -210,7 +212,13 @@ def label_to_border(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_TO_BORDER_METADATA)
-    params = label_to_border_params(surface=surface, label_in=label_in, border_out=border_out, opt_placement_fraction=opt_placement_fraction, opt_column_column=opt_column_column)
+    params = label_to_border_params(
+        surface=surface,
+        label_in=label_in,
+        border_out=border_out,
+        opt_placement_fraction=opt_placement_fraction,
+        opt_column_column=opt_column_column,
+    )
     return label_to_border_execute(params, execution)
 
 

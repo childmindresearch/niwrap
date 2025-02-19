@@ -11,6 +11,8 @@ IMGREG_4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Imgreg4dfpParameters = typing.TypedDict('Imgreg4dfpParameters', {
     "__STYX_TYPE__": typing.Literal["imgreg_4dfp"],
     "target_image": InputPathType,
@@ -190,7 +192,14 @@ def imgreg_4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMGREG_4DFP_METADATA)
-    params = imgreg_4dfp_params(target_image=target_image, target_mask=target_mask, source_image=source_image, source_mask=source_mask, t4file=t4file, mode=mode)
+    params = imgreg_4dfp_params(
+        target_image=target_image,
+        target_mask=target_mask,
+        source_image=source_image,
+        source_mask=source_mask,
+        t4file=t4file,
+        mode=mode,
+    )
     return imgreg_4dfp_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ PEAKS2FIXEL_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Peaks2fixelConfigParameters = typing.TypedDict('Peaks2fixelConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Peaks2fixelParameters = typing.TypedDict('Peaks2fixelParameters', {
     "__STYX_TYPE__": typing.Literal["peaks2fixel"],
     "dataname": typing.NotRequired[str | None],
@@ -318,7 +322,19 @@ def peaks2fixel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PEAKS2FIXEL_METADATA)
-    params = peaks2fixel_params(dataname=dataname, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, directions=directions, fixels=fixels)
+    params = peaks2fixel_params(
+        dataname=dataname,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        directions=directions,
+        fixels=fixels,
+    )
     return peaks2fixel_execute(params, execution)
 
 

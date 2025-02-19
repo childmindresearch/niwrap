@@ -11,6 +11,8 @@ MRI_FUNCVITS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFuncvitsParameters = typing.TypedDict('MriFuncvitsParameters', {
     "__STYX_TYPE__": typing.Literal["mri-funcvits"],
     "stem": str,
@@ -284,7 +286,20 @@ def mri_funcvits(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FUNCVITS_METADATA)
-    params = mri_funcvits_params(stem=stem, outdir=outdir, reg=reg, paintsurf=paintsurf, sphere=sphere, icosize=icosize, hemi=hemi, svitdir=svitdir, icodir=icodir, umask=umask, mail=mail, noforce=noforce)
+    params = mri_funcvits_params(
+        stem=stem,
+        outdir=outdir,
+        reg=reg,
+        paintsurf=paintsurf,
+        sphere=sphere,
+        icosize=icosize,
+        hemi=hemi,
+        svitdir=svitdir,
+        icodir=icodir,
+        umask=umask,
+        mail=mail,
+        noforce=noforce,
+    )
     return mri_funcvits_execute(params, execution)
 
 

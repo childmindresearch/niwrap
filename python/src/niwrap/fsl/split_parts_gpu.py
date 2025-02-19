@@ -11,6 +11,8 @@ SPLIT_PARTS_GPU_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SplitPartsGpuParameters = typing.TypedDict('SplitPartsGpuParameters', {
     "__STYX_TYPE__": typing.Literal["split_parts_gpu"],
     "datafile": InputPathType,
@@ -210,7 +212,16 @@ def split_parts_gpu(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPLIT_PARTS_GPU_METADATA)
-    params = split_parts_gpu_params(datafile=datafile, maskfile=maskfile, bvals_file=bvals_file, bvecs_file=bvecs_file, grad_file=grad_file, use_grad_file=use_grad_file, total_num_parts=total_num_parts, output_directory=output_directory)
+    params = split_parts_gpu_params(
+        datafile=datafile,
+        maskfile=maskfile,
+        bvals_file=bvals_file,
+        bvecs_file=bvecs_file,
+        grad_file=grad_file,
+        use_grad_file=use_grad_file,
+        total_num_parts=total_num_parts,
+        output_directory=output_directory,
+    )
     return split_parts_gpu_execute(params, execution)
 
 

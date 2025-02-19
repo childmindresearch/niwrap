@@ -11,6 +11,8 @@ MRI_SYNTHSR_HYPERFINE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSynthsrHyperfineParameters = typing.TypedDict('MriSynthsrHyperfineParameters', {
     "__STYX_TYPE__": typing.Literal["mri_synthsr_hyperfine"],
     "t1_image": InputPathType,
@@ -214,7 +216,13 @@ def mri_synthsr_hyperfine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHSR_HYPERFINE_METADATA)
-    params = mri_synthsr_hyperfine_params(t1_image=t1_image, t2_image=t2_image, output=output, threads=threads, cpu=cpu)
+    params = mri_synthsr_hyperfine_params(
+        t1_image=t1_image,
+        t2_image=t2_image,
+        output=output,
+        threads=threads,
+        cpu=cpu,
+    )
     return mri_synthsr_hyperfine_execute(params, execution)
 
 

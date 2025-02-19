@@ -11,6 +11,8 @@ METADATA_STRING_REPLACE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetadataStringReplaceParameters = typing.TypedDict('MetadataStringReplaceParameters', {
     "__STYX_TYPE__": typing.Literal["metadata-string-replace"],
     "input_file": str,
@@ -191,7 +193,13 @@ def metadata_string_replace(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METADATA_STRING_REPLACE_METADATA)
-    params = metadata_string_replace_params(input_file=input_file, find_string=find_string, replace_string=replace_string, output_file=output_file, opt_case_insensitive=opt_case_insensitive)
+    params = metadata_string_replace_params(
+        input_file=input_file,
+        find_string=find_string,
+        replace_string=replace_string,
+        output_file=output_file,
+        opt_case_insensitive=opt_case_insensitive,
+    )
     return metadata_string_replace_execute(params, execution)
 
 

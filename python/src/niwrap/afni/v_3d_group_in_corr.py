@@ -11,6 +11,8 @@ V_3D_GROUP_IN_CORR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dGroupInCorrParameters = typing.TypedDict('V3dGroupInCorrParameters', {
     "__STYX_TYPE__": typing.Literal["3dGroupInCorr"],
     "set_a": InputPathType,
@@ -440,7 +442,36 @@ def v_3d_group_in_corr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_GROUP_IN_CORR_METADATA)
-    params = v_3d_group_in_corr_params(set_a=set_a, set_b=set_b, apair=apair, label_a=label_a, label_b=label_b, pooled=pooled, unpooled=unpooled, paired=paired, nosix=nosix, covariates_file=covariates_file, center=center, seed_radius=seed_radius, sendall=sendall, donocov=donocov, dospcov=dospcov, cluster=cluster, read=read, ztest=ztest, ah=ah, port_offset=port_offset, port_offset_quiet=port_offset_quiet, port_bloc=port_bloc, suma=suma, quiet=quiet, verbose=verbose, very_verbose=very_verbose, debug=debug, batch=batch)
+    params = v_3d_group_in_corr_params(
+        set_a=set_a,
+        set_b=set_b,
+        apair=apair,
+        label_a=label_a,
+        label_b=label_b,
+        pooled=pooled,
+        unpooled=unpooled,
+        paired=paired,
+        nosix=nosix,
+        covariates_file=covariates_file,
+        center=center,
+        seed_radius=seed_radius,
+        sendall=sendall,
+        donocov=donocov,
+        dospcov=dospcov,
+        cluster=cluster,
+        read=read,
+        ztest=ztest,
+        ah=ah,
+        port_offset=port_offset,
+        port_offset_quiet=port_offset_quiet,
+        port_bloc=port_bloc,
+        suma=suma,
+        quiet=quiet,
+        verbose=verbose,
+        very_verbose=very_verbose,
+        debug=debug,
+        batch=batch,
+    )
     return v_3d_group_in_corr_execute(params, execution)
 
 

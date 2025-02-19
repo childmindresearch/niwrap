@@ -11,6 +11,8 @@ SLICES_SUMMARY_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SlicesSummaryParameters = typing.TypedDict('SlicesSummaryParameters', {
     "__STYX_TYPE__": typing.Literal["slices_summary"],
     "4d_input_file": InputPathType,
@@ -236,7 +238,18 @@ def slices_summary(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICES_SUMMARY_METADATA)
-    params = slices_summary_params(v_4d_input_file=v_4d_input_file, threshold=threshold, background_image=background_image, pictures_sum_second=pictures_sum_second, single_slice_flag=single_slice_flag, darker_background_flag=darker_background_flag, dumb_rule_flag=dumb_rule_flag, pictures_sum_second_1=pictures_sum_second_1, output_png=output_png, timepoints=timepoints)
+    params = slices_summary_params(
+        v_4d_input_file=v_4d_input_file,
+        threshold=threshold,
+        background_image=background_image,
+        pictures_sum_second=pictures_sum_second,
+        single_slice_flag=single_slice_flag,
+        darker_background_flag=darker_background_flag,
+        dumb_rule_flag=dumb_rule_flag,
+        pictures_sum_second_1=pictures_sum_second_1,
+        output_png=output_png,
+        timepoints=timepoints,
+    )
     return slices_summary_execute(params, execution)
 
 

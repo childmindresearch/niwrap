@@ -11,6 +11,8 @@ FIRST_FLIRT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FirstFlirtParameters = typing.TypedDict('FirstFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["first_flirt"],
     "input_image": InputPathType,
@@ -238,7 +240,16 @@ def first_flirt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRST_FLIRT_METADATA)
-    params = first_flirt_params(input_image=input_image, output_basename=output_basename, already_brain_extracted_flag=already_brain_extracted_flag, debug_flag=debug_flag, inweight_flag=inweight_flag, strucweight_mask=strucweight_mask, cort_flag=cort_flag, cost_function=cost_function)
+    params = first_flirt_params(
+        input_image=input_image,
+        output_basename=output_basename,
+        already_brain_extracted_flag=already_brain_extracted_flag,
+        debug_flag=debug_flag,
+        inweight_flag=inweight_flag,
+        strucweight_mask=strucweight_mask,
+        cort_flag=cort_flag,
+        cost_function=cost_function,
+    )
     return first_flirt_execute(params, execution)
 
 

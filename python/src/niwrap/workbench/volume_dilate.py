@@ -11,15 +11,21 @@ VOLUME_DILATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeDilatePresmoothParameters = typing.TypedDict('VolumeDilatePresmoothParameters', {
     "__STYX_TYPE__": typing.Literal["presmooth"],
     "kernel": float,
     "opt_fwhm": bool,
 })
+
+
 VolumeDilateGradExtrapolateParameters = typing.TypedDict('VolumeDilateGradExtrapolateParameters', {
     "__STYX_TYPE__": typing.Literal["grad_extrapolate"],
     "presmooth": typing.NotRequired[VolumeDilatePresmoothParameters | None],
 })
+
+
 VolumeDilateParameters = typing.TypedDict('VolumeDilateParameters', {
     "__STYX_TYPE__": typing.Literal["volume-dilate"],
     "volume": InputPathType,
@@ -392,7 +398,18 @@ def volume_dilate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_DILATE_METADATA)
-    params = volume_dilate_params(volume=volume, distance=distance, method=method, volume_out=volume_out, opt_exponent_exponent=opt_exponent_exponent, opt_bad_voxel_roi_roi_volume=opt_bad_voxel_roi_roi_volume, opt_data_roi_roi_volume=opt_data_roi_roi_volume, opt_subvolume_subvol=opt_subvolume_subvol, opt_legacy_cutoff=opt_legacy_cutoff, grad_extrapolate=grad_extrapolate)
+    params = volume_dilate_params(
+        volume=volume,
+        distance=distance,
+        method=method,
+        volume_out=volume_out,
+        opt_exponent_exponent=opt_exponent_exponent,
+        opt_bad_voxel_roi_roi_volume=opt_bad_voxel_roi_roi_volume,
+        opt_data_roi_roi_volume=opt_data_roi_roi_volume,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+        opt_legacy_cutoff=opt_legacy_cutoff,
+        grad_extrapolate=grad_extrapolate,
+    )
     return volume_dilate_execute(params, execution)
 
 

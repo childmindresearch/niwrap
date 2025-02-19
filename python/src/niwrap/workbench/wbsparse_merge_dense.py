@@ -11,10 +11,14 @@ WBSPARSE_MERGE_DENSE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 WbsparseMergeDenseWbsparseParameters = typing.TypedDict('WbsparseMergeDenseWbsparseParameters', {
     "__STYX_TYPE__": typing.Literal["wbsparse"],
     "wbsparse_in": str,
 })
+
+
 WbsparseMergeDenseParameters = typing.TypedDict('WbsparseMergeDenseParameters', {
     "__STYX_TYPE__": typing.Literal["wbsparse-merge-dense"],
     "direction": str,
@@ -222,7 +226,11 @@ def wbsparse_merge_dense(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WBSPARSE_MERGE_DENSE_METADATA)
-    params = wbsparse_merge_dense_params(direction=direction, wbsparse_out=wbsparse_out, wbsparse=wbsparse)
+    params = wbsparse_merge_dense_params(
+        direction=direction,
+        wbsparse_out=wbsparse_out,
+        wbsparse=wbsparse,
+    )
     return wbsparse_merge_dense_execute(params, execution)
 
 

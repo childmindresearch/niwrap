@@ -11,6 +11,8 @@ V__ADD_EDGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAddEdgeParameters = typing.TypedDict('VAddEdgeParameters', {
     "__STYX_TYPE__": typing.Literal["@AddEdge"],
     "input_files": list[InputPathType],
@@ -313,7 +315,23 @@ def v__add_edge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ADD_EDGE_METADATA)
-    params = v__add_edge_params(input_files=input_files, examine_list=examine_list, ax_mont=ax_mont, ax_geom=ax_geom, sag_geom=sag_geom, layout_file=layout_file, no_layout=no_layout, edge_percentile=edge_percentile, single_edge=single_edge, opacity=opacity, keep_temp=keep_temp, no_deoblique=no_deoblique, auto_record=auto_record, auto=auto, no_auto=no_auto)
+    params = v__add_edge_params(
+        input_files=input_files,
+        examine_list=examine_list,
+        ax_mont=ax_mont,
+        ax_geom=ax_geom,
+        sag_geom=sag_geom,
+        layout_file=layout_file,
+        no_layout=no_layout,
+        edge_percentile=edge_percentile,
+        single_edge=single_edge,
+        opacity=opacity,
+        keep_temp=keep_temp,
+        no_deoblique=no_deoblique,
+        auto_record=auto_record,
+        auto=auto,
+        no_auto=no_auto,
+    )
     return v__add_edge_execute(params, execution)
 
 

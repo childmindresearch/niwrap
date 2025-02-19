@@ -11,6 +11,8 @@ PLUGOUT_IJK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 PlugoutIjkParameters = typing.TypedDict('PlugoutIjkParameters', {
     "__STYX_TYPE__": typing.Literal["plugout_ijk"],
     "host": typing.NotRequired[str | None],
@@ -270,7 +272,19 @@ def plugout_ijk(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLUGOUT_IJK_METADATA)
-    params = plugout_ijk_params(host=host, verbose=verbose, port=port, name=name, port_offset=port_offset, port_quiet=port_quiet, port_bloc_offset=port_bloc_offset, max_bloc=max_bloc, max_bloc_quiet=max_bloc_quiet, num_assigned_ports=num_assigned_ports, num_assigned_ports_quiet=num_assigned_ports_quiet)
+    params = plugout_ijk_params(
+        host=host,
+        verbose=verbose,
+        port=port,
+        name=name,
+        port_offset=port_offset,
+        port_quiet=port_quiet,
+        port_bloc_offset=port_bloc_offset,
+        max_bloc=max_bloc,
+        max_bloc_quiet=max_bloc_quiet,
+        num_assigned_ports=num_assigned_ports,
+        num_assigned_ports_quiet=num_assigned_ports_quiet,
+    )
     return plugout_ijk_execute(params, execution)
 
 

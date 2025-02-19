@@ -11,6 +11,8 @@ ATROPOS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AtroposParameters = typing.TypedDict('AtroposParameters', {
     "__STYX_TYPE__": typing.Literal["Atropos"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -424,7 +426,27 @@ def atropos(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ATROPOS_METADATA)
-    params = atropos_params(image_dimensionality=image_dimensionality, intensity_image=intensity_image, bspline=bspline, initialization=initialization, partial_volume_label_set=partial_volume_label_set, use_partial_volume_likelihoods=use_partial_volume_likelihoods, posterior_formulation=posterior_formulation, mask_image=mask_image, convergence=convergence, likelihood_model=likelihood_model, mrf=mrf, icm=icm, use_random_seed=use_random_seed, output=output, minimize_memory_usage=minimize_memory_usage, winsorize_outliers=winsorize_outliers, use_euclidean_distance=use_euclidean_distance, label_propagation=label_propagation, verbose=verbose)
+    params = atropos_params(
+        image_dimensionality=image_dimensionality,
+        intensity_image=intensity_image,
+        bspline=bspline,
+        initialization=initialization,
+        partial_volume_label_set=partial_volume_label_set,
+        use_partial_volume_likelihoods=use_partial_volume_likelihoods,
+        posterior_formulation=posterior_formulation,
+        mask_image=mask_image,
+        convergence=convergence,
+        likelihood_model=likelihood_model,
+        mrf=mrf,
+        icm=icm,
+        use_random_seed=use_random_seed,
+        output=output,
+        minimize_memory_usage=minimize_memory_usage,
+        winsorize_outliers=winsorize_outliers,
+        use_euclidean_distance=use_euclidean_distance,
+        label_propagation=label_propagation,
+        verbose=verbose,
+    )
     return atropos_execute(params, execution)
 
 

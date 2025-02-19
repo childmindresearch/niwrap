@@ -11,6 +11,8 @@ GEMS_COMPUTE_ATLAS_PROBS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GemsComputeAtlasProbsParameters = typing.TypedDict('GemsComputeAtlasProbsParameters', {
     "__STYX_TYPE__": typing.Literal["gems_compute_atlas_probs"],
     "subjects_dir": str,
@@ -314,7 +316,24 @@ def gems_compute_atlas_probs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEMS_COMPUTE_ATLAS_PROBS_METADATA)
-    params = gems_compute_atlas_probs_params(subjects_dir=subjects_dir, mesh_collections=mesh_collections, out_dir=out_dir, segmentations_dir=segmentations_dir, gt_from_fs=gt_from_fs, segmentation_name=segmentation_name, multi_structure=multi_structure, labels=labels, from_samseg=from_samseg, em_iterations=em_iterations, show_figs=show_figs, save_figs=save_figs, save_average_figs=save_average_figs, subjects_file=subjects_file, labels_file=labels_file, samseg_subdir=samseg_subdir)
+    params = gems_compute_atlas_probs_params(
+        subjects_dir=subjects_dir,
+        mesh_collections=mesh_collections,
+        out_dir=out_dir,
+        segmentations_dir=segmentations_dir,
+        gt_from_fs=gt_from_fs,
+        segmentation_name=segmentation_name,
+        multi_structure=multi_structure,
+        labels=labels,
+        from_samseg=from_samseg,
+        em_iterations=em_iterations,
+        show_figs=show_figs,
+        save_figs=save_figs,
+        save_average_figs=save_average_figs,
+        subjects_file=subjects_file,
+        labels_file=labels_file,
+        samseg_subdir=samseg_subdir,
+    )
     return gems_compute_atlas_probs_execute(params, execution)
 
 

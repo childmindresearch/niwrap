@@ -11,6 +11,8 @@ SIGNED_DISTANCE_TO_SURFACE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SignedDistanceToSurfaceParameters = typing.TypedDict('SignedDistanceToSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["signed-distance-to-surface"],
     "surface_comp": InputPathType,
@@ -226,7 +228,12 @@ def signed_distance_to_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIGNED_DISTANCE_TO_SURFACE_METADATA)
-    params = signed_distance_to_surface_params(surface_comp=surface_comp, surface_ref=surface_ref, metric=metric, opt_winding_method=opt_winding_method)
+    params = signed_distance_to_surface_params(
+        surface_comp=surface_comp,
+        surface_ref=surface_ref,
+        metric=metric,
+        opt_winding_method=opt_winding_method,
+    )
     return signed_distance_to_surface_execute(params, execution)
 
 

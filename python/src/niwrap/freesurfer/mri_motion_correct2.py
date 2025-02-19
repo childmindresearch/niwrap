@@ -11,6 +11,8 @@ MRI_MOTION_CORRECT2_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMotionCorrect2Parameters = typing.TypedDict('MriMotionCorrect2Parameters', {
     "__STYX_TYPE__": typing.Literal["mri_motion_correct2"],
     "output_spec": str,
@@ -252,7 +254,18 @@ def mri_motion_correct2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MOTION_CORRECT2_METADATA)
-    params = mri_motion_correct2_params(output_spec=output_spec, input_files=input_files, target=target, wild=wild, tmp_dir=tmp_dir, nocleanup=nocleanup, umask=umask, cm=cm, version=version, debug=debug)
+    params = mri_motion_correct2_params(
+        output_spec=output_spec,
+        input_files=input_files,
+        target=target,
+        wild=wild,
+        tmp_dir=tmp_dir,
+        nocleanup=nocleanup,
+        umask=umask,
+        cm=cm,
+        version=version,
+        debug=debug,
+    )
     return mri_motion_correct2_execute(params, execution)
 
 

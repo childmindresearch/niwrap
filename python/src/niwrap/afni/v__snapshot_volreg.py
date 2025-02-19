@@ -11,6 +11,8 @@ V__SNAPSHOT_VOLREG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSnapshotVolregParameters = typing.TypedDict('VSnapshotVolregParameters', {
     "__STYX_TYPE__": typing.Literal["@snapshot_volreg"],
     "anatdataset": InputPathType,
@@ -187,7 +189,12 @@ def v__snapshot_volreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SNAPSHOT_VOLREG_METADATA)
-    params = v__snapshot_volreg_params(anatdataset=anatdataset, epidataset=epidataset, jname=jname, xdisplay=xdisplay)
+    params = v__snapshot_volreg_params(
+        anatdataset=anatdataset,
+        epidataset=epidataset,
+        jname=jname,
+        xdisplay=xdisplay,
+    )
     return v__snapshot_volreg_execute(params, execution)
 
 

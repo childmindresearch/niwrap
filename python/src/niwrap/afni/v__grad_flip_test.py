@@ -11,6 +11,8 @@ V__GRAD_FLIP_TEST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VGradFlipTestParameters = typing.TypedDict('VGradFlipTestParameters', {
     "__STYX_TYPE__": typing.Literal["@GradFlipTest"],
     "dwi": InputPathType,
@@ -329,7 +331,22 @@ def v__grad_flip_test(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GRAD_FLIP_TEST_METADATA)
-    params = v__grad_flip_test_params(dwi=dwi, grad_col_mat_t=grad_col_mat_t, grad_col_mat_t_1=grad_col_mat_t_1, grad_col_mat_t_2=grad_col_mat_t_2, grad_col_mat_t_3=grad_col_mat_t_3, mask=mask, bvals=bvals, thresh_fa=thresh_fa, thresh_len=thresh_len, prefix=prefix, check_abs_min=check_abs_min, scale_out_1000=scale_out_1000, wdir=wdir, do_clean=do_clean)
+    params = v__grad_flip_test_params(
+        dwi=dwi,
+        grad_col_mat_t=grad_col_mat_t,
+        grad_col_mat_t_1=grad_col_mat_t_1,
+        grad_col_mat_t_2=grad_col_mat_t_2,
+        grad_col_mat_t_3=grad_col_mat_t_3,
+        mask=mask,
+        bvals=bvals,
+        thresh_fa=thresh_fa,
+        thresh_len=thresh_len,
+        prefix=prefix,
+        check_abs_min=check_abs_min,
+        scale_out_1000=scale_out_1000,
+        wdir=wdir,
+        do_clean=do_clean,
+    )
     return v__grad_flip_test_execute(params, execution)
 
 

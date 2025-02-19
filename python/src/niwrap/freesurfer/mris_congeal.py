@@ -11,6 +11,8 @@ MRIS_CONGEAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCongealParameters = typing.TypedDict('MrisCongealParameters', {
     "__STYX_TYPE__": typing.Literal["mris_congeal"],
     "input_surface_name": str,
@@ -298,7 +300,23 @@ def mris_congeal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CONGEAL_METADATA)
-    params = mris_congeal_params(input_surface_name=input_surface_name, hemi=hemi, subjects=subjects, output_surface_name=output_surface_name, subjects_dir=subjects_dir, disable_rigid_alignment=disable_rigid_alignment, disable_sulc_alignment=disable_sulc_alignment, smoothwm_curv=smoothwm_curv, jacobian_output=jacobian_output, distance_term=distance_term, manual_label=manual_label, addframe=addframe, overlay=overlay, overlay_dir=overlay_dir, target_subject=target_subject)
+    params = mris_congeal_params(
+        input_surface_name=input_surface_name,
+        hemi=hemi,
+        subjects=subjects,
+        output_surface_name=output_surface_name,
+        subjects_dir=subjects_dir,
+        disable_rigid_alignment=disable_rigid_alignment,
+        disable_sulc_alignment=disable_sulc_alignment,
+        smoothwm_curv=smoothwm_curv,
+        jacobian_output=jacobian_output,
+        distance_term=distance_term,
+        manual_label=manual_label,
+        addframe=addframe,
+        overlay=overlay,
+        overlay_dir=overlay_dir,
+        target_subject=target_subject,
+    )
     return mris_congeal_execute(params, execution)
 
 

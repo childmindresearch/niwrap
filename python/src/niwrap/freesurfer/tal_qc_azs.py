@@ -11,6 +11,8 @@ TAL_QC_AZS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TalQcAzsParameters = typing.TypedDict('TalQcAzsParameters', {
     "__STYX_TYPE__": typing.Literal["tal_QC_AZS"],
     "logfile": InputPathType,
@@ -155,7 +157,9 @@ def tal_qc_azs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TAL_QC_AZS_METADATA)
-    params = tal_qc_azs_params(logfile=logfile)
+    params = tal_qc_azs_params(
+        logfile=logfile,
+    )
     return tal_qc_azs_execute(params, execution)
 
 

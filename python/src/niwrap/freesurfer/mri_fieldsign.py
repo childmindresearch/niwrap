@@ -11,6 +11,8 @@ MRI_FIELDSIGN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFieldsignParameters = typing.TypedDict('MriFieldsignParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fieldsign"],
     "fieldsign_file": str,
@@ -390,7 +392,32 @@ def mri_fieldsign(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FIELDSIGN_METADATA)
-    params = mri_fieldsign_params(fieldsign_file=fieldsign_file, eccen_values=eccen_values, polar_values=polar_values, subject=subject, hemisphere=hemisphere, patch_file=patch_file, occip_flag=occip_flag, sphere_flag=sphere_flag, fwhm=fwhm, nsmooth=nsmooth, reverse_flag=reverse_flag, old_flag=old_flag, eccen_rotation=eccen_rotation, polar_rotation=polar_rotation, eccen_output=eccen_output, polar_output=polar_output, eccen_sfa_file=eccen_sfa_file, polar_sfa_file=polar_sfa_file, sfa_dir=sfa_dir, sfa_true_flag=sfa_true_flag, debug_flag=debug_flag, checkopts_flag=checkopts_flag, help_flag=help_flag, version_flag=version_flag)
+    params = mri_fieldsign_params(
+        fieldsign_file=fieldsign_file,
+        eccen_values=eccen_values,
+        polar_values=polar_values,
+        subject=subject,
+        hemisphere=hemisphere,
+        patch_file=patch_file,
+        occip_flag=occip_flag,
+        sphere_flag=sphere_flag,
+        fwhm=fwhm,
+        nsmooth=nsmooth,
+        reverse_flag=reverse_flag,
+        old_flag=old_flag,
+        eccen_rotation=eccen_rotation,
+        polar_rotation=polar_rotation,
+        eccen_output=eccen_output,
+        polar_output=polar_output,
+        eccen_sfa_file=eccen_sfa_file,
+        polar_sfa_file=polar_sfa_file,
+        sfa_dir=sfa_dir,
+        sfa_true_flag=sfa_true_flag,
+        debug_flag=debug_flag,
+        checkopts_flag=checkopts_flag,
+        help_flag=help_flag,
+        version_flag=version_flag,
+    )
     return mri_fieldsign_execute(params, execution)
 
 

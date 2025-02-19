@@ -11,26 +11,36 @@ CIFTI_CREATE_DENSE_TIMESERIES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCreateDenseTimeseriesVolumeParameters = typing.TypedDict('CiftiCreateDenseTimeseriesVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "volume_data": InputPathType,
     "structure_label_volume": InputPathType,
 })
+
+
 CiftiCreateDenseTimeseriesLeftMetricParameters = typing.TypedDict('CiftiCreateDenseTimeseriesLeftMetricParameters', {
     "__STYX_TYPE__": typing.Literal["left_metric"],
     "metric": InputPathType,
     "opt_roi_left_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateDenseTimeseriesRightMetricParameters = typing.TypedDict('CiftiCreateDenseTimeseriesRightMetricParameters', {
     "__STYX_TYPE__": typing.Literal["right_metric"],
     "metric": InputPathType,
     "opt_roi_right_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateDenseTimeseriesCerebellumMetricParameters = typing.TypedDict('CiftiCreateDenseTimeseriesCerebellumMetricParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_metric"],
     "metric": InputPathType,
     "opt_roi_cerebellum_roi_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCreateDenseTimeseriesParameters = typing.TypedDict('CiftiCreateDenseTimeseriesParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-create-dense-timeseries"],
     "cifti_out": str,
@@ -544,7 +554,16 @@ def cifti_create_dense_timeseries(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_DENSE_TIMESERIES_METADATA)
-    params = cifti_create_dense_timeseries_params(cifti_out=cifti_out, volume=volume, left_metric=left_metric, right_metric=right_metric, cerebellum_metric=cerebellum_metric, opt_timestep_interval=opt_timestep_interval, opt_timestart_start=opt_timestart_start, opt_unit_unit=opt_unit_unit)
+    params = cifti_create_dense_timeseries_params(
+        cifti_out=cifti_out,
+        volume=volume,
+        left_metric=left_metric,
+        right_metric=right_metric,
+        cerebellum_metric=cerebellum_metric,
+        opt_timestep_interval=opt_timestep_interval,
+        opt_timestart_start=opt_timestart_start,
+        opt_unit_unit=opt_unit_unit,
+    )
     return cifti_create_dense_timeseries_execute(params, execution)
 
 

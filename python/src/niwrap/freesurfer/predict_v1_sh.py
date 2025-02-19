@@ -11,6 +11,8 @@ PREDICT_V1_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 PredictV1ShParameters = typing.TypedDict('PredictV1ShParameters', {
     "__STYX_TYPE__": typing.Literal["predict_v1.sh"],
     "template": typing.NotRequired[str | None],
@@ -197,7 +199,13 @@ def predict_v1_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PREDICT_V1_SH_METADATA)
-    params = predict_v1_sh_params(template=template, inflated_surface_flag=inflated_surface_flag, hemisphere=hemisphere, print_mode_flag=print_mode_flag, subjects=subjects)
+    params = predict_v1_sh_params(
+        template=template,
+        inflated_surface_flag=inflated_surface_flag,
+        hemisphere=hemisphere,
+        print_mode_flag=print_mode_flag,
+        subjects=subjects,
+    )
     return predict_v1_sh_execute(params, execution)
 
 

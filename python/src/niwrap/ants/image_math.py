@@ -11,6 +11,8 @@ IMAGE_MATH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ImageMathParameters = typing.TypedDict('ImageMathParameters', {
     "__STYX_TYPE__": typing.Literal["ImageMath"],
     "image_dimension": typing.Literal[2, 3, 4],
@@ -195,7 +197,13 @@ def image_math(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAGE_MATH_METADATA)
-    params = image_math_params(image_dimension=image_dimension, output_image=output_image, operations_and_inputs=operations_and_inputs, image1=image1, image2=image2)
+    params = image_math_params(
+        image_dimension=image_dimension,
+        output_image=output_image,
+        operations_and_inputs=operations_and_inputs,
+        image1=image1,
+        image2=image2,
+    )
     return image_math_execute(params, execution)
 
 

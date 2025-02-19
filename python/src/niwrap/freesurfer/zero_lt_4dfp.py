@@ -11,6 +11,8 @@ ZERO_LT_4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ZeroLt4dfpParameters = typing.TypedDict('ZeroLt4dfpParameters', {
     "__STYX_TYPE__": typing.Literal["zero_lt_4dfp"],
     "flt_value": float,
@@ -195,7 +197,12 @@ def zero_lt_4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ZERO_LT_4DFP_METADATA)
-    params = zero_lt_4dfp_params(flt_value=flt_value, file_4dfp=file_4dfp, outroot=outroot, endianness=endianness)
+    params = zero_lt_4dfp_params(
+        flt_value=flt_value,
+        file_4dfp=file_4dfp,
+        outroot=outroot,
+        endianness=endianness,
+    )
     return zero_lt_4dfp_execute(params, execution)
 
 

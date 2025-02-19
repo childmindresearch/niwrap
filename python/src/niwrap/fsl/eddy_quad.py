@@ -11,6 +11,8 @@ EDDY_QUAD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 EddyQuadParameters = typing.TypedDict('EddyQuadParameters', {
     "__STYX_TYPE__": typing.Literal["eddy_quad"],
     "eddyBase": str,
@@ -259,7 +261,18 @@ def eddy_quad(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EDDY_QUAD_METADATA)
-    params = eddy_quad_params(eddy_base=eddy_base, eddy_index=eddy_index, eddy_params=eddy_params, mask=mask, bvals=bvals, bvecs=bvecs, output_dir=output_dir, field=field, slspec=slspec, verbose=verbose)
+    params = eddy_quad_params(
+        eddy_base=eddy_base,
+        eddy_index=eddy_index,
+        eddy_params=eddy_params,
+        mask=mask,
+        bvals=bvals,
+        bvecs=bvecs,
+        output_dir=output_dir,
+        field=field,
+        slspec=slspec,
+        verbose=verbose,
+    )
     return eddy_quad_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__UPDATE_AFNI_BINARIES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VUpdateAfniBinariesParameters = typing.TypedDict('VUpdateAfniBinariesParameters', {
     "__STYX_TYPE__": typing.Literal["@update.afni.binaries"],
     "defaults_flag": bool,
@@ -370,7 +372,32 @@ def v__update_afni_binaries(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__UPDATE_AFNI_BINARIES_METADATA)
-    params = v__update_afni_binaries_params(defaults_flag=defaults_flag, help_flag=help_flag, help_sys_progs_flag=help_sys_progs_flag, apsearch=apsearch, bindir=bindir, curl_flag=curl_flag, do_dotfiles_flag=do_dotfiles_flag, do_extras_flag=do_extras_flag, echo_flag=echo_flag, make_backup=make_backup, no_cert_verify_flag=no_cert_verify_flag, no_recur_flag=no_recur_flag, proto=proto, quick_flag=quick_flag, show_obsoletes_flag=show_obsoletes_flag, show_obsoletes_grep_flag=show_obsoletes_grep_flag, show_system_progs_flag=show_system_progs_flag, sys_ok_flag=sys_ok_flag, test_flag=test_flag, test_protos_flag=test_protos_flag, revert_flag=revert_flag, local_package=local_package, prog_list=prog_list, package=package)
+    params = v__update_afni_binaries_params(
+        defaults_flag=defaults_flag,
+        help_flag=help_flag,
+        help_sys_progs_flag=help_sys_progs_flag,
+        apsearch=apsearch,
+        bindir=bindir,
+        curl_flag=curl_flag,
+        do_dotfiles_flag=do_dotfiles_flag,
+        do_extras_flag=do_extras_flag,
+        echo_flag=echo_flag,
+        make_backup=make_backup,
+        no_cert_verify_flag=no_cert_verify_flag,
+        no_recur_flag=no_recur_flag,
+        proto=proto,
+        quick_flag=quick_flag,
+        show_obsoletes_flag=show_obsoletes_flag,
+        show_obsoletes_grep_flag=show_obsoletes_grep_flag,
+        show_system_progs_flag=show_system_progs_flag,
+        sys_ok_flag=sys_ok_flag,
+        test_flag=test_flag,
+        test_protos_flag=test_protos_flag,
+        revert_flag=revert_flag,
+        local_package=local_package,
+        prog_list=prog_list,
+        package=package,
+    )
     return v__update_afni_binaries_execute(params, execution)
 
 

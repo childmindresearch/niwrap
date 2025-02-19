@@ -11,6 +11,8 @@ SFIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SfimParameters = typing.TypedDict('SfimParameters', {
     "__STYX_TYPE__": typing.Literal["sfim"],
     "sfint_file": typing.NotRequired[str | None],
@@ -209,7 +211,12 @@ def sfim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SFIM_METADATA)
-    params = sfim_params(sfint_file=sfint_file, baseline_state=baseline_state, local_base_option=local_base_option, output_prefix=output_prefix)
+    params = sfim_params(
+        sfint_file=sfint_file,
+        baseline_state=baseline_state,
+        local_base_option=local_base_option,
+        output_prefix=output_prefix,
+    )
     return sfim_execute(params, execution)
 
 

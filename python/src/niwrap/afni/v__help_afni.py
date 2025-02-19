@@ -11,6 +11,8 @@ V__HELP_AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VHelpAfniParameters = typing.TypedDict('VHelpAfniParameters', {
     "__STYX_TYPE__": typing.Literal["@help.AFNI"],
 })
@@ -149,7 +151,8 @@ def v__help_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__HELP_AFNI_METADATA)
-    params = v__help_afni_params()
+    params = v__help_afni_params(
+    )
     return v__help_afni_execute(params, execution)
 
 

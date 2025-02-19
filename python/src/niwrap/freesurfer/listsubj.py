@@ -11,6 +11,8 @@ LISTSUBJ_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ListsubjParameters = typing.TypedDict('ListsubjParameters', {
     "__STYX_TYPE__": typing.Literal["listsubj"],
     "subject_dir": str,
@@ -156,7 +158,9 @@ def listsubj(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LISTSUBJ_METADATA)
-    params = listsubj_params(subject_dir=subject_dir)
+    params = listsubj_params(
+        subject_dir=subject_dir,
+    )
     return listsubj_execute(params, execution)
 
 

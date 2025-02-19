@@ -11,11 +11,15 @@ TSFSMOOTH_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TsfsmoothConfigParameters = typing.TypedDict('TsfsmoothConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TsfsmoothParameters = typing.TypedDict('TsfsmoothParameters', {
     "__STYX_TYPE__": typing.Literal["tsfsmooth"],
     "stdev": typing.NotRequired[float | None],
@@ -316,7 +320,19 @@ def tsfsmooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TSFSMOOTH_METADATA)
-    params = tsfsmooth_params(stdev=stdev, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = tsfsmooth_params(
+        stdev=stdev,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return tsfsmooth_execute(params, execution)
 
 

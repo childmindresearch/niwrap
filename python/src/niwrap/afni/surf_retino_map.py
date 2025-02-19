@@ -11,6 +11,8 @@ SURF_RETINO_MAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfRetinoMapParameters = typing.TypedDict('SurfRetinoMapParameters', {
     "__STYX_TYPE__": typing.Literal["SurfRetinoMap"],
     "surface": str,
@@ -204,7 +206,13 @@ def surf_retino_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_RETINO_MAP_METADATA)
-    params = surf_retino_map_params(surface=surface, polar=polar, eccentricity=eccentricity, prefix=prefix, node_debug=node_debug)
+    params = surf_retino_map_params(
+        surface=surface,
+        polar=polar,
+        eccentricity=eccentricity,
+        prefix=prefix,
+        node_debug=node_debug,
+    )
     return surf_retino_map_execute(params, execution)
 
 

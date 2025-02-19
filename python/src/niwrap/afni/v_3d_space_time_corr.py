@@ -11,6 +11,8 @@ V_3D_SPACE_TIME_CORR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSpaceTimeCorrParameters = typing.TypedDict('V3dSpaceTimeCorrParameters', {
     "__STYX_TYPE__": typing.Literal["3dSpaceTimeCorr"],
     "insetA": InputPathType,
@@ -242,7 +244,15 @@ def v_3d_space_time_corr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SPACE_TIME_CORR_METADATA)
-    params = v_3d_space_time_corr_params(inset_a=inset_a, inset_b=inset_b, prefix=prefix, mask=mask, out_zcorr=out_zcorr, freeze_inset_a_ijk=freeze_inset_a_ijk, freeze_inset_a_xyz=freeze_inset_a_xyz)
+    params = v_3d_space_time_corr_params(
+        inset_a=inset_a,
+        inset_b=inset_b,
+        prefix=prefix,
+        mask=mask,
+        out_zcorr=out_zcorr,
+        freeze_inset_a_ijk=freeze_inset_a_ijk,
+        freeze_inset_a_xyz=freeze_inset_a_xyz,
+    )
     return v_3d_space_time_corr_execute(params, execution)
 
 

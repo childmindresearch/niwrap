@@ -11,6 +11,8 @@ MRI_GCA_AMBIGUOUS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGcaAmbiguousParameters = typing.TypedDict('MriGcaAmbiguousParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gca_ambiguous"],
     "gca_file": InputPathType,
@@ -168,7 +170,10 @@ def mri_gca_ambiguous(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GCA_AMBIGUOUS_METADATA)
-    params = mri_gca_ambiguous_params(gca_file=gca_file, output_volume=output_volume)
+    params = mri_gca_ambiguous_params(
+        gca_file=gca_file,
+        output_volume=output_volume,
+    )
     return mri_gca_ambiguous_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MAP_CENTRAL_SULCUS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MapCentralSulcusParameters = typing.TypedDict('MapCentralSulcusParameters', {
     "__STYX_TYPE__": typing.Literal["map_central_sulcus"],
     "subjid": str,
@@ -532,7 +534,44 @@ def map_central_sulcus(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_CENTRAL_SULCUS_METADATA)
-    params = map_central_sulcus_params(subjid=subjid, process_directive=process_directive, hemi_flag=hemi_flag, expert_prefs_file=expert_prefs_file, xopts_use=xopts_use, xopts_clean=xopts_clean, xopts_overwrite=xopts_overwrite, watershed_cmd=watershed_cmd, xmask_file=xmask_file, wsless=wsless, wsmore=wsmore, wsatlas=wsatlas, no_wsatlas=no_wsatlas, no_wsgcaatlas=no_wsgcaatlas, wsthresh=wsthresh, wsseed=wsseed, norm3diters=norm3diters, normmaxgrad=normmaxgrad, norm1_b=norm1_b, norm2_b=norm2_b, norm1_n=norm1_n, norm2_n=norm2_n, cm_flag=cm_flag, no_fix_with_ga=no_fix_with_ga, fix_diag_only=fix_diag_only, seg_wlo=seg_wlo, seg_ghi=seg_ghi, nothicken=nothicken, no_ca_align_after=no_ca_align_after, no_ca_align=no_ca_align, deface=deface, mprage=mprage, washu_mprage=washu_mprage, schwartzya3t_atlas=schwartzya3t_atlas, mail_username=mail_username, threads=threads)
+    params = map_central_sulcus_params(
+        subjid=subjid,
+        process_directive=process_directive,
+        hemi_flag=hemi_flag,
+        expert_prefs_file=expert_prefs_file,
+        xopts_use=xopts_use,
+        xopts_clean=xopts_clean,
+        xopts_overwrite=xopts_overwrite,
+        watershed_cmd=watershed_cmd,
+        xmask_file=xmask_file,
+        wsless=wsless,
+        wsmore=wsmore,
+        wsatlas=wsatlas,
+        no_wsatlas=no_wsatlas,
+        no_wsgcaatlas=no_wsgcaatlas,
+        wsthresh=wsthresh,
+        wsseed=wsseed,
+        norm3diters=norm3diters,
+        normmaxgrad=normmaxgrad,
+        norm1_b=norm1_b,
+        norm2_b=norm2_b,
+        norm1_n=norm1_n,
+        norm2_n=norm2_n,
+        cm_flag=cm_flag,
+        no_fix_with_ga=no_fix_with_ga,
+        fix_diag_only=fix_diag_only,
+        seg_wlo=seg_wlo,
+        seg_ghi=seg_ghi,
+        nothicken=nothicken,
+        no_ca_align_after=no_ca_align_after,
+        no_ca_align=no_ca_align,
+        deface=deface,
+        mprage=mprage,
+        washu_mprage=washu_mprage,
+        schwartzya3t_atlas=schwartzya3t_atlas,
+        mail_username=mail_username,
+        threads=threads,
+    )
     return map_central_sulcus_execute(params, execution)
 
 

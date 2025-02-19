@@ -11,6 +11,8 @@ MRIS_SURFACE_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSurfaceStatsParameters = typing.TypedDict('MrisSurfaceStatsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_surface_stats"],
     "nsmooth": typing.NotRequired[float | None],
@@ -317,7 +319,21 @@ def mris_surface_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SURFACE_STATS_METADATA)
-    params = mris_surface_stats_params(nsmooth=nsmooth, surf_name=surf_name, mask_name=mask_name, out_name=out_name, mean=mean, absmean=absmean, absstd=absstd, zscore=zscore, first_group_size=first_group_size, src_type=src_type, trg_type=trg_type, debug=debug, data_files=data_files)
+    params = mris_surface_stats_params(
+        nsmooth=nsmooth,
+        surf_name=surf_name,
+        mask_name=mask_name,
+        out_name=out_name,
+        mean=mean,
+        absmean=absmean,
+        absstd=absstd,
+        zscore=zscore,
+        first_group_size=first_group_size,
+        src_type=src_type,
+        trg_type=trg_type,
+        debug=debug,
+        data_files=data_files,
+    )
     return mris_surface_stats_execute(params, execution)
 
 

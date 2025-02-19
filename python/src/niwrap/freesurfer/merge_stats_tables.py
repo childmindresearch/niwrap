@@ -11,6 +11,8 @@ MERGE_STATS_TABLES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MergeStatsTablesParameters = typing.TypedDict('MergeStatsTablesParameters', {
     "__STYX_TYPE__": typing.Literal["merge_stats_tables"],
     "subject": typing.NotRequired[str | None],
@@ -301,7 +303,21 @@ def merge_stats_tables(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MERGE_STATS_TABLES_METADATA)
-    params = merge_stats_tables_params(subject=subject, input_=input_, outputfile=outputfile, meas=meas, subjectsfile=subjectsfile, intable=intable, subdir=subdir, delimiter=delimiter, common_segs=common_segs, all_segs=all_segs, transpose=transpose, skip=skip, debug=debug)
+    params = merge_stats_tables_params(
+        subject=subject,
+        input_=input_,
+        outputfile=outputfile,
+        meas=meas,
+        subjectsfile=subjectsfile,
+        intable=intable,
+        subdir=subdir,
+        delimiter=delimiter,
+        common_segs=common_segs,
+        all_segs=all_segs,
+        transpose=transpose,
+        skip=skip,
+        debug=debug,
+    )
     return merge_stats_tables_execute(params, execution)
 
 

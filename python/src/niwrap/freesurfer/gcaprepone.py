@@ -11,6 +11,8 @@ GCAPREPONE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GcapreponeParameters = typing.TypedDict('GcapreponeParameters', {
     "__STYX_TYPE__": typing.Literal["gcaprepone"],
     "gcadir": str,
@@ -206,7 +208,14 @@ def gcaprepone(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GCAPREPONE_METADATA)
-    params = gcaprepone_params(gcadir=gcadir, subject=subject, init_subject=init_subject, source_subjects_dir=source_subjects_dir, done_file=done_file, no_emreg=no_emreg)
+    params = gcaprepone_params(
+        gcadir=gcadir,
+        subject=subject,
+        init_subject=init_subject,
+        source_subjects_dir=source_subjects_dir,
+        done_file=done_file,
+        no_emreg=no_emreg,
+    )
     return gcaprepone_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ DMRI_TRK2TRK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriTrk2trkParameters = typing.TypedDict('DmriTrk2trkParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_trk2trk"],
     "in_trk": list[InputPathType],
@@ -464,7 +466,35 @@ def dmri_trk2trk(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_TRK2TRK_METADATA)
-    params = dmri_trk2trk_params(in_trk=in_trk, in_asc=in_asc, in_dir=in_dir, out_trk=out_trk, out_asc=out_asc, out_vol=out_vol, out_dir=out_dir, in_ref=in_ref, out_ref=out_ref, reg_file=reg_file, regnl_file=regnl_file, inv_flag=inv_flag, fill_flag=fill_flag, overlay=overlay, inclusion_mask=inclusion_mask, exclusion_mask=exclusion_mask, terminal_inclusion_mask=terminal_inclusion_mask, terminal_exclusion_mask=terminal_exclusion_mask, length_min=length_min, length_max=length_max, mean_flag=mean_flag, nearmean_flag=nearmean_flag, nth_streamline=nth_streamline, every_nth_streamline=every_nth_streamline, smooth_flag=smooth_flag, debug_flag=debug_flag, check_opts=check_opts)
+    params = dmri_trk2trk_params(
+        in_trk=in_trk,
+        in_asc=in_asc,
+        in_dir=in_dir,
+        out_trk=out_trk,
+        out_asc=out_asc,
+        out_vol=out_vol,
+        out_dir=out_dir,
+        in_ref=in_ref,
+        out_ref=out_ref,
+        reg_file=reg_file,
+        regnl_file=regnl_file,
+        inv_flag=inv_flag,
+        fill_flag=fill_flag,
+        overlay=overlay,
+        inclusion_mask=inclusion_mask,
+        exclusion_mask=exclusion_mask,
+        terminal_inclusion_mask=terminal_inclusion_mask,
+        terminal_exclusion_mask=terminal_exclusion_mask,
+        length_min=length_min,
+        length_max=length_max,
+        mean_flag=mean_flag,
+        nearmean_flag=nearmean_flag,
+        nth_streamline=nth_streamline,
+        every_nth_streamline=every_nth_streamline,
+        smooth_flag=smooth_flag,
+        debug_flag=debug_flag,
+        check_opts=check_opts,
+    )
     return dmri_trk2trk_execute(params, execution)
 
 

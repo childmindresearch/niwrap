@@ -11,6 +11,8 @@ V_3D_ZCUTUP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dZcutupParameters = typing.TypedDict('V3dZcutupParameters', {
     "__STYX_TYPE__": typing.Literal["3dZcutup"],
     "keep_slices": str,
@@ -190,7 +192,11 @@ def v_3d_zcutup(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ZCUTUP_METADATA)
-    params = v_3d_zcutup_params(keep_slices=keep_slices, prefix=prefix, dataset=dataset)
+    params = v_3d_zcutup_params(
+        keep_slices=keep_slices,
+        prefix=prefix,
+        dataset=dataset,
+    )
     return v_3d_zcutup_execute(params, execution)
 
 

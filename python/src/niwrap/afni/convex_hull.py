@@ -11,6 +11,8 @@ CONVEX_HULL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ConvexHullParameters = typing.TypedDict('ConvexHullParameters', {
     "__STYX_TYPE__": typing.Literal["ConvexHull"],
     "vol": typing.NotRequired[InputPathType | None],
@@ -354,7 +356,24 @@ def convex_hull(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVEX_HULL_METADATA)
-    params = convex_hull_params(vol=vol, isoval=isoval, isorange=isorange, isocmask=isocmask, xform=xform, surface_input=surface_input, surf_vol=surf_vol, input_1d=input_1d, q_opt=q_opt, proj_xy=proj_xy, orig_coord=orig_coord, these_coords=these_coords, output_prefix=output_prefix, debug=debug, novolreg=novolreg, setenv=setenv)
+    params = convex_hull_params(
+        vol=vol,
+        isoval=isoval,
+        isorange=isorange,
+        isocmask=isocmask,
+        xform=xform,
+        surface_input=surface_input,
+        surf_vol=surf_vol,
+        input_1d=input_1d,
+        q_opt=q_opt,
+        proj_xy=proj_xy,
+        orig_coord=orig_coord,
+        these_coords=these_coords,
+        output_prefix=output_prefix,
+        debug=debug,
+        novolreg=novolreg,
+        setenv=setenv,
+    )
     return convex_hull_execute(params, execution)
 
 

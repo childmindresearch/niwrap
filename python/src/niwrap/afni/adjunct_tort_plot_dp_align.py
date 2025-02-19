@@ -11,6 +11,8 @@ ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctTortPlotDpAlignParameters = typing.TypedDict('AdjunctTortPlotDpAlignParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_tort_plot_dp_align"],
     "input_file": InputPathType,
@@ -227,7 +229,13 @@ def adjunct_tort_plot_dp_align(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA)
-    params = adjunct_tort_plot_dp_align_params(input_file=input_file, output_prefix=output_prefix, enorm_max=enorm_max, enorm_hline=enorm_hline, no_svg=no_svg)
+    params = adjunct_tort_plot_dp_align_params(
+        input_file=input_file,
+        output_prefix=output_prefix,
+        enorm_max=enorm_max,
+        enorm_hline=enorm_hline,
+        no_svg=no_svg,
+    )
     return adjunct_tort_plot_dp_align_execute(params, execution)
 
 

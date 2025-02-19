@@ -11,6 +11,8 @@ MRI_REORIENT_LR_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriReorientLrCshParameters = typing.TypedDict('MriReorientLrCshParameters', {
     "__STYX_TYPE__": typing.Literal["mri_reorient_LR.csh"],
     "input_vol": InputPathType,
@@ -214,7 +216,15 @@ def mri_reorient_lr_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_REORIENT_LR_CSH_METADATA)
-    params = mri_reorient_lr_csh_params(input_vol=input_vol, output_vol=output_vol, display_result=display_result, clean_files=clean_files, output_registration=output_registration, version=version, help_=help_)
+    params = mri_reorient_lr_csh_params(
+        input_vol=input_vol,
+        output_vol=output_vol,
+        display_result=display_result,
+        clean_files=clean_files,
+        output_registration=output_registration,
+        version=version,
+        help_=help_,
+    )
     return mri_reorient_lr_csh_execute(params, execution)
 
 

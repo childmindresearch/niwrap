@@ -11,6 +11,8 @@ MRI_GCUT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGcutParameters = typing.TypedDict('MriGcutParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gcut"],
     "wmmask_110": bool,
@@ -206,7 +208,13 @@ def mri_gcut(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GCUT_METADATA)
-    params = mri_gcut_params(wmmask_110=wmmask_110, mult_file=mult_file, threshold_value=threshold_value, infile=infile, outfile=outfile)
+    params = mri_gcut_params(
+        wmmask_110=wmmask_110,
+        mult_file=mult_file,
+        threshold_value=threshold_value,
+        infile=infile,
+        outfile=outfile,
+    )
     return mri_gcut_execute(params, execution)
 
 

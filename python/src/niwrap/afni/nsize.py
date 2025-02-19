@@ -11,6 +11,8 @@ NSIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 NsizeParameters = typing.TypedDict('NsizeParameters', {
     "__STYX_TYPE__": typing.Literal["nsize"],
     "image_in": InputPathType,
@@ -166,7 +168,10 @@ def nsize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NSIZE_METADATA)
-    params = nsize_params(image_in=image_in, image_out=image_out)
+    params = nsize_params(
+        image_in=image_in,
+        image_out=image_out,
+    )
     return nsize_execute(params, execution)
 
 

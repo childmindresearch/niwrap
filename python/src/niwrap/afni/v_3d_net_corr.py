@@ -11,6 +11,8 @@ V_3D_NET_CORR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNetCorrParameters = typing.TypedDict('V3dNetCorrParameters', {
     "__STYX_TYPE__": typing.Literal["3dNetCorr"],
     "prefix": str,
@@ -362,7 +364,28 @@ def v_3d_net_corr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NET_CORR_METADATA)
-    params = v_3d_net_corr_params(prefix=prefix, inset=inset, in_rois=in_rois, mask=mask, fish_z=fish_z, part_corr=part_corr, ts_out=ts_out, ts_label=ts_label, ts_indiv=ts_indiv, ts_wb_corr=ts_wb_corr, ts_wb_z=ts_wb_z, weight_ts=weight_ts, weight_corr=weight_corr, ts_wb_strlabel=ts_wb_strlabel, nifti=nifti, output_mask_nonnull=output_mask_nonnull, push_thru_many_zeros=push_thru_many_zeros, allow_roi_zeros=allow_roi_zeros, automask_off=automask_off, ignore_lt=ignore_lt)
+    params = v_3d_net_corr_params(
+        prefix=prefix,
+        inset=inset,
+        in_rois=in_rois,
+        mask=mask,
+        fish_z=fish_z,
+        part_corr=part_corr,
+        ts_out=ts_out,
+        ts_label=ts_label,
+        ts_indiv=ts_indiv,
+        ts_wb_corr=ts_wb_corr,
+        ts_wb_z=ts_wb_z,
+        weight_ts=weight_ts,
+        weight_corr=weight_corr,
+        ts_wb_strlabel=ts_wb_strlabel,
+        nifti=nifti,
+        output_mask_nonnull=output_mask_nonnull,
+        push_thru_many_zeros=push_thru_many_zeros,
+        allow_roi_zeros=allow_roi_zeros,
+        automask_off=automask_off,
+        ignore_lt=ignore_lt,
+    )
     return v_3d_net_corr_execute(params, execution)
 
 

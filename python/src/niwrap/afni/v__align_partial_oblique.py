@@ -11,6 +11,8 @@ V__ALIGN_PARTIAL_OBLIQUE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAlignPartialObliqueParameters = typing.TypedDict('VAlignPartialObliqueParameters', {
     "__STYX_TYPE__": typing.Literal["@align_partial_oblique"],
     "base": InputPathType,
@@ -260,7 +262,17 @@ def v__align_partial_oblique(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ALIGN_PARTIAL_OBLIQUE_METADATA)
-    params = v__align_partial_oblique_params(base=base, input_=input_, suffix=suffix, keep_tmp=keep_tmp, clean=clean, dxyz=dxyz, dx=dx, dy=dy, dz=dz)
+    params = v__align_partial_oblique_params(
+        base=base,
+        input_=input_,
+        suffix=suffix,
+        keep_tmp=keep_tmp,
+        clean=clean,
+        dxyz=dxyz,
+        dx=dx,
+        dy=dy,
+        dz=dz,
+    )
     return v__align_partial_oblique_execute(params, execution)
 
 

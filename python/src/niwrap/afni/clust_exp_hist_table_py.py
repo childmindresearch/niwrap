@@ -11,6 +11,8 @@ CLUST_EXP_HIST_TABLE_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ClustExpHistTablePyParameters = typing.TypedDict('ClustExpHistTablePyParameters', {
     "__STYX_TYPE__": typing.Literal["ClustExp_HistTable.py"],
     "stat_dset": InputPathType,
@@ -198,7 +200,12 @@ def clust_exp_hist_table_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CLUST_EXP_HIST_TABLE_PY_METADATA)
-    params = clust_exp_hist_table_py_params(stat_dset=stat_dset, prefix=prefix, session=session, overwrite=overwrite)
+    params = clust_exp_hist_table_py_params(
+        stat_dset=stat_dset,
+        prefix=prefix,
+        session=session,
+        overwrite=overwrite,
+    )
     return clust_exp_hist_table_py_execute(params, execution)
 
 

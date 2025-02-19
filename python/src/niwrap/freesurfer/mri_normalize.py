@@ -11,6 +11,8 @@ MRI_NORMALIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriNormalizeParameters = typing.TypedDict('MriNormalizeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_normalize"],
     "input_vol": InputPathType,
@@ -533,7 +535,42 @@ def mri_normalize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_NORMALIZE_METADATA)
-    params = mri_normalize_params(input_vol=input_vol, output_vol=output_vol, norm_iters=norm_iters, disable_1d=disable_1d, nonmax_suppress=nonmax_suppress, conform=conform, nonconform=nonconform, gentle=gentle, control_points=control_points, fonly_control_points=fonly_control_points, lonly_labels=lonly_labels, labels=labels, write_volumes=write_volumes, intensity_above=intensity_above, intensity_below=intensity_below, intensity_gradient=intensity_gradient, prune=prune, no_gentle_cp=no_gentle_cp, mask_file=mask_file, atlas_transform=atlas_transform, noskull=noskull, monkey=monkey, nosnr=nosnr, sigma_smooth=sigma_smooth, aseg_file=aseg_file, debug_v=debug_v, debug_d=debug_d, renorm_vol=renorm_vol, checknorm_vol=checknorm_vol, load_read_cp=load_read_cp, cp_output_vol=cp_output_vol, surface_transform=surface_transform, seed_value=seed_value, print_help=print_help)
+    params = mri_normalize_params(
+        input_vol=input_vol,
+        output_vol=output_vol,
+        norm_iters=norm_iters,
+        disable_1d=disable_1d,
+        nonmax_suppress=nonmax_suppress,
+        conform=conform,
+        nonconform=nonconform,
+        gentle=gentle,
+        control_points=control_points,
+        fonly_control_points=fonly_control_points,
+        lonly_labels=lonly_labels,
+        labels=labels,
+        write_volumes=write_volumes,
+        intensity_above=intensity_above,
+        intensity_below=intensity_below,
+        intensity_gradient=intensity_gradient,
+        prune=prune,
+        no_gentle_cp=no_gentle_cp,
+        mask_file=mask_file,
+        atlas_transform=atlas_transform,
+        noskull=noskull,
+        monkey=monkey,
+        nosnr=nosnr,
+        sigma_smooth=sigma_smooth,
+        aseg_file=aseg_file,
+        debug_v=debug_v,
+        debug_d=debug_d,
+        renorm_vol=renorm_vol,
+        checknorm_vol=checknorm_vol,
+        load_read_cp=load_read_cp,
+        cp_output_vol=cp_output_vol,
+        surface_transform=surface_transform,
+        seed_value=seed_value,
+        print_help=print_help,
+    )
     return mri_normalize_execute(params, execution)
 
 

@@ -11,26 +11,36 @@ PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 ProbtrackxDotConvertRowVoxelsParameters = typing.TypedDict('ProbtrackxDotConvertRowVoxelsParameters', {
     "__STYX_TYPE__": typing.Literal["row_voxels"],
     "voxel_list_file": str,
     "label_vol": InputPathType,
 })
+
+
 ProbtrackxDotConvertRowCiftiParameters = typing.TypedDict('ProbtrackxDotConvertRowCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["row_cifti"],
     "cifti": InputPathType,
     "direction": str,
 })
+
+
 ProbtrackxDotConvertColVoxelsParameters = typing.TypedDict('ProbtrackxDotConvertColVoxelsParameters', {
     "__STYX_TYPE__": typing.Literal["col_voxels"],
     "voxel_list_file": str,
     "label_vol": InputPathType,
 })
+
+
 ProbtrackxDotConvertColCiftiParameters = typing.TypedDict('ProbtrackxDotConvertColCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["col_cifti"],
     "cifti": InputPathType,
     "direction": str,
 })
+
+
 ProbtrackxDotConvertParameters = typing.TypedDict('ProbtrackxDotConvertParameters', {
     "__STYX_TYPE__": typing.Literal["probtrackx-dot-convert"],
     "dot_file": str,
@@ -533,7 +543,18 @@ def probtrackx_dot_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PROBTRACKX_DOT_CONVERT_METADATA)
-    params = probtrackx_dot_convert_params(dot_file=dot_file, cifti_out=cifti_out, row_voxels=row_voxels, opt_row_surface_roi_metric=opt_row_surface_roi_metric, row_cifti=row_cifti, col_voxels=col_voxels, opt_col_surface_roi_metric=opt_col_surface_roi_metric, col_cifti=col_cifti, opt_transpose=opt_transpose, opt_make_symmetric=opt_make_symmetric)
+    params = probtrackx_dot_convert_params(
+        dot_file=dot_file,
+        cifti_out=cifti_out,
+        row_voxels=row_voxels,
+        opt_row_surface_roi_metric=opt_row_surface_roi_metric,
+        row_cifti=row_cifti,
+        col_voxels=col_voxels,
+        opt_col_surface_roi_metric=opt_col_surface_roi_metric,
+        col_cifti=col_cifti,
+        opt_transpose=opt_transpose,
+        opt_make_symmetric=opt_make_symmetric,
+    )
     return probtrackx_dot_convert_execute(params, execution)
 
 

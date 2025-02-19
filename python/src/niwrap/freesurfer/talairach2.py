@@ -11,6 +11,8 @@ TALAIRACH2_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Talairach2Parameters = typing.TypedDict('Talairach2Parameters', {
     "__STYX_TYPE__": typing.Literal["talairach2"],
     "subject_id": str,
@@ -164,7 +166,10 @@ def talairach2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH2_METADATA)
-    params = talairach2_params(subject_id=subject_id, mgz_flag=mgz_flag)
+    params = talairach2_params(
+        subject_id=subject_id,
+        mgz_flag=mgz_flag,
+    )
     return talairach2_execute(params, execution)
 
 

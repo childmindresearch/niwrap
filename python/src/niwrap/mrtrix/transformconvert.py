@@ -11,11 +11,15 @@ TRANSFORMCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TransformconvertConfigParameters = typing.TypedDict('TransformconvertConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TransformconvertParameters = typing.TypedDict('TransformconvertParameters', {
     "__STYX_TYPE__": typing.Literal["transformconvert"],
     "info": bool,
@@ -315,7 +319,19 @@ def transformconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRANSFORMCONVERT_METADATA)
-    params = transformconvert_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, operation=operation, output=output)
+    params = transformconvert_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        operation=operation,
+        output=output,
+    )
     return transformconvert_execute(params, execution)
 
 

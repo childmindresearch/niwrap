@@ -11,6 +11,8 @@ SURF_INFO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfInfoParameters = typing.TypedDict('SurfInfoParameters', {
     "__STYX_TYPE__": typing.Literal["SurfInfo"],
     "surface": InputPathType,
@@ -262,7 +264,18 @@ def surf_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_INFO_METADATA)
-    params = surf_info_params(surface=surface, com=com, debug_level=debug_level, detail_level=detail_level, quiet=quiet, separator=separator, input_surface=input_surface, surface_state=surface_state, surface_volume=surface_volume, spec_file=spec_file)
+    params = surf_info_params(
+        surface=surface,
+        com=com,
+        debug_level=debug_level,
+        detail_level=detail_level,
+        quiet=quiet,
+        separator=separator,
+        input_surface=input_surface,
+        surface_state=surface_state,
+        surface_volume=surface_volume,
+        spec_file=spec_file,
+    )
     return surf_info_execute(params, execution)
 
 

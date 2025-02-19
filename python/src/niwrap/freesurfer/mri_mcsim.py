@@ -11,6 +11,8 @@ MRI_MCSIM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMcsimParameters = typing.TypedDict('MriMcsimParameters', {
     "__STYX_TYPE__": typing.Literal["mri_mcsim"],
     "top_output_dir": str,
@@ -399,7 +401,31 @@ def mri_mcsim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MCSIM_METADATA)
-    params = mri_mcsim_params(top_output_dir=top_output_dir, base_name=base_name, surface=surface, num_repetitions=num_repetitions, fwhm_values=fwhm_values, fwhm_max=fwhm_max, avg_vertex_area=avg_vertex_area, random_seed=random_seed, label_file=label_file, mask_file=mask_file, no_label=no_label, no_save_mask=no_save_mask, surface_name=surface_name, log_file=log_file, done_file=done_file, stop_file=stop_file, save_file=save_file, save_iter=save_iter, subjects_dir=subjects_dir, debug=debug, check_opts=check_opts, help_=help_, version=version)
+    params = mri_mcsim_params(
+        top_output_dir=top_output_dir,
+        base_name=base_name,
+        surface=surface,
+        num_repetitions=num_repetitions,
+        fwhm_values=fwhm_values,
+        fwhm_max=fwhm_max,
+        avg_vertex_area=avg_vertex_area,
+        random_seed=random_seed,
+        label_file=label_file,
+        mask_file=mask_file,
+        no_label=no_label,
+        no_save_mask=no_save_mask,
+        surface_name=surface_name,
+        log_file=log_file,
+        done_file=done_file,
+        stop_file=stop_file,
+        save_file=save_file,
+        save_iter=save_iter,
+        subjects_dir=subjects_dir,
+        debug=debug,
+        check_opts=check_opts,
+        help_=help_,
+        version=version,
+    )
     return mri_mcsim_execute(params, execution)
 
 

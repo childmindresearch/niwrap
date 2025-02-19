@@ -11,6 +11,8 @@ CIFTI_LABEL_EXPORT_TABLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiLabelExportTableParameters = typing.TypedDict('CiftiLabelExportTableParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-label-export-table"],
     "label_in": InputPathType,
@@ -176,7 +178,11 @@ def cifti_label_export_table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_LABEL_EXPORT_TABLE_METADATA)
-    params = cifti_label_export_table_params(label_in=label_in, map_=map_, table_out=table_out)
+    params = cifti_label_export_table_params(
+        label_in=label_in,
+        map_=map_,
+        table_out=table_out,
+    )
     return cifti_label_export_table_execute(params, execution)
 
 

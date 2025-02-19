@@ -11,6 +11,8 @@ CIFTI_CROSS_CORRELATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCrossCorrelationParameters = typing.TypedDict('CiftiCrossCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-cross-correlation"],
     "cifti_a": InputPathType,
@@ -230,7 +232,14 @@ def cifti_cross_correlation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CROSS_CORRELATION_METADATA)
-    params = cifti_cross_correlation_params(cifti_a=cifti_a, cifti_b=cifti_b, cifti_out=cifti_out, opt_weights_weight_file=opt_weights_weight_file, opt_fisher_z=opt_fisher_z, opt_mem_limit_limit_gb=opt_mem_limit_limit_gb)
+    params = cifti_cross_correlation_params(
+        cifti_a=cifti_a,
+        cifti_b=cifti_b,
+        cifti_out=cifti_out,
+        opt_weights_weight_file=opt_weights_weight_file,
+        opt_fisher_z=opt_fisher_z,
+        opt_mem_limit_limit_gb=opt_mem_limit_limit_gb,
+    )
     return cifti_cross_correlation_execute(params, execution)
 
 

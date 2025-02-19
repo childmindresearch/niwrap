@@ -11,6 +11,8 @@ DMRI_MATCH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriMatchParameters = typing.TypedDict('DmriMatchParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_match"],
     "parcellation1": InputPathType,
@@ -257,7 +259,19 @@ def dmri_match(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_MATCH_METADATA)
-    params = dmri_match_params(parcellation1=parcellation1, parcellation2=parcellation2, num_clusters=num_clusters, clustering_path1=clustering_path1, clustering_path2=clustering_path2, labels=labels, euclidean=euclidean, bounding_box=bounding_box, symmetry=symmetry, inter_hemi_ratio_removal=inter_hemi_ratio_removal, output=output)
+    params = dmri_match_params(
+        parcellation1=parcellation1,
+        parcellation2=parcellation2,
+        num_clusters=num_clusters,
+        clustering_path1=clustering_path1,
+        clustering_path2=clustering_path2,
+        labels=labels,
+        euclidean=euclidean,
+        bounding_box=bounding_box,
+        symmetry=symmetry,
+        inter_hemi_ratio_removal=inter_hemi_ratio_removal,
+        output=output,
+    )
     return dmri_match_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3DMASK_TOOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmaskToolParameters = typing.TypedDict('V3dmaskToolParameters', {
     "__STYX_TYPE__": typing.Literal["3dmask_tool"],
     "count": bool,
@@ -305,7 +307,21 @@ def v_3dmask_tool(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMASK_TOOL_METADATA)
-    params = v_3dmask_tool_params(count=count, datum=datum, dilate_inputs=dilate_inputs, dilate_results=dilate_results, fill_dirs=fill_dirs, fill_holes=fill_holes, frac=frac, in_file=in_file, inter=inter, num_threads=num_threads, outputtype=outputtype, union=union, verbose=verbose)
+    params = v_3dmask_tool_params(
+        count=count,
+        datum=datum,
+        dilate_inputs=dilate_inputs,
+        dilate_results=dilate_results,
+        fill_dirs=fill_dirs,
+        fill_holes=fill_holes,
+        frac=frac,
+        in_file=in_file,
+        inter=inter,
+        num_threads=num_threads,
+        outputtype=outputtype,
+        union=union,
+        verbose=verbose,
+    )
     return v_3dmask_tool_execute(params, execution)
 
 

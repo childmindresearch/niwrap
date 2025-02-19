@@ -11,6 +11,8 @@ SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceSphereProjectUnprojectParameters = typing.TypedDict('SurfaceSphereProjectUnprojectParameters', {
     "__STYX_TYPE__": typing.Literal["surface-sphere-project-unproject"],
     "sphere_in": InputPathType,
@@ -293,7 +295,12 @@ def surface_sphere_project_unproject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA)
-    params = surface_sphere_project_unproject_params(sphere_in=sphere_in, sphere_project_to=sphere_project_to, sphere_unproject_from=sphere_unproject_from, sphere_out=sphere_out)
+    params = surface_sphere_project_unproject_params(
+        sphere_in=sphere_in,
+        sphere_project_to=sphere_project_to,
+        sphere_unproject_from=sphere_unproject_from,
+        sphere_out=sphere_out,
+    )
     return surface_sphere_project_unproject_execute(params, execution)
 
 

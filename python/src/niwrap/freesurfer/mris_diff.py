@@ -11,6 +11,8 @@ MRIS_DIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisDiffParameters = typing.TypedDict('MrisDiffParameters', {
     "__STYX_TYPE__": typing.Literal["mris_diff"],
     "surface1": InputPathType,
@@ -216,7 +218,15 @@ def mris_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DIFF_METADATA)
-    params = mris_diff_params(surface1=surface1, surface2=surface2, subject1=subject1, subject2=subject2, subj_dir1=subj_dir1, subj_dir2=subj_dir2, hemisphere=hemisphere)
+    params = mris_diff_params(
+        surface1=surface1,
+        surface2=surface2,
+        subject1=subject1,
+        subject2=subject2,
+        subj_dir1=subj_dir1,
+        subj_dir2=subj_dir2,
+        hemisphere=hemisphere,
+    )
     return mris_diff_execute(params, execution)
 
 

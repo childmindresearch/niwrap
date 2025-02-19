@@ -11,6 +11,8 @@ MRI_OR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriOrParameters = typing.TypedDict('MriOrParameters', {
     "__STYX_TYPE__": typing.Literal["mri_or"],
     "original_labels": bool,
@@ -167,7 +169,10 @@ def mri_or(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_OR_METADATA)
-    params = mri_or_params(original_labels=original_labels, input_files=input_files)
+    params = mri_or_params(
+        original_labels=original_labels,
+        input_files=input_files,
+    )
     return mri_or_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_HIST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dHistParameters = typing.TypedDict('V3dHistParameters', {
     "__STYX_TYPE__": typing.Literal["3dHist"],
     "input": InputPathType,
@@ -371,7 +373,27 @@ def v_3d_hist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_HIST_METADATA)
-    params = v_3d_hist_params(input_=input_, mask_dset=mask_dset, mask_range=mask_range, cmask=cmask, hist_file=hist_file, prefix=prefix, equalized=equalized, nbin=nbin, min_=min_, max_=max_, binwidth=binwidth, ignore_out=ignore_out, range_hist=range_hist, showhist=showhist, at_val=at_val, get_params=get_params, voxvol=voxvol, val_at=val_at, quiet=quiet)
+    params = v_3d_hist_params(
+        input_=input_,
+        mask_dset=mask_dset,
+        mask_range=mask_range,
+        cmask=cmask,
+        hist_file=hist_file,
+        prefix=prefix,
+        equalized=equalized,
+        nbin=nbin,
+        min_=min_,
+        max_=max_,
+        binwidth=binwidth,
+        ignore_out=ignore_out,
+        range_hist=range_hist,
+        showhist=showhist,
+        at_val=at_val,
+        get_params=get_params,
+        voxvol=voxvol,
+        val_at=val_at,
+        quiet=quiet,
+    )
     return v_3d_hist_execute(params, execution)
 
 

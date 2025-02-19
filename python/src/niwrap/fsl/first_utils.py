@@ -11,6 +11,8 @@ FIRST_UTILS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FirstUtilsParameters = typing.TypedDict('FirstUtilsParameters', {
     "__STYX_TYPE__": typing.Literal["first_utils"],
     "input_file": InputPathType,
@@ -452,7 +454,40 @@ def first_utils(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRST_UTILS_METADATA)
-    params = first_utils_params(input_file=input_file, output_name=output_name, norm_factors=norm_factors, reference_image=reference_image, extra_path=extra_path, flirt_matrices=flirt_matrices, use_scale=use_scale, dice_overlap=dice_overlap, input_mesh=input_mesh, use_norm=use_norm, surface_out=surface_out, threshold=threshold, mesh_label=mesh_label, use_bvars=use_bvars, use_recon_mni=use_recon_mni, vertex_analysis=vertex_analysis, use_recon_native=use_recon_native, use_rigid_align=use_rigid_align, design_matrix=design_matrix, recon_mesh_from_bvars=recon_mesh_from_bvars, read_bvars=read_bvars, mesh_to_vol=mesh_to_vol, centre_origin=centre_origin, save_vertices=save_vertices, verbose=verbose, use_pca_filter=use_pca_filter, num_modes=num_modes, single_boundary_corr=single_boundary_corr, do_mvglm=do_mvglm, concat_bvars=concat_bvars, debug_mode=debug_mode, help_=help_)
+    params = first_utils_params(
+        input_file=input_file,
+        output_name=output_name,
+        norm_factors=norm_factors,
+        reference_image=reference_image,
+        extra_path=extra_path,
+        flirt_matrices=flirt_matrices,
+        use_scale=use_scale,
+        dice_overlap=dice_overlap,
+        input_mesh=input_mesh,
+        use_norm=use_norm,
+        surface_out=surface_out,
+        threshold=threshold,
+        mesh_label=mesh_label,
+        use_bvars=use_bvars,
+        use_recon_mni=use_recon_mni,
+        vertex_analysis=vertex_analysis,
+        use_recon_native=use_recon_native,
+        use_rigid_align=use_rigid_align,
+        design_matrix=design_matrix,
+        recon_mesh_from_bvars=recon_mesh_from_bvars,
+        read_bvars=read_bvars,
+        mesh_to_vol=mesh_to_vol,
+        centre_origin=centre_origin,
+        save_vertices=save_vertices,
+        verbose=verbose,
+        use_pca_filter=use_pca_filter,
+        num_modes=num_modes,
+        single_boundary_corr=single_boundary_corr,
+        do_mvglm=do_mvglm,
+        concat_bvars=concat_bvars,
+        debug_mode=debug_mode,
+        help_=help_,
+    )
     return first_utils_execute(params, execution)
 
 

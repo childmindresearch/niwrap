@@ -11,6 +11,8 @@ V_3D_TCAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTcatParameters = typing.TypedDict('V3dTcatParameters', {
     "__STYX_TYPE__": typing.Literal["3dTcat"],
     "rlt": typing.NotRequired[typing.Literal["", "+", "++"] | None],
@@ -203,7 +205,12 @@ def v_3d_tcat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TCAT_METADATA)
-    params = v_3d_tcat_params(rlt=rlt, in_files=in_files, outputtype=outputtype, verbose=verbose)
+    params = v_3d_tcat_params(
+        rlt=rlt,
+        in_files=in_files,
+        outputtype=outputtype,
+        verbose=verbose,
+    )
     return v_3d_tcat_execute(params, execution)
 
 

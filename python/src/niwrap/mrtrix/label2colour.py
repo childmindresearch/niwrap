@@ -11,11 +11,15 @@ LABEL2COLOUR_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Label2colourConfigParameters = typing.TypedDict('Label2colourConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Label2colourParameters = typing.TypedDict('Label2colourParameters', {
     "__STYX_TYPE__": typing.Literal["label2colour"],
     "lut": typing.NotRequired[InputPathType | None],
@@ -320,7 +324,19 @@ def label2colour(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2COLOUR_METADATA)
-    params = label2colour_params(lut=lut, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, nodes_in=nodes_in, colour_out=colour_out)
+    params = label2colour_params(
+        lut=lut,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        nodes_in=nodes_in,
+        colour_out=colour_out,
+    )
     return label2colour_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_2D_IM_REG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V2dImRegParameters = typing.TypedDict('V2dImRegParameters', {
     "__STYX_TYPE__": typing.Literal["2dImReg"],
     "input_file": InputPathType,
@@ -284,7 +286,20 @@ def v_2d_im_reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_2D_IM_REG_METADATA)
-    params = v_2d_im_reg_params(input_file=input_file, base_file=base_file, base=base, nofine=nofine, fine_blur=fine_blur, fine_dxy=fine_dxy, fine_dphi=fine_dphi, prefix=prefix, dprefix=dprefix, dmm=dmm, rprefix=rprefix, debug=debug)
+    params = v_2d_im_reg_params(
+        input_file=input_file,
+        base_file=base_file,
+        base=base,
+        nofine=nofine,
+        fine_blur=fine_blur,
+        fine_dxy=fine_dxy,
+        fine_dphi=fine_dphi,
+        prefix=prefix,
+        dprefix=dprefix,
+        dmm=dmm,
+        rprefix=rprefix,
+        debug=debug,
+    )
     return v_2d_im_reg_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_LME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLmeParameters = typing.TypedDict('V3dLmeParameters', {
     "__STYX_TYPE__": typing.Literal["3dLME"],
     "PREFIX": str,
@@ -478,7 +480,38 @@ def v_3d_lme(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LME_METADATA)
-    params = v_3d_lme_params(prefix=prefix, model=model, data_table=data_table, bounds=bounds, cio_flag=cio_flag, cor_str=cor_str, cutoff=cutoff, dbg_args_flag=dbg_args_flag, jobs=jobs, glt_code=glt_code, glt_label=glt_label, glf_label=glf_label, glf_code=glf_code, icc_flag=icc_flag, iccb_flag=iccb_flag, log_lik_flag=log_lik_flag, logit_flag=logit_flag, ml_flag=ml_flag, qvars_centers=qvars_centers, qvars=qvars, raneff=raneff, mask=mask, num_glf=num_glf, num_glt=num_glt, resid=resid, re_=re_, reprefix=reprefix, rio_flag=rio_flag, show_options_flag=show_options_flag, ss_type=ss_type)
+    params = v_3d_lme_params(
+        prefix=prefix,
+        model=model,
+        data_table=data_table,
+        bounds=bounds,
+        cio_flag=cio_flag,
+        cor_str=cor_str,
+        cutoff=cutoff,
+        dbg_args_flag=dbg_args_flag,
+        jobs=jobs,
+        glt_code=glt_code,
+        glt_label=glt_label,
+        glf_label=glf_label,
+        glf_code=glf_code,
+        icc_flag=icc_flag,
+        iccb_flag=iccb_flag,
+        log_lik_flag=log_lik_flag,
+        logit_flag=logit_flag,
+        ml_flag=ml_flag,
+        qvars_centers=qvars_centers,
+        qvars=qvars,
+        raneff=raneff,
+        mask=mask,
+        num_glf=num_glf,
+        num_glt=num_glt,
+        resid=resid,
+        re_=re_,
+        reprefix=reprefix,
+        rio_flag=rio_flag,
+        show_options_flag=show_options_flag,
+        ss_type=ss_type,
+    )
     return v_3d_lme_execute(params, execution)
 
 

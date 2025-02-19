@@ -11,6 +11,8 @@ APARCSTATS2TABLE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Aparcstats2tableParameters = typing.TypedDict('Aparcstats2tableParameters', {
     "__STYX_TYPE__": typing.Literal["aparcstats2table"],
     "subjects": typing.NotRequired[list[str] | None],
@@ -338,7 +340,26 @@ def aparcstats2table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APARCSTATS2TABLE_METADATA)
-    params = aparcstats2table_params(subjects=subjects, subjectsfile=subjectsfile, qdec=qdec, qdec_long=qdec_long, hemi=hemi, tablefile=tablefile, parcellation=parcellation, measure=measure, delimiter=delimiter, skip_missing=skip_missing, parcid_only=parcid_only, common_parcs=common_parcs, parcs_file=parcs_file, report_rois=report_rois, transpose=transpose, debug=debug, etiv=etiv, scale=scale)
+    params = aparcstats2table_params(
+        subjects=subjects,
+        subjectsfile=subjectsfile,
+        qdec=qdec,
+        qdec_long=qdec_long,
+        hemi=hemi,
+        tablefile=tablefile,
+        parcellation=parcellation,
+        measure=measure,
+        delimiter=delimiter,
+        skip_missing=skip_missing,
+        parcid_only=parcid_only,
+        common_parcs=common_parcs,
+        parcs_file=parcs_file,
+        report_rois=report_rois,
+        transpose=transpose,
+        debug=debug,
+        etiv=etiv,
+        scale=scale,
+    )
     return aparcstats2table_execute(params, execution)
 
 

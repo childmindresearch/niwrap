@@ -11,6 +11,8 @@ V_3DDOT_BETA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3ddotBetaParameters = typing.TypedDict('V3ddotBetaParameters', {
     "__STYX_TYPE__": typing.Literal["3ddot_beta"],
     "input_file": InputPathType,
@@ -194,7 +196,12 @@ def v_3ddot_beta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DDOT_BETA_METADATA)
-    params = v_3ddot_beta_params(input_file=input_file, prefix=prefix, doeta2=doeta2, mask=mask)
+    params = v_3ddot_beta_params(
+        input_file=input_file,
+        prefix=prefix,
+        doeta2=doeta2,
+        mask=mask,
+    )
     return v_3ddot_beta_execute(params, execution)
 
 

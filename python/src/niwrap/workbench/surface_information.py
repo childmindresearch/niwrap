@@ -11,6 +11,8 @@ SURFACE_INFORMATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceInformationParameters = typing.TypedDict('SurfaceInformationParameters', {
     "__STYX_TYPE__": typing.Literal["surface-information"],
     "surface_file": InputPathType,
@@ -162,7 +164,9 @@ def surface_information(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_INFORMATION_METADATA)
-    params = surface_information_params(surface_file=surface_file)
+    params = surface_information_params(
+        surface_file=surface_file,
+    )
     return surface_information_execute(params, execution)
 
 

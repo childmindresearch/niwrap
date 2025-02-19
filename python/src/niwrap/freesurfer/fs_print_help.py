@@ -11,6 +11,8 @@ FS_PRINT_HELP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsPrintHelpParameters = typing.TypedDict('FsPrintHelpParameters', {
     "__STYX_TYPE__": typing.Literal["fsPrintHelp"],
     "arguments": typing.NotRequired[str | None],
@@ -159,7 +161,9 @@ def fs_print_help(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_PRINT_HELP_METADATA)
-    params = fs_print_help_params(arguments=arguments)
+    params = fs_print_help_params(
+        arguments=arguments,
+    )
     return fs_print_help_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_DECONVOLVE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDeconvolveParameters = typing.TypedDict('V3dDeconvolveParameters', {
     "__STYX_TYPE__": typing.Literal["3dDeconvolve"],
     "input_dataset": InputPathType,
@@ -340,7 +342,23 @@ def v_3d_deconvolve(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DECONVOLVE_METADATA)
-    params = v_3d_deconvolve_params(input_dataset=input_dataset, mask_dataset=mask_dataset, num_stimts=num_stimts, stim_file=stim_file, stim_label=stim_label, stim_base=stim_base, stim_times=stim_times, iresp=iresp, fitts=fitts, fout=fout, tout=tout, bucket=bucket, cbucket=cbucket, x1_d=x1_d, jobs=jobs)
+    params = v_3d_deconvolve_params(
+        input_dataset=input_dataset,
+        mask_dataset=mask_dataset,
+        num_stimts=num_stimts,
+        stim_file=stim_file,
+        stim_label=stim_label,
+        stim_base=stim_base,
+        stim_times=stim_times,
+        iresp=iresp,
+        fitts=fitts,
+        fout=fout,
+        tout=tout,
+        bucket=bucket,
+        cbucket=cbucket,
+        x1_d=x1_d,
+        jobs=jobs,
+    )
     return v_3d_deconvolve_execute(params, execution)
 
 

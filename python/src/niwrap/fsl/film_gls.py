@@ -11,6 +11,8 @@ FILM_GLS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FilmGlsParameters = typing.TypedDict('FilmGlsParameters', {
     "__STYX_TYPE__": typing.Literal["film_gls"],
     "infile": InputPathType,
@@ -427,7 +429,31 @@ def film_gls(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILM_GLS_METADATA)
-    params = film_gls_params(infile=infile, ac_flag=ac_flag, threshold=threshold, ar_flag=ar_flag, noest_flag=noest_flag, output_pw_flag=output_pw_flag, pava_flag=pava_flag, sa_flag=sa_flag, verbose_flag=verbose_flag, results_dir=results_dir, mode=mode, input_surface=input_surface, mean_func_file=mean_func_file, min_timepoint_file=min_timepoint_file, paradigm_file=paradigm_file, t_contrasts_file=t_contrasts_file, f_contrasts_file=f_contrasts_file, epith=epith, ms=ms, tukey=tukey, mt=mt, ven=ven, vef=vef)
+    params = film_gls_params(
+        infile=infile,
+        ac_flag=ac_flag,
+        threshold=threshold,
+        ar_flag=ar_flag,
+        noest_flag=noest_flag,
+        output_pw_flag=output_pw_flag,
+        pava_flag=pava_flag,
+        sa_flag=sa_flag,
+        verbose_flag=verbose_flag,
+        results_dir=results_dir,
+        mode=mode,
+        input_surface=input_surface,
+        mean_func_file=mean_func_file,
+        min_timepoint_file=min_timepoint_file,
+        paradigm_file=paradigm_file,
+        t_contrasts_file=t_contrasts_file,
+        f_contrasts_file=f_contrasts_file,
+        epith=epith,
+        ms=ms,
+        tukey=tukey,
+        mt=mt,
+        ven=ven,
+        vef=vef,
+    )
     return film_gls_execute(params, execution)
 
 

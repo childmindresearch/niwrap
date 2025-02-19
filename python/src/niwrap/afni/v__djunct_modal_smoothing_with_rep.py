@@ -11,6 +11,8 @@ V__DJUNCT_MODAL_SMOOTHING_WITH_REP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunctModalSmoothingWithRepParameters = typing.TypedDict('VDjunctModalSmoothingWithRepParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_modal_smoothing_with_rep"],
     "input_file": InputPathType,
@@ -225,7 +227,16 @@ def v__djunct_modal_smoothing_with_rep(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_MODAL_SMOOTHING_WITH_REP_METADATA)
-    params = v__djunct_modal_smoothing_with_rep_params(input_file=input_file, output_prefix=output_prefix, modesmooth=modesmooth, help_view=help_view, help_=help_, version=version, overwrite=overwrite, no_clean=no_clean)
+    params = v__djunct_modal_smoothing_with_rep_params(
+        input_file=input_file,
+        output_prefix=output_prefix,
+        modesmooth=modesmooth,
+        help_view=help_view,
+        help_=help_,
+        version=version,
+        overwrite=overwrite,
+        no_clean=no_clean,
+    )
     return v__djunct_modal_smoothing_with_rep_execute(params, execution)
 
 

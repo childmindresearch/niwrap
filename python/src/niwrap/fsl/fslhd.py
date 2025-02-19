@@ -11,6 +11,8 @@ FSLHD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslhdParameters = typing.TypedDict('FslhdParameters', {
     "__STYX_TYPE__": typing.Literal["fslhd"],
     "xml_flag": bool,
@@ -163,7 +165,10 @@ def fslhd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLHD_METADATA)
-    params = fslhd_params(xml_flag=xml_flag, input_file=input_file)
+    params = fslhd_params(
+        xml_flag=xml_flag,
+        input_file=input_file,
+    )
     return fslhd_execute(params, execution)
 
 

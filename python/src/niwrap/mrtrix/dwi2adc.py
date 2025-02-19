@@ -11,16 +11,22 @@ DWI2ADC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Dwi2adcFslgradParameters = typing.TypedDict('Dwi2adcFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 Dwi2adcConfigParameters = typing.TypedDict('Dwi2adcConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Dwi2adcParameters = typing.TypedDict('Dwi2adcParameters', {
     "__STYX_TYPE__": typing.Literal["dwi2adc"],
     "grad": typing.NotRequired[InputPathType | None],
@@ -392,7 +398,20 @@ def dwi2adc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWI2ADC_METADATA)
-    params = dwi2adc_params(grad=grad, fslgrad=fslgrad, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = dwi2adc_params(
+        grad=grad,
+        fslgrad=fslgrad,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return dwi2adc_execute(params, execution)
 
 

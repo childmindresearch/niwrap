@@ -11,6 +11,8 @@ V__DICE_METRIC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDiceMetricParameters = typing.TypedDict('VDiceMetricParameters', {
     "__STYX_TYPE__": typing.Literal["@DiceMetric"],
     "base": InputPathType,
@@ -286,7 +288,21 @@ def v__dice_metric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DICE_METRIC_METADATA)
-    params = v__dice_metric_params(base=base, dsets=dsets, max_roi=max_roi, forceoutput=forceoutput, forceoutput_1=forceoutput_1, echo=echo, save_match=save_match, save_diff=save_diff, do_not_mask_by_base=do_not_mask_by_base, mask_by_base=mask_by_base, prefix=prefix, ignore_bad=ignore_bad, keep_tmp=keep_tmp)
+    params = v__dice_metric_params(
+        base=base,
+        dsets=dsets,
+        max_roi=max_roi,
+        forceoutput=forceoutput,
+        forceoutput_1=forceoutput_1,
+        echo=echo,
+        save_match=save_match,
+        save_diff=save_diff,
+        do_not_mask_by_base=do_not_mask_by_base,
+        mask_by_base=mask_by_base,
+        prefix=prefix,
+        ignore_bad=ignore_bad,
+        keep_tmp=keep_tmp,
+    )
     return v__dice_metric_execute(params, execution)
 
 

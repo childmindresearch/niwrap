@@ -11,6 +11,8 @@ MRIS_THICKNESS_COMPARISON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisThicknessComparisonParameters = typing.TypedDict('MrisThicknessComparisonParameters', {
     "__STYX_TYPE__": typing.Literal["mris_thickness_comparison"],
     "subject": str,
@@ -185,7 +187,13 @@ def mris_thickness_comparison(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_THICKNESS_COMPARISON_METADATA)
-    params = mris_thickness_comparison_params(subject=subject, hemi=hemi, thickness_file=thickness_file, w_file=w_file, labels=labels)
+    params = mris_thickness_comparison_params(
+        subject=subject,
+        hemi=hemi,
+        thickness_file=thickness_file,
+        w_file=w_file,
+        labels=labels,
+    )
     return mris_thickness_comparison_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ TBSS_X_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TbssXParameters = typing.TypedDict('TbssXParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_x"],
     "scalar_dirs": list[str],
@@ -162,7 +164,10 @@ def tbss_x(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_X_METADATA)
-    params = tbss_x_params(scalar_dirs=scalar_dirs, vector_dirs=vector_dirs)
+    params = tbss_x_params(
+        scalar_dirs=scalar_dirs,
+        vector_dirs=vector_dirs,
+    )
     return tbss_x_execute(params, execution)
 
 

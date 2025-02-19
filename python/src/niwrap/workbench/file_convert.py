@@ -11,6 +11,8 @@ FILE_CONVERT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 FileConvertBorderVersionConvertParameters = typing.TypedDict('FileConvertBorderVersionConvertParameters', {
     "__STYX_TYPE__": typing.Literal["border_version_convert"],
     "border_in": InputPathType,
@@ -18,18 +20,24 @@ FileConvertBorderVersionConvertParameters = typing.TypedDict('FileConvertBorderV
     "border_out": str,
     "opt_surface_surface": typing.NotRequired[InputPathType | None],
 })
+
+
 FileConvertNiftiVersionConvertParameters = typing.TypedDict('FileConvertNiftiVersionConvertParameters', {
     "__STYX_TYPE__": typing.Literal["nifti_version_convert"],
     "input": str,
     "version": int,
     "output": str,
 })
+
+
 FileConvertCiftiVersionConvertParameters = typing.TypedDict('FileConvertCiftiVersionConvertParameters', {
     "__STYX_TYPE__": typing.Literal["cifti_version_convert"],
     "cifti_in": InputPathType,
     "version": str,
     "cifti_out": str,
 })
+
+
 FileConvertParameters = typing.TypedDict('FileConvertParameters', {
     "__STYX_TYPE__": typing.Literal["file-convert"],
     "border_version_convert": typing.NotRequired[FileConvertBorderVersionConvertParameters | None],
@@ -348,7 +356,11 @@ def file_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILE_CONVERT_METADATA)
-    params = file_convert_params(border_version_convert=border_version_convert, nifti_version_convert=nifti_version_convert, cifti_version_convert=cifti_version_convert)
+    params = file_convert_params(
+        border_version_convert=border_version_convert,
+        nifti_version_convert=nifti_version_convert,
+        cifti_version_convert=cifti_version_convert,
+    )
     return file_convert_execute(params, execution)
 
 

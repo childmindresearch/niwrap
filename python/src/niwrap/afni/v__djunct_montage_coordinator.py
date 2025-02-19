@@ -11,6 +11,8 @@ V__DJUNCT_MONTAGE_COORDINATOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunctMontageCoordinatorParameters = typing.TypedDict('VDjunctMontageCoordinatorParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_montage_coordinator"],
     "input_file": InputPathType,
@@ -212,7 +214,14 @@ def v__djunct_montage_coordinator(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_MONTAGE_COORDINATOR_METADATA)
-    params = v__djunct_montage_coordinator_params(input_file=input_file, montx=montx, monty=monty, out_xyz=out_xyz, help_=help_, version=version)
+    params = v__djunct_montage_coordinator_params(
+        input_file=input_file,
+        montx=montx,
+        monty=monty,
+        out_xyz=out_xyz,
+        help_=help_,
+        version=version,
+    )
     return v__djunct_montage_coordinator_execute(params, execution)
 
 

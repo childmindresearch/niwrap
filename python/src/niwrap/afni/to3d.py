@@ -11,6 +11,8 @@ TO3D_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 To3dParameters = typing.TypedDict('To3dParameters', {
     "__STYX_TYPE__": typing.Literal["to3d"],
     "input_files": list[InputPathType],
@@ -587,7 +589,48 @@ def to3d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TO3D_METADATA)
-    params = to3d_params(input_files=input_files, type_=type_, statpar=statpar, prefix=prefix, session=session, geomparent=geomparent, anatparent=anatparent, nosave_flag=nosave_flag, nowritebrik_flag=nowritebrik_flag, view=view, time_zt=time_zt, time_tz=time_tz, tr_units=tr_units, torg=torg, x_fov=x_fov, y_fov=y_fov, z_fov=z_fov, x_slab=x_slab, y_slab=y_slab, z_slab=z_slab, zorigin=zorigin, data_type=data_type, global_scaling_factor=global_scaling_factor, nofloatscan_flag=nofloatscan_flag, in1_flag=in1_flag, orient=orient, skip_outliers_flag=skip_outliers_flag, text_outliers_flag=text_outliers_flag, save_outliers=save_outliers, assume_dicom_mosaic_flag=assume_dicom_mosaic_flag, oblique_origin_flag=oblique_origin_flag, reverse_list_flag=reverse_list_flag, use_last_elem_flag=use_last_elem_flag, use_old_mosaic_code_flag=use_old_mosaic_code_flag, ushort2float_flag=ushort2float_flag, verbose_flag=verbose_flag, gamma=gamma, ncolors=ncolors, xtwarns_flag=xtwarns_flag, quit_on_err_flag=quit_on_err_flag)
+    params = to3d_params(
+        input_files=input_files,
+        type_=type_,
+        statpar=statpar,
+        prefix=prefix,
+        session=session,
+        geomparent=geomparent,
+        anatparent=anatparent,
+        nosave_flag=nosave_flag,
+        nowritebrik_flag=nowritebrik_flag,
+        view=view,
+        time_zt=time_zt,
+        time_tz=time_tz,
+        tr_units=tr_units,
+        torg=torg,
+        x_fov=x_fov,
+        y_fov=y_fov,
+        z_fov=z_fov,
+        x_slab=x_slab,
+        y_slab=y_slab,
+        z_slab=z_slab,
+        zorigin=zorigin,
+        data_type=data_type,
+        global_scaling_factor=global_scaling_factor,
+        nofloatscan_flag=nofloatscan_flag,
+        in1_flag=in1_flag,
+        orient=orient,
+        skip_outliers_flag=skip_outliers_flag,
+        text_outliers_flag=text_outliers_flag,
+        save_outliers=save_outliers,
+        assume_dicom_mosaic_flag=assume_dicom_mosaic_flag,
+        oblique_origin_flag=oblique_origin_flag,
+        reverse_list_flag=reverse_list_flag,
+        use_last_elem_flag=use_last_elem_flag,
+        use_old_mosaic_code_flag=use_old_mosaic_code_flag,
+        ushort2float_flag=ushort2float_flag,
+        verbose_flag=verbose_flag,
+        gamma=gamma,
+        ncolors=ncolors,
+        xtwarns_flag=xtwarns_flag,
+        quit_on_err_flag=quit_on_err_flag,
+    )
     return to3d_execute(params, execution)
 
 

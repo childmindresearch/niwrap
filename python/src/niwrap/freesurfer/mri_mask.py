@@ -11,6 +11,8 @@ MRI_MASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMaskParameters = typing.TypedDict('MriMaskParameters', {
     "__STYX_TYPE__": typing.Literal["mri_mask"],
     "input_volume": InputPathType,
@@ -383,7 +385,29 @@ def mri_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MASK_METADATA)
-    params = mri_mask_params(input_volume=input_volume, mask_volume=mask_volume, output_volume=output_volume, xform=xform, lta_src=lta_src, lta_dst=lta_dst, threshold=threshold, npad=npad, npad_vector=npad_vector, npad_multi_vector=npad_multi_vector, abs_=abs_, invert=invert, no_invert=no_invert, rh_labels=rh_labels, lh_labels=lh_labels, dilate=dilate, no_cerebellum=no_cerebellum, oval_value=oval_value, transfer_value=transfer_value, keep_mask_deletion_edits=keep_mask_deletion_edits, samseg=samseg)
+    params = mri_mask_params(
+        input_volume=input_volume,
+        mask_volume=mask_volume,
+        output_volume=output_volume,
+        xform=xform,
+        lta_src=lta_src,
+        lta_dst=lta_dst,
+        threshold=threshold,
+        npad=npad,
+        npad_vector=npad_vector,
+        npad_multi_vector=npad_multi_vector,
+        abs_=abs_,
+        invert=invert,
+        no_invert=no_invert,
+        rh_labels=rh_labels,
+        lh_labels=lh_labels,
+        dilate=dilate,
+        no_cerebellum=no_cerebellum,
+        oval_value=oval_value,
+        transfer_value=transfer_value,
+        keep_mask_deletion_edits=keep_mask_deletion_edits,
+        samseg=samseg,
+    )
     return mri_mask_execute(params, execution)
 
 

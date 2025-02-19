@@ -11,6 +11,8 @@ TBSS_4_PRESTATS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Tbss4PrestatsParameters = typing.TypedDict('Tbss4PrestatsParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_4_prestats"],
     "threshold": float,
@@ -157,7 +159,9 @@ def tbss_4_prestats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_4_PRESTATS_METADATA)
-    params = tbss_4_prestats_params(threshold=threshold)
+    params = tbss_4_prestats_params(
+        threshold=threshold,
+    )
     return tbss_4_prestats_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ METRIC_FILL_HOLES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricFillHolesParameters = typing.TypedDict('MetricFillHolesParameters', {
     "__STYX_TYPE__": typing.Literal["metric-fill-holes"],
     "surface": InputPathType,
@@ -196,7 +198,12 @@ def metric_fill_holes(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_FILL_HOLES_METADATA)
-    params = metric_fill_holes_params(surface=surface, metric_in=metric_in, metric_out=metric_out, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    params = metric_fill_holes_params(
+        surface=surface,
+        metric_in=metric_in,
+        metric_out=metric_out,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+    )
     return metric_fill_holes_execute(params, execution)
 
 

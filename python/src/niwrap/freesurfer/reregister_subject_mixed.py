@@ -11,6 +11,8 @@ REREGISTER_SUBJECT_MIXED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ReregisterSubjectMixedParameters = typing.TypedDict('ReregisterSubjectMixedParameters', {
     "__STYX_TYPE__": typing.Literal["reregister_subject_mixed"],
     "input_volume": InputPathType,
@@ -183,7 +185,11 @@ def reregister_subject_mixed(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REREGISTER_SUBJECT_MIXED_METADATA)
-    params = reregister_subject_mixed_params(input_volume=input_volume, output_directory=output_directory, threads=threads)
+    params = reregister_subject_mixed_params(
+        input_volume=input_volume,
+        output_directory=output_directory,
+        threads=threads,
+    )
     return reregister_subject_mixed_execute(params, execution)
 
 

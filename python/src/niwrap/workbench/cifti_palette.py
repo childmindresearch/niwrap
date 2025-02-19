@@ -11,26 +11,36 @@ CIFTI_PALETTE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiPalettePosPercentParameters = typing.TypedDict('CiftiPalettePosPercentParameters', {
     "__STYX_TYPE__": typing.Literal["pos_percent"],
     "pos_min__": float,
     "pos_max__": float,
 })
+
+
 CiftiPaletteNegPercentParameters = typing.TypedDict('CiftiPaletteNegPercentParameters', {
     "__STYX_TYPE__": typing.Literal["neg_percent"],
     "neg_min__": float,
     "neg_max__": float,
 })
+
+
 CiftiPalettePosUserParameters = typing.TypedDict('CiftiPalettePosUserParameters', {
     "__STYX_TYPE__": typing.Literal["pos_user"],
     "pos_min_user": float,
     "pos_max_user": float,
 })
+
+
 CiftiPaletteNegUserParameters = typing.TypedDict('CiftiPaletteNegUserParameters', {
     "__STYX_TYPE__": typing.Literal["neg_user"],
     "neg_min_user": float,
     "neg_max_user": float,
 })
+
+
 CiftiPaletteThresholdingParameters = typing.TypedDict('CiftiPaletteThresholdingParameters', {
     "__STYX_TYPE__": typing.Literal["thresholding"],
     "type": str,
@@ -38,6 +48,8 @@ CiftiPaletteThresholdingParameters = typing.TypedDict('CiftiPaletteThresholdingP
     "min": float,
     "max": float,
 })
+
+
 CiftiPaletteParameters = typing.TypedDict('CiftiPaletteParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-palette"],
     "cifti_in": InputPathType,
@@ -712,7 +724,23 @@ def cifti_palette(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_PALETTE_METADATA)
-    params = cifti_palette_params(cifti_in=cifti_in, mode=mode, cifti_out=cifti_out, opt_column_column=opt_column_column, pos_percent=pos_percent, neg_percent=neg_percent, pos_user=pos_user, neg_user=neg_user, opt_interpolate_interpolate=opt_interpolate_interpolate, opt_disp_pos_display=opt_disp_pos_display, opt_disp_neg_display=opt_disp_neg_display, opt_disp_zero_display=opt_disp_zero_display, opt_palette_name_name=opt_palette_name_name, thresholding=thresholding, opt_inversion_type=opt_inversion_type)
+    params = cifti_palette_params(
+        cifti_in=cifti_in,
+        mode=mode,
+        cifti_out=cifti_out,
+        opt_column_column=opt_column_column,
+        pos_percent=pos_percent,
+        neg_percent=neg_percent,
+        pos_user=pos_user,
+        neg_user=neg_user,
+        opt_interpolate_interpolate=opt_interpolate_interpolate,
+        opt_disp_pos_display=opt_disp_pos_display,
+        opt_disp_neg_display=opt_disp_neg_display,
+        opt_disp_zero_display=opt_disp_zero_display,
+        opt_palette_name_name=opt_palette_name_name,
+        thresholding=thresholding,
+        opt_inversion_type=opt_inversion_type,
+    )
     return cifti_palette_execute(params, execution)
 
 

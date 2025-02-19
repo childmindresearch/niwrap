@@ -11,6 +11,8 @@ MRI_SYNTHSTRIP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSynthstripParameters = typing.TypedDict('MriSynthstripParameters', {
     "__STYX_TYPE__": typing.Literal["mri_synthstrip"],
     "image": InputPathType,
@@ -229,7 +231,15 @@ def mri_synthstrip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHSTRIP_METADATA)
-    params = mri_synthstrip_params(image=image, output_image=output_image, mask=mask, gpu=gpu, border=border, exclude_csf=exclude_csf, model_weights=model_weights)
+    params = mri_synthstrip_params(
+        image=image,
+        output_image=output_image,
+        mask=mask,
+        gpu=gpu,
+        border=border,
+        exclude_csf=exclude_csf,
+        model_weights=model_weights,
+    )
     return mri_synthstrip_execute(params, execution)
 
 

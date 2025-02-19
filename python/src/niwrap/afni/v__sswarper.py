@@ -11,6 +11,8 @@ V__SSWARPER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSswarperParameters = typing.TypedDict('VSswarperParameters', {
     "__STYX_TYPE__": typing.Literal["@SSwarper"],
     "input_file": InputPathType,
@@ -426,7 +428,31 @@ def v__sswarper(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SSWARPER_METADATA)
-    params = v__sswarper_params(input_file=input_file, base_template=base_template, subject_id=subject_id, output_dir=output_dir, min_patch_size=min_patch_size, no_lite=no_lite, skip_warp=skip_warp, unifize_off=unifize_off, init_skullstr_off=init_skullstr_off, extra_qc_off=extra_qc_off, jump_to_extra_qc=jump_to_extra_qc, cost_nl_init=cost_nl_init, cost_nl_final=cost_nl_final, deoblique=deoblique, deoblique_refitly=deoblique_refitly, warp_scale=warp_scale, ssopt_flag=ssopt_flag, aniso_off=aniso_off, ceil_off=ceil_off, tmp_name_nice=tmp_name_nice, echo=echo, verbose=verbose, noclean=noclean)
+    params = v__sswarper_params(
+        input_file=input_file,
+        base_template=base_template,
+        subject_id=subject_id,
+        output_dir=output_dir,
+        min_patch_size=min_patch_size,
+        no_lite=no_lite,
+        skip_warp=skip_warp,
+        unifize_off=unifize_off,
+        init_skullstr_off=init_skullstr_off,
+        extra_qc_off=extra_qc_off,
+        jump_to_extra_qc=jump_to_extra_qc,
+        cost_nl_init=cost_nl_init,
+        cost_nl_final=cost_nl_final,
+        deoblique=deoblique,
+        deoblique_refitly=deoblique_refitly,
+        warp_scale=warp_scale,
+        ssopt_flag=ssopt_flag,
+        aniso_off=aniso_off,
+        ceil_off=ceil_off,
+        tmp_name_nice=tmp_name_nice,
+        echo=echo,
+        verbose=verbose,
+        noclean=noclean,
+    )
     return v__sswarper_execute(params, execution)
 
 

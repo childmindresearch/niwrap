@@ -11,6 +11,8 @@ CONVERT_DSET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ConvertDsetParameters = typing.TypedDict('ConvertDsetParameters', {
     "__STYX_TYPE__": typing.Literal["ConvertDset"],
     "output_type": list[typing.Literal["niml_asc", "niml_bi", "1D", "1Dp", "1Dpt", "gii", "gii_asc", "gii_b64", "gii_b64gz", "1D_stderr", "1D_stdout", "niml_stderr", "niml_stdout", "1Dp_stdout", "1Dp_stderr", "1Dpt_stdout", "1Dpt_stderr"]],
@@ -384,7 +386,29 @@ def convert_dset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_DSET_METADATA)
-    params = convert_dset_params(output_type=output_type, input_dataset=input_dataset, input_type=input_type, output_prefix=output_prefix, dset_labels=dset_labels, add_node_index=add_node_index, node_index_file=node_index_file, node_select_file=node_select_file, prepend_node_index=prepend_node_index, pad_to_node=pad_to_node, labelize=labelize, graphize=graphize, graph_nodelist=graph_nodelist, graph_full_nodelist=graph_full_nodelist, graph_named_nodelist=graph_named_nodelist, graph_xyz_lpi=graph_xyz_lpi, graph_edgelist=graph_edgelist, onegraph=onegraph, multigraph=multigraph, split=split, no_history=no_history)
+    params = convert_dset_params(
+        output_type=output_type,
+        input_dataset=input_dataset,
+        input_type=input_type,
+        output_prefix=output_prefix,
+        dset_labels=dset_labels,
+        add_node_index=add_node_index,
+        node_index_file=node_index_file,
+        node_select_file=node_select_file,
+        prepend_node_index=prepend_node_index,
+        pad_to_node=pad_to_node,
+        labelize=labelize,
+        graphize=graphize,
+        graph_nodelist=graph_nodelist,
+        graph_full_nodelist=graph_full_nodelist,
+        graph_named_nodelist=graph_named_nodelist,
+        graph_xyz_lpi=graph_xyz_lpi,
+        graph_edgelist=graph_edgelist,
+        onegraph=onegraph,
+        multigraph=multigraph,
+        split=split,
+        no_history=no_history,
+    )
     return convert_dset_execute(params, execution)
 
 

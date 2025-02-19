@@ -11,6 +11,8 @@ MAP_TO_BASE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MapToBaseParameters = typing.TypedDict('MapToBaseParameters', {
     "__STYX_TYPE__": typing.Literal["map_to_base"],
     "baseid": str,
@@ -210,7 +212,13 @@ def map_to_base(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_TO_BASE_METADATA)
-    params = map_to_base_params(baseid=baseid, tpid=tpid, input_image=input_image, resample_type=resample_type, cross=cross)
+    params = map_to_base_params(
+        baseid=baseid,
+        tpid=tpid,
+        input_image=input_image,
+        resample_type=resample_type,
+        cross=cross,
+    )
     return map_to_base_execute(params, execution)
 
 

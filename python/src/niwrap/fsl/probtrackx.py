@@ -11,6 +11,8 @@ PROBTRACKX_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ProbtrackxParameters = typing.TypedDict('ProbtrackxParameters', {
     "__STYX_TYPE__": typing.Literal["probtrackx"],
     "samples": InputPathType,
@@ -542,7 +544,42 @@ def probtrackx(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PROBTRACKX_METADATA)
-    params = probtrackx_params(samples=samples, mask=mask, seed=seed, out=out, verbose=verbose, targetmasks=targetmasks, mask2=mask2, waypoints=waypoints, network=network, mesh=mesh, seedref=seedref, dir_=dir_, forcedir=forcedir, opd=opd, pd=pd, os2t=os2t, avoid=avoid, stop=stop, xfm=xfm, invxfm=invxfm, nsamples=nsamples, nsteps=nsteps, distthresh=distthresh, cthr=cthr, fibthresh=fibthresh, sampvox=sampvox, steplength=steplength, loopcheck=loopcheck, usef=usef, randfib=randfib, fibst=fibst, modeuler=modeuler, rseed=rseed, s2tastext=s2tastext)
+    params = probtrackx_params(
+        samples=samples,
+        mask=mask,
+        seed=seed,
+        out=out,
+        verbose=verbose,
+        targetmasks=targetmasks,
+        mask2=mask2,
+        waypoints=waypoints,
+        network=network,
+        mesh=mesh,
+        seedref=seedref,
+        dir_=dir_,
+        forcedir=forcedir,
+        opd=opd,
+        pd=pd,
+        os2t=os2t,
+        avoid=avoid,
+        stop=stop,
+        xfm=xfm,
+        invxfm=invxfm,
+        nsamples=nsamples,
+        nsteps=nsteps,
+        distthresh=distthresh,
+        cthr=cthr,
+        fibthresh=fibthresh,
+        sampvox=sampvox,
+        steplength=steplength,
+        loopcheck=loopcheck,
+        usef=usef,
+        randfib=randfib,
+        fibst=fibst,
+        modeuler=modeuler,
+        rseed=rseed,
+        s2tastext=s2tastext,
+    )
     return probtrackx_execute(params, execution)
 
 

@@ -11,19 +11,27 @@ MASKFILTER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MaskfilterVariousStringParameters = typing.TypedDict('MaskfilterVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 MaskfilterVariousFileParameters = typing.TypedDict('MaskfilterVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 MaskfilterConfigParameters = typing.TypedDict('MaskfilterConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MaskfilterParameters = typing.TypedDict('MaskfilterParameters', {
     "__STYX_TYPE__": typing.Literal["maskfilter"],
     "scale": typing.NotRequired[int | None],
@@ -491,7 +499,26 @@ def maskfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MASKFILTER_METADATA)
-    params = maskfilter_params(scale=scale, axes=axes, largest=largest, connectivity=connectivity, npass=npass, extent=extent, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, filter_=filter_, output=output)
+    params = maskfilter_params(
+        scale=scale,
+        axes=axes,
+        largest=largest,
+        connectivity=connectivity,
+        npass=npass,
+        extent=extent,
+        strides=strides,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        filter_=filter_,
+        output=output,
+    )
     return maskfilter_execute(params, execution)
 
 

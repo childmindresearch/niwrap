@@ -11,6 +11,8 @@ CIFTI_TOOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 CiftiToolParameters = typing.TypedDict('CiftiToolParameters', {
     "__STYX_TYPE__": typing.Literal["cifti_tool"],
     "input_file": InputPathType,
@@ -246,7 +248,17 @@ def cifti_tool(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_TOOL_METADATA)
-    params = cifti_tool_params(input_file=input_file, as_cext=as_cext, disp_cext=disp_cext, eval_cext=eval_cext, eval_type=eval_type, output_file=output_file, verbose_level=verbose_level, verbose_read_level=verbose_read_level, both_verbose_levels=both_verbose_levels)
+    params = cifti_tool_params(
+        input_file=input_file,
+        as_cext=as_cext,
+        disp_cext=disp_cext,
+        eval_cext=eval_cext,
+        eval_type=eval_type,
+        output_file=output_file,
+        verbose_level=verbose_level,
+        verbose_read_level=verbose_read_level,
+        both_verbose_levels=both_verbose_levels,
+    )
     return cifti_tool_execute(params, execution)
 
 

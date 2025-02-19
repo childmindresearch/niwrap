@@ -11,6 +11,8 @@ V_3D_RPROG_DEMO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRprogDemoParameters = typing.TypedDict('V3dRprogDemoParameters', {
     "__STYX_TYPE__": typing.Literal["3dRprogDemo"],
     "input_dsets": list[InputPathType],
@@ -255,7 +257,19 @@ def v_3d_rprog_demo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_RPROG_DEMO_METADATA)
-    params = v_3d_rprog_demo_params(input_dsets=input_dsets, mask=mask, scale=scale, prefix=prefix, help_aspx=help_aspx, help_raw=help_raw, help_spx=help_spx, help_txt=help_txt, help_=help_, show_allowed_options=show_allowed_options, verbosity_level=verbosity_level)
+    params = v_3d_rprog_demo_params(
+        input_dsets=input_dsets,
+        mask=mask,
+        scale=scale,
+        prefix=prefix,
+        help_aspx=help_aspx,
+        help_raw=help_raw,
+        help_spx=help_spx,
+        help_txt=help_txt,
+        help_=help_,
+        show_allowed_options=show_allowed_options,
+        verbosity_level=verbosity_level,
+    )
     return v_3d_rprog_demo_execute(params, execution)
 
 

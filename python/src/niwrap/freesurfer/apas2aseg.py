@@ -11,6 +11,8 @@ APAS2ASEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Apas2asegParameters = typing.TypedDict('Apas2asegParameters', {
     "__STYX_TYPE__": typing.Literal["apas2aseg"],
     "subject": typing.NotRequired[str | None],
@@ -192,7 +194,11 @@ def apas2aseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APAS2ASEG_METADATA)
-    params = apas2aseg_params(subject=subject, input_aparc_aseg=input_aparc_aseg, output_seg=output_seg)
+    params = apas2aseg_params(
+        subject=subject,
+        input_aparc_aseg=input_aparc_aseg,
+        output_seg=output_seg,
+    )
     return apas2aseg_execute(params, execution)
 
 

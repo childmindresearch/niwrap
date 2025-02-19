@@ -11,11 +11,15 @@ DWIBIASCORRECT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DwibiascorrectFslgradParameters = typing.TypedDict('DwibiascorrectFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 DwibiascorrectParameters = typing.TypedDict('DwibiascorrectParameters', {
     "__STYX_TYPE__": typing.Literal["dwibiascorrect"],
     "algorithm": str,
@@ -438,7 +442,29 @@ def dwibiascorrect(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWIBIASCORRECT_METADATA)
-    params = dwibiascorrect_params(algorithm=algorithm, input_image=input_image, output_image=output_image, grad=grad, fslgrad=fslgrad, mask_image=mask_image, bias_image=bias_image, nocleanup=nocleanup, scratch_dir=scratch_dir, continue_scratch_dir=continue_scratch_dir, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, ants_b=ants_b, ants_c=ants_c, ants_s=ants_s)
+    params = dwibiascorrect_params(
+        algorithm=algorithm,
+        input_image=input_image,
+        output_image=output_image,
+        grad=grad,
+        fslgrad=fslgrad,
+        mask_image=mask_image,
+        bias_image=bias_image,
+        nocleanup=nocleanup,
+        scratch_dir=scratch_dir,
+        continue_scratch_dir=continue_scratch_dir,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        ants_b=ants_b,
+        ants_c=ants_c,
+        ants_s=ants_s,
+    )
     return dwibiascorrect_execute(params, execution)
 
 

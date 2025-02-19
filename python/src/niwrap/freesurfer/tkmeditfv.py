@@ -11,6 +11,8 @@ TKMEDITFV_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TkmeditfvParameters = typing.TypedDict('TkmeditfvParameters', {
     "__STYX_TYPE__": typing.Literal["tkmeditfv"],
     "subject": typing.NotRequired[str | None],
@@ -460,7 +462,40 @@ def tkmeditfv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKMEDITFV_METADATA)
-    params = tkmeditfv_params(subject=subject, mainvol=mainvol, aux_volume=aux_volume, seg_volume=seg_volume, overlay=overlay, timecourse=timecourse, overlay_registration=overlay_registration, surface=surface, extra_volumes=extra_volumes, crs_location=crs_location, zoom_level=zoom_level, additional_segments=additional_segments, load_white=load_white, load_pial=load_pial, load_orig=load_orig, load_orig_nofix=load_orig_nofix, load_smoothwm_nofix=load_smoothwm_nofix, load_white_preaparc=load_white_preaparc, load_inflated=load_inflated, annot=annot, load_aparc=load_aparc, surfext=surfext, seg_outline=seg_outline, intensity_minmax=intensity_minmax, load_defects=load_defects, load_defect_pointset=load_defect_pointset, trilin_interpolation=trilin_interpolation, neurological_orientation=neurological_orientation, rotate_around_cursor=rotate_around_cursor, vgl_display=vgl_display, use_tkmedit=use_tkmedit, load_aparc_aseg=load_aparc_aseg)
+    params = tkmeditfv_params(
+        subject=subject,
+        mainvol=mainvol,
+        aux_volume=aux_volume,
+        seg_volume=seg_volume,
+        overlay=overlay,
+        timecourse=timecourse,
+        overlay_registration=overlay_registration,
+        surface=surface,
+        extra_volumes=extra_volumes,
+        crs_location=crs_location,
+        zoom_level=zoom_level,
+        additional_segments=additional_segments,
+        load_white=load_white,
+        load_pial=load_pial,
+        load_orig=load_orig,
+        load_orig_nofix=load_orig_nofix,
+        load_smoothwm_nofix=load_smoothwm_nofix,
+        load_white_preaparc=load_white_preaparc,
+        load_inflated=load_inflated,
+        annot=annot,
+        load_aparc=load_aparc,
+        surfext=surfext,
+        seg_outline=seg_outline,
+        intensity_minmax=intensity_minmax,
+        load_defects=load_defects,
+        load_defect_pointset=load_defect_pointset,
+        trilin_interpolation=trilin_interpolation,
+        neurological_orientation=neurological_orientation,
+        rotate_around_cursor=rotate_around_cursor,
+        vgl_display=vgl_display,
+        use_tkmedit=use_tkmedit,
+        load_aparc_aseg=load_aparc_aseg,
+    )
     return tkmeditfv_execute(params, execution)
 
 

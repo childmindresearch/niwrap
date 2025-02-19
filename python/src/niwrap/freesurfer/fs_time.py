@@ -11,6 +11,8 @@ FS_TIME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsTimeParameters = typing.TypedDict('FsTimeParameters', {
     "__STYX_TYPE__": typing.Literal["fs_time"],
     "output_file": typing.NotRequired[str | None],
@@ -202,7 +204,13 @@ def fs_time(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_TIME_METADATA)
-    params = fs_time_params(output_file=output_file, key=key, load_avg=load_avg, command=command, args=args)
+    params = fs_time_params(
+        output_file=output_file,
+        key=key,
+        load_avg=load_avg,
+        command=command,
+        args=args,
+    )
     return fs_time_execute(params, execution)
 
 

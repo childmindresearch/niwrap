@@ -11,6 +11,8 @@ SIGNAL2IMAGE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Signal2imageParameters = typing.TypedDict('Signal2imageParameters', {
     "__STYX_TYPE__": typing.Literal["signal2image"],
     "pulse_sequence": InputPathType,
@@ -281,7 +283,20 @@ def signal2image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIGNAL2IMAGE_METADATA)
-    params = signal2image_params(pulse_sequence=pulse_sequence, input_signal=input_signal, output_image=output_image, kspace_coordinates=kspace_coordinates, output_kspace=output_kspace, abs_flag=abs_flag, homodyne_flag=homodyne_flag, verbose_flag=verbose_flag, apodize_flag=apodize_flag, cutoff=cutoff, rolloff=rolloff, save_flag=save_flag)
+    params = signal2image_params(
+        pulse_sequence=pulse_sequence,
+        input_signal=input_signal,
+        output_image=output_image,
+        kspace_coordinates=kspace_coordinates,
+        output_kspace=output_kspace,
+        abs_flag=abs_flag,
+        homodyne_flag=homodyne_flag,
+        verbose_flag=verbose_flag,
+        apodize_flag=apodize_flag,
+        cutoff=cutoff,
+        rolloff=rolloff,
+        save_flag=save_flag,
+    )
     return signal2image_execute(params, execution)
 
 

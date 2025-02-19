@@ -11,6 +11,8 @@ MRIS_REGISTER_TO_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRegisterToLabelParameters = typing.TypedDict('MrisRegisterToLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mris_register_to_label"],
     "surface": InputPathType,
@@ -282,7 +284,20 @@ def mris_register_to_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REGISTER_TO_LABEL_METADATA)
-    params = mris_register_to_label_params(surface=surface, regfile=regfile, mri_reg=mri_reg, mov_volume=mov_volume, resolution=resolution, max_rot=max_rot, max_trans=max_trans, subject=subject, label=label, out_reg=out_reg, downsample=downsample, cost_file=cost_file)
+    params = mris_register_to_label_params(
+        surface=surface,
+        regfile=regfile,
+        mri_reg=mri_reg,
+        mov_volume=mov_volume,
+        resolution=resolution,
+        max_rot=max_rot,
+        max_trans=max_trans,
+        subject=subject,
+        label=label,
+        out_reg=out_reg,
+        downsample=downsample,
+        cost_file=cost_file,
+    )
     return mris_register_to_label_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__GET_AFNI_ID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VGetAfniIdParameters = typing.TypedDict('VGetAfniIdParameters', {
     "__STYX_TYPE__": typing.Literal["@GetAfniID"],
     "dset": InputPathType,
@@ -159,7 +161,9 @@ def v__get_afni_id(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_ID_METADATA)
-    params = v__get_afni_id_params(dset=dset)
+    params = v__get_afni_id_params(
+        dset=dset,
+    )
     return v__get_afni_id_execute(params, execution)
 
 

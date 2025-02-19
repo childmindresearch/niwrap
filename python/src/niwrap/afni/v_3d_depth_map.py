@@ -11,6 +11,8 @@ V_3D_DEPTH_MAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDepthMapParameters = typing.TypedDict('V3dDepthMapParameters', {
     "__STYX_TYPE__": typing.Literal["3dDepthMap"],
     "input_dataset": InputPathType,
@@ -288,7 +290,21 @@ def v_3d_depth_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DEPTH_MAP_METADATA)
-    params = v_3d_depth_map_params(input_dataset=input_dataset, output_prefix=output_prefix, mask=mask, dist_squared=dist_squared, ignore_voxdims=ignore_voxdims, rimify=rimify, zeros_are_zero=zeros_are_zero, zeros_are_neg=zeros_are_neg, nz_are_neg=nz_are_neg, bounds_are_not_zero=bounds_are_not_zero, only2_d=only2_d, binary_only=binary_only, verbosity=verbosity)
+    params = v_3d_depth_map_params(
+        input_dataset=input_dataset,
+        output_prefix=output_prefix,
+        mask=mask,
+        dist_squared=dist_squared,
+        ignore_voxdims=ignore_voxdims,
+        rimify=rimify,
+        zeros_are_zero=zeros_are_zero,
+        zeros_are_neg=zeros_are_neg,
+        nz_are_neg=nz_are_neg,
+        bounds_are_not_zero=bounds_are_not_zero,
+        only2_d=only2_d,
+        binary_only=binary_only,
+        verbosity=verbosity,
+    )
     return v_3d_depth_map_execute(params, execution)
 
 

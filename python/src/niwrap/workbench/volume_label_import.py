@@ -11,6 +11,8 @@ VOLUME_LABEL_IMPORT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeLabelImportParameters = typing.TypedDict('VolumeLabelImportParameters', {
     "__STYX_TYPE__": typing.Literal["volume-label-import"],
     "input": InputPathType,
@@ -274,7 +276,15 @@ def volume_label_import(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_LABEL_IMPORT_METADATA)
-    params = volume_label_import_params(input_=input_, label_list_file=label_list_file, output=output, opt_discard_others=opt_discard_others, opt_unlabeled_value_value=opt_unlabeled_value_value, opt_subvolume_subvol=opt_subvolume_subvol, opt_drop_unused_labels=opt_drop_unused_labels)
+    params = volume_label_import_params(
+        input_=input_,
+        label_list_file=label_list_file,
+        output=output,
+        opt_discard_others=opt_discard_others,
+        opt_unlabeled_value_value=opt_unlabeled_value_value,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+        opt_drop_unused_labels=opt_drop_unused_labels,
+    )
     return volume_label_import_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__4_DAVERAGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V4DaverageParameters = typing.TypedDict('V4DaverageParameters', {
     "__STYX_TYPE__": typing.Literal["@4Daverage"],
     "output_prefix": str,
@@ -156,7 +158,9 @@ def v__4_daverage(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__4_DAVERAGE_METADATA)
-    params = v__4_daverage_params(output_prefix=output_prefix)
+    params = v__4_daverage_params(
+        output_prefix=output_prefix,
+    )
     return v__4_daverage_execute(params, execution)
 
 

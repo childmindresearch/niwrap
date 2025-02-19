@@ -11,6 +11,8 @@ V_3D_AUTOMASK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAutomaskParameters = typing.TypedDict('V3dAutomaskParameters', {
     "__STYX_TYPE__": typing.Literal["3dAutomask"],
     "prefix": typing.NotRequired[str | None],
@@ -235,7 +237,15 @@ def v_3d_automask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_AUTOMASK_METADATA)
-    params = v_3d_automask_params(prefix=prefix, apply_prefix=apply_prefix, clfrac=clfrac, dilate=dilate, erode=erode, outputtype=outputtype, in_file=in_file)
+    params = v_3d_automask_params(
+        prefix=prefix,
+        apply_prefix=apply_prefix,
+        clfrac=clfrac,
+        dilate=dilate,
+        erode=erode,
+        outputtype=outputtype,
+        in_file=in_file,
+    )
     return v_3d_automask_execute(params, execution)
 
 

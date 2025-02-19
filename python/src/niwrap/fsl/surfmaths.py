@@ -11,6 +11,8 @@ SURFMATHS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SurfmathsParameters = typing.TypedDict('SurfmathsParameters', {
     "__STYX_TYPE__": typing.Literal["surfmaths"],
     "first_input": InputPathType,
@@ -177,7 +179,11 @@ def surfmaths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFMATHS_METADATA)
-    params = surfmaths_params(first_input=first_input, operations_inputs=operations_inputs, output=output)
+    params = surfmaths_params(
+        first_input=first_input,
+        operations_inputs=operations_inputs,
+        output=output,
+    )
     return surfmaths_execute(params, execution)
 
 

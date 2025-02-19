@@ -11,6 +11,8 @@ V_3D_TSGEN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTsgenParameters = typing.TypedDict('V3dTsgenParameters', {
     "__STYX_TYPE__": typing.Literal["3dTSgen"],
     "input_file": InputPathType,
@@ -291,7 +293,20 @@ def v_3d_tsgen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSGEN_METADATA)
-    params = v_3d_tsgen_params(input_file=input_file, in_tr_flag=in_tr_flag, signal_label=signal_label, noise_label=noise_label, signal_constr=signal_constr, noise_constr=noise_constr, sigma_value=sigma_value, voxel_number=voxel_number, output_file=output_file, signal_coef=signal_coef, noise_coef=noise_coef, bucket_config=bucket_config)
+    params = v_3d_tsgen_params(
+        input_file=input_file,
+        in_tr_flag=in_tr_flag,
+        signal_label=signal_label,
+        noise_label=noise_label,
+        signal_constr=signal_constr,
+        noise_constr=noise_constr,
+        sigma_value=sigma_value,
+        voxel_number=voxel_number,
+        output_file=output_file,
+        signal_coef=signal_coef,
+        noise_coef=noise_coef,
+        bucket_config=bucket_config,
+    )
     return v_3d_tsgen_execute(params, execution)
 
 

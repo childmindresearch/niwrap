@@ -11,6 +11,8 @@ INFLATE_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 InflateSubjectRhParameters = typing.TypedDict('InflateSubjectRhParameters', {
     "__STYX_TYPE__": typing.Literal["inflate_subject-rh"],
     "arguments": typing.NotRequired[str | None],
@@ -163,7 +165,9 @@ def inflate_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT_RH_METADATA)
-    params = inflate_subject_rh_params(arguments=arguments)
+    params = inflate_subject_rh_params(
+        arguments=arguments,
+    )
     return inflate_subject_rh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ QUANTIFY_THALAMIC_NUCLEI_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 QuantifyThalamicNucleiShParameters = typing.TypedDict('QuantifyThalamicNucleiShParameters', {
     "__STYX_TYPE__": typing.Literal["quantifyThalamicNuclei.sh"],
     "output_file": str,
@@ -175,7 +177,11 @@ def quantify_thalamic_nuclei_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUANTIFY_THALAMIC_NUCLEI_SH_METADATA)
-    params = quantify_thalamic_nuclei_sh_params(output_file=output_file, analysis_id=analysis_id, subjects_directory=subjects_directory)
+    params = quantify_thalamic_nuclei_sh_params(
+        output_file=output_file,
+        analysis_id=analysis_id,
+        subjects_directory=subjects_directory,
+    )
     return quantify_thalamic_nuclei_sh_execute(params, execution)
 
 

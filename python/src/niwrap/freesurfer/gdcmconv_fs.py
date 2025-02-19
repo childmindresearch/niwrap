@@ -11,6 +11,8 @@ GDCMCONV_FS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GdcmconvFsParameters = typing.TypedDict('GdcmconvFsParameters', {
     "__STYX_TYPE__": typing.Literal["gdcmconv.fs"],
     "input_file": InputPathType,
@@ -518,7 +520,48 @@ def gdcmconv_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GDCMCONV_FS_METADATA)
-    params = gdcmconv_fs_params(input_file=input_file, output_file=output_file, explicit_flag=explicit_flag, implicit_flag=implicit_flag, use_dict_flag=use_dict_flag, with_private_dict_flag=with_private_dict_flag, check_meta_flag=check_meta_flag, root_uid=root_uid, remove_gl_flag=remove_gl_flag, remove_private_tags_flag=remove_private_tags_flag, remove_retired_flag=remove_retired_flag, apply_lut_flag=apply_lut_flag, photometric_interpretation=photometric_interpretation, raw_flag=raw_flag, deflated_flag=deflated_flag, jpeg_flag=jpeg_flag, j2k_flag=j2k_flag, jpegls_flag=jpegls_flag, rle_flag=rle_flag, force_flag=force_flag, generate_icon_flag=generate_icon_flag, icon_minmax=icon_minmax, icon_auto_minmax_flag=icon_auto_minmax_flag, compress_icon_flag=compress_icon_flag, planar_configuration=planar_configuration, lossy_flag=lossy_flag, split=split, verbose_flag=verbose_flag, warning_flag=warning_flag, debug_flag=debug_flag, error_flag=error_flag, quiet_flag=quiet_flag, jpeg_quality=jpeg_quality, lossy_error=lossy_error, rate=rate, j2k_quality=j2k_quality, tile=tile, number_resolution=number_resolution, irreversible_flag=irreversible_flag, ignore_errors_flag=ignore_errors_flag)
+    params = gdcmconv_fs_params(
+        input_file=input_file,
+        output_file=output_file,
+        explicit_flag=explicit_flag,
+        implicit_flag=implicit_flag,
+        use_dict_flag=use_dict_flag,
+        with_private_dict_flag=with_private_dict_flag,
+        check_meta_flag=check_meta_flag,
+        root_uid=root_uid,
+        remove_gl_flag=remove_gl_flag,
+        remove_private_tags_flag=remove_private_tags_flag,
+        remove_retired_flag=remove_retired_flag,
+        apply_lut_flag=apply_lut_flag,
+        photometric_interpretation=photometric_interpretation,
+        raw_flag=raw_flag,
+        deflated_flag=deflated_flag,
+        jpeg_flag=jpeg_flag,
+        j2k_flag=j2k_flag,
+        jpegls_flag=jpegls_flag,
+        rle_flag=rle_flag,
+        force_flag=force_flag,
+        generate_icon_flag=generate_icon_flag,
+        icon_minmax=icon_minmax,
+        icon_auto_minmax_flag=icon_auto_minmax_flag,
+        compress_icon_flag=compress_icon_flag,
+        planar_configuration=planar_configuration,
+        lossy_flag=lossy_flag,
+        split=split,
+        verbose_flag=verbose_flag,
+        warning_flag=warning_flag,
+        debug_flag=debug_flag,
+        error_flag=error_flag,
+        quiet_flag=quiet_flag,
+        jpeg_quality=jpeg_quality,
+        lossy_error=lossy_error,
+        rate=rate,
+        j2k_quality=j2k_quality,
+        tile=tile,
+        number_resolution=number_resolution,
+        irreversible_flag=irreversible_flag,
+        ignore_errors_flag=ignore_errors_flag,
+    )
     return gdcmconv_fs_execute(params, execution)
 
 

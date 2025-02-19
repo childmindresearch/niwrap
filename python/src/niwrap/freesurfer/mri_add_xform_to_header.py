@@ -11,6 +11,8 @@ MRI_ADD_XFORM_TO_HEADER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAddXformToHeaderParameters = typing.TypedDict('MriAddXformToHeaderParameters', {
     "__STYX_TYPE__": typing.Literal["mri_add_xform_to_header"],
     "xfm_file": InputPathType,
@@ -189,7 +191,13 @@ def mri_add_xform_to_header(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ADD_XFORM_TO_HEADER_METADATA)
-    params = mri_add_xform_to_header_params(xfm_file=xfm_file, input_volume=input_volume, output_volume=output_volume, verbose=verbose, copy_name=copy_name)
+    params = mri_add_xform_to_header_params(
+        xfm_file=xfm_file,
+        input_volume=input_volume,
+        output_volume=output_volume,
+        verbose=verbose,
+        copy_name=copy_name,
+    )
     return mri_add_xform_to_header_execute(params, execution)
 
 

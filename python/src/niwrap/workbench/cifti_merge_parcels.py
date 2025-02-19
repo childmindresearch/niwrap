@@ -11,10 +11,14 @@ CIFTI_MERGE_PARCELS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiMergeParcelsCiftiParameters = typing.TypedDict('CiftiMergeParcelsCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti"],
     "cifti_in": InputPathType,
 })
+
+
 CiftiMergeParcelsParameters = typing.TypedDict('CiftiMergeParcelsParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-merge-parcels"],
     "direction": str,
@@ -228,7 +232,11 @@ def cifti_merge_parcels(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_MERGE_PARCELS_METADATA)
-    params = cifti_merge_parcels_params(direction=direction, cifti_out=cifti_out, cifti=cifti)
+    params = cifti_merge_parcels_params(
+        direction=direction,
+        cifti_out=cifti_out,
+        cifti=cifti,
+    )
     return cifti_merge_parcels_execute(params, execution)
 
 

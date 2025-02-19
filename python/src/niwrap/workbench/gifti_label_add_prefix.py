@@ -11,6 +11,8 @@ GIFTI_LABEL_ADD_PREFIX_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 GiftiLabelAddPrefixParameters = typing.TypedDict('GiftiLabelAddPrefixParameters', {
     "__STYX_TYPE__": typing.Literal["gifti-label-add-prefix"],
     "label_in": InputPathType,
@@ -178,7 +180,11 @@ def gifti_label_add_prefix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GIFTI_LABEL_ADD_PREFIX_METADATA)
-    params = gifti_label_add_prefix_params(label_in=label_in, prefix=prefix, label_out=label_out)
+    params = gifti_label_add_prefix_params(
+        label_in=label_in,
+        prefix=prefix,
+        label_out=label_out,
+    )
     return gifti_label_add_prefix_execute(params, execution)
 
 

@@ -11,16 +11,22 @@ METRIC_TFCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricTfcePresmoothParameters = typing.TypedDict('MetricTfcePresmoothParameters', {
     "__STYX_TYPE__": typing.Literal["presmooth"],
     "kernel": float,
     "opt_fwhm": bool,
 })
+
+
 MetricTfceParametersParameters = typing.TypedDict('MetricTfceParametersParameters', {
     "__STYX_TYPE__": typing.Literal["parameters"],
     "e": float,
     "h": float,
 })
+
+
 MetricTfceParameters = typing.TypedDict('MetricTfceParameters', {
     "__STYX_TYPE__": typing.Literal["metric-tfce"],
     "surface": InputPathType,
@@ -380,7 +386,16 @@ def metric_tfce(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_TFCE_METADATA)
-    params = metric_tfce_params(surface=surface, metric_in=metric_in, metric_out=metric_out, presmooth=presmooth, opt_roi_roi_metric=opt_roi_roi_metric, parameters=parameters, opt_column_column=opt_column_column, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    params = metric_tfce_params(
+        surface=surface,
+        metric_in=metric_in,
+        metric_out=metric_out,
+        presmooth=presmooth,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        parameters=parameters,
+        opt_column_column=opt_column_column,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+    )
     return metric_tfce_execute(params, execution)
 
 

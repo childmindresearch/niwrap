@@ -11,6 +11,8 @@ FEAT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FeatParameters = typing.TypedDict('FeatParameters', {
     "__STYX_TYPE__": typing.Literal["feat"],
     "design_file": InputPathType,
@@ -159,7 +161,9 @@ def feat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEAT_METADATA)
-    params = feat_params(design_file=design_file)
+    params = feat_params(
+        design_file=design_file,
+    )
     return feat_execute(params, execution)
 
 

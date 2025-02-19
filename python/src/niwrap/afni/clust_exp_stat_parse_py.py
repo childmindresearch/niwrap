@@ -11,6 +11,8 @@ CLUST_EXP_STAT_PARSE_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ClustExpStatParsePyParameters = typing.TypedDict('ClustExpStatParsePyParameters', {
     "__STYX_TYPE__": typing.Literal["ClustExp_StatParse.py"],
     "statdset": InputPathType,
@@ -317,7 +319,21 @@ def clust_exp_stat_parse_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CLUST_EXP_STAT_PARSE_PY_METADATA)
-    params = clust_exp_stat_parse_py_params(statdset=statdset, meanbrik=meanbrik, threshbrik=threshbrik, subjdset=subjdset, subjtable=subjtable, master=master, prefix=prefix, pval=pval, minvox=minvox, atlas=atlas, session=session, noshiny=noshiny, overwrite=overwrite)
+    params = clust_exp_stat_parse_py_params(
+        statdset=statdset,
+        meanbrik=meanbrik,
+        threshbrik=threshbrik,
+        subjdset=subjdset,
+        subjtable=subjtable,
+        master=master,
+        prefix=prefix,
+        pval=pval,
+        minvox=minvox,
+        atlas=atlas,
+        session=session,
+        noshiny=noshiny,
+        overwrite=overwrite,
+    )
     return clust_exp_stat_parse_py_execute(params, execution)
 
 

@@ -11,19 +11,27 @@ TCKCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckconvertConfigParameters = typing.TypedDict('TckconvertConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckconvertVariousStringParameters = typing.TypedDict('TckconvertVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 TckconvertVariousFileParameters = typing.TypedDict('TckconvertVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 TckconvertParameters = typing.TypedDict('TckconvertParameters', {
     "__STYX_TYPE__": typing.Literal["tckconvert"],
     "scanner2voxel": typing.NotRequired[InputPathType | None],
@@ -532,7 +540,28 @@ def tckconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKCONVERT_METADATA)
-    params = tckconvert_params(scanner2voxel=scanner2voxel, scanner2image=scanner2image, voxel2scanner=voxel2scanner, image2scanner=image2scanner, sides=sides, increment=increment, dec=dec, radius=radius, ascii_=ascii_, binary=binary, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = tckconvert_params(
+        scanner2voxel=scanner2voxel,
+        scanner2image=scanner2image,
+        voxel2scanner=voxel2scanner,
+        image2scanner=image2scanner,
+        sides=sides,
+        increment=increment,
+        dec=dec,
+        radius=radius,
+        ascii_=ascii_,
+        binary=binary,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return tckconvert_execute(params, execution)
 
 

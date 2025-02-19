@@ -11,6 +11,8 @@ FLOAT_SCAN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FloatScanParameters = typing.TypedDict('FloatScanParameters', {
     "__STYX_TYPE__": typing.Literal["float_scan"],
     "fix_illegal_values": bool,
@@ -193,7 +195,12 @@ def float_scan(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLOAT_SCAN_METADATA)
-    params = float_scan_params(fix_illegal_values=fix_illegal_values, verbose_mode=verbose_mode, skip_count=skip_count, input_file=input_file)
+    params = float_scan_params(
+        fix_illegal_values=fix_illegal_values,
+        verbose_mode=verbose_mode,
+        skip_count=skip_count,
+        input_file=input_file,
+    )
     return float_scan_execute(params, execution)
 
 

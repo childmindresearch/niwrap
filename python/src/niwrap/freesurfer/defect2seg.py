@@ -11,6 +11,8 @@ DEFECT2SEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Defect2segParameters = typing.TypedDict('Defect2segParameters', {
     "__STYX_TYPE__": typing.Literal["defect2seg"],
     "output_seg": str,
@@ -244,7 +246,17 @@ def defect2seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DEFECT2SEG_METADATA)
-    params = defect2seg_params(output_seg=output_seg, template=template, left_hemisphere=left_hemisphere, right_hemisphere=right_hemisphere, subject=subject, lh_only=lh_only, rh_only=rh_only, cortex=cortex, no_cortex=no_cortex)
+    params = defect2seg_params(
+        output_seg=output_seg,
+        template=template,
+        left_hemisphere=left_hemisphere,
+        right_hemisphere=right_hemisphere,
+        subject=subject,
+        lh_only=lh_only,
+        rh_only=rh_only,
+        cortex=cortex,
+        no_cortex=no_cortex,
+    )
     return defect2seg_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_EASYWARP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEasywarpParameters = typing.TypedDict('MriEasywarpParameters', {
     "__STYX_TYPE__": typing.Literal["mri_easywarp"],
     "input_image": InputPathType,
@@ -208,7 +210,13 @@ def mri_easywarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EASYWARP_METADATA)
-    params = mri_easywarp_params(input_image=input_image, output_image=output_image, deformation_field=deformation_field, nearest_neighbor=nearest_neighbor, num_threads=num_threads)
+    params = mri_easywarp_params(
+        input_image=input_image,
+        output_image=output_image,
+        deformation_field=deformation_field,
+        nearest_neighbor=nearest_neighbor,
+        num_threads=num_threads,
+    )
     return mri_easywarp_execute(params, execution)
 
 

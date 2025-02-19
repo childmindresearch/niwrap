@@ -11,6 +11,8 @@ V_3D_SLICE_NDICE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSliceNdiceParameters = typing.TypedDict('V3dSliceNdiceParameters', {
     "__STYX_TYPE__": typing.Literal["3dSliceNDice"],
     "infile_a": InputPathType,
@@ -214,7 +216,13 @@ def v_3d_slice_ndice(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SLICE_NDICE_METADATA)
-    params = v_3d_slice_ndice_params(infile_a=infile_a, infile_b=infile_b, output_prefix=output_prefix, out_domain=out_domain, no_cmd_echo=no_cmd_echo)
+    params = v_3d_slice_ndice_params(
+        infile_a=infile_a,
+        infile_b=infile_b,
+        output_prefix=output_prefix,
+        out_domain=out_domain,
+        no_cmd_echo=no_cmd_echo,
+    )
     return v_3d_slice_ndice_execute(params, execution)
 
 

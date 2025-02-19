@@ -11,6 +11,8 @@ MRI_EASYREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEasyregParameters = typing.TypedDict('MriEasyregParameters', {
     "__STYX_TYPE__": typing.Literal["mri_easyreg"],
     "reference_image": InputPathType,
@@ -281,7 +283,18 @@ def mri_easyreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EASYREG_METADATA)
-    params = mri_easyreg_params(reference_image=reference_image, reference_segmentation=reference_segmentation, floating_image=floating_image, floating_segmentation=floating_segmentation, registered_reference=registered_reference, registered_floating=registered_floating, forward_field=forward_field, inverse_field=inverse_field, affine_only=affine_only, threads=threads)
+    params = mri_easyreg_params(
+        reference_image=reference_image,
+        reference_segmentation=reference_segmentation,
+        floating_image=floating_image,
+        floating_segmentation=floating_segmentation,
+        registered_reference=registered_reference,
+        registered_floating=registered_floating,
+        forward_field=forward_field,
+        inverse_field=inverse_field,
+        affine_only=affine_only,
+        threads=threads,
+    )
     return mri_easyreg_execute(params, execution)
 
 

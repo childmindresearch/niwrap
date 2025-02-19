@@ -11,6 +11,8 @@ V__ELECTRO_GRID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VElectroGridParameters = typing.TypedDict('VElectroGridParameters', {
     "__STYX_TYPE__": typing.Literal["@ElectroGrid"],
     "strip": typing.NotRequired[int | None],
@@ -222,7 +224,14 @@ def v__electro_grid(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ELECTRO_GRID_METADATA)
-    params = v__electro_grid_params(strip=strip, grid=grid, prefix=prefix, coords=coords, with_markers=with_markers, echo=echo)
+    params = v__electro_grid_params(
+        strip=strip,
+        grid=grid,
+        prefix=prefix,
+        coords=coords,
+        with_markers=with_markers,
+        echo=echo,
+    )
     return v__electro_grid_execute(params, execution)
 
 

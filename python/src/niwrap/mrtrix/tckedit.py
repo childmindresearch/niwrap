@@ -11,51 +11,75 @@ TCKEDIT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckeditVariousStringParameters = typing.TypedDict('TckeditVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 TckeditVariousFileParameters = typing.TypedDict('TckeditVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 TckeditIncludeParameters = typing.TypedDict('TckeditIncludeParameters', {
     "__STYX_TYPE__": typing.Literal["include"],
     "spec": typing.Union[TckeditVariousStringParameters, TckeditVariousFileParameters],
 })
+
+
 TckeditIncludeOrderedParameters = typing.TypedDict('TckeditIncludeOrderedParameters', {
     "__STYX_TYPE__": typing.Literal["include_ordered"],
     "image": str,
 })
+
+
 TckeditVariousString1Parameters = typing.TypedDict('TckeditVariousString1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
+
+
 TckeditVariousFile1Parameters = typing.TypedDict('TckeditVariousFile1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
+
+
 TckeditExcludeParameters = typing.TypedDict('TckeditExcludeParameters', {
     "__STYX_TYPE__": typing.Literal["exclude"],
     "spec": typing.Union[TckeditVariousString1Parameters, TckeditVariousFile1Parameters],
 })
+
+
 TckeditVariousString2Parameters = typing.TypedDict('TckeditVariousString2Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousString_2"],
     "obj": str,
 })
+
+
 TckeditVariousFile2Parameters = typing.TypedDict('TckeditVariousFile2Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile_2"],
     "obj": InputPathType,
 })
+
+
 TckeditMaskParameters = typing.TypedDict('TckeditMaskParameters', {
     "__STYX_TYPE__": typing.Literal["mask"],
     "spec": typing.Union[TckeditVariousString2Parameters, TckeditVariousFile2Parameters],
 })
+
+
 TckeditConfigParameters = typing.TypedDict('TckeditConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckeditParameters = typing.TypedDict('TckeditParameters', {
     "__STYX_TYPE__": typing.Literal["tckedit"],
     "include": typing.NotRequired[list[TckeditIncludeParameters] | None],
@@ -919,7 +943,32 @@ def tckedit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKEDIT_METADATA)
-    params = tckedit_params(include=include, include_ordered=include_ordered, exclude=exclude, mask=mask, maxlength=maxlength, minlength=minlength, number=number, skip=skip, maxweight=maxweight, minweight=minweight, inverse=inverse, ends_only=ends_only, tck_weights_in=tck_weights_in, tck_weights_out=tck_weights_out, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks_in=tracks_in, tracks_out=tracks_out)
+    params = tckedit_params(
+        include=include,
+        include_ordered=include_ordered,
+        exclude=exclude,
+        mask=mask,
+        maxlength=maxlength,
+        minlength=minlength,
+        number=number,
+        skip=skip,
+        maxweight=maxweight,
+        minweight=minweight,
+        inverse=inverse,
+        ends_only=ends_only,
+        tck_weights_in=tck_weights_in,
+        tck_weights_out=tck_weights_out,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks_in=tracks_in,
+        tracks_out=tracks_out,
+    )
     return tckedit_execute(params, execution)
 
 

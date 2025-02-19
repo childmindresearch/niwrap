@@ -11,6 +11,8 @@ V_3D_FRIEDMAN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dFriedmanParameters = typing.TypedDict('V3dFriedmanParameters', {
     "__STYX_TYPE__": typing.Literal["3dFriedman"],
     "levels": int,
@@ -205,7 +207,13 @@ def v_3d_friedman(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_FRIEDMAN_METADATA)
-    params = v_3d_friedman_params(levels=levels, datasets=datasets, workmem=workmem, voxel_num=voxel_num, output_prefix=output_prefix)
+    params = v_3d_friedman_params(
+        levels=levels,
+        datasets=datasets,
+        workmem=workmem,
+        voxel_num=voxel_num,
+        output_prefix=output_prefix,
+    )
     return v_3d_friedman_execute(params, execution)
 
 

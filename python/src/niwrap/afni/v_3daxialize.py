@@ -11,6 +11,8 @@ V_3DAXIALIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3daxializeParameters = typing.TypedDict('V3daxializeParameters', {
     "__STYX_TYPE__": typing.Literal["3daxialize"],
     "infile": InputPathType,
@@ -229,7 +231,16 @@ def v_3daxialize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DAXIALIZE_METADATA)
-    params = v_3daxialize_params(infile=infile, prefix=prefix, verb=verb, sagittal=sagittal, coronal=coronal, axial=axial, orient_code=orient_code, frugal=frugal)
+    params = v_3daxialize_params(
+        infile=infile,
+        prefix=prefix,
+        verb=verb,
+        sagittal=sagittal,
+        coronal=coronal,
+        axial=axial,
+        orient_code=orient_code,
+        frugal=frugal,
+    )
     return v_3daxialize_execute(params, execution)
 
 

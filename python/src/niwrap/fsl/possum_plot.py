@@ -11,6 +11,8 @@ POSSUM_PLOT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PossumPlotParameters = typing.TypedDict('PossumPlotParameters', {
     "__STYX_TYPE__": typing.Literal["possum_plot"],
     "input_file": InputPathType,
@@ -168,7 +170,10 @@ def possum_plot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_PLOT_METADATA)
-    params = possum_plot_params(input_file=input_file, output_basename=output_basename)
+    params = possum_plot_params(
+        input_file=input_file,
+        output_basename=output_basename,
+    )
     return possum_plot_execute(params, execution)
 
 

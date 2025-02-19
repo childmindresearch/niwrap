@@ -11,11 +11,15 @@ MRTHRESHOLD_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrthresholdConfigParameters = typing.TypedDict('MrthresholdConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrthresholdParameters = typing.TypedDict('MrthresholdParameters', {
     "__STYX_TYPE__": typing.Literal["mrthreshold"],
     "abs": typing.NotRequired[float | None],
@@ -508,7 +512,29 @@ def mrthreshold(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRTHRESHOLD_METADATA)
-    params = mrthreshold_params(abs_=abs_, percentile=percentile, top=top, bottom=bottom, allvolumes=allvolumes, ignorezero=ignorezero, mask=mask, comparison=comparison, invert=invert, out_masked=out_masked, nan=nan, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = mrthreshold_params(
+        abs_=abs_,
+        percentile=percentile,
+        top=top,
+        bottom=bottom,
+        allvolumes=allvolumes,
+        ignorezero=ignorezero,
+        mask=mask,
+        comparison=comparison,
+        invert=invert,
+        out_masked=out_masked,
+        nan=nan,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return mrthreshold_execute(params, execution)
 
 

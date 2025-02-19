@@ -11,6 +11,8 @@ ISOLATE_LABELS_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IsolateLabelsCshParameters = typing.TypedDict('IsolateLabelsCshParameters', {
     "__STYX_TYPE__": typing.Literal["isolate_labels.csh"],
     "label_volume": InputPathType,
@@ -208,7 +210,14 @@ def isolate_labels_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ISOLATE_LABELS_CSH_METADATA)
-    params = isolate_labels_csh_params(label_volume=label_volume, output_prefix=output_prefix, lowercase_label_option=lowercase_label_option, version=version, keepval=keepval, help_=help_)
+    params = isolate_labels_csh_params(
+        label_volume=label_volume,
+        output_prefix=output_prefix,
+        lowercase_label_option=lowercase_label_option,
+        version=version,
+        keepval=keepval,
+        help_=help_,
+    )
     return isolate_labels_csh_execute(params, execution)
 
 

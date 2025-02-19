@@ -11,6 +11,8 @@ ANALYZETO4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Analyzeto4dfpParameters = typing.TypedDict('Analyzeto4dfpParameters', {
     "__STYX_TYPE__": typing.Literal["analyzeto4dfp"],
     "analyze_image": InputPathType,
@@ -211,7 +213,15 @@ def analyzeto4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANALYZETO4DFP_METADATA)
-    params = analyzeto4dfp_params(analyze_image=analyze_image, rois_scale=rois_scale, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z, endian=endian, orientation=orientation)
+    params = analyzeto4dfp_params(
+        analyze_image=analyze_image,
+        rois_scale=rois_scale,
+        flip_x=flip_x,
+        flip_y=flip_y,
+        flip_z=flip_z,
+        endian=endian,
+        orientation=orientation,
+    )
     return analyzeto4dfp_execute(params, execution)
 
 

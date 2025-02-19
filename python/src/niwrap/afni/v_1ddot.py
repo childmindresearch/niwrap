@@ -11,6 +11,8 @@ V_1DDOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1ddotParameters = typing.TypedDict('V1ddotParameters', {
     "__STYX_TYPE__": typing.Literal["1ddot"],
     "one_flag": bool,
@@ -225,7 +227,16 @@ def v_1ddot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DDOT_METADATA)
-    params = v_1ddot_params(one_flag=one_flag, dem_flag=dem_flag, cov_flag=cov_flag, inn_flag=inn_flag, rank_flag=rank_flag, terse_flag=terse_flag, okzero_flag=okzero_flag, input_files=input_files)
+    params = v_1ddot_params(
+        one_flag=one_flag,
+        dem_flag=dem_flag,
+        cov_flag=cov_flag,
+        inn_flag=inn_flag,
+        rank_flag=rank_flag,
+        terse_flag=terse_flag,
+        okzero_flag=okzero_flag,
+        input_files=input_files,
+    )
     return v_1ddot_execute(params, execution)
 
 

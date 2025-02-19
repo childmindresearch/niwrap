@@ -11,12 +11,16 @@ FOCI_CREATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 FociCreateClassParameters = typing.TypedDict('FociCreateClassParameters', {
     "__STYX_TYPE__": typing.Literal["class"],
     "class_name": str,
     "foci_list_file": str,
     "surface": InputPathType,
 })
+
+
 FociCreateParameters = typing.TypedDict('FociCreateParameters', {
     "__STYX_TYPE__": typing.Literal["foci-create"],
     "output": str,
@@ -260,7 +264,10 @@ def foci_create(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FOCI_CREATE_METADATA)
-    params = foci_create_params(output=output, class_=class_)
+    params = foci_create_params(
+        output=output,
+        class_=class_,
+    )
     return foci_create_execute(params, execution)
 
 

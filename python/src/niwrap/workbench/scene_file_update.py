@@ -11,18 +11,26 @@ SCENE_FILE_UPDATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SceneFileUpdateCopyMapOnePaletteParameters = typing.TypedDict('SceneFileUpdateCopyMapOnePaletteParameters', {
     "__STYX_TYPE__": typing.Literal["copy_map_one_palette"],
     "data_file_name_suffix": str,
 })
+
+
 SceneFileUpdateDataFileAddParameters = typing.TypedDict('SceneFileUpdateDataFileAddParameters', {
     "__STYX_TYPE__": typing.Literal["data_file_add"],
     "name_of_data_file": str,
 })
+
+
 SceneFileUpdateDataFileRemoveParameters = typing.TypedDict('SceneFileUpdateDataFileRemoveParameters', {
     "__STYX_TYPE__": typing.Literal["data_file_remove"],
     "name_of_data_file": str,
 })
+
+
 SceneFileUpdateParameters = typing.TypedDict('SceneFileUpdateParameters', {
     "__STYX_TYPE__": typing.Literal["scene-file-update"],
     "input_scene_file": str,
@@ -434,7 +442,18 @@ def scene_file_update(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SCENE_FILE_UPDATE_METADATA)
-    params = scene_file_update_params(input_scene_file=input_scene_file, output_scene_file=output_scene_file, scene_name_or_number=scene_name_or_number, opt_fix_map_palette_settings=opt_fix_map_palette_settings, opt_remove_missing_files=opt_remove_missing_files, opt_error=opt_error, opt_verbose=opt_verbose, copy_map_one_palette=copy_map_one_palette, data_file_add=data_file_add, data_file_remove=data_file_remove)
+    params = scene_file_update_params(
+        input_scene_file=input_scene_file,
+        output_scene_file=output_scene_file,
+        scene_name_or_number=scene_name_or_number,
+        opt_fix_map_palette_settings=opt_fix_map_palette_settings,
+        opt_remove_missing_files=opt_remove_missing_files,
+        opt_error=opt_error,
+        opt_verbose=opt_verbose,
+        copy_map_one_palette=copy_map_one_palette,
+        data_file_add=data_file_add,
+        data_file_remove=data_file_remove,
+    )
     return scene_file_update_execute(params, execution)
 
 

@@ -11,27 +11,39 @@ FIXELCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 FixelconvertConfigParameters = typing.TypedDict('FixelconvertConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 FixelconvertVariousStringParameters = typing.TypedDict('FixelconvertVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 FixelconvertVariousFileParameters = typing.TypedDict('FixelconvertVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 FixelconvertVariousString1Parameters = typing.TypedDict('FixelconvertVariousString1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousString_1"],
     "obj": str,
 })
+
+
 FixelconvertVariousFile1Parameters = typing.TypedDict('FixelconvertVariousFile1Parameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile_1"],
     "obj": InputPathType,
 })
+
+
 FixelconvertParameters = typing.TypedDict('FixelconvertParameters', {
     "__STYX_TYPE__": typing.Literal["fixelconvert"],
     "name": typing.NotRequired[str | None],
@@ -536,7 +548,24 @@ def fixelconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELCONVERT_METADATA)
-    params = fixelconvert_params(name=name, nii=nii, out_size=out_size, template=template, value=value, in_size=in_size, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_in=fixel_in, fixel_out=fixel_out)
+    params = fixelconvert_params(
+        name=name,
+        nii=nii,
+        out_size=out_size,
+        template=template,
+        value=value,
+        in_size=in_size,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        fixel_in=fixel_in,
+        fixel_out=fixel_out,
+    )
     return fixelconvert_execute(params, execution)
 
 

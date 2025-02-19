@@ -11,6 +11,8 @@ FABBER_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FabberParameters = typing.TypedDict('FabberParameters', {
     "__STYX_TYPE__": typing.Literal["fabber"],
     "output": str,
@@ -575,7 +577,45 @@ def fabber(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_METADATA)
-    params = fabber_params(output=output, method=method, model=model, data_file=data_file, data_files=data_files, data_order=data_order, mask_file=mask_file, mt_n=mt_n, supp_data=supp_data, evaluate_output=evaluate_output, evaluate_params=evaluate_params, evaluate_nt=evaluate_nt, simple_output=simple_output, overwrite=overwrite, link_to_latest=link_to_latest, load_models=load_models, debug=debug, optfile=optfile, save_model_fit=save_model_fit, save_residuals=save_residuals, save_model_extras=save_model_extras, save_mvn=save_mvn, save_mean=save_mean, save_std=save_std, save_var=save_var, save_zstat=save_zstat, save_noise_mean=save_noise_mean, save_noise_std=save_noise_std, save_free_energy=save_free_energy, help_=help_, list_methods=list_methods, list_models=list_models, list_params=list_params, desc_params=desc_params, list_outputs=list_outputs, optfile_1=optfile_1, old_optfile=old_optfile)
+    params = fabber_params(
+        output=output,
+        method=method,
+        model=model,
+        data_file=data_file,
+        data_files=data_files,
+        data_order=data_order,
+        mask_file=mask_file,
+        mt_n=mt_n,
+        supp_data=supp_data,
+        evaluate_output=evaluate_output,
+        evaluate_params=evaluate_params,
+        evaluate_nt=evaluate_nt,
+        simple_output=simple_output,
+        overwrite=overwrite,
+        link_to_latest=link_to_latest,
+        load_models=load_models,
+        debug=debug,
+        optfile=optfile,
+        save_model_fit=save_model_fit,
+        save_residuals=save_residuals,
+        save_model_extras=save_model_extras,
+        save_mvn=save_mvn,
+        save_mean=save_mean,
+        save_std=save_std,
+        save_var=save_var,
+        save_zstat=save_zstat,
+        save_noise_mean=save_noise_mean,
+        save_noise_std=save_noise_std,
+        save_free_energy=save_free_energy,
+        help_=help_,
+        list_methods=list_methods,
+        list_models=list_models,
+        list_params=list_params,
+        desc_params=desc_params,
+        list_outputs=list_outputs,
+        optfile_1=optfile_1,
+        old_optfile=old_optfile,
+    )
     return fabber_execute(params, execution)
 
 

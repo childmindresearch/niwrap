@@ -11,6 +11,8 @@ COLUMN_CAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ColumnCatParameters = typing.TypedDict('ColumnCatParameters', {
     "__STYX_TYPE__": typing.Literal["column_cat"],
     "line_number": typing.NotRequired[float | None],
@@ -189,7 +191,11 @@ def column_cat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COLUMN_CAT_METADATA)
-    params = column_cat_params(line_number=line_number, separator_string=separator_string, input_files=input_files)
+    params = column_cat_params(
+        line_number=line_number,
+        separator_string=separator_string,
+        input_files=input_files,
+    )
     return column_cat_execute(params, execution)
 
 

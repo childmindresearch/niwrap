@@ -11,6 +11,8 @@ EDDY_CORRECT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 EddyCorrectParameters = typing.TypedDict('EddyCorrectParameters', {
     "__STYX_TYPE__": typing.Literal["eddy_correct"],
     "4d_input": InputPathType,
@@ -181,7 +183,12 @@ def eddy_correct(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EDDY_CORRECT_METADATA)
-    params = eddy_correct_params(v_4d_input=v_4d_input, v_4d_output=v_4d_output, reference_no=reference_no, interp_method=interp_method)
+    params = eddy_correct_params(
+        v_4d_input=v_4d_input,
+        v_4d_output=v_4d_output,
+        reference_no=reference_no,
+        interp_method=interp_method,
+    )
     return eddy_correct_execute(params, execution)
 
 

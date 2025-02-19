@@ -11,6 +11,8 @@ V_3D_REG_ANA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRegAnaParameters = typing.TypedDict('V3dRegAnaParameters', {
     "__STYX_TYPE__": typing.Literal["3dRegAna"],
     "rows": float,
@@ -346,7 +348,23 @@ def v_3d_reg_ana(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_REG_ANA_METADATA)
-    params = v_3d_reg_ana_params(rows=rows, cols=cols, xydata=xydata, model=model, diskspace=diskspace, workmem=workmem, rmsmin=rmsmin, fdisp=fdisp, flof=flof, fcoef=fcoef, rcoef=rcoef, tcoef=tcoef, bucket=bucket, brick=brick, datum=datum)
+    params = v_3d_reg_ana_params(
+        rows=rows,
+        cols=cols,
+        xydata=xydata,
+        model=model,
+        diskspace=diskspace,
+        workmem=workmem,
+        rmsmin=rmsmin,
+        fdisp=fdisp,
+        flof=flof,
+        fcoef=fcoef,
+        rcoef=rcoef,
+        tcoef=tcoef,
+        bucket=bucket,
+        brick=brick,
+        datum=datum,
+    )
     return v_3d_reg_ana_execute(params, execution)
 
 

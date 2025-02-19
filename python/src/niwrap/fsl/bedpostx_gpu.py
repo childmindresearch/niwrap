@@ -11,6 +11,8 @@ BEDPOSTX_GPU_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BedpostxGpuParameters = typing.TypedDict('BedpostxGpuParameters', {
     "__STYX_TYPE__": typing.Literal["bedpostx_gpu"],
     "subject_dir": str,
@@ -269,7 +271,18 @@ def bedpostx_gpu(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BEDPOSTX_GPU_METADATA)
-    params = bedpostx_gpu_params(subject_dir=subject_dir, gpu_queue=gpu_queue, num_jobs=num_jobs, num_fibers=num_fibers, ard_weight=ard_weight, burnin_period=burnin_period, num_jumps=num_jumps, sample_every=sample_every, deconv_model=deconv_model, grad_nonlinear=grad_nonlinear)
+    params = bedpostx_gpu_params(
+        subject_dir=subject_dir,
+        gpu_queue=gpu_queue,
+        num_jobs=num_jobs,
+        num_fibers=num_fibers,
+        ard_weight=ard_weight,
+        burnin_period=burnin_period,
+        num_jumps=num_jumps,
+        sample_every=sample_every,
+        deconv_model=deconv_model,
+        grad_nonlinear=grad_nonlinear,
+    )
     return bedpostx_gpu_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_FIT_BIAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFitBiasParameters = typing.TypedDict('MriFitBiasParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fit_bias"],
     "inputvol": InputPathType,
@@ -285,7 +287,20 @@ def mri_fit_bias(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FIT_BIAS_METADATA)
-    params = mri_fit_bias_params(inputvol=inputvol, lpf_cutoff=lpf_cutoff, segvol=segvol, maskvol=maskvol, outvol=outvol, biasfield=biasfield, dctvol=dctvol, threshold=threshold, nerode=nerode, nthreads=nthreads, debug=debug, checkopts=checkopts)
+    params = mri_fit_bias_params(
+        inputvol=inputvol,
+        lpf_cutoff=lpf_cutoff,
+        segvol=segvol,
+        maskvol=maskvol,
+        outvol=outvol,
+        biasfield=biasfield,
+        dctvol=dctvol,
+        threshold=threshold,
+        nerode=nerode,
+        nthreads=nthreads,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return mri_fit_bias_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CREATE_MORPH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CreateMorphParameters = typing.TypedDict('CreateMorphParameters', {
     "__STYX_TYPE__": typing.Literal["createMorph"],
     "input_transforms": list[str],
@@ -212,7 +214,13 @@ def create_morph(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_MORPH_METADATA)
-    params = create_morph_params(input_transforms=input_transforms, output_transform=output_transform, template=template, subject=subject, debug_coordinates=debug_coordinates)
+    params = create_morph_params(
+        input_transforms=input_transforms,
+        output_transform=output_transform,
+        template=template,
+        subject=subject,
+        debug_coordinates=debug_coordinates,
+    )
     return create_morph_execute(params, execution)
 
 

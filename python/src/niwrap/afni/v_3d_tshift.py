@@ -11,6 +11,8 @@ V_3D_TSHIFT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTshiftParameters = typing.TypedDict('V3dTshiftParameters', {
     "__STYX_TYPE__": typing.Literal["3dTshift"],
     "prefix": typing.NotRequired[str | None],
@@ -313,7 +315,21 @@ def v_3d_tshift(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSHIFT_METADATA)
-    params = v_3d_tshift_params(prefix=prefix, ignore=ignore, in_file=in_file, interp=interp, num_threads=num_threads, outputtype=outputtype, rlt=rlt, rltplus=rltplus, slice_encoding_direction=slice_encoding_direction, tpattern=tpattern, tr=tr, tslice=tslice, tzero=tzero)
+    params = v_3d_tshift_params(
+        prefix=prefix,
+        ignore=ignore,
+        in_file=in_file,
+        interp=interp,
+        num_threads=num_threads,
+        outputtype=outputtype,
+        rlt=rlt,
+        rltplus=rltplus,
+        slice_encoding_direction=slice_encoding_direction,
+        tpattern=tpattern,
+        tr=tr,
+        tslice=tslice,
+        tzero=tzero,
+    )
     return v_3d_tshift_execute(params, execution)
 
 

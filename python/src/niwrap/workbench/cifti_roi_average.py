@@ -11,6 +11,8 @@ CIFTI_ROI_AVERAGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiRoiAverageParameters = typing.TypedDict('CiftiRoiAverageParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-roi-average"],
     "cifti_in": InputPathType,
@@ -241,7 +243,15 @@ def cifti_roi_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_ROI_AVERAGE_METADATA)
-    params = cifti_roi_average_params(cifti_in=cifti_in, text_out=text_out, opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti, opt_left_roi_roi_metric=opt_left_roi_roi_metric, opt_right_roi_roi_metric=opt_right_roi_roi_metric, opt_cerebellum_roi_roi_metric=opt_cerebellum_roi_roi_metric, opt_vol_roi_roi_vol=opt_vol_roi_roi_vol)
+    params = cifti_roi_average_params(
+        cifti_in=cifti_in,
+        text_out=text_out,
+        opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti,
+        opt_left_roi_roi_metric=opt_left_roi_roi_metric,
+        opt_right_roi_roi_metric=opt_right_roi_roi_metric,
+        opt_cerebellum_roi_roi_metric=opt_cerebellum_roi_roi_metric,
+        opt_vol_roi_roi_vol=opt_vol_roi_roi_vol,
+    )
     return cifti_roi_average_execute(params, execution)
 
 

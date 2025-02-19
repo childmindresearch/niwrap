@@ -11,6 +11,8 @@ MRI_PARSE_SDCMDIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriParseSdcmdirParameters = typing.TypedDict('MriParseSdcmdirParameters', {
     "__STYX_TYPE__": typing.Literal["mri_parse_sdcmdir"],
     "sdicomdir": str,
@@ -198,7 +200,13 @@ def mri_parse_sdcmdir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PARSE_SDCMDIR_METADATA)
-    params = mri_parse_sdcmdir_params(sdicomdir=sdicomdir, outfile=outfile, sortbyrun=sortbyrun, summarize=summarize, dwi=dwi)
+    params = mri_parse_sdcmdir_params(
+        sdicomdir=sdicomdir,
+        outfile=outfile,
+        sortbyrun=sortbyrun,
+        summarize=summarize,
+        dwi=dwi,
+    )
     return mri_parse_sdcmdir_execute(params, execution)
 
 

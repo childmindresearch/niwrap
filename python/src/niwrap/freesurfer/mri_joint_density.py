@@ -11,6 +11,8 @@ MRI_JOINT_DENSITY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriJointDensityParameters = typing.TypedDict('MriJointDensityParameters', {
     "__STYX_TYPE__": typing.Literal["mri_joint_density"],
     "vol1": InputPathType,
@@ -173,7 +175,11 @@ def mri_joint_density(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_JOINT_DENSITY_METADATA)
-    params = mri_joint_density_params(vol1=vol1, vol2=vol2, output_density_file=output_density_file)
+    params = mri_joint_density_params(
+        vol1=vol1,
+        vol2=vol2,
+        output_density_file=output_density_file,
+    )
     return mri_joint_density_execute(params, execution)
 
 

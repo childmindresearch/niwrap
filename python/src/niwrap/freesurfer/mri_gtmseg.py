@@ -11,6 +11,8 @@ MRI_GTMSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGtmsegParameters = typing.TypedDict('MriGtmsegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gtmseg"],
     "output_volume": str,
@@ -366,7 +368,27 @@ def mri_gtmseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GTMSEG_METADATA)
-    params = mri_gtmseg_params(output_volume=output_volume, source_subject=source_subject, internal_usf=internal_usf, apas_file=apas_file, context_annotation=context_annotation, subseg_wm=subseg_wm, wm_annotation=wm_annotation, dmax=dmax, keep_hypo=keep_hypo, keep_cc=keep_cc, ctab=ctab, lhminmax=lhminmax, rhminmax=rhminmax, output_usf=output_usf, threads=threads, threads_max=threads_max, threads_max_1=threads_max_1, debug=debug, check_opts=check_opts)
+    params = mri_gtmseg_params(
+        output_volume=output_volume,
+        source_subject=source_subject,
+        internal_usf=internal_usf,
+        apas_file=apas_file,
+        context_annotation=context_annotation,
+        subseg_wm=subseg_wm,
+        wm_annotation=wm_annotation,
+        dmax=dmax,
+        keep_hypo=keep_hypo,
+        keep_cc=keep_cc,
+        ctab=ctab,
+        lhminmax=lhminmax,
+        rhminmax=rhminmax,
+        output_usf=output_usf,
+        threads=threads,
+        threads_max=threads_max,
+        threads_max_1=threads_max_1,
+        debug=debug,
+        check_opts=check_opts,
+    )
     return mri_gtmseg_execute(params, execution)
 
 

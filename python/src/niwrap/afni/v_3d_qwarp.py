@@ -11,6 +11,8 @@ V_3D_QWARP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dQwarpParameters = typing.TypedDict('V3dQwarpParameters', {
     "__STYX_TYPE__": typing.Literal["3dQwarp"],
     "base_dataset": InputPathType,
@@ -323,7 +325,28 @@ def v_3d_qwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_QWARP_METADATA)
-    params = v_3d_qwarp_params(base_dataset=base_dataset, source_dataset=source_dataset, prefix=prefix, no_warp=no_warp, inverse_warp=inverse_warp, no_dataset=no_dataset, a_warp=a_warp, pcl=pcl, pear=pear, hel=hel, mi=mi, nmi=nmi, lpc=lpc, lpa=lpa, noneg=noneg, nopenalty=nopenalty, minpatch=minpatch, maxlev=maxlev, verbose=verbose, quiet=quiet)
+    params = v_3d_qwarp_params(
+        base_dataset=base_dataset,
+        source_dataset=source_dataset,
+        prefix=prefix,
+        no_warp=no_warp,
+        inverse_warp=inverse_warp,
+        no_dataset=no_dataset,
+        a_warp=a_warp,
+        pcl=pcl,
+        pear=pear,
+        hel=hel,
+        mi=mi,
+        nmi=nmi,
+        lpc=lpc,
+        lpa=lpa,
+        noneg=noneg,
+        nopenalty=nopenalty,
+        minpatch=minpatch,
+        maxlev=maxlev,
+        verbose=verbose,
+        quiet=quiet,
+    )
     return v_3d_qwarp_execute(params, execution)
 
 

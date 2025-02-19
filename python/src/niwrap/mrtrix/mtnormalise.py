@@ -11,16 +11,22 @@ MTNORMALISE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MtnormaliseConfigParameters = typing.TypedDict('MtnormaliseConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MtnormaliseInputOutputParameters = typing.TypedDict('MtnormaliseInputOutputParameters', {
     "__STYX_TYPE__": typing.Literal["input_output"],
     "input": InputPathType,
     "output": str,
 })
+
+
 MtnormaliseParameters = typing.TypedDict('MtnormaliseParameters', {
     "__STYX_TYPE__": typing.Literal["mtnormalise"],
     "mask": InputPathType,
@@ -554,7 +560,25 @@ def mtnormalise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MTNORMALISE_METADATA)
-    params = mtnormalise_params(mask=mask, order=order, niter=niter, reference=reference, balanced=balanced, check_norm=check_norm, check_mask=check_mask, check_factors=check_factors, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_output=input_output)
+    params = mtnormalise_params(
+        mask=mask,
+        order=order,
+        niter=niter,
+        reference=reference,
+        balanced=balanced,
+        check_norm=check_norm,
+        check_mask=check_mask,
+        check_factors=check_factors,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_output=input_output,
+    )
     return mtnormalise_execute(params, execution)
 
 

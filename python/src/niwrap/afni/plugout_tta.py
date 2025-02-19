@@ -11,6 +11,8 @@ PLUGOUT_TTA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 PlugoutTtaParameters = typing.TypedDict('PlugoutTtaParameters', {
     "__STYX_TYPE__": typing.Literal["plugout_tta"],
     "host": typing.NotRequired[str | None],
@@ -264,7 +266,18 @@ def plugout_tta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLUGOUT_TTA_METADATA)
-    params = plugout_tta_params(host=host, port=port, verbose=verbose, port_offset=port_offset, port_offset_quiet=port_offset_quiet, port_offset_bloc=port_offset_bloc, max_port_bloc=max_port_bloc, max_port_bloc_quiet=max_port_bloc_quiet, num_assigned_ports=num_assigned_ports, num_assigned_ports_quiet=num_assigned_ports_quiet)
+    params = plugout_tta_params(
+        host=host,
+        port=port,
+        verbose=verbose,
+        port_offset=port_offset,
+        port_offset_quiet=port_offset_quiet,
+        port_offset_bloc=port_offset_bloc,
+        max_port_bloc=max_port_bloc,
+        max_port_bloc_quiet=max_port_bloc_quiet,
+        num_assigned_ports=num_assigned_ports,
+        num_assigned_ports_quiet=num_assigned_ports_quiet,
+    )
     return plugout_tta_execute(params, execution)
 
 

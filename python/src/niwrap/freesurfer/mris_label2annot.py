@@ -11,6 +11,8 @@ MRIS_LABEL2ANNOT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisLabel2annotParameters = typing.TypedDict('MrisLabel2annotParameters', {
     "__STYX_TYPE__": typing.Literal["mris_label2annot"],
     "subject": str,
@@ -300,7 +302,22 @@ def mris_label2annot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LABEL2ANNOT_METADATA)
-    params = mris_label2annot_params(subject=subject, hemi=hemi, ctabfile=ctabfile, annotname=annotname, index_offset=index_offset, label_files=label_files, annot_path=annot_path, labeldir=labeldir, ldir_default=ldir_default, no_unknown=no_unknown, thresh=thresh, maxstatwinner=maxstatwinner, surf=surf, subjects_dir=subjects_dir)
+    params = mris_label2annot_params(
+        subject=subject,
+        hemi=hemi,
+        ctabfile=ctabfile,
+        annotname=annotname,
+        index_offset=index_offset,
+        label_files=label_files,
+        annot_path=annot_path,
+        labeldir=labeldir,
+        ldir_default=ldir_default,
+        no_unknown=no_unknown,
+        thresh=thresh,
+        maxstatwinner=maxstatwinner,
+        surf=surf,
+        subjects_dir=subjects_dir,
+    )
     return mris_label2annot_execute(params, execution)
 
 

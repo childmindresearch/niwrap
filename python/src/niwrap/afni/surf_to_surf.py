@@ -11,6 +11,8 @@ SURF_TO_SURF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfToSurfParameters = typing.TypedDict('SurfToSurfParameters', {
     "__STYX_TYPE__": typing.Literal["SurfToSurf"],
     "input_surface_1": InputPathType,
@@ -298,7 +300,21 @@ def surf_to_surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_TO_SURF_METADATA)
-    params = surf_to_surf_params(input_surface_1=input_surface_1, input_surface_2=input_surface_2, surface_volume=surface_volume, prefix=prefix, output_params=output_params, node_indices=node_indices, proj_dir=proj_dir, data=data, node_debug=node_debug, debug_level=debug_level, make_consistent=make_consistent, dset=dset, mapfile=mapfile)
+    params = surf_to_surf_params(
+        input_surface_1=input_surface_1,
+        input_surface_2=input_surface_2,
+        surface_volume=surface_volume,
+        prefix=prefix,
+        output_params=output_params,
+        node_indices=node_indices,
+        proj_dir=proj_dir,
+        data=data,
+        node_debug=node_debug,
+        debug_level=debug_level,
+        make_consistent=make_consistent,
+        dset=dset,
+        mapfile=mapfile,
+    )
     return surf_to_surf_execute(params, execution)
 
 

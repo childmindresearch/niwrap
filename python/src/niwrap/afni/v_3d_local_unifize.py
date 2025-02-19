@@ -11,6 +11,8 @@ V_3D_LOCAL_UNIFIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLocalUnifizeParameters = typing.TypedDict('V3dLocalUnifizeParameters', {
     "__STYX_TYPE__": typing.Literal["3dLocalUnifize"],
     "input": InputPathType,
@@ -261,7 +263,17 @@ def v_3d_local_unifize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCAL_UNIFIZE_METADATA)
-    params = v_3d_local_unifize_params(input_=input_, output=output, working_dir=working_dir, echo=echo, no_clean=no_clean, local_rad=local_rad, local_perc=local_perc, local_mask=local_mask, filter_thr=filter_thr)
+    params = v_3d_local_unifize_params(
+        input_=input_,
+        output=output,
+        working_dir=working_dir,
+        echo=echo,
+        no_clean=no_clean,
+        local_rad=local_rad,
+        local_perc=local_perc,
+        local_mask=local_mask,
+        filter_thr=filter_thr,
+    )
     return v_3d_local_unifize_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_VESSEL_SEGMENT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriVesselSegmentParameters = typing.TypedDict('MriVesselSegmentParameters', {
     "__STYX_TYPE__": typing.Literal["mri_vessel_segment"],
     "t1_image": InputPathType,
@@ -200,7 +202,13 @@ def mri_vessel_segment(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VESSEL_SEGMENT_METADATA)
-    params = mri_vessel_segment_params(t1_image=t1_image, t2_image=t2_image, aseg_file=aseg_file, output_file=output_file, shape_flag=shape_flag)
+    params = mri_vessel_segment_params(
+        t1_image=t1_image,
+        t2_image=t2_image,
+        aseg_file=aseg_file,
+        output_file=output_file,
+        shape_flag=shape_flag,
+    )
     return mri_vessel_segment_execute(params, execution)
 
 

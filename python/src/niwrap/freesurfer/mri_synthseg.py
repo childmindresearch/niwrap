@@ -11,6 +11,8 @@ MRI_SYNTHSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSynthsegParameters = typing.TypedDict('MriSynthsegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_synthseg"],
     "input_image": InputPathType,
@@ -303,7 +305,23 @@ def mri_synthseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHSEG_METADATA)
-    params = mri_synthseg_params(input_image=input_image, output_segmentation=output_segmentation, cortex_parcellation=cortex_parcellation, robust_prediction=robust_prediction, fast_prediction=fast_prediction, clip_ct=clip_ct, output_volume=output_volume, output_qc=output_qc, output_posteriors=output_posteriors, resampled_images=resampled_images, image_patch_size=image_patch_size, threads=threads, cpu=cpu, version_1=version_1, photo_synthseg=photo_synthseg)
+    params = mri_synthseg_params(
+        input_image=input_image,
+        output_segmentation=output_segmentation,
+        cortex_parcellation=cortex_parcellation,
+        robust_prediction=robust_prediction,
+        fast_prediction=fast_prediction,
+        clip_ct=clip_ct,
+        output_volume=output_volume,
+        output_qc=output_qc,
+        output_posteriors=output_posteriors,
+        resampled_images=resampled_images,
+        image_patch_size=image_patch_size,
+        threads=threads,
+        cpu=cpu,
+        version_1=version_1,
+        photo_synthseg=photo_synthseg,
+    )
     return mri_synthseg_execute(params, execution)
 
 

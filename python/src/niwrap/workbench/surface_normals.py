@@ -11,6 +11,8 @@ SURFACE_NORMALS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceNormalsParameters = typing.TypedDict('SurfaceNormalsParameters', {
     "__STYX_TYPE__": typing.Literal["surface-normals"],
     "surface": InputPathType,
@@ -173,7 +175,10 @@ def surface_normals(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_NORMALS_METADATA)
-    params = surface_normals_params(surface=surface, metric_out=metric_out)
+    params = surface_normals_params(
+        surface=surface,
+        metric_out=metric_out,
+    )
     return surface_normals_execute(params, execution)
 
 

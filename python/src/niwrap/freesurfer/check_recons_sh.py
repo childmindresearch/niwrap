@@ -11,6 +11,8 @@ CHECK_RECONS_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CheckReconsShParameters = typing.TypedDict('CheckReconsShParameters', {
     "__STYX_TYPE__": typing.Literal["check_recons.sh"],
     "subject_directory": typing.NotRequired[str | None],
@@ -161,7 +163,9 @@ def check_recons_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CHECK_RECONS_SH_METADATA)
-    params = check_recons_sh_params(subject_directory=subject_directory)
+    params = check_recons_sh_params(
+        subject_directory=subject_directory,
+    )
     return check_recons_sh_execute(params, execution)
 
 

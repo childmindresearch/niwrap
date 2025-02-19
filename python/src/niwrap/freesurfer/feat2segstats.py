@@ -11,6 +11,8 @@ FEAT2SEGSTATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Feat2segstatsParameters = typing.TypedDict('Feat2segstatsParameters', {
     "__STYX_TYPE__": typing.Literal["feat2segstats"],
     "feat_dir": str,
@@ -348,7 +350,28 @@ def feat2segstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEAT2SEGSTATS_METADATA)
-    params = feat2segstats_params(feat_dir=feat_dir, featdirfile=featdirfile, seg_vol=seg_vol, aseg_flag=aseg_flag, aparc_aseg_flag=aparc_aseg_flag, ctab=ctab, all_segs_flag=all_segs_flag, copes_flag=copes_flag, varcopes_flag=varcopes_flag, zstats_flag=zstats_flag, pes_flag=pes_flag, rvar=rvar, example_func=example_func, mask=mask, mean_func=mean_func, stat_=stat_, version_flag=version_flag, help_flag=help_flag, debug_flag=debug_flag, nolog_flag=nolog_flag)
+    params = feat2segstats_params(
+        feat_dir=feat_dir,
+        featdirfile=featdirfile,
+        seg_vol=seg_vol,
+        aseg_flag=aseg_flag,
+        aparc_aseg_flag=aparc_aseg_flag,
+        ctab=ctab,
+        all_segs_flag=all_segs_flag,
+        copes_flag=copes_flag,
+        varcopes_flag=varcopes_flag,
+        zstats_flag=zstats_flag,
+        pes_flag=pes_flag,
+        rvar=rvar,
+        example_func=example_func,
+        mask=mask,
+        mean_func=mean_func,
+        stat_=stat_,
+        version_flag=version_flag,
+        help_flag=help_flag,
+        debug_flag=debug_flag,
+        nolog_flag=nolog_flag,
+    )
     return feat2segstats_execute(params, execution)
 
 

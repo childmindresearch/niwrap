@@ -11,15 +11,21 @@ METRIC_WEIGHTED_STATS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricWeightedStatsRoiParameters = typing.TypedDict('MetricWeightedStatsRoiParameters', {
     "__STYX_TYPE__": typing.Literal["roi"],
     "roi_metric": InputPathType,
     "opt_match_maps": bool,
 })
+
+
 MetricWeightedStatsStdevParameters = typing.TypedDict('MetricWeightedStatsStdevParameters', {
     "__STYX_TYPE__": typing.Literal["stdev"],
     "opt_sample": bool,
 })
+
+
 MetricWeightedStatsParameters = typing.TypedDict('MetricWeightedStatsParameters', {
     "__STYX_TYPE__": typing.Literal["metric-weighted-stats"],
     "metric_in": InputPathType,
@@ -374,7 +380,18 @@ def metric_weighted_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_WEIGHTED_STATS_METADATA)
-    params = metric_weighted_stats_params(metric_in=metric_in, opt_area_surface_area_surface=opt_area_surface_area_surface, opt_weight_metric_weight_metric=opt_weight_metric_weight_metric, opt_column_column=opt_column_column, roi=roi, opt_mean=opt_mean, stdev=stdev, opt_percentile_percent=opt_percentile_percent, opt_sum=opt_sum, opt_show_map_name=opt_show_map_name)
+    params = metric_weighted_stats_params(
+        metric_in=metric_in,
+        opt_area_surface_area_surface=opt_area_surface_area_surface,
+        opt_weight_metric_weight_metric=opt_weight_metric_weight_metric,
+        opt_column_column=opt_column_column,
+        roi=roi,
+        opt_mean=opt_mean,
+        stdev=stdev,
+        opt_percentile_percent=opt_percentile_percent,
+        opt_sum=opt_sum,
+        opt_show_map_name=opt_show_map_name,
+    )
     return metric_weighted_stats_execute(params, execution)
 
 

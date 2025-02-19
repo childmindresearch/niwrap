@@ -11,6 +11,8 @@ MRI_CONCATENATE_GCAM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriConcatenateGcamParameters = typing.TypedDict('MriConcatenateGcamParameters', {
     "__STYX_TYPE__": typing.Literal["mri_concatenate_gcam"],
     "inputs": list[InputPathType],
@@ -222,7 +224,15 @@ def mri_concatenate_gcam(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CONCATENATE_GCAM_METADATA)
-    params = mri_concatenate_gcam_params(inputs=inputs, output=output, source_image=source_image, target_image=target_image, reduce=reduce, invert=invert, downsample=downsample)
+    params = mri_concatenate_gcam_params(
+        inputs=inputs,
+        output=output,
+        source_image=source_image,
+        target_image=target_image,
+        reduce=reduce,
+        invert=invert,
+        downsample=downsample,
+    )
     return mri_concatenate_gcam_execute(params, execution)
 
 

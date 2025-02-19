@@ -11,6 +11,8 @@ MRI_MERGELABELS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMergelabelsParameters = typing.TypedDict('MriMergelabelsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_mergelabels"],
     "input_labels": list[InputPathType],
@@ -184,7 +186,11 @@ def mri_mergelabels(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MERGELABELS_METADATA)
-    params = mri_mergelabels_params(input_labels=input_labels, output_label=output_label, input_directory=input_directory)
+    params = mri_mergelabels_params(
+        input_labels=input_labels,
+        output_label=output_label,
+        input_directory=input_directory,
+    )
     return mri_mergelabels_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_WINSOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dWinsorParameters = typing.TypedDict('V3dWinsorParameters', {
     "__STYX_TYPE__": typing.Literal["3dWinsor"],
     "irad": typing.NotRequired[float | None],
@@ -262,7 +264,17 @@ def v_3d_winsor(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_WINSOR_METADATA)
-    params = v_3d_winsor_params(irad=irad, cbot=cbot, ctop=ctop, nrep=nrep, keepzero=keepzero, clip=clip, prefix=prefix, mask=mask, dataset=dataset)
+    params = v_3d_winsor_params(
+        irad=irad,
+        cbot=cbot,
+        ctop=ctop,
+        nrep=nrep,
+        keepzero=keepzero,
+        clip=clip,
+        prefix=prefix,
+        mask=mask,
+        dataset=dataset,
+    )
     return v_3d_winsor_execute(params, execution)
 
 

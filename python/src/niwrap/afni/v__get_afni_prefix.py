@@ -11,6 +11,8 @@ V__GET_AFNI_PREFIX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VGetAfniPrefixParameters = typing.TypedDict('VGetAfniPrefixParameters', {
     "__STYX_TYPE__": typing.Literal["@GetAfniPrefix"],
     "name": InputPathType,
@@ -164,7 +166,10 @@ def v__get_afni_prefix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_PREFIX_METADATA)
-    params = v__get_afni_prefix_params(name=name, suffix=suffix)
+    params = v__get_afni_prefix_params(
+        name=name,
+        suffix=suffix,
+    )
     return v__get_afni_prefix_execute(params, execution)
 
 

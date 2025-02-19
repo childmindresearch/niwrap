@@ -11,6 +11,8 @@ TILE_IMAGES_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 TileImagesParameters = typing.TypedDict('TileImagesParameters', {
     "__STYX_TYPE__": typing.Literal["TileImages"],
     "image_dimension": int,
@@ -190,7 +192,12 @@ def tile_images(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TILE_IMAGES_METADATA)
-    params = tile_images_params(image_dimension=image_dimension, output_image=output_image, layout=layout, input_images=input_images)
+    params = tile_images_params(
+        image_dimension=image_dimension,
+        output_image=output_image,
+        layout=layout,
+        input_images=input_images,
+    )
     return tile_images_execute(params, execution)
 
 

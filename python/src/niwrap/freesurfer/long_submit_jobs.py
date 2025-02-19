@@ -11,6 +11,8 @@ LONG_SUBMIT_JOBS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongSubmitJobsParameters = typing.TypedDict('LongSubmitJobsParameters', {
     "__STYX_TYPE__": typing.Literal["long_submit_jobs"],
     "qdec": InputPathType,
@@ -422,7 +424,33 @@ def long_submit_jobs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_SUBMIT_JOBS_METADATA)
-    params = long_submit_jobs_params(qdec=qdec, cdir=cdir, bdir=bdir, ldir=ldir, scriptsdir=scriptsdir, cross=cross, base=base, long=long, cflags=cflags, bflags=bflags, lflags=lflags, affine=affine, force=force, simulate=simulate, simfiles=simfiles, check=check, pause=pause, max_=max_, queue_=queue_, cmem=cmem, bmem=bmem, lmem=lmem, cnodes=cnodes, bnodes=bnodes, lnodes=lnodes)
+    params = long_submit_jobs_params(
+        qdec=qdec,
+        cdir=cdir,
+        bdir=bdir,
+        ldir=ldir,
+        scriptsdir=scriptsdir,
+        cross=cross,
+        base=base,
+        long=long,
+        cflags=cflags,
+        bflags=bflags,
+        lflags=lflags,
+        affine=affine,
+        force=force,
+        simulate=simulate,
+        simfiles=simfiles,
+        check=check,
+        pause=pause,
+        max_=max_,
+        queue_=queue_,
+        cmem=cmem,
+        bmem=bmem,
+        lmem=lmem,
+        cnodes=cnodes,
+        bnodes=bnodes,
+        lnodes=lnodes,
+    )
     return long_submit_jobs_execute(params, execution)
 
 

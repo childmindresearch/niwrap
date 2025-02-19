@@ -11,6 +11,8 @@ V_3DANISOSMOOTH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3danisosmoothParameters = typing.TypedDict('V3danisosmoothParameters', {
     "__STYX_TYPE__": typing.Literal["3danisosmooth"],
     "input_dataset": InputPathType,
@@ -398,7 +400,30 @@ def v_3danisosmooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DANISOSMOOTH_METADATA)
-    params = v_3danisosmooth_params(input_dataset=input_dataset, prefix=prefix, iterations=iterations, v_2d_flag=v_2d_flag, v_3d_flag=v_3d_flag, mask_dataset=mask_dataset, automask_flag=automask_flag, viewer_flag=viewer_flag, nosmooth_flag=nosmooth_flag, sigma1=sigma1, sigma2=sigma2, deltat=deltat, savetempdata_flag=savetempdata_flag, save_temp_with_diff_measures_flag=save_temp_with_diff_measures_flag, phiding_flag=phiding_flag, phiexp_flag=phiexp_flag, noneg_flag=noneg_flag, setneg_value=setneg_value, edgefraction=edgefraction, datum_type=datum_type, matchorig_flag=matchorig_flag, help_flag=help_flag)
+    params = v_3danisosmooth_params(
+        input_dataset=input_dataset,
+        prefix=prefix,
+        iterations=iterations,
+        v_2d_flag=v_2d_flag,
+        v_3d_flag=v_3d_flag,
+        mask_dataset=mask_dataset,
+        automask_flag=automask_flag,
+        viewer_flag=viewer_flag,
+        nosmooth_flag=nosmooth_flag,
+        sigma1=sigma1,
+        sigma2=sigma2,
+        deltat=deltat,
+        savetempdata_flag=savetempdata_flag,
+        save_temp_with_diff_measures_flag=save_temp_with_diff_measures_flag,
+        phiding_flag=phiding_flag,
+        phiexp_flag=phiexp_flag,
+        noneg_flag=noneg_flag,
+        setneg_value=setneg_value,
+        edgefraction=edgefraction,
+        datum_type=datum_type,
+        matchorig_flag=matchorig_flag,
+        help_flag=help_flag,
+    )
     return v_3danisosmooth_execute(params, execution)
 
 

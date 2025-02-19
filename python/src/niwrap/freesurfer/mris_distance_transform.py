@@ -11,6 +11,8 @@ MRIS_DISTANCE_TRANSFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisDistanceTransformParameters = typing.TypedDict('MrisDistanceTransformParameters', {
     "__STYX_TYPE__": typing.Literal["mris_distance_transform"],
     "surface": InputPathType,
@@ -226,7 +228,16 @@ def mris_distance_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DISTANCE_TRANSFORM_METADATA)
-    params = mris_distance_transform_params(surface=surface, label=label, mode=mode, output_file=output_file, anterior=anterior, posterior=posterior, divide=divide, olabel=olabel)
+    params = mris_distance_transform_params(
+        surface=surface,
+        label=label,
+        mode=mode,
+        output_file=output_file,
+        anterior=anterior,
+        posterior=posterior,
+        divide=divide,
+        olabel=olabel,
+    )
     return mris_distance_transform_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FS_UPDATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsUpdateParameters = typing.TypedDict('FsUpdateParameters', {
     "__STYX_TYPE__": typing.Literal["fs_update"],
     "update_path": typing.NotRequired[str | None],
@@ -167,7 +169,10 @@ def fs_update(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_UPDATE_METADATA)
-    params = fs_update_params(update_path=update_path, help_long=help_long)
+    params = fs_update_params(
+        update_path=update_path,
+        help_long=help_long,
+    )
     return fs_update_execute(params, execution)
 
 

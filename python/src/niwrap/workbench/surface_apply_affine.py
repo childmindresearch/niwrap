@@ -11,11 +11,15 @@ SURFACE_APPLY_AFFINE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceApplyAffineFlirtParameters = typing.TypedDict('SurfaceApplyAffineFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["flirt"],
     "source_volume": str,
     "target_volume": str,
 })
+
+
 SurfaceApplyAffineParameters = typing.TypedDict('SurfaceApplyAffineParameters', {
     "__STYX_TYPE__": typing.Literal["surface-apply-affine"],
     "in_surf": InputPathType,
@@ -242,7 +246,12 @@ def surface_apply_affine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_APPLY_AFFINE_METADATA)
-    params = surface_apply_affine_params(in_surf=in_surf, affine=affine, out_surf=out_surf, flirt=flirt)
+    params = surface_apply_affine_params(
+        in_surf=in_surf,
+        affine=affine,
+        out_surf=out_surf,
+        flirt=flirt,
+    )
     return surface_apply_affine_execute(params, execution)
 
 

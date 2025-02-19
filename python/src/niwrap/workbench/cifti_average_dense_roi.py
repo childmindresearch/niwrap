@@ -11,15 +11,21 @@ CIFTI_AVERAGE_DENSE_ROI_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiAverageDenseRoiCiftiRoiParameters = typing.TypedDict('CiftiAverageDenseRoiCiftiRoiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti_roi"],
     "roi_cifti": InputPathType,
     "opt_in_memory": bool,
 })
+
+
 CiftiAverageDenseRoiCiftiParameters = typing.TypedDict('CiftiAverageDenseRoiCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti"],
     "cifti_in": InputPathType,
 })
+
+
 CiftiAverageDenseRoiParameters = typing.TypedDict('CiftiAverageDenseRoiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-average-dense-roi"],
     "cifti_out": str,
@@ -379,7 +385,18 @@ def cifti_average_dense_roi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_AVERAGE_DENSE_ROI_METADATA)
-    params = cifti_average_dense_roi_params(cifti_out=cifti_out, cifti_roi=cifti_roi, opt_left_roi_roi_metric=opt_left_roi_roi_metric, opt_right_roi_roi_metric=opt_right_roi_roi_metric, opt_cerebellum_roi_roi_metric=opt_cerebellum_roi_roi_metric, opt_vol_roi_roi_vol=opt_vol_roi_roi_vol, opt_left_area_surf_left_surf=opt_left_area_surf_left_surf, opt_right_area_surf_right_surf=opt_right_area_surf_right_surf, opt_cerebellum_area_surf_cerebellum_surf=opt_cerebellum_area_surf_cerebellum_surf, cifti=cifti)
+    params = cifti_average_dense_roi_params(
+        cifti_out=cifti_out,
+        cifti_roi=cifti_roi,
+        opt_left_roi_roi_metric=opt_left_roi_roi_metric,
+        opt_right_roi_roi_metric=opt_right_roi_roi_metric,
+        opt_cerebellum_roi_roi_metric=opt_cerebellum_roi_roi_metric,
+        opt_vol_roi_roi_vol=opt_vol_roi_roi_vol,
+        opt_left_area_surf_left_surf=opt_left_area_surf_left_surf,
+        opt_right_area_surf_right_surf=opt_right_area_surf_right_surf,
+        opt_cerebellum_area_surf_cerebellum_surf=opt_cerebellum_area_surf_cerebellum_surf,
+        cifti=cifti,
+    )
     return cifti_average_dense_roi_execute(params, execution)
 
 

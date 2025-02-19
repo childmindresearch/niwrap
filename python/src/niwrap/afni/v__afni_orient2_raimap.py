@@ -11,6 +11,8 @@ V__AFNI_ORIENT2_RAIMAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniOrient2RaimapParameters = typing.TypedDict('VAfniOrient2RaimapParameters', {
     "__STYX_TYPE__": typing.Literal["@AfniOrient2RAImap"],
     "orientation_code": str,
@@ -155,7 +157,9 @@ def v__afni_orient2_raimap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_ORIENT2_RAIMAP_METADATA)
-    params = v__afni_orient2_raimap_params(orientation_code=orientation_code)
+    params = v__afni_orient2_raimap_params(
+        orientation_code=orientation_code,
+    )
     return v__afni_orient2_raimap_execute(params, execution)
 
 

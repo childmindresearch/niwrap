@@ -11,6 +11,8 @@ DMRI_PATHSTATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriPathstatsParameters = typing.TypedDict('DmriPathstatsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_pathstats"],
     "intrk": InputPathType,
@@ -372,7 +374,27 @@ def dmri_pathstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_PATHSTATS_METADATA)
-    params = dmri_pathstats_params(intrk=intrk, rois=rois, intrc=intrc, meas=meas, measname=measname, dtbase=dtbase, path=path, subj=subj, out=out, outvox=outvox, median=median, ends=ends, ref=ref, pthr=pthr, fthr=fthr, debug=debug, checkopts=checkopts, help_=help_, version=version)
+    params = dmri_pathstats_params(
+        intrk=intrk,
+        rois=rois,
+        intrc=intrc,
+        meas=meas,
+        measname=measname,
+        dtbase=dtbase,
+        path=path,
+        subj=subj,
+        out=out,
+        outvox=outvox,
+        median=median,
+        ends=ends,
+        ref=ref,
+        pthr=pthr,
+        fthr=fthr,
+        debug=debug,
+        checkopts=checkopts,
+        help_=help_,
+        version=version,
+    )
     return dmri_pathstats_execute(params, execution)
 
 

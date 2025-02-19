@@ -11,6 +11,8 @@ MRI_EVALUATE_MORPH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEvaluateMorphParameters = typing.TypedDict('MriEvaluateMorphParameters', {
     "__STYX_TYPE__": typing.Literal["mri_evaluate_morph"],
     "xform_name": InputPathType,
@@ -175,7 +177,11 @@ def mri_evaluate_morph(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EVALUATE_MORPH_METADATA)
-    params = mri_evaluate_morph_params(xform_name=xform_name, segmentation_files=segmentation_files, output_file=output_file)
+    params = mri_evaluate_morph_params(
+        xform_name=xform_name,
+        segmentation_files=segmentation_files,
+        output_file=output_file,
+    )
     return mri_evaluate_morph_execute(params, execution)
 
 

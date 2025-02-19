@@ -11,6 +11,8 @@ DSETSTAT2P_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 Dsetstat2pParameters = typing.TypedDict('Dsetstat2pParameters', {
     "__STYX_TYPE__": typing.Literal["dsetstat2p"],
     "dataset": str,
@@ -198,7 +200,12 @@ def dsetstat2p(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DSETSTAT2P_METADATA)
-    params = dsetstat2p_params(dataset=dataset, statval=statval, one_sided=one_sided, quiet=quiet)
+    params = dsetstat2p_params(
+        dataset=dataset,
+        statval=statval,
+        one_sided=one_sided,
+        quiet=quiet,
+    )
     return dsetstat2p_execute(params, execution)
 
 

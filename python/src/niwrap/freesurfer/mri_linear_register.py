@@ -11,6 +11,8 @@ MRI_LINEAR_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLinearRegisterParameters = typing.TypedDict('MriLinearRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_linear_register"],
     "input_brain": InputPathType,
@@ -173,7 +175,11 @@ def mri_linear_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LINEAR_REGISTER_METADATA)
-    params = mri_linear_register_params(input_brain=input_brain, template=template, output_file=output_file)
+    params = mri_linear_register_params(
+        input_brain=input_brain,
+        template=template,
+        output_file=output_file,
+    )
     return mri_linear_register_execute(params, execution)
 
 

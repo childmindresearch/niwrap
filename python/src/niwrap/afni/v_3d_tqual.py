@@ -11,6 +11,8 @@ V_3D_TQUAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTqualParameters = typing.TypedDict('V3dTqualParameters', {
     "__STYX_TYPE__": typing.Literal["3dTqual"],
     "dataset": InputPathType,
@@ -237,7 +239,16 @@ def v_3d_tqual(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TQUAL_METADATA)
-    params = v_3d_tqual_params(dataset=dataset, spearman=spearman, quadrant=quadrant, autoclip=autoclip, automask=automask, clip=clip, mask=mask, range_=range_)
+    params = v_3d_tqual_params(
+        dataset=dataset,
+        spearman=spearman,
+        quadrant=quadrant,
+        autoclip=autoclip,
+        automask=automask,
+        clip=clip,
+        mask=mask,
+        range_=range_,
+    )
     return v_3d_tqual_execute(params, execution)
 
 

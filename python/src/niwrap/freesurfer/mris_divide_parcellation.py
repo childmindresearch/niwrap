@@ -11,6 +11,8 @@ MRIS_DIVIDE_PARCELLATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisDivideParcellationParameters = typing.TypedDict('MrisDivideParcellationParameters', {
     "__STYX_TYPE__": typing.Literal["mris_divide_parcellation"],
     "subject": str,
@@ -215,7 +217,15 @@ def mris_divide_parcellation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DIVIDE_PARCELLATION_METADATA)
-    params = mris_divide_parcellation_params(subject=subject, hemi=hemi, sourceannot=sourceannot, splitfile_or_areathresh=splitfile_or_areathresh, outannot=outannot, scale=scale, label_name=label_name)
+    params = mris_divide_parcellation_params(
+        subject=subject,
+        hemi=hemi,
+        sourceannot=sourceannot,
+        splitfile_or_areathresh=splitfile_or_areathresh,
+        outannot=outannot,
+        scale=scale,
+        label_name=label_name,
+    )
     return mris_divide_parcellation_execute(params, execution)
 
 

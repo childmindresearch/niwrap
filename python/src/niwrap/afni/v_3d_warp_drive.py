@@ -11,6 +11,8 @@ V_3D_WARP_DRIVE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dWarpDriveParameters = typing.TypedDict('V3dWarpDriveParameters', {
     "__STYX_TYPE__": typing.Literal["3dWarpDrive"],
     "dataset": InputPathType,
@@ -544,7 +546,44 @@ def v_3d_warp_drive(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_WARP_DRIVE_METADATA)
-    params = v_3d_warp_drive_params(dataset=dataset, base_dataset=base_dataset, prefix=prefix, shift_only=shift_only, shift_rotate=shift_rotate, shift_rotate_scale=shift_rotate_scale, affine_general=affine_general, bilinear_general=bilinear_general, linear=linear, cubic=cubic, nn=nn, quintic=quintic, input_dataset=input_dataset, verbosity_flag=verbosity_flag, summary_file=summary_file, max_iterations=max_iterations, delta=delta, weight=weight, convergence_thresh=convergence_thresh, twopass=twopass, final_mode=final_mode, parfix=parfix, oned_file=oned_file, float_format=float_format, coarserot_init=coarserot_init, oned_matrix_save=oned_matrix_save, sdu_order=sdu_order, sud_order=sud_order, dsu_order=dsu_order, dus_order=dus_order, usd_order=usd_order, uds_order=uds_order, supper_s_matrix=supper_s_matrix, slower_s_matrix=slower_s_matrix, ashift=ashift, bshift=bshift)
+    params = v_3d_warp_drive_params(
+        dataset=dataset,
+        base_dataset=base_dataset,
+        prefix=prefix,
+        shift_only=shift_only,
+        shift_rotate=shift_rotate,
+        shift_rotate_scale=shift_rotate_scale,
+        affine_general=affine_general,
+        bilinear_general=bilinear_general,
+        linear=linear,
+        cubic=cubic,
+        nn=nn,
+        quintic=quintic,
+        input_dataset=input_dataset,
+        verbosity_flag=verbosity_flag,
+        summary_file=summary_file,
+        max_iterations=max_iterations,
+        delta=delta,
+        weight=weight,
+        convergence_thresh=convergence_thresh,
+        twopass=twopass,
+        final_mode=final_mode,
+        parfix=parfix,
+        oned_file=oned_file,
+        float_format=float_format,
+        coarserot_init=coarserot_init,
+        oned_matrix_save=oned_matrix_save,
+        sdu_order=sdu_order,
+        sud_order=sud_order,
+        dsu_order=dsu_order,
+        dus_order=dus_order,
+        usd_order=usd_order,
+        uds_order=uds_order,
+        supper_s_matrix=supper_s_matrix,
+        slower_s_matrix=slower_s_matrix,
+        ashift=ashift,
+        bshift=bshift,
+    )
     return v_3d_warp_drive_execute(params, execution)
 
 

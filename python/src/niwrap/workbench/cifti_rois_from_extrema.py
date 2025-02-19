@@ -11,11 +11,15 @@ CIFTI_ROIS_FROM_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiRoisFromExtremaGaussianParameters = typing.TypedDict('CiftiRoisFromExtremaGaussianParameters', {
     "__STYX_TYPE__": typing.Literal["gaussian"],
     "surf_sigma": float,
     "vol_sigma": float,
 })
+
+
 CiftiRoisFromExtremaParameters = typing.TypedDict('CiftiRoisFromExtremaParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-rois-from-extrema"],
     "cifti": InputPathType,
@@ -328,7 +332,19 @@ def cifti_rois_from_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_ROIS_FROM_EXTREMA_METADATA)
-    params = cifti_rois_from_extrema_params(cifti=cifti, surf_limit=surf_limit, vol_limit=vol_limit, direction=direction, cifti_out=cifti_out, opt_left_surface_surface=opt_left_surface_surface, opt_right_surface_surface=opt_right_surface_surface, opt_cerebellum_surface_surface=opt_cerebellum_surface_surface, gaussian=gaussian, opt_overlap_logic_method=opt_overlap_logic_method, opt_merged_volume=opt_merged_volume)
+    params = cifti_rois_from_extrema_params(
+        cifti=cifti,
+        surf_limit=surf_limit,
+        vol_limit=vol_limit,
+        direction=direction,
+        cifti_out=cifti_out,
+        opt_left_surface_surface=opt_left_surface_surface,
+        opt_right_surface_surface=opt_right_surface_surface,
+        opt_cerebellum_surface_surface=opt_cerebellum_surface_surface,
+        gaussian=gaussian,
+        opt_overlap_logic_method=opt_overlap_logic_method,
+        opt_merged_volume=opt_merged_volume,
+    )
     return cifti_rois_from_extrema_execute(params, execution)
 
 

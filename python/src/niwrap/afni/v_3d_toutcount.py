@@ -11,6 +11,8 @@ V_3D_TOUTCOUNT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dToutcountParameters = typing.TypedDict('V3dToutcountParameters', {
     "__STYX_TYPE__": typing.Literal["3dToutcount"],
     "input_dataset": str,
@@ -259,7 +261,18 @@ def v_3d_toutcount(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TOUTCOUNT_METADATA)
-    params = v_3d_toutcount_params(input_dataset=input_dataset, output_prefix=output_prefix, mask_dataset=mask_dataset, q_threshold=q_threshold, autoclip=autoclip, automask=automask, fraction=fraction, range_=range_, polort_order=polort_order, legendre=legendre)
+    params = v_3d_toutcount_params(
+        input_dataset=input_dataset,
+        output_prefix=output_prefix,
+        mask_dataset=mask_dataset,
+        q_threshold=q_threshold,
+        autoclip=autoclip,
+        automask=automask,
+        fraction=fraction,
+        range_=range_,
+        polort_order=polort_order,
+        legendre=legendre,
+    )
     return v_3d_toutcount_execute(params, execution)
 
 

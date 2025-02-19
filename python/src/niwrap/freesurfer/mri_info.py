@@ -11,6 +11,8 @@ MRI_INFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriInfoParameters = typing.TypedDict('MriInfoParameters', {
     "__STYX_TYPE__": typing.Literal["mri_info"],
     "input1": InputPathType,
@@ -578,7 +580,60 @@ def mri_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_INFO_METADATA)
-    params = mri_info_params(input1=input1, input2=input2, conformed=conformed, conformed_to_min=conformed_to_min, is_1mm_iso=is_1mm_iso, type_=type_, tr=tr, te=te, ti=ti, fa=fa, pedir=pedir, res=res, cres=cres, rres=rres, sres=sres, voxvol=voxvol, voxvolsum=voxvolsum, ncols=ncols, nrows=nrows, nslices=nslices, dim=dim, cdc=cdc, rdc=rdc, sdc=sdc, vox2ras=vox2ras, ras2vox=ras2vox, vox2ras_tkr=vox2ras_tkr, ras2vox_tkr=ras2vox_tkr, vox2ras_fsl=vox2ras_fsl, tkr2scanner=tkr2scanner, scanner2tkr=scanner2tkr, ras_good=ras_good, cras=cras, center=center, zero_cras=zero_cras, p0=p0, det=det, dof=dof, nframes=nframes, mid_frame=mid_frame, format_=format_, orientation=orientation, slicedirection=slicedirection, autoalign=autoalign, ctab=ctab, cmds=cmds, dump=dump, voxel_crs=voxel_crs, entropy=entropy, output_file=output_file, orig_ras2vox=orig_ras2vox, in_type=in_type)
+    params = mri_info_params(
+        input1=input1,
+        input2=input2,
+        conformed=conformed,
+        conformed_to_min=conformed_to_min,
+        is_1mm_iso=is_1mm_iso,
+        type_=type_,
+        tr=tr,
+        te=te,
+        ti=ti,
+        fa=fa,
+        pedir=pedir,
+        res=res,
+        cres=cres,
+        rres=rres,
+        sres=sres,
+        voxvol=voxvol,
+        voxvolsum=voxvolsum,
+        ncols=ncols,
+        nrows=nrows,
+        nslices=nslices,
+        dim=dim,
+        cdc=cdc,
+        rdc=rdc,
+        sdc=sdc,
+        vox2ras=vox2ras,
+        ras2vox=ras2vox,
+        vox2ras_tkr=vox2ras_tkr,
+        ras2vox_tkr=ras2vox_tkr,
+        vox2ras_fsl=vox2ras_fsl,
+        tkr2scanner=tkr2scanner,
+        scanner2tkr=scanner2tkr,
+        ras_good=ras_good,
+        cras=cras,
+        center=center,
+        zero_cras=zero_cras,
+        p0=p0,
+        det=det,
+        dof=dof,
+        nframes=nframes,
+        mid_frame=mid_frame,
+        format_=format_,
+        orientation=orientation,
+        slicedirection=slicedirection,
+        autoalign=autoalign,
+        ctab=ctab,
+        cmds=cmds,
+        dump=dump,
+        voxel_crs=voxel_crs,
+        entropy=entropy,
+        output_file=output_file,
+        orig_ras2vox=orig_ras2vox,
+        in_type=in_type,
+    )
     return mri_info_execute(params, execution)
 
 

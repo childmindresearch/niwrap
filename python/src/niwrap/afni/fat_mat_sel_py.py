@@ -11,6 +11,8 @@ FAT_MAT_SEL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatMatSelPyParameters = typing.TypedDict('FatMatSelPyParameters', {
     "__STYX_TYPE__": typing.Literal["fat_mat_sel.py"],
     "parameters": str,
@@ -430,7 +432,31 @@ def fat_mat_sel_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MAT_SEL_PY_METADATA)
-    params = fat_mat_sel_py_params(parameters=parameters, matr_in=matr_in, list_match=list_match, out_ind_matr=out_ind_matr, out_ind_1ddset=out_ind_1ddset, hold_image=hold_image, extern_labs_no=extern_labs_no, type_file=type_file, dpi_file=dpi_file, xlen_file=xlen_file, ylen_file=ylen_file, tight_layout_on=tight_layout_on, fig_off=fig_off, size_font=size_font, lab_size_font=lab_size_font, a_plotmin=a_plotmin, b_plotmax=b_plotmax, cbar_off=cbar_off, map_of_colors=map_of_colors, cbar_int_num=cbar_int_num, width_cbar_perc=width_cbar_perc, specifier=specifier, xtick_lab_off=xtick_lab_off)
+    params = fat_mat_sel_py_params(
+        parameters=parameters,
+        matr_in=matr_in,
+        list_match=list_match,
+        out_ind_matr=out_ind_matr,
+        out_ind_1ddset=out_ind_1ddset,
+        hold_image=hold_image,
+        extern_labs_no=extern_labs_no,
+        type_file=type_file,
+        dpi_file=dpi_file,
+        xlen_file=xlen_file,
+        ylen_file=ylen_file,
+        tight_layout_on=tight_layout_on,
+        fig_off=fig_off,
+        size_font=size_font,
+        lab_size_font=lab_size_font,
+        a_plotmin=a_plotmin,
+        b_plotmax=b_plotmax,
+        cbar_off=cbar_off,
+        map_of_colors=map_of_colors,
+        cbar_int_num=cbar_int_num,
+        width_cbar_perc=width_cbar_perc,
+        specifier=specifier,
+        xtick_lab_off=xtick_lab_off,
+    )
     return fat_mat_sel_py_execute(params, execution)
 
 

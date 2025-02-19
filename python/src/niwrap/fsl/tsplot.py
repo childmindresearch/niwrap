@@ -11,6 +11,8 @@ TSPLOT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TsplotParameters = typing.TypedDict('TsplotParameters', {
     "__STYX_TYPE__": typing.Literal["tsplot"],
     "input_directory": str,
@@ -249,7 +251,17 @@ def tsplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TSPLOT_METADATA)
-    params = tsplot_params(input_directory=input_directory, main_filtered_data=main_filtered_data, coordinates=coordinates, coordinates_output=coordinates_output, mask=mask, output_directory=output_directory, no_weight_flag=no_weight_flag, prewhiten_flag=prewhiten_flag, no_raw_flag=no_raw_flag)
+    params = tsplot_params(
+        input_directory=input_directory,
+        main_filtered_data=main_filtered_data,
+        coordinates=coordinates,
+        coordinates_output=coordinates_output,
+        mask=mask,
+        output_directory=output_directory,
+        no_weight_flag=no_weight_flag,
+        prewhiten_flag=prewhiten_flag,
+        no_raw_flag=no_raw_flag,
+    )
     return tsplot_execute(params, execution)
 
 

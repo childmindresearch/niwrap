@@ -11,6 +11,8 @@ REGDAT2XFM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Regdat2xfmParameters = typing.TypedDict('Regdat2xfmParameters', {
     "__STYX_TYPE__": typing.Literal["regdat2xfm"],
     "input_file": InputPathType,
@@ -162,7 +164,10 @@ def regdat2xfm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGDAT2XFM_METADATA)
-    params = regdat2xfm_params(input_file=input_file, output_file=output_file)
+    params = regdat2xfm_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return regdat2xfm_execute(params, execution)
 
 

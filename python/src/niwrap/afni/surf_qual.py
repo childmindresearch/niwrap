@@ -11,6 +11,8 @@ SURF_QUAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfQualParameters = typing.TypedDict('SurfQualParameters', {
     "__STYX_TYPE__": typing.Literal["SurfQual"],
     "spec_file": InputPathType,
@@ -228,7 +230,14 @@ def surf_qual(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_QUAL_METADATA)
-    params = surf_qual_params(spec_file=spec_file, surface_a=surface_a, sphere_flag=sphere_flag, summary_flag=summary_flag, self_intersect_flag=self_intersect_flag, output_prefix=output_prefix)
+    params = surf_qual_params(
+        spec_file=spec_file,
+        surface_a=surface_a,
+        sphere_flag=sphere_flag,
+        summary_flag=summary_flag,
+        self_intersect_flag=self_intersect_flag,
+        output_prefix=output_prefix,
+    )
     return surf_qual_execute(params, execution)
 
 

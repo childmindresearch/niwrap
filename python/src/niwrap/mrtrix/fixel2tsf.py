@@ -11,11 +11,15 @@ FIXEL2TSF_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Fixel2tsfConfigParameters = typing.TypedDict('Fixel2tsfConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Fixel2tsfParameters = typing.TypedDict('Fixel2tsfParameters', {
     "__STYX_TYPE__": typing.Literal["fixel2tsf"],
     "angle": typing.NotRequired[float | None],
@@ -325,7 +329,20 @@ def fixel2tsf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXEL2TSF_METADATA)
-    params = fixel2tsf_params(angle=angle, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_in=fixel_in, tracks=tracks, tsf=tsf)
+    params = fixel2tsf_params(
+        angle=angle,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        fixel_in=fixel_in,
+        tracks=tracks,
+        tsf=tsf,
+    )
     return fixel2tsf_execute(params, execution)
 
 

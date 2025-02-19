@@ -11,15 +11,21 @@ SIMULATE_DISPLACEMENT_FIELD_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SimulateDisplacementFieldBsplineOptionsParameters = typing.TypedDict('SimulateDisplacementFieldBsplineOptionsParameters', {
     "__STYX_TYPE__": typing.Literal["bspline_options"],
     "number_of_fitting_levels": typing.NotRequired[int | None],
     "number_of_control_points": typing.NotRequired[int | None],
 })
+
+
 SimulateDisplacementFieldExponentialOptionsParameters = typing.TypedDict('SimulateDisplacementFieldExponentialOptionsParameters', {
     "__STYX_TYPE__": typing.Literal["exponential_options"],
     "smoothing_standard_deviation": typing.NotRequired[float | None],
 })
+
+
 SimulateDisplacementFieldParameters = typing.TypedDict('SimulateDisplacementFieldParameters', {
     "__STYX_TYPE__": typing.Literal["SimulateDisplacementField"],
     "image_dimension": int,
@@ -320,7 +326,16 @@ def simulate_displacement_field(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIMULATE_DISPLACEMENT_FIELD_METADATA)
-    params = simulate_displacement_field_params(image_dimension=image_dimension, displacement_field_type=displacement_field_type, domain_image=domain_image, output_field=output_field, number_of_random_points=number_of_random_points, standard_deviation_displacement_field=standard_deviation_displacement_field, enforce_stationary_boundary=enforce_stationary_boundary, displacement_specific_options=displacement_specific_options)
+    params = simulate_displacement_field_params(
+        image_dimension=image_dimension,
+        displacement_field_type=displacement_field_type,
+        domain_image=domain_image,
+        output_field=output_field,
+        number_of_random_points=number_of_random_points,
+        standard_deviation_displacement_field=standard_deviation_displacement_field,
+        enforce_stationary_boundary=enforce_stationary_boundary,
+        displacement_specific_options=displacement_specific_options,
+    )
     return simulate_displacement_field_execute(params, execution)
 
 

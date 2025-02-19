@@ -11,6 +11,8 @@ V_3D_WILCOXON_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dWilcoxonParameters = typing.TypedDict('V3dWilcoxonParameters', {
     "__STYX_TYPE__": typing.Literal["3dWilcoxon"],
     "workmem": typing.NotRequired[float | None],
@@ -210,7 +212,13 @@ def v_3d_wilcoxon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_WILCOXON_METADATA)
-    params = v_3d_wilcoxon_params(workmem=workmem, voxel=voxel, dset1_x=dset1_x, dset2_y=dset2_y, output_prefix=output_prefix)
+    params = v_3d_wilcoxon_params(
+        workmem=workmem,
+        voxel=voxel,
+        dset1_x=dset1_x,
+        dset2_y=dset2_y,
+        output_prefix=output_prefix,
+    )
     return v_3d_wilcoxon_execute(params, execution)
 
 

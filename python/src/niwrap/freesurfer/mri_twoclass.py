@@ -11,6 +11,8 @@ MRI_TWOCLASS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriTwoclassParameters = typing.TypedDict('MriTwoclassParameters', {
     "__STYX_TYPE__": typing.Literal["mri_twoclass"],
     "segmentation_volume": InputPathType,
@@ -208,7 +210,15 @@ def mri_twoclass(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_TWOCLASS_METADATA)
-    params = mri_twoclass_params(segmentation_volume=segmentation_volume, output_subject=output_subject, output_volume=output_volume, c1_subjects=c1_subjects, c2_subjects=c2_subjects, f_threshold=f_threshold, bonferroni_correction=bonferroni_correction)
+    params = mri_twoclass_params(
+        segmentation_volume=segmentation_volume,
+        output_subject=output_subject,
+        output_volume=output_volume,
+        c1_subjects=c1_subjects,
+        c2_subjects=c2_subjects,
+        f_threshold=f_threshold,
+        bonferroni_correction=bonferroni_correction,
+    )
     return mri_twoclass_execute(params, execution)
 
 

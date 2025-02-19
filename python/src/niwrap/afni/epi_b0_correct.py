@@ -11,6 +11,8 @@ EPI_B0_CORRECT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 EpiB0CorrectParameters = typing.TypedDict('EpiB0CorrectParameters', {
     "__STYX_TYPE__": typing.Literal["epi_b0_correct"],
     "prefix": str,
@@ -445,7 +447,32 @@ def epi_b0_correct(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EPI_B0_CORRECT_METADATA)
-    params = epi_b0_correct_params(prefix=prefix, input_freq=input_freq, input_epi=input_epi, input_mask=input_mask, input_magn=input_magn, input_anat=input_anat, input_json=input_json, epi_pe_dir=epi_pe_dir, epi_pe_bwpp=epi_pe_bwpp, epi_pe_echo_sp=epi_pe_echo_sp, epi_pe_vox_dim=epi_pe_vox_dim, scale_freq=scale_freq, out_cmds=out_cmds, out_pars=out_pars, wdir_name=wdir_name, blur_sigma=blur_sigma, do_recenter_freq=do_recenter_freq, mask_dilate=mask_dilate, no_clean=no_clean, qc_box_focus_ulay=qc_box_focus_ulay, no_qc_image=no_qc_image, help_=help_, ver=ver, date=date)
+    params = epi_b0_correct_params(
+        prefix=prefix,
+        input_freq=input_freq,
+        input_epi=input_epi,
+        input_mask=input_mask,
+        input_magn=input_magn,
+        input_anat=input_anat,
+        input_json=input_json,
+        epi_pe_dir=epi_pe_dir,
+        epi_pe_bwpp=epi_pe_bwpp,
+        epi_pe_echo_sp=epi_pe_echo_sp,
+        epi_pe_vox_dim=epi_pe_vox_dim,
+        scale_freq=scale_freq,
+        out_cmds=out_cmds,
+        out_pars=out_pars,
+        wdir_name=wdir_name,
+        blur_sigma=blur_sigma,
+        do_recenter_freq=do_recenter_freq,
+        mask_dilate=mask_dilate,
+        no_clean=no_clean,
+        qc_box_focus_ulay=qc_box_focus_ulay,
+        no_qc_image=no_qc_image,
+        help_=help_,
+        ver=ver,
+        date=date,
+    )
     return epi_b0_correct_execute(params, execution)
 
 

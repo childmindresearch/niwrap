@@ -11,6 +11,8 @@ MRIS_SEGMENTATION_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSegmentationStatsParameters = typing.TypedDict('MrisSegmentationStatsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_segmentation_stats"],
     "overlay_name": str,
@@ -180,7 +182,12 @@ def mris_segmentation_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SEGMENTATION_STATS_METADATA)
-    params = mris_segmentation_stats_params(overlay_name=overlay_name, segmentation_label_name=segmentation_label_name, subjects=subjects, roc_file=roc_file)
+    params = mris_segmentation_stats_params(
+        overlay_name=overlay_name,
+        segmentation_label_name=segmentation_label_name,
+        subjects=subjects,
+        roc_file=roc_file,
+    )
     return mris_segmentation_stats_execute(params, execution)
 
 

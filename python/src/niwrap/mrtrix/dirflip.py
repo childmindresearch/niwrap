@@ -11,11 +11,15 @@ DIRFLIP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DirflipConfigParameters = typing.TypedDict('DirflipConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DirflipParameters = typing.TypedDict('DirflipParameters', {
     "__STYX_TYPE__": typing.Literal["dirflip"],
     "permutations": typing.NotRequired[int | None],
@@ -330,7 +334,20 @@ def dirflip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DIRFLIP_METADATA)
-    params = dirflip_params(permutations=permutations, cartesian=cartesian, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_=in_, out=out)
+    params = dirflip_params(
+        permutations=permutations,
+        cartesian=cartesian,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_=in_,
+        out=out,
+    )
     return dirflip_execute(params, execution)
 
 

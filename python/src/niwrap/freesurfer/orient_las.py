@@ -11,6 +11,8 @@ ORIENT_LAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 OrientLasParameters = typing.TypedDict('OrientLasParameters', {
     "__STYX_TYPE__": typing.Literal["orientLAS"],
     "input_image": InputPathType,
@@ -176,7 +178,11 @@ def orient_las(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ORIENT_LAS_METADATA)
-    params = orient_las_params(input_image=input_image, output_image=output_image, check=check)
+    params = orient_las_params(
+        input_image=input_image,
+        output_image=output_image,
+        check=check,
+    )
     return orient_las_execute(params, execution)
 
 

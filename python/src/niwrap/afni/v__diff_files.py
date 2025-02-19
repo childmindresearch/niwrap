@@ -11,6 +11,8 @@ V__DIFF_FILES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDiffFilesParameters = typing.TypedDict('VDiffFilesParameters', {
     "__STYX_TYPE__": typing.Literal["@diff.files"],
     "files": list[str],
@@ -246,7 +248,19 @@ def v__diff_files(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DIFF_FILES_METADATA)
-    params = v__diff_files_params(files=files, old_dir=old_dir, diff_opts=diff_opts, diff_prog=diff_prog, ignore_missing=ignore_missing, longlist=longlist, save=save, show=show, xxdiff=xxdiff, x_flag=x_flag, verbosity=verbosity)
+    params = v__diff_files_params(
+        files=files,
+        old_dir=old_dir,
+        diff_opts=diff_opts,
+        diff_prog=diff_prog,
+        ignore_missing=ignore_missing,
+        longlist=longlist,
+        save=save,
+        show=show,
+        xxdiff=xxdiff,
+        x_flag=x_flag,
+        verbosity=verbosity,
+    )
     return v__diff_files_execute(params, execution)
 
 

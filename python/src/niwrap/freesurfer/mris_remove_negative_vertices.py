@@ -11,6 +11,8 @@ MRIS_REMOVE_NEGATIVE_VERTICES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRemoveNegativeVerticesParameters = typing.TypedDict('MrisRemoveNegativeVerticesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_remove_negative_vertices"],
     "surface_file": InputPathType,
@@ -173,7 +175,11 @@ def mris_remove_negative_vertices(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REMOVE_NEGATIVE_VERTICES_METADATA)
-    params = mris_remove_negative_vertices_params(surface_file=surface_file, patch_file=patch_file, output_patch=output_patch)
+    params = mris_remove_negative_vertices_params(
+        surface_file=surface_file,
+        patch_file=patch_file,
+        output_patch=output_patch,
+    )
     return mris_remove_negative_vertices_execute(params, execution)
 
 

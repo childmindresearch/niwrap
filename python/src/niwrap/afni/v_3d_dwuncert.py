@@ -11,6 +11,8 @@ V_3D_DWUNCERT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDwuncertParameters = typing.TypedDict('V3dDwuncertParameters', {
     "__STYX_TYPE__": typing.Literal["3dDWUncert"],
     "input_file": InputPathType,
@@ -258,7 +260,17 @@ def v_3d_dwuncert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DWUNCERT_METADATA)
-    params = v_3d_dwuncert_params(input_file=input_file, input_prefix=input_prefix, output_prefix=output_prefix, grad_file=grad_file, bmatrix_file=bmatrix_file, num_iters=num_iters, mask_file=mask_file, calc_thr_fa=calc_thr_fa, csf_fa=csf_fa)
+    params = v_3d_dwuncert_params(
+        input_file=input_file,
+        input_prefix=input_prefix,
+        output_prefix=output_prefix,
+        grad_file=grad_file,
+        bmatrix_file=bmatrix_file,
+        num_iters=num_iters,
+        mask_file=mask_file,
+        calc_thr_fa=calc_thr_fa,
+        csf_fa=csf_fa,
+    )
     return v_3d_dwuncert_execute(params, execution)
 
 

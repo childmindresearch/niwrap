@@ -11,6 +11,8 @@ V_3DFRACTIONIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dfractionizeParameters = typing.TypedDict('V3dfractionizeParameters', {
     "__STYX_TYPE__": typing.Literal["3dfractionize"],
     "template": InputPathType,
@@ -238,7 +240,15 @@ def v_3dfractionize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DFRACTIONIZE_METADATA)
-    params = v_3dfractionize_params(template=template, input_=input_, prefix=prefix, clip=clip, warp=warp, preserve=preserve, vote=vote)
+    params = v_3dfractionize_params(
+        template=template,
+        input_=input_,
+        prefix=prefix,
+        clip=clip,
+        warp=warp,
+        preserve=preserve,
+        vote=vote,
+    )
     return v_3dfractionize_execute(params, execution)
 
 

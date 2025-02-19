@@ -11,6 +11,8 @@ BAYESIAN_GROUP_ANA_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 BayesianGroupAnaPyParameters = typing.TypedDict('BayesianGroupAnaPyParameters', {
     "__STYX_TYPE__": typing.Literal["BayesianGroupAna.py"],
     "dataTable": InputPathType,
@@ -312,7 +314,22 @@ def bayesian_group_ana_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BAYESIAN_GROUP_ANA_PY_METADATA)
-    params = bayesian_group_ana_py_params(data_table=data_table, y_variable=y_variable, prefix=prefix, x_variables=x_variables, no_center=no_center, iterations=iterations, chains=chains, control_list=control_list, plot=plot, more_plots=more_plots, rdata=rdata, seed=seed, overwrite=overwrite, help_=help_)
+    params = bayesian_group_ana_py_params(
+        data_table=data_table,
+        y_variable=y_variable,
+        prefix=prefix,
+        x_variables=x_variables,
+        no_center=no_center,
+        iterations=iterations,
+        chains=chains,
+        control_list=control_list,
+        plot=plot,
+        more_plots=more_plots,
+        rdata=rdata,
+        seed=seed,
+        overwrite=overwrite,
+        help_=help_,
+    )
     return bayesian_group_ana_py_execute(params, execution)
 
 

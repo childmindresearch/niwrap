@@ -11,6 +11,8 @@ SFA2FIELDSIGN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Sfa2fieldsignParameters = typing.TypedDict('Sfa2fieldsignParameters', {
     "__STYX_TYPE__": typing.Literal["sfa2fieldsign"],
     "sfadir": str,
@@ -273,7 +275,18 @@ def sfa2fieldsign(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SFA2FIELDSIGN_METADATA)
-    params = sfa2fieldsign_params(sfadir=sfadir, register_dat=register_dat, threshold=threshold, fwhm=fwhm, proj_frac=proj_frac, occip=occip, patch=patch, osd=osd, lh=lh, rh=rh)
+    params = sfa2fieldsign_params(
+        sfadir=sfadir,
+        register_dat=register_dat,
+        threshold=threshold,
+        fwhm=fwhm,
+        proj_frac=proj_frac,
+        occip=occip,
+        patch=patch,
+        osd=osd,
+        lh=lh,
+        rh=rh,
+    )
     return sfa2fieldsign_execute(params, execution)
 
 

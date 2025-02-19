@@ -11,6 +11,8 @@ V__CLUST_EXP_RUN_SHINY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VClustExpRunShinyParameters = typing.TypedDict('VClustExpRunShinyParameters', {
     "__STYX_TYPE__": typing.Literal["@ClustExp_run_shiny"],
     "directory": str,
@@ -163,7 +165,10 @@ def v__clust_exp_run_shiny(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CLUST_EXP_RUN_SHINY_METADATA)
-    params = v__clust_exp_run_shiny_params(directory=directory, help_=help_)
+    params = v__clust_exp_run_shiny_params(
+        directory=directory,
+        help_=help_,
+    )
     return v__clust_exp_run_shiny_execute(params, execution)
 
 

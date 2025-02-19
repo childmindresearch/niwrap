@@ -11,6 +11,8 @@ MRI_TOPOLOGYCORRECTION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriTopologycorrectionParameters = typing.TypedDict('MriTopologycorrectionParameters', {
     "__STYX_TYPE__": typing.Literal["mri_topologycorrection"],
     "input_orig_file": InputPathType,
@@ -166,7 +168,10 @@ def mri_topologycorrection(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_TOPOLOGYCORRECTION_METADATA)
-    params = mri_topologycorrection_params(input_orig_file=input_orig_file, input_segmented_file=input_segmented_file)
+    params = mri_topologycorrection_params(
+        input_orig_file=input_orig_file,
+        input_segmented_file=input_segmented_file,
+    )
     return mri_topologycorrection_execute(params, execution)
 
 

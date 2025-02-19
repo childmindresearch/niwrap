@@ -11,6 +11,8 @@ LABEL2FLAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Label2flatParameters = typing.TypedDict('Label2flatParameters', {
     "__STYX_TYPE__": typing.Literal["label2flat"],
     "subject_name": str,
@@ -180,7 +182,12 @@ def label2flat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2FLAT_METADATA)
-    params = label2flat_params(subject_name=subject_name, label_file=label_file, patch_file=patch_file, output_file=output_file)
+    params = label2flat_params(
+        subject_name=subject_name,
+        label_file=label_file,
+        patch_file=patch_file,
+        output_file=output_file,
+    )
     return label2flat_execute(params, execution)
 
 

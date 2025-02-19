@@ -11,15 +11,21 @@ VECTORSTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 VectorstatsColumnParameters = typing.TypedDict('VectorstatsColumnParameters', {
     "__STYX_TYPE__": typing.Literal["column"],
     "path": InputPathType,
 })
+
+
 VectorstatsConfigParameters = typing.TypedDict('VectorstatsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 VectorstatsParameters = typing.TypedDict('VectorstatsParameters', {
     "__STYX_TYPE__": typing.Literal["vectorstats"],
     "notest": bool,
@@ -538,7 +544,31 @@ def vectorstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VECTORSTATS_METADATA)
-    params = vectorstats_params(notest=notest, errors=errors, exchange_within=exchange_within, exchange_whole=exchange_whole, strong=strong, nshuffles=nshuffles, permutations=permutations, variance=variance, ftests=ftests, fonly=fonly, column=column, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, design=design, contrast=contrast, output=output)
+    params = vectorstats_params(
+        notest=notest,
+        errors=errors,
+        exchange_within=exchange_within,
+        exchange_whole=exchange_whole,
+        strong=strong,
+        nshuffles=nshuffles,
+        permutations=permutations,
+        variance=variance,
+        ftests=ftests,
+        fonly=fonly,
+        column=column,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        design=design,
+        contrast=contrast,
+        output=output,
+    )
     return vectorstats_execute(params, execution)
 
 

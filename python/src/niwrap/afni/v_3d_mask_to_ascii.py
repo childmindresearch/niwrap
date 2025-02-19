@@ -11,6 +11,8 @@ V_3D_MASK_TO_ASCII_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMaskToAsciiParameters = typing.TypedDict('V3dMaskToAsciiParameters', {
     "__STYX_TYPE__": typing.Literal["3dMaskToASCII"],
     "tobin_flag": bool,
@@ -171,7 +173,10 @@ def v_3d_mask_to_ascii(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MASK_TO_ASCII_METADATA)
-    params = v_3d_mask_to_ascii_params(tobin_flag=tobin_flag, dataset=dataset)
+    params = v_3d_mask_to_ascii_params(
+        tobin_flag=tobin_flag,
+        dataset=dataset,
+    )
     return v_3d_mask_to_ascii_execute(params, execution)
 
 

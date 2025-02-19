@@ -11,25 +11,35 @@ MRREGISTER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrregisterTransformedParameters = typing.TypedDict('MrregisterTransformedParameters', {
     "__STYX_TYPE__": typing.Literal["transformed"],
     "image": str,
 })
+
+
 MrregisterTransformedMidwayParameters = typing.TypedDict('MrregisterTransformedMidwayParameters', {
     "__STYX_TYPE__": typing.Literal["transformed_midway"],
     "image1_transformed": str,
     "image2_transformed": str,
 })
+
+
 MrregisterNlWarpParameters = typing.TypedDict('MrregisterNlWarpParameters', {
     "__STYX_TYPE__": typing.Literal["nl_warp"],
     "warp1": str,
     "warp2": str,
 })
+
+
 MrregisterConfigParameters = typing.TypedDict('MrregisterConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrregisterParameters = typing.TypedDict('MrregisterParameters', {
     "__STYX_TYPE__": typing.Literal["mrregister"],
     "type": typing.NotRequired[str | None],
@@ -1573,7 +1583,76 @@ def mrregister(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRREGISTER_METADATA)
-    params = mrregister_params(type_=type_, transformed=transformed, transformed_midway=transformed_midway, mask1=mask1, mask2=mask2, nan=nan, rigid=rigid, rigid_1tomidway=rigid_1tomidway, rigid_2tomidway=rigid_2tomidway, rigid_init_translation=rigid_init_translation, rigid_init_rotation=rigid_init_rotation, rigid_init_matrix=rigid_init_matrix, rigid_scale=rigid_scale, rigid_niter=rigid_niter, rigid_metric=rigid_metric, rigid_metric_diff_estimator=rigid_metric_diff_estimator, rigid_lmax=rigid_lmax, rigid_log=rigid_log, affine=affine, affine_1tomidway=affine_1tomidway, affine_2tomidway=affine_2tomidway, affine_init_translation=affine_init_translation, affine_init_rotation=affine_init_rotation, affine_init_matrix=affine_init_matrix, affine_scale=affine_scale, affine_niter=affine_niter, affine_metric=affine_metric, affine_metric_diff_estimator=affine_metric_diff_estimator, affine_lmax=affine_lmax, affine_log=affine_log, init_translation_unmasked1=init_translation_unmasked1, init_translation_unmasked2=init_translation_unmasked2, init_rotation_unmasked1=init_rotation_unmasked1, init_rotation_unmasked2=init_rotation_unmasked2, init_rotation_search_angles=init_rotation_search_angles, init_rotation_search_scale=init_rotation_search_scale, init_rotation_search_directions=init_rotation_search_directions, init_rotation_search_run_global=init_rotation_search_run_global, init_rotation_search_global_iterations=init_rotation_search_global_iterations, linstage_iterations=linstage_iterations, linstage_optimiser_first=linstage_optimiser_first, linstage_optimiser_last=linstage_optimiser_last, linstage_optimiser_default=linstage_optimiser_default, linstage_diagnostics_prefix=linstage_diagnostics_prefix, nl_warp=nl_warp, nl_warp_full=nl_warp_full, nl_init=nl_init, nl_scale=nl_scale, nl_niter=nl_niter, nl_update_smooth=nl_update_smooth, nl_disp_smooth=nl_disp_smooth, nl_grad_step=nl_grad_step, nl_lmax=nl_lmax, diagnostics_image=diagnostics_image, directions=directions, noreorientation=noreorientation, mc_weights=mc_weights, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image1_image2=image1_image2, contrast1_contrast2=contrast1_contrast2)
+    params = mrregister_params(
+        type_=type_,
+        transformed=transformed,
+        transformed_midway=transformed_midway,
+        mask1=mask1,
+        mask2=mask2,
+        nan=nan,
+        rigid=rigid,
+        rigid_1tomidway=rigid_1tomidway,
+        rigid_2tomidway=rigid_2tomidway,
+        rigid_init_translation=rigid_init_translation,
+        rigid_init_rotation=rigid_init_rotation,
+        rigid_init_matrix=rigid_init_matrix,
+        rigid_scale=rigid_scale,
+        rigid_niter=rigid_niter,
+        rigid_metric=rigid_metric,
+        rigid_metric_diff_estimator=rigid_metric_diff_estimator,
+        rigid_lmax=rigid_lmax,
+        rigid_log=rigid_log,
+        affine=affine,
+        affine_1tomidway=affine_1tomidway,
+        affine_2tomidway=affine_2tomidway,
+        affine_init_translation=affine_init_translation,
+        affine_init_rotation=affine_init_rotation,
+        affine_init_matrix=affine_init_matrix,
+        affine_scale=affine_scale,
+        affine_niter=affine_niter,
+        affine_metric=affine_metric,
+        affine_metric_diff_estimator=affine_metric_diff_estimator,
+        affine_lmax=affine_lmax,
+        affine_log=affine_log,
+        init_translation_unmasked1=init_translation_unmasked1,
+        init_translation_unmasked2=init_translation_unmasked2,
+        init_rotation_unmasked1=init_rotation_unmasked1,
+        init_rotation_unmasked2=init_rotation_unmasked2,
+        init_rotation_search_angles=init_rotation_search_angles,
+        init_rotation_search_scale=init_rotation_search_scale,
+        init_rotation_search_directions=init_rotation_search_directions,
+        init_rotation_search_run_global=init_rotation_search_run_global,
+        init_rotation_search_global_iterations=init_rotation_search_global_iterations,
+        linstage_iterations=linstage_iterations,
+        linstage_optimiser_first=linstage_optimiser_first,
+        linstage_optimiser_last=linstage_optimiser_last,
+        linstage_optimiser_default=linstage_optimiser_default,
+        linstage_diagnostics_prefix=linstage_diagnostics_prefix,
+        nl_warp=nl_warp,
+        nl_warp_full=nl_warp_full,
+        nl_init=nl_init,
+        nl_scale=nl_scale,
+        nl_niter=nl_niter,
+        nl_update_smooth=nl_update_smooth,
+        nl_disp_smooth=nl_disp_smooth,
+        nl_grad_step=nl_grad_step,
+        nl_lmax=nl_lmax,
+        diagnostics_image=diagnostics_image,
+        directions=directions,
+        noreorientation=noreorientation,
+        mc_weights=mc_weights,
+        datatype=datatype,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        image1_image2=image1_image2,
+        contrast1_contrast2=contrast1_contrast2,
+    )
     return mrregister_execute(params, execution)
 
 

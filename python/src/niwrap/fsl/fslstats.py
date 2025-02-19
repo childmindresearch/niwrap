@@ -11,6 +11,8 @@ FSLSTATS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslstatsParameters = typing.TypedDict('FslstatsParameters', {
     "__STYX_TYPE__": typing.Literal["fslstats"],
     "input_file": InputPathType,
@@ -427,7 +429,36 @@ def fslstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSTATS_METADATA)
-    params = fslstats_params(input_file=input_file, index_mask=index_mask, lower_threshold=lower_threshold, upper_threshold=upper_threshold, robust_intensity_flag=robust_intensity_flag, minmax_intensity_flag=minmax_intensity_flag, voxels_volume_flag=voxels_volume_flag, nonzero_voxels_volume_flag=nonzero_voxels_volume_flag, mean_flag=mean_flag, nonzero_mean_flag=nonzero_mean_flag, std_dev_flag=std_dev_flag, nonzero_std_dev_flag=nonzero_std_dev_flag, smallest_roi_flag=smallest_roi_flag, max_coords_flag=max_coords_flag, min_coords_flag=min_coords_flag, cog_mm_flag=cog_mm_flag, cog_voxel_flag=cog_voxel_flag, percentile=percentile, nonzero_percentile=nonzero_percentile, absolute_values_flag=absolute_values_flag, nan_as_zero_flag=nan_as_zero_flag, mask_image=mask_image, difference_image=difference_image, hist_bins=hist_bins, hist_bins_min_max=hist_bins_min_max, timeseries_flag=timeseries_flag, mean_entropy_flag=mean_entropy_flag, nonzero_mean_entropy_flag=nonzero_mean_entropy_flag)
+    params = fslstats_params(
+        input_file=input_file,
+        index_mask=index_mask,
+        lower_threshold=lower_threshold,
+        upper_threshold=upper_threshold,
+        robust_intensity_flag=robust_intensity_flag,
+        minmax_intensity_flag=minmax_intensity_flag,
+        voxels_volume_flag=voxels_volume_flag,
+        nonzero_voxels_volume_flag=nonzero_voxels_volume_flag,
+        mean_flag=mean_flag,
+        nonzero_mean_flag=nonzero_mean_flag,
+        std_dev_flag=std_dev_flag,
+        nonzero_std_dev_flag=nonzero_std_dev_flag,
+        smallest_roi_flag=smallest_roi_flag,
+        max_coords_flag=max_coords_flag,
+        min_coords_flag=min_coords_flag,
+        cog_mm_flag=cog_mm_flag,
+        cog_voxel_flag=cog_voxel_flag,
+        percentile=percentile,
+        nonzero_percentile=nonzero_percentile,
+        absolute_values_flag=absolute_values_flag,
+        nan_as_zero_flag=nan_as_zero_flag,
+        mask_image=mask_image,
+        difference_image=difference_image,
+        hist_bins=hist_bins,
+        hist_bins_min_max=hist_bins_min_max,
+        timeseries_flag=timeseries_flag,
+        mean_entropy_flag=mean_entropy_flag,
+        nonzero_mean_entropy_flag=nonzero_mean_entropy_flag,
+    )
     return fslstats_execute(params, execution)
 
 

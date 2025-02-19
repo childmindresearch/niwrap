@@ -11,6 +11,8 @@ MRIS_RESAMPLE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisResampleParameters = typing.TypedDict('MrisResampleParameters', {
     "__STYX_TYPE__": typing.Literal["mris_resample"],
     "atlas_reg": InputPathType,
@@ -223,7 +225,14 @@ def mris_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_RESAMPLE_METADATA)
-    params = mris_resample_params(atlas_reg=atlas_reg, subject_reg=subject_reg, subject_surf=subject_surf, output=output, annot_in=annot_in, annot_out=annot_out)
+    params = mris_resample_params(
+        atlas_reg=atlas_reg,
+        subject_reg=subject_reg,
+        subject_surf=subject_surf,
+        output=output,
+        annot_in=annot_in,
+        annot_out=annot_out,
+    )
     return mris_resample_execute(params, execution)
 
 

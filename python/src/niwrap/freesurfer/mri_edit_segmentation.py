@@ -11,6 +11,8 @@ MRI_EDIT_SEGMENTATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriEditSegmentationParameters = typing.TypedDict('MriEditSegmentationParameters', {
     "__STYX_TYPE__": typing.Literal["mri_edit_segmentation"],
     "input_segmentation": InputPathType,
@@ -173,7 +175,11 @@ def mri_edit_segmentation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EDIT_SEGMENTATION_METADATA)
-    params = mri_edit_segmentation_params(input_segmentation=input_segmentation, t1_volume=t1_volume, output_segmentation=output_segmentation)
+    params = mri_edit_segmentation_params(
+        input_segmentation=input_segmentation,
+        t1_volume=t1_volume,
+        output_segmentation=output_segmentation,
+    )
     return mri_edit_segmentation_execute(params, execution)
 
 

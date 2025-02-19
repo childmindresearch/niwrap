@@ -11,6 +11,8 @@ VOLUME_COPY_EXTENSIONS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeCopyExtensionsParameters = typing.TypedDict('VolumeCopyExtensionsParameters', {
     "__STYX_TYPE__": typing.Literal["volume-copy-extensions"],
     "data_volume": InputPathType,
@@ -194,7 +196,12 @@ def volume_copy_extensions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_COPY_EXTENSIONS_METADATA)
-    params = volume_copy_extensions_params(data_volume=data_volume, extension_volume=extension_volume, volume_out=volume_out, opt_drop_unknown=opt_drop_unknown)
+    params = volume_copy_extensions_params(
+        data_volume=data_volume,
+        extension_volume=extension_volume,
+        volume_out=volume_out,
+        opt_drop_unknown=opt_drop_unknown,
+    )
     return volume_copy_extensions_execute(params, execution)
 
 

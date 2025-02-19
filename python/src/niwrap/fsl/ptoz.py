@@ -11,6 +11,8 @@ PTOZ_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PtozParameters = typing.TypedDict('PtozParameters', {
     "__STYX_TYPE__": typing.Literal["ptoz"],
     "p_value": float,
@@ -175,7 +177,11 @@ def ptoz(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PTOZ_METADATA)
-    params = ptoz_params(p_value=p_value, tail_flag=tail_flag, grf_flag=grf_flag)
+    params = ptoz_params(
+        p_value=p_value,
+        tail_flag=tail_flag,
+        grf_flag=grf_flag,
+    )
     return ptoz_execute(params, execution)
 
 

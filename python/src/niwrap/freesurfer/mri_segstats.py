@@ -11,6 +11,8 @@ MRI_SEGSTATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegstatsParameters = typing.TypedDict('MriSegstatsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_segstats"],
     "segvol": InputPathType,
@@ -827,7 +829,68 @@ def mri_segstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGSTATS_METADATA)
-    params = mri_segstats_params(segvol=segvol, annot_subject=annot_subject, annot_hemisphere=annot_hemisphere, annot_parcellation=annot_parcellation, slabel_subject=slabel_subject, slabel_hemisphere=slabel_hemisphere, slabel_label=slabel_label, output_file=output_file, partial_vol_comp=partial_vol_comp, input_volume=input_volume, seg_erode=seg_erode, frame=frame, robust=robust, square_input=square_input, sqrt_input=sqrt_input, multiply_input=multiply_input, divide_input=divide_input, snr_column=snr_column, absolute_value=absolute_value, accumulate_mean=accumulate_mean, color_table=color_table, default_color_table=default_color_table, gca_color_table=gca_color_table, ids=ids, exclude_ids=exclude_ids, exclude_gm_wm=exclude_gm_wm, surf_wm_vol=surf_wm_vol, surf_ctx_vol=surf_ctx_vol, no_global_stats=no_global_stats, empty_segments=empty_segments, ctab_output=ctab_output, mask_volume=mask_volume, mask_threshold=mask_threshold, mask_sign=mask_sign, mask_frame=mask_frame, invert_mask=invert_mask, mask_erode=mask_erode, brain_vol_seg=brain_vol_seg, brain_mask_vol=brain_mask_vol, subcortical_gray=subcortical_gray, total_gray=total_gray, intracranial_volume=intracranial_volume, intracranial_volume_only=intracranial_volume_only, old_intracranial_volume_only=old_intracranial_volume_only, talairach_transform=talairach_transform, xfm_to_etiv=xfm_to_etiv, euler_hole_count=euler_hole_count, avg_waveform=avg_waveform, sum_waveform=sum_waveform, avg_waveform_vol=avg_waveform_vol, remove_avgwf_mean=remove_avgwf_mean, spatial_frame_avg=spatial_frame_avg, voxel_crs=voxel_crs, replace_ids=replace_ids, replace_ids_file=replace_ids_file, gtm_default_seg_merge=gtm_default_seg_merge, gtm_default_seg_merge_choroid=gtm_default_seg_merge_choroid, qa_stats_file=qa_stats_file, subjects_dir=subjects_dir, random_seed=random_seed)
+    params = mri_segstats_params(
+        segvol=segvol,
+        annot_subject=annot_subject,
+        annot_hemisphere=annot_hemisphere,
+        annot_parcellation=annot_parcellation,
+        slabel_subject=slabel_subject,
+        slabel_hemisphere=slabel_hemisphere,
+        slabel_label=slabel_label,
+        output_file=output_file,
+        partial_vol_comp=partial_vol_comp,
+        input_volume=input_volume,
+        seg_erode=seg_erode,
+        frame=frame,
+        robust=robust,
+        square_input=square_input,
+        sqrt_input=sqrt_input,
+        multiply_input=multiply_input,
+        divide_input=divide_input,
+        snr_column=snr_column,
+        absolute_value=absolute_value,
+        accumulate_mean=accumulate_mean,
+        color_table=color_table,
+        default_color_table=default_color_table,
+        gca_color_table=gca_color_table,
+        ids=ids,
+        exclude_ids=exclude_ids,
+        exclude_gm_wm=exclude_gm_wm,
+        surf_wm_vol=surf_wm_vol,
+        surf_ctx_vol=surf_ctx_vol,
+        no_global_stats=no_global_stats,
+        empty_segments=empty_segments,
+        ctab_output=ctab_output,
+        mask_volume=mask_volume,
+        mask_threshold=mask_threshold,
+        mask_sign=mask_sign,
+        mask_frame=mask_frame,
+        invert_mask=invert_mask,
+        mask_erode=mask_erode,
+        brain_vol_seg=brain_vol_seg,
+        brain_mask_vol=brain_mask_vol,
+        subcortical_gray=subcortical_gray,
+        total_gray=total_gray,
+        intracranial_volume=intracranial_volume,
+        intracranial_volume_only=intracranial_volume_only,
+        old_intracranial_volume_only=old_intracranial_volume_only,
+        talairach_transform=talairach_transform,
+        xfm_to_etiv=xfm_to_etiv,
+        euler_hole_count=euler_hole_count,
+        avg_waveform=avg_waveform,
+        sum_waveform=sum_waveform,
+        avg_waveform_vol=avg_waveform_vol,
+        remove_avgwf_mean=remove_avgwf_mean,
+        spatial_frame_avg=spatial_frame_avg,
+        voxel_crs=voxel_crs,
+        replace_ids=replace_ids,
+        replace_ids_file=replace_ids_file,
+        gtm_default_seg_merge=gtm_default_seg_merge,
+        gtm_default_seg_merge_choroid=gtm_default_seg_merge_choroid,
+        qa_stats_file=qa_stats_file,
+        subjects_dir=subjects_dir,
+        random_seed=random_seed,
+    )
     return mri_segstats_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__CLUST_EXP_CAT_LAB_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VClustExpCatLabParameters = typing.TypedDict('VClustExpCatLabParameters', {
     "__STYX_TYPE__": typing.Literal["@ClustExp_CatLab"],
     "prefix": str,
@@ -182,7 +184,11 @@ def v__clust_exp_cat_lab(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CLUST_EXP_CAT_LAB_METADATA)
-    params = v__clust_exp_cat_lab_params(prefix=prefix, input_file=input_file, help_=help_)
+    params = v__clust_exp_cat_lab_params(
+        prefix=prefix,
+        input_file=input_file,
+        help_=help_,
+    )
     return v__clust_exp_cat_lab_execute(params, execution)
 
 

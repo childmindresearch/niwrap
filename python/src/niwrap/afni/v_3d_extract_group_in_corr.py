@@ -11,6 +11,8 @@ V_3D_EXTRACT_GROUP_IN_CORR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dExtractGroupInCorrParameters = typing.TypedDict('V3dExtractGroupInCorrParameters', {
     "__STYX_TYPE__": typing.Literal["3dExtractGroupInCorr"],
     "group_in_corr_file": InputPathType,
@@ -177,7 +179,10 @@ def v_3d_extract_group_in_corr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EXTRACT_GROUP_IN_CORR_METADATA)
-    params = v_3d_extract_group_in_corr_params(group_in_corr_file=group_in_corr_file, prefix=prefix)
+    params = v_3d_extract_group_in_corr_params(
+        group_in_corr_file=group_in_corr_file,
+        prefix=prefix,
+    )
     return v_3d_extract_group_in_corr_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FIM2_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 Fim2Parameters = typing.TypedDict('Fim2Parameters', {
     "__STYX_TYPE__": typing.Literal["fim2"],
     "image_files": list[InputPathType],
@@ -426,7 +428,31 @@ def fim2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIM2_METADATA)
-    params = fim2_params(image_files=image_files, pcnt=pcnt, pcthresh=pcthresh, im1=im1, num=num, non=non, coef=coef, ort=ort, ideal=ideal, polref=polref, fimfile=fimfile, corr=corr, corfile=corfile, cnrfile=cnrfile, sigfile=sigfile, fitfile=fitfile, subort=subort, flim=flim, clean=clean, clip=clip, q=q, dfspace=dfspace, regbase=regbase)
+    params = fim2_params(
+        image_files=image_files,
+        pcnt=pcnt,
+        pcthresh=pcthresh,
+        im1=im1,
+        num=num,
+        non=non,
+        coef=coef,
+        ort=ort,
+        ideal=ideal,
+        polref=polref,
+        fimfile=fimfile,
+        corr=corr,
+        corfile=corfile,
+        cnrfile=cnrfile,
+        sigfile=sigfile,
+        fitfile=fitfile,
+        subort=subort,
+        flim=flim,
+        clean=clean,
+        clip=clip,
+        q=q,
+        dfspace=dfspace,
+        regbase=regbase,
+    )
     return fim2_execute(params, execution)
 
 

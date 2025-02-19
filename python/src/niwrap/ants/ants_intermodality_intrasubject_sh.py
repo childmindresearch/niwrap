@@ -11,6 +11,8 @@ ANTS_INTERMODALITY_INTRASUBJECT_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsIntermodalityIntrasubjectShParameters = typing.TypedDict('AntsIntermodalityIntrasubjectShParameters', {
     "__STYX_TYPE__": typing.Literal["antsIntermodalityIntrasubject.sh"],
     "dimension": int,
@@ -300,7 +302,20 @@ def ants_intermodality_intrasubject_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_INTERMODALITY_INTRASUBJECT_SH_METADATA)
-    params = ants_intermodality_intrasubject_sh_params(dimension=dimension, anatomical_t1_image=anatomical_t1_image, anatomical_reference_image=anatomical_reference_image, scalar_image_to_match=scalar_image_to_match, anatomical_t1brainmask=anatomical_t1brainmask, transform_type=transform_type, t1_to_template_prefix=t1_to_template_prefix, template_space=template_space, output_prefix=output_prefix, labels_in_template_space=labels_in_template_space, auxiliary_scalar_images=auxiliary_scalar_images, auxiliary_dt_image=auxiliary_dt_image)
+    params = ants_intermodality_intrasubject_sh_params(
+        dimension=dimension,
+        anatomical_t1_image=anatomical_t1_image,
+        anatomical_reference_image=anatomical_reference_image,
+        scalar_image_to_match=scalar_image_to_match,
+        anatomical_t1brainmask=anatomical_t1brainmask,
+        transform_type=transform_type,
+        t1_to_template_prefix=t1_to_template_prefix,
+        template_space=template_space,
+        output_prefix=output_prefix,
+        labels_in_template_space=labels_in_template_space,
+        auxiliary_scalar_images=auxiliary_scalar_images,
+        auxiliary_dt_image=auxiliary_dt_image,
+    )
     return ants_intermodality_intrasubject_sh_execute(params, execution)
 
 

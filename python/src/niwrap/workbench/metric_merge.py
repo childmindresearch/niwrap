@@ -11,21 +11,29 @@ METRIC_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricMergeUpToParameters = typing.TypedDict('MetricMergeUpToParameters', {
     "__STYX_TYPE__": typing.Literal["up_to"],
     "last_column": str,
     "opt_reverse": bool,
 })
+
+
 MetricMergeColumnParameters = typing.TypedDict('MetricMergeColumnParameters', {
     "__STYX_TYPE__": typing.Literal["column"],
     "column": str,
     "up_to": typing.NotRequired[MetricMergeUpToParameters | None],
 })
+
+
 MetricMergeMetricParameters = typing.TypedDict('MetricMergeMetricParameters', {
     "__STYX_TYPE__": typing.Literal["metric"],
     "metric_in": InputPathType,
     "column": typing.NotRequired[list[MetricMergeColumnParameters] | None],
 })
+
+
 MetricMergeParameters = typing.TypedDict('MetricMergeParameters', {
     "__STYX_TYPE__": typing.Literal["metric-merge"],
     "metric_out": str,
@@ -335,7 +343,10 @@ def metric_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_MERGE_METADATA)
-    params = metric_merge_params(metric_out=metric_out, metric=metric)
+    params = metric_merge_params(
+        metric_out=metric_out,
+        metric=metric,
+    )
     return metric_merge_execute(params, execution)
 
 

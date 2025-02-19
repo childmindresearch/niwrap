@@ -11,6 +11,8 @@ V_3D_UPSAMPLE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dUpsampleParameters = typing.TypedDict('V3dUpsampleParameters', {
     "__STYX_TYPE__": typing.Literal["3dUpsample"],
     "upsample_factor": int,
@@ -223,7 +225,14 @@ def v_3d_upsample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_UPSAMPLE_METADATA)
-    params = v_3d_upsample_params(upsample_factor=upsample_factor, input_dataset=input_dataset, linear_interpolation=linear_interpolation, output_prefix=output_prefix, verbose_flag=verbose_flag, datatype=datatype)
+    params = v_3d_upsample_params(
+        upsample_factor=upsample_factor,
+        input_dataset=input_dataset,
+        linear_interpolation=linear_interpolation,
+        output_prefix=output_prefix,
+        verbose_flag=verbose_flag,
+        datatype=datatype,
+    )
     return v_3d_upsample_execute(params, execution)
 
 

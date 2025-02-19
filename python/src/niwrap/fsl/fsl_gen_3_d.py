@@ -11,6 +11,8 @@ FSL_GEN_3_D_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslGen3DParameters = typing.TypedDict('FslGen3DParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_gen_3D"],
     "infile": InputPathType,
@@ -166,7 +168,10 @@ def fsl_gen_3_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_GEN_3_D_METADATA)
-    params = fsl_gen_3_d_params(infile=infile, outfile=outfile)
+    params = fsl_gen_3_d_params(
+        infile=infile,
+        outfile=outfile,
+    )
     return fsl_gen_3_d_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_COMPUTE_DISTANCES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriComputeDistancesParameters = typing.TypedDict('MriComputeDistancesParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compute_distances"],
     "source": InputPathType,
@@ -175,7 +177,11 @@ def mri_compute_distances(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_DISTANCES_METADATA)
-    params = mri_compute_distances_params(source=source, target=target, output_xform=output_xform)
+    params = mri_compute_distances_params(
+        source=source,
+        target=target,
+        output_xform=output_xform,
+    )
     return mri_compute_distances_execute(params, execution)
 
 

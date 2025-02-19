@@ -11,6 +11,8 @@ DMRI_COLORED_FA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriColoredFaParameters = typing.TypedDict('DmriColoredFaParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_coloredFA"],
     "input_volume": InputPathType,
@@ -166,7 +168,10 @@ def dmri_colored_fa(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_COLORED_FA_METADATA)
-    params = dmri_colored_fa_params(input_volume=input_volume, output_volume=output_volume)
+    params = dmri_colored_fa_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+    )
     return dmri_colored_fa_execute(params, execution)
 
 

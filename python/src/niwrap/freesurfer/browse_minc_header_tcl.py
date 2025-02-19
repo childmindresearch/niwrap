@@ -11,6 +11,8 @@ BROWSE_MINC_HEADER_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BrowseMincHeaderTclParameters = typing.TypedDict('BrowseMincHeaderTclParameters', {
     "__STYX_TYPE__": typing.Literal["browse-minc-header.tcl"],
     "infile": InputPathType,
@@ -155,7 +157,9 @@ def browse_minc_header_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BROWSE_MINC_HEADER_TCL_METADATA)
-    params = browse_minc_header_tcl_params(infile=infile)
+    params = browse_minc_header_tcl_params(
+        infile=infile,
+    )
     return browse_minc_header_tcl_execute(params, execution)
 
 

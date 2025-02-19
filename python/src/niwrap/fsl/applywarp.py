@@ -11,6 +11,8 @@ APPLYWARP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ApplywarpParameters = typing.TypedDict('ApplywarpParameters', {
     "__STYX_TYPE__": typing.Literal["applywarp"],
     "interp": typing.NotRequired[typing.Literal["nn", "trilinear", "sinc", "spline"] | None],
@@ -279,7 +281,22 @@ def applywarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APPLYWARP_METADATA)
-    params = applywarp_params(interp=interp, in_file=in_file, ref_file=ref_file, out_file=out_file, relwarp=relwarp, abswarp=abswarp, datatype=datatype, field_file=field_file, mask_file=mask_file, output_type=output_type, postmat=postmat, premat=premat, superlevel_2=superlevel_2, supersample=supersample)
+    params = applywarp_params(
+        interp=interp,
+        in_file=in_file,
+        ref_file=ref_file,
+        out_file=out_file,
+        relwarp=relwarp,
+        abswarp=abswarp,
+        datatype=datatype,
+        field_file=field_file,
+        mask_file=mask_file,
+        output_type=output_type,
+        postmat=postmat,
+        premat=premat,
+        superlevel_2=superlevel_2,
+        supersample=supersample,
+    )
     return applywarp_execute(params, execution)
 
 

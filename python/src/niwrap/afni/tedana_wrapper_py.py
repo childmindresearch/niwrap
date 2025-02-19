@@ -11,6 +11,8 @@ TEDANA_WRAPPER_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 TedanaWrapperPyParameters = typing.TypedDict('TedanaWrapperPyParameters', {
     "__STYX_TYPE__": typing.Literal["tedana_wrapper.py"],
     "input_files": list[InputPathType],
@@ -279,7 +281,19 @@ def tedana_wrapper_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TEDANA_WRAPPER_PY_METADATA)
-    params = tedana_wrapper_py_params(input_files=input_files, echo_times=echo_times, mask=mask, results_dir=results_dir, prefix=prefix, save_all=save_all, prep_only=prep_only, tedana_prog=tedana_prog, tedana_is_exec=tedana_is_exec, ted_label=ted_label, tedana_opts=tedana_opts)
+    params = tedana_wrapper_py_params(
+        input_files=input_files,
+        echo_times=echo_times,
+        mask=mask,
+        results_dir=results_dir,
+        prefix=prefix,
+        save_all=save_all,
+        prep_only=prep_only,
+        tedana_prog=tedana_prog,
+        tedana_is_exec=tedana_is_exec,
+        ted_label=ted_label,
+        tedana_opts=tedana_opts,
+    )
     return tedana_wrapper_py_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_SPAT_NORM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSpatNormParameters = typing.TypedDict('V3dSpatNormParameters', {
     "__STYX_TYPE__": typing.Literal["3dSpatNorm"],
     "dataset": InputPathType,
@@ -240,7 +242,17 @@ def v_3d_spat_norm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SPAT_NORM_METADATA)
-    params = v_3d_spat_norm_params(dataset=dataset, prefix=prefix, orig_space=orig_space, verbose=verbose, monkey=monkey, marmot=marmot, rat=rat, human=human, bottom_cuts=bottom_cuts)
+    params = v_3d_spat_norm_params(
+        dataset=dataset,
+        prefix=prefix,
+        orig_space=orig_space,
+        verbose=verbose,
+        monkey=monkey,
+        marmot=marmot,
+        rat=rat,
+        human=human,
+        bottom_cuts=bottom_cuts,
+    )
     return v_3d_spat_norm_execute(params, execution)
 
 

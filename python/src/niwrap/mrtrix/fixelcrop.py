@@ -11,11 +11,15 @@ FIXELCROP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 FixelcropConfigParameters = typing.TypedDict('FixelcropConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 FixelcropParameters = typing.TypedDict('FixelcropParameters', {
     "__STYX_TYPE__": typing.Literal["fixelcrop"],
     "info": bool,
@@ -317,7 +321,19 @@ def fixelcrop(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELCROP_METADATA)
-    params = fixelcrop_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_fixel_directory=input_fixel_directory, input_fixel_mask=input_fixel_mask, output_fixel_directory=output_fixel_directory)
+    params = fixelcrop_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_fixel_directory=input_fixel_directory,
+        input_fixel_mask=input_fixel_mask,
+        output_fixel_directory=output_fixel_directory,
+    )
     return fixelcrop_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FAT_MAT_TABLEIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatMatTableizeParameters = typing.TypedDict('FatMatTableizeParameters', {
     "__STYX_TYPE__": typing.Literal["fat_mat_tableize"],
     "input_matrices": list[str],
@@ -266,7 +268,18 @@ def fat_mat_tableize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MAT_TABLEIZE_METADATA)
-    params = fat_mat_tableize_params(input_matrices=input_matrices, input_csv=input_csv, input_list=input_list, output_prefix=output_prefix, parameters=parameters, version=version, date=date, help_=help_, help_short=help_short, help_view=help_view)
+    params = fat_mat_tableize_params(
+        input_matrices=input_matrices,
+        input_csv=input_csv,
+        input_list=input_list,
+        output_prefix=output_prefix,
+        parameters=parameters,
+        version=version,
+        date=date,
+        help_=help_,
+        help_short=help_short,
+        help_view=help_view,
+    )
     return fat_mat_tableize_execute(params, execution)
 
 

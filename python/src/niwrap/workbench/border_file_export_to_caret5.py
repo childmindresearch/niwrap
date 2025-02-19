@@ -11,10 +11,14 @@ BORDER_FILE_EXPORT_TO_CARET5_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BorderFileExportToCaret5SurfaceParameters = typing.TypedDict('BorderFileExportToCaret5SurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["surface"],
     "surface_in": InputPathType,
 })
+
+
 BorderFileExportToCaret5Parameters = typing.TypedDict('BorderFileExportToCaret5Parameters', {
     "__STYX_TYPE__": typing.Literal["border-file-export-to-caret5"],
     "border_file": str,
@@ -266,7 +270,11 @@ def border_file_export_to_caret5(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_FILE_EXPORT_TO_CARET5_METADATA)
-    params = border_file_export_to_caret5_params(border_file=border_file, output_file_prefix=output_file_prefix, surface=surface)
+    params = border_file_export_to_caret5_params(
+        border_file=border_file,
+        output_file_prefix=output_file_prefix,
+        surface=surface,
+    )
     return border_file_export_to_caret5_execute(params, execution)
 
 

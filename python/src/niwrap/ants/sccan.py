@@ -11,6 +11,8 @@ SCCAN_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SccanParameters = typing.TypedDict('SccanParameters', {
     "__STYX_TYPE__": typing.Literal["sccan"],
     "output": typing.NotRequired[str | None],
@@ -494,7 +496,35 @@ def sccan(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SCCAN_METADATA)
-    params = sccan_params(output=output, n_permutations=n_permutations, smoother=smoother, row_sparseness=row_sparseness, iterations=iterations, n_eigenvectors=n_eigenvectors, robustify=robustify, covering=covering, uselong=uselong, l1=l1, pclusterthresh=pclusterthresh, qclusterthresh=qclusterthresh, ridge_cca=ridge_cca, initialization=initialization, initialization2=initialization2, mask=mask, mask2=mask2, partial_scca_option=partial_scca_option, prior_weight=prior_weight, get_small=get_small, verbose=verbose, imageset_to_matrix=imageset_to_matrix, timeseriesimage_to_matrix=timeseriesimage_to_matrix, vector_to_image=vector_to_image, imageset_to_projections=imageset_to_projections, scca=scca, svd=svd)
+    params = sccan_params(
+        output=output,
+        n_permutations=n_permutations,
+        smoother=smoother,
+        row_sparseness=row_sparseness,
+        iterations=iterations,
+        n_eigenvectors=n_eigenvectors,
+        robustify=robustify,
+        covering=covering,
+        uselong=uselong,
+        l1=l1,
+        pclusterthresh=pclusterthresh,
+        qclusterthresh=qclusterthresh,
+        ridge_cca=ridge_cca,
+        initialization=initialization,
+        initialization2=initialization2,
+        mask=mask,
+        mask2=mask2,
+        partial_scca_option=partial_scca_option,
+        prior_weight=prior_weight,
+        get_small=get_small,
+        verbose=verbose,
+        imageset_to_matrix=imageset_to_matrix,
+        timeseriesimage_to_matrix=timeseriesimage_to_matrix,
+        vector_to_image=vector_to_image,
+        imageset_to_projections=imageset_to_projections,
+        scca=scca,
+        svd=svd,
+    )
     return sccan_execute(params, execution)
 
 

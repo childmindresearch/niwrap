@@ -11,6 +11,8 @@ MASKDYADS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MaskdyadsParameters = typing.TypedDict('MaskdyadsParameters', {
     "__STYX_TYPE__": typing.Literal["maskdyads"],
     "dyads": InputPathType,
@@ -174,7 +176,11 @@ def maskdyads(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MASKDYADS_METADATA)
-    params = maskdyads_params(dyads=dyads, fsamples=fsamples, threshold=threshold)
+    params = maskdyads_params(
+        dyads=dyads,
+        fsamples=fsamples,
+        threshold=threshold,
+    )
     return maskdyads_execute(params, execution)
 
 

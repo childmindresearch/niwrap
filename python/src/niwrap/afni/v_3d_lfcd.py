@@ -11,6 +11,8 @@ V_3D_LFCD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dLfcdParameters = typing.TypedDict('V3dLfcdParameters', {
     "__STYX_TYPE__": typing.Literal["3dLFCD"],
     "in_file": InputPathType,
@@ -226,7 +228,15 @@ def v_3d_lfcd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LFCD_METADATA)
-    params = v_3d_lfcd_params(in_file=in_file, autoclip=autoclip, automask=automask, mask=mask, outputtype=outputtype, polort=polort, thresh=thresh)
+    params = v_3d_lfcd_params(
+        in_file=in_file,
+        autoclip=autoclip,
+        automask=automask,
+        mask=mask,
+        outputtype=outputtype,
+        polort=polort,
+        thresh=thresh,
+    )
     return v_3d_lfcd_execute(params, execution)
 
 

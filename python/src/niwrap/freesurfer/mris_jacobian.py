@@ -11,6 +11,8 @@ MRIS_JACOBIAN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisJacobianParameters = typing.TypedDict('MrisJacobianParameters', {
     "__STYX_TYPE__": typing.Literal["mris_jacobian"],
     "original_surface": InputPathType,
@@ -197,7 +199,14 @@ def mris_jacobian(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_JACOBIAN_METADATA)
-    params = mris_jacobian_params(original_surface=original_surface, mapped_surface=mapped_surface, jacobian_file=jacobian_file, log=log, noscale=noscale, invert=invert)
+    params = mris_jacobian_params(
+        original_surface=original_surface,
+        mapped_surface=mapped_surface,
+        jacobian_file=jacobian_file,
+        log=log,
+        noscale=noscale,
+        invert=invert,
+    )
     return mris_jacobian_execute(params, execution)
 
 

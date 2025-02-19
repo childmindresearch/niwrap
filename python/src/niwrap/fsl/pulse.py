@@ -11,6 +11,8 @@ PULSE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PulseParameters = typing.TypedDict('PulseParameters', {
     "__STYX_TYPE__": typing.Literal["pulse"],
     "input_file": InputPathType,
@@ -456,7 +458,33 @@ def pulse(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PULSE_METADATA)
-    params = pulse_params(input_file=input_file, output_base=output_base, seq=seq, angle=angle, te=te, tr=tr, trslc=trslc, nx=nx, ny=ny, dx=dx, dy=dy, max_g=max_g, riset=riset, bw=bw, numvol=numvol, numslc=numslc, slcthk=slcthk, gap=gap, zstart=zstart, slcdir=slcdir, phasedir=phasedir, readdir=readdir, verbose_flag=verbose_flag, kcoord_flag=kcoord_flag, cover=cover)
+    params = pulse_params(
+        input_file=input_file,
+        output_base=output_base,
+        seq=seq,
+        angle=angle,
+        te=te,
+        tr=tr,
+        trslc=trslc,
+        nx=nx,
+        ny=ny,
+        dx=dx,
+        dy=dy,
+        max_g=max_g,
+        riset=riset,
+        bw=bw,
+        numvol=numvol,
+        numslc=numslc,
+        slcthk=slcthk,
+        gap=gap,
+        zstart=zstart,
+        slcdir=slcdir,
+        phasedir=phasedir,
+        readdir=readdir,
+        verbose_flag=verbose_flag,
+        kcoord_flag=kcoord_flag,
+        cover=cover,
+    )
     return pulse_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ TALAIRACH_MGH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TalairachMghParameters = typing.TypedDict('TalairachMghParameters', {
     "__STYX_TYPE__": typing.Literal["talairach_mgh"],
     "input_volume": InputPathType,
@@ -166,7 +168,10 @@ def talairach_mgh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH_MGH_METADATA)
-    params = talairach_mgh_params(input_volume=input_volume, output_volume=output_volume)
+    params = talairach_mgh_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+    )
     return talairach_mgh_execute(params, execution)
 
 

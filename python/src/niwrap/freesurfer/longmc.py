@@ -11,6 +11,8 @@ LONGMC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongmcParameters = typing.TypedDict('LongmcParameters', {
     "__STYX_TYPE__": typing.Literal["longmc"],
     "cross_tp_name": str,
@@ -205,7 +207,14 @@ def longmc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONGMC_METADATA)
-    params = longmc_params(cross_tp_name=cross_tp_name, base_name=base_name, conform_to_hires=conform_to_hires, subjects_dir=subjects_dir, subject_name=subject_name, no_force_update=no_force_update)
+    params = longmc_params(
+        cross_tp_name=cross_tp_name,
+        base_name=base_name,
+        conform_to_hires=conform_to_hires,
+        subjects_dir=subjects_dir,
+        subject_name=subject_name,
+        no_force_update=no_force_update,
+    )
     return longmc_execute(params, execution)
 
 

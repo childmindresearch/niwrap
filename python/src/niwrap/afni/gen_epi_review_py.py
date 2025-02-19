@@ -11,6 +11,8 @@ GEN_EPI_REVIEW_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GenEpiReviewPyParameters = typing.TypedDict('GenEpiReviewPyParameters', {
     "__STYX_TYPE__": typing.Literal["gen_epi_review.py"],
     "datasets": list[str],
@@ -266,7 +268,18 @@ def gen_epi_review_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_EPI_REVIEW_PY_METADATA)
-    params = gen_epi_review_py_params(datasets=datasets, script_name=script_name, windows=windows, verbosity=verbosity, image_size=image_size, image_xoffset=image_xoffset, image_yoffset=image_yoffset, graph_size=graph_size, graph_xoffset=graph_xoffset, graph_yoffset=graph_yoffset)
+    params = gen_epi_review_py_params(
+        datasets=datasets,
+        script_name=script_name,
+        windows=windows,
+        verbosity=verbosity,
+        image_size=image_size,
+        image_xoffset=image_xoffset,
+        image_yoffset=image_yoffset,
+        graph_size=graph_size,
+        graph_xoffset=graph_xoffset,
+        graph_yoffset=graph_yoffset,
+    )
     return gen_epi_review_py_execute(params, execution)
 
 

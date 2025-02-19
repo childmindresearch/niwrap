@@ -11,6 +11,8 @@ V__SHOW_DYNAMIC_RANGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VShowDynamicRangeParameters = typing.TypedDict('VShowDynamicRangeParameters', {
     "__STYX_TYPE__": typing.Literal["@ShowDynamicRange"],
     "infile": InputPathType,
@@ -166,7 +168,9 @@ def v__show_dynamic_range(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SHOW_DYNAMIC_RANGE_METADATA)
-    params = v__show_dynamic_range_params(infile=infile)
+    params = v__show_dynamic_range_params(
+        infile=infile,
+    )
     return v__show_dynamic_range_execute(params, execution)
 
 

@@ -11,31 +11,43 @@ CIFTI_FIND_CLUSTERS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiFindClustersLeftSurfaceParameters = typing.TypedDict('CiftiFindClustersLeftSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["left_surface"],
     "surface": InputPathType,
     "opt_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiFindClustersRightSurfaceParameters = typing.TypedDict('CiftiFindClustersRightSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["right_surface"],
     "surface": InputPathType,
     "opt_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiFindClustersCerebellumSurfaceParameters = typing.TypedDict('CiftiFindClustersCerebellumSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_surface"],
     "surface": InputPathType,
     "opt_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiFindClustersSizeRatioParameters = typing.TypedDict('CiftiFindClustersSizeRatioParameters', {
     "__STYX_TYPE__": typing.Literal["size_ratio"],
     "surface_ratio": float,
     "volume_ratio": float,
 })
+
+
 CiftiFindClustersDistanceParameters = typing.TypedDict('CiftiFindClustersDistanceParameters', {
     "__STYX_TYPE__": typing.Literal["distance"],
     "surface_distance": float,
     "volume_distance": float,
 })
+
+
 CiftiFindClustersParameters = typing.TypedDict('CiftiFindClustersParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-find-clusters"],
     "cifti": InputPathType,
@@ -579,7 +591,24 @@ def cifti_find_clusters(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_FIND_CLUSTERS_METADATA)
-    params = cifti_find_clusters_params(cifti=cifti, surface_value_threshold=surface_value_threshold, surface_minimum_area=surface_minimum_area, volume_value_threshold=volume_value_threshold, volume_minimum_size=volume_minimum_size, direction=direction, cifti_out=cifti_out, opt_less_than=opt_less_than, left_surface=left_surface, right_surface=right_surface, cerebellum_surface=cerebellum_surface, opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti, opt_merged_volume=opt_merged_volume, size_ratio=size_ratio, distance=distance, opt_start_startval=opt_start_startval)
+    params = cifti_find_clusters_params(
+        cifti=cifti,
+        surface_value_threshold=surface_value_threshold,
+        surface_minimum_area=surface_minimum_area,
+        volume_value_threshold=volume_value_threshold,
+        volume_minimum_size=volume_minimum_size,
+        direction=direction,
+        cifti_out=cifti_out,
+        opt_less_than=opt_less_than,
+        left_surface=left_surface,
+        right_surface=right_surface,
+        cerebellum_surface=cerebellum_surface,
+        opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti,
+        opt_merged_volume=opt_merged_volume,
+        size_ratio=size_ratio,
+        distance=distance,
+        opt_start_startval=opt_start_startval,
+    )
     return cifti_find_clusters_execute(params, execution)
 
 

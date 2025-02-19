@@ -11,6 +11,8 @@ TBSS_SKELETON_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TbssSkeletonParameters = typing.TypedDict('TbssSkeletonParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_skeleton"],
     "input_image": InputPathType,
@@ -248,7 +250,15 @@ def tbss_skeleton(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_SKELETON_METADATA)
-    params = tbss_skeleton_params(input_image=input_image, output_image=output_image, skeleton_params=skeleton_params, alt_4d=alt_4d, alt_skeleton=alt_skeleton, debug_flag=debug_flag, debug2_flag=debug2_flag)
+    params = tbss_skeleton_params(
+        input_image=input_image,
+        output_image=output_image,
+        skeleton_params=skeleton_params,
+        alt_4d=alt_4d,
+        alt_skeleton=alt_skeleton,
+        debug_flag=debug_flag,
+        debug2_flag=debug2_flag,
+    )
     return tbss_skeleton_execute(params, execution)
 
 

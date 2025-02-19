@@ -11,6 +11,8 @@ MRI_3D_PHOTO_RECON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Mri3dPhotoReconParameters = typing.TypedDict('Mri3dPhotoReconParameters', {
     "__STYX_TYPE__": typing.Literal["mri_3d_photo_recon"],
     "input_photo_dir": list[InputPathType],
@@ -315,7 +317,22 @@ def mri_3d_photo_recon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_3D_PHOTO_RECON_METADATA)
-    params = mri_3d_photo_recon_params(input_photo_dir=input_photo_dir, input_segmentation_dir=input_segmentation_dir, slice_thickness=slice_thickness, photo_resolution=photo_resolution, output_directory=output_directory, ref_mask=ref_mask, ref_surface=ref_surface, ref_soft_mask=ref_soft_mask, mesh_reorient_with_indices=mesh_reorient_with_indices, photos_posterior_side=photos_posterior_side, order_posterior_to_anterior=order_posterior_to_anterior, allow_z_stretch=allow_z_stretch, rigid_only_for_photos=rigid_only_for_photos, gpu_index=gpu_index)
+    params = mri_3d_photo_recon_params(
+        input_photo_dir=input_photo_dir,
+        input_segmentation_dir=input_segmentation_dir,
+        slice_thickness=slice_thickness,
+        photo_resolution=photo_resolution,
+        output_directory=output_directory,
+        ref_mask=ref_mask,
+        ref_surface=ref_surface,
+        ref_soft_mask=ref_soft_mask,
+        mesh_reorient_with_indices=mesh_reorient_with_indices,
+        photos_posterior_side=photos_posterior_side,
+        order_posterior_to_anterior=order_posterior_to_anterior,
+        allow_z_stretch=allow_z_stretch,
+        rigid_only_for_photos=rigid_only_for_photos,
+        gpu_index=gpu_index,
+    )
     return mri_3d_photo_recon_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FIRST_MULT_BCORR_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FirstMultBcorrParameters = typing.TypedDict('FirstMultBcorrParameters', {
     "__STYX_TYPE__": typing.Literal["first_mult_bcorr"],
     "input_image": InputPathType,
@@ -206,7 +208,13 @@ def first_mult_bcorr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRST_MULT_BCORR_METADATA)
-    params = first_mult_bcorr_params(input_image=input_image, corrected_4d_labels=corrected_4d_labels, uncorrected_4d_labels=uncorrected_4d_labels, output_image=output_image, verbose_flag=verbose_flag)
+    params = first_mult_bcorr_params(
+        input_image=input_image,
+        corrected_4d_labels=corrected_4d_labels,
+        uncorrected_4d_labels=uncorrected_4d_labels,
+        output_image=output_image,
+        verbose_flag=verbose_flag,
+    )
     return first_mult_bcorr_execute(params, execution)
 
 

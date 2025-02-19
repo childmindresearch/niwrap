@@ -11,6 +11,8 @@ ATLASQUERY_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 AtlasqueryParameters = typing.TypedDict('AtlasqueryParameters', {
     "__STYX_TYPE__": typing.Literal["atlasquery"],
     "dumpatlases_flag": bool,
@@ -208,7 +210,14 @@ def atlasquery(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ATLASQUERY_METADATA)
-    params = atlasquery_params(dumpatlases_flag=dumpatlases_flag, atlas=atlas, coord=coord, mask=mask, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = atlasquery_params(
+        dumpatlases_flag=dumpatlases_flag,
+        atlas=atlas,
+        coord=coord,
+        mask=mask,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return atlasquery_execute(params, execution)
 
 

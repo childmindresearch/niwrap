@@ -11,6 +11,8 @@ SEGMENT_SUBJECT_NOTAL2_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentSubjectNotal2Parameters = typing.TypedDict('SegmentSubjectNotal2Parameters', {
     "__STYX_TYPE__": typing.Literal["segment_subject_notal2"],
     "license_file": InputPathType,
@@ -166,7 +168,9 @@ def segment_subject_notal2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBJECT_NOTAL2_METADATA)
-    params = segment_subject_notal2_params(license_file=license_file)
+    params = segment_subject_notal2_params(
+        license_file=license_file,
+    )
     return segment_subject_notal2_execute(params, execution)
 
 

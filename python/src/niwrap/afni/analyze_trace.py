@@ -11,6 +11,8 @@ ANALYZE_TRACE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AnalyzeTraceParameters = typing.TypedDict('AnalyzeTraceParameters', {
     "__STYX_TYPE__": typing.Literal["AnalyzeTrace"],
     "tracefile": InputPathType,
@@ -265,7 +267,19 @@ def analyze_trace(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANALYZE_TRACE_METADATA)
-    params = analyze_trace_params(tracefile=tracefile, max_func_lines=max_func_lines, suma_c=suma_c, max_err=max_err, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, extreme_trace=extreme_trace, nomall=nomall, yesmall=yesmall)
+    params = analyze_trace_params(
+        tracefile=tracefile,
+        max_func_lines=max_func_lines,
+        suma_c=suma_c,
+        max_err=max_err,
+        novolreg=novolreg,
+        noxform=noxform,
+        setenv=setenv,
+        trace_=trace_,
+        extreme_trace=extreme_trace,
+        nomall=nomall,
+        yesmall=yesmall,
+    )
     return analyze_trace_execute(params, execution)
 
 

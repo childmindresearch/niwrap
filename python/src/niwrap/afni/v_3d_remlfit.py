@@ -11,6 +11,8 @@ V_3D_REMLFIT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRemlfitParameters = typing.TypedDict('V3dRemlfitParameters', {
     "__STYX_TYPE__": typing.Literal["3dREMLfit"],
     "input_file": InputPathType,
@@ -295,7 +297,19 @@ def v_3d_remlfit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_REMLFIT_METADATA)
-    params = v_3d_remlfit_params(input_file=input_file, regression_matrix=regression_matrix, baseline_files=baseline_files, sort_nods=sort_nods, temp_storage=temp_storage, mask=mask, output_prefix=output_prefix, go_for_it=go_for_it, max_b_param=max_b_param, grid_param=grid_param, negative_corr=negative_corr)
+    params = v_3d_remlfit_params(
+        input_file=input_file,
+        regression_matrix=regression_matrix,
+        baseline_files=baseline_files,
+        sort_nods=sort_nods,
+        temp_storage=temp_storage,
+        mask=mask,
+        output_prefix=output_prefix,
+        go_for_it=go_for_it,
+        max_b_param=max_b_param,
+        grid_param=grid_param,
+        negative_corr=negative_corr,
+    )
     return v_3d_remlfit_execute(params, execution)
 
 

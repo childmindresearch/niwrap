@@ -11,6 +11,8 @@ V_3D_TTO1_D_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTto1DParameters = typing.TypedDict('V3dTto1DParameters', {
     "__STYX_TYPE__": typing.Literal["3dTto1D"],
     "input_dataset": InputPathType,
@@ -224,7 +226,14 @@ def v_3d_tto1_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TTO1_D_METADATA)
-    params = v_3d_tto1_d_params(input_dataset=input_dataset, method=method, automask=automask, mask=mask, prefix=prefix, verbose=verbose)
+    params = v_3d_tto1_d_params(
+        input_dataset=input_dataset,
+        method=method,
+        automask=automask,
+        mask=mask,
+        prefix=prefix,
+        verbose=verbose,
+    )
     return v_3d_tto1_d_execute(params, execution)
 
 

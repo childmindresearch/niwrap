@@ -11,6 +11,8 @@ V__DJUNCT_OVERLAP_CHECK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunctOverlapCheckParameters = typing.TypedDict('VDjunctOverlapCheckParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_overlap_check"],
     "ulay": InputPathType,
@@ -390,7 +392,32 @@ def v__djunct_overlap_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_OVERLAP_CHECK_METADATA)
-    params = v__djunct_overlap_check_params(ulay=ulay, olay=olay, prefix=prefix, box_focus_slices=box_focus_slices, montgap=montgap, montcolor=montcolor, cbar=cbar, opacity=opacity, zerocolor=zerocolor, set_dicom_xyz=set_dicom_xyz, ulay_range=ulay_range, ulay_range_nz=ulay_range_nz, montx=montx, monty=monty, montx_cat=montx_cat, monty_cat=monty_cat, label_mode=label_mode, pbar_posonly_off=pbar_posonly_off, edgy_ulay=edgy_ulay, set_dicom_xyz_off=set_dicom_xyz_off, no_cor=no_cor, no_axi=no_axi, no_sag=no_sag, no_clean=no_clean)
+    params = v__djunct_overlap_check_params(
+        ulay=ulay,
+        olay=olay,
+        prefix=prefix,
+        box_focus_slices=box_focus_slices,
+        montgap=montgap,
+        montcolor=montcolor,
+        cbar=cbar,
+        opacity=opacity,
+        zerocolor=zerocolor,
+        set_dicom_xyz=set_dicom_xyz,
+        ulay_range=ulay_range,
+        ulay_range_nz=ulay_range_nz,
+        montx=montx,
+        monty=monty,
+        montx_cat=montx_cat,
+        monty_cat=monty_cat,
+        label_mode=label_mode,
+        pbar_posonly_off=pbar_posonly_off,
+        edgy_ulay=edgy_ulay,
+        set_dicom_xyz_off=set_dicom_xyz_off,
+        no_cor=no_cor,
+        no_axi=no_axi,
+        no_sag=no_sag,
+        no_clean=no_clean,
+    )
     return v__djunct_overlap_check_execute(params, execution)
 
 

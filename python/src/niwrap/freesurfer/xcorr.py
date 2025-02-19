@@ -11,6 +11,8 @@ XCORR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 XcorrParameters = typing.TypedDict('XcorrParameters', {
     "__STYX_TYPE__": typing.Literal["xcorr"],
     "input1": InputPathType,
@@ -217,7 +219,14 @@ def xcorr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XCORR_METADATA)
-    params = xcorr_params(input1=input1, input2=input2, output=output, log_file=log_file, tmp_dir=tmp_dir, no_cleanup=no_cleanup)
+    params = xcorr_params(
+        input1=input1,
+        input2=input2,
+        output=output,
+        log_file=log_file,
+        tmp_dir=tmp_dir,
+        no_cleanup=no_cleanup,
+    )
     return xcorr_execute(params, execution)
 
 

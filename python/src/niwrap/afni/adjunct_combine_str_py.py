@@ -11,6 +11,8 @@ ADJUNCT_COMBINE_STR_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctCombineStrPyParameters = typing.TypedDict('AdjunctCombineStrPyParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_combine_str.py"],
     "output_file": str,
@@ -179,7 +181,11 @@ def adjunct_combine_str_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_COMBINE_STR_PY_METADATA)
-    params = adjunct_combine_str_py_params(output_file=output_file, upper_index=upper_index, string_selectors=string_selectors)
+    params = adjunct_combine_str_py_params(
+        output_file=output_file,
+        upper_index=upper_index,
+        string_selectors=string_selectors,
+    )
     return adjunct_combine_str_py_execute(params, execution)
 
 

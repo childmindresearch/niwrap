@@ -11,6 +11,8 @@ V__T1SCALE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VT1scaleParameters = typing.TypedDict('VT1scaleParameters', {
     "__STYX_TYPE__": typing.Literal["@T1scale"],
     "t1_volume": InputPathType,
@@ -298,7 +300,22 @@ def v__t1scale(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__T1SCALE_METADATA)
-    params = v__t1scale_params(t1_volume=t1_volume, pd_volume=pd_volume, output_directory=output_directory, align=align, mask=mask, head_mask=head_mask, unmasked_uni=unmasked_uni, masked_uni=masked_uni, echo=echo, help_=help_, h_web=h_web, h_view=h_view, all_opts=all_opts, h_find_word=h_find_word)
+    params = v__t1scale_params(
+        t1_volume=t1_volume,
+        pd_volume=pd_volume,
+        output_directory=output_directory,
+        align=align,
+        mask=mask,
+        head_mask=head_mask,
+        unmasked_uni=unmasked_uni,
+        masked_uni=masked_uni,
+        echo=echo,
+        help_=help_,
+        h_web=h_web,
+        h_view=h_view,
+        all_opts=all_opts,
+        h_find_word=h_find_word,
+    )
     return v__t1scale_execute(params, execution)
 
 

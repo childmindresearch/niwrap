@@ -11,6 +11,8 @@ BORDER_LENGTH_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BorderLengthParameters = typing.TypedDict('BorderLengthParameters', {
     "__STYX_TYPE__": typing.Literal["border-length"],
     "border": InputPathType,
@@ -213,7 +215,13 @@ def border_length(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_LENGTH_METADATA)
-    params = border_length_params(border=border, surface=surface, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric, opt_separate_pieces=opt_separate_pieces, opt_hide_border_name=opt_hide_border_name)
+    params = border_length_params(
+        border=border,
+        surface=surface,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+        opt_separate_pieces=opt_separate_pieces,
+        opt_hide_border_name=opt_hide_border_name,
+    )
     return border_length_execute(params, execution)
 
 

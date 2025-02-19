@@ -11,11 +11,15 @@ CONNECTOME2TCK_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Connectome2tckConfigParameters = typing.TypedDict('Connectome2tckConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Connectome2tckParameters = typing.TypedDict('Connectome2tckParameters', {
     "__STYX_TYPE__": typing.Literal["connectome2tck"],
     "nodes": typing.NotRequired[list[int] | None],
@@ -431,7 +435,27 @@ def connectome2tck(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONNECTOME2TCK_METADATA)
-    params = connectome2tck_params(nodes=nodes, exclusive=exclusive, files=files, exemplars=exemplars, keep_unassigned=keep_unassigned, keep_self=keep_self, tck_weights_in=tck_weights_in, prefix_tck_weights_out=prefix_tck_weights_out, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks_in=tracks_in, assignments_in=assignments_in, prefix_out=prefix_out)
+    params = connectome2tck_params(
+        nodes=nodes,
+        exclusive=exclusive,
+        files=files,
+        exemplars=exemplars,
+        keep_unassigned=keep_unassigned,
+        keep_self=keep_self,
+        tck_weights_in=tck_weights_in,
+        prefix_tck_weights_out=prefix_tck_weights_out,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks_in=tracks_in,
+        assignments_in=assignments_in,
+        prefix_out=prefix_out,
+    )
     return connectome2tck_execute(params, execution)
 
 

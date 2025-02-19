@@ -11,6 +11,8 @@ MAKE_COLOR_MAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MakeColorMapParameters = typing.TypedDict('MakeColorMapParameters', {
     "__STYX_TYPE__": typing.Literal["MakeColorMap"],
     "fiducials_ncol": typing.NotRequired[InputPathType | None],
@@ -381,7 +383,28 @@ def make_color_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_COLOR_MAP_METADATA)
-    params = make_color_map_params(fiducials_ncol=fiducials_ncol, fiducials=fiducials, num_colors=num_colors, std_mapname=std_mapname, palette_file=palette_file, cmap_name=cmap_name, fscolut_labels=fscolut_labels, fscolut_file=fscolut_file, afni_hex=afni_hex, afni_hex_complete=afni_hex_complete, suma_colormap=suma_colormap, user_colut_file=user_colut_file, sdset=sdset, sdset_prefix=sdset_prefix, flipupdown=flipupdown, skip_last=skip_last, show_fscolut=show_fscolut, help_flag=help_flag, help_full_flag=help_full_flag, flip_map_updside_down=flip_map_updside_down)
+    params = make_color_map_params(
+        fiducials_ncol=fiducials_ncol,
+        fiducials=fiducials,
+        num_colors=num_colors,
+        std_mapname=std_mapname,
+        palette_file=palette_file,
+        cmap_name=cmap_name,
+        fscolut_labels=fscolut_labels,
+        fscolut_file=fscolut_file,
+        afni_hex=afni_hex,
+        afni_hex_complete=afni_hex_complete,
+        suma_colormap=suma_colormap,
+        user_colut_file=user_colut_file,
+        sdset=sdset,
+        sdset_prefix=sdset_prefix,
+        flipupdown=flipupdown,
+        skip_last=skip_last,
+        show_fscolut=show_fscolut,
+        help_flag=help_flag,
+        help_full_flag=help_full_flag,
+        flip_map_updside_down=flip_map_updside_down,
+    )
     return make_color_map_execute(params, execution)
 
 

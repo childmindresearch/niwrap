@@ -11,6 +11,8 @@ V__ANIMAL_WARPER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAnimalWarperParameters = typing.TypedDict('VAnimalWarperParameters', {
     "__STYX_TYPE__": typing.Literal["@animal_warper"],
     "input_file": InputPathType,
@@ -552,7 +554,42 @@ def v__animal_warper(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ANIMAL_WARPER_METADATA)
-    params = v__animal_warper_params(input_file=input_file, base_template=base_template, output_dir=output_dir, brainmask=brainmask, atlases=atlases, atlas_followers=atlas_followers, seg_followers=seg_followers, template_followers=template_followers, dset_followers=dset_followers, roidset_followers=roidset_followers, input_abbrev=input_abbrev, base_abbrev=base_abbrev, atlas_abbrevs=atlas_abbrevs, template_abbrevs=template_abbrevs, seg_abbrevs=seg_abbrevs, dset_abbrevs=dset_abbrevs, roidset_abbrevs=roidset_abbrevs, align_centers_meth=align_centers_meth, aff_move_opt=aff_move_opt, cost=cost, maxlev=maxlev, no_surfaces=no_surfaces, feature_size=feature_size, supersize=supersize, init_scale=init_scale, mode_smooth_size=mode_smooth_size, mode_smooth_replacement_off=mode_smooth_replacement_off, center_out=center_out, align_type=align_type, extra_qw_opts=extra_qw_opts, keep_temp=keep_temp, version=version, ok_to_exist=ok_to_exist, echo=echo)
+    params = v__animal_warper_params(
+        input_file=input_file,
+        base_template=base_template,
+        output_dir=output_dir,
+        brainmask=brainmask,
+        atlases=atlases,
+        atlas_followers=atlas_followers,
+        seg_followers=seg_followers,
+        template_followers=template_followers,
+        dset_followers=dset_followers,
+        roidset_followers=roidset_followers,
+        input_abbrev=input_abbrev,
+        base_abbrev=base_abbrev,
+        atlas_abbrevs=atlas_abbrevs,
+        template_abbrevs=template_abbrevs,
+        seg_abbrevs=seg_abbrevs,
+        dset_abbrevs=dset_abbrevs,
+        roidset_abbrevs=roidset_abbrevs,
+        align_centers_meth=align_centers_meth,
+        aff_move_opt=aff_move_opt,
+        cost=cost,
+        maxlev=maxlev,
+        no_surfaces=no_surfaces,
+        feature_size=feature_size,
+        supersize=supersize,
+        init_scale=init_scale,
+        mode_smooth_size=mode_smooth_size,
+        mode_smooth_replacement_off=mode_smooth_replacement_off,
+        center_out=center_out,
+        align_type=align_type,
+        extra_qw_opts=extra_qw_opts,
+        keep_temp=keep_temp,
+        version=version,
+        ok_to_exist=ok_to_exist,
+        echo=echo,
+    )
     return v__animal_warper_execute(params, execution)
 
 

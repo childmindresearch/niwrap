@@ -11,6 +11,8 @@ LABELS_INTERSECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LabelsIntersectParameters = typing.TypedDict('LabelsIntersectParameters', {
     "__STYX_TYPE__": typing.Literal["labels_intersect"],
     "label1": InputPathType,
@@ -173,7 +175,11 @@ def labels_intersect(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_INTERSECT_METADATA)
-    params = labels_intersect_params(label1=label1, label2=label2, outputname=outputname)
+    params = labels_intersect_params(
+        label1=label1,
+        label2=label2,
+        outputname=outputname,
+    )
     return labels_intersect_execute(params, execution)
 
 

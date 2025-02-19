@@ -11,6 +11,8 @@ FABBER_DCE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FabberDceParameters = typing.TypedDict('FabberDceParameters', {
     "__STYX_TYPE__": typing.Literal["fabber_dce"],
     "output_directory": str,
@@ -530,7 +532,44 @@ def fabber_dce(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_DCE_METADATA)
-    params = fabber_dce_params(output_directory=output_directory, inference_method=inference_method, forward_model=forward_model, input_data=input_data, help_flag=help_flag, list_methods=list_methods, list_models=list_models, list_params=list_params, describe_params=describe_params, list_outputs=list_outputs, evaluate_model=evaluate_model, evaluate_params=evaluate_params, evaluate_nt=evaluate_nt, simple_output=simple_output, overwrite=overwrite, link_to_latest=link_to_latest, load_models=load_models, multiple_data=multiple_data, data_order=data_order, mask=mask, masked_time_points=masked_time_points, supplemental_data=supplemental_data, dump_param_names=dump_param_names, save_model_fit=save_model_fit, save_residuals=save_residuals, save_model_extras=save_model_extras, save_mvn=save_mvn, save_mean=save_mean, save_std=save_std, save_variances=save_variances, save_zstat=save_zstat, save_noise_mean=save_noise_mean, save_noise_std=save_noise_std, save_free_energy=save_free_energy, option_file=option_file, debug=debug)
+    params = fabber_dce_params(
+        output_directory=output_directory,
+        inference_method=inference_method,
+        forward_model=forward_model,
+        input_data=input_data,
+        help_flag=help_flag,
+        list_methods=list_methods,
+        list_models=list_models,
+        list_params=list_params,
+        describe_params=describe_params,
+        list_outputs=list_outputs,
+        evaluate_model=evaluate_model,
+        evaluate_params=evaluate_params,
+        evaluate_nt=evaluate_nt,
+        simple_output=simple_output,
+        overwrite=overwrite,
+        link_to_latest=link_to_latest,
+        load_models=load_models,
+        multiple_data=multiple_data,
+        data_order=data_order,
+        mask=mask,
+        masked_time_points=masked_time_points,
+        supplemental_data=supplemental_data,
+        dump_param_names=dump_param_names,
+        save_model_fit=save_model_fit,
+        save_residuals=save_residuals,
+        save_model_extras=save_model_extras,
+        save_mvn=save_mvn,
+        save_mean=save_mean,
+        save_std=save_std,
+        save_variances=save_variances,
+        save_zstat=save_zstat,
+        save_noise_mean=save_noise_mean,
+        save_noise_std=save_noise_std,
+        save_free_energy=save_free_energy,
+        option_file=option_file,
+        debug=debug,
+    )
     return fabber_dce_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ EXTRACT_SEG_WAVEFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ExtractSegWaveformParameters = typing.TypedDict('ExtractSegWaveformParameters', {
     "__STYX_TYPE__": typing.Literal["extract_seg_waveform"],
     "seg_file": InputPathType,
@@ -234,7 +236,16 @@ def extract_seg_waveform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXTRACT_SEG_WAVEFORM_METADATA)
-    params = extract_seg_waveform_params(seg_file=seg_file, seg_indices=seg_indices, input_volume=input_volume, reg_file=reg_file, vsm_file=vsm_file, regheader_flag=regheader_flag, demean_flag=demean_flag, output_file=output_file)
+    params = extract_seg_waveform_params(
+        seg_file=seg_file,
+        seg_indices=seg_indices,
+        input_volume=input_volume,
+        reg_file=reg_file,
+        vsm_file=vsm_file,
+        regheader_flag=regheader_flag,
+        demean_flag=demean_flag,
+        output_file=output_file,
+    )
     return extract_seg_waveform_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ METRIC_REMOVE_ISLANDS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricRemoveIslandsParameters = typing.TypedDict('MetricRemoveIslandsParameters', {
     "__STYX_TYPE__": typing.Literal["metric-remove-islands"],
     "surface": InputPathType,
@@ -196,7 +198,12 @@ def metric_remove_islands(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_REMOVE_ISLANDS_METADATA)
-    params = metric_remove_islands_params(surface=surface, metric_in=metric_in, metric_out=metric_out, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    params = metric_remove_islands_params(
+        surface=surface,
+        metric_in=metric_in,
+        metric_out=metric_out,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+    )
     return metric_remove_islands_execute(params, execution)
 
 

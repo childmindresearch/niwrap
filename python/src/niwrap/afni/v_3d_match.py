@@ -11,6 +11,8 @@ V_3D_MATCH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMatchParameters = typing.TypedDict('V3dMatchParameters', {
     "__STYX_TYPE__": typing.Literal["3dMatch"],
     "inset": InputPathType,
@@ -275,7 +277,17 @@ def v_3d_match(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MATCH_METADATA)
-    params = v_3d_match_params(inset=inset, refset=refset, mask=mask, in_min=in_min, in_max=in_max, ref_min=ref_min, ref_max=ref_max, prefix=prefix, only_dice_thr=only_dice_thr)
+    params = v_3d_match_params(
+        inset=inset,
+        refset=refset,
+        mask=mask,
+        in_min=in_min,
+        in_max=in_max,
+        ref_min=ref_min,
+        ref_max=ref_max,
+        prefix=prefix,
+        only_dice_thr=only_dice_thr,
+    )
     return v_3d_match_execute(params, execution)
 
 

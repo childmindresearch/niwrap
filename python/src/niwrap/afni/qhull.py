@@ -11,6 +11,8 @@ QHULL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 QhullParameters = typing.TypedDict('QhullParameters', {
     "__STYX_TYPE__": typing.Literal["qhull"],
     "input_coords": str,
@@ -339,7 +341,29 @@ def qhull(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QHULL_METADATA)
-    params = qhull_params(input_coords=input_coords, delaunay=delaunay, furthest_delaunay=furthest_delaunay, voronoi=voronoi, furthest_voronoi=furthest_voronoi, halfspace_intersection=halfspace_intersection, triangulated_output=triangulated_output, joggled_input=joggled_input, verify=verify, summary=summary, vertices_incident=vertices_incident, normals=normals, vertex_coordinates=vertex_coordinates, halfspace_intersections=halfspace_intersections, extreme_points=extreme_points, total_area_volume=total_area_volume, off_format=off_format, geomview_output=geomview_output, mathematica_output=mathematica_output, print_facets=print_facets, output_file=output_file)
+    params = qhull_params(
+        input_coords=input_coords,
+        delaunay=delaunay,
+        furthest_delaunay=furthest_delaunay,
+        voronoi=voronoi,
+        furthest_voronoi=furthest_voronoi,
+        halfspace_intersection=halfspace_intersection,
+        triangulated_output=triangulated_output,
+        joggled_input=joggled_input,
+        verify=verify,
+        summary=summary,
+        vertices_incident=vertices_incident,
+        normals=normals,
+        vertex_coordinates=vertex_coordinates,
+        halfspace_intersections=halfspace_intersections,
+        extreme_points=extreme_points,
+        total_area_volume=total_area_volume,
+        off_format=off_format,
+        geomview_output=geomview_output,
+        mathematica_output=mathematica_output,
+        print_facets=print_facets,
+        output_file=output_file,
+    )
     return qhull_execute(params, execution)
 
 

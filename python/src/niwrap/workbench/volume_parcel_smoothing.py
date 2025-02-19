@@ -11,6 +11,8 @@ VOLUME_PARCEL_SMOOTHING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeParcelSmoothingParameters = typing.TypedDict('VolumeParcelSmoothingParameters', {
     "__STYX_TYPE__": typing.Literal["volume-parcel-smoothing"],
     "data_volume": InputPathType,
@@ -223,7 +225,15 @@ def volume_parcel_smoothing(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_PARCEL_SMOOTHING_METADATA)
-    params = volume_parcel_smoothing_params(data_volume=data_volume, label_volume=label_volume, kernel=kernel, volume_out=volume_out, opt_fwhm=opt_fwhm, opt_fix_zeros=opt_fix_zeros, opt_subvolume_subvol=opt_subvolume_subvol)
+    params = volume_parcel_smoothing_params(
+        data_volume=data_volume,
+        label_volume=label_volume,
+        kernel=kernel,
+        volume_out=volume_out,
+        opt_fwhm=opt_fwhm,
+        opt_fix_zeros=opt_fix_zeros,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+    )
     return volume_parcel_smoothing_execute(params, execution)
 
 

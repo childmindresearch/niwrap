@@ -11,6 +11,8 @@ FSLMATHS_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FslmathsFslParameters = typing.TypedDict('FslmathsFslParameters', {
     "__STYX_TYPE__": typing.Literal["fslmaths.fsl"],
     "first_input": InputPathType,
@@ -177,7 +179,11 @@ def fslmaths_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMATHS_FSL_METADATA)
-    params = fslmaths_fsl_params(first_input=first_input, operations_and_inputs=operations_and_inputs, output_image=output_image)
+    params = fslmaths_fsl_params(
+        first_input=first_input,
+        operations_and_inputs=operations_and_inputs,
+        output_image=output_image,
+    )
     return fslmaths_fsl_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ADJUNCT_SIMPLIFY_COST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctSimplifyCostParameters = typing.TypedDict('AdjunctSimplifyCostParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_simplify_cost"],
     "cost_function": str,
@@ -155,7 +157,9 @@ def adjunct_simplify_cost(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_SIMPLIFY_COST_METADATA)
-    params = adjunct_simplify_cost_params(cost_function=cost_function)
+    params = adjunct_simplify_cost_params(
+        cost_function=cost_function,
+    )
     return adjunct_simplify_cost_execute(params, execution)
 
 

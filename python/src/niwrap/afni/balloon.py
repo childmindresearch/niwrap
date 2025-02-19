@@ -11,6 +11,8 @@ BALLOON_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 BalloonParameters = typing.TypedDict('BalloonParameters', {
     "__STYX_TYPE__": typing.Literal["balloon"],
     "tr": float,
@@ -190,7 +192,12 @@ def balloon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BALLOON_METADATA)
-    params = balloon_params(tr=tr, num_scans=num_scans, event_times=event_times, t_fall=t_fall)
+    params = balloon_params(
+        tr=tr,
+        num_scans=num_scans,
+        event_times=event_times,
+        t_fall=t_fall,
+    )
     return balloon_execute(params, execution)
 
 

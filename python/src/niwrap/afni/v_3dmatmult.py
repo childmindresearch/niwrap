@@ -11,6 +11,8 @@ V_3DMATMULT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmatmultParameters = typing.TypedDict('V3dmatmultParameters', {
     "__STYX_TYPE__": typing.Literal["3dmatmult"],
     "inputA": InputPathType,
@@ -206,7 +208,13 @@ def v_3dmatmult(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMATMULT_METADATA)
-    params = v_3dmatmult_params(input_a=input_a, input_b=input_b, prefix=prefix, datum=datum, verb=verb)
+    params = v_3dmatmult_params(
+        input_a=input_a,
+        input_b=input_b,
+        prefix=prefix,
+        datum=datum,
+        verb=verb,
+    )
     return v_3dmatmult_execute(params, execution)
 
 

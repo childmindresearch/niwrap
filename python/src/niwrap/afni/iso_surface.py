@@ -11,6 +11,8 @@ ISO_SURFACE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 IsoSurfaceParameters = typing.TypedDict('IsoSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["IsoSurface"],
     "input_vol": typing.NotRequired[InputPathType | None],
@@ -314,7 +316,22 @@ def iso_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ISO_SURFACE_METADATA)
-    params = iso_surface_params(input_vol=input_vol, shape_spec=shape_spec, isorois=isorois, isoval=isoval, isorange=isorange, isocmask=isocmask, output_prefix=output_prefix, tsmooth=tsmooth, debug=debug, autocrop=autocrop, remesh=remesh, xform=xform, novolreg=novolreg, noxform=noxform)
+    params = iso_surface_params(
+        input_vol=input_vol,
+        shape_spec=shape_spec,
+        isorois=isorois,
+        isoval=isoval,
+        isorange=isorange,
+        isocmask=isocmask,
+        output_prefix=output_prefix,
+        tsmooth=tsmooth,
+        debug=debug,
+        autocrop=autocrop,
+        remesh=remesh,
+        xform=xform,
+        novolreg=novolreg,
+        noxform=noxform,
+    )
     return iso_surface_execute(params, execution)
 
 

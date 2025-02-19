@@ -11,6 +11,8 @@ SET_SPACING_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SetSpacingParameters = typing.TypedDict('SetSpacingParameters', {
     "__STYX_TYPE__": typing.Literal["SetSpacing"],
     "dimension": int,
@@ -182,7 +184,12 @@ def set_spacing(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SET_SPACING_METADATA)
-    params = set_spacing_params(dimension=dimension, input_file=input_file, output_file=output_file, spacing=spacing)
+    params = set_spacing_params(
+        dimension=dimension,
+        input_file=input_file,
+        output_file=output_file,
+        spacing=spacing,
+    )
     return set_spacing_execute(params, execution)
 
 

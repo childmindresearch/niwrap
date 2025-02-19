@@ -11,6 +11,8 @@ SWAP_SUBJECTWISE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SwapSubjectwiseParameters = typing.TypedDict('SwapSubjectwiseParameters', {
     "__STYX_TYPE__": typing.Literal["swap_subjectwise"],
     "dyads": InputPathType,
@@ -222,7 +224,15 @@ def swap_subjectwise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SWAP_SUBJECTWISE_METADATA)
-    params = swap_subjectwise_params(dyads=dyads, fmean=fmean, mask=mask, obasename=obasename, xthresh=xthresh, averageonly_flag=averageonly_flag, verbose_flag=verbose_flag)
+    params = swap_subjectwise_params(
+        dyads=dyads,
+        fmean=fmean,
+        mask=mask,
+        obasename=obasename,
+        xthresh=xthresh,
+        averageonly_flag=averageonly_flag,
+        verbose_flag=verbose_flag,
+    )
     return swap_subjectwise_execute(params, execution)
 
 

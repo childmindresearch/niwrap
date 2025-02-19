@@ -11,6 +11,8 @@ SMOOTHEST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SmoothestParameters = typing.TypedDict('SmoothestParameters', {
     "__STYX_TYPE__": typing.Literal["smoothest"],
     "dof": typing.NotRequired[float | None],
@@ -202,7 +204,13 @@ def smoothest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SMOOTHEST_METADATA)
-    params = smoothest_params(dof=dof, residual_fit_image=residual_fit_image, zstat_image=zstat_image, mask=mask, verbose_flag=verbose_flag)
+    params = smoothest_params(
+        dof=dof,
+        residual_fit_image=residual_fit_image,
+        zstat_image=zstat_image,
+        mask=mask,
+        verbose_flag=verbose_flag,
+    )
     return smoothest_execute(params, execution)
 
 

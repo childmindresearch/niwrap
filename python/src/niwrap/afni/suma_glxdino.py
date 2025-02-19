@@ -11,6 +11,8 @@ SUMA_GLXDINO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SumaGlxdinoParameters = typing.TypedDict('SumaGlxdinoParameters', {
     "__STYX_TYPE__": typing.Literal["SUMA_glxdino"],
     "verbose": bool,
@@ -158,7 +160,9 @@ def suma_glxdino(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SUMA_GLXDINO_METADATA)
-    params = suma_glxdino_params(verbose=verbose)
+    params = suma_glxdino_params(
+        verbose=verbose,
+    )
     return suma_glxdino_execute(params, execution)
 
 

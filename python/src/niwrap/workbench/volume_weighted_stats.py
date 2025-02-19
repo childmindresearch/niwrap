@@ -11,20 +11,28 @@ VOLUME_WEIGHTED_STATS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeWeightedStatsWeightVolumeParameters = typing.TypedDict('VolumeWeightedStatsWeightVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["weight_volume"],
     "weight_volume": InputPathType,
     "opt_match_maps": bool,
 })
+
+
 VolumeWeightedStatsRoiParameters = typing.TypedDict('VolumeWeightedStatsRoiParameters', {
     "__STYX_TYPE__": typing.Literal["roi"],
     "roi_volume": InputPathType,
     "opt_match_maps": bool,
 })
+
+
 VolumeWeightedStatsStdevParameters = typing.TypedDict('VolumeWeightedStatsStdevParameters', {
     "__STYX_TYPE__": typing.Literal["stdev"],
     "opt_sample": bool,
 })
+
+
 VolumeWeightedStatsParameters = typing.TypedDict('VolumeWeightedStatsParameters', {
     "__STYX_TYPE__": typing.Literal["volume-weighted-stats"],
     "volume_in": InputPathType,
@@ -398,7 +406,17 @@ def volume_weighted_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_WEIGHTED_STATS_METADATA)
-    params = volume_weighted_stats_params(volume_in=volume_in, weight_volume=weight_volume, opt_subvolume_subvolume=opt_subvolume_subvolume, roi=roi, opt_mean=opt_mean, stdev=stdev, opt_percentile_percent=opt_percentile_percent, opt_sum=opt_sum, opt_show_map_name=opt_show_map_name)
+    params = volume_weighted_stats_params(
+        volume_in=volume_in,
+        weight_volume=weight_volume,
+        opt_subvolume_subvolume=opt_subvolume_subvolume,
+        roi=roi,
+        opt_mean=opt_mean,
+        stdev=stdev,
+        opt_percentile_percent=opt_percentile_percent,
+        opt_sum=opt_sum,
+        opt_show_map_name=opt_show_map_name,
+    )
     return volume_weighted_stats_execute(params, execution)
 
 

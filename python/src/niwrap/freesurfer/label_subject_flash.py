@@ -11,6 +11,8 @@ LABEL_SUBJECT_FLASH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LabelSubjectFlashParameters = typing.TypedDict('LabelSubjectFlashParameters', {
     "__STYX_TYPE__": typing.Literal["label_subject_flash"],
     "tissue_params": InputPathType,
@@ -192,7 +194,13 @@ def label_subject_flash(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_SUBJECT_FLASH_METADATA)
-    params = label_subject_flash_params(tissue_params=tissue_params, norm_volume=norm_volume, transform_file=transform_file, classifier_array=classifier_array, aseg_output=aseg_output)
+    params = label_subject_flash_params(
+        tissue_params=tissue_params,
+        norm_volume=norm_volume,
+        transform_file=transform_file,
+        classifier_array=classifier_array,
+        aseg_output=aseg_output,
+    )
     return label_subject_flash_execute(params, execution)
 
 

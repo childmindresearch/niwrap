@@ -11,6 +11,8 @@ SURFACE_CLOSEST_VERTEX_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceClosestVertexParameters = typing.TypedDict('SurfaceClosestVertexParameters', {
     "__STYX_TYPE__": typing.Literal["surface-closest-vertex"],
     "surface": InputPathType,
@@ -184,7 +186,11 @@ def surface_closest_vertex(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CLOSEST_VERTEX_METADATA)
-    params = surface_closest_vertex_params(surface=surface, coord_list_file=coord_list_file, vertex_list_out=vertex_list_out)
+    params = surface_closest_vertex_params(
+        surface=surface,
+        coord_list_file=coord_list_file,
+        vertex_list_out=vertex_list_out,
+    )
     return surface_closest_vertex_execute(params, execution)
 
 

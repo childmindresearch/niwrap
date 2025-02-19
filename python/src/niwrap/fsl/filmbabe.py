@@ -11,6 +11,8 @@ FILMBABE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FilmbabeParameters = typing.TypedDict('FilmbabeParameters', {
     "__STYX_TYPE__": typing.Literal["filmbabe"],
     "datafile_alias": InputPathType,
@@ -348,7 +350,26 @@ def filmbabe(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILMBABE_METADATA)
-    params = filmbabe_params(datafile_alias=datafile_alias, mask_alias=mask_alias, designfile_alias_2=designfile_alias_2, frf=frf, verbose_flag_alias=verbose_flag_alias, debug_level_alias_2=debug_level_alias_2, timing_on_flag=timing_on_flag, help_flag_alias=help_flag_alias, flobs_prior_off_alias=flobs_prior_off_alias, flobs_dir=flobs_dir, prior_covar_file_alias=prior_covar_file_alias, prior_mean_file_alias=prior_mean_file_alias, log_dir_alias_2=log_dir_alias_2, num_iterations=num_iterations, temporal_ar_mrf_prec_alias=temporal_ar_mrf_prec_alias, temporal_ar_flag=temporal_ar_flag, num_trace_samples_alias=num_trace_samples_alias, temporal_ar_order=temporal_ar_order)
+    params = filmbabe_params(
+        datafile_alias=datafile_alias,
+        mask_alias=mask_alias,
+        designfile_alias_2=designfile_alias_2,
+        frf=frf,
+        verbose_flag_alias=verbose_flag_alias,
+        debug_level_alias_2=debug_level_alias_2,
+        timing_on_flag=timing_on_flag,
+        help_flag_alias=help_flag_alias,
+        flobs_prior_off_alias=flobs_prior_off_alias,
+        flobs_dir=flobs_dir,
+        prior_covar_file_alias=prior_covar_file_alias,
+        prior_mean_file_alias=prior_mean_file_alias,
+        log_dir_alias_2=log_dir_alias_2,
+        num_iterations=num_iterations,
+        temporal_ar_mrf_prec_alias=temporal_ar_mrf_prec_alias,
+        temporal_ar_flag=temporal_ar_flag,
+        num_trace_samples_alias=num_trace_samples_alias,
+        temporal_ar_order=temporal_ar_order,
+    )
     return filmbabe_execute(params, execution)
 
 

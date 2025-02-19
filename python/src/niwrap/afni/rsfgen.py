@@ -11,6 +11,8 @@ RSFGEN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RsfgenParameters = typing.TypedDict('RsfgenParameters', {
     "__STYX_TYPE__": typing.Literal["RSFgen"],
     "length": int,
@@ -301,7 +303,21 @@ def rsfgen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RSFGEN_METADATA)
-    params = rsfgen_params(length=length, num_experimental_conditions=num_experimental_conditions, block_length=block_length, random_seed=random_seed, suppress_output_flag=suppress_output_flag, single_file_flag=single_file_flag, single_column_flag=single_column_flag, output_prefix=output_prefix, num_reps=num_reps, permutation_seed=permutation_seed, markov_file=markov_file, prob_zero=prob_zero, input_table=input_table)
+    params = rsfgen_params(
+        length=length,
+        num_experimental_conditions=num_experimental_conditions,
+        block_length=block_length,
+        random_seed=random_seed,
+        suppress_output_flag=suppress_output_flag,
+        single_file_flag=single_file_flag,
+        single_column_flag=single_column_flag,
+        output_prefix=output_prefix,
+        num_reps=num_reps,
+        permutation_seed=permutation_seed,
+        markov_file=markov_file,
+        prob_zero=prob_zero,
+        input_table=input_table,
+    )
     return rsfgen_execute(params, execution)
 
 

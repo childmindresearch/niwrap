@@ -11,6 +11,8 @@ NEW_INVWARP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 NewInvwarpParameters = typing.TypedDict('NewInvwarpParameters', {
     "__STYX_TYPE__": typing.Literal["new_invwarp"],
     "warpvol": InputPathType,
@@ -248,7 +250,18 @@ def new_invwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NEW_INVWARP_METADATA)
-    params = new_invwarp_params(warpvol=warpvol, outvol=outvol, refvol=refvol, relflag=relflag, absflag=absflag, noconstraintflag=noconstraintflag, jmin=jmin, jmax=jmax, debugflag=debugflag, verboseflag=verboseflag)
+    params = new_invwarp_params(
+        warpvol=warpvol,
+        outvol=outvol,
+        refvol=refvol,
+        relflag=relflag,
+        absflag=absflag,
+        noconstraintflag=noconstraintflag,
+        jmin=jmin,
+        jmax=jmax,
+        debugflag=debugflag,
+        verboseflag=verboseflag,
+    )
     return new_invwarp_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ GEN_SS_REVIEW_TABLE_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GenSsReviewTablePyParameters = typing.TypedDict('GenSsReviewTablePyParameters', {
     "__STYX_TYPE__": typing.Literal["gen_ss_review_table.py"],
     "infiles": list[InputPathType],
@@ -294,7 +296,22 @@ def gen_ss_review_table_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_SS_REVIEW_TABLE_PY_METADATA)
-    params = gen_ss_review_table_py_params(infiles=infiles, write_table=write_table, write_outliers=write_outliers, overwrite=overwrite, empty_is_outlier=empty_is_outlier, outlier_sep=outlier_sep, separator=separator, showlabs=showlabs, show_infiles=show_infiles, show_keepers=show_keepers, report_outliers=report_outliers, report_outliers_fill_style=report_outliers_fill_style, show_missing=show_missing, verbosity=verbosity)
+    params = gen_ss_review_table_py_params(
+        infiles=infiles,
+        write_table=write_table,
+        write_outliers=write_outliers,
+        overwrite=overwrite,
+        empty_is_outlier=empty_is_outlier,
+        outlier_sep=outlier_sep,
+        separator=separator,
+        showlabs=showlabs,
+        show_infiles=show_infiles,
+        show_keepers=show_keepers,
+        report_outliers=report_outliers,
+        report_outliers_fill_style=report_outliers_fill_style,
+        show_missing=show_missing,
+        verbosity=verbosity,
+    )
     return gen_ss_review_table_py_execute(params, execution)
 
 

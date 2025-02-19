@@ -11,6 +11,8 @@ MRI_EXTRACT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriExtractParameters = typing.TypedDict('MriExtractParameters', {
     "__STYX_TYPE__": typing.Literal["mri_extract"],
     "like_template": typing.NotRequired[InputPathType | None],
@@ -191,7 +193,12 @@ def mri_extract(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EXTRACT_METADATA)
-    params = mri_extract_params(like_template=like_template, src_volume=src_volume, dst_volume=dst_volume, coordinates=coordinates)
+    params = mri_extract_params(
+        like_template=like_template,
+        src_volume=src_volume,
+        dst_volume=dst_volume,
+        coordinates=coordinates,
+    )
     return mri_extract_execute(params, execution)
 
 

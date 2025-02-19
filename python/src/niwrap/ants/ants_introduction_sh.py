@@ -11,6 +11,8 @@ ANTS_INTRODUCTION_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsIntroductionShParameters = typing.TypedDict('AntsIntroductionShParameters', {
     "__STYX_TYPE__": typing.Literal["antsIntroduction.sh"],
     "image_dimension": typing.Literal[2, 3],
@@ -282,7 +284,19 @@ def ants_introduction_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_INTRODUCTION_SH_METADATA)
-    params = ants_introduction_sh_params(image_dimension=image_dimension, reference_image=reference_image, input_image=input_image, force=force, labels_in_fixed_image_space=labels_in_fixed_image_space, max_iterations=max_iterations, n4_bias_field_correction=n4_bias_field_correction, outprefix=outprefix, quality_check=quality_check, similarity_metric=similarity_metric, transformation_model=transformation_model)
+    params = ants_introduction_sh_params(
+        image_dimension=image_dimension,
+        reference_image=reference_image,
+        input_image=input_image,
+        force=force,
+        labels_in_fixed_image_space=labels_in_fixed_image_space,
+        max_iterations=max_iterations,
+        n4_bias_field_correction=n4_bias_field_correction,
+        outprefix=outprefix,
+        quality_check=quality_check,
+        similarity_metric=similarity_metric,
+        transformation_model=transformation_model,
+    )
     return ants_introduction_sh_execute(params, execution)
 
 

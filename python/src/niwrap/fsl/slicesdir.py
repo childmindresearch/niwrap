@@ -11,6 +11,8 @@ SLICESDIR_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SlicesdirParameters = typing.TypedDict('SlicesdirParameters', {
     "__STYX_TYPE__": typing.Literal["slicesdir"],
     "flag_filelist": bool,
@@ -203,7 +205,13 @@ def slicesdir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICESDIR_METADATA)
-    params = slicesdir_params(flag_filelist=flag_filelist, outline_image=outline_image, edge_threshold=edge_threshold, slice_option=slice_option, filelist=filelist)
+    params = slicesdir_params(
+        flag_filelist=flag_filelist,
+        outline_image=outline_image,
+        edge_threshold=edge_threshold,
+        slice_option=slice_option,
+        filelist=filelist,
+    )
     return slicesdir_execute(params, execution)
 
 

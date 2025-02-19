@@ -11,16 +11,22 @@ VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeToSurfaceMappingVolumeRoiParameters = typing.TypedDict('VolumeToSurfaceMappingVolumeRoiParameters', {
     "__STYX_TYPE__": typing.Literal["volume_roi"],
     "roi_volume": InputPathType,
     "opt_weighted": bool,
 })
+
+
 VolumeToSurfaceMappingOutputWeightsParameters = typing.TypedDict('VolumeToSurfaceMappingOutputWeightsParameters', {
     "__STYX_TYPE__": typing.Literal["output_weights"],
     "vertex": int,
     "weights_out": str,
 })
+
+
 VolumeToSurfaceMappingRibbonConstrainedParameters = typing.TypedDict('VolumeToSurfaceMappingRibbonConstrainedParameters', {
     "__STYX_TYPE__": typing.Literal["ribbon_constrained"],
     "inner_surf": InputPathType,
@@ -34,6 +40,8 @@ VolumeToSurfaceMappingRibbonConstrainedParameters = typing.TypedDict('VolumeToSu
     "output_weights": typing.NotRequired[VolumeToSurfaceMappingOutputWeightsParameters | None],
     "opt_output_weights_text_text_out": typing.NotRequired[str | None],
 })
+
+
 VolumeToSurfaceMappingMyelinStyleParameters = typing.TypedDict('VolumeToSurfaceMappingMyelinStyleParameters', {
     "__STYX_TYPE__": typing.Literal["myelin_style"],
     "ribbon_roi": InputPathType,
@@ -41,6 +49,8 @@ VolumeToSurfaceMappingMyelinStyleParameters = typing.TypedDict('VolumeToSurfaceM
     "sigma": float,
     "opt_legacy_bug": bool,
 })
+
+
 VolumeToSurfaceMappingParameters = typing.TypedDict('VolumeToSurfaceMappingParameters', {
     "__STYX_TYPE__": typing.Literal["volume-to-surface-mapping"],
     "volume": InputPathType,
@@ -649,7 +659,17 @@ def volume_to_surface_mapping(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_TO_SURFACE_MAPPING_METADATA)
-    params = volume_to_surface_mapping_params(volume=volume, surface=surface, metric_out=metric_out, opt_trilinear=opt_trilinear, opt_enclosing=opt_enclosing, opt_cubic=opt_cubic, ribbon_constrained=ribbon_constrained, myelin_style=myelin_style, opt_subvol_select_subvol=opt_subvol_select_subvol)
+    params = volume_to_surface_mapping_params(
+        volume=volume,
+        surface=surface,
+        metric_out=metric_out,
+        opt_trilinear=opt_trilinear,
+        opt_enclosing=opt_enclosing,
+        opt_cubic=opt_cubic,
+        ribbon_constrained=ribbon_constrained,
+        myelin_style=myelin_style,
+        opt_subvol_select_subvol=opt_subvol_select_subvol,
+    )
     return volume_to_surface_mapping_execute(params, execution)
 
 

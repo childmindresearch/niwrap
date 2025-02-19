@@ -11,52 +11,74 @@ ANTS_REGISTRATION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsRegistrationInitialMovingTransformParameters = typing.TypedDict('AntsRegistrationInitialMovingTransformParameters', {
     "__STYX_TYPE__": typing.Literal["initial_moving_transform"],
     "initial_moving_transform": InputPathType,
 })
+
+
 AntsRegistrationInitialMovingTransformUseInverseParameters = typing.TypedDict('AntsRegistrationInitialMovingTransformUseInverseParameters', {
     "__STYX_TYPE__": typing.Literal["initial_moving_transform_use_inverse"],
     "initial_moving_transform": InputPathType,
     "use_inverse": typing.NotRequired[typing.Literal[0, 1] | None],
 })
+
+
 AntsRegistrationInitialMovingTransformInitializationFeatureParameters = typing.TypedDict('AntsRegistrationInitialMovingTransformInitializationFeatureParameters', {
     "__STYX_TYPE__": typing.Literal["initial_moving_transform_initialization_feature"],
     "fixed_image": InputPathType,
     "moving_image": InputPathType,
     "initialization_feature": typing.Literal[0, 1, 2],
 })
+
+
 AntsRegistrationTransformRigidParameters = typing.TypedDict('AntsRegistrationTransformRigidParameters', {
     "__STYX_TYPE__": typing.Literal["transform_rigid"],
     "gradient_step": float,
 })
+
+
 AntsRegistrationTransformAffineParameters = typing.TypedDict('AntsRegistrationTransformAffineParameters', {
     "__STYX_TYPE__": typing.Literal["transform_affine"],
     "gradient_step": float,
 })
+
+
 AntsRegistrationTransformCompositeAffineParameters = typing.TypedDict('AntsRegistrationTransformCompositeAffineParameters', {
     "__STYX_TYPE__": typing.Literal["transform_composite_affine"],
     "gradient_step": float,
 })
+
+
 AntsRegistrationTransformSimilarityParameters = typing.TypedDict('AntsRegistrationTransformSimilarityParameters', {
     "__STYX_TYPE__": typing.Literal["transform_similarity"],
     "gradient_step": float,
 })
+
+
 AntsRegistrationTransformTranslationParameters = typing.TypedDict('AntsRegistrationTransformTranslationParameters', {
     "__STYX_TYPE__": typing.Literal["transform_translation"],
     "gradient_step": float,
 })
+
+
 AntsRegistrationTransformBsplineParameters = typing.TypedDict('AntsRegistrationTransformBsplineParameters', {
     "__STYX_TYPE__": typing.Literal["transform_bspline"],
     "gradient_step": float,
     "mesh_size_at_base_level": float,
 })
+
+
 AntsRegistrationTransformGaussianDisplacementFieldParameters = typing.TypedDict('AntsRegistrationTransformGaussianDisplacementFieldParameters', {
     "__STYX_TYPE__": typing.Literal["transform_gaussian_displacement_field"],
     "gradient_step": float,
     "update_field_variance_in_voxel_space": float,
     "total_field_variance_in_voxel_space": float,
 })
+
+
 AntsRegistrationTransformBsplineDisplacementFieldParameters = typing.TypedDict('AntsRegistrationTransformBsplineDisplacementFieldParameters', {
     "__STYX_TYPE__": typing.Literal["transform_bspline_displacement_field"],
     "gradient_step": float,
@@ -64,6 +86,8 @@ AntsRegistrationTransformBsplineDisplacementFieldParameters = typing.TypedDict('
     "total_field_mesh_size_at_base_level": typing.NotRequired[float | None],
     "spline_order": typing.NotRequired[float | None],
 })
+
+
 AntsRegistrationTransformTimeVaryingVelocityFieldParameters = typing.TypedDict('AntsRegistrationTransformTimeVaryingVelocityFieldParameters', {
     "__STYX_TYPE__": typing.Literal["transform_time_varying_velocity_field"],
     "gradient_step": float,
@@ -73,6 +97,8 @@ AntsRegistrationTransformTimeVaryingVelocityFieldParameters = typing.TypedDict('
     "total_field_variance_in_voxel_space": float,
     "total_field_time_variance": float,
 })
+
+
 AntsRegistrationTransformTimeVaryingBsplineVelocityFieldParameters = typing.TypedDict('AntsRegistrationTransformTimeVaryingBsplineVelocityFieldParameters', {
     "__STYX_TYPE__": typing.Literal["transform_time_varying_bspline_velocity_field"],
     "gradient_step": float,
@@ -80,12 +106,16 @@ AntsRegistrationTransformTimeVaryingBsplineVelocityFieldParameters = typing.Type
     "number_of_time_point_samples": typing.NotRequired[float | None],
     "spline_order": typing.NotRequired[float | None],
 })
+
+
 AntsRegistrationTransformSynParameters = typing.TypedDict('AntsRegistrationTransformSynParameters', {
     "__STYX_TYPE__": typing.Literal["transform_syn"],
     "gradient_step": float,
     "update_field_variance_in_voxel_space": float,
     "total_field_variance_in_voxel_space": float,
 })
+
+
 AntsRegistrationTransformBsplineSynParameters = typing.TypedDict('AntsRegistrationTransformBsplineSynParameters', {
     "__STYX_TYPE__": typing.Literal["transform_bspline_syn"],
     "gradient_step": float,
@@ -93,6 +123,8 @@ AntsRegistrationTransformBsplineSynParameters = typing.TypedDict('AntsRegistrati
     "total_field_mesh_size_at_base_level": typing.NotRequired[float | None],
     "spline_order": typing.NotRequired[float | None],
 })
+
+
 AntsRegistrationTransformExponentialParameters = typing.TypedDict('AntsRegistrationTransformExponentialParameters', {
     "__STYX_TYPE__": typing.Literal["transform_exponential"],
     "gradient_step": float,
@@ -100,6 +132,8 @@ AntsRegistrationTransformExponentialParameters = typing.TypedDict('AntsRegistrat
     "velocity_field_variance_in_voxel_space": float,
     "number_of_integration_steps": float,
 })
+
+
 AntsRegistrationTransformBsplineExponentialParameters = typing.TypedDict('AntsRegistrationTransformBsplineExponentialParameters', {
     "__STYX_TYPE__": typing.Literal["transform_bspline_exponential"],
     "gradient_step": float,
@@ -108,6 +142,8 @@ AntsRegistrationTransformBsplineExponentialParameters = typing.TypedDict('AntsRe
     "number_of_integration_steps": typing.NotRequired[float | None],
     "spline_order": typing.NotRequired[float | None],
 })
+
+
 AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationParameters = typing.TypedDict('AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["metric_ants_neighbourhood_cross_correlation"],
     "fixed_image": str,
@@ -118,6 +154,8 @@ AntsRegistrationMetricAntsNeighbourhoodCrossCorrelationParameters = typing.Typed
     "sampling_percentage": typing.NotRequired[float | None],
     "use_gradient_filter": typing.NotRequired[typing.Literal["true", "false"] | None],
 })
+
+
 AntsRegistrationMetricMutualInformationParameters = typing.TypedDict('AntsRegistrationMetricMutualInformationParameters', {
     "__STYX_TYPE__": typing.Literal["metric_mutual_information"],
     "fixed_image": str,
@@ -128,6 +166,8 @@ AntsRegistrationMetricMutualInformationParameters = typing.TypedDict('AntsRegist
     "sampling_percentage": typing.NotRequired[float | None],
     "use_gradient_filter": typing.NotRequired[typing.Literal["true", "false"] | None],
 })
+
+
 AntsRegistrationMetricMattesParameters = typing.TypedDict('AntsRegistrationMetricMattesParameters', {
     "__STYX_TYPE__": typing.Literal["metric_mattes"],
     "fixed_image": str,
@@ -138,6 +178,8 @@ AntsRegistrationMetricMattesParameters = typing.TypedDict('AntsRegistrationMetri
     "sampling_percentage": typing.NotRequired[float | None],
     "use_gradient_filter": typing.NotRequired[typing.Literal["true", "false"] | None],
 })
+
+
 AntsRegistrationMetricMeanSquaresParameters = typing.TypedDict('AntsRegistrationMetricMeanSquaresParameters', {
     "__STYX_TYPE__": typing.Literal["metric_mean_squares"],
     "fixed_image": str,
@@ -148,6 +190,8 @@ AntsRegistrationMetricMeanSquaresParameters = typing.TypedDict('AntsRegistration
     "sampling_percentage": typing.NotRequired[float | None],
     "use_gradient_filter": typing.NotRequired[typing.Literal["true", "false"] | None],
 })
+
+
 AntsRegistrationMetricDemonsParameters = typing.TypedDict('AntsRegistrationMetricDemonsParameters', {
     "__STYX_TYPE__": typing.Literal["metric_demons"],
     "fixed_image": str,
@@ -158,6 +202,8 @@ AntsRegistrationMetricDemonsParameters = typing.TypedDict('AntsRegistrationMetri
     "sampling_percentage": typing.NotRequired[float | None],
     "use_gradient_filter": typing.NotRequired[typing.Literal["true", "false"] | None],
 })
+
+
 AntsRegistrationMetricGlobalCorrelationParameters = typing.TypedDict('AntsRegistrationMetricGlobalCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["metric_global_correlation"],
     "fixed_image": str,
@@ -168,6 +214,8 @@ AntsRegistrationMetricGlobalCorrelationParameters = typing.TypedDict('AntsRegist
     "sampling_percentage": typing.NotRequired[float | None],
     "use_gradient_filter": typing.NotRequired[typing.Literal["true", "false"] | None],
 })
+
+
 AntsRegistrationMetricEuclideanIcpParameters = typing.TypedDict('AntsRegistrationMetricEuclideanIcpParameters', {
     "__STYX_TYPE__": typing.Literal["metric_euclidean_icp"],
     "fixed_point_set": str,
@@ -176,12 +224,16 @@ AntsRegistrationMetricEuclideanIcpParameters = typing.TypedDict('AntsRegistratio
     "sampling_percentage": typing.NotRequired[float | None],
     "boundary_points_only": typing.NotRequired[typing.Literal["0"] | None],
 })
+
+
 AntsRegistrationMetricPointSetExpectationParameters = typing.TypedDict('AntsRegistrationMetricPointSetExpectationParameters', {
     "__STYX_TYPE__": typing.Literal["metric_point_set_expectation"],
     "metric_weight": float,
     "point_set_sigma": typing.NotRequired[float | None],
     "sampling_percentage": typing.NotRequired[float | None],
 })
+
+
 AntsRegistrationMetricJensenHavrdaCharvetTsallisParameters = typing.TypedDict('AntsRegistrationMetricJensenHavrdaCharvetTsallisParameters', {
     "__STYX_TYPE__": typing.Literal["metric_jensen_havrda_charvet_tsallis"],
     "fixed_point_set": str,
@@ -192,15 +244,21 @@ AntsRegistrationMetricJensenHavrdaCharvetTsallisParameters = typing.TypedDict('A
     "point_set_sigma": typing.NotRequired[float | None],
     "k_neighborhood": typing.NotRequired[float | None],
 })
+
+
 AntsRegistrationMetricIgdmParameters = typing.TypedDict('AntsRegistrationMetricIgdmParameters', {
     "__STYX_TYPE__": typing.Literal["metric_igdm"],
 })
+
+
 AntsRegistrationConvergenceParameters = typing.TypedDict('AntsRegistrationConvergenceParameters', {
     "__STYX_TYPE__": typing.Literal["convergence"],
     "convergence": str,
     "convergence_threshold": float,
     "convergence_window_size": int,
 })
+
+
 AntsRegistrationStageParameters = typing.TypedDict('AntsRegistrationStageParameters', {
     "__STYX_TYPE__": typing.Literal["stage"],
     "transform": typing.Union[AntsRegistrationTransformRigidParameters, AntsRegistrationTransformAffineParameters, AntsRegistrationTransformCompositeAffineParameters, AntsRegistrationTransformSimilarityParameters, AntsRegistrationTransformTranslationParameters, AntsRegistrationTransformBsplineParameters, AntsRegistrationTransformGaussianDisplacementFieldParameters, AntsRegistrationTransformBsplineDisplacementFieldParameters, AntsRegistrationTransformTimeVaryingVelocityFieldParameters, AntsRegistrationTransformTimeVaryingBsplineVelocityFieldParameters, AntsRegistrationTransformSynParameters, AntsRegistrationTransformBsplineSynParameters, AntsRegistrationTransformExponentialParameters, AntsRegistrationTransformBsplineExponentialParameters],
@@ -210,16 +268,22 @@ AntsRegistrationStageParameters = typing.TypedDict('AntsRegistrationStageParamet
     "shrink_factors": str,
     "use_histogram_matching": typing.NotRequired[typing.Literal[0, 1] | None],
 })
+
+
 AntsRegistrationWinsorizeImageIntensitiesParameters = typing.TypedDict('AntsRegistrationWinsorizeImageIntensitiesParameters', {
     "__STYX_TYPE__": typing.Literal["winsorize_image_intensities"],
     "lower_quantile": float,
     "upper_quantile": float,
 })
+
+
 AntsRegistrationMasksParameters = typing.TypedDict('AntsRegistrationMasksParameters', {
     "__STYX_TYPE__": typing.Literal["masks"],
     "fixed_mask": typing.NotRequired[str | None],
     "moving_mask": typing.NotRequired[str | None],
 })
+
+
 AntsRegistrationParameters = typing.TypedDict('AntsRegistrationParameters', {
     "__STYX_TYPE__": typing.Literal["antsRegistration"],
     "dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -2293,7 +2357,27 @@ def ants_registration(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_REGISTRATION_METADATA)
-    params = ants_registration_params(dimensionality=dimensionality, output=output, save_state=save_state, restore_state=restore_state, write_composite_transform=write_composite_transform, print_similarity_measure_interval=print_similarity_measure_interval, write_interval_volumes=write_interval_volumes, collapse_output_transforms=collapse_output_transforms, initialize_transforms_per_stage=initialize_transforms_per_stage, interpolation=interpolation, restrict_deformation=restrict_deformation, initial_fixed_transform=initial_fixed_transform, initial_moving_transform=initial_moving_transform, stages=stages, winsorize_image_intensities=winsorize_image_intensities, masks=masks, minc=minc, random_seed=random_seed, verbose=verbose)
+    params = ants_registration_params(
+        dimensionality=dimensionality,
+        output=output,
+        save_state=save_state,
+        restore_state=restore_state,
+        write_composite_transform=write_composite_transform,
+        print_similarity_measure_interval=print_similarity_measure_interval,
+        write_interval_volumes=write_interval_volumes,
+        collapse_output_transforms=collapse_output_transforms,
+        initialize_transforms_per_stage=initialize_transforms_per_stage,
+        interpolation=interpolation,
+        restrict_deformation=restrict_deformation,
+        initial_fixed_transform=initial_fixed_transform,
+        initial_moving_transform=initial_moving_transform,
+        stages=stages,
+        winsorize_image_intensities=winsorize_image_intensities,
+        masks=masks,
+        minc=minc,
+        random_seed=random_seed,
+        verbose=verbose,
+    )
     return ants_registration_execute(params, execution)
 
 

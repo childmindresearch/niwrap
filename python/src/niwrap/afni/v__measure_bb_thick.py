@@ -11,6 +11,8 @@ V__MEASURE_BB_THICK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VMeasureBbThickParameters = typing.TypedDict('VMeasureBbThickParameters', {
     "__STYX_TYPE__": typing.Literal["@measure_bb_thick"],
     "maskset": InputPathType,
@@ -324,7 +326,20 @@ def v__measure_bb_thick(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__MEASURE_BB_THICK_METADATA)
-    params = v__measure_bb_thick_params(maskset=maskset, surfset=surfset, outdir=outdir, resample=resample, increment=increment, surfsmooth=surfsmooth, smoothmm=smoothmm, maxthick=maxthick, depth_search=depth_search, keep_temp_files=keep_temp_files, balls_only=balls_only, surfsmooth_method=surfsmooth_method)
+    params = v__measure_bb_thick_params(
+        maskset=maskset,
+        surfset=surfset,
+        outdir=outdir,
+        resample=resample,
+        increment=increment,
+        surfsmooth=surfsmooth,
+        smoothmm=smoothmm,
+        maxthick=maxthick,
+        depth_search=depth_search,
+        keep_temp_files=keep_temp_files,
+        balls_only=balls_only,
+        surfsmooth_method=surfsmooth_method,
+    )
     return v__measure_bb_thick_execute(params, execution)
 
 

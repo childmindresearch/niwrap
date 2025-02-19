@@ -11,11 +11,15 @@ V_5TTEDIT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 V5tteditConfigParameters = typing.TypedDict('V5tteditConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 V5tteditParameters = typing.TypedDict('V5tteditParameters', {
     "__STYX_TYPE__": typing.Literal["5ttedit"],
     "cgm": typing.NotRequired[InputPathType | None],
@@ -384,7 +388,24 @@ def v_5ttedit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TTEDIT_METADATA)
-    params = v_5ttedit_params(cgm=cgm, sgm=sgm, wm=wm, csf=csf, path=path, none=none, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = v_5ttedit_params(
+        cgm=cgm,
+        sgm=sgm,
+        wm=wm,
+        csf=csf,
+        path=path,
+        none=none,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return v_5ttedit_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_ZIPPER_ZAPPER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dZipperZapperParameters = typing.TypedDict('V3dZipperZapperParameters', {
     "__STYX_TYPE__": typing.Literal["3dZipperZapper"],
     "input_file": InputPathType,
@@ -356,7 +358,24 @@ def v_3d_zipper_zapper(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ZIPPER_ZAPPER_METADATA)
-    params = v_3d_zipper_zapper_params(input_file=input_file, output_prefix=output_prefix, mask_file=mask_file, min_slice_nvox=min_slice_nvox, min_streak_len=min_streak_len, do_out_slice_param=do_out_slice_param, no_out_bad_mask=no_out_bad_mask, no_out_text_vals=no_out_text_vals, dont_use_streak=dont_use_streak, dont_use_drop=dont_use_drop, dont_use_corr=dont_use_corr, min_streak_val=min_streak_val, min_drop_frac=min_drop_frac, min_drop_diff=min_drop_diff, min_corr_len=min_corr_len, min_corr_corr=min_corr_corr)
+    params = v_3d_zipper_zapper_params(
+        input_file=input_file,
+        output_prefix=output_prefix,
+        mask_file=mask_file,
+        min_slice_nvox=min_slice_nvox,
+        min_streak_len=min_streak_len,
+        do_out_slice_param=do_out_slice_param,
+        no_out_bad_mask=no_out_bad_mask,
+        no_out_text_vals=no_out_text_vals,
+        dont_use_streak=dont_use_streak,
+        dont_use_drop=dont_use_drop,
+        dont_use_corr=dont_use_corr,
+        min_streak_val=min_streak_val,
+        min_drop_frac=min_drop_frac,
+        min_drop_diff=min_drop_diff,
+        min_corr_len=min_corr_len,
+        min_corr_corr=min_corr_corr,
+    )
     return v_3d_zipper_zapper_execute(params, execution)
 
 

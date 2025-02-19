@@ -11,6 +11,8 @@ HIAM_MAKE_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 HiamMakeSurfacesParameters = typing.TypedDict('HiamMakeSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["hiam_make_surfaces"],
     "subject_name": str,
@@ -165,7 +167,10 @@ def hiam_make_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIAM_MAKE_SURFACES_METADATA)
-    params = hiam_make_surfaces_params(subject_name=subject_name, structure=structure)
+    params = hiam_make_surfaces_params(
+        subject_name=subject_name,
+        structure=structure,
+    )
     return hiam_make_surfaces_execute(params, execution)
 
 

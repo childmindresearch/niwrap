@@ -11,6 +11,8 @@ V_3D_SETUP_GROUP_IN_CORR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSetupGroupInCorrParameters = typing.TypedDict('V3dSetupGroupInCorrParameters', {
     "__STYX_TYPE__": typing.Literal["3dSetupGroupInCorr"],
     "datasets": list[InputPathType],
@@ -248,7 +250,17 @@ def v_3d_setup_group_in_corr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SETUP_GROUP_IN_CORR_METADATA)
-    params = v_3d_setup_group_in_corr_params(datasets=datasets, mask_dataset=mask_dataset, prefix=prefix, short_flag=short_flag, byte_flag=byte_flag, labels_file=labels_file, delete_flag=delete_flag, prep_method=prep_method, lr_pairs=lr_pairs)
+    params = v_3d_setup_group_in_corr_params(
+        datasets=datasets,
+        mask_dataset=mask_dataset,
+        prefix=prefix,
+        short_flag=short_flag,
+        byte_flag=byte_flag,
+        labels_file=labels_file,
+        delete_flag=delete_flag,
+        prep_method=prep_method,
+        lr_pairs=lr_pairs,
+    )
     return v_3d_setup_group_in_corr_execute(params, execution)
 
 

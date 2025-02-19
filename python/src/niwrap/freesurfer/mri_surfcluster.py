@@ -11,6 +11,8 @@ MRI_SURFCLUSTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSurfclusterParameters = typing.TypedDict('MriSurfclusterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_surfcluster"],
     "infile": InputPathType,
@@ -629,7 +631,49 @@ def mri_surfcluster(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SURFCLUSTER_METADATA)
-    params = mri_surfcluster_params(infile=infile, thmin=thmin, sign=sign, no_adjust_flag=no_adjust_flag, fdr=fdr, subject=subject, hemi=hemi, surf=surf, surfpath=surfpath, annot=annot, frame=frame, csd=csd, vwsig=vwsig, cwsig=cwsig, maxcwpval=maxcwpval, bonferroni=bonferroni, sig2p_max_flag=sig2p_max_flag, bonferroni_max=bonferroni_max, csdpdf=csdpdf, csdpdf_only_flag=csdpdf_only_flag, csd_out=csd_out, cwpvalthresh=cwpvalthresh, fwhm=fwhm, fwhmdat=fwhmdat, clabel=clabel, cortex_flag=cortex_flag, mask=mask, mask_inv_flag=mask_inv_flag, centroid_flag=centroid_flag, sum_=sum_, pointset=pointset, maxareafile=maxareafile, o=o, ocn=ocn, olab=olab, oannot=oannot, minarea=minarea, xfm=xfm, no_fixmni_flag=no_fixmni_flag, sd=sd, thmax=thmax)
+    params = mri_surfcluster_params(
+        infile=infile,
+        thmin=thmin,
+        sign=sign,
+        no_adjust_flag=no_adjust_flag,
+        fdr=fdr,
+        subject=subject,
+        hemi=hemi,
+        surf=surf,
+        surfpath=surfpath,
+        annot=annot,
+        frame=frame,
+        csd=csd,
+        vwsig=vwsig,
+        cwsig=cwsig,
+        maxcwpval=maxcwpval,
+        bonferroni=bonferroni,
+        sig2p_max_flag=sig2p_max_flag,
+        bonferroni_max=bonferroni_max,
+        csdpdf=csdpdf,
+        csdpdf_only_flag=csdpdf_only_flag,
+        csd_out=csd_out,
+        cwpvalthresh=cwpvalthresh,
+        fwhm=fwhm,
+        fwhmdat=fwhmdat,
+        clabel=clabel,
+        cortex_flag=cortex_flag,
+        mask=mask,
+        mask_inv_flag=mask_inv_flag,
+        centroid_flag=centroid_flag,
+        sum_=sum_,
+        pointset=pointset,
+        maxareafile=maxareafile,
+        o=o,
+        ocn=ocn,
+        olab=olab,
+        oannot=oannot,
+        minarea=minarea,
+        xfm=xfm,
+        no_fixmni_flag=no_fixmni_flag,
+        sd=sd,
+        thmax=thmax,
+    )
     return mri_surfcluster_execute(params, execution)
 
 

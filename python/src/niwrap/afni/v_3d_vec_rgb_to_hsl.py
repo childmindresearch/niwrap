@@ -11,6 +11,8 @@ V_3D_VEC_RGB_TO_HSL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dVecRgbToHslParameters = typing.TypedDict('V3dVecRgbToHslParameters', {
     "__STYX_TYPE__": typing.Literal["3dVecRGB_to_HSL"],
     "prefix": str,
@@ -206,7 +208,12 @@ def v_3d_vec_rgb_to_hsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_VEC_RGB_TO_HSL_METADATA)
-    params = v_3d_vec_rgb_to_hsl_params(prefix=prefix, in_vec=in_vec, mask=mask, in_scal=in_scal)
+    params = v_3d_vec_rgb_to_hsl_params(
+        prefix=prefix,
+        in_vec=in_vec,
+        mask=mask,
+        in_scal=in_scal,
+    )
     return v_3d_vec_rgb_to_hsl_execute(params, execution)
 
 

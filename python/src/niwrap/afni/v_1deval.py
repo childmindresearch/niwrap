@@ -11,6 +11,8 @@ V_1DEVAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1devalParameters = typing.TypedDict('V1devalParameters', {
     "__STYX_TYPE__": typing.Literal["1deval"],
     "del": typing.NotRequired[float | None],
@@ -242,7 +244,15 @@ def v_1deval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DEVAL_METADATA)
-    params = v_1deval_params(del_=del_, start=start, num=num, index=index, v_1_d=v_1_d, symbols=symbols, expression=expression)
+    params = v_1deval_params(
+        del_=del_,
+        start=start,
+        num=num,
+        index=index,
+        v_1_d=v_1_d,
+        symbols=symbols,
+        expression=expression,
+    )
     return v_1deval_execute(params, execution)
 
 

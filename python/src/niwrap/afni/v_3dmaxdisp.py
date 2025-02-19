@@ -11,6 +11,8 @@ V_3DMAXDISP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmaxdispParameters = typing.TypedDict('V3dmaxdispParameters', {
     "__STYX_TYPE__": typing.Literal["3dmaxdisp"],
     "inset": InputPathType,
@@ -186,7 +188,11 @@ def v_3dmaxdisp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMAXDISP_METADATA)
-    params = v_3dmaxdisp_params(inset=inset, matrix=matrix, verbose=verbose)
+    params = v_3dmaxdisp_params(
+        inset=inset,
+        matrix=matrix,
+        verbose=verbose,
+    )
     return v_3dmaxdisp_execute(params, execution)
 
 

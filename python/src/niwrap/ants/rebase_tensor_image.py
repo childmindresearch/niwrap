@@ -11,6 +11,8 @@ REBASE_TENSOR_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 RebaseTensorImageParameters = typing.TypedDict('RebaseTensorImageParameters', {
     "__STYX_TYPE__": typing.Literal["RebaseTensorImage"],
     "dimension": int,
@@ -191,7 +193,13 @@ def rebase_tensor_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REBASE_TENSOR_IMAGE_METADATA)
-    params = rebase_tensor_image_params(dimension=dimension, infile=infile, outfile=outfile, method=method, reference=reference)
+    params = rebase_tensor_image_params(
+        dimension=dimension,
+        infile=infile,
+        outfile=outfile,
+        method=method,
+        reference=reference,
+    )
     return rebase_tensor_image_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_CA_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCaRegisterParameters = typing.TypedDict('MriCaRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_ca_register"],
     "input_volume": InputPathType,
@@ -561,7 +563,47 @@ def mri_ca_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_REGISTER_METADATA)
-    params = mri_ca_register_params(input_volume=input_volume, template=template, output_volume=output_volume, tolerance=tolerance, mask=mask, transform_lta=transform_lta, level=level, read_intensity=read_intensity, align=align, invert_save_file=invert_save_file, distance=distance, regularize=regularize, regularize_mean=regularize_mean, scale_smoothness=scale_smoothness, nobright=nobright, renormalize_map=renormalize_map, renormalize=renormalize, read_lta=read_lta, smoothness=smoothness, samples=samples, nsmall=nsmall, fixed=fixed, optimal=optimal, noneg=noneg, wm=wm, min_avgs=min_avgs, transform_limit=transform_limit, relabel=relabel, relabel_avgs=relabel_avgs, reset_avgs=reset_avgs, vf_file=vf_file, diag_file=diag_file, tr=tr, te=te, example=example, bigventricles=bigventricles, uncompress=uncompress, second_pass_renorm=second_pass_renorm, threads=threads)
+    params = mri_ca_register_params(
+        input_volume=input_volume,
+        template=template,
+        output_volume=output_volume,
+        tolerance=tolerance,
+        mask=mask,
+        transform_lta=transform_lta,
+        level=level,
+        read_intensity=read_intensity,
+        align=align,
+        invert_save_file=invert_save_file,
+        distance=distance,
+        regularize=regularize,
+        regularize_mean=regularize_mean,
+        scale_smoothness=scale_smoothness,
+        nobright=nobright,
+        renormalize_map=renormalize_map,
+        renormalize=renormalize,
+        read_lta=read_lta,
+        smoothness=smoothness,
+        samples=samples,
+        nsmall=nsmall,
+        fixed=fixed,
+        optimal=optimal,
+        noneg=noneg,
+        wm=wm,
+        min_avgs=min_avgs,
+        transform_limit=transform_limit,
+        relabel=relabel,
+        relabel_avgs=relabel_avgs,
+        reset_avgs=reset_avgs,
+        vf_file=vf_file,
+        diag_file=diag_file,
+        tr=tr,
+        te=te,
+        example=example,
+        bigventricles=bigventricles,
+        uncompress=uncompress,
+        second_pass_renorm=second_pass_renorm,
+        threads=threads,
+    )
     return mri_ca_register_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ DIRGEN_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DirgenConfigParameters = typing.TypedDict('DirgenConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DirgenParameters = typing.TypedDict('DirgenParameters', {
     "__STYX_TYPE__": typing.Literal["dirgen"],
     "power": typing.NotRequired[int | None],
@@ -388,7 +392,23 @@ def dirgen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DIRGEN_METADATA)
-    params = dirgen_params(power=power, niter=niter, restarts=restarts, unipolar=unipolar, cartesian=cartesian, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, ndir=ndir, dirs=dirs)
+    params = dirgen_params(
+        power=power,
+        niter=niter,
+        restarts=restarts,
+        unipolar=unipolar,
+        cartesian=cartesian,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        ndir=ndir,
+        dirs=dirs,
+    )
     return dirgen_execute(params, execution)
 
 

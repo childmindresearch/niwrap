@@ -11,11 +11,15 @@ FIXELCONNECTIVITY_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 FixelconnectivityConfigParameters = typing.TypedDict('FixelconnectivityConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 FixelconnectivityParameters = typing.TypedDict('FixelconnectivityParameters', {
     "__STYX_TYPE__": typing.Literal["fixelconnectivity"],
     "threshold": typing.NotRequired[float | None],
@@ -357,7 +361,22 @@ def fixelconnectivity(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELCONNECTIVITY_METADATA)
-    params = fixelconnectivity_params(threshold=threshold, angle=angle, mask=mask, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_directory=fixel_directory, tracks=tracks, matrix=matrix)
+    params = fixelconnectivity_params(
+        threshold=threshold,
+        angle=angle,
+        mask=mask,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        fixel_directory=fixel_directory,
+        tracks=tracks,
+        matrix=matrix,
+    )
     return fixelconnectivity_execute(params, execution)
 
 

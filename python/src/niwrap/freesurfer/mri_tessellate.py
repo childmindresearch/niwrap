@@ -11,6 +11,8 @@ MRI_TESSELLATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriTessellateParameters = typing.TypedDict('MriTessellateParameters', {
     "__STYX_TYPE__": typing.Literal["mri_tessellate"],
     "input_volume": InputPathType,
@@ -207,7 +209,14 @@ def mri_tessellate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_TESSELLATE_METADATA)
-    params = mri_tessellate_params(input_volume=input_volume, label_value=label_value, output_surf=output_surf, different_labels=different_labels, max_vertices=max_vertices, real_ras=real_ras)
+    params = mri_tessellate_params(
+        input_volume=input_volume,
+        label_value=label_value,
+        output_surf=output_surf,
+        different_labels=different_labels,
+        max_vertices=max_vertices,
+        real_ras=real_ras,
+    )
     return mri_tessellate_execute(params, execution)
 
 

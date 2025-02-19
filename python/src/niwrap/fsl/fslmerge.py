@@ -11,6 +11,8 @@ FSLMERGE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslmergeParameters = typing.TypedDict('FslmergeParameters', {
     "__STYX_TYPE__": typing.Literal["fslmerge"],
     "merge_time": bool,
@@ -193,7 +195,13 @@ def fslmerge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMERGE_METADATA)
-    params = fslmerge_params(merge_time=merge_time, merge_set_tr=merge_set_tr, output_file=output_file, input_files=input_files, tr_value=tr_value)
+    params = fslmerge_params(
+        merge_time=merge_time,
+        merge_set_tr=merge_set_tr,
+        output_file=output_file,
+        input_files=input_files,
+        tr_value=tr_value,
+    )
     return fslmerge_execute(params, execution)
 
 

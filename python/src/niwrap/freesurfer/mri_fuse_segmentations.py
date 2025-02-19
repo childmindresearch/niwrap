@@ -11,6 +11,8 @@ MRI_FUSE_SEGMENTATIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFuseSegmentationsParameters = typing.TypedDict('MriFuseSegmentationsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fuse_segmentations"],
     "asegs": list[InputPathType],
@@ -220,7 +222,14 @@ def mri_fuse_segmentations(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FUSE_SEGMENTATIONS_METADATA)
-    params = mri_fuse_segmentations_params(asegs=asegs, nocc_asegs=nocc_asegs, norm_volumes=norm_volumes, transforms=transforms, sigma=sigma, input_file=input_file)
+    params = mri_fuse_segmentations_params(
+        asegs=asegs,
+        nocc_asegs=nocc_asegs,
+        norm_volumes=norm_volumes,
+        transforms=transforms,
+        sigma=sigma,
+        input_file=input_file,
+    )
     return mri_fuse_segmentations_execute(params, execution)
 
 

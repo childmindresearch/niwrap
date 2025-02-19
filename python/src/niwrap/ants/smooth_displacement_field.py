@@ -11,6 +11,8 @@ SMOOTH_DISPLACEMENT_FIELD_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SmoothDisplacementFieldParameters = typing.TypedDict('SmoothDisplacementFieldParameters', {
     "__STYX_TYPE__": typing.Literal["SmoothDisplacementField"],
     "image_dimension": int,
@@ -230,7 +232,16 @@ def smooth_displacement_field(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SMOOTH_DISPLACEMENT_FIELD_METADATA)
-    params = smooth_displacement_field_params(image_dimension=image_dimension, input_field=input_field, output_field=output_field, variance_or_mesh_size_base_level=variance_or_mesh_size_base_level, number_of_levels=number_of_levels, spline_order=spline_order, estimate_inverse=estimate_inverse, confidence_image=confidence_image)
+    params = smooth_displacement_field_params(
+        image_dimension=image_dimension,
+        input_field=input_field,
+        output_field=output_field,
+        variance_or_mesh_size_base_level=variance_or_mesh_size_base_level,
+        number_of_levels=number_of_levels,
+        spline_order=spline_order,
+        estimate_inverse=estimate_inverse,
+        confidence_image=confidence_image,
+    )
     return smooth_displacement_field_execute(params, execution)
 
 

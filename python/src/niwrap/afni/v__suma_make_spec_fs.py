@@ -11,6 +11,8 @@ V__SUMA_MAKE_SPEC_FS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSumaMakeSpecFsParameters = typing.TypedDict('VSumaMakeSpecFsParameters', {
     "__STYX_TYPE__": typing.Literal["@SUMA_Make_Spec_FS"],
     "subject_id": str,
@@ -163,7 +165,9 @@ def v__suma_make_spec_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_MAKE_SPEC_FS_METADATA)
-    params = v__suma_make_spec_fs_params(subject_id=subject_id)
+    params = v__suma_make_spec_fs_params(
+        subject_id=subject_id,
+    )
     return v__suma_make_spec_fs_execute(params, execution)
 
 

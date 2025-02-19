@@ -11,6 +11,8 @@ SPHERE_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SphereSubjectParameters = typing.TypedDict('SphereSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["sphere_subject"],
     "input_dir": str,
@@ -175,7 +177,11 @@ def sphere_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPHERE_SUBJECT_METADATA)
-    params = sphere_subject_params(input_dir=input_dir, output_file=output_file, license_file=license_file)
+    params = sphere_subject_params(
+        input_dir=input_dir,
+        output_file=output_file,
+        license_file=license_file,
+    )
     return sphere_subject_execute(params, execution)
 
 

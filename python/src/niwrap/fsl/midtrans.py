@@ -11,6 +11,8 @@ MIDTRANS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MidtransParameters = typing.TypedDict('MidtransParameters', {
     "__STYX_TYPE__": typing.Literal["midtrans"],
     "transforms": list[InputPathType],
@@ -213,7 +215,14 @@ def midtrans(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MIDTRANS_METADATA)
-    params = midtrans_params(transforms=transforms, output_matrix=output_matrix, template_image=template_image, separate_basename=separate_basename, debug_flag=debug_flag, verbose_flag=verbose_flag)
+    params = midtrans_params(
+        transforms=transforms,
+        output_matrix=output_matrix,
+        template_image=template_image,
+        separate_basename=separate_basename,
+        debug_flag=debug_flag,
+        verbose_flag=verbose_flag,
+    )
     return midtrans_execute(params, execution)
 
 

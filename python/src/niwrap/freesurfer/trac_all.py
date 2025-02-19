@@ -11,6 +11,8 @@ TRAC_ALL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TracAllParameters = typing.TypedDict('TracAllParameters', {
     "__STYX_TYPE__": typing.Literal["trac-all"],
     "config_file": typing.NotRequired[InputPathType | None],
@@ -217,7 +219,14 @@ def trac_all(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRAC_ALL_METADATA)
-    params = trac_all_params(config_file=config_file, subject_name=subject_name, dicom_file=dicom_file, assemble_measures=assemble_measures, no_pathway_priors=no_pathway_priors, help_=help_)
+    params = trac_all_params(
+        config_file=config_file,
+        subject_name=subject_name,
+        dicom_file=dicom_file,
+        assemble_measures=assemble_measures,
+        no_pathway_priors=no_pathway_priors,
+        help_=help_,
+    )
     return trac_all_execute(params, execution)
 
 

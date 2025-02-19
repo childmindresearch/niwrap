@@ -11,15 +11,21 @@ CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiEstimateFwhmWholeFileParameters = typing.TypedDict('CiftiEstimateFwhmWholeFileParameters', {
     "__STYX_TYPE__": typing.Literal["whole_file"],
     "opt_demean": bool,
 })
+
+
 CiftiEstimateFwhmSurfaceParameters = typing.TypedDict('CiftiEstimateFwhmSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["surface"],
     "structure": str,
     "surface": InputPathType,
 })
+
+
 CiftiEstimateFwhmParameters = typing.TypedDict('CiftiEstimateFwhmParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-estimate-fwhm"],
     "cifti": InputPathType,
@@ -370,7 +376,13 @@ def cifti_estimate_fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_ESTIMATE_FWHM_METADATA)
-    params = cifti_estimate_fwhm_params(cifti=cifti, opt_merged_volume=opt_merged_volume, opt_column_column=opt_column_column, whole_file=whole_file, surface=surface)
+    params = cifti_estimate_fwhm_params(
+        cifti=cifti,
+        opt_merged_volume=opt_merged_volume,
+        opt_column_column=opt_column_column,
+        whole_file=whole_file,
+        surface=surface,
+    )
     return cifti_estimate_fwhm_execute(params, execution)
 
 

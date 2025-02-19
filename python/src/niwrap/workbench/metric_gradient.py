@@ -11,16 +11,22 @@ METRIC_GRADIENT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricGradientPresmoothParameters = typing.TypedDict('MetricGradientPresmoothParameters', {
     "__STYX_TYPE__": typing.Literal["presmooth"],
     "kernel": float,
     "opt_fwhm": bool,
 })
+
+
 MetricGradientRoiParameters = typing.TypedDict('MetricGradientRoiParameters', {
     "__STYX_TYPE__": typing.Literal["roi"],
     "roi_metric": InputPathType,
     "opt_match_columns": bool,
 })
+
+
 MetricGradientParameters = typing.TypedDict('MetricGradientParameters', {
     "__STYX_TYPE__": typing.Literal["metric-gradient"],
     "surface": InputPathType,
@@ -403,7 +409,17 @@ def metric_gradient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_GRADIENT_METADATA)
-    params = metric_gradient_params(surface=surface, metric_in=metric_in, metric_out=metric_out, presmooth=presmooth, roi=roi, opt_vectors_vector_metric_out=opt_vectors_vector_metric_out, opt_column_column=opt_column_column, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric, opt_average_normals=opt_average_normals)
+    params = metric_gradient_params(
+        surface=surface,
+        metric_in=metric_in,
+        metric_out=metric_out,
+        presmooth=presmooth,
+        roi=roi,
+        opt_vectors_vector_metric_out=opt_vectors_vector_metric_out,
+        opt_column_column=opt_column_column,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+        opt_average_normals=opt_average_normals,
+    )
     return metric_gradient_execute(params, execution)
 
 

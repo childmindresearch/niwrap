@@ -11,6 +11,8 @@ ABIDS_JSON_TOOL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AbidsJsonToolPyParameters = typing.TypedDict('AbidsJsonToolPyParameters', {
     "__STYX_TYPE__": typing.Literal["abids_json_tool.py"],
     "input_file": InputPathType,
@@ -192,7 +194,12 @@ def abids_json_tool_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ABIDS_JSON_TOOL_PY_METADATA)
-    params = abids_json_tool_py_params(input_file=input_file, prefix=prefix, del_json=del_json, values_stay_str=values_stay_str)
+    params = abids_json_tool_py_params(
+        input_file=input_file,
+        prefix=prefix,
+        del_json=del_json,
+        values_stay_str=values_stay_str,
+    )
     return abids_json_tool_py_execute(params, execution)
 
 

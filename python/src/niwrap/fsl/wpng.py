@@ -11,6 +11,8 @@ WPNG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 WpngParameters = typing.TypedDict('WpngParameters', {
     "__STYX_TYPE__": typing.Literal["wpng"],
     "input_file": typing.NotRequired[InputPathType | None],
@@ -223,7 +225,14 @@ def wpng(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WPNG_METADATA)
-    params = wpng_params(input_file=input_file, gamma=gamma, bgcolor=bgcolor, text_flag=text_flag, time_flag=time_flag, interlace_flag=interlace_flag)
+    params = wpng_params(
+        input_file=input_file,
+        gamma=gamma,
+        bgcolor=bgcolor,
+        text_flag=text_flag,
+        time_flag=time_flag,
+        interlace_flag=interlace_flag,
+    )
     return wpng_execute(params, execution)
 
 

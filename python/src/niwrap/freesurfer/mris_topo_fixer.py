@@ -11,6 +11,8 @@ MRIS_TOPO_FIXER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisTopoFixerParameters = typing.TypedDict('MrisTopoFixerParameters', {
     "__STYX_TYPE__": typing.Literal["mris_topo_fixer"],
     "input_surface": InputPathType,
@@ -166,7 +168,10 @@ def mris_topo_fixer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TOPO_FIXER_METADATA)
-    params = mris_topo_fixer_params(input_surface=input_surface, output_surface=output_surface)
+    params = mris_topo_fixer_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+    )
     return mris_topo_fixer_execute(params, execution)
 
 

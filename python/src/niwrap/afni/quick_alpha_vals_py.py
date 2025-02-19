@@ -11,6 +11,8 @@ QUICK_ALPHA_VALS_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 QuickAlphaValsPyParameters = typing.TypedDict('QuickAlphaValsPyParameters', {
     "__STYX_TYPE__": typing.Literal["quick.alpha.vals.py"],
     "niter": typing.NotRequired[int | None],
@@ -171,7 +173,10 @@ def quick_alpha_vals_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUICK_ALPHA_VALS_PY_METADATA)
-    params = quick_alpha_vals_py_params(niter=niter, max_file=max_file)
+    params = quick_alpha_vals_py_params(
+        niter=niter,
+        max_file=max_file,
+    )
     return quick_alpha_vals_py_execute(params, execution)
 
 

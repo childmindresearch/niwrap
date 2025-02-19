@@ -11,6 +11,8 @@ SURFACE_MODIFY_SPHERE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceModifySphereParameters = typing.TypedDict('SurfaceModifySphereParameters', {
     "__STYX_TYPE__": typing.Literal["surface-modify-sphere"],
     "sphere_in": InputPathType,
@@ -200,7 +202,12 @@ def surface_modify_sphere(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_MODIFY_SPHERE_METADATA)
-    params = surface_modify_sphere_params(sphere_in=sphere_in, radius=radius, sphere_out=sphere_out, opt_recenter=opt_recenter)
+    params = surface_modify_sphere_params(
+        sphere_in=sphere_in,
+        radius=radius,
+        sphere_out=sphere_out,
+        opt_recenter=opt_recenter,
+    )
     return surface_modify_sphere_execute(params, execution)
 
 

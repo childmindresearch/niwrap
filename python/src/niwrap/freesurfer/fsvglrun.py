@@ -11,6 +11,8 @@ FSVGLRUN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsvglrunParameters = typing.TypedDict('FsvglrunParameters', {
     "__STYX_TYPE__": typing.Literal["fsvglrun"],
     "zeroth_arg_name": typing.NotRequired[str | None],
@@ -196,7 +198,13 @@ def fsvglrun(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSVGLRUN_METADATA)
-    params = fsvglrun_params(zeroth_arg_name=zeroth_arg_name, empty_env=empty_env, dashed_arg=dashed_arg, command=command, command_args=command_args)
+    params = fsvglrun_params(
+        zeroth_arg_name=zeroth_arg_name,
+        empty_env=empty_env,
+        dashed_arg=dashed_arg,
+        command=command,
+        command_args=command_args,
+    )
     return fsvglrun_execute(params, execution)
 
 

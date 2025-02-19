@@ -11,6 +11,8 @@ V_3D_ALLINEATE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAllineateParameters = typing.TypedDict('V3dAllineateParameters', {
     "__STYX_TYPE__": typing.Literal["3dAllineate"],
     "source": InputPathType,
@@ -320,7 +322,22 @@ def v_3d_allineate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ALLINEATE_METADATA)
-    params = v_3d_allineate_params(source=source, base=base, prefix=prefix, param_save=param_save, param_apply=param_apply, matrix_save=matrix_save, matrix_apply=matrix_apply, cost=cost, interp=interp, final=final, nmatch=nmatch, nopad=nopad, verbose=verbose, quiet=quiet)
+    params = v_3d_allineate_params(
+        source=source,
+        base=base,
+        prefix=prefix,
+        param_save=param_save,
+        param_apply=param_apply,
+        matrix_save=matrix_save,
+        matrix_apply=matrix_apply,
+        cost=cost,
+        interp=interp,
+        final=final,
+        nmatch=nmatch,
+        nopad=nopad,
+        verbose=verbose,
+        quiet=quiet,
+    )
     return v_3d_allineate_execute(params, execution)
 
 

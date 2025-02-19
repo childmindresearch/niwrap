@@ -11,6 +11,8 @@ CREATE_WARPED_GRID_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 CreateWarpedGridImageParameters = typing.TypedDict('CreateWarpedGridImageParameters', {
     "__STYX_TYPE__": typing.Literal["CreateWarpedGridImage"],
     "image_dimension": int,
@@ -200,7 +202,14 @@ def create_warped_grid_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_WARPED_GRID_IMAGE_METADATA)
-    params = create_warped_grid_image_params(image_dimension=image_dimension, deformation_field=deformation_field, output_image=output_image, directions=directions, grid_spacing=grid_spacing, grid_sigma=grid_sigma)
+    params = create_warped_grid_image_params(
+        image_dimension=image_dimension,
+        deformation_field=deformation_field,
+        output_image=output_image,
+        directions=directions,
+        grid_spacing=grid_spacing,
+        grid_sigma=grid_sigma,
+    )
     return create_warped_grid_image_execute(params, execution)
 
 

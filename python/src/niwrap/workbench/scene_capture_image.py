@@ -11,26 +11,36 @@ SCENE_CAPTURE_IMAGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SceneCaptureImageSizeWidthHeightParameters = typing.TypedDict('SceneCaptureImageSizeWidthHeightParameters', {
     "__STYX_TYPE__": typing.Literal["size_width_height"],
     "width": float,
     "height": float,
 })
+
+
 SceneCaptureImageResolutionParameters = typing.TypedDict('SceneCaptureImageResolutionParameters', {
     "__STYX_TYPE__": typing.Literal["resolution"],
     "number_of_pixels": float,
     "units_name": str,
 })
+
+
 SceneCaptureImageSetMapYokeParameters = typing.TypedDict('SceneCaptureImageSetMapYokeParameters', {
     "__STYX_TYPE__": typing.Literal["set_map_yoke"],
     "map_yoking_roman_numeral": str,
     "map_undex": int,
 })
+
+
 SceneCaptureImageConnDbLoginParameters = typing.TypedDict('SceneCaptureImageConnDbLoginParameters', {
     "__STYX_TYPE__": typing.Literal["conn_db_login"],
     "username": str,
     "password": str,
 })
+
+
 SceneCaptureImageParameters = typing.TypedDict('SceneCaptureImageParameters', {
     "__STYX_TYPE__": typing.Literal["scene-capture-image"],
     "scene_file": str,
@@ -665,7 +675,25 @@ def scene_capture_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SCENE_CAPTURE_IMAGE_METADATA)
-    params = scene_capture_image_params(scene_file=scene_file, scene_name_or_number=scene_name_or_number, image_file_name=image_file_name, opt_size_window=opt_size_window, opt_size_capture=opt_size_capture, size_width_height=size_width_height, opt_size_width_width=opt_size_width_width, opt_size_height_height=opt_size_height_height, opt_units_units=opt_units_units, resolution=resolution, opt_margin_size=opt_margin_size, opt_no_scene_colors=opt_no_scene_colors, set_map_yoke=set_map_yoke, conn_db_login=conn_db_login, opt_show_capture_settings=opt_show_capture_settings, opt_renderer_renderer=opt_renderer_renderer, opt_print_image_info=opt_print_image_info)
+    params = scene_capture_image_params(
+        scene_file=scene_file,
+        scene_name_or_number=scene_name_or_number,
+        image_file_name=image_file_name,
+        opt_size_window=opt_size_window,
+        opt_size_capture=opt_size_capture,
+        size_width_height=size_width_height,
+        opt_size_width_width=opt_size_width_width,
+        opt_size_height_height=opt_size_height_height,
+        opt_units_units=opt_units_units,
+        resolution=resolution,
+        opt_margin_size=opt_margin_size,
+        opt_no_scene_colors=opt_no_scene_colors,
+        set_map_yoke=set_map_yoke,
+        conn_db_login=conn_db_login,
+        opt_show_capture_settings=opt_show_capture_settings,
+        opt_renderer_renderer=opt_renderer_renderer,
+        opt_print_image_info=opt_print_image_info,
+    )
     return scene_capture_image_execute(params, execution)
 
 

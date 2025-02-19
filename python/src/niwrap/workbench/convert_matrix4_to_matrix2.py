@@ -11,12 +11,16 @@ CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 ConvertMatrix4ToMatrix2IndividualFibersParameters = typing.TypedDict('ConvertMatrix4ToMatrix2IndividualFibersParameters', {
     "__STYX_TYPE__": typing.Literal["individual_fibers"],
     "fiber_1": str,
     "fiber_2": str,
     "fiber_3": str,
 })
+
+
 ConvertMatrix4ToMatrix2Parameters = typing.TypedDict('ConvertMatrix4ToMatrix2Parameters', {
     "__STYX_TYPE__": typing.Literal["convert-matrix4-to-matrix2"],
     "matrix4_wbsparse": str,
@@ -297,7 +301,12 @@ def convert_matrix4_to_matrix2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_MATRIX4_TO_MATRIX2_METADATA)
-    params = convert_matrix4_to_matrix2_params(matrix4_wbsparse=matrix4_wbsparse, counts_out=counts_out, opt_distances_distance_out=opt_distances_distance_out, individual_fibers=individual_fibers)
+    params = convert_matrix4_to_matrix2_params(
+        matrix4_wbsparse=matrix4_wbsparse,
+        counts_out=counts_out,
+        opt_distances_distance_out=opt_distances_distance_out,
+        individual_fibers=individual_fibers,
+    )
     return convert_matrix4_to_matrix2_execute(params, execution)
 
 

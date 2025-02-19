@@ -11,21 +11,29 @@ CIFTI_SMOOTHING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiSmoothingLeftSurfaceParameters = typing.TypedDict('CiftiSmoothingLeftSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["left_surface"],
     "surface": InputPathType,
     "opt_left_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiSmoothingRightSurfaceParameters = typing.TypedDict('CiftiSmoothingRightSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["right_surface"],
     "surface": InputPathType,
     "opt_right_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiSmoothingCerebellumSurfaceParameters = typing.TypedDict('CiftiSmoothingCerebellumSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_surface"],
     "surface": InputPathType,
     "opt_cerebellum_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiSmoothingParameters = typing.TypedDict('CiftiSmoothingParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-smoothing"],
     "cifti": InputPathType,
@@ -467,7 +475,21 @@ def cifti_smoothing(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_SMOOTHING_METADATA)
-    params = cifti_smoothing_params(cifti=cifti, surface_kernel=surface_kernel, volume_kernel=volume_kernel, direction=direction, cifti_out=cifti_out, opt_fwhm=opt_fwhm, left_surface=left_surface, right_surface=right_surface, cerebellum_surface=cerebellum_surface, opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti, opt_fix_zeros_volume=opt_fix_zeros_volume, opt_fix_zeros_surface=opt_fix_zeros_surface, opt_merged_volume=opt_merged_volume)
+    params = cifti_smoothing_params(
+        cifti=cifti,
+        surface_kernel=surface_kernel,
+        volume_kernel=volume_kernel,
+        direction=direction,
+        cifti_out=cifti_out,
+        opt_fwhm=opt_fwhm,
+        left_surface=left_surface,
+        right_surface=right_surface,
+        cerebellum_surface=cerebellum_surface,
+        opt_cifti_roi_roi_cifti=opt_cifti_roi_roi_cifti,
+        opt_fix_zeros_volume=opt_fix_zeros_volume,
+        opt_fix_zeros_surface=opt_fix_zeros_surface,
+        opt_merged_volume=opt_merged_volume,
+    )
     return cifti_smoothing_execute(params, execution)
 
 

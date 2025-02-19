@@ -11,6 +11,8 @@ MRI_MATRIX_MULTIPLY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMatrixMultiplyParameters = typing.TypedDict('MriMatrixMultiplyParameters', {
     "__STYX_TYPE__": typing.Literal["mri_matrix_multiply"],
     "input_matrices": list[InputPathType],
@@ -222,7 +224,15 @@ def mri_matrix_multiply(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MATRIX_MULTIPLY_METADATA)
-    params = mri_matrix_multiply_params(input_matrices=input_matrices, inverted_input_matrices=inverted_input_matrices, output_matrix=output_matrix, verbose=verbose, fsl=fsl, binarize=binarize, subject_name=subject_name)
+    params = mri_matrix_multiply_params(
+        input_matrices=input_matrices,
+        inverted_input_matrices=inverted_input_matrices,
+        output_matrix=output_matrix,
+        verbose=verbose,
+        fsl=fsl,
+        binarize=binarize,
+        subject_name=subject_name,
+    )
     return mri_matrix_multiply_execute(params, execution)
 
 

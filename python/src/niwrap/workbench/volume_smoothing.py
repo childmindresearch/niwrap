@@ -11,6 +11,8 @@ VOLUME_SMOOTHING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeSmoothingParameters = typing.TypedDict('VolumeSmoothingParameters', {
     "__STYX_TYPE__": typing.Literal["volume-smoothing"],
     "volume_in": InputPathType,
@@ -244,7 +246,15 @@ def volume_smoothing(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_SMOOTHING_METADATA)
-    params = volume_smoothing_params(volume_in=volume_in, kernel=kernel, volume_out=volume_out, opt_fwhm=opt_fwhm, opt_roi_roivol=opt_roi_roivol, opt_fix_zeros=opt_fix_zeros, opt_subvolume_subvol=opt_subvolume_subvol)
+    params = volume_smoothing_params(
+        volume_in=volume_in,
+        kernel=kernel,
+        volume_out=volume_out,
+        opt_fwhm=opt_fwhm,
+        opt_roi_roivol=opt_roi_roivol,
+        opt_fix_zeros=opt_fix_zeros,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+    )
     return volume_smoothing_execute(params, execution)
 
 

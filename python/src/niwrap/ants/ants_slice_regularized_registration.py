@@ -11,6 +11,8 @@ ANTS_SLICE_REGULARIZED_REGISTRATION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsSliceRegularizedRegistrationParameters = typing.TypedDict('AntsSliceRegularizedRegistrationParameters', {
     "__STYX_TYPE__": typing.Literal["antsSliceRegularizedRegistration"],
     "polydegree": int,
@@ -291,7 +293,18 @@ def ants_slice_regularized_registration(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_SLICE_REGULARIZED_REGISTRATION_METADATA)
-    params = ants_slice_regularized_registration_params(polydegree=polydegree, output=output, metric=metric, transform=transform, iterations=iterations, shrink_factors=shrink_factors, smoothing_sigmas=smoothing_sigmas, mask=mask, interpolation=interpolation, verbose=verbose)
+    params = ants_slice_regularized_registration_params(
+        polydegree=polydegree,
+        output=output,
+        metric=metric,
+        transform=transform,
+        iterations=iterations,
+        shrink_factors=shrink_factors,
+        smoothing_sigmas=smoothing_sigmas,
+        mask=mask,
+        interpolation=interpolation,
+        verbose=verbose,
+    )
     return ants_slice_regularized_registration_execute(params, execution)
 
 

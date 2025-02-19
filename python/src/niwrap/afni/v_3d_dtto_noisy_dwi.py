@@ -11,6 +11,8 @@ V_3D_DTTO_NOISY_DWI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDttoNoisyDwiParameters = typing.TypedDict('V3dDttoNoisyDwiParameters', {
     "__STYX_TYPE__": typing.Literal["3dDTtoNoisyDWI"],
     "dt_file": InputPathType,
@@ -251,7 +253,16 @@ def v_3d_dtto_noisy_dwi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DTTO_NOISY_DWI_METADATA)
-    params = v_3d_dtto_noisy_dwi_params(dt_file=dt_file, grad_file=grad_file, noise_dwi=noise_dwi, noise_b0=noise_b0, prefix=prefix, mask=mask, bval=bval, s0=s0)
+    params = v_3d_dtto_noisy_dwi_params(
+        dt_file=dt_file,
+        grad_file=grad_file,
+        noise_dwi=noise_dwi,
+        noise_b0=noise_b0,
+        prefix=prefix,
+        mask=mask,
+        bval=bval,
+        s0=s0,
+    )
     return v_3d_dtto_noisy_dwi_execute(params, execution)
 
 

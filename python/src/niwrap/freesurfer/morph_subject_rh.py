@@ -11,6 +11,8 @@ MORPH_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MorphSubjectRhParameters = typing.TypedDict('MorphSubjectRhParameters', {
     "__STYX_TYPE__": typing.Literal["morph_subject-rh"],
     "subject_id": str,
@@ -157,7 +159,9 @@ def morph_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_SUBJECT_RH_METADATA)
-    params = morph_subject_rh_params(subject_id=subject_id)
+    params = morph_subject_rh_params(
+        subject_id=subject_id,
+    )
     return morph_subject_rh_execute(params, execution)
 
 

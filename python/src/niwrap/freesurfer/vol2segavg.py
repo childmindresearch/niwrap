@@ -11,6 +11,8 @@ VOL2SEGAVG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Vol2segavgParameters = typing.TypedDict('Vol2segavgParameters', {
     "__STYX_TYPE__": typing.Literal["vol2segavg"],
     "output_file": str,
@@ -304,7 +306,23 @@ def vol2segavg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOL2SEGAVG_METADATA)
-    params = vol2segavg_params(output_file=output_file, input_volume=input_volume, registration=registration, segmentation_file=segmentation_file, aparc_aseg_flag=aparc_aseg_flag, subject_id=subject_id, segmentation_id=segmentation_id, multiply_value=multiply_value, no_bb_flag=no_bb_flag, erode_value=erode_value, dilate_value=dilate_value, wm_flag=wm_flag, vcsf_flag=vcsf_flag, xcsf_flag=xcsf_flag, remove_mean_flag=remove_mean_flag)
+    params = vol2segavg_params(
+        output_file=output_file,
+        input_volume=input_volume,
+        registration=registration,
+        segmentation_file=segmentation_file,
+        aparc_aseg_flag=aparc_aseg_flag,
+        subject_id=subject_id,
+        segmentation_id=segmentation_id,
+        multiply_value=multiply_value,
+        no_bb_flag=no_bb_flag,
+        erode_value=erode_value,
+        dilate_value=dilate_value,
+        wm_flag=wm_flag,
+        vcsf_flag=vcsf_flag,
+        xcsf_flag=xcsf_flag,
+        remove_mean_flag=remove_mean_flag,
+    )
     return vol2segavg_execute(params, execution)
 
 

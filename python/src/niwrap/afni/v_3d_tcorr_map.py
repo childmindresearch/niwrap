@@ -11,6 +11,8 @@ V_3D_TCORR_MAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTcorrMapParameters = typing.TypedDict('V3dTcorrMapParameters', {
     "__STYX_TYPE__": typing.Literal["3dTcorrMap"],
     "input": InputPathType,
@@ -363,7 +365,25 @@ def v_3d_tcorr_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TCORR_MAP_METADATA)
-    params = v_3d_tcorr_map_params(input_=input_, seed=seed, mask=mask, automask=automask, mean=mean, zmean=zmean, qmean=qmean, pmean=pmean, thresh=thresh, varthresh=varthresh, norm_varthresh=norm_varthresh, corrmap=corrmap, corrmask=corrmask, aexpr=aexpr, cexpr=cexpr, sexpr=sexpr, hist=hist)
+    params = v_3d_tcorr_map_params(
+        input_=input_,
+        seed=seed,
+        mask=mask,
+        automask=automask,
+        mean=mean,
+        zmean=zmean,
+        qmean=qmean,
+        pmean=pmean,
+        thresh=thresh,
+        varthresh=varthresh,
+        norm_varthresh=norm_varthresh,
+        corrmap=corrmap,
+        corrmask=corrmask,
+        aexpr=aexpr,
+        cexpr=cexpr,
+        sexpr=sexpr,
+        hist=hist,
+    )
     return v_3d_tcorr_map_execute(params, execution)
 
 

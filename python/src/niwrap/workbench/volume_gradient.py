@@ -11,11 +11,15 @@ VOLUME_GRADIENT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeGradientPresmoothParameters = typing.TypedDict('VolumeGradientPresmoothParameters', {
     "__STYX_TYPE__": typing.Literal["presmooth"],
     "kernel": float,
     "opt_fwhm": bool,
 })
+
+
 VolumeGradientParameters = typing.TypedDict('VolumeGradientParameters', {
     "__STYX_TYPE__": typing.Literal["volume-gradient"],
     "volume_in": InputPathType,
@@ -284,7 +288,14 @@ def volume_gradient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_GRADIENT_METADATA)
-    params = volume_gradient_params(volume_in=volume_in, volume_out=volume_out, presmooth=presmooth, opt_roi_roi_volume=opt_roi_roi_volume, opt_vectors_vector_volume_out=opt_vectors_vector_volume_out, opt_subvolume_subvol=opt_subvolume_subvol)
+    params = volume_gradient_params(
+        volume_in=volume_in,
+        volume_out=volume_out,
+        presmooth=presmooth,
+        opt_roi_roi_volume=opt_roi_roi_volume,
+        opt_vectors_vector_volume_out=opt_vectors_vector_volume_out,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+    )
     return volume_gradient_execute(params, execution)
 
 

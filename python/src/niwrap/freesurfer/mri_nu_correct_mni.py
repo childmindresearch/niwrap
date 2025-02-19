@@ -11,6 +11,8 @@ MRI_NU_CORRECT_MNI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriNuCorrectMniParameters = typing.TypedDict('MriNuCorrectMniParameters', {
     "__STYX_TYPE__": typing.Literal["mri_nu_correct.mni"],
     "input_volume": InputPathType,
@@ -290,7 +292,21 @@ def mri_nu_correct_mni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_NU_CORRECT_MNI_METADATA)
-    params = mri_nu_correct_mni_params(input_volume=input_volume, output_volume=output_volume, iterations=iterations, proto_iterations=proto_iterations, mask_volume=mask_volume, stop_threshold=stop_threshold, uchar_transform=uchar_transform, ants_n3=ants_n3, ants_n4=ants_n4, no_uchar=no_uchar, ants_n4_replace_zeros=ants_n4_replace_zeros, cm_flag=cm_flag, debug_flag=debug_flag)
+    params = mri_nu_correct_mni_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        iterations=iterations,
+        proto_iterations=proto_iterations,
+        mask_volume=mask_volume,
+        stop_threshold=stop_threshold,
+        uchar_transform=uchar_transform,
+        ants_n3=ants_n3,
+        ants_n4=ants_n4,
+        no_uchar=no_uchar,
+        ants_n4_replace_zeros=ants_n4_replace_zeros,
+        cm_flag=cm_flag,
+        debug_flag=debug_flag,
+    )
     return mri_nu_correct_mni_execute(params, execution)
 
 

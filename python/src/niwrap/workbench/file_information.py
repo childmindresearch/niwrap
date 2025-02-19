@@ -11,10 +11,14 @@ FILE_INFORMATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 FileInformationOnlyMetadataParameters = typing.TypedDict('FileInformationOnlyMetadataParameters', {
     "__STYX_TYPE__": typing.Literal["only_metadata"],
     "opt_key_key": typing.NotRequired[str | None],
 })
+
+
 FileInformationParameters = typing.TypedDict('FileInformationParameters', {
     "__STYX_TYPE__": typing.Literal["file-information"],
     "data_file": str,
@@ -375,7 +379,18 @@ def file_information(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILE_INFORMATION_METADATA)
-    params = file_information_params(data_file=data_file, opt_no_map_info=opt_no_map_info, opt_only_step_interval=opt_only_step_interval, opt_only_number_of_maps=opt_only_number_of_maps, opt_only_map_names=opt_only_map_names, only_metadata=only_metadata, opt_only_cifti_xml=opt_only_cifti_xml, opt_czi=opt_czi, opt_czi_all_sub_blocks=opt_czi_all_sub_blocks, opt_czi_xml=opt_czi_xml)
+    params = file_information_params(
+        data_file=data_file,
+        opt_no_map_info=opt_no_map_info,
+        opt_only_step_interval=opt_only_step_interval,
+        opt_only_number_of_maps=opt_only_number_of_maps,
+        opt_only_map_names=opt_only_map_names,
+        only_metadata=only_metadata,
+        opt_only_cifti_xml=opt_only_cifti_xml,
+        opt_czi=opt_czi,
+        opt_czi_all_sub_blocks=opt_czi_all_sub_blocks,
+        opt_czi_xml=opt_czi_xml,
+    )
     return file_information_execute(params, execution)
 
 

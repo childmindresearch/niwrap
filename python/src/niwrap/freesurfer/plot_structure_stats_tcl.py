@@ -11,6 +11,8 @@ PLOT_STRUCTURE_STATS_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 PlotStructureStatsTclParameters = typing.TypedDict('PlotStructureStatsTclParameters', {
     "__STYX_TYPE__": typing.Literal["plot_structure_stats.tcl"],
     "input_file": InputPathType,
@@ -166,7 +168,10 @@ def plot_structure_stats_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLOT_STRUCTURE_STATS_TCL_METADATA)
-    params = plot_structure_stats_tcl_params(input_file=input_file, output_file=output_file)
+    params = plot_structure_stats_tcl_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return plot_structure_stats_tcl_execute(params, execution)
 
 

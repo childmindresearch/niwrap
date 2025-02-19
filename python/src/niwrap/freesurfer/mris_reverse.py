@@ -11,6 +11,8 @@ MRIS_REVERSE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisReverseParameters = typing.TypedDict('MrisReverseParameters', {
     "__STYX_TYPE__": typing.Literal["mris_reverse"],
     "input_surface": InputPathType,
@@ -166,7 +168,10 @@ def mris_reverse(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REVERSE_METADATA)
-    params = mris_reverse_params(input_surface=input_surface, output_surface=output_surface)
+    params = mris_reverse_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+    )
     return mris_reverse_execute(params, execution)
 
 

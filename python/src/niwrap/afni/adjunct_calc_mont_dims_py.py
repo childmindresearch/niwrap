@@ -11,6 +11,8 @@ ADJUNCT_CALC_MONT_DIMS_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctCalcMontDimsPyParameters = typing.TypedDict('AdjunctCalcMontDimsPyParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_calc_mont_dims.py"],
     "help": bool,
@@ -156,7 +158,9 @@ def adjunct_calc_mont_dims_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_CALC_MONT_DIMS_PY_METADATA)
-    params = adjunct_calc_mont_dims_py_params(help_=help_)
+    params = adjunct_calc_mont_dims_py_params(
+        help_=help_,
+    )
     return adjunct_calc_mont_dims_py_execute(params, execution)
 
 

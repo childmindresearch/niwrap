@@ -11,6 +11,8 @@ MRI_SEG_DIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegDiffParameters = typing.TypedDict('MriSegDiffParameters', {
     "__STYX_TYPE__": typing.Literal["mri_seg_diff"],
     "seg1": typing.NotRequired[InputPathType | None],
@@ -247,7 +249,17 @@ def mri_seg_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEG_DIFF_METADATA)
-    params = mri_seg_diff_params(seg1=seg1, seg2=seg2, seg=seg, diff=diff, merged=merged, diff_force=diff_force, debug=debug, checkopts=checkopts, version=version)
+    params = mri_seg_diff_params(
+        seg1=seg1,
+        seg2=seg2,
+        seg=seg,
+        diff=diff,
+        merged=merged,
+        diff_force=diff_force,
+        debug=debug,
+        checkopts=checkopts,
+        version=version,
+    )
     return mri_seg_diff_execute(params, execution)
 
 

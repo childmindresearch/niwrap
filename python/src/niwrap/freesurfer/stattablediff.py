@@ -11,6 +11,8 @@ STATTABLEDIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 StattablediffParameters = typing.TypedDict('StattablediffParameters', {
     "__STYX_TYPE__": typing.Literal["stattablediff"],
     "t1": InputPathType,
@@ -253,7 +255,20 @@ def stattablediff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(STATTABLEDIFF_METADATA)
-    params = stattablediff_params(t1=t1, t2=t2, output=output, percent_diff=percent_diff, percent_diff_t1=percent_diff_t1, percent_diff_t2=percent_diff_t2, multiply=multiply, divide=divide, common=common, remove_exvivo=remove_exvivo, diff_subjects=diff_subjects, noreplace53=noreplace53)
+    params = stattablediff_params(
+        t1=t1,
+        t2=t2,
+        output=output,
+        percent_diff=percent_diff,
+        percent_diff_t1=percent_diff_t1,
+        percent_diff_t2=percent_diff_t2,
+        multiply=multiply,
+        divide=divide,
+        common=common,
+        remove_exvivo=remove_exvivo,
+        diff_subjects=diff_subjects,
+        noreplace53=noreplace53,
+    )
     return stattablediff_execute(params, execution)
 
 

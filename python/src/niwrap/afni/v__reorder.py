@@ -11,6 +11,8 @@ V__REORDER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VReorderParameters = typing.TypedDict('VReorderParameters', {
     "__STYX_TYPE__": typing.Literal["@Reorder"],
     "input_dataset": InputPathType,
@@ -203,7 +205,14 @@ def v__reorder(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__REORDER_METADATA)
-    params = v__reorder_params(input_dataset=input_dataset, mapfile=mapfile, prefix=prefix, offset=offset, save_work=save_work, test=test)
+    params = v__reorder_params(
+        input_dataset=input_dataset,
+        mapfile=mapfile,
+        prefix=prefix,
+        offset=offset,
+        save_work=save_work,
+        test=test,
+    )
     return v__reorder_execute(params, execution)
 
 

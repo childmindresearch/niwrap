@@ -11,6 +11,8 @@ FSL_MOTION_OUTLIERS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslMotionOutliersParameters = typing.TypedDict('FslMotionOutliersParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_motion_outliers"],
     "input_4d_image": InputPathType,
@@ -318,7 +320,23 @@ def fsl_motion_outliers(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_MOTION_OUTLIERS_METADATA)
-    params = fsl_motion_outliers_params(input_4d_image=input_4d_image, output_confound_file=output_confound_file, mask_image=mask_image, save_metric_file=save_metric_file, save_metric_plot=save_metric_plot, temp_path=temp_path, refrms_flag=refrms_flag, dvars_flag=dvars_flag, refmse_flag=refmse_flag, fd_flag=fd_flag, fdrms_flag=fdrms_flag, abs_thresh=abs_thresh, no_moco_flag=no_moco_flag, dummy_scans=dummy_scans, verbose_flag=verbose_flag)
+    params = fsl_motion_outliers_params(
+        input_4d_image=input_4d_image,
+        output_confound_file=output_confound_file,
+        mask_image=mask_image,
+        save_metric_file=save_metric_file,
+        save_metric_plot=save_metric_plot,
+        temp_path=temp_path,
+        refrms_flag=refrms_flag,
+        dvars_flag=dvars_flag,
+        refmse_flag=refmse_flag,
+        fd_flag=fd_flag,
+        fdrms_flag=fdrms_flag,
+        abs_thresh=abs_thresh,
+        no_moco_flag=no_moco_flag,
+        dummy_scans=dummy_scans,
+        verbose_flag=verbose_flag,
+    )
     return fsl_motion_outliers_execute(params, execution)
 
 

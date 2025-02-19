@@ -11,6 +11,8 @@ V_3DMERGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmergeParameters = typing.TypedDict('V3dmergeParameters', {
     "__STYX_TYPE__": typing.Literal["3dmerge"],
     "input_files": list[InputPathType],
@@ -277,7 +279,20 @@ def v_3dmerge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMERGE_METADATA)
-    params = v_3dmerge_params(input_files=input_files, output_file=output_file, blur_fwhm=blur_fwhm, threshold=threshold, clust=clust, dindex=dindex, tindex=tindex, absolute=absolute, dxyz=dxyz, gmean=gmean, gmax=gmax, quiet=quiet)
+    params = v_3dmerge_params(
+        input_files=input_files,
+        output_file=output_file,
+        blur_fwhm=blur_fwhm,
+        threshold=threshold,
+        clust=clust,
+        dindex=dindex,
+        tindex=tindex,
+        absolute=absolute,
+        dxyz=dxyz,
+        gmean=gmean,
+        gmax=gmax,
+        quiet=quiet,
+    )
     return v_3dmerge_execute(params, execution)
 
 

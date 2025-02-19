@@ -11,6 +11,8 @@ V__DEMO_PROMPT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDemoPromptParameters = typing.TypedDict('VDemoPromptParameters', {
     "__STYX_TYPE__": typing.Literal["@demo_prompt"],
     "message": str,
@@ -159,7 +161,9 @@ def v__demo_prompt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DEMO_PROMPT_METADATA)
-    params = v__demo_prompt_params(message=message)
+    params = v__demo_prompt_params(
+        message=message,
+    )
     return v__demo_prompt_execute(params, execution)
 
 

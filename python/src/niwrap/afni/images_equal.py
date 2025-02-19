@@ -11,6 +11,8 @@ IMAGES_EQUAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImagesEqualParameters = typing.TypedDict('ImagesEqualParameters', {
     "__STYX_TYPE__": typing.Literal["images_equal"],
     "file_a": InputPathType,
@@ -176,7 +178,11 @@ def images_equal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAGES_EQUAL_METADATA)
-    params = images_equal_params(file_a=file_a, file_b=file_b, all_flag=all_flag)
+    params = images_equal_params(
+        file_a=file_a,
+        file_b=file_b,
+        all_flag=all_flag,
+    )
     return images_equal_execute(params, execution)
 
 

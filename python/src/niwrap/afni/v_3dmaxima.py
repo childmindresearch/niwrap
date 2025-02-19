@@ -11,6 +11,8 @@ V_3DMAXIMA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmaximaParameters = typing.TypedDict('V3dmaximaParameters', {
     "__STYX_TYPE__": typing.Literal["3dmaxima"],
     "input_dataset": InputPathType,
@@ -337,7 +339,28 @@ def v_3dmaxima(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMAXIMA_METADATA)
-    params = v_3dmaxima_params(input_dataset=input_dataset, output_prefix=output_prefix, threshold=threshold, min_dist=min_dist, out_rad=out_rad, input_flag=input_flag, spheres_1_flag=spheres_1_flag, spheres_1to_n_flag=spheres_1to_n_flag, spheres_nto1_flag=spheres_nto1_flag, neg_ext_flag=neg_ext_flag, true_max_flag=true_max_flag, dset_coords_flag=dset_coords_flag, no_text_flag=no_text_flag, coords_only_flag=coords_only_flag, n_style_sort_flag=n_style_sort_flag, n_style_weight_ave_flag=n_style_weight_ave_flag, debug_level=debug_level, help_flag=help_flag, hist_flag=hist_flag, ver_flag=ver_flag)
+    params = v_3dmaxima_params(
+        input_dataset=input_dataset,
+        output_prefix=output_prefix,
+        threshold=threshold,
+        min_dist=min_dist,
+        out_rad=out_rad,
+        input_flag=input_flag,
+        spheres_1_flag=spheres_1_flag,
+        spheres_1to_n_flag=spheres_1to_n_flag,
+        spheres_nto1_flag=spheres_nto1_flag,
+        neg_ext_flag=neg_ext_flag,
+        true_max_flag=true_max_flag,
+        dset_coords_flag=dset_coords_flag,
+        no_text_flag=no_text_flag,
+        coords_only_flag=coords_only_flag,
+        n_style_sort_flag=n_style_sort_flag,
+        n_style_weight_ave_flag=n_style_weight_ave_flag,
+        debug_level=debug_level,
+        help_flag=help_flag,
+        hist_flag=hist_flag,
+        ver_flag=ver_flag,
+    )
     return v_3dmaxima_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ GIFTI_TOOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GiftiToolParameters = typing.TypedDict('GiftiToolParameters', {
     "__STYX_TYPE__": typing.Literal["gifti_tool"],
     "infile": InputPathType,
@@ -388,7 +390,30 @@ def gifti_tool(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GIFTI_TOOL_METADATA)
-    params = gifti_tool_params(infile=infile, new_numda=new_numda, new_dtype=new_dtype, new_intent=new_intent, new_ndim=new_ndim, new_dims=new_dims, write_gifti=write_gifti, set_extern_filelist=set_extern_filelist, mod_add_data=mod_add_data, verb=verb, show_gifti=show_gifti, read_das=read_das, mod_gim_atr=mod_gim_atr, mod_gim_meta=mod_gim_meta, mod_da_atr=mod_da_atr, mod_da_meta=mod_da_meta, mod_das=mod_das, new_dset=new_dset, compare_gifti=compare_gifti, compare_data=compare_data, compare_verb=compare_verb, approx_gifti=approx_gifti)
+    params = gifti_tool_params(
+        infile=infile,
+        new_numda=new_numda,
+        new_dtype=new_dtype,
+        new_intent=new_intent,
+        new_ndim=new_ndim,
+        new_dims=new_dims,
+        write_gifti=write_gifti,
+        set_extern_filelist=set_extern_filelist,
+        mod_add_data=mod_add_data,
+        verb=verb,
+        show_gifti=show_gifti,
+        read_das=read_das,
+        mod_gim_atr=mod_gim_atr,
+        mod_gim_meta=mod_gim_meta,
+        mod_da_atr=mod_da_atr,
+        mod_da_meta=mod_da_meta,
+        mod_das=mod_das,
+        new_dset=new_dset,
+        compare_gifti=compare_gifti,
+        compare_data=compare_data,
+        compare_verb=compare_verb,
+        approx_gifti=approx_gifti,
+    )
     return gifti_tool_execute(params, execution)
 
 

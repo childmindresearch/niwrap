@@ -11,6 +11,8 @@ SPHARM_RECO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SpharmRecoParameters = typing.TypedDict('SpharmRecoParameters', {
     "__STYX_TYPE__": typing.Literal["SpharmReco"],
     "input_surface": str,
@@ -250,7 +252,16 @@ def spharm_reco(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPHARM_RECO_METADATA)
-    params = spharm_reco_params(input_surface=input_surface, decomposition_order=decomposition_order, bases_prefix=bases_prefix, coefficients=coefficients, output_prefix=output_prefix, output_surface=output_surface, debug=debug, smoothing=smoothing)
+    params = spharm_reco_params(
+        input_surface=input_surface,
+        decomposition_order=decomposition_order,
+        bases_prefix=bases_prefix,
+        coefficients=coefficients,
+        output_prefix=output_prefix,
+        output_surface=output_surface,
+        debug=debug,
+        smoothing=smoothing,
+    )
     return spharm_reco_execute(params, execution)
 
 

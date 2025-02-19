@@ -11,6 +11,8 @@ MRIS_SHRINKWRAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisShrinkwrapParameters = typing.TypedDict('MrisShrinkwrapParameters', {
     "__STYX_TYPE__": typing.Literal["mris_shrinkwrap"],
     "volume": InputPathType,
@@ -186,7 +188,11 @@ def mris_shrinkwrap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SHRINKWRAP_METADATA)
-    params = mris_shrinkwrap_params(volume=volume, output_name=output_name, threshold=threshold)
+    params = mris_shrinkwrap_params(
+        volume=volume,
+        output_name=output_name,
+        threshold=threshold,
+    )
     return mris_shrinkwrap_execute(params, execution)
 
 

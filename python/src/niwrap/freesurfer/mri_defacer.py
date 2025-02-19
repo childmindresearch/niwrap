@@ -11,6 +11,8 @@ MRI_DEFACER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriDefacerParameters = typing.TypedDict('MriDefacerParameters', {
     "__STYX_TYPE__": typing.Literal["mri_defacer"],
     "input_volume": InputPathType,
@@ -416,7 +418,32 @@ def mri_defacer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DEFACER_METADATA)
-    params = mri_defacer_params(input_volume=input_volume, headmask=headmask, tempsurf=tempsurf, templabel=templabel, watermark=watermark, defaced_volume=defaced_volume, facemask=facemask, fill_constants=fill_constants, exclude_mask=exclude_mask, tempreg=tempreg, minsurfpath=minsurfpath, maxsurfpath=maxsurfpath, distbounds=distbounds, distoverlay=distoverlay, distdat=distdat, statspath=statspath, output_tempsurf=output_tempsurf, apply_to_volume=apply_to_volume, ripple_center=ripple_center, apply_ripple=apply_ripple, diagnostic_level=diagnostic_level, debug=debug, checkopts=checkopts, version=version)
+    params = mri_defacer_params(
+        input_volume=input_volume,
+        headmask=headmask,
+        tempsurf=tempsurf,
+        templabel=templabel,
+        watermark=watermark,
+        defaced_volume=defaced_volume,
+        facemask=facemask,
+        fill_constants=fill_constants,
+        exclude_mask=exclude_mask,
+        tempreg=tempreg,
+        minsurfpath=minsurfpath,
+        maxsurfpath=maxsurfpath,
+        distbounds=distbounds,
+        distoverlay=distoverlay,
+        distdat=distdat,
+        statspath=statspath,
+        output_tempsurf=output_tempsurf,
+        apply_to_volume=apply_to_volume,
+        ripple_center=ripple_center,
+        apply_ripple=apply_ripple,
+        diagnostic_level=diagnostic_level,
+        debug=debug,
+        checkopts=checkopts,
+        version=version,
+    )
     return mri_defacer_execute(params, execution)
 
 

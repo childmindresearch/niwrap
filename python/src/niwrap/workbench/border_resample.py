@@ -11,6 +11,8 @@ BORDER_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BorderResampleParameters = typing.TypedDict('BorderResampleParameters', {
     "__STYX_TYPE__": typing.Literal["border-resample"],
     "border_in": InputPathType,
@@ -193,7 +195,12 @@ def border_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_RESAMPLE_METADATA)
-    params = border_resample_params(border_in=border_in, current_sphere=current_sphere, new_sphere=new_sphere, border_out=border_out)
+    params = border_resample_params(
+        border_in=border_in,
+        current_sphere=current_sphere,
+        new_sphere=new_sphere,
+        border_out=border_out,
+    )
     return border_resample_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctMakeScriptAndRstPyParameters = typing.TypedDict('AdjunctMakeScriptAndRstPyParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_make_script_and_rst.py"],
     "input_script": InputPathType,
@@ -216,7 +218,13 @@ def adjunct_make_script_and_rst_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA)
-    params = adjunct_make_script_and_rst_py_params(input_script=input_script, prefix_rst=prefix_rst, prefix_script=prefix_script, reflink=reflink, execute_script=execute_script)
+    params = adjunct_make_script_and_rst_py_params(
+        input_script=input_script,
+        prefix_rst=prefix_rst,
+        prefix_script=prefix_script,
+        reflink=reflink,
+        execute_script=execute_script,
+    )
     return adjunct_make_script_and_rst_py_execute(params, execution)
 
 

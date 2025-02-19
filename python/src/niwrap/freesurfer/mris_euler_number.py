@@ -11,6 +11,8 @@ MRIS_EULER_NUMBER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisEulerNumberParameters = typing.TypedDict('MrisEulerNumberParameters', {
     "__STYX_TYPE__": typing.Literal["mris_euler_number"],
     "input_surface": InputPathType,
@@ -171,7 +173,10 @@ def mris_euler_number(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EULER_NUMBER_METADATA)
-    params = mris_euler_number_params(input_surface=input_surface, output_file=output_file)
+    params = mris_euler_number_params(
+        input_surface=input_surface,
+        output_file=output_file,
+    )
     return mris_euler_number_execute(params, execution)
 
 

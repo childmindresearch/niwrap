@@ -11,6 +11,8 @@ V_3D_CLIP_LEVEL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dClipLevelParameters = typing.TypedDict('V3dClipLevelParameters', {
     "__STYX_TYPE__": typing.Literal["3dClipLevel"],
     "dataset": InputPathType,
@@ -158,7 +160,9 @@ def v_3d_clip_level(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CLIP_LEVEL_METADATA)
-    params = v_3d_clip_level_params(dataset=dataset)
+    params = v_3d_clip_level_params(
+        dataset=dataset,
+    )
     return v_3d_clip_level_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ANTS_REGISTRATION_SY_NQUICK_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsRegistrationSyNquickShParameters = typing.TypedDict('AntsRegistrationSyNquickShParameters', {
     "__STYX_TYPE__": typing.Literal["antsRegistrationSyNQuick.sh"],
     "dimensionality": typing.Literal[2, 3],
@@ -214,7 +216,13 @@ def ants_registration_sy_nquick_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_REGISTRATION_SY_NQUICK_SH_METADATA)
-    params = ants_registration_sy_nquick_sh_params(dimensionality=dimensionality, fixed_image=fixed_image, moving_image=moving_image, output_prefix=output_prefix, transform_type=transform_type)
+    params = ants_registration_sy_nquick_sh_params(
+        dimensionality=dimensionality,
+        fixed_image=fixed_image,
+        moving_image=moving_image,
+        output_prefix=output_prefix,
+        transform_type=transform_type,
+    )
     return ants_registration_sy_nquick_sh_execute(params, execution)
 
 

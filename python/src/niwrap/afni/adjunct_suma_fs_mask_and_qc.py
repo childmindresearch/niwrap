@@ -11,6 +11,8 @@ ADJUNCT_SUMA_FS_MASK_AND_QC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AdjunctSumaFsMaskAndQcParameters = typing.TypedDict('AdjunctSumaFsMaskAndQcParameters', {
     "__STYX_TYPE__": typing.Literal["adjunct_suma_fs_mask_and_qc"],
     "subj_id": str,
@@ -227,7 +229,14 @@ def adjunct_suma_fs_mask_and_qc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_SUMA_FS_MASK_AND_QC_METADATA)
-    params = adjunct_suma_fs_mask_and_qc_params(subj_id=subj_id, suma_dir=suma_dir, no_clean=no_clean, help_=help_, hview=hview, version=version)
+    params = adjunct_suma_fs_mask_and_qc_params(
+        subj_id=subj_id,
+        suma_dir=suma_dir,
+        no_clean=no_clean,
+        help_=help_,
+        hview=hview,
+        version=version,
+    )
     return adjunct_suma_fs_mask_and_qc_execute(params, execution)
 
 

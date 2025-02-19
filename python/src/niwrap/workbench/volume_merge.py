@@ -11,21 +11,29 @@ VOLUME_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeMergeUpToParameters = typing.TypedDict('VolumeMergeUpToParameters', {
     "__STYX_TYPE__": typing.Literal["up_to"],
     "last_subvol": str,
     "opt_reverse": bool,
 })
+
+
 VolumeMergeSubvolumeParameters = typing.TypedDict('VolumeMergeSubvolumeParameters', {
     "__STYX_TYPE__": typing.Literal["subvolume"],
     "subvol": str,
     "up_to": typing.NotRequired[VolumeMergeUpToParameters | None],
 })
+
+
 VolumeMergeVolumeParameters = typing.TypedDict('VolumeMergeVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["volume"],
     "volume_in": InputPathType,
     "subvolume": typing.NotRequired[list[VolumeMergeSubvolumeParameters] | None],
 })
+
+
 VolumeMergeParameters = typing.TypedDict('VolumeMergeParameters', {
     "__STYX_TYPE__": typing.Literal["volume-merge"],
     "volume_out": str,
@@ -335,7 +343,10 @@ def volume_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_MERGE_METADATA)
-    params = volume_merge_params(volume_out=volume_out, volume=volume)
+    params = volume_merge_params(
+        volume_out=volume_out,
+        volume=volume,
+    )
     return volume_merge_execute(params, execution)
 
 

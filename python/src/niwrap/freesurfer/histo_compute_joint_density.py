@@ -11,6 +11,8 @@ HISTO_COMPUTE_JOINT_DENSITY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 HistoComputeJointDensityParameters = typing.TypedDict('HistoComputeJointDensityParameters', {
     "__STYX_TYPE__": typing.Literal["histo_compute_joint_density"],
     "volume1": InputPathType,
@@ -173,7 +175,11 @@ def histo_compute_joint_density(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HISTO_COMPUTE_JOINT_DENSITY_METADATA)
-    params = histo_compute_joint_density_params(volume1=volume1, volume2=volume2, joint_density_file=joint_density_file)
+    params = histo_compute_joint_density_params(
+        volume1=volume1,
+        volume2=volume2,
+        joint_density_file=joint_density_file,
+    )
     return histo_compute_joint_density_execute(params, execution)
 
 

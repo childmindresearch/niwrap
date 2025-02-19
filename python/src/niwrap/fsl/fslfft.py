@@ -11,6 +11,8 @@ FSLFFT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslfftParameters = typing.TypedDict('FslfftParameters', {
     "__STYX_TYPE__": typing.Literal["fslfft"],
     "input_volume": InputPathType,
@@ -176,7 +178,11 @@ def fslfft(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLFFT_METADATA)
-    params = fslfft_params(input_volume=input_volume, output_volume=output_volume, inverse_flag=inverse_flag)
+    params = fslfft_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        inverse_flag=inverse_flag,
+    )
     return fslfft_execute(params, execution)
 
 

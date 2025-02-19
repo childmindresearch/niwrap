@@ -11,6 +11,8 @@ MRI_SCLIMBIC_SEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSclimbicSegParameters = typing.TypedDict('MriSclimbicSegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_sclimbic_seg"],
     "input_file": str,
@@ -422,7 +424,33 @@ def mri_sclimbic_seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SCLIMBIC_SEG_METADATA)
-    params = mri_sclimbic_seg_params(input_file=input_file, output_file=output_file, subjects=subjects, subjects_dir=subjects_dir, conform=conform, etiv=etiv, exclude_labels=exclude_labels, keep_ac=keep_ac, vox_count_volumes=vox_count_volumes, model_file=model_file, ctab_file=ctab_file, population_stats=population_stats, debug=debug, vmp=vmp, threads=threads, tal_xfm=tal_xfm, write_posteriors=write_posteriors, write_volumes=write_volumes, write_qa_stats=write_qa_stats, preprocess_7_t=preprocess_7_t, percentile=percentile, cuda_device=cuda_device, output_base=output_base, no_cite=no_cite, nchannels=nchannels)
+    params = mri_sclimbic_seg_params(
+        input_file=input_file,
+        output_file=output_file,
+        subjects=subjects,
+        subjects_dir=subjects_dir,
+        conform=conform,
+        etiv=etiv,
+        exclude_labels=exclude_labels,
+        keep_ac=keep_ac,
+        vox_count_volumes=vox_count_volumes,
+        model_file=model_file,
+        ctab_file=ctab_file,
+        population_stats=population_stats,
+        debug=debug,
+        vmp=vmp,
+        threads=threads,
+        tal_xfm=tal_xfm,
+        write_posteriors=write_posteriors,
+        write_volumes=write_volumes,
+        write_qa_stats=write_qa_stats,
+        preprocess_7_t=preprocess_7_t,
+        percentile=percentile,
+        cuda_device=cuda_device,
+        output_base=output_base,
+        no_cite=no_cite,
+        nchannels=nchannels,
+    )
     return mri_sclimbic_seg_execute(params, execution)
 
 

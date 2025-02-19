@@ -11,6 +11,8 @@ MRIS_FIX_TOPOLOGY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisFixTopologyParameters = typing.TypedDict('MrisFixTopologyParameters', {
     "__STYX_TYPE__": typing.Literal["mris_fix_topology"],
     "subject_name": str,
@@ -404,7 +406,34 @@ def mris_fix_topology(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FIX_TOPOLOGY_METADATA)
-    params = mris_fix_topology_params(subject_name=subject_name, hemisphere=hemisphere, orig_name=orig_name, sphere_name=sphere_name, inflated_name=inflated_name, output_name=output_name, defect_base_name=defect_base_name, write_fixed_inflated=write_fixed_inflated, verbose=verbose, verbose_low=verbose_low, warnings_=warnings_, errors=errors, movies=movies, intersect=intersect, mappings=mappings, correct_defect=correct_defect, niters=niters, genetic=genetic, optimize=optimize, random_=random_, seed=seed, diag=diag, mgz=mgz, smooth=smooth, diagnostic_level=diagnostic_level, threads=threads)
+    params = mris_fix_topology_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        orig_name=orig_name,
+        sphere_name=sphere_name,
+        inflated_name=inflated_name,
+        output_name=output_name,
+        defect_base_name=defect_base_name,
+        write_fixed_inflated=write_fixed_inflated,
+        verbose=verbose,
+        verbose_low=verbose_low,
+        warnings_=warnings_,
+        errors=errors,
+        movies=movies,
+        intersect=intersect,
+        mappings=mappings,
+        correct_defect=correct_defect,
+        niters=niters,
+        genetic=genetic,
+        optimize=optimize,
+        random_=random_,
+        seed=seed,
+        diag=diag,
+        mgz=mgz,
+        smooth=smooth,
+        diagnostic_level=diagnostic_level,
+        threads=threads,
+    )
     return mris_fix_topology_execute(params, execution)
 
 

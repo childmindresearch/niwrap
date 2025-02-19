@@ -11,6 +11,8 @@ FIND_VARIANCE_LINES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FindVarianceLinesParameters = typing.TypedDict('FindVarianceLinesParameters', {
     "__STYX_TYPE__": typing.Literal["find_variance_lines"],
     "input_files": list[InputPathType],
@@ -322,7 +324,23 @@ def find_variance_lines(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIND_VARIANCE_LINES_METADATA)
-    params = find_variance_lines_params(input_files=input_files, mask=mask, min_cvox=min_cvox, min_nt=min_nt, nerode=nerode, nfirst=nfirst, percentile=percentile, polort=polort, output_dir=output_dir, do_clean=do_clean, do_img=do_img, echo=echo, help_=help_, hist=hist, ver=ver)
+    params = find_variance_lines_params(
+        input_files=input_files,
+        mask=mask,
+        min_cvox=min_cvox,
+        min_nt=min_nt,
+        nerode=nerode,
+        nfirst=nfirst,
+        percentile=percentile,
+        polort=polort,
+        output_dir=output_dir,
+        do_clean=do_clean,
+        do_img=do_img,
+        echo=echo,
+        help_=help_,
+        hist=hist,
+        ver=ver,
+    )
     return find_variance_lines_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CLUSTER2HTML_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Cluster2htmlParameters = typing.TypedDict('Cluster2htmlParameters', {
     "__STYX_TYPE__": typing.Literal["cluster2html"],
     "featdir": str,
@@ -172,7 +174,11 @@ def cluster2html(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CLUSTER2HTML_METADATA)
-    params = cluster2html_params(featdir=featdir, inroot=inroot, std_flag=std_flag)
+    params = cluster2html_params(
+        featdir=featdir,
+        inroot=inroot,
+        std_flag=std_flag,
+    )
     return cluster2html_execute(params, execution)
 
 

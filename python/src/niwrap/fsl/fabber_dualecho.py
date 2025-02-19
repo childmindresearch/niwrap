@@ -11,6 +11,8 @@ FABBER_DUALECHO_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FabberDualechoParameters = typing.TypedDict('FabberDualechoParameters', {
     "__STYX_TYPE__": typing.Literal["fabber_dualecho"],
     "output_directory": str,
@@ -520,7 +522,43 @@ def fabber_dualecho(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_DUALECHO_METADATA)
-    params = fabber_dualecho_params(output_directory=output_directory, method=method, model=model, data=data, data_order=data_order, mask_file=mask_file, mt_list=mt_list, supp_data=supp_data, options_file=options_file, help_flag=help_flag, list_methods_flag=list_methods_flag, list_models_flag=list_models_flag, list_params_flag=list_params_flag, desc_params_flag=desc_params_flag, list_outputs_flag=list_outputs_flag, evaluate=evaluate, evaluate_params=evaluate_params, evaluate_nt=evaluate_nt, simple_output_flag=simple_output_flag, overwrite_flag=overwrite_flag, link_to_latest_flag=link_to_latest_flag, load_models=load_models, dump_param_names_flag=dump_param_names_flag, save_model_fit_flag=save_model_fit_flag, save_residuals_flag=save_residuals_flag, save_model_extras_flag=save_model_extras_flag, save_mvn_flag=save_mvn_flag, save_mean_flag=save_mean_flag, save_std_flag=save_std_flag, save_var_flag=save_var_flag, save_zstat_flag=save_zstat_flag, save_noise_mean_flag=save_noise_mean_flag, save_noise_std_flag=save_noise_std_flag, save_free_energy_flag=save_free_energy_flag, debug_flag=debug_flag)
+    params = fabber_dualecho_params(
+        output_directory=output_directory,
+        method=method,
+        model=model,
+        data=data,
+        data_order=data_order,
+        mask_file=mask_file,
+        mt_list=mt_list,
+        supp_data=supp_data,
+        options_file=options_file,
+        help_flag=help_flag,
+        list_methods_flag=list_methods_flag,
+        list_models_flag=list_models_flag,
+        list_params_flag=list_params_flag,
+        desc_params_flag=desc_params_flag,
+        list_outputs_flag=list_outputs_flag,
+        evaluate=evaluate,
+        evaluate_params=evaluate_params,
+        evaluate_nt=evaluate_nt,
+        simple_output_flag=simple_output_flag,
+        overwrite_flag=overwrite_flag,
+        link_to_latest_flag=link_to_latest_flag,
+        load_models=load_models,
+        dump_param_names_flag=dump_param_names_flag,
+        save_model_fit_flag=save_model_fit_flag,
+        save_residuals_flag=save_residuals_flag,
+        save_model_extras_flag=save_model_extras_flag,
+        save_mvn_flag=save_mvn_flag,
+        save_mean_flag=save_mean_flag,
+        save_std_flag=save_std_flag,
+        save_var_flag=save_var_flag,
+        save_zstat_flag=save_zstat_flag,
+        save_noise_mean_flag=save_noise_mean_flag,
+        save_noise_std_flag=save_noise_std_flag,
+        save_free_energy_flag=save_free_energy_flag,
+        debug_flag=debug_flag,
+    )
     return fabber_dualecho_execute(params, execution)
 
 

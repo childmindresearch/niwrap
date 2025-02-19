@@ -11,6 +11,8 @@ T4IMG_4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 T4img4dfpParameters = typing.TypedDict('T4img4dfpParameters', {
     "__STYX_TYPE__": typing.Literal["t4img_4dfp"],
     "t4file": InputPathType,
@@ -177,7 +179,11 @@ def t4img_4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(T4IMG_4DFP_METADATA)
-    params = t4img_4dfp_params(t4file=t4file, imgfile=imgfile, outfile=outfile)
+    params = t4img_4dfp_params(
+        t4file=t4file,
+        imgfile=imgfile,
+        outfile=outfile,
+    )
     return t4img_4dfp_execute(params, execution)
 
 

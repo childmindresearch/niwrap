@@ -11,6 +11,8 @@ MRI_LOG_LIKELIHOOD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLogLikelihoodParameters = typing.TypedDict('MriLogLikelihoodParameters', {
     "__STYX_TYPE__": typing.Literal["mri_log_likelihood"],
     "input_brain_images": list[InputPathType],
@@ -169,7 +171,11 @@ def mri_log_likelihood(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LOG_LIKELIHOOD_METADATA)
-    params = mri_log_likelihood_params(input_brain_images=input_brain_images, atlas_file=atlas_file, transform_file=transform_file)
+    params = mri_log_likelihood_params(
+        input_brain_images=input_brain_images,
+        atlas_file=atlas_file,
+        transform_file=transform_file,
+    )
     return mri_log_likelihood_execute(params, execution)
 
 

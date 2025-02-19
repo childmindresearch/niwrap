@@ -11,6 +11,8 @@ POINTSET2LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Pointset2labelParameters = typing.TypedDict('Pointset2labelParameters', {
     "__STYX_TYPE__": typing.Literal["pointset2label"],
     "waypoint_file": InputPathType,
@@ -188,7 +190,13 @@ def pointset2label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POINTSET2LABEL_METADATA)
-    params = pointset2label_params(waypoint_file=waypoint_file, input_volume=input_volume, label_value=label_value, output_volume=output_volume, clear_option=clear_option)
+    params = pointset2label_params(
+        waypoint_file=waypoint_file,
+        input_volume=input_volume,
+        label_value=label_value,
+        output_volume=output_volume,
+        clear_option=clear_option,
+    )
     return pointset2label_execute(params, execution)
 
 

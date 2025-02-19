@@ -11,6 +11,8 @@ REGISTER_CHILD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RegisterChildParameters = typing.TypedDict('RegisterChildParameters', {
     "__STYX_TYPE__": typing.Literal["register_child"],
     "input_volume": InputPathType,
@@ -169,7 +171,10 @@ def register_child(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_CHILD_METADATA)
-    params = register_child_params(input_volume=input_volume, output_directory=output_directory)
+    params = register_child_params(
+        input_volume=input_volume,
+        output_directory=output_directory,
+    )
     return register_child_execute(params, execution)
 
 

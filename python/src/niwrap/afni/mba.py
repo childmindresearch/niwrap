@@ -11,6 +11,8 @@ MBA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MbaParameters = typing.TypedDict('MbaParameters', {
     "__STYX_TYPE__": typing.Literal["MBA"],
     "prefix": str,
@@ -329,7 +331,23 @@ def mba(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MBA_METADATA)
-    params = mba_params(prefix=prefix, chains=chains, iterations=iterations, model=model, eoi=eoi, data_table=data_table, cvars=cvars, qvars=qvars, qcvar=qcvar, stdz=stdz, wcp=wcp, disty=disty, se=se, dbg_args=dbg_args, help_=help_)
+    params = mba_params(
+        prefix=prefix,
+        chains=chains,
+        iterations=iterations,
+        model=model,
+        eoi=eoi,
+        data_table=data_table,
+        cvars=cvars,
+        qvars=qvars,
+        qcvar=qcvar,
+        stdz=stdz,
+        wcp=wcp,
+        disty=disty,
+        se=se,
+        dbg_args=dbg_args,
+        help_=help_,
+    )
     return mba_execute(params, execution)
 
 

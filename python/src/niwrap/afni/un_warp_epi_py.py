@@ -11,6 +11,8 @@ UN_WARP_EPI_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 UnWarpEpiPyParameters = typing.TypedDict('UnWarpEpiPyParameters', {
     "__STYX_TYPE__": typing.Literal["unWarpEPI.py"],
     "forward": InputPathType,
@@ -210,7 +212,14 @@ def un_warp_epi_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UN_WARP_EPI_PY_METADATA)
-    params = un_warp_epi_py_params(forward=forward, reverse=reverse, anat4warp=anat4warp, data=data, subj_id=subj_id, giant_move=giant_move)
+    params = un_warp_epi_py_params(
+        forward=forward,
+        reverse=reverse,
+        anat4warp=anat4warp,
+        data=data,
+        subj_id=subj_id,
+        giant_move=giant_move,
+    )
     return un_warp_epi_py_execute(params, execution)
 
 

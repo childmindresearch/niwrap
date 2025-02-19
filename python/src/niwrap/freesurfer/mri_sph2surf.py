@@ -11,6 +11,8 @@ MRI_SPH2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSph2surfParameters = typing.TypedDict('MriSph2surfParameters', {
     "__STYX_TYPE__": typing.Literal["mri-sph2surf"],
     "instem": str,
@@ -256,7 +258,17 @@ def mri_sph2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SPH2SURF_METADATA)
-    params = mri_sph2surf_params(instem=instem, outstem=outstem, hemi=hemi, subject=subject, offset=offset, svitdir=svitdir, umask=umask, verbose=verbose, version=version)
+    params = mri_sph2surf_params(
+        instem=instem,
+        outstem=outstem,
+        hemi=hemi,
+        subject=subject,
+        offset=offset,
+        svitdir=svitdir,
+        umask=umask,
+        verbose=verbose,
+        version=version,
+    )
     return mri_sph2surf_execute(params, execution)
 
 

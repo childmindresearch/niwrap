@@ -11,6 +11,8 @@ MRI_SEGMENT_HYPOTHALAMIC_SUBUNITS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegmentHypothalamicSubunitsParameters = typing.TypedDict('MriSegmentHypothalamicSubunitsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_segment_hypothalamic_subunits"],
     "subjects": typing.NotRequired[list[str] | None],
@@ -309,7 +311,19 @@ def mri_segment_hypothalamic_subunits(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGMENT_HYPOTHALAMIC_SUBUNITS_METADATA)
-    params = mri_segment_hypothalamic_subunits_params(subjects=subjects, subjects_dir=subjects_dir, write_posteriors=write_posteriors, image_input=image_input, output=output, posteriors=posteriors, resample=resample, volume_output=volume_output, crop_size=crop_size, threads=threads, cpu=cpu)
+    params = mri_segment_hypothalamic_subunits_params(
+        subjects=subjects,
+        subjects_dir=subjects_dir,
+        write_posteriors=write_posteriors,
+        image_input=image_input,
+        output=output,
+        posteriors=posteriors,
+        resample=resample,
+        volume_output=volume_output,
+        crop_size=crop_size,
+        threads=threads,
+        cpu=cpu,
+    )
     return mri_segment_hypothalamic_subunits_execute(params, execution)
 
 

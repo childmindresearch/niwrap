@@ -11,11 +11,15 @@ TCKINFO_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckinfoConfigParameters = typing.TypedDict('TckinfoConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckinfoParameters = typing.TypedDict('TckinfoParameters', {
     "__STYX_TYPE__": typing.Literal["tckinfo"],
     "count": bool,
@@ -299,7 +303,18 @@ def tckinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKINFO_METADATA)
-    params = tckinfo_params(count=count, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks)
+    params = tckinfo_params(
+        count=count,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks=tracks,
+    )
     return tckinfo_execute(params, execution)
 
 

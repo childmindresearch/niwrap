@@ -11,6 +11,8 @@ V__XYZ_TO_IJK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VXyzToIjkParameters = typing.TypedDict('VXyzToIjkParameters', {
     "__STYX_TYPE__": typing.Literal["@xyz_to_ijk"],
     "inset": InputPathType,
@@ -200,7 +202,13 @@ def v__xyz_to_ijk(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__XYZ_TO_IJK_METADATA)
-    params = v__xyz_to_ijk_params(inset=inset, x_coord=x_coord, y_coord=y_coord, z_coord=z_coord, prefix=prefix)
+    params = v__xyz_to_ijk_params(
+        inset=inset,
+        x_coord=x_coord,
+        y_coord=y_coord,
+        z_coord=z_coord,
+        prefix=prefix,
+    )
     return v__xyz_to_ijk_execute(params, execution)
 
 

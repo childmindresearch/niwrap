@@ -11,6 +11,8 @@ LONG_SUBMIT_POSTPROC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LongSubmitPostprocParameters = typing.TypedDict('LongSubmitPostprocParameters', {
     "__STYX_TYPE__": typing.Literal["long_submit_postproc"],
     "qdec": InputPathType,
@@ -238,7 +240,16 @@ def long_submit_postproc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_SUBMIT_POSTPROC_METADATA)
-    params = long_submit_postproc_params(qdec=qdec, prog=prog, flags=flags, dir_=dir_, simulate=simulate, pause=pause, max_=max_, queue_=queue_)
+    params = long_submit_postproc_params(
+        qdec=qdec,
+        prog=prog,
+        flags=flags,
+        dir_=dir_,
+        simulate=simulate,
+        pause=pause,
+        max_=max_,
+        queue_=queue_,
+    )
     return long_submit_postproc_execute(params, execution)
 
 

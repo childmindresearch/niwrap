@@ -11,6 +11,8 @@ V__FLOAT_FIX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFloatFixParameters = typing.TypedDict('VFloatFixParameters', {
     "__STYX_TYPE__": typing.Literal["@float_fix"],
     "input_files": list[InputPathType],
@@ -159,7 +161,9 @@ def v__float_fix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FLOAT_FIX_METADATA)
-    params = v__float_fix_params(input_files=input_files)
+    params = v__float_fix_params(
+        input_files=input_files,
+    )
     return v__float_fix_execute(params, execution)
 
 

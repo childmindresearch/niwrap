@@ -11,6 +11,8 @@ MAKE_AVERAGE_SURFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeAverageSurfaceParameters = typing.TypedDict('MakeAverageSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["make_average_surface"],
     "subjects": list[str],
@@ -361,7 +363,30 @@ def make_average_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_AVERAGE_SURFACE_METADATA)
-    params = make_average_surface_params(subjects=subjects, fsgd_file=fsgd_file, average_subject_name=average_subject_name, subjects_dir=subjects_dir, sd_out_dir=sd_out_dir, transform_file=transform_file, icosahedron_number=icosahedron_number, surf_reg=surf_reg, left_hemi=left_hemi, right_hemi=right_hemi, force=force, annot_template=annot_template, template_only=template_only, no_template_only=no_template_only, no_annot=no_annot, no_cortex_label=no_cortex_label, annot_list=annot_list, meas_list=meas_list, no_surf2surf=no_surf2surf, no_symlink=no_symlink, version=version, echo=echo)
+    params = make_average_surface_params(
+        subjects=subjects,
+        fsgd_file=fsgd_file,
+        average_subject_name=average_subject_name,
+        subjects_dir=subjects_dir,
+        sd_out_dir=sd_out_dir,
+        transform_file=transform_file,
+        icosahedron_number=icosahedron_number,
+        surf_reg=surf_reg,
+        left_hemi=left_hemi,
+        right_hemi=right_hemi,
+        force=force,
+        annot_template=annot_template,
+        template_only=template_only,
+        no_template_only=no_template_only,
+        no_annot=no_annot,
+        no_cortex_label=no_cortex_label,
+        annot_list=annot_list,
+        meas_list=meas_list,
+        no_surf2surf=no_surf2surf,
+        no_symlink=no_symlink,
+        version=version,
+        echo=echo,
+    )
     return make_average_surface_execute(params, execution)
 
 

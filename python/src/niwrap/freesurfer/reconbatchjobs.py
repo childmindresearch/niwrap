@@ -11,6 +11,8 @@ RECONBATCHJOBS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ReconbatchjobsParameters = typing.TypedDict('ReconbatchjobsParameters', {
     "__STYX_TYPE__": typing.Literal["reconbatchjobs"],
     "logfile": str,
@@ -162,7 +164,10 @@ def reconbatchjobs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RECONBATCHJOBS_METADATA)
-    params = reconbatchjobs_params(logfile=logfile, cmdfiles=cmdfiles)
+    params = reconbatchjobs_params(
+        logfile=logfile,
+        cmdfiles=cmdfiles,
+    )
     return reconbatchjobs_execute(params, execution)
 
 

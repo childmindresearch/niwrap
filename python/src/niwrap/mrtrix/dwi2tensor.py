@@ -11,16 +11,22 @@ DWI2TENSOR_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Dwi2tensorFslgradParameters = typing.TypedDict('Dwi2tensorFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 Dwi2tensorConfigParameters = typing.TypedDict('Dwi2tensorConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Dwi2tensorParameters = typing.TypedDict('Dwi2tensorParameters', {
     "__STYX_TYPE__": typing.Literal["dwi2tensor"],
     "ols": bool,
@@ -545,7 +551,26 @@ def dwi2tensor(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWI2TENSOR_METADATA)
-    params = dwi2tensor_params(ols=ols, mask=mask, b0=b0, dkt=dkt, iter_=iter_, predicted_signal=predicted_signal, grad=grad, fslgrad=fslgrad, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, dwi=dwi, dt=dt)
+    params = dwi2tensor_params(
+        ols=ols,
+        mask=mask,
+        b0=b0,
+        dkt=dkt,
+        iter_=iter_,
+        predicted_signal=predicted_signal,
+        grad=grad,
+        fslgrad=fslgrad,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        dwi=dwi,
+        dt=dt,
+    )
     return dwi2tensor_execute(params, execution)
 
 

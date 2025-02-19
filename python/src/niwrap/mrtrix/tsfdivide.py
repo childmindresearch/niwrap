@@ -11,11 +11,15 @@ TSFDIVIDE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TsfdivideConfigParameters = typing.TypedDict('TsfdivideConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TsfdivideParameters = typing.TypedDict('TsfdivideParameters', {
     "__STYX_TYPE__": typing.Literal["tsfdivide"],
     "info": bool,
@@ -309,7 +313,19 @@ def tsfdivide(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TSFDIVIDE_METADATA)
-    params = tsfdivide_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input1=input1, input2=input2, output=output)
+    params = tsfdivide_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input1=input1,
+        input2=input2,
+        output=output,
+    )
     return tsfdivide_execute(params, execution)
 
 

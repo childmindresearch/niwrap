@@ -11,6 +11,8 @@ SPEC_FILE_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SpecFileMergeParameters = typing.TypedDict('SpecFileMergeParameters', {
     "__STYX_TYPE__": typing.Literal["spec-file-merge"],
     "spec_1": str,
@@ -176,7 +178,11 @@ def spec_file_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPEC_FILE_MERGE_METADATA)
-    params = spec_file_merge_params(spec_1=spec_1, spec_2=spec_2, out_spec=out_spec)
+    params = spec_file_merge_params(
+        spec_1=spec_1,
+        spec_2=spec_2,
+        out_spec=out_spec,
+    )
     return spec_file_merge_execute(params, execution)
 
 

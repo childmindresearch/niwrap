@@ -11,6 +11,8 @@ V__ROI_CORR_MAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VRoiCorrMatParameters = typing.TypedDict('VRoiCorrMatParameters', {
     "__STYX_TYPE__": typing.Literal["@ROI_Corr_Mat"],
     "ts_vol": InputPathType,
@@ -251,7 +253,18 @@ def v__roi_corr_mat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ROI_CORR_MAT_METADATA)
-    params = v__roi_corr_mat_params(ts_vol=ts_vol, roi_vol=roi_vol, prefix=prefix, roisel=roisel, zval=zval, mat_opt=mat_opt, dirty=dirty, keep_tmp=keep_tmp, echo=echo, verb=verb)
+    params = v__roi_corr_mat_params(
+        ts_vol=ts_vol,
+        roi_vol=roi_vol,
+        prefix=prefix,
+        roisel=roisel,
+        zval=zval,
+        mat_opt=mat_opt,
+        dirty=dirty,
+        keep_tmp=keep_tmp,
+        echo=echo,
+        verb=verb,
+    )
     return v__roi_corr_mat_execute(params, execution)
 
 

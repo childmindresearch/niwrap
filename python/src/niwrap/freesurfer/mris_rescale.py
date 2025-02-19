@@ -11,6 +11,8 @@ MRIS_RESCALE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRescaleParameters = typing.TypedDict('MrisRescaleParameters', {
     "__STYX_TYPE__": typing.Literal["mris_rescale"],
     "input_surface": InputPathType,
@@ -166,7 +168,10 @@ def mris_rescale(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_RESCALE_METADATA)
-    params = mris_rescale_params(input_surface=input_surface, output_surface=output_surface)
+    params = mris_rescale_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+    )
     return mris_rescale_execute(params, execution)
 
 

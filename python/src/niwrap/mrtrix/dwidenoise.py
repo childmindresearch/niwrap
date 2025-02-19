@@ -11,11 +11,15 @@ DWIDENOISE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DwidenoiseConfigParameters = typing.TypedDict('DwidenoiseConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DwidenoiseParameters = typing.TypedDict('DwidenoiseParameters', {
     "__STYX_TYPE__": typing.Literal["dwidenoise"],
     "mask": typing.NotRequired[InputPathType | None],
@@ -443,7 +447,23 @@ def dwidenoise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWIDENOISE_METADATA)
-    params = dwidenoise_params(mask=mask, extent=extent, noise=noise, datatype=datatype, estimator=estimator, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, dwi=dwi, out=out)
+    params = dwidenoise_params(
+        mask=mask,
+        extent=extent,
+        noise=noise,
+        datatype=datatype,
+        estimator=estimator,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        dwi=dwi,
+        out=out,
+    )
     return dwidenoise_execute(params, execution)
 
 

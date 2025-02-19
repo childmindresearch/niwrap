@@ -11,6 +11,8 @@ VENTFIX_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 VentfixParameters = typing.TypedDict('VentfixParameters', {
     "__STYX_TYPE__": typing.Literal["ventfix"],
     "subject_dir": str,
@@ -171,7 +173,10 @@ def ventfix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VENTFIX_METADATA)
-    params = ventfix_params(subject_dir=subject_dir, option1=option1)
+    params = ventfix_params(
+        subject_dir=subject_dir,
+        option1=option1,
+    )
     return ventfix_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FLIRT_AVERAGE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FlirtAverageParameters = typing.TypedDict('FlirtAverageParameters', {
     "__STYX_TYPE__": typing.Literal["flirt_average"],
     "ninputs": int,
@@ -202,7 +204,14 @@ def flirt_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLIRT_AVERAGE_METADATA)
-    params = flirt_average_params(ninputs=ninputs, input1=input1, input2=input2, output_file=output_file, reference_image=reference_image, flirt_options=flirt_options)
+    params = flirt_average_params(
+        ninputs=ninputs,
+        input1=input1,
+        input2=input2,
+        output_file=output_file,
+        reference_image=reference_image,
+        flirt_options=flirt_options,
+    )
     return flirt_average_execute(params, execution)
 
 

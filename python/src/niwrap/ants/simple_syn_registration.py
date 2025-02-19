@@ -11,6 +11,8 @@ SIMPLE_SYN_REGISTRATION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 SimpleSynRegistrationParameters = typing.TypedDict('SimpleSynRegistrationParameters', {
     "__STYX_TYPE__": typing.Literal["simpleSynRegistration"],
     "fixed_image": InputPathType,
@@ -183,7 +185,12 @@ def simple_syn_registration(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIMPLE_SYN_REGISTRATION_METADATA)
-    params = simple_syn_registration_params(fixed_image=fixed_image, moving_image=moving_image, initial_transform=initial_transform, output_prefix=output_prefix)
+    params = simple_syn_registration_params(
+        fixed_image=fixed_image,
+        moving_image=moving_image,
+        initial_transform=initial_transform,
+        output_prefix=output_prefix,
+    )
     return simple_syn_registration_execute(params, execution)
 
 

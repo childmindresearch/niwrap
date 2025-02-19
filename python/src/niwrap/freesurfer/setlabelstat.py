@@ -11,6 +11,8 @@ SETLABELSTAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SetlabelstatParameters = typing.TypedDict('SetlabelstatParameters', {
     "__STYX_TYPE__": typing.Literal["setlabelstat"],
     "inlabelfile": InputPathType,
@@ -192,7 +194,12 @@ def setlabelstat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SETLABELSTAT_METADATA)
-    params = setlabelstat_params(inlabelfile=inlabelfile, outlabelfile=outlabelfile, statval=statval, help_=help_)
+    params = setlabelstat_params(
+        inlabelfile=inlabelfile,
+        outlabelfile=outlabelfile,
+        statval=statval,
+        help_=help_,
+    )
     return setlabelstat_execute(params, execution)
 
 

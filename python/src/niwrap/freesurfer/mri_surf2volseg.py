@@ -11,6 +11,8 @@ MRI_SURF2VOLSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSurf2volsegParameters = typing.TypedDict('MriSurf2volsegParameters', {
     "__STYX_TYPE__": typing.Literal["mri_surf2volseg"],
     "input_segmentation": typing.NotRequired[InputPathType | None],
@@ -446,7 +448,33 @@ def mri_surf2volseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SURF2VOLSEG_METADATA)
-    params = mri_surf2volseg_params(input_segmentation=input_segmentation, output_segmentation=output_segmentation, source_segmentation=source_segmentation, lh_white_surf=lh_white_surf, lh_pial_surf=lh_pial_surf, rh_white_surf=rh_white_surf, rh_pial_surf=rh_pial_surf, lh_cortex_mask=lh_cortex_mask, rh_cortex_mask=rh_cortex_mask, fix_presurf_ribbon=fix_presurf_ribbon, label_cortex=label_cortex, label_wm=label_wm, label_wm_unknown=label_wm_unknown, lh_annotation=lh_annotation, rh_annotation=rh_annotation, wmparc_dmax=wmparc_dmax, rip_unknown=rip_unknown, hypo_as_wm=hypo_as_wm, hashres=hashres, nhops=nhops, help_flag=help_flag, version_flag=version_flag, crs_test=crs_test, ctab_file=ctab_file, threads_number=threads_number)
+    params = mri_surf2volseg_params(
+        input_segmentation=input_segmentation,
+        output_segmentation=output_segmentation,
+        source_segmentation=source_segmentation,
+        lh_white_surf=lh_white_surf,
+        lh_pial_surf=lh_pial_surf,
+        rh_white_surf=rh_white_surf,
+        rh_pial_surf=rh_pial_surf,
+        lh_cortex_mask=lh_cortex_mask,
+        rh_cortex_mask=rh_cortex_mask,
+        fix_presurf_ribbon=fix_presurf_ribbon,
+        label_cortex=label_cortex,
+        label_wm=label_wm,
+        label_wm_unknown=label_wm_unknown,
+        lh_annotation=lh_annotation,
+        rh_annotation=rh_annotation,
+        wmparc_dmax=wmparc_dmax,
+        rip_unknown=rip_unknown,
+        hypo_as_wm=hypo_as_wm,
+        hashres=hashres,
+        nhops=nhops,
+        help_flag=help_flag,
+        version_flag=version_flag,
+        crs_test=crs_test,
+        ctab_file=ctab_file,
+        threads_number=threads_number,
+    )
     return mri_surf2volseg_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ UNPACKSDCMDIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 UnpacksdcmdirParameters = typing.TypedDict('UnpacksdcmdirParameters', {
     "__STYX_TYPE__": typing.Literal["unpacksdcmdir"],
     "input_directory": str,
@@ -172,7 +174,10 @@ def unpacksdcmdir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNPACKSDCMDIR_METADATA)
-    params = unpacksdcmdir_params(input_directory=input_directory, output_directory=output_directory)
+    params = unpacksdcmdir_params(
+        input_directory=input_directory,
+        output_directory=output_directory,
+    )
     return unpacksdcmdir_execute(params, execution)
 
 

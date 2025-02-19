@@ -11,6 +11,8 @@ FSLSPLIT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslsplitParameters = typing.TypedDict('FslsplitParameters', {
     "__STYX_TYPE__": typing.Literal["fslsplit"],
     "infile": InputPathType,
@@ -184,7 +186,12 @@ def fslsplit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSPLIT_METADATA)
-    params = fslsplit_params(infile=infile, output_basename=output_basename, separation_z=separation_z, separation_time=separation_time)
+    params = fslsplit_params(
+        infile=infile,
+        output_basename=output_basename,
+        separation_z=separation_z,
+        separation_time=separation_time,
+    )
     return fslsplit_execute(params, execution)
 
 

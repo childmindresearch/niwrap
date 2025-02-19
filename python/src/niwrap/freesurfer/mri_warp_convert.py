@@ -11,6 +11,8 @@ MRI_WARP_CONVERT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriWarpConvertParameters = typing.TypedDict('MriWarpConvertParameters', {
     "__STYX_TYPE__": typing.Literal["mri_warp_convert"],
     "invox": typing.NotRequired[InputPathType | None],
@@ -196,7 +198,12 @@ def mri_warp_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_WARP_CONVERT_METADATA)
-    params = mri_warp_convert_params(invox=invox, outvox=outvox, insrcgeom=insrcgeom, downsample=downsample)
+    params = mri_warp_convert_params(
+        invox=invox,
+        outvox=outvox,
+        insrcgeom=insrcgeom,
+        downsample=downsample,
+    )
     return mri_warp_convert_execute(params, execution)
 
 

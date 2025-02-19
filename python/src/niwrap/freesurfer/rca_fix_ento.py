@@ -11,6 +11,8 @@ RCA_FIX_ENTO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RcaFixEntoParameters = typing.TypedDict('RcaFixEntoParameters', {
     "__STYX_TYPE__": typing.Literal["rca-fix-ento"],
     "subject": str,
@@ -214,7 +216,13 @@ def rca_fix_ento(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_FIX_ENTO_METADATA)
-    params = rca_fix_ento_params(subject=subject, threads=threads, submit=submit, account=account, brain_mask=brain_mask)
+    params = rca_fix_ento_params(
+        subject=subject,
+        threads=threads,
+        submit=submit,
+        account=account,
+        brain_mask=brain_mask,
+    )
     return rca_fix_ento_execute(params, execution)
 
 

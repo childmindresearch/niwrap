@@ -11,6 +11,8 @@ MAKE_UPRIGHT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeUprightParameters = typing.TypedDict('MakeUprightParameters', {
     "__STYX_TYPE__": typing.Literal["make_upright"],
     "input_image": InputPathType,
@@ -177,7 +179,11 @@ def make_upright(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_UPRIGHT_METADATA)
-    params = make_upright_params(input_image=input_image, output_image=output_image, transformation_map=transformation_map)
+    params = make_upright_params(
+        input_image=input_image,
+        output_image=output_image,
+        transformation_map=transformation_map,
+    )
     return make_upright_execute(params, execution)
 
 

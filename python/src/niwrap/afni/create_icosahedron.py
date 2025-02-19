@@ -11,6 +11,8 @@ CREATE_ICOSAHEDRON_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 CreateIcosahedronParameters = typing.TypedDict('CreateIcosahedronParameters', {
     "__STYX_TYPE__": typing.Literal["CreateIcosahedron"],
     "rad": typing.NotRequired[float | None],
@@ -256,7 +258,18 @@ def create_icosahedron(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_ICOSAHEDRON_METADATA)
-    params = create_icosahedron_params(rad=rad, rec_depth=rec_depth, lin_depth=lin_depth, min_nodes=min_nodes, nums=nums, nums_quiet=nums_quiet, center_coordinates=center_coordinates, to_sphere=to_sphere, output_prefix=output_prefix, help_=help_)
+    params = create_icosahedron_params(
+        rad=rad,
+        rec_depth=rec_depth,
+        lin_depth=lin_depth,
+        min_nodes=min_nodes,
+        nums=nums,
+        nums_quiet=nums_quiet,
+        center_coordinates=center_coordinates,
+        to_sphere=to_sphere,
+        output_prefix=output_prefix,
+        help_=help_,
+    )
     return create_icosahedron_execute(params, execution)
 
 

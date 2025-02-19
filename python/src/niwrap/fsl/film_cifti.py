@@ -11,6 +11,8 @@ FILM_CIFTI_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FilmCiftiParameters = typing.TypedDict('FilmCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["film_cifti"],
     "input_filename": InputPathType,
@@ -256,7 +258,17 @@ def film_cifti(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILM_CIFTI_METADATA)
-    params = film_cifti_params(input_filename=input_filename, basename=basename, left_surface=left_surface, right_surface=right_surface, susan_threshold=susan_threshold, susan_extent=susan_extent, surface_sigma=surface_sigma, surface_extent=surface_extent, film_options=film_options)
+    params = film_cifti_params(
+        input_filename=input_filename,
+        basename=basename,
+        left_surface=left_surface,
+        right_surface=right_surface,
+        susan_threshold=susan_threshold,
+        susan_extent=susan_extent,
+        surface_sigma=surface_sigma,
+        surface_extent=surface_extent,
+        film_options=film_options,
+    )
     return film_cifti_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ EPI_REG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 EpiRegParameters = typing.TypedDict('EpiRegParameters', {
     "__STYX_TYPE__": typing.Literal["epi_reg"],
     "epi": InputPathType,
@@ -306,7 +308,21 @@ def epi_reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EPI_REG_METADATA)
-    params = epi_reg_params(epi=epi, t1_head=t1_head, t1_brain=t1_brain, out_base_name=out_base_name, echospacing=echospacing, fmap=fmap, fmapmag=fmapmag, fmapmagbrain=fmapmagbrain, no_clean=no_clean, no_fmapreg=no_fmapreg, pedir=pedir, weight_image=weight_image, wmseg=wmseg)
+    params = epi_reg_params(
+        epi=epi,
+        t1_head=t1_head,
+        t1_brain=t1_brain,
+        out_base_name=out_base_name,
+        echospacing=echospacing,
+        fmap=fmap,
+        fmapmag=fmapmag,
+        fmapmagbrain=fmapmagbrain,
+        no_clean=no_clean,
+        no_fmapreg=no_fmapreg,
+        pedir=pedir,
+        weight_image=weight_image,
+        wmseg=wmseg,
+    )
     return epi_reg_execute(params, execution)
 
 

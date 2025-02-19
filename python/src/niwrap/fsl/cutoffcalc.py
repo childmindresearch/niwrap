@@ -11,6 +11,8 @@ CUTOFFCALC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 CutoffcalcParameters = typing.TypedDict('CutoffcalcParameters', {
     "__STYX_TYPE__": typing.Literal["cutoffcalc"],
     "input_design": InputPathType,
@@ -217,7 +219,15 @@ def cutoffcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CUTOFFCALC_METADATA)
-    params = cutoffcalc_params(input_design=input_design, threshold=threshold, tr=tr, lower_limit=lower_limit, example_sigma=example_sigma, verbose_flag=verbose_flag, debug_flag=debug_flag)
+    params = cutoffcalc_params(
+        input_design=input_design,
+        threshold=threshold,
+        tr=tr,
+        lower_limit=lower_limit,
+        example_sigma=example_sigma,
+        verbose_flag=verbose_flag,
+        debug_flag=debug_flag,
+    )
     return cutoffcalc_execute(params, execution)
 
 

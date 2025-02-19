@@ -11,11 +11,15 @@ WARPINIT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 WarpinitConfigParameters = typing.TypedDict('WarpinitConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 WarpinitParameters = typing.TypedDict('WarpinitParameters', {
     "__STYX_TYPE__": typing.Literal["warpinit"],
     "info": bool,
@@ -326,7 +330,18 @@ def warpinit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARPINIT_METADATA)
-    params = warpinit_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, template=template, warp=warp)
+    params = warpinit_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        template=template,
+        warp=warp,
+    )
     return warpinit_execute(params, execution)
 
 

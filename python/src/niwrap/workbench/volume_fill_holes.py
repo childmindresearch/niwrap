@@ -11,6 +11,8 @@ VOLUME_FILL_HOLES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeFillHolesParameters = typing.TypedDict('VolumeFillHolesParameters', {
     "__STYX_TYPE__": typing.Literal["volume-fill-holes"],
     "volume_in": InputPathType,
@@ -173,7 +175,10 @@ def volume_fill_holes(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_FILL_HOLES_METADATA)
-    params = volume_fill_holes_params(volume_in=volume_in, volume_out=volume_out)
+    params = volume_fill_holes_params(
+        volume_in=volume_in,
+        volume_out=volume_out,
+    )
     return volume_fill_holes_execute(params, execution)
 
 

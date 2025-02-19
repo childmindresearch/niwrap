@@ -11,6 +11,8 @@ SWI_PROCESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SwiProcessParameters = typing.TypedDict('SwiProcessParameters', {
     "__STYX_TYPE__": typing.Literal["swi_process"],
     "magnitude_image": InputPathType,
@@ -293,7 +295,19 @@ def swi_process(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SWI_PROCESS_METADATA)
-    params = swi_process_params(magnitude_image=magnitude_image, phase_image=phase_image, swi_output=swi_output, stddev=stddev, phase_mask_cutoff=phase_mask_cutoff, phase_mask_right_cutoff=phase_mask_right_cutoff, sigmoid_a=sigmoid_a, sigmoid_b=sigmoid_b, phase_multiplications=phase_multiplications, mip_level=mip_level, phase_mask_method=phase_mask_method)
+    params = swi_process_params(
+        magnitude_image=magnitude_image,
+        phase_image=phase_image,
+        swi_output=swi_output,
+        stddev=stddev,
+        phase_mask_cutoff=phase_mask_cutoff,
+        phase_mask_right_cutoff=phase_mask_right_cutoff,
+        sigmoid_a=sigmoid_a,
+        sigmoid_b=sigmoid_b,
+        phase_multiplications=phase_multiplications,
+        mip_level=mip_level,
+        phase_mask_method=phase_mask_method,
+    )
     return swi_process_execute(params, execution)
 
 

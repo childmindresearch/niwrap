@@ -11,6 +11,8 @@ SEGMENT_MONKEY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentMonkeyParameters = typing.TypedDict('SegmentMonkeyParameters', {
     "__STYX_TYPE__": typing.Literal["segment_monkey"],
     "control_points": list[str],
@@ -155,7 +157,9 @@ def segment_monkey(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_MONKEY_METADATA)
-    params = segment_monkey_params(control_points=control_points)
+    params = segment_monkey_params(
+        control_points=control_points,
+    )
     return segment_monkey_execute(params, execution)
 
 

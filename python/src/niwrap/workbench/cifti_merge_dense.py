@@ -11,10 +11,14 @@ CIFTI_MERGE_DENSE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiMergeDenseCiftiParameters = typing.TypedDict('CiftiMergeDenseCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti"],
     "cifti_in": InputPathType,
 })
+
+
 CiftiMergeDenseParameters = typing.TypedDict('CiftiMergeDenseParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-merge-dense"],
     "direction": str,
@@ -242,7 +246,12 @@ def cifti_merge_dense(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_MERGE_DENSE_METADATA)
-    params = cifti_merge_dense_params(direction=direction, cifti_out=cifti_out, opt_label_collision_action=opt_label_collision_action, cifti=cifti)
+    params = cifti_merge_dense_params(
+        direction=direction,
+        cifti_out=cifti_out,
+        opt_label_collision_action=opt_label_collision_action,
+        cifti=cifti,
+    )
     return cifti_merge_dense_execute(params, execution)
 
 

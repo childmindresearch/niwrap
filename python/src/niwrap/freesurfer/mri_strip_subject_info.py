@@ -11,6 +11,8 @@ MRI_STRIP_SUBJECT_INFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriStripSubjectInfoParameters = typing.TypedDict('MriStripSubjectInfoParameters', {
     "__STYX_TYPE__": typing.Literal["mri_strip_subject_info"],
     "input_files": list[InputPathType],
@@ -162,7 +164,10 @@ def mri_strip_subject_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_STRIP_SUBJECT_INFO_METADATA)
-    params = mri_strip_subject_info_params(input_files=input_files, output_directory=output_directory)
+    params = mri_strip_subject_info_params(
+        input_files=input_files,
+        output_directory=output_directory,
+    )
     return mri_strip_subject_info_execute(params, execution)
 
 

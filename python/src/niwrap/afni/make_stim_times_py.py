@@ -11,6 +11,8 @@ MAKE_STIM_TIMES_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MakeStimTimesPyParameters = typing.TypedDict('MakeStimTimesPyParameters', {
     "__STYX_TYPE__": typing.Literal["make_stim_times.py"],
     "files": list[InputPathType],
@@ -276,7 +278,20 @@ def make_stim_times_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_STIM_TIMES_PY_METADATA)
-    params = make_stim_times_py_params(files=files, prefix=prefix, tr=tr, nruns=nruns, nt_=nt_, run_trs=run_trs, offset=offset, labels=labels, no_consec_events=no_consec_events, amplitudes=amplitudes, show_valid_opts=show_valid_opts, verbose=verbose)
+    params = make_stim_times_py_params(
+        files=files,
+        prefix=prefix,
+        tr=tr,
+        nruns=nruns,
+        nt_=nt_,
+        run_trs=run_trs,
+        offset=offset,
+        labels=labels,
+        no_consec_events=no_consec_events,
+        amplitudes=amplitudes,
+        show_valid_opts=show_valid_opts,
+        verbose=verbose,
+    )
     return make_stim_times_py_execute(params, execution)
 
 

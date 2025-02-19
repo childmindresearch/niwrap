@@ -11,6 +11,8 @@ ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsuseLandmarkImagesToGetAffineTransformParameters = typing.TypedDict('AntsuseLandmarkImagesToGetAffineTransformParameters', {
     "__STYX_TYPE__": typing.Literal["ANTSUseLandmarkImagesToGetAffineTransform"],
     "fixed_image": InputPathType,
@@ -194,7 +196,12 @@ def antsuse_landmark_images_to_get_affine_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA)
-    params = antsuse_landmark_images_to_get_affine_transform_params(fixed_image=fixed_image, moving_image=moving_image, transform_type=transform_type, output_affine=output_affine)
+    params = antsuse_landmark_images_to_get_affine_transform_params(
+        fixed_image=fixed_image,
+        moving_image=moving_image,
+        transform_type=transform_type,
+        output_affine=output_affine,
+    )
     return antsuse_landmark_images_to_get_affine_transform_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ LABEL2SURF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Label2surfParameters = typing.TypedDict('Label2surfParameters', {
     "__STYX_TYPE__": typing.Literal["label2surf"],
     "input_surface": InputPathType,
@@ -198,7 +200,13 @@ def label2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2SURF_METADATA)
-    params = label2surf_params(input_surface=input_surface, output_surface=output_surface, labels=labels, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = label2surf_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        labels=labels,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return label2surf_execute(params, execution)
 
 

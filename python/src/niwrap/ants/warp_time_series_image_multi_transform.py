@@ -11,6 +11,8 @@ WARP_TIME_SERIES_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 WarpTimeSeriesImageMultiTransformParameters = typing.TypedDict('WarpTimeSeriesImageMultiTransformParameters', {
     "__STYX_TYPE__": typing.Literal["WarpTimeSeriesImageMultiTransform"],
     "image_dimension": typing.Literal[3, 4],
@@ -213,7 +215,14 @@ def warp_time_series_image_multi_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARP_TIME_SERIES_IMAGE_MULTI_TRANSFORM_METADATA)
-    params = warp_time_series_image_multi_transform_params(image_dimension=image_dimension, moving_image=moving_image, output_image=output_image, reference_image=reference_image, transforms=transforms, interpolation=interpolation)
+    params = warp_time_series_image_multi_transform_params(
+        image_dimension=image_dimension,
+        moving_image=moving_image,
+        output_image=output_image,
+        reference_image=reference_image,
+        transforms=transforms,
+        interpolation=interpolation,
+    )
     return warp_time_series_image_multi_transform_execute(params, execution)
 
 

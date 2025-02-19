@@ -11,6 +11,8 @@ UBER_SUBJECT_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 UberSubjectPyParameters = typing.TypedDict('UberSubjectPyParameters', {
     "__STYX_TYPE__": typing.Literal["uber_subject.py"],
     "qt_opts": typing.NotRequired[str | None],
@@ -648,7 +650,51 @@ def uber_subject_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_SUBJECT_PY_METADATA)
-    params = uber_subject_py_params(qt_opts=qt_opts, svar=svar, cvar=cvar, no_gui=no_gui, print_ap_command=print_ap_command, save_ap_command=save_ap_command, exec_ap_command=exec_ap_command, exec_proc_script=exec_proc_script, align_cost=align_cost, align_giant_move=align_giant_move, align_opts_aea=align_opts_aea, anal_domain=anal_domain, anal_type=anal_type, anat=anat, anat_has_skull=anat_has_skull, blocks=blocks, blur_size=blur_size, epi=epi, epi_wildcard=epi_wildcard, gid=gid, gltsym=gltsym, gltsym_label=gltsym_label, motion_limit=motion_limit, outlier_limit=outlier_limit, regress_goforit=regress_goforit, regress_bandpass=regress_bandpass, regress_jobs=regress_jobs, regress_mot_deriv=regress_mot_deriv, regress_opts_3d_d=regress_opts_3d_d, reml_exec=reml_exec, run_clustsim=run_clustsim, sid=sid, stim=stim, stim_basis=stim_basis, stim_label=stim_label, stim_type=stim_type, stim_wildcard=stim_wildcard, tcat_nfirst=tcat_nfirst, tlrc_base=tlrc_base, tlrc_ok_maxite=tlrc_ok_maxite, tlrc_opts_at=tlrc_opts_at, volreg_base=volreg_base, verb=verb)
+    params = uber_subject_py_params(
+        qt_opts=qt_opts,
+        svar=svar,
+        cvar=cvar,
+        no_gui=no_gui,
+        print_ap_command=print_ap_command,
+        save_ap_command=save_ap_command,
+        exec_ap_command=exec_ap_command,
+        exec_proc_script=exec_proc_script,
+        align_cost=align_cost,
+        align_giant_move=align_giant_move,
+        align_opts_aea=align_opts_aea,
+        anal_domain=anal_domain,
+        anal_type=anal_type,
+        anat=anat,
+        anat_has_skull=anat_has_skull,
+        blocks=blocks,
+        blur_size=blur_size,
+        epi=epi,
+        epi_wildcard=epi_wildcard,
+        gid=gid,
+        gltsym=gltsym,
+        gltsym_label=gltsym_label,
+        motion_limit=motion_limit,
+        outlier_limit=outlier_limit,
+        regress_goforit=regress_goforit,
+        regress_bandpass=regress_bandpass,
+        regress_jobs=regress_jobs,
+        regress_mot_deriv=regress_mot_deriv,
+        regress_opts_3d_d=regress_opts_3d_d,
+        reml_exec=reml_exec,
+        run_clustsim=run_clustsim,
+        sid=sid,
+        stim=stim,
+        stim_basis=stim_basis,
+        stim_label=stim_label,
+        stim_type=stim_type,
+        stim_wildcard=stim_wildcard,
+        tcat_nfirst=tcat_nfirst,
+        tlrc_base=tlrc_base,
+        tlrc_ok_maxite=tlrc_ok_maxite,
+        tlrc_opts_at=tlrc_opts_at,
+        volreg_base=volreg_base,
+        verb=verb,
+    )
     return uber_subject_py_execute(params, execution)
 
 

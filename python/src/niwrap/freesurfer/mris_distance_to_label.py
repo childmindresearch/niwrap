@@ -11,6 +11,8 @@ MRIS_DISTANCE_TO_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisDistanceToLabelParameters = typing.TypedDict('MrisDistanceToLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mris_distance_to_label"],
     "hemisphere": str,
@@ -166,7 +168,10 @@ def mris_distance_to_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DISTANCE_TO_LABEL_METADATA)
-    params = mris_distance_to_label_params(hemisphere=hemisphere, subject_1=subject_1)
+    params = mris_distance_to_label_params(
+        hemisphere=hemisphere,
+        subject_1=subject_1,
+    )
     return mris_distance_to_label_execute(params, execution)
 
 

@@ -11,21 +11,29 @@ TIME_SCCAN_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 TimeSccanTimeseriesimageToMatrixParameters = typing.TypedDict('TimeSccanTimeseriesimageToMatrixParameters', {
     "__STYX_TYPE__": typing.Literal["timeseriesimage_to_matrix"],
     "timeseries_image": InputPathType,
     "mask_image": InputPathType,
 })
+
+
 TimeSccanNetworkSccaParameters = typing.TypedDict('TimeSccanNetworkSccaParameters', {
     "__STYX_TYPE__": typing.Literal["network_scca"],
     "time_matrix": InputPathType,
     "label_matrix": InputPathType,
 })
+
+
 TimeSccanNetworkRegionAveragingParameters = typing.TypedDict('TimeSccanNetworkRegionAveragingParameters', {
     "__STYX_TYPE__": typing.Literal["network_region_averaging"],
     "time_matrix": InputPathType,
     "label_matrix": InputPathType,
 })
+
+
 TimeSccanParameters = typing.TypedDict('TimeSccanParameters', {
     "__STYX_TYPE__": typing.Literal["TimeSCCAN"],
     "output": str,
@@ -471,7 +479,22 @@ def time_sccan(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TIME_SCCAN_METADATA)
-    params = time_sccan_params(output=output, number_consecutive_labels=number_consecutive_labels, minimum_region_size=minimum_region_size, iterations=iterations, sparsity=sparsity, n_eigenvectors=n_eigenvectors, robustify=robustify, l1=l1, cluster_thresh=cluster_thresh, ridge_cca=ridge_cca, partial_scca_option=partial_scca_option, timeseriesimage_to_matrix=timeseriesimage_to_matrix, labelsimage_to_matrix=labelsimage_to_matrix, network=network)
+    params = time_sccan_params(
+        output=output,
+        number_consecutive_labels=number_consecutive_labels,
+        minimum_region_size=minimum_region_size,
+        iterations=iterations,
+        sparsity=sparsity,
+        n_eigenvectors=n_eigenvectors,
+        robustify=robustify,
+        l1=l1,
+        cluster_thresh=cluster_thresh,
+        ridge_cca=ridge_cca,
+        partial_scca_option=partial_scca_option,
+        timeseriesimage_to_matrix=timeseriesimage_to_matrix,
+        labelsimage_to_matrix=labelsimage_to_matrix,
+        network=network,
+    )
     return time_sccan_execute(params, execution)
 
 

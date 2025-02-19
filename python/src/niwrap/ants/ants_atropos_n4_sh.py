@@ -11,11 +11,15 @@ ANTS_ATROPOS_N4_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsAtroposN4ShSegmentationPriorsParameters = typing.TypedDict('AntsAtroposN4ShSegmentationPriorsParameters', {
     "__STYX_TYPE__": typing.Literal["segmentation_priors"],
     "segmentation_priors_pattern": typing.NotRequired[str | None],
     "segmentation_priors_folder": typing.NotRequired[InputPathType | None],
 })
+
+
 AntsAtroposN4ShParameters = typing.TypedDict('AntsAtroposN4ShParameters', {
     "__STYX_TYPE__": typing.Literal["antsAtroposN4.sh"],
     "image_dimension": typing.Literal[2, 3],
@@ -551,7 +555,31 @@ def ants_atropos_n4_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_ATROPOS_N4_SH_METADATA)
-    params = ants_atropos_n4_sh_params(image_dimension=image_dimension, input_image=input_image, mask_image=mask_image, number_of_classes=number_of_classes, output_prefix=output_prefix, max_n4_atropos_iterations=max_n4_atropos_iterations, max_atropos_iterations=max_atropos_iterations, segmentation_priors=segmentation_priors, mrf=mrf, denoise_anatomical_images=denoise_anatomical_images, posterior_formulation=posterior_formulation, label_propagation=label_propagation, posterior_label_for_n4_weight_mask=posterior_label_for_n4_weight_mask, image_file_suffix=image_file_suffix, keep_temporary_files=keep_temporary_files, use_random_seeding=use_random_seeding, atropos_segmentation_prior_weight=atropos_segmentation_prior_weight, n4_convergence=n4_convergence, n4_shrink_factor=n4_shrink_factor, n4_bspline_params=n4_bspline_params, atropos_segmentation_icm=atropos_segmentation_icm, atropos_segmentation_use_euclidean_distance=atropos_segmentation_use_euclidean_distance, test_debug_mode=test_debug_mode)
+    params = ants_atropos_n4_sh_params(
+        image_dimension=image_dimension,
+        input_image=input_image,
+        mask_image=mask_image,
+        number_of_classes=number_of_classes,
+        output_prefix=output_prefix,
+        max_n4_atropos_iterations=max_n4_atropos_iterations,
+        max_atropos_iterations=max_atropos_iterations,
+        segmentation_priors=segmentation_priors,
+        mrf=mrf,
+        denoise_anatomical_images=denoise_anatomical_images,
+        posterior_formulation=posterior_formulation,
+        label_propagation=label_propagation,
+        posterior_label_for_n4_weight_mask=posterior_label_for_n4_weight_mask,
+        image_file_suffix=image_file_suffix,
+        keep_temporary_files=keep_temporary_files,
+        use_random_seeding=use_random_seeding,
+        atropos_segmentation_prior_weight=atropos_segmentation_prior_weight,
+        n4_convergence=n4_convergence,
+        n4_shrink_factor=n4_shrink_factor,
+        n4_bspline_params=n4_bspline_params,
+        atropos_segmentation_icm=atropos_segmentation_icm,
+        atropos_segmentation_use_euclidean_distance=atropos_segmentation_use_euclidean_distance,
+        test_debug_mode=test_debug_mode,
+    )
     return ants_atropos_n4_sh_execute(params, execution)
 
 

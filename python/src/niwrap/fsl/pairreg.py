@@ -11,6 +11,8 @@ PAIRREG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 PairregParameters = typing.TypedDict('PairregParameters', {
     "__STYX_TYPE__": typing.Literal["pairreg"],
     "brain1": InputPathType,
@@ -196,7 +198,14 @@ def pairreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PAIRREG_METADATA)
-    params = pairreg_params(brain1=brain1, brain2=brain2, skull1=skull1, skull2=skull2, outputmatrix=outputmatrix, extra_flirt_args=extra_flirt_args)
+    params = pairreg_params(
+        brain1=brain1,
+        brain2=brain2,
+        skull1=skull1,
+        skull2=skull2,
+        outputmatrix=outputmatrix,
+        extra_flirt_args=extra_flirt_args,
+    )
     return pairreg_execute(params, execution)
 
 

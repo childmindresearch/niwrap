@@ -11,11 +11,15 @@ FIXEL2SH_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Fixel2shConfigParameters = typing.TypedDict('Fixel2shConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Fixel2shParameters = typing.TypedDict('Fixel2shParameters', {
     "__STYX_TYPE__": typing.Literal["fixel2sh"],
     "lmax": typing.NotRequired[int | None],
@@ -326,7 +330,19 @@ def fixel2sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXEL2SH_METADATA)
-    params = fixel2sh_params(lmax=lmax, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_in=fixel_in, sh_out=sh_out)
+    params = fixel2sh_params(
+        lmax=lmax,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        fixel_in=fixel_in,
+        sh_out=sh_out,
+    )
     return fixel2sh_execute(params, execution)
 
 

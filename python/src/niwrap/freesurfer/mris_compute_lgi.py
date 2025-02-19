@@ -11,6 +11,8 @@ MRIS_COMPUTE_LGI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisComputeLgiParameters = typing.TypedDict('MrisComputeLgiParameters', {
     "__STYX_TYPE__": typing.Literal["mris_compute_lgi"],
     "input_surface": InputPathType,
@@ -222,7 +224,14 @@ def mris_compute_lgi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COMPUTE_LGI_METADATA)
-    params = mris_compute_lgi_params(input_surface=input_surface, close_sphere_size=close_sphere_size, smooth_iters=smooth_iters, step_size=step_size, echo=echo, dontrun=dontrun)
+    params = mris_compute_lgi_params(
+        input_surface=input_surface,
+        close_sphere_size=close_sphere_size,
+        smooth_iters=smooth_iters,
+        step_size=step_size,
+        echo=echo,
+        dontrun=dontrun,
+    )
     return mris_compute_lgi_execute(params, execution)
 
 

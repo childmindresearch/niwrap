@@ -11,6 +11,8 @@ MRI_HAUSDORFF_DIST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriHausdorffDistParameters = typing.TypedDict('MriHausdorffDistParameters', {
     "__STYX_TYPE__": typing.Literal["mri_hausdorff_dist"],
     "vol1": InputPathType,
@@ -233,7 +235,16 @@ def mri_hausdorff_dist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_HAUSDORFF_DIST_METADATA)
-    params = mri_hausdorff_dist_params(vol1=vol1, vol2=vol2, output_text_file=output_text_file, threshold=threshold, input_file_flag=input_file_flag, blur_sigma=blur_sigma, max_flag=max_flag, label_index=label_index)
+    params = mri_hausdorff_dist_params(
+        vol1=vol1,
+        vol2=vol2,
+        output_text_file=output_text_file,
+        threshold=threshold,
+        input_file_flag=input_file_flag,
+        blur_sigma=blur_sigma,
+        max_flag=max_flag,
+        label_index=label_index,
+    )
     return mri_hausdorff_dist_execute(params, execution)
 
 

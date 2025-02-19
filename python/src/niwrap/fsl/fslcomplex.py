@@ -11,6 +11,8 @@ FSLCOMPLEX_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslcomplexParameters = typing.TypedDict('FslcomplexParameters', {
     "__STYX_TYPE__": typing.Literal["fslcomplex"],
     "input_file": InputPathType,
@@ -191,7 +193,13 @@ def fslcomplex(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLCOMPLEX_METADATA)
-    params = fslcomplex_params(input_file=input_file, output_file=output_file, output_type=output_type, start_vol=start_vol, end_vol=end_vol)
+    params = fslcomplex_params(
+        input_file=input_file,
+        output_file=output_file,
+        output_type=output_type,
+        start_vol=start_vol,
+        end_vol=end_vol,
+    )
     return fslcomplex_execute(params, execution)
 
 

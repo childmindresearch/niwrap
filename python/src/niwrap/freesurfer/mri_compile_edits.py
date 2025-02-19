@@ -11,6 +11,8 @@ MRI_COMPILE_EDITS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCompileEditsParameters = typing.TypedDict('MriCompileEditsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compile_edits"],
     "subject_name": str,
@@ -168,7 +170,10 @@ def mri_compile_edits(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPILE_EDITS_METADATA)
-    params = mri_compile_edits_params(subject_name=subject_name, output_volume=output_volume)
+    params = mri_compile_edits_params(
+        subject_name=subject_name,
+        output_volume=output_volume,
+    )
     return mri_compile_edits_execute(params, execution)
 
 

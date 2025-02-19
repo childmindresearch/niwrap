@@ -11,6 +11,8 @@ V_3DMASKDUMP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dmaskdumpParameters = typing.TypedDict('V3dmaskdumpParameters', {
     "__STYX_TYPE__": typing.Literal["3dmaskdump"],
     "input_files": list[InputPathType],
@@ -389,7 +391,28 @@ def v_3dmaskdump(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMASKDUMP_METADATA)
-    params = v_3dmaskdump_params(input_files=input_files, mask_dataset=mask_dataset, mask_range=mask_range, output_index=output_index, output_noijk=output_noijk, output_xyz=output_xyz, output_filename=output_filename, calc_mask_opts=calc_mask_opts, xbox_coords=xbox_coords, dbox_coords=dbox_coords, nbox_coords=nbox_coords, ibox_coords=ibox_coords, xball_coords=xball_coords, dball_coords=dball_coords, nball_coords=nball_coords, nozero_output=nozero_output, random_voxels=random_voxels, random_seed=random_seed, output_niml=output_niml, quiet_mode=quiet_mode)
+    params = v_3dmaskdump_params(
+        input_files=input_files,
+        mask_dataset=mask_dataset,
+        mask_range=mask_range,
+        output_index=output_index,
+        output_noijk=output_noijk,
+        output_xyz=output_xyz,
+        output_filename=output_filename,
+        calc_mask_opts=calc_mask_opts,
+        xbox_coords=xbox_coords,
+        dbox_coords=dbox_coords,
+        nbox_coords=nbox_coords,
+        ibox_coords=ibox_coords,
+        xball_coords=xball_coords,
+        dball_coords=dball_coords,
+        nball_coords=nball_coords,
+        nozero_output=nozero_output,
+        random_voxels=random_voxels,
+        random_seed=random_seed,
+        output_niml=output_niml,
+        quiet_mode=quiet_mode,
+    )
     return v_3dmaskdump_execute(params, execution)
 
 

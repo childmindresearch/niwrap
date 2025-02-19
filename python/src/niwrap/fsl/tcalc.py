@@ -11,6 +11,8 @@ TCALC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TcalcParameters = typing.TypedDict('TcalcParameters', {
     "__STYX_TYPE__": typing.Literal["tcalc"],
     "input_image": InputPathType,
@@ -331,7 +333,23 @@ def tcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCALC_METADATA)
-    params = tcalc_params(input_image=input_image, output_image=output_image, echo_time=echo_time, repetition_time=repetition_time, mrpar_file=mrpar_file, num_voxel_x=num_voxel_x, num_voxel_y=num_voxel_y, num_voxel_z=num_voxel_z, voxel_size_x=voxel_size_x, voxel_size_y=voxel_size_y, voxel_size_z=voxel_size_z, start_position=start_position, noise_sigma=noise_sigma, save_flag=save_flag, verbose_flag=verbose_flag)
+    params = tcalc_params(
+        input_image=input_image,
+        output_image=output_image,
+        echo_time=echo_time,
+        repetition_time=repetition_time,
+        mrpar_file=mrpar_file,
+        num_voxel_x=num_voxel_x,
+        num_voxel_y=num_voxel_y,
+        num_voxel_z=num_voxel_z,
+        voxel_size_x=voxel_size_x,
+        voxel_size_y=voxel_size_y,
+        voxel_size_z=voxel_size_z,
+        start_position=start_position,
+        noise_sigma=noise_sigma,
+        save_flag=save_flag,
+        verbose_flag=verbose_flag,
+    )
     return tcalc_execute(params, execution)
 
 

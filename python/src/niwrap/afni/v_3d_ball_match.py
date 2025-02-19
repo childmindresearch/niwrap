@@ -11,6 +11,8 @@ V_3D_BALL_MATCH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dBallMatchParameters = typing.TypedDict('V3dBallMatchParameters', {
     "__STYX_TYPE__": typing.Literal["3dBallMatch"],
     "input_dataset": InputPathType,
@@ -208,7 +210,13 @@ def v_3d_ball_match(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_BALL_MATCH_METADATA)
-    params = v_3d_ball_match_params(input_dataset=input_dataset, radius=radius, dataset_option=dataset_option, ball_radius=ball_radius, spheroid_axes=spheroid_axes)
+    params = v_3d_ball_match_params(
+        input_dataset=input_dataset,
+        radius=radius,
+        dataset_option=dataset_option,
+        ball_radius=ball_radius,
+        spheroid_axes=spheroid_axes,
+    )
     return v_3d_ball_match_execute(params, execution)
 
 

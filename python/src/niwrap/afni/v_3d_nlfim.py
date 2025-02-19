@@ -11,6 +11,8 @@ V_3D_NLFIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNlfimParameters = typing.TypedDict('V3dNlfimParameters', {
     "__STYX_TYPE__": typing.Literal["3dNLfim"],
     "input_file": InputPathType,
@@ -222,7 +224,11 @@ def v_3d_nlfim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NLFIM_METADATA)
-    params = v_3d_nlfim_params(input_file=input_file, signal_model=signal_model, noise_model=noise_model)
+    params = v_3d_nlfim_params(
+        input_file=input_file,
+        signal_model=signal_model,
+        noise_model=noise_model,
+    )
     return v_3d_nlfim_execute(params, execution)
 
 

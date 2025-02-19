@@ -11,6 +11,8 @@ VOLUME_DISTORTION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeDistortionParameters = typing.TypedDict('VolumeDistortionParameters', {
     "__STYX_TYPE__": typing.Literal["volume-distortion"],
     "warpfield": str,
@@ -223,7 +225,13 @@ def volume_distortion(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_DISTORTION_METADATA)
-    params = volume_distortion_params(warpfield=warpfield, volume_out=volume_out, opt_fnirt_source_volume=opt_fnirt_source_volume, opt_circular=opt_circular, opt_log2=opt_log2)
+    params = volume_distortion_params(
+        warpfield=warpfield,
+        volume_out=volume_out,
+        opt_fnirt_source_volume=opt_fnirt_source_volume,
+        opt_circular=opt_circular,
+        opt_log2=opt_log2,
+    )
     return volume_distortion_execute(params, execution)
 
 

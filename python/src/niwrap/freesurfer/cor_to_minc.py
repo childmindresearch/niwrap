@@ -11,6 +11,8 @@ COR_TO_MINC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CorToMincParameters = typing.TypedDict('CorToMincParameters', {
     "__STYX_TYPE__": typing.Literal["cor_to_minc"],
     "cor_directory": str,
@@ -166,7 +168,10 @@ def cor_to_minc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COR_TO_MINC_METADATA)
-    params = cor_to_minc_params(cor_directory=cor_directory, minc_file=minc_file)
+    params = cor_to_minc_params(
+        cor_directory=cor_directory,
+        minc_file=minc_file,
+    )
     return cor_to_minc_execute(params, execution)
 
 

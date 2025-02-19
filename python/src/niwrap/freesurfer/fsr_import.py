@@ -11,6 +11,8 @@ FSR_IMPORT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsrImportParameters = typing.TypedDict('FsrImportParameters', {
     "__STYX_TYPE__": typing.Literal["fsr-import"],
     "outdir": str,
@@ -199,7 +201,12 @@ def fsr_import(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSR_IMPORT_METADATA)
-    params = fsr_import_params(outdir=outdir, force_update=force_update, no_conform=no_conform, hires=hires)
+    params = fsr_import_params(
+        outdir=outdir,
+        force_update=force_update,
+        no_conform=no_conform,
+        hires=hires,
+    )
     return fsr_import_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__AFNI_R_PACKAGE_INSTALL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniRPackageInstallParameters = typing.TypedDict('VAfniRPackageInstallParameters', {
     "__STYX_TYPE__": typing.Literal["@afni_R_package_install"],
     "afni": bool,
@@ -218,7 +220,15 @@ def v__afni_r_package_install(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_R_PACKAGE_INSTALL_METADATA)
-    params = v__afni_r_package_install_params(afni=afni, shiny=shiny, bayes_view=bayes_view, circos=circos, custom_packages=custom_packages, mirror=mirror, help_=help_)
+    params = v__afni_r_package_install_params(
+        afni=afni,
+        shiny=shiny,
+        bayes_view=bayes_view,
+        circos=circos,
+        custom_packages=custom_packages,
+        mirror=mirror,
+        help_=help_,
+    )
     return v__afni_r_package_install_execute(params, execution)
 
 

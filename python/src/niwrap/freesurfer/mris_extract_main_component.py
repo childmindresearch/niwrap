@@ -11,6 +11,8 @@ MRIS_EXTRACT_MAIN_COMPONENT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisExtractMainComponentParameters = typing.TypedDict('MrisExtractMainComponentParameters', {
     "__STYX_TYPE__": typing.Literal["mris_extract_main_component"],
     "input_surface": InputPathType,
@@ -166,7 +168,10 @@ def mris_extract_main_component(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXTRACT_MAIN_COMPONENT_METADATA)
-    params = mris_extract_main_component_params(input_surface=input_surface, output_surface=output_surface)
+    params = mris_extract_main_component_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+    )
     return mris_extract_main_component_execute(params, execution)
 
 

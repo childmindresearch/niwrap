@@ -11,6 +11,8 @@ CSVPRINT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CsvprintParameters = typing.TypedDict('CsvprintParameters', {
     "__STYX_TYPE__": typing.Literal["csvprint"],
     "infile": InputPathType,
@@ -155,7 +157,9 @@ def csvprint(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CSVPRINT_METADATA)
-    params = csvprint_params(infile=infile)
+    params = csvprint_params(
+        infile=infile,
+    )
     return csvprint_execute(params, execution)
 
 

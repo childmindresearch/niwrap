@@ -11,6 +11,8 @@ V__AFNI_ENV_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniEnvParameters = typing.TypedDict('VAfniEnvParameters', {
     "__STYX_TYPE__": typing.Literal["@AfniEnv"],
     "set_flag": typing.NotRequired[list[str] | None],
@@ -230,7 +232,16 @@ def v__afni_env(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_ENV_METADATA)
-    params = v__afni_env_params(set_flag=set_flag, unset_flag=unset_flag, get_flag=get_flag, help_flag=help_flag, help_web_flag_alias=help_web_flag_alias, help_view_flag_alias=help_view_flag_alias, all_opts_flag=all_opts_flag, help_find_flag=help_find_flag)
+    params = v__afni_env_params(
+        set_flag=set_flag,
+        unset_flag=unset_flag,
+        get_flag=get_flag,
+        help_flag=help_flag,
+        help_web_flag_alias=help_web_flag_alias,
+        help_view_flag_alias=help_view_flag_alias,
+        all_opts_flag=all_opts_flag,
+        help_find_flag=help_find_flag,
+    )
     return v__afni_env_execute(params, execution)
 
 

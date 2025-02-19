@@ -11,6 +11,8 @@ MRI_DEFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriDefaceParameters = typing.TypedDict('MriDefaceParameters', {
     "__STYX_TYPE__": typing.Literal["mri_deface"],
     "input_volume": InputPathType,
@@ -182,7 +184,12 @@ def mri_deface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DEFACE_METADATA)
-    params = mri_deface_params(input_volume=input_volume, brain_template=brain_template, face_template=face_template, output_volume=output_volume)
+    params = mri_deface_params(
+        input_volume=input_volume,
+        brain_template=brain_template,
+        face_template=face_template,
+        output_volume=output_volume,
+    )
     return mri_deface_execute(params, execution)
 
 

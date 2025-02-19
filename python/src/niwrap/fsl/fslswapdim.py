@@ -11,6 +11,8 @@ FSLSWAPDIM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslswapdimParameters = typing.TypedDict('FslswapdimParameters', {
     "__STYX_TYPE__": typing.Literal["fslswapdim"],
     "input_file": InputPathType,
@@ -191,7 +193,13 @@ def fslswapdim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSWAPDIM_METADATA)
-    params = fslswapdim_params(input_file=input_file, axis_a=axis_a, axis_b=axis_b, axis_c=axis_c, output_file=output_file)
+    params = fslswapdim_params(
+        input_file=input_file,
+        axis_a=axis_a,
+        axis_b=axis_b,
+        axis_c=axis_c,
+        output_file=output_file,
+    )
     return fslswapdim_execute(params, execution)
 
 

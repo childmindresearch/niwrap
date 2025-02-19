@@ -11,6 +11,8 @@ MNI152REG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Mni152regParameters = typing.TypedDict('Mni152regParameters', {
     "__STYX_TYPE__": typing.Literal["mni152reg"],
     "subject": str,
@@ -203,7 +205,13 @@ def mni152reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MNI152REG_METADATA)
-    params = mni152reg_params(subject=subject, register_1mm=register_1mm, output=output, symmetric=symmetric, save_volume=save_volume)
+    params = mni152reg_params(
+        subject=subject,
+        register_1mm=register_1mm,
+        output=output,
+        symmetric=symmetric,
+        save_volume=save_volume,
+    )
     return mni152reg_execute(params, execution)
 
 

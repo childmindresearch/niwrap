@@ -11,6 +11,8 @@ VOLUME_SET_SPACE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeSetSpacePlumbParameters = typing.TypedDict('VolumeSetSpacePlumbParameters', {
     "__STYX_TYPE__": typing.Literal["plumb"],
     "axis_order": str,
@@ -21,6 +23,8 @@ VolumeSetSpacePlumbParameters = typing.TypedDict('VolumeSetSpacePlumbParameters'
     "y_offset": float,
     "z_offset": float,
 })
+
+
 VolumeSetSpaceSformParameters = typing.TypedDict('VolumeSetSpaceSformParameters', {
     "__STYX_TYPE__": typing.Literal["sform"],
     "xi_spacing": float,
@@ -36,11 +40,15 @@ VolumeSetSpaceSformParameters = typing.TypedDict('VolumeSetSpaceSformParameters'
     "zk_spacing": float,
     "z_offset": float,
 })
+
+
 VolumeSetSpaceFileParameters = typing.TypedDict('VolumeSetSpaceFileParameters', {
     "__STYX_TYPE__": typing.Literal["file"],
     "volume_ref": str,
     "opt_ignore_dims": bool,
 })
+
+
 VolumeSetSpaceParameters = typing.TypedDict('VolumeSetSpaceParameters', {
     "__STYX_TYPE__": typing.Literal["volume-set-space"],
     "volume_in": InputPathType,
@@ -419,7 +427,13 @@ def volume_set_space(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_SET_SPACE_METADATA)
-    params = volume_set_space_params(volume_in=volume_in, volume_out=volume_out, plumb=plumb, sform=sform, file=file)
+    params = volume_set_space_params(
+        volume_in=volume_in,
+        volume_out=volume_out,
+        plumb=plumb,
+        sform=sform,
+        file=file,
+    )
     return volume_set_space_execute(params, execution)
 
 

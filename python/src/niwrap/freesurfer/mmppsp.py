@@ -11,6 +11,8 @@ MMPPSP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MmppspParameters = typing.TypedDict('MmppspParameters', {
     "__STYX_TYPE__": typing.Literal["mmppsp"],
     "samseg_dir": str,
@@ -260,7 +262,19 @@ def mmppsp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MMPPSP_METADATA)
-    params = mmppsp_params(samseg_dir=samseg_dir, outdir=outdir, lh_flag=lh_flag, rh_flag=rh_flag, likelihood_flag=likelihood_flag, posterior_flag=posterior_flag, force_update_flag=force_update_flag, threads=threads, no_initsphreg_flag=no_initsphreg_flag, stop_after=stop_after, wexpanddist=wexpanddist)
+    params = mmppsp_params(
+        samseg_dir=samseg_dir,
+        outdir=outdir,
+        lh_flag=lh_flag,
+        rh_flag=rh_flag,
+        likelihood_flag=likelihood_flag,
+        posterior_flag=posterior_flag,
+        force_update_flag=force_update_flag,
+        threads=threads,
+        no_initsphreg_flag=no_initsphreg_flag,
+        stop_after=stop_after,
+        wexpanddist=wexpanddist,
+    )
     return mmppsp_execute(params, execution)
 
 

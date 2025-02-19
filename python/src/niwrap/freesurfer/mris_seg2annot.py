@@ -11,6 +11,8 @@ MRIS_SEG2ANNOT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSeg2annotParameters = typing.TypedDict('MrisSeg2annotParameters', {
     "__STYX_TYPE__": typing.Literal["mris_seg2annot"],
     "surfseg": InputPathType,
@@ -268,7 +270,19 @@ def mris_seg2annot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SEG2ANNOT_METADATA)
-    params = mris_seg2annot_params(surfseg=surfseg, colortable=colortable, auto_ctab=auto_ctab, subject=subject, hemi=hemi, output_annotation=output_annotation, surf=surf, debug=debug, debug_vertex=debug_vertex, checkopts=checkopts, version=version)
+    params = mris_seg2annot_params(
+        surfseg=surfseg,
+        colortable=colortable,
+        auto_ctab=auto_ctab,
+        subject=subject,
+        hemi=hemi,
+        output_annotation=output_annotation,
+        surf=surf,
+        debug=debug,
+        debug_vertex=debug_vertex,
+        checkopts=checkopts,
+        version=version,
+    )
     return mris_seg2annot_execute(params, execution)
 
 

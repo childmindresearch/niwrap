@@ -11,6 +11,8 @@ I_MATH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 IMathParameters = typing.TypedDict('IMathParameters', {
     "__STYX_TYPE__": typing.Literal["iMath"],
     "image_dimension": typing.Literal[2, 3, 4],
@@ -193,7 +195,13 @@ def i_math(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(I_MATH_METADATA)
-    params = i_math_params(image_dimension=image_dimension, output_image=output_image, operations=operations, image1=image1, image2=image2)
+    params = i_math_params(
+        image_dimension=image_dimension,
+        output_image=output_image,
+        operations=operations,
+        image1=image1,
+        image2=image2,
+    )
     return i_math_execute(params, execution)
 
 

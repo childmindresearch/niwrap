@@ -11,6 +11,8 @@ VOL2SUBFIELD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Vol2subfieldParameters = typing.TypedDict('Vol2subfieldParameters', {
     "__STYX_TYPE__": typing.Literal["vol2subfield"],
     "input_volume": InputPathType,
@@ -298,7 +300,20 @@ def vol2subfield(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOL2SUBFIELD_METADATA)
-    params = vol2subfield_params(input_volume=input_volume, subfield_volume=subfield_volume, registration_file=registration_file, output_volume=output_volume, output_registration=output_registration, stats_output=stats_output, avgwf_output=avgwf_output, avgwfvol_output=avgwfvol_output, color_table=color_table, interpolation_cubic=interpolation_cubic, tmp_directory=tmp_directory, preset_subfield_brainstem=preset_subfield_brainstem)
+    params = vol2subfield_params(
+        input_volume=input_volume,
+        subfield_volume=subfield_volume,
+        registration_file=registration_file,
+        output_volume=output_volume,
+        output_registration=output_registration,
+        stats_output=stats_output,
+        avgwf_output=avgwf_output,
+        avgwfvol_output=avgwfvol_output,
+        color_table=color_table,
+        interpolation_cubic=interpolation_cubic,
+        tmp_directory=tmp_directory,
+        preset_subfield_brainstem=preset_subfield_brainstem,
+    )
     return vol2subfield_execute(params, execution)
 
 

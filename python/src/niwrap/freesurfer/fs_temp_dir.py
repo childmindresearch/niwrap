@@ -11,6 +11,8 @@ FS_TEMP_DIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsTempDirParameters = typing.TypedDict('FsTempDirParameters', {
     "__STYX_TYPE__": typing.Literal["fs_temp_dir"],
     "base_directory": typing.NotRequired[str | None],
@@ -174,7 +176,10 @@ def fs_temp_dir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_TEMP_DIR_METADATA)
-    params = fs_temp_dir_params(base_directory=base_directory, scratch=scratch)
+    params = fs_temp_dir_params(
+        base_directory=base_directory,
+        scratch=scratch,
+    )
     return fs_temp_dir_execute(params, execution)
 
 

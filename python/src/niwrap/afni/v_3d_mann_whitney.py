@@ -11,6 +11,8 @@ V_3D_MANN_WHITNEY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMannWhitneyParameters = typing.TypedDict('V3dMannWhitneyParameters', {
     "__STYX_TYPE__": typing.Literal["3dMannWhitney"],
     "dset1_x": list[str],
@@ -213,7 +215,13 @@ def v_3d_mann_whitney(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MANN_WHITNEY_METADATA)
-    params = v_3d_mann_whitney_params(dset1_x=dset1_x, dset2_y=dset2_y, output_prefix=output_prefix, workmem=workmem, voxel_num=voxel_num)
+    params = v_3d_mann_whitney_params(
+        dset1_x=dset1_x,
+        dset2_y=dset2_y,
+        output_prefix=output_prefix,
+        workmem=workmem,
+        voxel_num=voxel_num,
+    )
     return v_3d_mann_whitney_execute(params, execution)
 
 

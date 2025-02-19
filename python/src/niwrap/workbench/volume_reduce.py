@@ -11,11 +11,15 @@ VOLUME_REDUCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeReduceExcludeOutliersParameters = typing.TypedDict('VolumeReduceExcludeOutliersParameters', {
     "__STYX_TYPE__": typing.Literal["exclude_outliers"],
     "sigma_below": float,
     "sigma_above": float,
 })
+
+
 VolumeReduceParameters = typing.TypedDict('VolumeReduceParameters', {
     "__STYX_TYPE__": typing.Literal["volume-reduce"],
     "volume_in": InputPathType,
@@ -284,7 +288,13 @@ def volume_reduce(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_REDUCE_METADATA)
-    params = volume_reduce_params(volume_in=volume_in, operation=operation, volume_out=volume_out, exclude_outliers=exclude_outliers, opt_only_numeric=opt_only_numeric)
+    params = volume_reduce_params(
+        volume_in=volume_in,
+        operation=operation,
+        volume_out=volume_out,
+        exclude_outliers=exclude_outliers,
+        opt_only_numeric=opt_only_numeric,
+    )
     return volume_reduce_execute(params, execution)
 
 

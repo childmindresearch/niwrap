@@ -11,6 +11,8 @@ AFNI_CHECK_OMP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AfniCheckOmpParameters = typing.TypedDict('AfniCheckOmpParameters', {
     "__STYX_TYPE__": typing.Literal["afni_check_omp"],
     "iterations": typing.NotRequired[float | None],
@@ -157,7 +159,9 @@ def afni_check_omp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_CHECK_OMP_METADATA)
-    params = afni_check_omp_params(iterations=iterations)
+    params = afni_check_omp_params(
+        iterations=iterations,
+    )
     return afni_check_omp_execute(params, execution)
 
 

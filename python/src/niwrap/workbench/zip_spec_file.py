@@ -11,6 +11,8 @@ ZIP_SPEC_FILE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 ZipSpecFileParameters = typing.TypedDict('ZipSpecFileParameters', {
     "__STYX_TYPE__": typing.Literal["zip-spec-file"],
     "spec_file": str,
@@ -212,7 +214,13 @@ def zip_spec_file(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ZIP_SPEC_FILE_METADATA)
-    params = zip_spec_file_params(spec_file=spec_file, extract_folder=extract_folder, zip_file=zip_file, opt_base_dir_directory=opt_base_dir_directory, opt_skip_missing=opt_skip_missing)
+    params = zip_spec_file_params(
+        spec_file=spec_file,
+        extract_folder=extract_folder,
+        zip_file=zip_file,
+        opt_base_dir_directory=opt_base_dir_directory,
+        opt_skip_missing=opt_skip_missing,
+    )
     return zip_spec_file_execute(params, execution)
 
 

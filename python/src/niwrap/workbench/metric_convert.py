@@ -11,17 +11,23 @@ METRIC_CONVERT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricConvertToNiftiParameters = typing.TypedDict('MetricConvertToNiftiParameters', {
     "__STYX_TYPE__": typing.Literal["to_nifti"],
     "metric_in": InputPathType,
     "nifti_out": str,
 })
+
+
 MetricConvertFromNiftiParameters = typing.TypedDict('MetricConvertFromNiftiParameters', {
     "__STYX_TYPE__": typing.Literal["from_nifti"],
     "nifti_in": InputPathType,
     "surface_in": InputPathType,
     "metric_out": str,
 })
+
+
 MetricConvertParameters = typing.TypedDict('MetricConvertParameters', {
     "__STYX_TYPE__": typing.Literal["metric-convert"],
     "to_nifti": typing.NotRequired[MetricConvertToNiftiParameters | None],
@@ -343,7 +349,10 @@ def metric_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_CONVERT_METADATA)
-    params = metric_convert_params(to_nifti=to_nifti, from_nifti=from_nifti)
+    params = metric_convert_params(
+        to_nifti=to_nifti,
+        from_nifti=from_nifti,
+    )
     return metric_convert_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__2DWARPER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V2dwarperParameters = typing.TypedDict('V2dwarperParameters', {
     "__STYX_TYPE__": typing.Literal["@2dwarper"],
     "input_dataset": InputPathType,
@@ -159,7 +161,9 @@ def v__2dwarper(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__2DWARPER_METADATA)
-    params = v__2dwarper_params(input_dataset=input_dataset)
+    params = v__2dwarper_params(
+        input_dataset=input_dataset,
+    )
     return v__2dwarper_execute(params, execution)
 
 

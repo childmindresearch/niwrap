@@ -11,6 +11,8 @@ MORPH_RGB_LH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MorphRgbLhParameters = typing.TypedDict('MorphRgbLhParameters', {
     "__STYX_TYPE__": typing.Literal["morph_rgb-lh"],
     "subject_id": str,
@@ -163,7 +165,9 @@ def morph_rgb_lh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_RGB_LH_METADATA)
-    params = morph_rgb_lh_params(subject_id=subject_id)
+    params = morph_rgb_lh_params(
+        subject_id=subject_id,
+    )
     return morph_rgb_lh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CJPEG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 CjpegParameters = typing.TypedDict('CjpegParameters', {
     "__STYX_TYPE__": typing.Literal["cjpeg"],
     "quality": typing.NotRequired[float | None],
@@ -210,7 +212,15 @@ def cjpeg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CJPEG_METADATA)
-    params = cjpeg_params(quality=quality, grayscale=grayscale, optimize=optimize, baseline=baseline, progressive=progressive, outfile=outfile, infile=infile)
+    params = cjpeg_params(
+        quality=quality,
+        grayscale=grayscale,
+        optimize=optimize,
+        baseline=baseline,
+        progressive=progressive,
+        outfile=outfile,
+        infile=infile,
+    )
     return cjpeg_execute(params, execution)
 
 

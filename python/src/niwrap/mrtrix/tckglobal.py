@@ -11,15 +11,21 @@ TCKGLOBAL_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckglobalRisoParameters = typing.TypedDict('TckglobalRisoParameters', {
     "__STYX_TYPE__": typing.Literal["riso"],
     "response": InputPathType,
 })
+
+
 TckglobalConfigParameters = typing.TypedDict('TckglobalConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckglobalParameters = typing.TypedDict('TckglobalParameters', {
     "__STYX_TYPE__": typing.Literal["tckglobal"],
     "grad": typing.NotRequired[InputPathType | None],
@@ -702,7 +708,40 @@ def tckglobal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKGLOBAL_METADATA)
-    params = tckglobal_params(grad=grad, mask=mask, riso=riso, lmax=lmax, length=length, weight=weight, ppot=ppot, cpot=cpot, t0=t0, t1=t1, niter=niter, fod=fod, noapo=noapo, fiso=fiso, eext=eext, etrend=etrend, balance=balance, density=density, prob=prob, beta=beta, lambda_=lambda_, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, source=source, response=response, tracks=tracks)
+    params = tckglobal_params(
+        grad=grad,
+        mask=mask,
+        riso=riso,
+        lmax=lmax,
+        length=length,
+        weight=weight,
+        ppot=ppot,
+        cpot=cpot,
+        t0=t0,
+        t1=t1,
+        niter=niter,
+        fod=fod,
+        noapo=noapo,
+        fiso=fiso,
+        eext=eext,
+        etrend=etrend,
+        balance=balance,
+        density=density,
+        prob=prob,
+        beta=beta,
+        lambda_=lambda_,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        source=source,
+        response=response,
+        tracks=tracks,
+    )
     return tckglobal_execute(params, execution)
 
 

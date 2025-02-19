@@ -11,6 +11,8 @@ V_3D_PAR2_AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dPar2AfniParameters = typing.TypedDict('V3dPar2AfniParameters', {
     "__STYX_TYPE__": typing.Literal["3dPAR2AFNI"],
     "input_file": InputPathType,
@@ -221,7 +223,15 @@ def v_3d_par2_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PAR2_AFNI_METADATA)
-    params = v_3d_par2_afni_params(input_file=input_file, skip_outliers_test=skip_outliers_test, output_analyze=output_analyze, output_dir=output_dir, verbose_flag=verbose_flag, gzip_files=gzip_files, byte_swap_4=byte_swap_4)
+    params = v_3d_par2_afni_params(
+        input_file=input_file,
+        skip_outliers_test=skip_outliers_test,
+        output_analyze=output_analyze,
+        output_dir=output_dir,
+        verbose_flag=verbose_flag,
+        gzip_files=gzip_files,
+        byte_swap_4=byte_swap_4,
+    )
     return v_3d_par2_afni_execute(params, execution)
 
 

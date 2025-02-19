@@ -11,6 +11,8 @@ FSLVAL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslvalParameters = typing.TypedDict('FslvalParameters', {
     "__STYX_TYPE__": typing.Literal["fslval"],
     "input_file": InputPathType,
@@ -166,7 +168,10 @@ def fslval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLVAL_METADATA)
-    params = fslval_params(input_file=input_file, keyword_=keyword_)
+    params = fslval_params(
+        input_file=input_file,
+        keyword_=keyword_,
+    )
     return fslval_execute(params, execution)
 
 

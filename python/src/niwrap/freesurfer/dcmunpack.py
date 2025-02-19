@@ -11,6 +11,8 @@ DCMUNPACK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DcmunpackParameters = typing.TypedDict('DcmunpackParameters', {
     "__STYX_TYPE__": typing.Literal["dcmunpack"],
     "src": str,
@@ -540,7 +542,46 @@ def dcmunpack(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMUNPACK_METADATA)
-    params = dcmunpack_params(src=src, targ=targ, run=run, auto_runseq=auto_runseq, keep_scouts=keep_scouts, scanonly=scanonly, one_per_dir=one_per_dir, ext=ext, pre=pre, pat=pat, no_infodump=no_infodump, generic=generic, copy_only=copy_only, no_convert=no_convert, force_update=force_update, max_=max_, base=base, key_string=key_string, index_out=index_out, index_in=index_in, it_dicom=it_dicom, no_exit_on_error=no_exit_on_error, run_skip=run_skip, no_rescale_dicom=no_rescale_dicom, rescale_dicom=rescale_dicom, no_dwi=no_dwi, iid=iid, ijd=ijd, ikd=ikd, extra_info=extra_info, first_dicom=first_dicom, no_dcm2niix=no_dcm2niix, phase=phase, fips=fips, fips_run=fips_run, xml_only=xml_only, log=log, debug=debug)
+    params = dcmunpack_params(
+        src=src,
+        targ=targ,
+        run=run,
+        auto_runseq=auto_runseq,
+        keep_scouts=keep_scouts,
+        scanonly=scanonly,
+        one_per_dir=one_per_dir,
+        ext=ext,
+        pre=pre,
+        pat=pat,
+        no_infodump=no_infodump,
+        generic=generic,
+        copy_only=copy_only,
+        no_convert=no_convert,
+        force_update=force_update,
+        max_=max_,
+        base=base,
+        key_string=key_string,
+        index_out=index_out,
+        index_in=index_in,
+        it_dicom=it_dicom,
+        no_exit_on_error=no_exit_on_error,
+        run_skip=run_skip,
+        no_rescale_dicom=no_rescale_dicom,
+        rescale_dicom=rescale_dicom,
+        no_dwi=no_dwi,
+        iid=iid,
+        ijd=ijd,
+        ikd=ikd,
+        extra_info=extra_info,
+        first_dicom=first_dicom,
+        no_dcm2niix=no_dcm2niix,
+        phase=phase,
+        fips=fips,
+        fips_run=fips_run,
+        xml_only=xml_only,
+        log=log,
+        debug=debug,
+    )
     return dcmunpack_execute(params, execution)
 
 

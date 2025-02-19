@@ -11,6 +11,8 @@ MRIS_ADD_TEMPLATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisAddTemplateParameters = typing.TypedDict('MrisAddTemplateParameters', {
     "__STYX_TYPE__": typing.Literal["mris_add_template"],
 })
@@ -152,7 +154,8 @@ def mris_add_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ADD_TEMPLATE_METADATA)
-    params = mris_add_template_params()
+    params = mris_add_template_params(
+    )
     return mris_add_template_execute(params, execution)
 
 

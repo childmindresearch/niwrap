@@ -11,6 +11,8 @@ V__COMPUTE_OC_WEIGHTS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VComputeOcWeightsParameters = typing.TypedDict('VComputeOcWeightsParameters', {
     "__STYX_TYPE__": typing.Literal["@compute_OC_weights"],
     "echo_times": typing.NotRequired[str | None],
@@ -262,7 +264,17 @@ def v__compute_oc_weights(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__COMPUTE_OC_WEIGHTS_METADATA)
-    params = v__compute_oc_weights_params(echo_times=echo_times, echo_dsets=echo_dsets, prefix=prefix, def_to_equal=def_to_equal, oc_method=oc_method, sum_weight_tolerance=sum_weight_tolerance, t2_star_limit=t2_star_limit, work_dir=work_dir, verbosity=verbosity)
+    params = v__compute_oc_weights_params(
+        echo_times=echo_times,
+        echo_dsets=echo_dsets,
+        prefix=prefix,
+        def_to_equal=def_to_equal,
+        oc_method=oc_method,
+        sum_weight_tolerance=sum_weight_tolerance,
+        t2_star_limit=t2_star_limit,
+        work_dir=work_dir,
+        verbosity=verbosity,
+    )
     return v__compute_oc_weights_execute(params, execution)
 
 

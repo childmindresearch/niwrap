@@ -11,6 +11,8 @@ UPDATE_NEEDED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 UpdateNeededParameters = typing.TypedDict('UpdateNeededParameters', {
     "__STYX_TYPE__": typing.Literal["UpdateNeeded"],
     "target_file": InputPathType,
@@ -163,7 +165,10 @@ def update_needed(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UPDATE_NEEDED_METADATA)
-    params = update_needed_params(target_file=target_file, source_file=source_file)
+    params = update_needed_params(
+        target_file=target_file,
+        source_file=source_file,
+    )
     return update_needed_execute(params, execution)
 
 

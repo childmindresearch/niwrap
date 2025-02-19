@@ -11,6 +11,8 @@ V__SUMA_FSVOL_TO_BRIK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSumaFsvolToBrikParameters = typing.TypedDict('VSumaFsvolToBrikParameters', {
     "__STYX_TYPE__": typing.Literal["@SUMA_FSvolToBRIK"],
     "fs_vol_data": InputPathType,
@@ -171,7 +173,10 @@ def v__suma_fsvol_to_brik(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_FSVOL_TO_BRIK_METADATA)
-    params = v__suma_fsvol_to_brik_params(fs_vol_data=fs_vol_data, prefix=prefix)
+    params = v__suma_fsvol_to_brik_params(
+        fs_vol_data=fs_vol_data,
+        prefix=prefix,
+    )
     return v__suma_fsvol_to_brik_execute(params, execution)
 
 

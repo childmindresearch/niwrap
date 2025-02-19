@@ -11,6 +11,8 @@ SLICETIMER_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SlicetimerFslParameters = typing.TypedDict('SlicetimerFslParameters', {
     "__STYX_TYPE__": typing.Literal["slicetimer.fsl"],
     "infile": InputPathType,
@@ -265,7 +267,18 @@ def slicetimer_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICETIMER_FSL_METADATA)
-    params = slicetimer_fsl_params(infile=infile, outfile=outfile, tr=tr, direction=direction, interleaved=interleaved, reverse=reverse, custom_timings=custom_timings, global_shift=global_shift, custom_interleave_order=custom_interleave_order, verbose=verbose)
+    params = slicetimer_fsl_params(
+        infile=infile,
+        outfile=outfile,
+        tr=tr,
+        direction=direction,
+        interleaved=interleaved,
+        reverse=reverse,
+        custom_timings=custom_timings,
+        global_shift=global_shift,
+        custom_interleave_order=custom_interleave_order,
+        verbose=verbose,
+    )
     return slicetimer_fsl_execute(params, execution)
 
 

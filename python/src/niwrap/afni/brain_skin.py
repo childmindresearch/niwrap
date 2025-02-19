@@ -11,6 +11,8 @@ BRAIN_SKIN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 BrainSkinParameters = typing.TypedDict('BrainSkinParameters', {
     "__STYX_TYPE__": typing.Literal["BrainSkin"],
     "surface": str,
@@ -330,7 +332,20 @@ def brain_skin(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BRAIN_SKIN_METADATA)
-    params = brain_skin_params(surface=surface, skingrid_volume=skingrid_volume, prefix=prefix, plimit=plimit, dlimit=dlimit, segdo=segdo, voxelize=voxelize, infill=infill, out_file=out_file, vol_hull=vol_hull, no_zero_attraction=no_zero_attraction, node_dbg=node_dbg)
+    params = brain_skin_params(
+        surface=surface,
+        skingrid_volume=skingrid_volume,
+        prefix=prefix,
+        plimit=plimit,
+        dlimit=dlimit,
+        segdo=segdo,
+        voxelize=voxelize,
+        infill=infill,
+        out_file=out_file,
+        vol_hull=vol_hull,
+        no_zero_attraction=no_zero_attraction,
+        node_dbg=node_dbg,
+    )
     return brain_skin_execute(params, execution)
 
 

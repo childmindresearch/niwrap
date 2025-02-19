@@ -11,6 +11,8 @@ V_3D_MVM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMvmParameters = typing.TypedDict('V3dMvmParameters', {
     "__STYX_TYPE__": typing.Literal["3dMVM"],
     "dbgArgs": typing.NotRequired[str | None],
@@ -328,7 +330,23 @@ def v_3d_mvm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MVM_METADATA)
-    params = v_3d_mvm_params(dbg_args=dbg_args, prefix=prefix, jobs=jobs, mask=mask, bs_vars=bs_vars, ws_vars=ws_vars, q_vars=q_vars, q_var_centers=q_var_centers, num_glt=num_glt, glt_label=glt_label, glt_code=glt_code, num_glf=num_glf, glf_label=glf_label, glf_code=glf_code, data_table=data_table)
+    params = v_3d_mvm_params(
+        dbg_args=dbg_args,
+        prefix=prefix,
+        jobs=jobs,
+        mask=mask,
+        bs_vars=bs_vars,
+        ws_vars=ws_vars,
+        q_vars=q_vars,
+        q_var_centers=q_var_centers,
+        num_glt=num_glt,
+        glt_label=glt_label,
+        glt_code=glt_code,
+        num_glf=num_glf,
+        glf_label=glf_label,
+        glf_code=glf_code,
+        data_table=data_table,
+    )
     return v_3d_mvm_execute(params, execution)
 
 

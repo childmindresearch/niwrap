@@ -11,6 +11,8 @@ VOLUME_LABEL_MODIFY_KEYS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeLabelModifyKeysParameters = typing.TypedDict('VolumeLabelModifyKeysParameters', {
     "__STYX_TYPE__": typing.Literal["volume-label-modify-keys"],
     "volume_in": InputPathType,
@@ -216,7 +218,12 @@ def volume_label_modify_keys(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_LABEL_MODIFY_KEYS_METADATA)
-    params = volume_label_modify_keys_params(volume_in=volume_in, remap_file=remap_file, volume_out=volume_out, opt_subvolume_subvolume=opt_subvolume_subvolume)
+    params = volume_label_modify_keys_params(
+        volume_in=volume_in,
+        remap_file=remap_file,
+        volume_out=volume_out,
+        opt_subvolume_subvolume=opt_subvolume_subvolume,
+    )
     return volume_label_modify_keys_execute(params, execution)
 
 

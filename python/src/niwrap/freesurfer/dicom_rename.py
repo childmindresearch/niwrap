@@ -11,6 +11,8 @@ DICOM_RENAME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DicomRenameParameters = typing.TypedDict('DicomRenameParameters', {
     "__STYX_TYPE__": typing.Literal["dicom-rename"],
     "input_files": list[InputPathType],
@@ -173,7 +175,10 @@ def dicom_rename(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DICOM_RENAME_METADATA)
-    params = dicom_rename_params(input_files=input_files, output_base=output_base)
+    params = dicom_rename_params(
+        input_files=input_files,
+        output_base=output_base,
+    )
     return dicom_rename_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FLIRT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FlirtParameters = typing.TypedDict('FlirtParameters', {
     "__STYX_TYPE__": typing.Literal["flirt"],
     "in_file": InputPathType,
@@ -669,7 +671,53 @@ def flirt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLIRT_METADATA)
-    params = flirt_params(in_file=in_file, reference=reference, out_file=out_file, out_matrix_file=out_matrix_file, angle_rep=angle_rep, apply_isoxfm=apply_isoxfm, apply_xfm=apply_xfm, bbrslope=bbrslope, bbrtype=bbrtype, bgvalue=bgvalue, bins=bins, coarse_search=coarse_search, cost=cost, cost_func=cost_func, datatype=datatype, display_init=display_init, dof=dof, echospacing=echospacing, fieldmap=fieldmap, fieldmapmask=fieldmapmask, fine_search=fine_search, force_scaling=force_scaling, in_matrix_file=in_matrix_file, in_weight=in_weight, interp=interp, min_sampling=min_sampling, no_clamp=no_clamp, no_resample=no_resample, no_resample_blur=no_resample_blur, no_search=no_search, padding_size=padding_size, pedir=pedir, ref_weight=ref_weight, rigid2_d=rigid2_d, schedule=schedule, searchr_x=searchr_x, searchr_y=searchr_y, searchr_z=searchr_z, sinc_width=sinc_width, sinc_window=sinc_window, uses_qform=uses_qform, verbose=verbose, wm_seg=wm_seg, wmcoords=wmcoords, wmnorms=wmnorms)
+    params = flirt_params(
+        in_file=in_file,
+        reference=reference,
+        out_file=out_file,
+        out_matrix_file=out_matrix_file,
+        angle_rep=angle_rep,
+        apply_isoxfm=apply_isoxfm,
+        apply_xfm=apply_xfm,
+        bbrslope=bbrslope,
+        bbrtype=bbrtype,
+        bgvalue=bgvalue,
+        bins=bins,
+        coarse_search=coarse_search,
+        cost=cost,
+        cost_func=cost_func,
+        datatype=datatype,
+        display_init=display_init,
+        dof=dof,
+        echospacing=echospacing,
+        fieldmap=fieldmap,
+        fieldmapmask=fieldmapmask,
+        fine_search=fine_search,
+        force_scaling=force_scaling,
+        in_matrix_file=in_matrix_file,
+        in_weight=in_weight,
+        interp=interp,
+        min_sampling=min_sampling,
+        no_clamp=no_clamp,
+        no_resample=no_resample,
+        no_resample_blur=no_resample_blur,
+        no_search=no_search,
+        padding_size=padding_size,
+        pedir=pedir,
+        ref_weight=ref_weight,
+        rigid2_d=rigid2_d,
+        schedule=schedule,
+        searchr_x=searchr_x,
+        searchr_y=searchr_y,
+        searchr_z=searchr_z,
+        sinc_width=sinc_width,
+        sinc_window=sinc_window,
+        uses_qform=uses_qform,
+        verbose=verbose,
+        wm_seg=wm_seg,
+        wmcoords=wmcoords,
+        wmnorms=wmnorms,
+    )
     return flirt_execute(params, execution)
 
 

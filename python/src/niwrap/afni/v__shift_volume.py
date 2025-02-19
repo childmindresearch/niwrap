@@ -11,6 +11,8 @@ V__SHIFT_VOLUME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VShiftVolumeParameters = typing.TypedDict('VShiftVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["@Shift_Volume"],
     "rai_shift_vector": typing.NotRequired[list[float] | None],
@@ -218,7 +220,14 @@ def v__shift_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SHIFT_VOLUME_METADATA)
-    params = v__shift_volume_params(rai_shift_vector=rai_shift_vector, mni_anat_to_mni=mni_anat_to_mni, mni_to_mni_anat=mni_to_mni_anat, dset=dset, no_cp=no_cp, prefix=prefix)
+    params = v__shift_volume_params(
+        rai_shift_vector=rai_shift_vector,
+        mni_anat_to_mni=mni_anat_to_mni,
+        mni_to_mni_anat=mni_to_mni_anat,
+        dset=dset,
+        no_cp=no_cp,
+        prefix=prefix,
+    )
     return v__shift_volume_execute(params, execution)
 
 

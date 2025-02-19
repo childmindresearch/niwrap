@@ -11,24 +11,34 @@ AMP2SH_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Amp2shFslgradParameters = typing.TypedDict('Amp2shFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 Amp2shVariousStringParameters = typing.TypedDict('Amp2shVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 Amp2shVariousFileParameters = typing.TypedDict('Amp2shVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 Amp2shConfigParameters = typing.TypedDict('Amp2shConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Amp2shParameters = typing.TypedDict('Amp2shParameters', {
     "__STYX_TYPE__": typing.Literal["amp2sh"],
     "lmax": typing.NotRequired[int | None],
@@ -606,7 +616,26 @@ def amp2sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AMP2SH_METADATA)
-    params = amp2sh_params(lmax=lmax, normalise=normalise, directions=directions, rician=rician, grad=grad, fslgrad=fslgrad, shells=shells, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, amp=amp, sh=sh)
+    params = amp2sh_params(
+        lmax=lmax,
+        normalise=normalise,
+        directions=directions,
+        rician=rician,
+        grad=grad,
+        fslgrad=fslgrad,
+        shells=shells,
+        strides=strides,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        amp=amp,
+        sh=sh,
+    )
     return amp2sh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MKSURFATLAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MksurfatlasParameters = typing.TypedDict('MksurfatlasParameters', {
     "__STYX_TYPE__": typing.Literal["mksurfatlas"],
     "atlas": str,
@@ -246,7 +248,17 @@ def mksurfatlas(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKSURFATLAS_METADATA)
-    params = mksurfatlas_params(atlas=atlas, hemi=hemi, subjects=subjects, surfval=surfval, surfvaldir=surfvaldir, regsurf=regsurf, debug=debug, version=version, help_=help_)
+    params = mksurfatlas_params(
+        atlas=atlas,
+        hemi=hemi,
+        subjects=subjects,
+        surfval=surfval,
+        surfvaldir=surfvaldir,
+        regsurf=regsurf,
+        debug=debug,
+        version=version,
+        help_=help_,
+    )
     return mksurfatlas_execute(params, execution)
 
 

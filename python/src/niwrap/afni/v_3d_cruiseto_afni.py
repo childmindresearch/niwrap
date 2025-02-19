@@ -11,6 +11,8 @@ V_3D_CRUISETO_AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dCruisetoAfniParameters = typing.TypedDict('V3dCruisetoAfniParameters', {
     "__STYX_TYPE__": typing.Literal["3dCRUISEtoAFNI"],
     "input": InputPathType,
@@ -238,7 +240,18 @@ def v_3d_cruiseto_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CRUISETO_AFNI_METADATA)
-    params = v_3d_cruiseto_afni_params(input_=input_, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, trace_1=trace_1, nomall=nomall, yesmall=yesmall, help_=help_, h=h)
+    params = v_3d_cruiseto_afni_params(
+        input_=input_,
+        novolreg=novolreg,
+        noxform=noxform,
+        setenv=setenv,
+        trace_=trace_,
+        trace_1=trace_1,
+        nomall=nomall,
+        yesmall=yesmall,
+        help_=help_,
+        h=h,
+    )
     return v_3d_cruiseto_afni_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SUMA_CHANGE_SPEC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SumaChangeSpecParameters = typing.TypedDict('SumaChangeSpecParameters', {
     "__STYX_TYPE__": typing.Literal["suma_change_spec"],
     "input": InputPathType,
@@ -203,7 +205,14 @@ def suma_change_spec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SUMA_CHANGE_SPEC_METADATA)
-    params = suma_change_spec_params(input_=input_, state=state, domainparent=domainparent, output=output, remove=remove, anatomical=anatomical)
+    params = suma_change_spec_params(
+        input_=input_,
+        state=state,
+        domainparent=domainparent,
+        output=output,
+        remove=remove,
+        anatomical=anatomical,
+    )
     return suma_change_spec_execute(params, execution)
 
 

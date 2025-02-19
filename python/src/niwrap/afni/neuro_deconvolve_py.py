@@ -11,6 +11,8 @@ NEURO_DECONVOLVE_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 NeuroDeconvolvePyParameters = typing.TypedDict('NeuroDeconvolvePyParameters', {
     "__STYX_TYPE__": typing.Literal["neuro_deconvolve.py"],
     "input_file": InputPathType,
@@ -265,7 +267,18 @@ def neuro_deconvolve_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NEURO_DECONVOLVE_PY_METADATA)
-    params = neuro_deconvolve_py_params(input_file=input_file, prefix=prefix, script=script, kernel=kernel, kernel_file=kernel_file, mask_dset=mask_dset, old_style=old_style, tr=tr, tr_nup=tr_nup, verbosity=verbosity)
+    params = neuro_deconvolve_py_params(
+        input_file=input_file,
+        prefix=prefix,
+        script=script,
+        kernel=kernel,
+        kernel_file=kernel_file,
+        mask_dset=mask_dset,
+        old_style=old_style,
+        tr=tr,
+        tr_nup=tr_nup,
+        verbosity=verbosity,
+    )
     return neuro_deconvolve_py_execute(params, execution)
 
 

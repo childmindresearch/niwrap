@@ -11,6 +11,8 @@ ZTOP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ZtopParameters = typing.TypedDict('ZtopParameters', {
     "__STYX_TYPE__": typing.Literal["ztop"],
     "z_score": float,
@@ -182,7 +184,12 @@ def ztop(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ZTOP_METADATA)
-    params = ztop_params(z_score=z_score, tail_flag=tail_flag, grf_flag=grf_flag, number_of_resels=number_of_resels)
+    params = ztop_params(
+        z_score=z_score,
+        tail_flag=tail_flag,
+        grf_flag=grf_flag,
+        number_of_resels=number_of_resels,
+    )
     return ztop_execute(params, execution)
 
 

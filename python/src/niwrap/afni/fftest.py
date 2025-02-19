@@ -11,6 +11,8 @@ FFTEST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FftestParameters = typing.TypedDict('FftestParameters', {
     "__STYX_TYPE__": typing.Literal["fftest"],
     "length": float,
@@ -177,7 +179,12 @@ def fftest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FFTEST_METADATA)
-    params = fftest_params(length=length, num_tests=num_tests, vector_size=vector_size, quiet_mode=quiet_mode)
+    params = fftest_params(
+        length=length,
+        num_tests=num_tests,
+        vector_size=vector_size,
+        quiet_mode=quiet_mode,
+    )
     return fftest_execute(params, execution)
 
 

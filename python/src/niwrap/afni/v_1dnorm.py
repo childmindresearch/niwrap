@@ -11,6 +11,8 @@ V_1DNORM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dnormParameters = typing.TypedDict('V1dnormParameters', {
     "__STYX_TYPE__": typing.Literal["1dnorm"],
     "infile": InputPathType,
@@ -202,7 +204,14 @@ def v_1dnorm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DNORM_METADATA)
-    params = v_1dnorm_params(infile=infile, outfile=outfile, norm1=norm1, normx=normx, demean=demean, demed=demed)
+    params = v_1dnorm_params(
+        infile=infile,
+        outfile=outfile,
+        norm1=norm1,
+        normx=normx,
+        demean=demean,
+        demed=demed,
+    )
     return v_1dnorm_execute(params, execution)
 
 

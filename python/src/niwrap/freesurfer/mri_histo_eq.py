@@ -11,6 +11,8 @@ MRI_HISTO_EQ_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriHistoEqParameters = typing.TypedDict('MriHistoEqParameters', {
     "__STYX_TYPE__": typing.Literal["mri_histo_eq"],
     "input_volume_1": InputPathType,
@@ -162,7 +164,10 @@ def mri_histo_eq(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_HISTO_EQ_METADATA)
-    params = mri_histo_eq_params(input_volume_1=input_volume_1, input_volume_2=input_volume_2)
+    params = mri_histo_eq_params(
+        input_volume_1=input_volume_1,
+        input_volume_2=input_volume_2,
+    )
     return mri_histo_eq_execute(params, execution)
 
 

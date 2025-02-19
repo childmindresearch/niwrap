@@ -11,6 +11,8 @@ TKREGISTERFV_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TkregisterfvParameters = typing.TypedDict('TkregisterfvParameters', {
     "__STYX_TYPE__": typing.Literal["tkregisterfv"],
     "mov": typing.NotRequired[InputPathType | None],
@@ -476,7 +478,40 @@ def tkregisterfv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKREGISTERFV_METADATA)
-    params = tkregisterfv_params(mov=mov, targ=targ, reg=reg, subject=subject, fstarg=fstarg, sd=sd, seg=seg, aseg_flag=aseg_flag, aparc_aseg_flag=aparc_aseg_flag, opacity=opacity, surfs_flag=surfs_flag, pial_surfs_flag=pial_surfs_flag, all_surfs_flag=all_surfs_flag, no_surfs_flag=no_surfs_flag, lh_only_flag=lh_only_flag, rh_only_flag=rh_only_flag, surf=surf, aux_s=aux_s, plane=plane, no_config_flag=no_config_flag, mov2=mov2, reg2=reg2, mov3=mov3, reg3=reg3, heat_flag=heat_flag, regheader_flag=regheader_flag, params=params, flip_x_flag=flip_x_flag, flip_y_flag=flip_y_flag, flip_z_flag=flip_z_flag, fstal=fstal, aux=aux)
+    params = tkregisterfv_params(
+        mov=mov,
+        targ=targ,
+        reg=reg,
+        subject=subject,
+        fstarg=fstarg,
+        sd=sd,
+        seg=seg,
+        aseg_flag=aseg_flag,
+        aparc_aseg_flag=aparc_aseg_flag,
+        opacity=opacity,
+        surfs_flag=surfs_flag,
+        pial_surfs_flag=pial_surfs_flag,
+        all_surfs_flag=all_surfs_flag,
+        no_surfs_flag=no_surfs_flag,
+        lh_only_flag=lh_only_flag,
+        rh_only_flag=rh_only_flag,
+        surf=surf,
+        aux_s=aux_s,
+        plane=plane,
+        no_config_flag=no_config_flag,
+        mov2=mov2,
+        reg2=reg2,
+        mov3=mov3,
+        reg3=reg3,
+        heat_flag=heat_flag,
+        regheader_flag=regheader_flag,
+        params=params,
+        flip_x_flag=flip_x_flag,
+        flip_y_flag=flip_y_flag,
+        flip_z_flag=flip_z_flag,
+        fstal=fstal,
+        aux=aux,
+    )
     return tkregisterfv_execute(params, execution)
 
 

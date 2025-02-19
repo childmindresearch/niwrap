@@ -11,6 +11,8 @@ IMG2STDCOORD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Img2stdcoordParameters = typing.TypedDict('Img2stdcoordParameters', {
     "__STYX_TYPE__": typing.Literal["img2stdcoord"],
     "coordinate_file": str,
@@ -261,7 +263,19 @@ def img2stdcoord(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMG2STDCOORD_METADATA)
-    params = img2stdcoord_params(coordinate_file=coordinate_file, input_image=input_image, standard_image=standard_image, affine_transform=affine_transform, warp_field=warp_field, prewarp_affine_transform=prewarp_affine_transform, voxel_flag=voxel_flag, mm_flag=mm_flag, verbose_flag_1=verbose_flag_1, verbose_flag_2=verbose_flag_2, help_flag=help_flag)
+    params = img2stdcoord_params(
+        coordinate_file=coordinate_file,
+        input_image=input_image,
+        standard_image=standard_image,
+        affine_transform=affine_transform,
+        warp_field=warp_field,
+        prewarp_affine_transform=prewarp_affine_transform,
+        voxel_flag=voxel_flag,
+        mm_flag=mm_flag,
+        verbose_flag_1=verbose_flag_1,
+        verbose_flag_2=verbose_flag_2,
+        help_flag=help_flag,
+    )
     return img2stdcoord_execute(params, execution)
 
 

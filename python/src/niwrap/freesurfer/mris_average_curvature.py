@@ -11,6 +11,8 @@ MRIS_AVERAGE_CURVATURE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisAverageCurvatureParameters = typing.TypedDict('MrisAverageCurvatureParameters', {
     "__STYX_TYPE__": typing.Literal["mris_average_curvature"],
     "input_curvature_file": InputPathType,
@@ -207,7 +209,15 @@ def mris_average_curvature(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_AVERAGE_CURVATURE_METADATA)
-    params = mris_average_curvature_params(input_curvature_file=input_curvature_file, hemi=hemi, surface=surface, subjects=subjects, output_curvature_file=output_curvature_file, summary_stats_flag=summary_stats_flag, output_surface_flag=output_surface_flag)
+    params = mris_average_curvature_params(
+        input_curvature_file=input_curvature_file,
+        hemi=hemi,
+        surface=surface,
+        subjects=subjects,
+        output_curvature_file=output_curvature_file,
+        summary_stats_flag=summary_stats_flag,
+        output_surface_flag=output_surface_flag,
+    )
     return mris_average_curvature_execute(params, execution)
 
 

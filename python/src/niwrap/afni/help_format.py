@@ -11,6 +11,8 @@ HELP_FORMAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 HelpFormatParameters = typing.TypedDict('HelpFormatParameters', {
     "__STYX_TYPE__": typing.Literal["help_format"],
     "stdin": str,
@@ -159,7 +161,9 @@ def help_format(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HELP_FORMAT_METADATA)
-    params = help_format_params(stdin=stdin)
+    params = help_format_params(
+        stdin=stdin,
+    )
     return help_format_execute(params, execution)
 
 

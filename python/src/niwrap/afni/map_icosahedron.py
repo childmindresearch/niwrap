@@ -11,6 +11,8 @@ MAP_ICOSAHEDRON_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MapIcosahedronParameters = typing.TypedDict('MapIcosahedronParameters', {
     "__STYX_TYPE__": typing.Literal["MapIcosahedron"],
     "spec_file": InputPathType,
@@ -269,7 +271,19 @@ def map_icosahedron(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_ICOSAHEDRON_METADATA)
-    params = map_icosahedron_params(spec_file=spec_file, rec_depth=rec_depth, lin_depth=lin_depth, morph_surf=morph_surf, num_it=num_it, prefix=prefix, nn_dset=nn_dset, dset=dset, fix_cut_surfaces=fix_cut_surfaces, verbosity=verbosity, help_=help_)
+    params = map_icosahedron_params(
+        spec_file=spec_file,
+        rec_depth=rec_depth,
+        lin_depth=lin_depth,
+        morph_surf=morph_surf,
+        num_it=num_it,
+        prefix=prefix,
+        nn_dset=nn_dset,
+        dset=dset,
+        fix_cut_surfaces=fix_cut_surfaces,
+        verbosity=verbosity,
+        help_=help_,
+    )
     return map_icosahedron_execute(params, execution)
 
 

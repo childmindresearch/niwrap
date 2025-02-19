@@ -11,28 +11,38 @@ CONVERT_AFFINE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 ConvertAffineFromWorldParameters = typing.TypedDict('ConvertAffineFromWorldParameters', {
     "__STYX_TYPE__": typing.Literal["from_world"],
     "input": str,
     "opt_inverse": bool,
 })
+
+
 ConvertAffineFromFlirtParameters = typing.TypedDict('ConvertAffineFromFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["from_flirt"],
     "input": str,
     "source_volume": str,
     "target_volume": str,
 })
+
+
 ConvertAffineToWorldParameters = typing.TypedDict('ConvertAffineToWorldParameters', {
     "__STYX_TYPE__": typing.Literal["to_world"],
     "output": str,
     "opt_inverse": bool,
 })
+
+
 ConvertAffineToFlirtParameters = typing.TypedDict('ConvertAffineToFlirtParameters', {
     "__STYX_TYPE__": typing.Literal["to_flirt"],
     "output": str,
     "source_volume": str,
     "target_volume": str,
 })
+
+
 ConvertAffineParameters = typing.TypedDict('ConvertAffineParameters', {
     "__STYX_TYPE__": typing.Literal["convert-affine"],
     "from_world": typing.NotRequired[ConvertAffineFromWorldParameters | None],
@@ -436,7 +446,14 @@ def convert_affine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_AFFINE_METADATA)
-    params = convert_affine_params(from_world=from_world, opt_from_itk_input=opt_from_itk_input, from_flirt=from_flirt, to_world=to_world, opt_to_itk_output=opt_to_itk_output, to_flirt=to_flirt)
+    params = convert_affine_params(
+        from_world=from_world,
+        opt_from_itk_input=opt_from_itk_input,
+        from_flirt=from_flirt,
+        to_world=to_world,
+        opt_to_itk_output=opt_to_itk_output,
+        to_flirt=to_flirt,
+    )
     return convert_affine_execute(params, execution)
 
 

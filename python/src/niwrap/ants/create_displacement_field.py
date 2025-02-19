@@ -11,6 +11,8 @@ CREATE_DISPLACEMENT_FIELD_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 CreateDisplacementFieldParameters = typing.TypedDict('CreateDisplacementFieldParameters', {
     "__STYX_TYPE__": typing.Literal["CreateDisplacementField"],
     "image_dimension": int,
@@ -203,7 +205,12 @@ def create_displacement_field(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_DISPLACEMENT_FIELD_METADATA)
-    params = create_displacement_field_params(image_dimension=image_dimension, enforce_zero_boundary_flag=enforce_zero_boundary_flag, component_images=component_images, output_image=output_image)
+    params = create_displacement_field_params(
+        image_dimension=image_dimension,
+        enforce_zero_boundary_flag=enforce_zero_boundary_flag,
+        component_images=component_images,
+        output_image=output_image,
+    )
     return create_displacement_field_execute(params, execution)
 
 

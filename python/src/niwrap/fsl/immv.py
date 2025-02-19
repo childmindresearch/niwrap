@@ -11,6 +11,8 @@ IMMV_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ImmvParameters = typing.TypedDict('ImmvParameters', {
     "__STYX_TYPE__": typing.Literal["immv"],
     "source_files": list[InputPathType],
@@ -164,7 +166,10 @@ def immv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMMV_METADATA)
-    params = immv_params(source_files=source_files, destination=destination)
+    params = immv_params(
+        source_files=source_files,
+        destination=destination,
+    )
     return immv_execute(params, execution)
 
 

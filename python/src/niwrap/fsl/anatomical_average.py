@@ -11,6 +11,8 @@ ANATOMICAL_AVERAGE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 AnatomicalAverageParameters = typing.TypedDict('AnatomicalAverageParameters', {
     "__STYX_TYPE__": typing.Literal["AnatomicalAverage"],
     "output_basename": str,
@@ -245,7 +247,17 @@ def anatomical_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANATOMICAL_AVERAGE_METADATA)
-    params = anatomical_average_params(output_basename=output_basename, input_images=input_images, standard_image=standard_image, standard_brain_mask=standard_brain_mask, no_crop_flag=no_crop_flag, work_dir=work_dir, brainsize=brainsize, noclean_flag=noclean_flag, verbose_flag=verbose_flag)
+    params = anatomical_average_params(
+        output_basename=output_basename,
+        input_images=input_images,
+        standard_image=standard_image,
+        standard_brain_mask=standard_brain_mask,
+        no_crop_flag=no_crop_flag,
+        work_dir=work_dir,
+        brainsize=brainsize,
+        noclean_flag=noclean_flag,
+        verbose_flag=verbose_flag,
+    )
     return anatomical_average_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ EXTRACTTXT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ExtracttxtParameters = typing.TypedDict('ExtracttxtParameters', {
     "__STYX_TYPE__": typing.Literal["extracttxt"],
     "search_word": str,
@@ -186,7 +188,12 @@ def extracttxt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXTRACTTXT_METADATA)
-    params = extracttxt_params(search_word=search_word, file=file, num_trailing_lines=num_trailing_lines, relative_start=relative_start)
+    params = extracttxt_params(
+        search_word=search_word,
+        file=file,
+        num_trailing_lines=num_trailing_lines,
+        relative_start=relative_start,
+    )
     return extracttxt_execute(params, execution)
 
 

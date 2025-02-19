@@ -11,6 +11,8 @@ V_3D_FDR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dFdrParameters = typing.TypedDict('V3dFdrParameters', {
     "__STYX_TYPE__": typing.Literal["3dFDR"],
     "input_file": InputPathType,
@@ -296,7 +298,21 @@ def v_3d_fdr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_FDR_METADATA)
-    params = v_3d_fdr_params(input_file=input_file, mask_file=mask_file, mask_threshold=mask_threshold, constant_type=constant_type, quiet=quiet, list_=list_, prefix=prefix, mode_option=mode_option, pmask=pmask, nopmask=nopmask, force=force, float_=float_, qval=qval)
+    params = v_3d_fdr_params(
+        input_file=input_file,
+        mask_file=mask_file,
+        mask_threshold=mask_threshold,
+        constant_type=constant_type,
+        quiet=quiet,
+        list_=list_,
+        prefix=prefix,
+        mode_option=mode_option,
+        pmask=pmask,
+        nopmask=nopmask,
+        force=force,
+        float_=float_,
+        qval=qval,
+    )
     return v_3d_fdr_execute(params, execution)
 
 

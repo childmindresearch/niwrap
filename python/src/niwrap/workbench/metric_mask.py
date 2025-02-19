@@ -11,6 +11,8 @@ METRIC_MASK_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricMaskParameters = typing.TypedDict('MetricMaskParameters', {
     "__STYX_TYPE__": typing.Literal["metric-mask"],
     "metric": InputPathType,
@@ -196,7 +198,12 @@ def metric_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_MASK_METADATA)
-    params = metric_mask_params(metric=metric, mask=mask, metric_out=metric_out, opt_column_column=opt_column_column)
+    params = metric_mask_params(
+        metric=metric,
+        mask=mask,
+        metric_out=metric_out,
+        opt_column_column=opt_column_column,
+    )
     return metric_mask_execute(params, execution)
 
 

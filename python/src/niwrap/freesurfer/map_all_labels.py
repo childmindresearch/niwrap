@@ -11,6 +11,8 @@ MAP_ALL_LABELS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MapAllLabelsParameters = typing.TypedDict('MapAllLabelsParameters', {
     "__STYX_TYPE__": typing.Literal["map_all_labels"],
     "which": str,
@@ -194,7 +196,14 @@ def map_all_labels(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_ALL_LABELS_METADATA)
-    params = map_all_labels_params(which=which, fname=fname, hemi=hemi, spherical_surf=spherical_surf, subjects=subjects, output=output)
+    params = map_all_labels_params(
+        which=which,
+        fname=fname,
+        hemi=hemi,
+        spherical_surf=spherical_surf,
+        subjects=subjects,
+        output=output,
+    )
     return map_all_labels_execute(params, execution)
 
 

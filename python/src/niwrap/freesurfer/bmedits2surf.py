@@ -11,6 +11,8 @@ BMEDITS2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Bmedits2surfParameters = typing.TypedDict('Bmedits2surfParameters', {
     "__STYX_TYPE__": typing.Literal["bmedits2surf"],
     "subject": str,
@@ -257,7 +259,18 @@ def bmedits2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BMEDITS2SURF_METADATA)
-    params = bmedits2surf_params(subject=subject, self=self, overwrite=overwrite, tmp_dir=tmp_dir, cleanup=cleanup, no_cleanup=no_cleanup, debug=debug, left_hemisphere=left_hemisphere, right_hemisphere=right_hemisphere, no_surfs=no_surfs)
+    params = bmedits2surf_params(
+        subject=subject,
+        self=self,
+        overwrite=overwrite,
+        tmp_dir=tmp_dir,
+        cleanup=cleanup,
+        no_cleanup=no_cleanup,
+        debug=debug,
+        left_hemisphere=left_hemisphere,
+        right_hemisphere=right_hemisphere,
+        no_surfs=no_surfs,
+    )
     return bmedits2surf_execute(params, execution)
 
 

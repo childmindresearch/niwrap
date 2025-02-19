@@ -11,6 +11,8 @@ V_3D_ANHIST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAnhistParameters = typing.TypedDict('V3dAnhistParameters', {
     "__STYX_TYPE__": typing.Literal["3dAnhist"],
     "dataset": InputPathType,
@@ -236,7 +238,16 @@ def v_3d_anhist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ANHIST_METADATA)
-    params = v_3d_anhist_params(dataset=dataset, quiet=quiet, dump_histogram=dump_histogram, no_scurve=no_scurve, winsorize=winsorize, top_2peaks=top_2peaks, label=label, filename=filename)
+    params = v_3d_anhist_params(
+        dataset=dataset,
+        quiet=quiet,
+        dump_histogram=dump_histogram,
+        no_scurve=no_scurve,
+        winsorize=winsorize,
+        top_2peaks=top_2peaks,
+        label=label,
+        filename=filename,
+    )
     return v_3d_anhist_execute(params, execution)
 
 

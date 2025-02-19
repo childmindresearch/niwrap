@@ -11,6 +11,8 @@ GIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 GiftiAllLabelsToRoisParameters = typing.TypedDict('GiftiAllLabelsToRoisParameters', {
     "__STYX_TYPE__": typing.Literal["gifti-all-labels-to-rois"],
     "label_in": InputPathType,
@@ -182,7 +184,11 @@ def gifti_all_labels_to_rois(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GIFTI_ALL_LABELS_TO_ROIS_METADATA)
-    params = gifti_all_labels_to_rois_params(label_in=label_in, map_=map_, metric_out=metric_out)
+    params = gifti_all_labels_to_rois_params(
+        label_in=label_in,
+        map_=map_,
+        metric_out=metric_out,
+    )
     return gifti_all_labels_to_rois_execute(params, execution)
 
 

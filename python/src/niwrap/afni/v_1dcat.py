@@ -11,6 +11,8 @@ V_1DCAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dcatParameters = typing.TypedDict('V1dcatParameters', {
     "__STYX_TYPE__": typing.Literal["1dcat"],
     "input_files": list[InputPathType],
@@ -241,7 +243,17 @@ def v_1dcat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DCAT_METADATA)
-    params = v_1dcat_params(input_files=input_files, tsv_output=tsv_output, csv_output=csv_output, nonconst_output=nonconst_output, nonfixed_output=nonfixed_output, number_format=number_format, stack_output=stack_output, column_row_selection=column_row_selection, ok_empty=ok_empty)
+    params = v_1dcat_params(
+        input_files=input_files,
+        tsv_output=tsv_output,
+        csv_output=csv_output,
+        nonconst_output=nonconst_output,
+        nonfixed_output=nonfixed_output,
+        number_format=number_format,
+        stack_output=stack_output,
+        column_row_selection=column_row_selection,
+        ok_empty=ok_empty,
+    )
     return v_1dcat_execute(params, execution)
 
 

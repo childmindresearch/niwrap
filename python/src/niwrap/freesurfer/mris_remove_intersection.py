@@ -11,6 +11,8 @@ MRIS_REMOVE_INTERSECTION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRemoveIntersectionParameters = typing.TypedDict('MrisRemoveIntersectionParameters', {
     "__STYX_TYPE__": typing.Literal["mris_remove_intersection"],
     "surface_in_file": InputPathType,
@@ -200,7 +202,13 @@ def mris_remove_intersection(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REMOVE_INTERSECTION_METADATA)
-    params = mris_remove_intersection_params(surface_in_file=surface_in_file, corrected_surface_out_file=corrected_surface_out_file, fill_holes=fill_holes, map_option=map_option, projdistmm=projdistmm)
+    params = mris_remove_intersection_params(
+        surface_in_file=surface_in_file,
+        corrected_surface_out_file=corrected_surface_out_file,
+        fill_holes=fill_holes,
+        map_option=map_option,
+        projdistmm=projdistmm,
+    )
     return mris_remove_intersection_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_1DTRANSPOSE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dtransposeParameters = typing.TypedDict('V1dtransposeParameters', {
     "__STYX_TYPE__": typing.Literal["1dtranspose"],
     "infile": InputPathType,
@@ -170,7 +172,10 @@ def v_1dtranspose(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DTRANSPOSE_METADATA)
-    params = v_1dtranspose_params(infile=infile, outfile=outfile)
+    params = v_1dtranspose_params(
+        infile=infile,
+        outfile=outfile,
+    )
     return v_1dtranspose_execute(params, execution)
 
 

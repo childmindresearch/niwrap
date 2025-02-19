@@ -11,6 +11,8 @@ ZEROPAD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ZeropadParameters = typing.TypedDict('ZeropadParameters', {
     "__STYX_TYPE__": typing.Literal["zeropad"],
     "input_number": str,
@@ -166,7 +168,10 @@ def zeropad(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ZEROPAD_METADATA)
-    params = zeropad_params(input_number=input_number, length=length)
+    params = zeropad_params(
+        input_number=input_number,
+        length=length,
+    )
     return zeropad_execute(params, execution)
 
 

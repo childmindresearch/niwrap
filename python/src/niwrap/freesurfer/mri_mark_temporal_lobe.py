@@ -11,6 +11,8 @@ MRI_MARK_TEMPORAL_LOBE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMarkTemporalLobeParameters = typing.TypedDict('MriMarkTemporalLobeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_mark_temporal_lobe"],
     "spacing": typing.NotRequired[str | None],
@@ -184,7 +186,12 @@ def mri_mark_temporal_lobe(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MARK_TEMPORAL_LOBE_METADATA)
-    params = mri_mark_temporal_lobe_params(spacing=spacing, use_gradient=use_gradient, subjects=subjects, output_file=output_file)
+    params = mri_mark_temporal_lobe_params(
+        spacing=spacing,
+        use_gradient=use_gradient,
+        subjects=subjects,
+        output_file=output_file,
+    )
     return mri_mark_temporal_lobe_execute(params, execution)
 
 

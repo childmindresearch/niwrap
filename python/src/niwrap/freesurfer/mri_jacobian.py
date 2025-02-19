@@ -11,6 +11,8 @@ MRI_JACOBIAN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriJacobianParameters = typing.TypedDict('MriJacobianParameters', {
     "__STYX_TYPE__": typing.Literal["mri_jacobian"],
     "morph_file": InputPathType,
@@ -261,7 +263,21 @@ def mri_jacobian(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_JACOBIAN_METADATA)
-    params = mri_jacobian_params(morph_file=morph_file, template_vol=template_vol, output_vol=output_vol, atlas_coord=atlas_coord, write_area_vols=write_area_vols, log_jacobian=log_jacobian, smooth_sigma=smooth_sigma, zero_mean_log=zero_mean_log, tm3d=tm3d, help2=help2, dt=dt, debug_voxel=debug_voxel, remove=remove)
+    params = mri_jacobian_params(
+        morph_file=morph_file,
+        template_vol=template_vol,
+        output_vol=output_vol,
+        atlas_coord=atlas_coord,
+        write_area_vols=write_area_vols,
+        log_jacobian=log_jacobian,
+        smooth_sigma=smooth_sigma,
+        zero_mean_log=zero_mean_log,
+        tm3d=tm3d,
+        help2=help2,
+        dt=dt,
+        debug_voxel=debug_voxel,
+        remove=remove,
+    )
     return mri_jacobian_execute(params, execution)
 
 

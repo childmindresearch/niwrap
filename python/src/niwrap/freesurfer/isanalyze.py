@@ -11,6 +11,8 @@ ISANALYZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 IsanalyzeParameters = typing.TypedDict('IsanalyzeParameters', {
     "__STYX_TYPE__": typing.Literal["isanalyze"],
     "input_file": InputPathType,
@@ -155,7 +157,9 @@ def isanalyze(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ISANALYZE_METADATA)
-    params = isanalyze_params(input_file=input_file)
+    params = isanalyze_params(
+        input_file=input_file,
+    )
     return isanalyze_execute(params, execution)
 
 

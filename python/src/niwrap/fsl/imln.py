@@ -11,6 +11,8 @@ IMLN_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ImlnParameters = typing.TypedDict('ImlnParameters', {
     "__STYX_TYPE__": typing.Literal["imln"],
     "input_file": InputPathType,
@@ -166,7 +168,10 @@ def imln(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMLN_METADATA)
-    params = imln_params(input_file=input_file, link_name=link_name)
+    params = imln_params(
+        input_file=input_file,
+        link_name=link_name,
+    )
     return imln_execute(params, execution)
 
 

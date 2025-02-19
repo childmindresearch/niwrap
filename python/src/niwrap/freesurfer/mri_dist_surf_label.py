@@ -11,6 +11,8 @@ MRI_DIST_SURF_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriDistSurfLabelParameters = typing.TypedDict('MriDistSurfLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_dist_surf_label"],
     "surface": InputPathType,
@@ -173,7 +175,11 @@ def mri_dist_surf_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DIST_SURF_LABEL_METADATA)
-    params = mri_dist_surf_label_params(surface=surface, label_file=label_file, output=output)
+    params = mri_dist_surf_label_params(
+        surface=surface,
+        label_file=label_file,
+        output=output,
+    )
     return mri_dist_surf_label_execute(params, execution)
 
 

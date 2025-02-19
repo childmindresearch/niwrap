@@ -11,6 +11,8 @@ TRK_TOOLS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TrkToolsParameters = typing.TypedDict('TrkToolsParameters', {
     "__STYX_TYPE__": typing.Literal["trk_tools"],
     "reference_image": InputPathType,
@@ -222,7 +224,14 @@ def trk_tools(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRK_TOOLS_METADATA)
-    params = trk_tools_params(reference_image=reference_image, input_trk=input_trk, output_trk=output_trk, output_image=output_image, update_header=update_header, output_vtk=output_vtk)
+    params = trk_tools_params(
+        reference_image=reference_image,
+        input_trk=input_trk,
+        output_trk=output_trk,
+        output_image=output_image,
+        update_header=update_header,
+        output_vtk=output_vtk,
+    )
     return trk_tools_execute(params, execution)
 
 

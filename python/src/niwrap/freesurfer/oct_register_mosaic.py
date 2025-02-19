@@ -11,6 +11,8 @@ OCT_REGISTER_MOSAIC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 OctRegisterMosaicParameters = typing.TypedDict('OctRegisterMosaicParameters', {
     "__STYX_TYPE__": typing.Literal["oct_register_mosaic"],
     "tiles_or_mosaic_list": list[str],
@@ -194,7 +196,12 @@ def oct_register_mosaic(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(OCT_REGISTER_MOSAIC_METADATA)
-    params = oct_register_mosaic_params(tiles_or_mosaic_list=tiles_or_mosaic_list, output_volume=output_volume, downsample=downsample, weight_file=weight_file)
+    params = oct_register_mosaic_params(
+        tiles_or_mosaic_list=tiles_or_mosaic_list,
+        output_volume=output_volume,
+        downsample=downsample,
+        weight_file=weight_file,
+    )
     return oct_register_mosaic_execute(params, execution)
 
 

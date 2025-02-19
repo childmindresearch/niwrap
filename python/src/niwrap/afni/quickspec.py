@@ -11,6 +11,8 @@ QUICKSPEC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 QuickspecParameters = typing.TypedDict('QuickspecParameters', {
     "__STYX_TYPE__": typing.Literal["quickspec"],
     "tn": list[str],
@@ -236,7 +238,15 @@ def quickspec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUICKSPEC_METADATA)
-    params = quickspec_params(tn=tn, tsn=tsn, tsnad=tsnad, tsnadm=tsnadm, tsnadl=tsnadl, spec=spec, help_=help_)
+    params = quickspec_params(
+        tn=tn,
+        tsn=tsn,
+        tsnad=tsnad,
+        tsnadm=tsnadm,
+        tsnadl=tsnadl,
+        spec=spec,
+        help_=help_,
+    )
     return quickspec_execute(params, execution)
 
 

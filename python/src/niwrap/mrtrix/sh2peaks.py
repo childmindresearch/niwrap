@@ -11,16 +11,22 @@ SH2PEAKS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Sh2peaksDirectionParameters = typing.TypedDict('Sh2peaksDirectionParameters', {
     "__STYX_TYPE__": typing.Literal["direction"],
     "phi": float,
     "theta": float,
 })
+
+
 Sh2peaksConfigParameters = typing.TypedDict('Sh2peaksConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Sh2peaksParameters = typing.TypedDict('Sh2peaksParameters', {
     "__STYX_TYPE__": typing.Literal["sh2peaks"],
     "num": typing.NotRequired[int | None],
@@ -464,7 +470,25 @@ def sh2peaks(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SH2PEAKS_METADATA)
-    params = sh2peaks_params(num=num, direction=direction, peaks=peaks, threshold=threshold, seeds=seeds, mask=mask, fast=fast, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, sh=sh, output=output)
+    params = sh2peaks_params(
+        num=num,
+        direction=direction,
+        peaks=peaks,
+        threshold=threshold,
+        seeds=seeds,
+        mask=mask,
+        fast=fast,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        sh=sh,
+        output=output,
+    )
     return sh2peaks_execute(params, execution)
 
 

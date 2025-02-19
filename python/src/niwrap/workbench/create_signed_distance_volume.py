@@ -11,6 +11,8 @@ CREATE_SIGNED_DISTANCE_VOLUME_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CreateSignedDistanceVolumeParameters = typing.TypedDict('CreateSignedDistanceVolumeParameters', {
     "__STYX_TYPE__": typing.Literal["create-signed-distance-volume"],
     "surface": InputPathType,
@@ -302,7 +304,17 @@ def create_signed_distance_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_SIGNED_DISTANCE_VOLUME_METADATA)
-    params = create_signed_distance_volume_params(surface=surface, refspace=refspace, outvol=outvol, opt_roi_out_roi_vol=opt_roi_out_roi_vol, opt_fill_value_value=opt_fill_value_value, opt_exact_limit_dist=opt_exact_limit_dist, opt_approx_limit_dist=opt_approx_limit_dist, opt_approx_neighborhood_num=opt_approx_neighborhood_num, opt_winding_method=opt_winding_method)
+    params = create_signed_distance_volume_params(
+        surface=surface,
+        refspace=refspace,
+        outvol=outvol,
+        opt_roi_out_roi_vol=opt_roi_out_roi_vol,
+        opt_fill_value_value=opt_fill_value_value,
+        opt_exact_limit_dist=opt_exact_limit_dist,
+        opt_approx_limit_dist=opt_approx_limit_dist,
+        opt_approx_neighborhood_num=opt_approx_neighborhood_num,
+        opt_winding_method=opt_winding_method,
+    )
     return create_signed_distance_volume_execute(params, execution)
 
 

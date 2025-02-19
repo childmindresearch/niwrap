@@ -11,6 +11,8 @@ V_4DFPTOANALYZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 V4dfptoanalyzeParameters = typing.TypedDict('V4dfptoanalyzeParameters', {
     "__STYX_TYPE__": typing.Literal["4dfptoanalyze"],
     "input_file": InputPathType,
@@ -202,7 +204,13 @@ def v_4dfptoanalyze(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_4DFPTOANALYZE_METADATA)
-    params = v_4dfptoanalyze_params(input_file=input_file, scale_factor=scale_factor, output_8bit=output_8bit, spm99=spm99, endianness=endianness)
+    params = v_4dfptoanalyze_params(
+        input_file=input_file,
+        scale_factor=scale_factor,
+        output_8bit=output_8bit,
+        spm99=spm99,
+        endianness=endianness,
+    )
     return v_4dfptoanalyze_execute(params, execution)
 
 

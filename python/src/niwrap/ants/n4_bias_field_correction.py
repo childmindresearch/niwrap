@@ -11,22 +11,30 @@ N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 N4BiasFieldCorrectionConvergenceParameters = typing.TypedDict('N4BiasFieldCorrectionConvergenceParameters', {
     "__STYX_TYPE__": typing.Literal["convergence"],
     "convergence": list[int],
     "convergence_threshold": typing.NotRequired[float | None],
 })
+
+
 N4BiasFieldCorrectionBsplineFittingParameters = typing.TypedDict('N4BiasFieldCorrectionBsplineFittingParameters', {
     "__STYX_TYPE__": typing.Literal["bspline_fitting"],
     "spline_distance": list[float],
     "spline_order": typing.NotRequired[int | None],
 })
+
+
 N4BiasFieldCorrectionHistogramSharpeningParameters = typing.TypedDict('N4BiasFieldCorrectionHistogramSharpeningParameters', {
     "__STYX_TYPE__": typing.Literal["histogram_sharpening"],
     "fwhm": typing.NotRequired[float | None],
     "wiener_noise": typing.NotRequired[float | None],
     "number_of_histogram_bins": typing.NotRequired[int | None],
 })
+
+
 N4BiasFieldCorrectionParameters = typing.TypedDict('N4BiasFieldCorrectionParameters', {
     "__STYX_TYPE__": typing.Literal["N4BiasFieldCorrection"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -562,7 +570,20 @@ def n4_bias_field_correction(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(N4_BIAS_FIELD_CORRECTION_METADATA)
-    params = n4_bias_field_correction_params(image_dimensionality=image_dimensionality, shrink_factor=shrink_factor, mask_image=mask_image, rescale_intensities=rescale_intensities, weight_image=weight_image, convergence=convergence, bspline_fitting=bspline_fitting, histogram_sharpening=histogram_sharpening, verbose=verbose, input_image=input_image, corrected_image_path=corrected_image_path, bias_field_path=bias_field_path)
+    params = n4_bias_field_correction_params(
+        image_dimensionality=image_dimensionality,
+        shrink_factor=shrink_factor,
+        mask_image=mask_image,
+        rescale_intensities=rescale_intensities,
+        weight_image=weight_image,
+        convergence=convergence,
+        bspline_fitting=bspline_fitting,
+        histogram_sharpening=histogram_sharpening,
+        verbose=verbose,
+        input_image=input_image,
+        corrected_image_path=corrected_image_path,
+        bias_field_path=bias_field_path,
+    )
     return n4_bias_field_correction_execute(params, execution)
 
 

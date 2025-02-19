@@ -11,6 +11,8 @@ LABEL_DILATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelDilateParameters = typing.TypedDict('LabelDilateParameters', {
     "__STYX_TYPE__": typing.Literal["label-dilate"],
     "label": InputPathType,
@@ -239,7 +241,15 @@ def label_dilate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_DILATE_METADATA)
-    params = label_dilate_params(label=label, surface=surface, dilate_dist=dilate_dist, label_out=label_out, opt_bad_vertex_roi_roi_metric=opt_bad_vertex_roi_roi_metric, opt_column_column=opt_column_column, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    params = label_dilate_params(
+        label=label,
+        surface=surface,
+        dilate_dist=dilate_dist,
+        label_out=label_out,
+        opt_bad_vertex_roi_roi_metric=opt_bad_vertex_roi_roi_metric,
+        opt_column_column=opt_column_column,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+    )
     return label_dilate_execute(params, execution)
 
 

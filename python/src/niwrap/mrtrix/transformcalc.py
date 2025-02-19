@@ -11,11 +11,15 @@ TRANSFORMCALC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TransformcalcConfigParameters = typing.TypedDict('TransformcalcConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TransformcalcParameters = typing.TypedDict('TransformcalcParameters', {
     "__STYX_TYPE__": typing.Literal["transformcalc"],
     "info": bool,
@@ -313,7 +317,19 @@ def transformcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRANSFORMCALC_METADATA)
-    params = transformcalc_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, inputs=inputs, operation=operation, output=output)
+    params = transformcalc_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        inputs=inputs,
+        operation=operation,
+        output=output,
+    )
     return transformcalc_execute(params, execution)
 
 

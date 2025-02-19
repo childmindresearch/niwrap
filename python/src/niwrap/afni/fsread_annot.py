@@ -11,6 +11,8 @@ FSREAD_ANNOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FsreadAnnotParameters = typing.TypedDict('FsreadAnnotParameters', {
     "__STYX_TYPE__": typing.Literal["FSread_annot"],
     "infile": InputPathType,
@@ -295,7 +297,19 @@ def fsread_annot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSREAD_ANNOT_METADATA)
-    params = fsread_annot_params(infile=infile, hemi=hemi, fscmap=fscmap, fscmap_range=fscmap_range, fsversion=fsversion, col_1d=col_1d, roi_1d=roi_1d, cmap_1d=cmap_1d, show_fscmap=show_fscmap, dset=dset, help_=help_)
+    params = fsread_annot_params(
+        infile=infile,
+        hemi=hemi,
+        fscmap=fscmap,
+        fscmap_range=fscmap_range,
+        fsversion=fsversion,
+        col_1d=col_1d,
+        roi_1d=roi_1d,
+        cmap_1d=cmap_1d,
+        show_fscmap=show_fscmap,
+        dset=dset,
+        help_=help_,
+    )
     return fsread_annot_execute(params, execution)
 
 

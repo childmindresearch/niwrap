@@ -11,21 +11,29 @@ LABEL_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 LabelMergeUpToParameters = typing.TypedDict('LabelMergeUpToParameters', {
     "__STYX_TYPE__": typing.Literal["up_to"],
     "last_column": str,
     "opt_reverse": bool,
 })
+
+
 LabelMergeColumnParameters = typing.TypedDict('LabelMergeColumnParameters', {
     "__STYX_TYPE__": typing.Literal["column"],
     "column": str,
     "up_to": typing.NotRequired[LabelMergeUpToParameters | None],
 })
+
+
 LabelMergeLabelParameters = typing.TypedDict('LabelMergeLabelParameters', {
     "__STYX_TYPE__": typing.Literal["label"],
     "label_in": InputPathType,
     "column": typing.NotRequired[list[LabelMergeColumnParameters] | None],
 })
+
+
 LabelMergeParameters = typing.TypedDict('LabelMergeParameters', {
     "__STYX_TYPE__": typing.Literal["label-merge"],
     "label_out": str,
@@ -335,7 +343,10 @@ def label_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_MERGE_METADATA)
-    params = label_merge_params(label_out=label_out, label=label)
+    params = label_merge_params(
+        label_out=label_out,
+        label=label,
+    )
     return label_merge_execute(params, execution)
 
 

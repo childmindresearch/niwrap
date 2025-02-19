@@ -11,6 +11,8 @@ V_1D_DW_GRAD_O_MAT___METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dDwGradOMatParameters = typing.TypedDict('V1dDwGradOMatParameters', {
     "__STYX_TYPE__": typing.Literal["1dDW_Grad_o_Mat++"],
     "in_row_vec": InputPathType,
@@ -392,7 +394,29 @@ def v_1d_dw_grad_o_mat__(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_DW_GRAD_O_MAT___METADATA)
-    params = v_1d_dw_grad_o_mat___params(in_row_vec=in_row_vec, in_col_vec=in_col_vec, in_col_mat_a=in_col_mat_a, in_col_mat_t=in_col_mat_t, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z, no_flip=no_flip, out_row_vec=out_row_vec, out_col_vec=out_col_vec, out_col_mat_a=out_col_mat_a, out_col_mat_t=out_col_mat_t, in_bvals=in_bvals, out_col_bval=out_col_bval, out_row_bval_sep=out_row_bval_sep, out_col_bval_sep=out_col_bval_sep, unit_mag_out=unit_mag_out, check_abs_min=check_abs_min, bref_mean_top=bref_mean_top, put_zeros_top=put_zeros_top, bmax_ref=bmax_ref)
+    params = v_1d_dw_grad_o_mat___params(
+        in_row_vec=in_row_vec,
+        in_col_vec=in_col_vec,
+        in_col_mat_a=in_col_mat_a,
+        in_col_mat_t=in_col_mat_t,
+        flip_x=flip_x,
+        flip_y=flip_y,
+        flip_z=flip_z,
+        no_flip=no_flip,
+        out_row_vec=out_row_vec,
+        out_col_vec=out_col_vec,
+        out_col_mat_a=out_col_mat_a,
+        out_col_mat_t=out_col_mat_t,
+        in_bvals=in_bvals,
+        out_col_bval=out_col_bval,
+        out_row_bval_sep=out_row_bval_sep,
+        out_col_bval_sep=out_col_bval_sep,
+        unit_mag_out=unit_mag_out,
+        check_abs_min=check_abs_min,
+        bref_mean_top=bref_mean_top,
+        put_zeros_top=put_zeros_top,
+        bmax_ref=bmax_ref,
+    )
     return v_1d_dw_grad_o_mat___execute(params, execution)
 
 

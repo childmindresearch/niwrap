@@ -11,6 +11,8 @@ MRI_STATS2SEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriStats2segParameters = typing.TypedDict('MriStats2segParameters', {
     "__STYX_TYPE__": typing.Literal["mri_stats2seg"],
     "stat_file": InputPathType,
@@ -198,7 +200,13 @@ def mri_stats2seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_STATS2SEG_METADATA)
-    params = mri_stats2seg_params(stat_file=stat_file, segmentation_volume=segmentation_volume, output_file=output_file, debug=debug, check_opts=check_opts)
+    params = mri_stats2seg_params(
+        stat_file=stat_file,
+        segmentation_volume=segmentation_volume,
+        output_file=output_file,
+        debug=debug,
+        check_opts=check_opts,
+    )
     return mri_stats2seg_execute(params, execution)
 
 

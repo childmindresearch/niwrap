@@ -11,6 +11,8 @@ MRIS_EXTRACT_PATCHES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisExtractPatchesParameters = typing.TypedDict('MrisExtractPatchesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_extract_patches"],
     "subject": str,
@@ -162,7 +164,10 @@ def mris_extract_patches(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXTRACT_PATCHES_METADATA)
-    params = mris_extract_patches_params(subject=subject, output_dir=output_dir)
+    params = mris_extract_patches_params(
+        subject=subject,
+        output_dir=output_dir,
+    )
     return mris_extract_patches_execute(params, execution)
 
 

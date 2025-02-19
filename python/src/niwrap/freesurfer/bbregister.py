@@ -11,6 +11,8 @@ BBREGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BbregisterParameters = typing.TypedDict('BbregisterParameters', {
     "__STYX_TYPE__": typing.Literal["bbregister"],
     "subject": str,
@@ -202,7 +204,12 @@ def bbregister(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BBREGISTER_METADATA)
-    params = bbregister_params(subject=subject, moveable_volume=moveable_volume, reg_file=reg_file, contrast_type_t2=contrast_type_t2)
+    params = bbregister_params(
+        subject=subject,
+        moveable_volume=moveable_volume,
+        reg_file=reg_file,
+        contrast_type_t2=contrast_type_t2,
+    )
     return bbregister_execute(params, execution)
 
 

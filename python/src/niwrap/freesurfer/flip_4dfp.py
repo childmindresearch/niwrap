@@ -11,6 +11,8 @@ FLIP_4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Flip4dfpParameters = typing.TypedDict('Flip4dfpParameters', {
     "__STYX_TYPE__": typing.Literal["flip_4dfp"],
     "input_image": InputPathType,
@@ -208,7 +210,14 @@ def flip_4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLIP_4DFP_METADATA)
-    params = flip_4dfp_params(input_image=input_image, output_image=output_image, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z, endianness=endianness)
+    params = flip_4dfp_params(
+        input_image=input_image,
+        output_image=output_image,
+        flip_x=flip_x,
+        flip_y=flip_y,
+        flip_z=flip_z,
+        endianness=endianness,
+    )
     return flip_4dfp_execute(params, execution)
 
 

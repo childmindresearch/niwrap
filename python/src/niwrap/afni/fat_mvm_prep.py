@@ -11,6 +11,8 @@ FAT_MVM_PREP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatMvmPrepParameters = typing.TypedDict('FatMvmPrepParameters', {
     "__STYX_TYPE__": typing.Literal["fat_mvm_prep"],
     "prefix": str,
@@ -233,7 +235,15 @@ def fat_mvm_prep(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MVM_PREP_METADATA)
-    params = fat_mvm_prep_params(prefix=prefix, csv_file=csv_file, matrix_files=matrix_files, list_match=list_match, unionize_rois=unionize_rois, na_warn_off=na_warn_off, extern_labels_no=extern_labels_no)
+    params = fat_mvm_prep_params(
+        prefix=prefix,
+        csv_file=csv_file,
+        matrix_files=matrix_files,
+        list_match=list_match,
+        unionize_rois=unionize_rois,
+        na_warn_off=na_warn_off,
+        extern_labels_no=extern_labels_no,
+    )
     return fat_mvm_prep_execute(params, execution)
 
 

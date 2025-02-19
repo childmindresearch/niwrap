@@ -11,6 +11,8 @@ TKSURFERFV_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TksurferfvParameters = typing.TypedDict('TksurferfvParameters', {
     "__STYX_TYPE__": typing.Literal["tksurferfv"],
     "subject": str,
@@ -238,7 +240,19 @@ def tksurferfv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKSURFERFV_METADATA)
-    params = tksurferfv_params(subject=subject, hemi=hemi, surface=surface, tksurfer=tksurfer, all_surfaces=all_surfaces, vgl=vgl, no_vgl=no_vgl, no_outline=no_outline, neuro_orientation=neuro_orientation, rotate_around_cursor=rotate_around_cursor, heat_scale=heat_scale)
+    params = tksurferfv_params(
+        subject=subject,
+        hemi=hemi,
+        surface=surface,
+        tksurfer=tksurfer,
+        all_surfaces=all_surfaces,
+        vgl=vgl,
+        no_vgl=no_vgl,
+        no_outline=no_outline,
+        neuro_orientation=neuro_orientation,
+        rotate_around_cursor=rotate_around_cursor,
+        heat_scale=heat_scale,
+    )
     return tksurferfv_execute(params, execution)
 
 

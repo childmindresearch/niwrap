@@ -11,6 +11,8 @@ DICOM_HDR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 DicomHdrParameters = typing.TypedDict('DicomHdrParameters', {
     "__STYX_TYPE__": typing.Literal["dicom_hdr"],
     "files": list[InputPathType],
@@ -237,7 +239,18 @@ def dicom_hdr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DICOM_HDR_METADATA)
-    params = dicom_hdr_params(files=files, hex_=hex_, noname=noname, sexinfo=sexinfo, mulfram=mulfram, v_dump=v_dump, no_length=no_length, slice_times=slice_times, slice_times_verb=slice_times_verb, siemens_csa_data=siemens_csa_data)
+    params = dicom_hdr_params(
+        files=files,
+        hex_=hex_,
+        noname=noname,
+        sexinfo=sexinfo,
+        mulfram=mulfram,
+        v_dump=v_dump,
+        no_length=no_length,
+        slice_times=slice_times,
+        slice_times_verb=slice_times_verb,
+        siemens_csa_data=siemens_csa_data,
+    )
     return dicom_hdr_execute(params, execution)
 
 

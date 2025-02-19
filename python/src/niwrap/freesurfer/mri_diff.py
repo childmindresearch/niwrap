@@ -11,6 +11,8 @@ MRI_DIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriDiffParameters = typing.TypedDict('MriDiffParameters', {
     "__STYX_TYPE__": typing.Literal["mri_diff"],
     "vol1file": InputPathType,
@@ -452,7 +454,39 @@ def mri_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DIFF_METADATA)
-    params = mri_diff_params(vol1file=vol1file, vol2file=vol2file, resolution_check=resolution_check, acquisition_param_check=acquisition_param_check, geometry_check=geometry_check, precision_check=precision_check, pixel_check=pixel_check, orientation_check=orientation_check, file_type_diff_check=file_type_diff_check, no_exit_on_diff=no_exit_on_diff, quality_assurance=quality_assurance, pixel_only=pixel_only, abs_difference=abs_difference, no_abs_difference=no_abs_difference, difference_abs=difference_abs, percentage_difference=percentage_difference, rss_save=rss_save, ssd_print=ssd_print, rms_print=rms_print, count_diff_voxels=count_diff_voxels, pixel_threshold=pixel_threshold, count_thresh_voxels=count_thresh_voxels, log_file=log_file, difference_image=difference_image, suspicious_diff_volume=suspicious_diff_volume, segmentation_diff=segmentation_diff, merge_edits=merge_edits, average_difference=average_difference, debug_mode=debug_mode, verbose_mode=verbose_mode, check_options=check_options)
+    params = mri_diff_params(
+        vol1file=vol1file,
+        vol2file=vol2file,
+        resolution_check=resolution_check,
+        acquisition_param_check=acquisition_param_check,
+        geometry_check=geometry_check,
+        precision_check=precision_check,
+        pixel_check=pixel_check,
+        orientation_check=orientation_check,
+        file_type_diff_check=file_type_diff_check,
+        no_exit_on_diff=no_exit_on_diff,
+        quality_assurance=quality_assurance,
+        pixel_only=pixel_only,
+        abs_difference=abs_difference,
+        no_abs_difference=no_abs_difference,
+        difference_abs=difference_abs,
+        percentage_difference=percentage_difference,
+        rss_save=rss_save,
+        ssd_print=ssd_print,
+        rms_print=rms_print,
+        count_diff_voxels=count_diff_voxels,
+        pixel_threshold=pixel_threshold,
+        count_thresh_voxels=count_thresh_voxels,
+        log_file=log_file,
+        difference_image=difference_image,
+        suspicious_diff_volume=suspicious_diff_volume,
+        segmentation_diff=segmentation_diff,
+        merge_edits=merge_edits,
+        average_difference=average_difference,
+        debug_mode=debug_mode,
+        verbose_mode=verbose_mode,
+        check_options=check_options,
+    )
     return mri_diff_execute(params, execution)
 
 

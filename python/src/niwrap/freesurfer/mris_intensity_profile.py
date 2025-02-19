@@ -11,6 +11,8 @@ MRIS_INTENSITY_PROFILE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisIntensityProfileParameters = typing.TypedDict('MrisIntensityProfileParameters', {
     "__STYX_TYPE__": typing.Literal["mris_intensity_profile"],
     "subject_name": str,
@@ -303,7 +305,22 @@ def mris_intensity_profile(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INTENSITY_PROFILE_METADATA)
-    params = mris_intensity_profile_params(subject_name=subject_name, hemi=hemi, volume=volume, output_file=output_file, write_surf=write_surf, sdir=sdir, white=white, pial=pial, normalize_flag=normalize_flag, mean=mean, xform=xform, src=src, dst=dst, invert_flag=invert_flag)
+    params = mris_intensity_profile_params(
+        subject_name=subject_name,
+        hemi=hemi,
+        volume=volume,
+        output_file=output_file,
+        write_surf=write_surf,
+        sdir=sdir,
+        white=white,
+        pial=pial,
+        normalize_flag=normalize_flag,
+        mean=mean,
+        xform=xform,
+        src=src,
+        dst=dst,
+        invert_flag=invert_flag,
+    )
     return mris_intensity_profile_execute(params, execution)
 
 

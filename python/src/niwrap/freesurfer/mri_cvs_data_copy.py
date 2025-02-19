@@ -11,6 +11,8 @@ MRI_CVS_DATA_COPY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCvsDataCopyParameters = typing.TypedDict('MriCvsDataCopyParameters', {
     "__STYX_TYPE__": typing.Literal["mri_cvs_data_copy"],
     "subjid": str,
@@ -198,7 +200,13 @@ def mri_cvs_data_copy(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CVS_DATA_COPY_METADATA)
-    params = mri_cvs_data_copy_params(subjid=subjid, olddir=olddir, newdir=newdir, version=version, help_=help_)
+    params = mri_cvs_data_copy_params(
+        subjid=subjid,
+        olddir=olddir,
+        newdir=newdir,
+        version=version,
+        help_=help_,
+    )
     return mri_cvs_data_copy_execute(params, execution)
 
 

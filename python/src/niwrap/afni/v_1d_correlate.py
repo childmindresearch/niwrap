@@ -11,6 +11,8 @@ V_1D_CORRELATE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dCorrelateParameters = typing.TypedDict('V1dCorrelateParameters', {
     "__STYX_TYPE__": typing.Literal["1dCorrelate"],
     "ktaub": bool,
@@ -197,7 +199,13 @@ def v_1d_correlate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_CORRELATE_METADATA)
-    params = v_1d_correlate_params(ktaub=ktaub, nboot=nboot, alpha=alpha, blk=blk, input_files=input_files)
+    params = v_1d_correlate_params(
+        ktaub=ktaub,
+        nboot=nboot,
+        alpha=alpha,
+        blk=blk,
+        input_files=input_files,
+    )
     return v_1d_correlate_execute(params, execution)
 
 

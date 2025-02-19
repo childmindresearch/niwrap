@@ -11,6 +11,8 @@ UNPACKMINCDIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 UnpackmincdirParameters = typing.TypedDict('UnpackmincdirParameters', {
     "__STYX_TYPE__": typing.Literal["unpackmincdir"],
     "source_directory": str,
@@ -236,7 +238,16 @@ def unpackmincdir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNPACKMINCDIR_METADATA)
-    params = unpackmincdir_params(source_directory=source_directory, target_directory=target_directory, scan_sequence_info=scan_sequence_info, functional_sequence=functional_sequence, functional_subdirectory=functional_subdirectory, minc_only=minc_only, no_copy=no_copy, umask=umask)
+    params = unpackmincdir_params(
+        source_directory=source_directory,
+        target_directory=target_directory,
+        scan_sequence_info=scan_sequence_info,
+        functional_sequence=functional_sequence,
+        functional_subdirectory=functional_subdirectory,
+        minc_only=minc_only,
+        no_copy=no_copy,
+        umask=umask,
+    )
     return unpackmincdir_execute(params, execution)
 
 

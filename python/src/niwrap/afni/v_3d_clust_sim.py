@@ -11,6 +11,8 @@ V_3D_CLUST_SIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dClustSimParameters = typing.TypedDict('V3dClustSimParameters', {
     "__STYX_TYPE__": typing.Literal["3dClustSim"],
 })
@@ -180,7 +182,8 @@ def v_3d_clust_sim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CLUST_SIM_METADATA)
-    params = v_3d_clust_sim_params()
+    params = v_3d_clust_sim_params(
+    )
     return v_3d_clust_sim_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CONVERTWARP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ConvertwarpParameters = typing.TypedDict('ConvertwarpParameters', {
     "__STYX_TYPE__": typing.Literal["convertwarp"],
     "abswarp": bool,
@@ -350,7 +352,24 @@ def convertwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERTWARP_METADATA)
-    params = convertwarp_params(abswarp=abswarp, cons_jacobian=cons_jacobian, jacobian_max=jacobian_max, jacobian_min=jacobian_min, midmat=midmat, out_abswarp=out_abswarp, out_relwarp=out_relwarp, output_type=output_type, postmat=postmat, premat=premat, reference=reference, relwarp=relwarp, shift_direction=shift_direction, shift_in_file=shift_in_file, warp1=warp1, warp2=warp2)
+    params = convertwarp_params(
+        abswarp=abswarp,
+        cons_jacobian=cons_jacobian,
+        jacobian_max=jacobian_max,
+        jacobian_min=jacobian_min,
+        midmat=midmat,
+        out_abswarp=out_abswarp,
+        out_relwarp=out_relwarp,
+        output_type=output_type,
+        postmat=postmat,
+        premat=premat,
+        reference=reference,
+        relwarp=relwarp,
+        shift_direction=shift_direction,
+        shift_in_file=shift_in_file,
+        warp1=warp1,
+        warp2=warp2,
+    )
     return convertwarp_execute(params, execution)
 
 

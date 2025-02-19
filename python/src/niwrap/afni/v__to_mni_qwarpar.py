@@ -11,6 +11,8 @@ V__TO_MNI_QWARPAR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VToMniQwarparParameters = typing.TypedDict('VToMniQwarparParameters', {
     "__STYX_TYPE__": typing.Literal["@toMNI_Qwarpar"],
 })
@@ -154,7 +156,8 @@ def v__to_mni_qwarpar(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__TO_MNI_QWARPAR_METADATA)
-    params = v__to_mni_qwarpar_params()
+    params = v__to_mni_qwarpar_params(
+    )
     return v__to_mni_qwarpar_execute(params, execution)
 
 

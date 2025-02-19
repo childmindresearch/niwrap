@@ -11,6 +11,8 @@ MRIS_CALC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCalcParameters = typing.TypedDict('MrisCalcParameters', {
     "__STYX_TYPE__": typing.Literal["mris_calc"],
     "input_file1": InputPathType,
@@ -221,7 +223,14 @@ def mris_calc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CALC_METADATA)
-    params = mris_calc_params(input_file1=input_file1, action=action, input_file2_or_float=input_file2_or_float, output_file=output_file, label_file=label_file, verbosity=verbosity)
+    params = mris_calc_params(
+        input_file1=input_file1,
+        action=action,
+        input_file2_or_float=input_file2_or_float,
+        output_file=output_file,
+        label_file=label_file,
+        verbosity=verbosity,
+    )
     return mris_calc_execute(params, execution)
 
 

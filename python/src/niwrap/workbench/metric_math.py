@@ -11,6 +11,8 @@ METRIC_MATH_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricMathVarParameters = typing.TypedDict('MetricMathVarParameters', {
     "__STYX_TYPE__": typing.Literal["var"],
     "name": str,
@@ -18,6 +20,8 @@ MetricMathVarParameters = typing.TypedDict('MetricMathVarParameters', {
     "opt_column_column": typing.NotRequired[str | None],
     "opt_repeat": bool,
 })
+
+
 MetricMathParameters = typing.TypedDict('MetricMathParameters', {
     "__STYX_TYPE__": typing.Literal["metric-math"],
     "expression": str,
@@ -393,7 +397,12 @@ def metric_math(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_MATH_METADATA)
-    params = metric_math_params(expression=expression, metric_out=metric_out, opt_fixnan_replace=opt_fixnan_replace, var=var)
+    params = metric_math_params(
+        expression=expression,
+        metric_out=metric_out,
+        opt_fixnan_replace=opt_fixnan_replace,
+        var=var,
+    )
     return metric_math_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ R_PKGS_INSTALL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RPkgsInstallParameters = typing.TypedDict('RPkgsInstallParameters', {
     "__STYX_TYPE__": typing.Literal["rPkgsInstall"],
     "packages": str,
@@ -206,7 +208,13 @@ def r_pkgs_install(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(R_PKGS_INSTALL_METADATA)
-    params = r_pkgs_install_params(packages=packages, download_site=download_site, check=check, update_=update_, remove=remove)
+    params = r_pkgs_install_params(
+        packages=packages,
+        download_site=download_site,
+        check=check,
+        update_=update_,
+        remove=remove,
+    )
     return r_pkgs_install_execute(params, execution)
 
 

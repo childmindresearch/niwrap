@@ -11,6 +11,8 @@ MRI_RIBBON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRibbonParameters = typing.TypedDict('MriRibbonParameters', {
     "__STYX_TYPE__": typing.Literal["mri_ribbon"],
     "label_file": typing.NotRequired[InputPathType | None],
@@ -192,7 +194,13 @@ def mri_ribbon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RIBBON_METADATA)
-    params = mri_ribbon_params(label_file=label_file, inner_surface=inner_surface, outer_surface=outer_surface, input_volume=input_volume, output_volume=output_volume)
+    params = mri_ribbon_params(
+        label_file=label_file,
+        inner_surface=inner_surface,
+        outer_surface=outer_surface,
+        input_volume=input_volume,
+        output_volume=output_volume,
+    )
     return mri_ribbon_execute(params, execution)
 
 

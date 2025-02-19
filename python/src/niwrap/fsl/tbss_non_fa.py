@@ -11,6 +11,8 @@ TBSS_NON_FA_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TbssNonFaParameters = typing.TypedDict('TbssNonFaParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_non_FA"],
     "concat_auto": bool,
@@ -204,7 +206,13 @@ def tbss_non_fa(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_NON_FA_METADATA)
-    params = tbss_non_fa_params(concat_auto=concat_auto, output_file=output_file, input_files=input_files, concat_tr=concat_tr, volume_number=volume_number)
+    params = tbss_non_fa_params(
+        concat_auto=concat_auto,
+        output_file=output_file,
+        input_files=input_files,
+        concat_tr=concat_tr,
+        volume_number=volume_number,
+    )
     return tbss_non_fa_execute(params, execution)
 
 

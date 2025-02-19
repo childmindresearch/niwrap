@@ -11,11 +11,15 @@ MRCAT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrcatConfigParameters = typing.TypedDict('MrcatConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrcatParameters = typing.TypedDict('MrcatParameters', {
     "__STYX_TYPE__": typing.Literal["mrcat"],
     "axis": typing.NotRequired[int | None],
@@ -349,7 +353,21 @@ def mrcat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRCAT_METADATA)
-    params = mrcat_params(axis=axis, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image1=image1, image2=image2, output=output)
+    params = mrcat_params(
+        axis=axis,
+        datatype=datatype,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        image1=image1,
+        image2=image2,
+        output=output,
+    )
     return mrcat_execute(params, execution)
 
 

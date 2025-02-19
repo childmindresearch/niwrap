@@ -11,6 +11,8 @@ FSL_LABEL2VOXEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FslLabel2voxelParameters = typing.TypedDict('FslLabel2voxelParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_label2voxel"],
     "label_value": float,
@@ -180,7 +182,12 @@ def fsl_label2voxel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_LABEL2VOXEL_METADATA)
-    params = fsl_label2voxel_params(label_value=label_value, labeled_volume=labeled_volume, src_volume=src_volume, output_filename=output_filename)
+    params = fsl_label2voxel_params(
+        label_value=label_value,
+        labeled_volume=labeled_volume,
+        src_volume=src_volume,
+        output_filename=output_filename,
+    )
     return fsl_label2voxel_execute(params, execution)
 
 

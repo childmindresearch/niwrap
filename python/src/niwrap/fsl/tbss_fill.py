@@ -11,6 +11,8 @@ TBSS_FILL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 TbssFillParameters = typing.TypedDict('TbssFillParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_fill"],
     "stats_image": InputPathType,
@@ -188,7 +190,13 @@ def tbss_fill(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_FILL_METADATA)
-    params = tbss_fill_params(stats_image=stats_image, threshold=threshold, mean_fa=mean_fa, output=output, include_negative_flag=include_negative_flag)
+    params = tbss_fill_params(
+        stats_image=stats_image,
+        threshold=threshold,
+        mean_fa=mean_fa,
+        output=output,
+        include_negative_flag=include_negative_flag,
+    )
     return tbss_fill_execute(params, execution)
 
 

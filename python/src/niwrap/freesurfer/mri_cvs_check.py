@@ -11,6 +11,8 @@ MRI_CVS_CHECK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCvsCheckParameters = typing.TypedDict('MriCvsCheckParameters', {
     "__STYX_TYPE__": typing.Literal["mri_cvs_check"],
     "mov_subjid": str,
@@ -204,7 +206,13 @@ def mri_cvs_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CVS_CHECK_METADATA)
-    params = mri_cvs_check_params(mov_subjid=mov_subjid, template_subjid=template_subjid, hemi=hemi, help_=help_, version=version)
+    params = mri_cvs_check_params(
+        mov_subjid=mov_subjid,
+        template_subjid=template_subjid,
+        hemi=hemi,
+        help_=help_,
+        version=version,
+    )
     return mri_cvs_check_execute(params, execution)
 
 

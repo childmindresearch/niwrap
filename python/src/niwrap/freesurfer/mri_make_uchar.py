@@ -11,6 +11,8 @@ MRI_MAKE_UCHAR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMakeUcharParameters = typing.TypedDict('MriMakeUcharParameters', {
     "__STYX_TYPE__": typing.Literal["mri_make_uchar"],
     "input_volume": InputPathType,
@@ -237,7 +239,16 @@ def mri_make_uchar(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MAKE_UCHAR_METADATA)
-    params = mri_make_uchar_params(input_volume=input_volume, talairach_xform=talairach_xform, output_volume=output_volume, first_percentile=first_percentile, wm_percentile=wm_percentile, max_radius=max_radius, cumulative_histo=cumulative_histo, vradvol=vradvol)
+    params = mri_make_uchar_params(
+        input_volume=input_volume,
+        talairach_xform=talairach_xform,
+        output_volume=output_volume,
+        first_percentile=first_percentile,
+        wm_percentile=wm_percentile,
+        max_radius=max_radius,
+        cumulative_histo=cumulative_histo,
+        vradvol=vradvol,
+    )
     return mri_make_uchar_execute(params, execution)
 
 

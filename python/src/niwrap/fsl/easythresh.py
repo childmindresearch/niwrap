@@ -11,6 +11,8 @@ EASYTHRESH_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 EasythreshParameters = typing.TypedDict('EasythreshParameters', {
     "__STYX_TYPE__": typing.Literal["easythresh"],
     "raw_zstat_input": InputPathType,
@@ -202,7 +204,15 @@ def easythresh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EASYTHRESH_METADATA)
-    params = easythresh_params(raw_zstat_input=raw_zstat_input, brain_mask_input=brain_mask_input, cluster_z_thresh_input=cluster_z_thresh_input, cluster_prob_thresh_input=cluster_prob_thresh_input, background_image_input=background_image_input, output_root=output_root, mm_flag=mm_flag)
+    params = easythresh_params(
+        raw_zstat_input=raw_zstat_input,
+        brain_mask_input=brain_mask_input,
+        cluster_z_thresh_input=cluster_z_thresh_input,
+        cluster_prob_thresh_input=cluster_prob_thresh_input,
+        background_image_input=background_image_input,
+        output_root=output_root,
+        mm_flag=mm_flag,
+    )
     return easythresh_execute(params, execution)
 
 

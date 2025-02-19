@@ -11,6 +11,8 @@ MRIS_MULTIMODAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMultimodalParameters = typing.TypedDict('MrisMultimodalParameters', {
     "__STYX_TYPE__": typing.Literal["mris_multimodal"],
     "input_surface": InputPathType,
@@ -253,7 +255,18 @@ def mris_multimodal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MULTIMODAL_METADATA)
-    params = mris_multimodal_params(input_surface=input_surface, target_surface=target_surface, output_surface=output_surface, fill_holes=fill_holes, curvature=curvature, thickness=thickness, annotation_output=annotation_output, overlay_output=overlay_output, csv_output=csv_output, vtk_output=vtk_output)
+    params = mris_multimodal_params(
+        input_surface=input_surface,
+        target_surface=target_surface,
+        output_surface=output_surface,
+        fill_holes=fill_holes,
+        curvature=curvature,
+        thickness=thickness,
+        annotation_output=annotation_output,
+        overlay_output=overlay_output,
+        csv_output=csv_output,
+        vtk_output=vtk_output,
+    )
     return mris_multimodal_execute(params, execution)
 
 

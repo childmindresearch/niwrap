@@ -11,6 +11,8 @@ TALSEGPROB_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TalsegprobParameters = typing.TypedDict('TalsegprobParameters', {
     "__STYX_TYPE__": typing.Literal["talsegprob"],
     "subjects_list": typing.NotRequired[list[str] | None],
@@ -342,7 +344,25 @@ def talsegprob(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALSEGPROB_METADATA)
-    params = talsegprob_params(subjects_list=subjects_list, fsgd_file=fsgd_file, segmentation_number=segmentation_number, second_segmentation_number=second_segmentation_number, hippo_flag=hippo_flag, left_hippo_flag=left_hippo_flag, right_hippo_flag=right_hippo_flag, segmentation_file=segmentation_file, probability_output=probability_output, vote_output=vote_output, concat_output=concat_output, xform_file=xform_file, subjects_dir=subjects_dir, tmpdir=tmpdir, nocleanup_flag=nocleanup_flag, version_flag=version_flag, echo_flag=echo_flag)
+    params = talsegprob_params(
+        subjects_list=subjects_list,
+        fsgd_file=fsgd_file,
+        segmentation_number=segmentation_number,
+        second_segmentation_number=second_segmentation_number,
+        hippo_flag=hippo_flag,
+        left_hippo_flag=left_hippo_flag,
+        right_hippo_flag=right_hippo_flag,
+        segmentation_file=segmentation_file,
+        probability_output=probability_output,
+        vote_output=vote_output,
+        concat_output=concat_output,
+        xform_file=xform_file,
+        subjects_dir=subjects_dir,
+        tmpdir=tmpdir,
+        nocleanup_flag=nocleanup_flag,
+        version_flag=version_flag,
+        echo_flag=echo_flag,
+    )
     return talsegprob_execute(params, execution)
 
 

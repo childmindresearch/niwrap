@@ -11,6 +11,8 @@ STAT_NORMALIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 StatNormalizeParameters = typing.TypedDict('StatNormalizeParameters', {
     "__STYX_TYPE__": typing.Literal["stat_normalize"],
     "input_sv_prefix": str,
@@ -236,7 +238,16 @@ def stat_normalize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(STAT_NORMALIZE_METADATA)
-    params = stat_normalize_params(input_sv_prefix=input_sv_prefix, output_sv_prefix=output_sv_prefix, resolution=resolution, field_of_view=field_of_view, sph_avg=sph_avg, xfm_file=xfm_file, fix_xfm_flag=fix_xfm_flag, float2int_option=float2int_option)
+    params = stat_normalize_params(
+        input_sv_prefix=input_sv_prefix,
+        output_sv_prefix=output_sv_prefix,
+        resolution=resolution,
+        field_of_view=field_of_view,
+        sph_avg=sph_avg,
+        xfm_file=xfm_file,
+        fix_xfm_flag=fix_xfm_flag,
+        float2int_option=float2int_option,
+    )
     return stat_normalize_execute(params, execution)
 
 

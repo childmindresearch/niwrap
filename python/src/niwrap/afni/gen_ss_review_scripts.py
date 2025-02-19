@@ -11,6 +11,8 @@ GEN_SS_REVIEW_SCRIPTS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 GenSsReviewScriptsParameters = typing.TypedDict('GenSsReviewScriptsParameters', {
     "__STYX_TYPE__": typing.Literal["gen_ss_review_scripts"],
     "subject_id": typing.NotRequired[str | None],
@@ -386,7 +388,27 @@ def gen_ss_review_scripts(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_SS_REVIEW_SCRIPTS_METADATA)
-    params = gen_ss_review_scripts_params(subject_id=subject_id, rm_trs=rm_trs, num_stim=num_stim, mb_level=mb_level, slice_pattern=slice_pattern, motion_dset=motion_dset, outlier_dset=outlier_dset, enorm_dset=enorm_dset, mot_limit=mot_limit, out_limit=out_limit, xmat_regress=xmat_regress, xmat_uncensored=xmat_uncensored, stats_dset=stats_dset, final_anat=final_anat, final_view=final_view, prefix=prefix, verbosity=verbosity, uvars_json=uvars_json, init_uvars_json=init_uvars_json)
+    params = gen_ss_review_scripts_params(
+        subject_id=subject_id,
+        rm_trs=rm_trs,
+        num_stim=num_stim,
+        mb_level=mb_level,
+        slice_pattern=slice_pattern,
+        motion_dset=motion_dset,
+        outlier_dset=outlier_dset,
+        enorm_dset=enorm_dset,
+        mot_limit=mot_limit,
+        out_limit=out_limit,
+        xmat_regress=xmat_regress,
+        xmat_uncensored=xmat_uncensored,
+        stats_dset=stats_dset,
+        final_anat=final_anat,
+        final_view=final_view,
+        prefix=prefix,
+        verbosity=verbosity,
+        uvars_json=uvars_json,
+        init_uvars_json=init_uvars_json,
+    )
     return gen_ss_review_scripts_execute(params, execution)
 
 

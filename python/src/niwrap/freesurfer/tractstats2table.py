@@ -11,6 +11,8 @@ TRACTSTATS2TABLE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Tractstats2tableParameters = typing.TypedDict('Tractstats2tableParameters', {
     "__STYX_TYPE__": typing.Literal["tractstats2table"],
     "inputs": typing.NotRequired[list[str] | None],
@@ -252,7 +254,17 @@ def tractstats2table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRACTSTATS2TABLE_METADATA)
-    params = tractstats2table_params(inputs=inputs, load_pathstats_from_file=load_pathstats_from_file, overall=overall, byvoxel=byvoxel, byvoxel_measure=byvoxel_measure, tablefile=tablefile, delimiter=delimiter, transpose=transpose, debug=debug)
+    params = tractstats2table_params(
+        inputs=inputs,
+        load_pathstats_from_file=load_pathstats_from_file,
+        overall=overall,
+        byvoxel=byvoxel,
+        byvoxel_measure=byvoxel_measure,
+        tablefile=tablefile,
+        delimiter=delimiter,
+        transpose=transpose,
+        debug=debug,
+    )
     return tractstats2table_execute(params, execution)
 
 

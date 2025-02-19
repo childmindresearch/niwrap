@@ -11,6 +11,8 @@ MRI_CC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCcParameters = typing.TypedDict('MriCcParameters', {
     "__STYX_TYPE__": typing.Literal["mri_cc"],
     "subject_name": str,
@@ -285,7 +287,20 @@ def mri_cc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CC_METADATA)
-    params = mri_cc_params(subject_name=subject_name, output_file=output_file, aseg_file=aseg_file, norm_file=norm_file, sdir=sdir, rotation_lta=rotation_lta, force_flag=force_flag, include_fornix=include_fornix, compartments=compartments, thickness=thickness, skip_voxels=skip_voxels, max_rotation=max_rotation)
+    params = mri_cc_params(
+        subject_name=subject_name,
+        output_file=output_file,
+        aseg_file=aseg_file,
+        norm_file=norm_file,
+        sdir=sdir,
+        rotation_lta=rotation_lta,
+        force_flag=force_flag,
+        include_fornix=include_fornix,
+        compartments=compartments,
+        thickness=thickness,
+        skip_voxels=skip_voxels,
+        max_rotation=max_rotation,
+    )
     return mri_cc_execute(params, execution)
 
 

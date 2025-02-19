@@ -11,16 +11,22 @@ SS3T_CSD_BETA1_METADATA = Metadata(
     package="mrtrix3tissue",
     container_image_tag="brainlife/3tissue:5.2.8",
 )
+
+
 Ss3tCsdBeta1ConfigParameters = typing.TypedDict('Ss3tCsdBeta1ConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Ss3tCsdBeta1ResponseOdfParameters = typing.TypedDict('Ss3tCsdBeta1ResponseOdfParameters', {
     "__STYX_TYPE__": typing.Literal["response_odf"],
     "response": InputPathType,
     "odf": str,
 })
+
+
 Ss3tCsdBeta1Parameters = typing.TypedDict('Ss3tCsdBeta1Parameters', {
     "__STYX_TYPE__": typing.Literal["ss3t_csd_beta1"],
     "mask": typing.NotRequired[InputPathType | None],
@@ -420,7 +426,21 @@ def ss3t_csd_beta1(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SS3T_CSD_BETA1_METADATA)
-    params = ss3t_csd_beta1_params(mask=mask, bzero_pct=bzero_pct, niter=niter, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, dwi=dwi, response_odf=response_odf)
+    params = ss3t_csd_beta1_params(
+        mask=mask,
+        bzero_pct=bzero_pct,
+        niter=niter,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        dwi=dwi,
+        response_odf=response_odf,
+    )
     return ss3t_csd_beta1_execute(params, execution)
 
 

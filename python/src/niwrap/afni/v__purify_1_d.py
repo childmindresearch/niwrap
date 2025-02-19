@@ -11,6 +11,8 @@ V__PURIFY_1_D_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VPurify1DParameters = typing.TypedDict('VPurify1DParameters', {
     "__STYX_TYPE__": typing.Literal["@Purify_1D"],
     "sub_brick": typing.NotRequired[str | None],
@@ -183,7 +185,11 @@ def v__purify_1_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__PURIFY_1_D_METADATA)
-    params = v__purify_1_d_params(sub_brick=sub_brick, suffix=suffix, input_files=input_files)
+    params = v__purify_1_d_params(
+        sub_brick=sub_brick,
+        suffix=suffix,
+        input_files=input_files,
+    )
     return v__purify_1_d_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ VOLUME_ERODE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeErodeParameters = typing.TypedDict('VolumeErodeParameters', {
     "__STYX_TYPE__": typing.Literal["volume-erode"],
     "volume": InputPathType,
@@ -210,7 +212,13 @@ def volume_erode(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_ERODE_METADATA)
-    params = volume_erode_params(volume=volume, distance=distance, volume_out=volume_out, opt_roi_roi_volume=opt_roi_roi_volume, opt_subvolume_subvol=opt_subvolume_subvol)
+    params = volume_erode_params(
+        volume=volume,
+        distance=distance,
+        volume_out=volume_out,
+        opt_roi_roi_volume=opt_roi_roi_volume,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+    )
     return volume_erode_execute(params, execution)
 
 

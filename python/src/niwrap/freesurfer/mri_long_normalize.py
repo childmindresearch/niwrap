@@ -11,6 +11,8 @@ MRI_LONG_NORMALIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLongNormalizeParameters = typing.TypedDict('MriLongNormalizeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_long_normalize"],
     "input_vol": InputPathType,
@@ -263,7 +265,19 @@ def mri_long_normalize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LONG_NORMALIZE_METADATA)
-    params = mri_long_normalize_params(input_vol=input_vol, base_tp_file=base_tp_file, output_vol=output_vol, normalization_iters=normalization_iters, disable_1d=disable_1d, smooth_bias=smooth_bias, aseg=aseg, debug_gvx=debug_gvx, debug_gx=debug_gx, reading=reading, print_usage=print_usage)
+    params = mri_long_normalize_params(
+        input_vol=input_vol,
+        base_tp_file=base_tp_file,
+        output_vol=output_vol,
+        normalization_iters=normalization_iters,
+        disable_1d=disable_1d,
+        smooth_bias=smooth_bias,
+        aseg=aseg,
+        debug_gvx=debug_gvx,
+        debug_gx=debug_gx,
+        reading=reading,
+        print_usage=print_usage,
+    )
     return mri_long_normalize_execute(params, execution)
 
 

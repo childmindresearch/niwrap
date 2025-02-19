@@ -11,6 +11,8 @@ FSLMEANTS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslmeantsParameters = typing.TypedDict('FslmeantsParameters', {
     "__STYX_TYPE__": typing.Literal["fslmeants"],
     "input_image": InputPathType,
@@ -290,7 +292,21 @@ def fslmeants(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMEANTS_METADATA)
-    params = fslmeants_params(input_image=input_image, output=output, mask=mask, coordinates=coordinates, usemm_flag=usemm_flag, showall_flag=showall_flag, eigenv_flag=eigenv_flag, eigenvariates_order=eigenvariates_order, no_bin_flag=no_bin_flag, label_image=label_image, transpose_flag=transpose_flag, weighted_mean_flag=weighted_mean_flag, verbose_flag=verbose_flag)
+    params = fslmeants_params(
+        input_image=input_image,
+        output=output,
+        mask=mask,
+        coordinates=coordinates,
+        usemm_flag=usemm_flag,
+        showall_flag=showall_flag,
+        eigenv_flag=eigenv_flag,
+        eigenvariates_order=eigenvariates_order,
+        no_bin_flag=no_bin_flag,
+        label_image=label_image,
+        transpose_flag=transpose_flag,
+        weighted_mean_flag=weighted_mean_flag,
+        verbose_flag=verbose_flag,
+    )
     return fslmeants_execute(params, execution)
 
 

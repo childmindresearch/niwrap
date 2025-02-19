@@ -11,27 +11,37 @@ CIFTI_CORRELATION_GRADIENT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCorrelationGradientLeftSurfaceParameters = typing.TypedDict('CiftiCorrelationGradientLeftSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["left_surface"],
     "surface": InputPathType,
     "opt_left_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCorrelationGradientRightSurfaceParameters = typing.TypedDict('CiftiCorrelationGradientRightSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["right_surface"],
     "surface": InputPathType,
     "opt_right_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCorrelationGradientCerebellumSurfaceParameters = typing.TypedDict('CiftiCorrelationGradientCerebellumSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_surface"],
     "surface": InputPathType,
     "opt_cerebellum_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiCorrelationGradientDoubleCorrelationParameters = typing.TypedDict('CiftiCorrelationGradientDoubleCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["double_correlation"],
     "opt_fisher_z_first": bool,
     "opt_no_demean_first": bool,
     "opt_covariance_first": bool,
 })
+
+
 CiftiCorrelationGradientParameters = typing.TypedDict('CiftiCorrelationGradientParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-correlation-gradient"],
     "cifti": InputPathType,
@@ -545,7 +555,23 @@ def cifti_correlation_gradient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CORRELATION_GRADIENT_METADATA)
-    params = cifti_correlation_gradient_params(cifti=cifti, cifti_out=cifti_out, left_surface=left_surface, right_surface=right_surface, cerebellum_surface=cerebellum_surface, opt_surface_presmooth_surface_kernel=opt_surface_presmooth_surface_kernel, opt_volume_presmooth_volume_kernel=opt_volume_presmooth_volume_kernel, opt_presmooth_fwhm=opt_presmooth_fwhm, opt_undo_fisher_z=opt_undo_fisher_z, opt_fisher_z=opt_fisher_z, opt_surface_exclude_distance=opt_surface_exclude_distance, opt_volume_exclude_distance=opt_volume_exclude_distance, opt_covariance=opt_covariance, opt_mem_limit_limit_gb=opt_mem_limit_limit_gb, double_correlation=double_correlation)
+    params = cifti_correlation_gradient_params(
+        cifti=cifti,
+        cifti_out=cifti_out,
+        left_surface=left_surface,
+        right_surface=right_surface,
+        cerebellum_surface=cerebellum_surface,
+        opt_surface_presmooth_surface_kernel=opt_surface_presmooth_surface_kernel,
+        opt_volume_presmooth_volume_kernel=opt_volume_presmooth_volume_kernel,
+        opt_presmooth_fwhm=opt_presmooth_fwhm,
+        opt_undo_fisher_z=opt_undo_fisher_z,
+        opt_fisher_z=opt_fisher_z,
+        opt_surface_exclude_distance=opt_surface_exclude_distance,
+        opt_volume_exclude_distance=opt_volume_exclude_distance,
+        opt_covariance=opt_covariance,
+        opt_mem_limit_limit_gb=opt_mem_limit_limit_gb,
+        double_correlation=double_correlation,
+    )
     return cifti_correlation_gradient_execute(params, execution)
 
 

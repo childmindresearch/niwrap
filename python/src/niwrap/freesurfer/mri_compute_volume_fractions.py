@@ -11,6 +11,8 @@ MRI_COMPUTE_VOLUME_FRACTIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriComputeVolumeFractionsParameters = typing.TypedDict('MriComputeVolumeFractionsParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compute_volume_fractions"],
     "output_stem": str,
@@ -441,7 +443,33 @@ def mri_compute_volume_fractions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_VOLUME_FRACTIONS_METADATA)
-    params = mri_compute_volume_fractions_params(output_stem=output_stem, registration_file=registration_file, regheader=regheader, usf=usf, resolution=resolution, resmm=resmm, segmentation_file=segmentation_file, wsurf=wsurf, psurf=psurf, no_aseg=no_aseg, stackfile=stackfile, gmfile=gmfile, no_fill_csf=no_fill_csf, dilation=dilation, out_seg=out_seg, ttseg=ttseg, ttseg_ctab=ttseg_ctab, mgz_format=mgz_format, mgh_format=mgh_format, nii_format=nii_format, nii_gz_format=nii_gz_format, ttype_head=ttype_head, vg_thresh=vg_thresh, debug=debug, checkopts=checkopts)
+    params = mri_compute_volume_fractions_params(
+        output_stem=output_stem,
+        registration_file=registration_file,
+        regheader=regheader,
+        usf=usf,
+        resolution=resolution,
+        resmm=resmm,
+        segmentation_file=segmentation_file,
+        wsurf=wsurf,
+        psurf=psurf,
+        no_aseg=no_aseg,
+        stackfile=stackfile,
+        gmfile=gmfile,
+        no_fill_csf=no_fill_csf,
+        dilation=dilation,
+        out_seg=out_seg,
+        ttseg=ttseg,
+        ttseg_ctab=ttseg_ctab,
+        mgz_format=mgz_format,
+        mgh_format=mgh_format,
+        nii_format=nii_format,
+        nii_gz_format=nii_gz_format,
+        ttype_head=ttype_head,
+        vg_thresh=vg_thresh,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return mri_compute_volume_fractions_execute(params, execution)
 
 

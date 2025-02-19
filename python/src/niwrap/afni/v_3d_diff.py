@@ -11,6 +11,8 @@ V_3D_DIFF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dDiffParameters = typing.TypedDict('V3dDiffParameters', {
     "__STYX_TYPE__": typing.Literal["3dDiff"],
     "dataset_a": InputPathType,
@@ -230,7 +232,16 @@ def v_3d_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DIFF_METADATA)
-    params = v_3d_diff_params(dataset_a=dataset_a, dataset_b=dataset_b, tolerance=tolerance, mask=mask, quiet_mode=quiet_mode, tabular_mode=tabular_mode, brutalist_mode=brutalist_mode, long_report_mode=long_report_mode)
+    params = v_3d_diff_params(
+        dataset_a=dataset_a,
+        dataset_b=dataset_b,
+        tolerance=tolerance,
+        mask=mask,
+        quiet_mode=quiet_mode,
+        tabular_mode=tabular_mode,
+        brutalist_mode=brutalist_mode,
+        long_report_mode=long_report_mode,
+    )
     return v_3d_diff_execute(params, execution)
 
 

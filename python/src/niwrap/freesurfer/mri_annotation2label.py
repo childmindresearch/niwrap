@@ -11,6 +11,8 @@ MRI_ANNOTATION2LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriAnnotation2labelParameters = typing.TypedDict('MriAnnotation2labelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_annotation2label"],
     "subject": str,
@@ -370,7 +372,27 @@ def mri_annotation2label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ANNOTATION2LABEL_METADATA)
-    params = mri_annotation2label_params(subject=subject, hemi=hemi, lobes=lobes, lobes_strict=lobes_strict, lobes_strict_phcg=lobes_strict_phcg, label=label, labelbase=labelbase, outdir=outdir, seg=seg, segbase=segbase, ctab=ctab, border=border, border_annot=border_annot, annotation=annotation, subjects_dir=subjects_dir, surface=surface, stat_=stat_, help_=help_, version=version)
+    params = mri_annotation2label_params(
+        subject=subject,
+        hemi=hemi,
+        lobes=lobes,
+        lobes_strict=lobes_strict,
+        lobes_strict_phcg=lobes_strict_phcg,
+        label=label,
+        labelbase=labelbase,
+        outdir=outdir,
+        seg=seg,
+        segbase=segbase,
+        ctab=ctab,
+        border=border,
+        border_annot=border_annot,
+        annotation=annotation,
+        subjects_dir=subjects_dir,
+        surface=surface,
+        stat_=stat_,
+        help_=help_,
+        version=version,
+    )
     return mri_annotation2label_execute(params, execution)
 
 

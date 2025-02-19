@@ -11,6 +11,8 @@ FSL_SUB_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslSubParameters = typing.TypedDict('FslSubParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_sub"],
     "arch": typing.NotRequired[str | None],
@@ -542,7 +544,42 @@ def fsl_sub(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_SUB_METADATA)
-    params = fsl_sub_params(arch=arch, coprocessor=coprocessor, coprocessor_multi=coprocessor_multi, coprocessor_class=coprocessor_class, coprocessor_class_strict=coprocessor_class_strict, coprocessor_toolkit=coprocessor_toolkit, usescript=usescript, jobhold=jobhold, not_requeueable=not_requeueable, array_hold=array_hold, logdir=logdir, mailoptions=mailoptions, mailto=mailto, novalidation=novalidation, name=name, priority=priority, queue_=queue_, resource_=resource_, delete_job=delete_job, jobram=jobram, parallelenv_threads=parallelenv_threads, array_task=array_task, array_native=array_native, array_limit=array_limit, keep_jobscript=keep_jobscript, project=project, noramsplit=noramsplit, jobtime=jobtime, has_coprocessor=has_coprocessor, has_queues=has_queues, show_config=show_config, verbose=verbose, version=version, fileisimage=fileisimage)
+    params = fsl_sub_params(
+        arch=arch,
+        coprocessor=coprocessor,
+        coprocessor_multi=coprocessor_multi,
+        coprocessor_class=coprocessor_class,
+        coprocessor_class_strict=coprocessor_class_strict,
+        coprocessor_toolkit=coprocessor_toolkit,
+        usescript=usescript,
+        jobhold=jobhold,
+        not_requeueable=not_requeueable,
+        array_hold=array_hold,
+        logdir=logdir,
+        mailoptions=mailoptions,
+        mailto=mailto,
+        novalidation=novalidation,
+        name=name,
+        priority=priority,
+        queue_=queue_,
+        resource_=resource_,
+        delete_job=delete_job,
+        jobram=jobram,
+        parallelenv_threads=parallelenv_threads,
+        array_task=array_task,
+        array_native=array_native,
+        array_limit=array_limit,
+        keep_jobscript=keep_jobscript,
+        project=project,
+        noramsplit=noramsplit,
+        jobtime=jobtime,
+        has_coprocessor=has_coprocessor,
+        has_queues=has_queues,
+        show_config=show_config,
+        verbose=verbose,
+        version=version,
+        fileisimage=fileisimage,
+    )
     return fsl_sub_execute(params, execution)
 
 

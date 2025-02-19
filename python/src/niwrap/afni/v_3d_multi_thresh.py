@@ -11,6 +11,8 @@ V_3D_MULTI_THRESH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMultiThreshParameters = typing.TypedDict('V3dMultiThreshParameters', {
     "__STYX_TYPE__": typing.Literal["3dMultiThresh"],
     "mthresh_file": InputPathType,
@@ -279,7 +281,19 @@ def v_3d_multi_thresh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MULTI_THRESH_METADATA)
-    params = v_3d_multi_thresh_params(mthresh_file=mthresh_file, input_file=input_file, index=index, signed_flag=signed_flag, positive_sign_flag=positive_sign_flag, negative_sign_flag=negative_sign_flag, prefix=prefix, mask_only_flag=mask_only_flag, all_mask=all_mask, no_zero_flag=no_zero_flag, quiet_flag=quiet_flag)
+    params = v_3d_multi_thresh_params(
+        mthresh_file=mthresh_file,
+        input_file=input_file,
+        index=index,
+        signed_flag=signed_flag,
+        positive_sign_flag=positive_sign_flag,
+        negative_sign_flag=negative_sign_flag,
+        prefix=prefix,
+        mask_only_flag=mask_only_flag,
+        all_mask=all_mask,
+        no_zero_flag=no_zero_flag,
+        quiet_flag=quiet_flag,
+    )
     return v_3d_multi_thresh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_ATTRIBUTE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAttributeParameters = typing.TypedDict('V3dAttributeParameters', {
     "__STYX_TYPE__": typing.Literal["3dAttribute"],
     "all": bool,
@@ -224,7 +226,16 @@ def v_3d_attribute(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ATTRIBUTE_METADATA)
-    params = v_3d_attribute_params(all_=all_, name=name, center=center, ssep=ssep, sprep=sprep, quote=quote, aname=aname, dset=dset)
+    params = v_3d_attribute_params(
+        all_=all_,
+        name=name,
+        center=center,
+        ssep=ssep,
+        sprep=sprep,
+        quote=quote,
+        aname=aname,
+        dset=dset,
+    )
     return v_3d_attribute_execute(params, execution)
 
 

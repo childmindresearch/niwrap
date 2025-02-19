@@ -11,6 +11,8 @@ MRI_STOPMASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriStopmaskParameters = typing.TypedDict('MriStopmaskParameters', {
     "__STYX_TYPE__": typing.Literal["mri_stopmask"],
     "output_mask": str,
@@ -278,7 +280,20 @@ def mri_stopmask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_STOPMASK_METADATA)
-    params = mri_stopmask_params(output_mask=output_mask, filled=filled, aseg_presurf=aseg_presurf, lateral_ventricles=lateral_ventricles, wmsa=wmsa, wm_voxels=wm_voxels, brain_final_surfs=brain_final_surfs, no_filled=no_filled, no_lv=no_lv, no_wmsa=no_wmsa, no_wm=no_wm, no_bfs=no_bfs)
+    params = mri_stopmask_params(
+        output_mask=output_mask,
+        filled=filled,
+        aseg_presurf=aseg_presurf,
+        lateral_ventricles=lateral_ventricles,
+        wmsa=wmsa,
+        wm_voxels=wm_voxels,
+        brain_final_surfs=brain_final_surfs,
+        no_filled=no_filled,
+        no_lv=no_lv,
+        no_wmsa=no_wmsa,
+        no_wm=no_wm,
+        no_bfs=no_bfs,
+    )
     return mri_stopmask_execute(params, execution)
 
 

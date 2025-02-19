@@ -11,6 +11,8 @@ CHECK_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 CheckSubjectParameters = typing.TypedDict('CheckSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["check_subject"],
     "subject_dir": str,
@@ -155,7 +157,9 @@ def check_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CHECK_SUBJECT_METADATA)
-    params = check_subject_params(subject_dir=subject_dir)
+    params = check_subject_params(
+        subject_dir=subject_dir,
+    )
     return check_subject_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_VOLMASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisVolmaskParameters = typing.TypedDict('MrisVolmaskParameters', {
     "__STYX_TYPE__": typing.Literal["mris_volmask"],
     "cap_distance": typing.NotRequired[float | None],
@@ -361,7 +363,26 @@ def mris_volmask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_VOLMASK_METADATA)
-    params = mris_volmask_params(cap_distance=cap_distance, label_background=label_background, label_left_white=label_left_white, label_left_ribbon=label_left_ribbon, label_right_white=label_right_white, label_right_ribbon=label_right_ribbon, surf_white=surf_white, surf_pial=surf_pial, aseg_name=aseg_name, out_root=out_root, subjects_dir=subjects_dir, save_distance=save_distance, lh_only=lh_only, rh_only=rh_only, parallel=parallel, edit_aseg=edit_aseg, save_ribbon=save_ribbon, io_=io_)
+    params = mris_volmask_params(
+        cap_distance=cap_distance,
+        label_background=label_background,
+        label_left_white=label_left_white,
+        label_left_ribbon=label_left_ribbon,
+        label_right_white=label_right_white,
+        label_right_ribbon=label_right_ribbon,
+        surf_white=surf_white,
+        surf_pial=surf_pial,
+        aseg_name=aseg_name,
+        out_root=out_root,
+        subjects_dir=subjects_dir,
+        save_distance=save_distance,
+        lh_only=lh_only,
+        rh_only=rh_only,
+        parallel=parallel,
+        edit_aseg=edit_aseg,
+        save_ribbon=save_ribbon,
+        io_=io_,
+    )
     return mris_volmask_execute(params, execution)
 
 

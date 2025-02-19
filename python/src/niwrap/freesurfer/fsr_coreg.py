@@ -11,6 +11,8 @@ FSR_COREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsrCoregParameters = typing.TypedDict('FsrCoregParameters', {
     "__STYX_TYPE__": typing.Literal["fsr-coreg"],
     "import_dir": str,
@@ -221,7 +223,14 @@ def fsr_coreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSR_COREG_METADATA)
-    params = fsr_coreg_params(import_dir=import_dir, reference_mode=reference_mode, num_threads=num_threads, force_update=force_update, output_dir=output_dir, expert_options=expert_options)
+    params = fsr_coreg_params(
+        import_dir=import_dir,
+        reference_mode=reference_mode,
+        num_threads=num_threads,
+        force_update=force_update,
+        output_dir=output_dir,
+        expert_options=expert_options,
+    )
     return fsr_coreg_execute(params, execution)
 
 

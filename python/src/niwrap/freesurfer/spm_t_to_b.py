@@ -11,6 +11,8 @@ SPM_T_TO_B_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SpmTToBParameters = typing.TypedDict('SpmTToBParameters', {
     "__STYX_TYPE__": typing.Literal["spm_t_to_b"],
     "spm_stem_format": str,
@@ -162,7 +164,10 @@ def spm_t_to_b(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPM_T_TO_B_METADATA)
-    params = spm_t_to_b_params(spm_stem_format=spm_stem_format, bshort_stem=bshort_stem)
+    params = spm_t_to_b_params(
+        spm_stem_format=spm_stem_format,
+        bshort_stem=bshort_stem,
+    )
     return spm_t_to_b_execute(params, execution)
 
 

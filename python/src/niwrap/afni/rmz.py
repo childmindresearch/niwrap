@@ -11,6 +11,8 @@ RMZ_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RmzParameters = typing.TypedDict('RmzParameters', {
     "__STYX_TYPE__": typing.Literal["rmz"],
     "quiet": bool,
@@ -183,7 +185,12 @@ def rmz(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RMZ_METADATA)
-    params = rmz_params(quiet=quiet, hash_flag=hash_flag, keep_flag=keep_flag, filenames=filenames)
+    params = rmz_params(
+        quiet=quiet,
+        hash_flag=hash_flag,
+        keep_flag=keep_flag,
+        filenames=filenames,
+    )
     return rmz_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ WARPCORRECT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 WarpcorrectConfigParameters = typing.TypedDict('WarpcorrectConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 WarpcorrectParameters = typing.TypedDict('WarpcorrectParameters', {
     "__STYX_TYPE__": typing.Literal["warpcorrect"],
     "marker": typing.NotRequired[list[float] | None],
@@ -336,7 +340,20 @@ def warpcorrect(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARPCORRECT_METADATA)
-    params = warpcorrect_params(marker=marker, tolerance=tolerance, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_=in_, out=out)
+    params = warpcorrect_params(
+        marker=marker,
+        tolerance=tolerance,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_=in_,
+        out=out,
+    )
     return warpcorrect_execute(params, execution)
 
 

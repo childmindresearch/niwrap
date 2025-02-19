@@ -11,6 +11,8 @@ MAKE_CORTEX_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeCortexLabelParameters = typing.TypedDict('MakeCortexLabelParameters', {
     "__STYX_TYPE__": typing.Literal["make_cortex_label"],
     "subject": str,
@@ -198,7 +200,12 @@ def make_cortex_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_CORTEX_LABEL_METADATA)
-    params = make_cortex_label_params(subject=subject, hemi=hemi, use_a2009s=use_a2009s, output_name=output_name)
+    params = make_cortex_label_params(
+        subject=subject,
+        hemi=hemi,
+        use_a2009s=use_a2009s,
+        output_name=output_name,
+    )
     return make_cortex_label_execute(params, execution)
 
 

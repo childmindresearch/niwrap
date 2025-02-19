@@ -11,6 +11,8 @@ V__AFNI_REFACER_MAKE_ONEBIG_A12_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniRefacerMakeOnebigA12Parameters = typing.TypedDict('VAfniRefacerMakeOnebigA12Parameters', {
     "__STYX_TYPE__": typing.Literal["@afni_refacer_make_onebigA12"],
     "t1w_dataset": InputPathType,
@@ -161,7 +163,9 @@ def v__afni_refacer_make_onebig_a12(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_REFACER_MAKE_ONEBIG_A12_METADATA)
-    params = v__afni_refacer_make_onebig_a12_params(t1w_dataset=t1w_dataset)
+    params = v__afni_refacer_make_onebig_a12_params(
+        t1w_dataset=t1w_dataset,
+    )
     return v__afni_refacer_make_onebig_a12_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ VOLUME_CAPTURE_PLANE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeCapturePlaneParameters = typing.TypedDict('VolumeCapturePlaneParameters', {
     "__STYX_TYPE__": typing.Literal["volume-capture-plane"],
     "volume": InputPathType,
@@ -288,7 +290,25 @@ def volume_capture_plane(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_CAPTURE_PLANE_METADATA)
-    params = volume_capture_plane_params(volume=volume, subvolume=subvolume, interp=interp, h_dim=h_dim, v_dim=v_dim, scale_min=scale_min, scale_max=scale_max, bottom_left_x=bottom_left_x, bottom_left_y=bottom_left_y, bottom_left_z=bottom_left_z, bottom_right_x=bottom_right_x, bottom_right_y=bottom_right_y, bottom_right_z=bottom_right_z, top_left_x=top_left_x, top_left_y=top_left_y, top_left_z=top_left_z, image=image)
+    params = volume_capture_plane_params(
+        volume=volume,
+        subvolume=subvolume,
+        interp=interp,
+        h_dim=h_dim,
+        v_dim=v_dim,
+        scale_min=scale_min,
+        scale_max=scale_max,
+        bottom_left_x=bottom_left_x,
+        bottom_left_y=bottom_left_y,
+        bottom_left_z=bottom_left_z,
+        bottom_right_x=bottom_right_x,
+        bottom_right_y=bottom_right_y,
+        bottom_right_z=bottom_right_z,
+        top_left_x=top_left_x,
+        top_left_y=top_left_y,
+        top_left_z=top_left_z,
+        image=image,
+    )
     return volume_capture_plane_execute(params, execution)
 
 

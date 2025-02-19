@@ -11,6 +11,8 @@ V_3D_SURF_MASK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSurfMaskParameters = typing.TypedDict('V3dSurfMaskParameters', {
     "__STYX_TYPE__": typing.Literal["3dSurfMask"],
     "surface_type": str,
@@ -237,7 +239,17 @@ def v_3d_surf_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SURF_MASK_METADATA)
-    params = v_3d_surf_mask_params(surface_type=surface_type, surface_file=surface_file, prefix=prefix, grid_parent=grid_parent, fill_method=fill_method, surface_volume=surface_volume, mask_only=mask_only, flip_orientation=flip_orientation, no_distance=no_distance)
+    params = v_3d_surf_mask_params(
+        surface_type=surface_type,
+        surface_file=surface_file,
+        prefix=prefix,
+        grid_parent=grid_parent,
+        fill_method=fill_method,
+        surface_volume=surface_volume,
+        mask_only=mask_only,
+        flip_orientation=flip_orientation,
+        no_distance=no_distance,
+    )
     return v_3d_surf_mask_execute(params, execution)
 
 

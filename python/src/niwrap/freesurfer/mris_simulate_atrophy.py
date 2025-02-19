@@ -11,6 +11,8 @@ MRIS_SIMULATE_ATROPHY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSimulateAtrophyParameters = typing.TypedDict('MrisSimulateAtrophyParameters', {
     "__STYX_TYPE__": typing.Literal["mris_simulate_atrophy"],
     "subject": str,
@@ -211,7 +213,15 @@ def mris_simulate_atrophy(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SIMULATE_ATROPHY_METADATA)
-    params = mris_simulate_atrophy_params(subject=subject, hemi=hemi, label=label, atrophy_fraction=atrophy_fraction, output_volume=output_volume, atrophy_percent=atrophy_percent, noise_level=noise_level)
+    params = mris_simulate_atrophy_params(
+        subject=subject,
+        hemi=hemi,
+        label=label,
+        atrophy_fraction=atrophy_fraction,
+        output_volume=output_volume,
+        atrophy_percent=atrophy_percent,
+        noise_level=noise_level,
+    )
     return mris_simulate_atrophy_execute(params, execution)
 
 

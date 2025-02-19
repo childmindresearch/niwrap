@@ -11,6 +11,8 @@ SURF_PROJ_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SurfProjParameters = typing.TypedDict('SurfProjParameters', {
     "__STYX_TYPE__": typing.Literal["surf_proj"],
     "data": InputPathType,
@@ -273,7 +275,18 @@ def surf_proj(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_PROJ_METADATA)
-    params = surf_proj_params(data=data, surface=surface, output_file=output_file, surface_reference=surface_reference, transform=transform, meshspace=meshspace, step_size=step_size, direction=direction, operation=operation, surface_output=surface_output)
+    params = surf_proj_params(
+        data=data,
+        surface=surface,
+        output_file=output_file,
+        surface_reference=surface_reference,
+        transform=transform,
+        meshspace=meshspace,
+        step_size=step_size,
+        direction=direction,
+        operation=operation,
+        surface_output=surface_output,
+    )
     return surf_proj_execute(params, execution)
 
 

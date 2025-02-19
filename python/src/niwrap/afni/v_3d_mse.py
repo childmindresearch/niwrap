@@ -11,6 +11,8 @@ V_3D_MSE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dMseParameters = typing.TypedDict('V3dMseParameters', {
     "__STYX_TYPE__": typing.Literal["3dMSE"],
     "polynomial_order": typing.NotRequired[int | None],
@@ -258,7 +260,17 @@ def v_3d_mse(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MSE_METADATA)
-    params = v_3d_mse_params(polynomial_order=polynomial_order, autoclip=autoclip, automask=automask, mask=mask, prefix=prefix, scales=scales, entwin=entwin, rthresh=rthresh, dset=dset)
+    params = v_3d_mse_params(
+        polynomial_order=polynomial_order,
+        autoclip=autoclip,
+        automask=automask,
+        mask=mask,
+        prefix=prefix,
+        scales=scales,
+        entwin=entwin,
+        rthresh=rthresh,
+        dset=dset,
+    )
     return v_3d_mse_execute(params, execution)
 
 

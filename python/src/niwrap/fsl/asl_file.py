@@ -11,6 +11,8 @@ ASL_FILE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 AslFileParameters = typing.TypedDict('AslFileParameters', {
     "__STYX_TYPE__": typing.Literal["asl_file"],
     "datafile": InputPathType,
@@ -439,7 +441,33 @@ def asl_file(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ASL_FILE_METADATA)
-    params = asl_file_params(datafile=datafile, ntis=ntis, mask=mask, inblockform=inblockform, inaslform=inaslform, rpts=rpts, pairs=pairs, spairs=spairs, diff=diff, surrdiff=surrdiff, extrapolate=extrapolate, neighbour=neighbour, pvgm=pvgm, pvwm=pvwm, kernel=kernel, outfile=outfile, outblockform=outblockform, mean=mean, split=split, epoch=epoch, epoch_length=epoch_length, epoch_overlap=epoch_overlap, epoch_unit=epoch_unit, deconv=deconv, aif=aif)
+    params = asl_file_params(
+        datafile=datafile,
+        ntis=ntis,
+        mask=mask,
+        inblockform=inblockform,
+        inaslform=inaslform,
+        rpts=rpts,
+        pairs=pairs,
+        spairs=spairs,
+        diff=diff,
+        surrdiff=surrdiff,
+        extrapolate=extrapolate,
+        neighbour=neighbour,
+        pvgm=pvgm,
+        pvwm=pvwm,
+        kernel=kernel,
+        outfile=outfile,
+        outblockform=outblockform,
+        mean=mean,
+        split=split,
+        epoch=epoch,
+        epoch_length=epoch_length,
+        epoch_overlap=epoch_overlap,
+        epoch_unit=epoch_unit,
+        deconv=deconv,
+        aif=aif,
+    )
     return asl_file_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_1DGRAYPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dgrayplotParameters = typing.TypedDict('V1dgrayplotParameters', {
     "__STYX_TYPE__": typing.Literal["1dgrayplot"],
     "tsfile": InputPathType,
@@ -215,7 +217,15 @@ def v_1dgrayplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DGRAYPLOT_METADATA)
-    params = v_1dgrayplot_params(tsfile=tsfile, install=install, ignore=ignore, flip=flip, sep=sep, use=use, ps=ps)
+    params = v_1dgrayplot_params(
+        tsfile=tsfile,
+        install=install,
+        ignore=ignore,
+        flip=flip,
+        sep=sep,
+        use=use,
+        ps=ps,
+    )
     return v_1dgrayplot_execute(params, execution)
 
 

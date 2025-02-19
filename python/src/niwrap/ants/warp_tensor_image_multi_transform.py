@@ -11,6 +11,8 @@ WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 WarpTensorImageMultiTransformParameters = typing.TypedDict('WarpTensorImageMultiTransformParameters', {
     "__STYX_TYPE__": typing.Literal["WarpTensorImageMultiTransform"],
     "image_dimension": int,
@@ -230,7 +232,16 @@ def warp_tensor_image_multi_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA)
-    params = warp_tensor_image_multi_transform_params(image_dimension=image_dimension, moving_image=moving_image, output_image=output_image, reference_image=reference_image, tightest_bounding_box=tightest_bounding_box, reslice_by_header=reslice_by_header, use_nearest_neighbor=use_nearest_neighbor, transforms=transforms)
+    params = warp_tensor_image_multi_transform_params(
+        image_dimension=image_dimension,
+        moving_image=moving_image,
+        output_image=output_image,
+        reference_image=reference_image,
+        tightest_bounding_box=tightest_bounding_box,
+        reslice_by_header=reslice_by_header,
+        use_nearest_neighbor=use_nearest_neighbor,
+        transforms=transforms,
+    )
     return warp_tensor_image_multi_transform_execute(params, execution)
 
 

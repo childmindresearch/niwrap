@@ -11,6 +11,8 @@ CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiParcelMappingToLabelParameters = typing.TypedDict('CiftiParcelMappingToLabelParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-parcel-mapping-to-label"],
     "cifti_in": InputPathType,
@@ -195,7 +197,12 @@ def cifti_parcel_mapping_to_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA)
-    params = cifti_parcel_mapping_to_label_params(cifti_in=cifti_in, direction=direction, template_cifti=template_cifti, dlabel_out=dlabel_out)
+    params = cifti_parcel_mapping_to_label_params(
+        cifti_in=cifti_in,
+        direction=direction,
+        template_cifti=template_cifti,
+        dlabel_out=dlabel_out,
+    )
     return cifti_parcel_mapping_to_label_execute(params, execution)
 
 

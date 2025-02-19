@@ -11,6 +11,8 @@ V_3DRETROICOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dretroicorParameters = typing.TypedDict('V3dretroicorParameters', {
     "__STYX_TYPE__": typing.Literal["3dretroicor"],
     "ignore": typing.NotRequired[float | None],
@@ -271,7 +273,17 @@ def v_3dretroicor(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DRETROICOR_METADATA)
-    params = v_3dretroicor_params(ignore=ignore, prefix=prefix, card=card, cardphase=cardphase, threshold=threshold, resp=resp, respphase=respphase, order=order, dataset=dataset)
+    params = v_3dretroicor_params(
+        ignore=ignore,
+        prefix=prefix,
+        card=card,
+        cardphase=cardphase,
+        threshold=threshold,
+        resp=resp,
+        respphase=respphase,
+        order=order,
+        dataset=dataset,
+    )
     return v_3dretroicor_execute(params, execution)
 
 

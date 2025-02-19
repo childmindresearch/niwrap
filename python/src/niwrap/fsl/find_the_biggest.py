@@ -11,6 +11,8 @@ FIND_THE_BIGGEST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FindTheBiggestParameters = typing.TypedDict('FindTheBiggestParameters', {
     "__STYX_TYPE__": typing.Literal["find_the_biggest"],
     "volumes_surfaces": list[InputPathType],
@@ -166,7 +168,10 @@ def find_the_biggest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIND_THE_BIGGEST_METADATA)
-    params = find_the_biggest_params(volumes_surfaces=volumes_surfaces, output_index=output_index)
+    params = find_the_biggest_params(
+        volumes_surfaces=volumes_surfaces,
+        output_index=output_index,
+    )
     return find_the_biggest_execute(params, execution)
 
 

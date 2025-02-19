@@ -11,6 +11,8 @@ V_3D_NWARP_APPLY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNwarpApplyParameters = typing.TypedDict('V3dNwarpApplyParameters', {
     "__STYX_TYPE__": typing.Literal["3dNwarpApply"],
     "nwarp": str,
@@ -319,7 +321,22 @@ def v_3d_nwarp_apply(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NWARP_APPLY_METADATA)
-    params = v_3d_nwarp_apply_params(nwarp=nwarp, iwarp=iwarp, source=source, master=master, newgrid=newgrid, dxyz=dxyz, interp=interp, ainterp=ainterp, prefix=prefix, suffix=suffix, short=short, wprefix=wprefix, quiet=quiet, verb=verb)
+    params = v_3d_nwarp_apply_params(
+        nwarp=nwarp,
+        iwarp=iwarp,
+        source=source,
+        master=master,
+        newgrid=newgrid,
+        dxyz=dxyz,
+        interp=interp,
+        ainterp=ainterp,
+        prefix=prefix,
+        suffix=suffix,
+        short=short,
+        wprefix=wprefix,
+        quiet=quiet,
+        verb=verb,
+    )
     return v_3d_nwarp_apply_execute(params, execution)
 
 

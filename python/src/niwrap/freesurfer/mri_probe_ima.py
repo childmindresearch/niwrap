@@ -11,6 +11,8 @@ MRI_PROBE_IMA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriProbeImaParameters = typing.TypedDict('MriProbeImaParameters', {
     "__STYX_TYPE__": typing.Literal["mri_probe_ima"],
     "ima_file": InputPathType,
@@ -240,7 +242,17 @@ def mri_probe_ima(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PROBE_IMA_METADATA)
-    params = mri_probe_ima_params(ima_file=ima_file, key_string=key_string, offset_type_len=offset_type_len, attribute_name=attribute_name, fileinfo=fileinfo, dictionary=dictionary, ob_stem=ob_stem, help_=help_, version=version)
+    params = mri_probe_ima_params(
+        ima_file=ima_file,
+        key_string=key_string,
+        offset_type_len=offset_type_len,
+        attribute_name=attribute_name,
+        fileinfo=fileinfo,
+        dictionary=dictionary,
+        ob_stem=ob_stem,
+        help_=help_,
+        version=version,
+    )
     return mri_probe_ima_execute(params, execution)
 
 

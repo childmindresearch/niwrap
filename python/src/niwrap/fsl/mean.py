@@ -11,6 +11,8 @@ MEAN_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MeanParameters = typing.TypedDict('MeanParameters', {
     "__STYX_TYPE__": typing.Literal["mean"],
     "datafile": InputPathType,
@@ -356,7 +358,26 @@ def mean(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MEAN_METADATA)
-    params = mean_params(datafile=datafile, maskfile=maskfile, verbose_flag=verbose_flag, debug_level=debug_level, timing_flag=timing_flag, log_dir=log_dir, forcedir_flag=forcedir_flag, inference_tech=inference_tech, num_jumps=num_jumps, num_burnin=num_burnin, num_sample_every=num_sample_every, num_update_proposalevery=num_update_proposalevery, acceptance_rate=acceptance_rate, seed=seed, error_precision=error_precision, noamp_flag=noamp_flag, prior_mean=prior_mean, prior_std=prior_std)
+    params = mean_params(
+        datafile=datafile,
+        maskfile=maskfile,
+        verbose_flag=verbose_flag,
+        debug_level=debug_level,
+        timing_flag=timing_flag,
+        log_dir=log_dir,
+        forcedir_flag=forcedir_flag,
+        inference_tech=inference_tech,
+        num_jumps=num_jumps,
+        num_burnin=num_burnin,
+        num_sample_every=num_sample_every,
+        num_update_proposalevery=num_update_proposalevery,
+        acceptance_rate=acceptance_rate,
+        seed=seed,
+        error_precision=error_precision,
+        noamp_flag=noamp_flag,
+        prior_mean=prior_mean,
+        prior_std=prior_std,
+    )
     return mean_execute(params, execution)
 
 

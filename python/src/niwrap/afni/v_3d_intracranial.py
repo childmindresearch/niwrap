@@ -11,6 +11,8 @@ V_3D_INTRACRANIAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dIntracranialParameters = typing.TypedDict('V3dIntracranialParameters', {
     "__STYX_TYPE__": typing.Literal["3dIntracranial"],
     "infile": InputPathType,
@@ -250,7 +252,17 @@ def v_3d_intracranial(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_INTRACRANIAL_METADATA)
-    params = v_3d_intracranial_params(infile=infile, prefix=prefix, min_val=min_val, max_val=max_val, min_conn=min_conn, max_conn=max_conn, no_smooth=no_smooth, mask=mask, quiet=quiet)
+    params = v_3d_intracranial_params(
+        infile=infile,
+        prefix=prefix,
+        min_val=min_val,
+        max_val=max_val,
+        min_conn=min_conn,
+        max_conn=max_conn,
+        no_smooth=no_smooth,
+        mask=mask,
+        quiet=quiet,
+    )
     return v_3d_intracranial_execute(params, execution)
 
 

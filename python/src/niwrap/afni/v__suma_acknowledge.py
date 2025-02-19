@@ -11,6 +11,8 @@ V__SUMA_ACKNOWLEDGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSumaAcknowledgeParameters = typing.TypedDict('VSumaAcknowledgeParameters', {
     "__STYX_TYPE__": typing.Literal["@suma_acknowledge"],
     "input_file": InputPathType,
@@ -236,7 +238,15 @@ def v__suma_acknowledge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_ACKNOWLEDGE_METADATA)
-    params = v__suma_acknowledge_params(input_file=input_file, surface_file=surface_file, output_prefix=output_prefix, center_flag=center_flag, subsurface_file=subsurface_file, scale_factor=scale_factor, reduce_factor=reduce_factor)
+    params = v__suma_acknowledge_params(
+        input_file=input_file,
+        surface_file=surface_file,
+        output_prefix=output_prefix,
+        center_flag=center_flag,
+        subsurface_file=subsurface_file,
+        scale_factor=scale_factor,
+        reduce_factor=reduce_factor,
+    )
     return v__suma_acknowledge_execute(params, execution)
 
 

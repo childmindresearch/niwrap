@@ -11,6 +11,8 @@ PCTSURFCON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 PctsurfconParameters = typing.TypedDict('PctsurfconParameters', {
     "__STYX_TYPE__": typing.Literal["pctsurfcon"],
     "subject": str,
@@ -278,7 +280,21 @@ def pctsurfcon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PCTSURFCON_METADATA)
-    params = pctsurfcon_params(subject=subject, fsvol=fsvol, outbase=outbase, lh_only=lh_only, rh_only=rh_only, gm_proj_frac=gm_proj_frac, gm_proj_abs=gm_proj_abs, wm_proj_abs=wm_proj_abs, neg=neg, no_mask=no_mask, pial=pial, tmp=tmp, nocleanup=nocleanup)
+    params = pctsurfcon_params(
+        subject=subject,
+        fsvol=fsvol,
+        outbase=outbase,
+        lh_only=lh_only,
+        rh_only=rh_only,
+        gm_proj_frac=gm_proj_frac,
+        gm_proj_abs=gm_proj_abs,
+        wm_proj_abs=wm_proj_abs,
+        neg=neg,
+        no_mask=no_mask,
+        pial=pial,
+        tmp=tmp,
+        nocleanup=nocleanup,
+    )
     return pctsurfcon_execute(params, execution)
 
 

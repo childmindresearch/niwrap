@@ -11,29 +11,41 @@ DWI2FOD_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Dwi2fodFslgradParameters = typing.TypedDict('Dwi2fodFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 Dwi2fodVariousStringParameters = typing.TypedDict('Dwi2fodVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 Dwi2fodVariousFileParameters = typing.TypedDict('Dwi2fodVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 Dwi2fodConfigParameters = typing.TypedDict('Dwi2fodConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Dwi2fodResponseOdfParameters = typing.TypedDict('Dwi2fodResponseOdfParameters', {
     "__STYX_TYPE__": typing.Literal["response_odf"],
     "response": InputPathType,
     "odf": str,
 })
+
+
 Dwi2fodParameters = typing.TypedDict('Dwi2fodParameters', {
     "__STYX_TYPE__": typing.Literal["dwi2fod"],
     "grad": typing.NotRequired[InputPathType | None],
@@ -816,7 +828,34 @@ def dwi2fod(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWI2FOD_METADATA)
-    params = dwi2fod_params(grad=grad, fslgrad=fslgrad, shells=shells, directions=directions, lmax=lmax, mask=mask, filter_=filter_, neg_lambda=neg_lambda, norm_lambda=norm_lambda, threshold=threshold, niter=niter, norm_lambda_1=norm_lambda_1, neg_lambda_1=neg_lambda_1, predicted_signal=predicted_signal, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, algorithm=algorithm, dwi=dwi, response_odf=response_odf)
+    params = dwi2fod_params(
+        grad=grad,
+        fslgrad=fslgrad,
+        shells=shells,
+        directions=directions,
+        lmax=lmax,
+        mask=mask,
+        filter_=filter_,
+        neg_lambda=neg_lambda,
+        norm_lambda=norm_lambda,
+        threshold=threshold,
+        niter=niter,
+        norm_lambda_1=norm_lambda_1,
+        neg_lambda_1=neg_lambda_1,
+        predicted_signal=predicted_signal,
+        strides=strides,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        algorithm=algorithm,
+        dwi=dwi,
+        response_odf=response_odf,
+    )
     return dwi2fod_execute(params, execution)
 
 

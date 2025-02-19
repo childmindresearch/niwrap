@@ -11,6 +11,8 @@ SURFACE_METRICS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfaceMetricsParameters = typing.TypedDict('SurfaceMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["SurfaceMetrics"],
     "internal_nodes": bool,
@@ -338,7 +340,31 @@ def surface_metrics(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_METRICS_METADATA)
-    params = surface_metrics_params(internal_nodes=internal_nodes, internal_nodes_1=internal_nodes_1, internal_nodes_2=internal_nodes_2, internal_nodes_3=internal_nodes_3, internal_nodes_4=internal_nodes_4, internal_nodes_5=internal_nodes_5, internal_nodes_6=internal_nodes_6, internal_nodes_7=internal_nodes_7, internal_nodes_8=internal_nodes_8, internal_nodes_9=internal_nodes_9, internal_nodes_10=internal_nodes_10, internal_nodes_11=internal_nodes_11, internal_nodes_12=internal_nodes_12, internal_nodes_13=internal_nodes_13, internal_nodes_14=internal_nodes_14, internal_nodes_15=internal_nodes_15, internal_nodes_16=internal_nodes_16, internal_nodes_17=internal_nodes_17, internal_nodes_18=internal_nodes_18, internal_nodes_19=internal_nodes_19, surf1=surf1, tlrc=tlrc, prefix=prefix)
+    params = surface_metrics_params(
+        internal_nodes=internal_nodes,
+        internal_nodes_1=internal_nodes_1,
+        internal_nodes_2=internal_nodes_2,
+        internal_nodes_3=internal_nodes_3,
+        internal_nodes_4=internal_nodes_4,
+        internal_nodes_5=internal_nodes_5,
+        internal_nodes_6=internal_nodes_6,
+        internal_nodes_7=internal_nodes_7,
+        internal_nodes_8=internal_nodes_8,
+        internal_nodes_9=internal_nodes_9,
+        internal_nodes_10=internal_nodes_10,
+        internal_nodes_11=internal_nodes_11,
+        internal_nodes_12=internal_nodes_12,
+        internal_nodes_13=internal_nodes_13,
+        internal_nodes_14=internal_nodes_14,
+        internal_nodes_15=internal_nodes_15,
+        internal_nodes_16=internal_nodes_16,
+        internal_nodes_17=internal_nodes_17,
+        internal_nodes_18=internal_nodes_18,
+        internal_nodes_19=internal_nodes_19,
+        surf1=surf1,
+        tlrc=tlrc,
+        prefix=prefix,
+    )
     return surface_metrics_execute(params, execution)
 
 

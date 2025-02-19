@@ -11,6 +11,8 @@ V_3D_UNIFIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dUnifizeParameters = typing.TypedDict('V3dUnifizeParameters', {
     "__STYX_TYPE__": typing.Literal["3dUnifize"],
     "cl_frac": typing.NotRequired[float | None],
@@ -373,7 +375,22 @@ def v_3d_unifize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_UNIFIZE_METADATA)
-    params = v_3d_unifize_params(cl_frac=cl_frac, epi=epi, gm=gm, no_duplo=no_duplo, num_threads=num_threads, outputtype=outputtype, quiet=quiet, rbt=rbt, prefix=prefix, scale_file=scale_file, t2=t2, t2_up=t2_up, urad=urad, in_file=in_file)
+    params = v_3d_unifize_params(
+        cl_frac=cl_frac,
+        epi=epi,
+        gm=gm,
+        no_duplo=no_duplo,
+        num_threads=num_threads,
+        outputtype=outputtype,
+        quiet=quiet,
+        rbt=rbt,
+        prefix=prefix,
+        scale_file=scale_file,
+        t2=t2,
+        t2_up=t2_up,
+        urad=urad,
+        in_file=in_file,
+    )
     return v_3d_unifize_execute(params, execution)
 
 

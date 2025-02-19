@@ -11,6 +11,8 @@ PROJ_THRESH_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ProjThreshParameters = typing.TypedDict('ProjThreshParameters', {
     "__STYX_TYPE__": typing.Literal["proj_thresh"],
     "input_paths": list[InputPathType],
@@ -164,7 +166,10 @@ def proj_thresh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PROJ_THRESH_METADATA)
-    params = proj_thresh_params(input_paths=input_paths, threshold=threshold)
+    params = proj_thresh_params(
+        input_paths=input_paths,
+        threshold=threshold,
+    )
     return proj_thresh_execute(params, execution)
 
 

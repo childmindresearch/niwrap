@@ -11,6 +11,8 @@ SEGMENT_HA_T1_LONG_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentHaT1LongShParameters = typing.TypedDict('SegmentHaT1LongShParameters', {
     "__STYX_TYPE__": typing.Literal["segmentHA_T1_long.sh"],
     "subject_dir": str,
@@ -166,7 +168,10 @@ def segment_ha_t1_long_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_HA_T1_LONG_SH_METADATA)
-    params = segment_ha_t1_long_sh_params(subject_dir=subject_dir, subject_id=subject_id)
+    params = segment_ha_t1_long_sh_params(
+        subject_dir=subject_dir,
+        subject_id=subject_id,
+    )
     return segment_ha_t1_long_sh_execute(params, execution)
 
 

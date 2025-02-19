@@ -11,17 +11,23 @@ WARP2METRIC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Warp2metricFcParameters = typing.TypedDict('Warp2metricFcParameters', {
     "__STYX_TYPE__": typing.Literal["fc"],
     "template_fixel_directory": InputPathType,
     "output_fixel_directory": str,
     "output_fixel_data": str,
 })
+
+
 Warp2metricConfigParameters = typing.TypedDict('Warp2metricConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Warp2metricParameters = typing.TypedDict('Warp2metricParameters', {
     "__STYX_TYPE__": typing.Literal["warp2metric"],
     "fc": typing.NotRequired[Warp2metricFcParameters | None],
@@ -413,7 +419,20 @@ def warp2metric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARP2METRIC_METADATA)
-    params = warp2metric_params(fc=fc, jmat=jmat, jdet=jdet, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_=in_)
+    params = warp2metric_params(
+        fc=fc,
+        jmat=jmat,
+        jdet=jdet,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        in_=in_,
+    )
     return warp2metric_execute(params, execution)
 
 

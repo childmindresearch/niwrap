@@ -11,6 +11,8 @@ RUN_FIRST_ALL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 RunFirstAllParameters = typing.TypedDict('RunFirstAllParameters', {
     "__STYX_TYPE__": typing.Literal["run_first_all"],
     "method": typing.NotRequired[typing.Literal["auto", "fast", "none"] | None],
@@ -248,7 +250,17 @@ def run_first_all(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_FIRST_ALL_METADATA)
-    params = run_first_all_params(method=method, brainextract_flag=brainextract_flag, structure=structure, affine_matrix=affine_matrix, threestage_flag=threestage_flag, debug_flag=debug_flag, verbose_flag=verbose_flag, input_image=input_image, output_image=output_image)
+    params = run_first_all_params(
+        method=method,
+        brainextract_flag=brainextract_flag,
+        structure=structure,
+        affine_matrix=affine_matrix,
+        threestage_flag=threestage_flag,
+        debug_flag=debug_flag,
+        verbose_flag=verbose_flag,
+        input_image=input_image,
+        output_image=output_image,
+    )
     return run_first_all_execute(params, execution)
 
 

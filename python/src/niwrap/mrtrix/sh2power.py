@@ -11,11 +11,15 @@ SH2POWER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Sh2powerConfigParameters = typing.TypedDict('Sh2powerConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Sh2powerParameters = typing.TypedDict('Sh2powerParameters', {
     "__STYX_TYPE__": typing.Literal["sh2power"],
     "spectrum": bool,
@@ -322,7 +326,19 @@ def sh2power(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SH2POWER_METADATA)
-    params = sh2power_params(spectrum=spectrum, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, sh=sh, power=power)
+    params = sh2power_params(
+        spectrum=spectrum,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        sh=sh,
+        power=power,
+    )
     return sh2power_execute(params, execution)
 
 

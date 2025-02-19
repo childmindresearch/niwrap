@@ -11,11 +11,15 @@ CIFTI_STATS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiStatsRoiParameters = typing.TypedDict('CiftiStatsRoiParameters', {
     "__STYX_TYPE__": typing.Literal["roi"],
     "roi_cifti": InputPathType,
     "opt_match_maps": bool,
 })
+
+
 CiftiStatsParameters = typing.TypedDict('CiftiStatsParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-stats"],
     "cifti_in": InputPathType,
@@ -318,7 +322,14 @@ def cifti_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_STATS_METADATA)
-    params = cifti_stats_params(cifti_in=cifti_in, opt_reduce_operation=opt_reduce_operation, opt_percentile_percent=opt_percentile_percent, opt_column_column=opt_column_column, roi=roi, opt_show_map_name=opt_show_map_name)
+    params = cifti_stats_params(
+        cifti_in=cifti_in,
+        opt_reduce_operation=opt_reduce_operation,
+        opt_percentile_percent=opt_percentile_percent,
+        opt_column_column=opt_column_column,
+        roi=roi,
+        opt_show_map_name=opt_show_map_name,
+    )
     return cifti_stats_execute(params, execution)
 
 

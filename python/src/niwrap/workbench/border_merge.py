@@ -11,21 +11,29 @@ BORDER_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BorderMergeUpToParameters = typing.TypedDict('BorderMergeUpToParameters', {
     "__STYX_TYPE__": typing.Literal["up_to"],
     "last_border": str,
     "opt_reverse": bool,
 })
+
+
 BorderMergeSelectParameters = typing.TypedDict('BorderMergeSelectParameters', {
     "__STYX_TYPE__": typing.Literal["select"],
     "border": str,
     "up_to": typing.NotRequired[BorderMergeUpToParameters | None],
 })
+
+
 BorderMergeBorderParameters = typing.TypedDict('BorderMergeBorderParameters', {
     "__STYX_TYPE__": typing.Literal["border"],
     "border_file_in": InputPathType,
     "select": typing.NotRequired[list[BorderMergeSelectParameters] | None],
 })
+
+
 BorderMergeParameters = typing.TypedDict('BorderMergeParameters', {
     "__STYX_TYPE__": typing.Literal["border-merge"],
     "border_file_out": str,
@@ -333,7 +341,10 @@ def border_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_MERGE_METADATA)
-    params = border_merge_params(border_file_out=border_file_out, border=border)
+    params = border_merge_params(
+        border_file_out=border_file_out,
+        border=border,
+    )
     return border_merge_execute(params, execution)
 
 

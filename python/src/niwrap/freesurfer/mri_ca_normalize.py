@@ -11,6 +11,8 @@ MRI_CA_NORMALIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCaNormalizeParameters = typing.TypedDict('MriCaNormalizeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_ca_normalize"],
     "input_brain_volumes": list[InputPathType],
@@ -460,7 +462,35 @@ def mri_ca_normalize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_NORMALIZE_METADATA)
-    params = mri_ca_normalize_params(input_brain_volumes=input_brain_volumes, atlas_file=atlas_file, xform_file=xform_file, output_volumes=output_volumes, seg_file=seg_file, sigma_value=sigma_value, fsamples_file=fsamples_file, dilate_iters=dilate_iters, nsamples_file=nsamples_file, mask_vol=mask_vol, control_points_file=control_points_file, fonly_file=fonly_file, diag_file=diag_file, debug_voxel_coords=debug_voxel_coords, debug_node_coords=debug_node_coords, tr_value=tr_value, te_value=te_value, alpha_value=alpha_value, example_mri_vol=example_mri_vol, extra_norm_pctl=extra_norm_pctl, prior_threshold=prior_threshold, n_regions=n_regions, verbose_value=verbose_value, top_percent=top_percent, novar_flag=novar_flag, renorm_file=renorm_file, flash_flag=flash_flag)
+    params = mri_ca_normalize_params(
+        input_brain_volumes=input_brain_volumes,
+        atlas_file=atlas_file,
+        xform_file=xform_file,
+        output_volumes=output_volumes,
+        seg_file=seg_file,
+        sigma_value=sigma_value,
+        fsamples_file=fsamples_file,
+        dilate_iters=dilate_iters,
+        nsamples_file=nsamples_file,
+        mask_vol=mask_vol,
+        control_points_file=control_points_file,
+        fonly_file=fonly_file,
+        diag_file=diag_file,
+        debug_voxel_coords=debug_voxel_coords,
+        debug_node_coords=debug_node_coords,
+        tr_value=tr_value,
+        te_value=te_value,
+        alpha_value=alpha_value,
+        example_mri_vol=example_mri_vol,
+        extra_norm_pctl=extra_norm_pctl,
+        prior_threshold=prior_threshold,
+        n_regions=n_regions,
+        verbose_value=verbose_value,
+        top_percent=top_percent,
+        novar_flag=novar_flag,
+        renorm_file=renorm_file,
+        flash_flag=flash_flag,
+    )
     return mri_ca_normalize_execute(params, execution)
 
 

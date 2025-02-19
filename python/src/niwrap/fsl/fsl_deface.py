@@ -11,6 +11,8 @@ FSL_DEFACE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslDefaceParameters = typing.TypedDict('FslDefaceParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_deface"],
     "infile": InputPathType,
@@ -325,7 +327,21 @@ def fsl_deface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_DEFACE_METADATA)
-    params = fsl_deface_params(infile=infile, outfile=outfile, cropped_defacing_flag=cropped_defacing_flag, defacing_mask=defacing_mask, cropped_struc=cropped_struc, orig_to_std_mat=orig_to_std_mat, orig_to_cropped_mat=orig_to_cropped_mat, cropped_to_std_mat=cropped_to_std_mat, shift_nud=shift_nud, fractional_intensity=fractional_intensity, bias_correct_flag=bias_correct_flag, center_of_gravity=center_of_gravity, qc_images=qc_images)
+    params = fsl_deface_params(
+        infile=infile,
+        outfile=outfile,
+        cropped_defacing_flag=cropped_defacing_flag,
+        defacing_mask=defacing_mask,
+        cropped_struc=cropped_struc,
+        orig_to_std_mat=orig_to_std_mat,
+        orig_to_cropped_mat=orig_to_cropped_mat,
+        cropped_to_std_mat=cropped_to_std_mat,
+        shift_nud=shift_nud,
+        fractional_intensity=fractional_intensity,
+        bias_correct_flag=bias_correct_flag,
+        center_of_gravity=center_of_gravity,
+        qc_images=qc_images,
+    )
     return fsl_deface_execute(params, execution)
 
 

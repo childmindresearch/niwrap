@@ -11,6 +11,8 @@ BAYCEST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BaycestParameters = typing.TypedDict('BaycestParameters', {
     "__STYX_TYPE__": typing.Literal["baycest"],
     "data_file": InputPathType,
@@ -210,7 +212,16 @@ def baycest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BAYCEST_METADATA)
-    params = baycest_params(data_file=data_file, mask_file=mask_file, output_dir=output_dir, pools_file=pools_file, spec_file=spec_file, ptrain_file=ptrain_file, spatial_flag=spatial_flag, t12prior_flag=t12prior_flag)
+    params = baycest_params(
+        data_file=data_file,
+        mask_file=mask_file,
+        output_dir=output_dir,
+        pools_file=pools_file,
+        spec_file=spec_file,
+        ptrain_file=ptrain_file,
+        spatial_flag=spatial_flag,
+        t12prior_flag=t12prior_flag,
+    )
     return baycest_execute(params, execution)
 
 

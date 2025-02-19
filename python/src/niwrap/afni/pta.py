@@ -11,6 +11,8 @@ PTA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 PtaParameters = typing.TypedDict('PtaParameters', {
     "__STYX_TYPE__": typing.Literal["PTA"],
     "prefix": str,
@@ -255,7 +257,16 @@ def pta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PTA_METADATA)
-    params = pta_params(prefix=prefix, input_file=input_file, model_formula=model_formula, vt_formulation=vt_formulation, prediction_table=prediction_table, verbosity_level=verbosity_level, response_var=response_var, dbg_args=dbg_args)
+    params = pta_params(
+        prefix=prefix,
+        input_file=input_file,
+        model_formula=model_formula,
+        vt_formulation=vt_formulation,
+        prediction_table=prediction_table,
+        verbosity_level=verbosity_level,
+        response_var=response_var,
+        dbg_args=dbg_args,
+    )
     return pta_execute(params, execution)
 
 

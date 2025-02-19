@@ -11,6 +11,8 @@ MRI_COPY_VALUES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCopyValuesParameters = typing.TypedDict('MriCopyValuesParameters', {
     "__STYX_TYPE__": typing.Literal["mri_copy_values"],
     "source_volume": InputPathType,
@@ -173,7 +175,11 @@ def mri_copy_values(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COPY_VALUES_METADATA)
-    params = mri_copy_values_params(source_volume=source_volume, target_volume=target_volume, output_volume=output_volume)
+    params = mri_copy_values_params(
+        source_volume=source_volume,
+        target_volume=target_volume,
+        output_volume=output_volume,
+    )
     return mri_copy_values_execute(params, execution)
 
 

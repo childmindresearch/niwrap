@@ -11,6 +11,8 @@ V_1D_BPORT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dBportParameters = typing.TypedDict('V1dBportParameters', {
     "__STYX_TYPE__": typing.Literal["1dBport"],
     "band": list[float],
@@ -252,7 +254,17 @@ def v_1d_bport(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_BPORT_METADATA)
-    params = v_1d_bport_params(band=band, invert=invert, noconst=noconst, quad=quad, input_dataset=input_dataset, input_1d_file=input_1d_file, nodata=nodata, tr=tr, concat=concat)
+    params = v_1d_bport_params(
+        band=band,
+        invert=invert,
+        noconst=noconst,
+        quad=quad,
+        input_dataset=input_dataset,
+        input_1d_file=input_1d_file,
+        nodata=nodata,
+        tr=tr,
+        concat=concat,
+    )
     return v_1d_bport_execute(params, execution)
 
 

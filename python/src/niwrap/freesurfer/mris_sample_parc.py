@@ -11,6 +11,8 @@ MRIS_SAMPLE_PARC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSampleParcParameters = typing.TypedDict('MrisSampleParcParameters', {
     "__STYX_TYPE__": typing.Literal["mris_sample_parc"],
     "subject_name": str,
@@ -410,7 +412,31 @@ def mris_sample_parc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SAMPLE_PARC_METADATA)
-    params = mris_sample_parc_params(subject_name=subject_name, hemisphere=hemisphere, parc_name=parc_name, output_annot=output_annot, sdir=sdir, surf=surf, fix=fix, replace=replace, trans=trans, cortex=cortex, projmm=projmm, proj=proj, projfrac=projfrac, file=file, ct=ct, v_level=v_level, filter_=filter_, smooth=smooth, w_size=w_size, thickness=thickness, change_unknown=change_unknown, help_=help_, version=version)
+    params = mris_sample_parc_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        parc_name=parc_name,
+        output_annot=output_annot,
+        sdir=sdir,
+        surf=surf,
+        fix=fix,
+        replace=replace,
+        trans=trans,
+        cortex=cortex,
+        projmm=projmm,
+        proj=proj,
+        projfrac=projfrac,
+        file=file,
+        ct=ct,
+        v_level=v_level,
+        filter_=filter_,
+        smooth=smooth,
+        w_size=w_size,
+        thickness=thickness,
+        change_unknown=change_unknown,
+        help_=help_,
+        version=version,
+    )
     return mris_sample_parc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__FS_ROI_LABEL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VFsRoiLabelParameters = typing.TypedDict('VFsRoiLabelParameters', {
     "__STYX_TYPE__": typing.Literal["@FS_roi_label"],
     "label_int": typing.NotRequired[float | None],
@@ -265,7 +267,17 @@ def v__fs_roi_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FS_ROI_LABEL_METADATA)
-    params = v__fs_roi_label_params(label_int=label_int, lab_flag=lab_flag, rank_int=rank_int, rankmap_file=rankmap_file, name=name, labeltable_file=labeltable_file, surf_annot_cmap=surf_annot_cmap, slab_int=slab_int, sname_name=sname_name)
+    params = v__fs_roi_label_params(
+        label_int=label_int,
+        lab_flag=lab_flag,
+        rank_int=rank_int,
+        rankmap_file=rankmap_file,
+        name=name,
+        labeltable_file=labeltable_file,
+        surf_annot_cmap=surf_annot_cmap,
+        slab_int=slab_int,
+        sname_name=sname_name,
+    )
     return v__fs_roi_label_execute(params, execution)
 
 

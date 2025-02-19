@@ -11,6 +11,8 @@ SWE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SweParameters = typing.TypedDict('SweParameters', {
     "__STYX_TYPE__": typing.Literal["swe"],
     "input_file": InputPathType,
@@ -535,7 +537,42 @@ def swe(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SWE_METADATA)
-    params = swe_params(input_file=input_file, output_root=output_root, design_mat=design_mat, design_con=design_con, design_sub=design_sub, mask=mask, fcon=fcon, modified=modified, wild_bootstrap=wild_bootstrap, logp=logp, nboot=nboot, corrp=corrp, fonly=fonly, tfce=tfce, tfce_2d=tfce_2d, cluster_t=cluster_t, cluster_t_mass=cluster_t_mass, cluster_f=cluster_f, cluster_f_mass=cluster_f_mass, quiet=quiet, raw=raw, equiv=equiv, dof=dof, uncorr_p=uncorr_p, null_dist=null_dist, no_rc_mask=no_rc_mask, seed=seed, tfce_h=tfce_h, tfce_d=tfce_d, tfce_e=tfce_e, tfce_c=tfce_c, voxelwise_ev=voxelwise_ev, voxelwise_evs=voxelwise_evs, glm_output=glm_output)
+    params = swe_params(
+        input_file=input_file,
+        output_root=output_root,
+        design_mat=design_mat,
+        design_con=design_con,
+        design_sub=design_sub,
+        mask=mask,
+        fcon=fcon,
+        modified=modified,
+        wild_bootstrap=wild_bootstrap,
+        logp=logp,
+        nboot=nboot,
+        corrp=corrp,
+        fonly=fonly,
+        tfce=tfce,
+        tfce_2d=tfce_2d,
+        cluster_t=cluster_t,
+        cluster_t_mass=cluster_t_mass,
+        cluster_f=cluster_f,
+        cluster_f_mass=cluster_f_mass,
+        quiet=quiet,
+        raw=raw,
+        equiv=equiv,
+        dof=dof,
+        uncorr_p=uncorr_p,
+        null_dist=null_dist,
+        no_rc_mask=no_rc_mask,
+        seed=seed,
+        tfce_h=tfce_h,
+        tfce_d=tfce_d,
+        tfce_e=tfce_e,
+        tfce_c=tfce_c,
+        voxelwise_ev=voxelwise_ev,
+        voxelwise_evs=voxelwise_evs,
+        glm_output=glm_output,
+    )
     return swe_execute(params, execution)
 
 

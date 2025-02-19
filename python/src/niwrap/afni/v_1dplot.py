@@ -11,6 +11,8 @@ V_1DPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dplotParameters = typing.TypedDict('V1dplotParameters', {
     "__STYX_TYPE__": typing.Literal["1dplot"],
     "tsfiles": list[InputPathType],
@@ -761,7 +763,62 @@ def v_1dplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DPLOT_METADATA)
-    params = v_1dplot_params(tsfiles=tsfiles, install=install, sep=sep, one=one, sepscl=sepscl, noline=noline, noline_1=noline_1, box=box, hist=hist, norm2=norm2, normx=normx, norm1=norm1, demean=demean, x=x, xl10=xl10, dx=dx, xzero=xzero, nopush=nopush, ignore=ignore, use=use, xlabel=xlabel, ylabel=ylabel, plabel=plabel, title=title, wintitle=wintitle, naked=naked, aspect=aspect, stdin=stdin, ps=ps, jpg=jpg, jpeg=jpeg, png=png, pnm=pnm, pngs=pngs, jpgs=jpgs, jpegs=jpegs, pnms=pnms, ytran=ytran, xtran=xtran, xaxis=xaxis, yaxis=yaxis, ynames=ynames, volreg=volreg, thick=thick, thick_1=thick_1, dashed=dashed, setenv=setenv, censor_rgb=censor_rgb, censor=censor, censortr=censortr, concat=concat, rbox=rbox, rbox_1=rbox_1, line=line)
+    params = v_1dplot_params(
+        tsfiles=tsfiles,
+        install=install,
+        sep=sep,
+        one=one,
+        sepscl=sepscl,
+        noline=noline,
+        noline_1=noline_1,
+        box=box,
+        hist=hist,
+        norm2=norm2,
+        normx=normx,
+        norm1=norm1,
+        demean=demean,
+        x=x,
+        xl10=xl10,
+        dx=dx,
+        xzero=xzero,
+        nopush=nopush,
+        ignore=ignore,
+        use=use,
+        xlabel=xlabel,
+        ylabel=ylabel,
+        plabel=plabel,
+        title=title,
+        wintitle=wintitle,
+        naked=naked,
+        aspect=aspect,
+        stdin=stdin,
+        ps=ps,
+        jpg=jpg,
+        jpeg=jpeg,
+        png=png,
+        pnm=pnm,
+        pngs=pngs,
+        jpgs=jpgs,
+        jpegs=jpegs,
+        pnms=pnms,
+        ytran=ytran,
+        xtran=xtran,
+        xaxis=xaxis,
+        yaxis=yaxis,
+        ynames=ynames,
+        volreg=volreg,
+        thick=thick,
+        thick_1=thick_1,
+        dashed=dashed,
+        setenv=setenv,
+        censor_rgb=censor_rgb,
+        censor=censor,
+        censortr=censortr,
+        concat=concat,
+        rbox=rbox,
+        rbox_1=rbox_1,
+        line=line,
+    )
     return v_1dplot_execute(params, execution)
 
 

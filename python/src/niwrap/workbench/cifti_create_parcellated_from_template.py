@@ -11,10 +11,14 @@ CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiCreateParcellatedFromTemplateCiftiParameters = typing.TypedDict('CiftiCreateParcellatedFromTemplateCiftiParameters', {
     "__STYX_TYPE__": typing.Literal["cifti"],
     "cifti_in": InputPathType,
 })
+
+
 CiftiCreateParcellatedFromTemplateParameters = typing.TypedDict('CiftiCreateParcellatedFromTemplateParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-create-parcellated-from-template"],
     "cifti_template": InputPathType,
@@ -255,7 +259,13 @@ def cifti_create_parcellated_from_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA)
-    params = cifti_create_parcellated_from_template_params(cifti_template=cifti_template, modify_direction=modify_direction, cifti_out=cifti_out, opt_fill_value_value=opt_fill_value_value, cifti=cifti)
+    params = cifti_create_parcellated_from_template_params(
+        cifti_template=cifti_template,
+        modify_direction=modify_direction,
+        cifti_out=cifti_out,
+        opt_fill_value_value=opt_fill_value_value,
+        cifti=cifti,
+    )
     return cifti_create_parcellated_from_template_execute(params, execution)
 
 

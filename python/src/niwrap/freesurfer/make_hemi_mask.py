@@ -11,6 +11,8 @@ MAKE_HEMI_MASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeHemiMaskParameters = typing.TypedDict('MakeHemiMaskParameters', {
     "__STYX_TYPE__": typing.Literal["make_hemi_mask"],
     "hemi": str,
@@ -177,7 +179,11 @@ def make_hemi_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_HEMI_MASK_METADATA)
-    params = make_hemi_mask_params(hemi=hemi, input_file=input_file, output_file=output_file)
+    params = make_hemi_mask_params(
+        hemi=hemi,
+        input_file=input_file,
+        output_file=output_file,
+    )
     return make_hemi_mask_execute(params, execution)
 
 

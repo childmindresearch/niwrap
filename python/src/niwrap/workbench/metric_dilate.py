@@ -11,6 +11,8 @@ METRIC_DILATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricDilateParameters = typing.TypedDict('MetricDilateParameters', {
     "__STYX_TYPE__": typing.Literal["metric-dilate"],
     "metric": InputPathType,
@@ -323,7 +325,20 @@ def metric_dilate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_DILATE_METADATA)
-    params = metric_dilate_params(metric=metric, surface=surface, distance=distance, metric_out=metric_out, opt_bad_vertex_roi_roi_metric=opt_bad_vertex_roi_roi_metric, opt_data_roi_roi_metric=opt_data_roi_roi_metric, opt_column_column=opt_column_column, opt_nearest=opt_nearest, opt_linear=opt_linear, opt_exponent_exponent=opt_exponent_exponent, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric, opt_legacy_cutoff=opt_legacy_cutoff)
+    params = metric_dilate_params(
+        metric=metric,
+        surface=surface,
+        distance=distance,
+        metric_out=metric_out,
+        opt_bad_vertex_roi_roi_metric=opt_bad_vertex_roi_roi_metric,
+        opt_data_roi_roi_metric=opt_data_roi_roi_metric,
+        opt_column_column=opt_column_column,
+        opt_nearest=opt_nearest,
+        opt_linear=opt_linear,
+        opt_exponent_exponent=opt_exponent_exponent,
+        opt_corrected_areas_area_metric=opt_corrected_areas_area_metric,
+        opt_legacy_cutoff=opt_legacy_cutoff,
+    )
     return metric_dilate_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ VIENA_QUANT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 VienaQuantParameters = typing.TypedDict('VienaQuantParameters', {
     "__STYX_TYPE__": typing.Literal["viena_quant"],
     "input1": InputPathType,
@@ -173,7 +175,11 @@ def viena_quant(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VIENA_QUANT_METADATA)
-    params = viena_quant_params(input1=input1, input2=input2, ventricle_mask=ventricle_mask)
+    params = viena_quant_params(
+        input1=input1,
+        input2=input2,
+        ventricle_mask=ventricle_mask,
+    )
     return viena_quant_execute(params, execution)
 
 

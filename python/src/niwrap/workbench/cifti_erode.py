@@ -11,21 +11,29 @@ CIFTI_ERODE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiErodeLeftSurfaceParameters = typing.TypedDict('CiftiErodeLeftSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["left_surface"],
     "surface": InputPathType,
     "opt_left_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiErodeRightSurfaceParameters = typing.TypedDict('CiftiErodeRightSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["right_surface"],
     "surface": InputPathType,
     "opt_right_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiErodeCerebellumSurfaceParameters = typing.TypedDict('CiftiErodeCerebellumSurfaceParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_surface"],
     "surface": InputPathType,
     "opt_cerebellum_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiErodeParameters = typing.TypedDict('CiftiErodeParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-erode"],
     "cifti_in": InputPathType,
@@ -405,7 +413,17 @@ def cifti_erode(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_ERODE_METADATA)
-    params = cifti_erode_params(cifti_in=cifti_in, direction=direction, surface_distance=surface_distance, volume_distance=volume_distance, cifti_out=cifti_out, left_surface=left_surface, right_surface=right_surface, cerebellum_surface=cerebellum_surface, opt_merged_volume=opt_merged_volume)
+    params = cifti_erode_params(
+        cifti_in=cifti_in,
+        direction=direction,
+        surface_distance=surface_distance,
+        volume_distance=volume_distance,
+        cifti_out=cifti_out,
+        left_surface=left_surface,
+        right_surface=right_surface,
+        cerebellum_surface=cerebellum_surface,
+        opt_merged_volume=opt_merged_volume,
+    )
     return cifti_erode_execute(params, execution)
 
 

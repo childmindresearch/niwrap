@@ -11,6 +11,8 @@ OPTSEQ2_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Optseq2Parameters = typing.TypedDict('Optseq2Parameters', {
     "__STYX_TYPE__": typing.Literal["optseq2"],
     "ntp": float,
@@ -539,7 +541,40 @@ def optseq2(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(OPTSEQ2_METADATA)
-    params = optseq2_params(ntp=ntp, tr=tr, tprescan=tprescan, psdwin=psdwin, event=event, repvar=repvar, polyfit=polyfit, tnullmin=tnullmin, tnullmax=tnullmax, nsearch=nsearch, tsearch=tsearch, first_order_cb=first_order_cb, ar1=ar1, penalize=penalize, evc=evc, cmtx=cmtx, cost=cost, sumdelays=sumdelays, seed=seed, nkeep=nkeep, outstem=outstem, mtxstem=mtxstem, cmtxfile=cmtxfile, summaryfile=summaryfile, logfile=logfile, pctupdate=pctupdate, sviterfile=sviterfile, instem=instem, input_schedule=input_schedule, nosearch=nosearch, help_=help_, version=version)
+    params = optseq2_params(
+        ntp=ntp,
+        tr=tr,
+        tprescan=tprescan,
+        psdwin=psdwin,
+        event=event,
+        repvar=repvar,
+        polyfit=polyfit,
+        tnullmin=tnullmin,
+        tnullmax=tnullmax,
+        nsearch=nsearch,
+        tsearch=tsearch,
+        first_order_cb=first_order_cb,
+        ar1=ar1,
+        penalize=penalize,
+        evc=evc,
+        cmtx=cmtx,
+        cost=cost,
+        sumdelays=sumdelays,
+        seed=seed,
+        nkeep=nkeep,
+        outstem=outstem,
+        mtxstem=mtxstem,
+        cmtxfile=cmtxfile,
+        summaryfile=summaryfile,
+        logfile=logfile,
+        pctupdate=pctupdate,
+        sviterfile=sviterfile,
+        instem=instem,
+        input_schedule=input_schedule,
+        nosearch=nosearch,
+        help_=help_,
+        version=version,
+    )
     return optseq2_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ CIFTI_LABEL_PROBABILITY_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiLabelProbabilityParameters = typing.TypedDict('CiftiLabelProbabilityParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-label-probability"],
     "label_maps": InputPathType,
@@ -189,7 +191,11 @@ def cifti_label_probability(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_LABEL_PROBABILITY_METADATA)
-    params = cifti_label_probability_params(label_maps=label_maps, probability_dscalar_out=probability_dscalar_out, opt_exclude_unlabeled=opt_exclude_unlabeled)
+    params = cifti_label_probability_params(
+        label_maps=label_maps,
+        probability_dscalar_out=probability_dscalar_out,
+        opt_exclude_unlabeled=opt_exclude_unlabeled,
+    )
     return cifti_label_probability_execute(params, execution)
 
 

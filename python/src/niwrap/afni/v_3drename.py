@@ -11,6 +11,8 @@ V_3DRENAME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3drenameParameters = typing.TypedDict('V3drenameParameters', {
     "__STYX_TYPE__": typing.Literal["3drename"],
     "old_prefix": str,
@@ -162,7 +164,10 @@ def v_3drename(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DRENAME_METADATA)
-    params = v_3drename_params(old_prefix=old_prefix, new_prefix=new_prefix)
+    params = v_3drename_params(
+        old_prefix=old_prefix,
+        new_prefix=new_prefix,
+    )
     return v_3drename_execute(params, execution)
 
 

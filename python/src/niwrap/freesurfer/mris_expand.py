@@ -11,6 +11,8 @@ MRIS_EXPAND_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisExpandParameters = typing.TypedDict('MrisExpandParameters', {
     "__STYX_TYPE__": typing.Literal["mris_expand"],
     "input_surface": InputPathType,
@@ -221,7 +223,15 @@ def mris_expand(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXPAND_METADATA)
-    params = mris_expand_params(input_surface=input_surface, expansion_distance=expansion_distance, output_surface=output_surface, thickness=thickness, label=label, tmap=tmap, tmap_random=tmap_random)
+    params = mris_expand_params(
+        input_surface=input_surface,
+        expansion_distance=expansion_distance,
+        output_surface=output_surface,
+        thickness=thickness,
+        label=label,
+        tmap=tmap,
+        tmap_random=tmap_random,
+    )
     return mris_expand_execute(params, execution)
 
 

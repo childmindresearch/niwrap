@@ -11,6 +11,8 @@ FAT_PROC_DWI_TO_DT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcDwiToDtParameters = typing.TypedDict('FatProcDwiToDtParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_dwi_to_dt"],
     "in_dwi": InputPathType,
@@ -477,7 +479,37 @@ def fat_proc_dwi_to_dt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_DWI_TO_DT_METADATA)
-    params = fat_proc_dwi_to_dt_params(in_dwi=in_dwi, in_gradmat=in_gradmat, prefix=prefix, in_bvals=in_bvals, mask=mask, mask_from_struc=mask_from_struc, in_struc_res=in_struc_res, in_ref_orig=in_ref_orig, prefix_dti=prefix_dti, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z, no_flip=no_flip, no_scale_out_1000=no_scale_out_1000, no_reweight=no_reweight, no_cumulative_wts=no_cumulative_wts, qc_fa_thr=qc_fa_thr, qc_fa_max=qc_fa_max, qc_fa_unc_max=qc_fa_unc_max, qc_v12_unc_max=qc_v12_unc_max, qc_prefix=qc_prefix, no_qc_view=no_qc_view, no_cmd_out=no_cmd_out, workdir=workdir, no_clean=no_clean, uncert_off=uncert_off, uncert_iters=uncert_iters, uncert_extra_cmds=uncert_extra_cmds, check_abs_min=check_abs_min)
+    params = fat_proc_dwi_to_dt_params(
+        in_dwi=in_dwi,
+        in_gradmat=in_gradmat,
+        prefix=prefix,
+        in_bvals=in_bvals,
+        mask=mask,
+        mask_from_struc=mask_from_struc,
+        in_struc_res=in_struc_res,
+        in_ref_orig=in_ref_orig,
+        prefix_dti=prefix_dti,
+        flip_x=flip_x,
+        flip_y=flip_y,
+        flip_z=flip_z,
+        no_flip=no_flip,
+        no_scale_out_1000=no_scale_out_1000,
+        no_reweight=no_reweight,
+        no_cumulative_wts=no_cumulative_wts,
+        qc_fa_thr=qc_fa_thr,
+        qc_fa_max=qc_fa_max,
+        qc_fa_unc_max=qc_fa_unc_max,
+        qc_v12_unc_max=qc_v12_unc_max,
+        qc_prefix=qc_prefix,
+        no_qc_view=no_qc_view,
+        no_cmd_out=no_cmd_out,
+        workdir=workdir,
+        no_clean=no_clean,
+        uncert_off=uncert_off,
+        uncert_iters=uncert_iters,
+        uncert_extra_cmds=uncert_extra_cmds,
+        check_abs_min=check_abs_min,
+    )
     return fat_proc_dwi_to_dt_execute(params, execution)
 
 

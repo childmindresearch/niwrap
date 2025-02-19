@@ -11,6 +11,8 @@ SURFACE_CUT_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceCutResampleParameters = typing.TypedDict('SurfaceCutResampleParameters', {
     "__STYX_TYPE__": typing.Literal["surface-cut-resample"],
     "surface_in": InputPathType,
@@ -193,7 +195,12 @@ def surface_cut_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CUT_RESAMPLE_METADATA)
-    params = surface_cut_resample_params(surface_in=surface_in, current_sphere=current_sphere, new_sphere=new_sphere, surface_out=surface_out)
+    params = surface_cut_resample_params(
+        surface_in=surface_in,
+        current_sphere=current_sphere,
+        new_sphere=new_sphere,
+        surface_out=surface_out,
+    )
     return surface_cut_resample_execute(params, execution)
 
 

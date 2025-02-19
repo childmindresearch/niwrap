@@ -11,6 +11,8 @@ DMRI_MOTION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriMotionParameters = typing.TypedDict('DmriMotionParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_motion"],
     "outfile": InputPathType,
@@ -269,7 +271,19 @@ def dmri_motion(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_MOTION_METADATA)
-    params = dmri_motion_params(outfile=outfile, outf=outf, mat=mat, dwi=dwi, bval=bval, threshold=threshold, diffusivity=diffusivity, debug=debug, checkopts=checkopts, help_=help_, version=version)
+    params = dmri_motion_params(
+        outfile=outfile,
+        outf=outf,
+        mat=mat,
+        dwi=dwi,
+        bval=bval,
+        threshold=threshold,
+        diffusivity=diffusivity,
+        debug=debug,
+        checkopts=checkopts,
+        help_=help_,
+        version=version,
+    )
     return dmri_motion_execute(params, execution)
 
 

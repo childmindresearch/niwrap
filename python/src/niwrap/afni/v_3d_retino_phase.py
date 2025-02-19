@@ -11,6 +11,8 @@ V_3D_RETINO_PHASE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRetinoPhaseParameters = typing.TypedDict('V3dRetinoPhaseParameters', {
     "__STYX_TYPE__": typing.Literal["3dRetinoPhase"],
     "prefix": str,
@@ -347,7 +349,24 @@ def v_3d_retino_phase(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_RETINO_PHASE_METADATA)
-    params = v_3d_retino_phase_params(prefix=prefix, dataset=dataset, exp=exp, con=con, clw=clw, ccw=ccw, spectra=spectra, tstim=tstim, nrings=nrings, nwedges=nwedges, ort_adjust=ort_adjust, pre_stim=pre_stim, sum_adjust=sum_adjust, phase_estimate=phase_estimate, ref_ts=ref_ts, multi_ref_ts=multi_ref_ts)
+    params = v_3d_retino_phase_params(
+        prefix=prefix,
+        dataset=dataset,
+        exp=exp,
+        con=con,
+        clw=clw,
+        ccw=ccw,
+        spectra=spectra,
+        tstim=tstim,
+        nrings=nrings,
+        nwedges=nwedges,
+        ort_adjust=ort_adjust,
+        pre_stim=pre_stim,
+        sum_adjust=sum_adjust,
+        phase_estimate=phase_estimate,
+        ref_ts=ref_ts,
+        multi_ref_ts=multi_ref_ts,
+    )
     return v_3d_retino_phase_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__NOISY_SKULL_STRIP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VNoisySkullStripParameters = typing.TypedDict('VNoisySkullStripParameters', {
     "__STYX_TYPE__": typing.Literal["@NoisySkullStrip"],
     "input_file": InputPathType,
@@ -193,7 +195,11 @@ def v__noisy_skull_strip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__NOISY_SKULL_STRIP_METADATA)
-    params = v__noisy_skull_strip_params(input_file=input_file, keep_tmp=keep_tmp, v_3dskullstrip_opts=v_3dskullstrip_opts)
+    params = v__noisy_skull_strip_params(
+        input_file=input_file,
+        keep_tmp=keep_tmp,
+        v_3dskullstrip_opts=v_3dskullstrip_opts,
+    )
     return v__noisy_skull_strip_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__SUMA_MAKE_SPEC_CARET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSumaMakeSpecCaretParameters = typing.TypedDict('VSumaMakeSpecCaretParameters', {
     "__STYX_TYPE__": typing.Literal["@SUMA_Make_Spec_Caret"],
     "subject_id": str,
@@ -166,7 +168,9 @@ def v__suma_make_spec_caret(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_MAKE_SPEC_CARET_METADATA)
-    params = v__suma_make_spec_caret_params(subject_id=subject_id)
+    params = v__suma_make_spec_caret_params(
+        subject_id=subject_id,
+    )
     return v__suma_make_spec_caret_execute(params, execution)
 
 

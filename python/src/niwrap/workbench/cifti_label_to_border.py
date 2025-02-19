@@ -11,11 +11,15 @@ CIFTI_LABEL_TO_BORDER_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiLabelToBorderBorderParameters = typing.TypedDict('CiftiLabelToBorderBorderParameters', {
     "__STYX_TYPE__": typing.Literal["border"],
     "surface": InputPathType,
     "border_out": str,
 })
+
+
 CiftiLabelToBorderParameters = typing.TypedDict('CiftiLabelToBorderParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-label-to-border"],
     "cifti_in": InputPathType,
@@ -282,7 +286,12 @@ def cifti_label_to_border(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_LABEL_TO_BORDER_METADATA)
-    params = cifti_label_to_border_params(cifti_in=cifti_in, opt_placement_fraction=opt_placement_fraction, opt_column_column=opt_column_column, border=border)
+    params = cifti_label_to_border_params(
+        cifti_in=cifti_in,
+        opt_placement_fraction=opt_placement_fraction,
+        opt_column_column=opt_column_column,
+        border=border,
+    )
     return cifti_label_to_border_execute(params, execution)
 
 

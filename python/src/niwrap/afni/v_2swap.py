@@ -11,6 +11,8 @@ V_2SWAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V2swapParameters = typing.TypedDict('V2swapParameters', {
     "__STYX_TYPE__": typing.Literal["2swap"],
     "quiet": bool,
@@ -163,7 +165,10 @@ def v_2swap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_2SWAP_METADATA)
-    params = v_2swap_params(quiet=quiet, input_files=input_files)
+    params = v_2swap_params(
+        quiet=quiet,
+        input_files=input_files,
+    )
     return v_2swap_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ DEFECT_SEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DefectSegParameters = typing.TypedDict('DefectSegParameters', {
     "__STYX_TYPE__": typing.Literal["defect-seg"],
     "subject": str,
@@ -200,7 +202,11 @@ def defect_seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DEFECT_SEG_METADATA)
-    params = defect_seg_params(subject=subject, lh_only=lh_only, rh_only=rh_only)
+    params = defect_seg_params(
+        subject=subject,
+        lh_only=lh_only,
+        rh_only=rh_only,
+    )
     return defect_seg_execute(params, execution)
 
 

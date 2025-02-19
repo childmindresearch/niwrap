@@ -11,6 +11,8 @@ BACKEND_AVERAGE_DENSE_ROI_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 BackendAverageDenseRoiParameters = typing.TypedDict('BackendAverageDenseRoiParameters', {
     "__STYX_TYPE__": typing.Literal["backend-average-dense-roi"],
     "index_list": str,
@@ -173,7 +175,10 @@ def backend_average_dense_roi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BACKEND_AVERAGE_DENSE_ROI_METADATA)
-    params = backend_average_dense_roi_params(index_list=index_list, out_file=out_file)
+    params = backend_average_dense_roi_params(
+        index_list=index_list,
+        out_file=out_file,
+    )
     return backend_average_dense_roi_execute(params, execution)
 
 

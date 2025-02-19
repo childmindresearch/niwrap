@@ -11,6 +11,8 @@ V_3D_BRAIN_SYNC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dBrainSyncParameters = typing.TypedDict('V3dBrainSyncParameters', {
     "__STYX_TYPE__": typing.Literal["3dBrainSync"],
     "inset1": InputPathType,
@@ -244,7 +246,15 @@ def v_3d_brain_sync(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_BRAIN_SYNC_METADATA)
-    params = v_3d_brain_sync_params(inset1=inset1, inset2=inset2, qprefix=qprefix, pprefix=pprefix, normalize=normalize, mask=mask, verb=verb)
+    params = v_3d_brain_sync_params(
+        inset1=inset1,
+        inset2=inset2,
+        qprefix=qprefix,
+        pprefix=pprefix,
+        normalize=normalize,
+        mask=mask,
+        verb=verb,
+    )
     return v_3d_brain_sync_execute(params, execution)
 
 

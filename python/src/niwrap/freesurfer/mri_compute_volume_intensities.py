@@ -11,6 +11,8 @@ MRI_COMPUTE_VOLUME_INTENSITIES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriComputeVolumeIntensitiesParameters = typing.TypedDict('MriComputeVolumeIntensitiesParameters', {
     "__STYX_TYPE__": typing.Literal["mri_compute_volume_intensities"],
     "input_intensity": InputPathType,
@@ -175,7 +177,11 @@ def mri_compute_volume_intensities(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_VOLUME_INTENSITIES_METADATA)
-    params = mri_compute_volume_intensities_params(input_intensity=input_intensity, volume_fraction_stem=volume_fraction_stem, output_volume=output_volume)
+    params = mri_compute_volume_intensities_params(
+        input_intensity=input_intensity,
+        volume_fraction_stem=volume_fraction_stem,
+        output_volume=output_volume,
+    )
     return mri_compute_volume_intensities_execute(params, execution)
 
 

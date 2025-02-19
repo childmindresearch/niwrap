@@ -11,6 +11,8 @@ RTFEEDME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RtfeedmeParameters = typing.TypedDict('RtfeedmeParameters', {
     "__STYX_TYPE__": typing.Literal["rtfeedme"],
     "datasets": list[InputPathType],
@@ -281,7 +283,19 @@ def rtfeedme(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RTFEEDME_METADATA)
-    params = rtfeedme_params(datasets=datasets, host=host, interval_ms=interval_ms, send_3d=send_3d, buffer_mb=buffer_mb, verbose=verbose, swap_bytes=swap_bytes, nz_fake=nz_fake, drive_cmd=drive_cmd, note=note, yrange=yrange)
+    params = rtfeedme_params(
+        datasets=datasets,
+        host=host,
+        interval_ms=interval_ms,
+        send_3d=send_3d,
+        buffer_mb=buffer_mb,
+        verbose=verbose,
+        swap_bytes=swap_bytes,
+        nz_fake=nz_fake,
+        drive_cmd=drive_cmd,
+        note=note,
+        yrange=yrange,
+    )
     return rtfeedme_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_EMPTY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dEmptyParameters = typing.TypedDict('V3dEmptyParameters', {
     "__STYX_TYPE__": typing.Literal["3dEmpty"],
     "prefix": typing.NotRequired[str | None],
@@ -204,7 +206,12 @@ def v_3d_empty(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EMPTY_METADATA)
-    params = v_3d_empty_params(prefix=prefix, geometry=geometry, nxyz=nxyz, nt_=nt_)
+    params = v_3d_empty_params(
+        prefix=prefix,
+        geometry=geometry,
+        nxyz=nxyz,
+        nt_=nt_,
+    )
     return v_3d_empty_execute(params, execution)
 
 

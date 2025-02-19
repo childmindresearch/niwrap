@@ -11,6 +11,8 @@ NICCC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 NicccParameters = typing.TypedDict('NicccParameters', {
     "__STYX_TYPE__": typing.Literal["niccc"],
     "streamspec": str,
@@ -279,7 +281,20 @@ def niccc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NICCC_METADATA)
-    params = niccc_params(streamspec=streamspec, duplicate=duplicate, nodata=nodata, attribute=attribute, match=match, file=file, string_=string_, stdout=stdout, hash_=hash_, quiet=quiet, find_attr=find_attr, skip_attr=skip_attr)
+    params = niccc_params(
+        streamspec=streamspec,
+        duplicate=duplicate,
+        nodata=nodata,
+        attribute=attribute,
+        match=match,
+        file=file,
+        string_=string_,
+        stdout=stdout,
+        hash_=hash_,
+        quiet=quiet,
+        find_attr=find_attr,
+        skip_attr=skip_attr,
+    )
     return niccc_execute(params, execution)
 
 

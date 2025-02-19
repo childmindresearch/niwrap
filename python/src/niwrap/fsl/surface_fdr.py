@@ -11,6 +11,8 @@ SURFACE_FDR_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SurfaceFdrParameters = typing.TypedDict('SurfaceFdrParameters', {
     "__STYX_TYPE__": typing.Literal["surface_fdr"],
     "input_vtk": InputPathType,
@@ -165,7 +167,9 @@ def surface_fdr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_FDR_METADATA)
-    params = surface_fdr_params(input_vtk=input_vtk)
+    params = surface_fdr_params(
+        input_vtk=input_vtk,
+    )
     return surface_fdr_execute(params, execution)
 
 

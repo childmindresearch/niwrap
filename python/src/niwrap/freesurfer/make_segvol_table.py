@@ -11,6 +11,8 @@ MAKE_SEGVOL_TABLE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeSegvolTableParameters = typing.TypedDict('MakeSegvolTableParameters', {
     "__STYX_TYPE__": typing.Literal["make-segvol-table"],
     "subjects": list[str],
@@ -269,7 +271,18 @@ def make_segvol_table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_SEGVOL_TABLE_METADATA)
-    params = make_segvol_table_params(subjects=subjects, subject_file=subject_file, outfile=outfile, idmap=idmap, structure_ids=structure_ids, segdir=segdir, subjects_dir=subjects_dir, umask=umask, version=version, help_=help_)
+    params = make_segvol_table_params(
+        subjects=subjects,
+        subject_file=subject_file,
+        outfile=outfile,
+        idmap=idmap,
+        structure_ids=structure_ids,
+        segdir=segdir,
+        subjects_dir=subjects_dir,
+        umask=umask,
+        version=version,
+        help_=help_,
+    )
     return make_segvol_table_execute(params, execution)
 
 

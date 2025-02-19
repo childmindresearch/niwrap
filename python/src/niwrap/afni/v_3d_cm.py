@@ -11,6 +11,8 @@ V_3D_CM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dCmParameters = typing.TypedDict('V3dCmParameters', {
     "__STYX_TYPE__": typing.Literal["3dCM"],
     "dset": InputPathType,
@@ -160,7 +162,9 @@ def v_3d_cm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CM_METADATA)
-    params = v_3d_cm_params(dset=dset)
+    params = v_3d_cm_params(
+        dset=dset,
+    )
     return v_3d_cm_execute(params, execution)
 
 

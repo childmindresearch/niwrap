@@ -11,6 +11,8 @@ DENOISE_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 DenoiseImageParameters = typing.TypedDict('DenoiseImageParameters', {
     "__STYX_TYPE__": typing.Literal["DenoiseImage"],
     "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
@@ -289,7 +291,18 @@ def denoise_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DENOISE_IMAGE_METADATA)
-    params = denoise_image_params(image_dimensionality=image_dimensionality, noise_model=noise_model, shrink_factor=shrink_factor, mask_image=mask_image, patch_radius=patch_radius, search_radius=search_radius, verbose=verbose, input_image=input_image, corrected_image_path=corrected_image_path, noise_image_path=noise_image_path)
+    params = denoise_image_params(
+        image_dimensionality=image_dimensionality,
+        noise_model=noise_model,
+        shrink_factor=shrink_factor,
+        mask_image=mask_image,
+        patch_radius=patch_radius,
+        search_radius=search_radius,
+        verbose=verbose,
+        input_image=input_image,
+        corrected_image_path=corrected_image_path,
+        noise_image_path=noise_image_path,
+    )
     return denoise_image_execute(params, execution)
 
 

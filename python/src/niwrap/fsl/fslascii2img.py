@@ -11,6 +11,8 @@ FSLASCII2IMG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Fslascii2imgParameters = typing.TypedDict('Fslascii2imgParameters', {
     "__STYX_TYPE__": typing.Literal["fslascii2img"],
     "infile": InputPathType,
@@ -222,7 +224,18 @@ def fslascii2img(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLASCII2IMG_METADATA)
-    params = fslascii2img_params(infile=infile, xsize=xsize, ysize=ysize, zsize=zsize, tsize=tsize, xdim=xdim, ydim=ydim, zdim=zdim, tr=tr, outfile=outfile)
+    params = fslascii2img_params(
+        infile=infile,
+        xsize=xsize,
+        ysize=ysize,
+        zsize=zsize,
+        tsize=tsize,
+        xdim=xdim,
+        ydim=ydim,
+        zdim=zdim,
+        tr=tr,
+        outfile=outfile,
+    )
     return fslascii2img_execute(params, execution)
 
 

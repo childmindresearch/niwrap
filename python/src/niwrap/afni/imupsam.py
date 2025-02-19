@@ -11,6 +11,8 @@ IMUPSAM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImupsamParameters = typing.TypedDict('ImupsamParameters', {
     "__STYX_TYPE__": typing.Literal["imupsam"],
     "ascii_flag": bool,
@@ -185,7 +187,12 @@ def imupsam(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMUPSAM_METADATA)
-    params = imupsam_params(ascii_flag=ascii_flag, factor=factor, input_image=input_image, output_image=output_image)
+    params = imupsam_params(
+        ascii_flag=ascii_flag,
+        factor=factor,
+        input_image=input_image,
+        output_image=output_image,
+    )
     return imupsam_execute(params, execution)
 
 

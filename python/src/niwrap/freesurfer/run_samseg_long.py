@@ -11,6 +11,8 @@ RUN_SAMSEG_LONG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunSamsegLongParameters = typing.TypedDict('RunSamsegLongParameters', {
     "__STYX_TYPE__": typing.Literal["run_samseg_long"],
     "timepoint": list[InputPathType],
@@ -392,7 +394,30 @@ def run_samseg_long(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SAMSEG_LONG_METADATA)
-    params = run_samseg_long_params(timepoint=timepoint, output=output, lesion=lesion, threshold=threshold, samples=samples, burnin=burnin, lesion_mask_structure=lesion_mask_structure, lesion_mask_pattern=lesion_mask_pattern, mode=mode, atlas=atlas, deformation_hyperprior=deformation_hyperprior, gmm_hyperprior=gmm_hyperprior, save_warp=save_warp, save_mesh=save_mesh, save_posteriors=save_posteriors, pallidum_separate=pallidum_separate, threads=threads, tp_to_base_transform=tp_to_base_transform, force_different_resolutions=force_different_resolutions, history=history, showfigs=showfigs, movie=movie)
+    params = run_samseg_long_params(
+        timepoint=timepoint,
+        output=output,
+        lesion=lesion,
+        threshold=threshold,
+        samples=samples,
+        burnin=burnin,
+        lesion_mask_structure=lesion_mask_structure,
+        lesion_mask_pattern=lesion_mask_pattern,
+        mode=mode,
+        atlas=atlas,
+        deformation_hyperprior=deformation_hyperprior,
+        gmm_hyperprior=gmm_hyperprior,
+        save_warp=save_warp,
+        save_mesh=save_mesh,
+        save_posteriors=save_posteriors,
+        pallidum_separate=pallidum_separate,
+        threads=threads,
+        tp_to_base_transform=tp_to_base_transform,
+        force_different_resolutions=force_different_resolutions,
+        history=history,
+        showfigs=showfigs,
+        movie=movie,
+    )
     return run_samseg_long_execute(params, execution)
 
 

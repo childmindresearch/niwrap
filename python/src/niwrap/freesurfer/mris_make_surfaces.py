@@ -11,6 +11,8 @@ MRIS_MAKE_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisMakeSurfacesParameters = typing.TypedDict('MrisMakeSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["mris_make_surfaces"],
     "subject_name": str,
@@ -770,7 +772,61 @@ def mris_make_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MAKE_SURFACES_METADATA)
-    params = mris_make_surfaces_params(subject_name=subject_name, hemisphere=hemisphere, white=white, pial=pial, whiteonly=whiteonly, nowhite=nowhite, orig_white=orig_white, orig_pial=orig_pial, q=q, max_gray_scale=max_gray_scale, c=c, cortex=cortex, w=w, first_wm_peak=first_wm_peak, a_avgs=a_avgs, pa_avgs=pa_avgs, wa_avgs=wa_avgs, t1_vol=t1_vol, w_vol=w_vol, long=long, dura_thresh=dura_thresh, sdir=sdir, erase_cerebellum=erase_cerebellum, wm_weight=wm_weight, nsigma_above=nsigma_above, nsigma_below=nsigma_below, t2_min_inside=t2_min_inside, t2_max_inside=t2_max_inside, t2_outside_min=t2_outside_min, t2_outside_max=t2_outside_max, min_peak_pct=min_peak_pct, border_vals_hires=border_vals_hires, no_unitize=no_unitize, intensity=intensity, curv=curv, tspring=tspring, nspring=nspring, repulse=repulse, save_target=save_target, save_res=save_res, v_vertexno=v_vertexno, diag_vertex=diag_vertex, rip=rip, sigma_white=sigma_white, sigma_pial=sigma_pial, output=output, min_border_white=min_border_white, max_border_white=max_border_white, min_gray_white_border=min_gray_white_border, max_gray=max_gray, max_gray_csf_border=max_gray_csf_border, min_gray_csf_border=min_gray_csf_border, max_csf=max_csf)
+    params = mris_make_surfaces_params(
+        subject_name=subject_name,
+        hemisphere=hemisphere,
+        white=white,
+        pial=pial,
+        whiteonly=whiteonly,
+        nowhite=nowhite,
+        orig_white=orig_white,
+        orig_pial=orig_pial,
+        q=q,
+        max_gray_scale=max_gray_scale,
+        c=c,
+        cortex=cortex,
+        w=w,
+        first_wm_peak=first_wm_peak,
+        a_avgs=a_avgs,
+        pa_avgs=pa_avgs,
+        wa_avgs=wa_avgs,
+        t1_vol=t1_vol,
+        w_vol=w_vol,
+        long=long,
+        dura_thresh=dura_thresh,
+        sdir=sdir,
+        erase_cerebellum=erase_cerebellum,
+        wm_weight=wm_weight,
+        nsigma_above=nsigma_above,
+        nsigma_below=nsigma_below,
+        t2_min_inside=t2_min_inside,
+        t2_max_inside=t2_max_inside,
+        t2_outside_min=t2_outside_min,
+        t2_outside_max=t2_outside_max,
+        min_peak_pct=min_peak_pct,
+        border_vals_hires=border_vals_hires,
+        no_unitize=no_unitize,
+        intensity=intensity,
+        curv=curv,
+        tspring=tspring,
+        nspring=nspring,
+        repulse=repulse,
+        save_target=save_target,
+        save_res=save_res,
+        v_vertexno=v_vertexno,
+        diag_vertex=diag_vertex,
+        rip=rip,
+        sigma_white=sigma_white,
+        sigma_pial=sigma_pial,
+        output=output,
+        min_border_white=min_border_white,
+        max_border_white=max_border_white,
+        min_gray_white_border=min_gray_white_border,
+        max_gray=max_gray,
+        max_gray_csf_border=max_gray_csf_border,
+        min_gray_csf_border=min_gray_csf_border,
+        max_csf=max_csf,
+    )
     return mris_make_surfaces_execute(params, execution)
 
 

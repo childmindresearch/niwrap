@@ -11,6 +11,8 @@ CIFTI_PARCELLATE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiParcellateSpatialWeightsParameters = typing.TypedDict('CiftiParcellateSpatialWeightsParameters', {
     "__STYX_TYPE__": typing.Literal["spatial_weights"],
     "opt_left_area_surf_left_surf": typing.NotRequired[InputPathType | None],
@@ -20,11 +22,15 @@ CiftiParcellateSpatialWeightsParameters = typing.TypedDict('CiftiParcellateSpati
     "opt_right_area_metric_right_metric": typing.NotRequired[InputPathType | None],
     "opt_cerebellum_area_metric_cerebellum_metric": typing.NotRequired[InputPathType | None],
 })
+
+
 CiftiParcellateExcludeOutliersParameters = typing.TypedDict('CiftiParcellateExcludeOutliersParameters', {
     "__STYX_TYPE__": typing.Literal["exclude_outliers"],
     "sigma_below": float,
     "sigma_above": float,
 })
+
+
 CiftiParcellateParameters = typing.TypedDict('CiftiParcellateParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-parcellate"],
     "cifti_in": InputPathType,
@@ -516,7 +522,21 @@ def cifti_parcellate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_PARCELLATE_METADATA)
-    params = cifti_parcellate_params(cifti_in=cifti_in, cifti_label=cifti_label, direction=direction, cifti_out=cifti_out, spatial_weights=spatial_weights, opt_cifti_weights_weight_cifti=opt_cifti_weights_weight_cifti, opt_method_method=opt_method_method, exclude_outliers=exclude_outliers, opt_only_numeric=opt_only_numeric, opt_fill_value_value=opt_fill_value_value, opt_nonempty_mask_out_mask_out=opt_nonempty_mask_out_mask_out, opt_legacy_mode=opt_legacy_mode, opt_include_empty=opt_include_empty)
+    params = cifti_parcellate_params(
+        cifti_in=cifti_in,
+        cifti_label=cifti_label,
+        direction=direction,
+        cifti_out=cifti_out,
+        spatial_weights=spatial_weights,
+        opt_cifti_weights_weight_cifti=opt_cifti_weights_weight_cifti,
+        opt_method_method=opt_method_method,
+        exclude_outliers=exclude_outliers,
+        opt_only_numeric=opt_only_numeric,
+        opt_fill_value_value=opt_fill_value_value,
+        opt_nonempty_mask_out_mask_out=opt_nonempty_mask_out_mask_out,
+        opt_legacy_mode=opt_legacy_mode,
+        opt_include_empty=opt_include_empty,
+    )
     return cifti_parcellate_execute(params, execution)
 
 

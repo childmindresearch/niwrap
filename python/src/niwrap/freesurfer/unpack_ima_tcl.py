@@ -11,6 +11,8 @@ UNPACK_IMA_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 UnpackImaTclParameters = typing.TypedDict('UnpackImaTclParameters', {
     "__STYX_TYPE__": typing.Literal["unpack_ima.tcl"],
     "target_dir": str,
@@ -155,7 +157,9 @@ def unpack_ima_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNPACK_IMA_TCL_METADATA)
-    params = unpack_ima_tcl_params(target_dir=target_dir)
+    params = unpack_ima_tcl_params(
+        target_dir=target_dir,
+    )
     return unpack_ima_tcl_execute(params, execution)
 
 

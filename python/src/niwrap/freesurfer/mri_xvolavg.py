@@ -11,6 +11,8 @@ MRI_XVOLAVG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriXvolavgParameters = typing.TypedDict('MriXvolavgParameters', {
     "__STYX_TYPE__": typing.Literal["mri_xvolavg"],
     "input_volumes": list[InputPathType],
@@ -198,7 +200,12 @@ def mri_xvolavg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_XVOLAVG_METADATA)
-    params = mri_xvolavg_params(input_volumes=input_volumes, vol_type=vol_type, output_volume=output_volume, output_type=output_type)
+    params = mri_xvolavg_params(
+        input_volumes=input_volumes,
+        vol_type=vol_type,
+        output_volume=output_volume,
+        output_type=output_type,
+    )
     return mri_xvolavg_execute(params, execution)
 
 

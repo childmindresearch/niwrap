@@ -11,6 +11,8 @@ NIFTI_TOOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 NiftiToolParameters = typing.TypedDict('NiftiToolParameters', {
     "__STYX_TYPE__": typing.Literal["nifti_tool"],
     "action": str,
@@ -282,7 +284,20 @@ def nifti_tool(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NIFTI_TOOL_METADATA)
-    params = nifti_tool_params(action=action, input_files=input_files, field=field, mod_field=mod_field, prefix=prefix, debug=debug, overwrite=overwrite, convert2dtype=convert2dtype, convert_fail_choice=convert_fail_choice, convert_verify=convert_verify, add_comment_ext=add_comment_ext, rm_ext=rm_ext)
+    params = nifti_tool_params(
+        action=action,
+        input_files=input_files,
+        field=field,
+        mod_field=mod_field,
+        prefix=prefix,
+        debug=debug,
+        overwrite=overwrite,
+        convert2dtype=convert2dtype,
+        convert_fail_choice=convert_fail_choice,
+        convert_verify=convert_verify,
+        add_comment_ext=add_comment_ext,
+        rm_ext=rm_ext,
+    )
     return nifti_tool_execute(params, execution)
 
 

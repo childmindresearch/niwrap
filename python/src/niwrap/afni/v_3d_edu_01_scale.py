@@ -11,6 +11,8 @@ V_3D_EDU_01_SCALE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dEdu01ScaleParameters = typing.TypedDict('V3dEdu01ScaleParameters', {
     "__STYX_TYPE__": typing.Literal["3dEdu_01_scale"],
     "input": InputPathType,
@@ -196,7 +198,12 @@ def v_3d_edu_01_scale(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EDU_01_SCALE_METADATA)
-    params = v_3d_edu_01_scale_params(input_=input_, mask=mask, mult_factors=mult_factors, option_flag=option_flag)
+    params = v_3d_edu_01_scale_params(
+        input_=input_,
+        mask=mask,
+        mult_factors=mult_factors,
+        option_flag=option_flag,
+    )
     return v_3d_edu_01_scale_execute(params, execution)
 
 

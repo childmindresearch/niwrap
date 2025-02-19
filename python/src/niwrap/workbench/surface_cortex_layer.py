@@ -11,6 +11,8 @@ SURFACE_CORTEX_LAYER_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceCortexLayerParameters = typing.TypedDict('SurfaceCortexLayerParameters', {
     "__STYX_TYPE__": typing.Literal["surface-cortex-layer"],
     "white_surface": InputPathType,
@@ -213,7 +215,13 @@ def surface_cortex_layer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CORTEX_LAYER_METADATA)
-    params = surface_cortex_layer_params(white_surface=white_surface, pial_surface=pial_surface, location=location, out_surface=out_surface, opt_placement_out_placement_metric=opt_placement_out_placement_metric)
+    params = surface_cortex_layer_params(
+        white_surface=white_surface,
+        pial_surface=pial_surface,
+        location=location,
+        out_surface=out_surface,
+        opt_placement_out_placement_metric=opt_placement_out_placement_metric,
+    )
     return surface_cortex_layer_execute(params, execution)
 
 

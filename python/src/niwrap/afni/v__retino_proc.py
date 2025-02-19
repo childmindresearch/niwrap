@@ -11,6 +11,8 @@ V__RETINO_PROC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VRetinoProcParameters = typing.TypedDict('VRetinoProcParameters', {
     "__STYX_TYPE__": typing.Literal["@RetinoProc"],
     "ccw": typing.NotRequired[list[InputPathType] | None],
@@ -614,7 +616,48 @@ def v__retino_proc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__RETINO_PROC_METADATA)
-    params = v__retino_proc_params(ccw=ccw, clw=clw, exp=exp, con=con, epi_ref=epi_ref, epi_anat_ref=epi_anat_ref, anat_vol=anat_vol, anat_vol_epi=anat_vol_epi, surf_vol=surf_vol, surf_vol_epi=surf_vol_epi, phase=phase, delay=delay, tr=tr, period_ecc=period_ecc, period_pol=period_pol, pre_ecc=pre_ecc, pre_pol=pre_pol, on_ecc=on_ecc, on_pol=on_pol, var_on_ecc=var_on_ecc, var_on_pol=var_on_pol, nwedges=nwedges, nrings=nrings, fwhm_pol=fwhm_pol, fwhm_ecc=fwhm_ecc, ignore=ignore, no_tshift=no_tshift, spec_left=spec_left, spec_right=spec_right, dorts=dorts, ccw_orts=ccw_orts, clw_orts=clw_orts, exp_orts=exp_orts, con_orts=con_orts, sid=sid, out_dir=out_dir, echo=echo, echo_edu=echo_edu, a2e_opts=a2e_opts, aea_opts=aea_opts)
+    params = v__retino_proc_params(
+        ccw=ccw,
+        clw=clw,
+        exp=exp,
+        con=con,
+        epi_ref=epi_ref,
+        epi_anat_ref=epi_anat_ref,
+        anat_vol=anat_vol,
+        anat_vol_epi=anat_vol_epi,
+        surf_vol=surf_vol,
+        surf_vol_epi=surf_vol_epi,
+        phase=phase,
+        delay=delay,
+        tr=tr,
+        period_ecc=period_ecc,
+        period_pol=period_pol,
+        pre_ecc=pre_ecc,
+        pre_pol=pre_pol,
+        on_ecc=on_ecc,
+        on_pol=on_pol,
+        var_on_ecc=var_on_ecc,
+        var_on_pol=var_on_pol,
+        nwedges=nwedges,
+        nrings=nrings,
+        fwhm_pol=fwhm_pol,
+        fwhm_ecc=fwhm_ecc,
+        ignore=ignore,
+        no_tshift=no_tshift,
+        spec_left=spec_left,
+        spec_right=spec_right,
+        dorts=dorts,
+        ccw_orts=ccw_orts,
+        clw_orts=clw_orts,
+        exp_orts=exp_orts,
+        con_orts=con_orts,
+        sid=sid,
+        out_dir=out_dir,
+        echo=echo,
+        echo_edu=echo_edu,
+        a2e_opts=a2e_opts,
+        aea_opts=aea_opts,
+    )
     return v__retino_proc_execute(params, execution)
 
 

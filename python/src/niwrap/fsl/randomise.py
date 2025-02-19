@@ -11,6 +11,8 @@ RANDOMISE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 RandomiseParameters = typing.TypedDict('RandomiseParameters', {
     "__STYX_TYPE__": typing.Literal["randomise"],
     "in_file": InputPathType,
@@ -464,7 +466,36 @@ def randomise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RANDOMISE_METADATA)
-    params = randomise_params(in_file=in_file, base_name=base_name, design_mat=design_mat, tcon=tcon, c_thresh=c_thresh, cm_thresh=cm_thresh, demean=demean, f_c_thresh=f_c_thresh, f_cm_thresh=f_cm_thresh, f_only=f_only, fcon=fcon, mask=mask, num_perm=num_perm, one_sample_group_mean=one_sample_group_mean, output_type=output_type, p_vec_n_dist_files=p_vec_n_dist_files, raw_stats_imgs=raw_stats_imgs, seed=seed, show_info_parallel_mode=show_info_parallel_mode, show_total_perms=show_total_perms, tfce=tfce, tfce2_d=tfce2_d, tfce_c=tfce_c, tfce_e=tfce_e, tfce_h=tfce_h, var_smooth=var_smooth, vox_p_values=vox_p_values, x_block_labels=x_block_labels)
+    params = randomise_params(
+        in_file=in_file,
+        base_name=base_name,
+        design_mat=design_mat,
+        tcon=tcon,
+        c_thresh=c_thresh,
+        cm_thresh=cm_thresh,
+        demean=demean,
+        f_c_thresh=f_c_thresh,
+        f_cm_thresh=f_cm_thresh,
+        f_only=f_only,
+        fcon=fcon,
+        mask=mask,
+        num_perm=num_perm,
+        one_sample_group_mean=one_sample_group_mean,
+        output_type=output_type,
+        p_vec_n_dist_files=p_vec_n_dist_files,
+        raw_stats_imgs=raw_stats_imgs,
+        seed=seed,
+        show_info_parallel_mode=show_info_parallel_mode,
+        show_total_perms=show_total_perms,
+        tfce=tfce,
+        tfce2_d=tfce2_d,
+        tfce_c=tfce_c,
+        tfce_e=tfce_e,
+        tfce_h=tfce_h,
+        var_smooth=var_smooth,
+        vox_p_values=vox_p_values,
+        x_block_labels=x_block_labels,
+    )
     return randomise_execute(params, execution)
 
 

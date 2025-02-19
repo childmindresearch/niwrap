@@ -11,6 +11,8 @@ DCMSPLIT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DcmsplitParameters = typing.TypedDict('DcmsplitParameters', {
     "__STYX_TYPE__": typing.Literal["dcmsplit"],
     "dcm_dir": str,
@@ -236,7 +238,18 @@ def dcmsplit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMSPLIT_METADATA)
-    params = dcmsplit_params(dcm_dir=dcm_dir, out_dir=out_dir, copy_=copy_, link=link, split_name=split_name, split_uid=split_uid, series_no=series_no, series_plus=series_plus, dicom_tag=dicom_tag, study_description=study_description)
+    params = dcmsplit_params(
+        dcm_dir=dcm_dir,
+        out_dir=out_dir,
+        copy_=copy_,
+        link=link,
+        split_name=split_name,
+        split_uid=split_uid,
+        series_no=series_no,
+        series_plus=series_plus,
+        dicom_tag=dicom_tag,
+        study_description=study_description,
+    )
     return dcmsplit_execute(params, execution)
 
 

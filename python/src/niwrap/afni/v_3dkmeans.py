@@ -11,6 +11,8 @@ V_3DKMEANS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dkmeansParameters = typing.TypedDict('V3dkmeansParameters', {
     "__STYX_TYPE__": typing.Literal["3dkmeans"],
     "version": bool,
@@ -414,7 +416,27 @@ def v_3dkmeans(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DKMEANS_METADATA)
-    params = v_3dkmeans_params(version=version, input_=input_, mask=mask, mask_range=mask_range, cmask=cmask, jobname=jobname, prefix=prefix, distance_measure=distance_measure, num_clusters=num_clusters, remap_method=remap_method, labeltable=labeltable, clabels=clabels, clust_init=clust_init, num_repeats=num_repeats, rsigs=rsigs, verbose=verbose, write_dists=write_dists, voxdbg=voxdbg, seed=seed)
+    params = v_3dkmeans_params(
+        version=version,
+        input_=input_,
+        mask=mask,
+        mask_range=mask_range,
+        cmask=cmask,
+        jobname=jobname,
+        prefix=prefix,
+        distance_measure=distance_measure,
+        num_clusters=num_clusters,
+        remap_method=remap_method,
+        labeltable=labeltable,
+        clabels=clabels,
+        clust_init=clust_init,
+        num_repeats=num_repeats,
+        rsigs=rsigs,
+        verbose=verbose,
+        write_dists=write_dists,
+        voxdbg=voxdbg,
+        seed=seed,
+    )
     return v_3dkmeans_execute(params, execution)
 
 

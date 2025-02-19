@@ -11,6 +11,8 @@ MAP_TRACK_ID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MapTrackIdParameters = typing.TypedDict('MapTrackIdParameters', {
     "__STYX_TYPE__": typing.Literal["map_TrackID"],
     "prefix": str,
@@ -230,7 +232,16 @@ def map_track_id(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_TRACK_ID_METADATA)
-    params = map_track_id_params(prefix=prefix, in_trk=in_trk, in_map=in_map, reference=reference, verbose=verbose, orig_zero=orig_zero, line_only_num=line_only_num, already_inv=already_inv)
+    params = map_track_id_params(
+        prefix=prefix,
+        in_trk=in_trk,
+        in_map=in_map,
+        reference=reference,
+        verbose=verbose,
+        orig_zero=orig_zero,
+        line_only_num=line_only_num,
+        already_inv=already_inv,
+    )
     return map_track_id_execute(params, execution)
 
 

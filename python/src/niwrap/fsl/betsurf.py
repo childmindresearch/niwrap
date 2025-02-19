@@ -11,6 +11,8 @@ BETSURF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 BetsurfParameters = typing.TypedDict('BetsurfParameters', {
     "__STYX_TYPE__": typing.Literal["betsurf"],
     "t1_image": InputPathType,
@@ -259,7 +261,20 @@ def betsurf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BETSURF_METADATA)
-    params = betsurf_params(t1_image=t1_image, t2_image=t2_image, bet_mesh=bet_mesh, t1_to_standard_mat=t1_to_standard_mat, output_prefix=output_prefix, help_flag=help_flag, verbose_flag=verbose_flag, t1only_flag=t1only_flag, outline_flag=outline_flag, mask_flag=mask_flag, skull_mask_flag=skull_mask_flag, increased_precision=increased_precision)
+    params = betsurf_params(
+        t1_image=t1_image,
+        t2_image=t2_image,
+        bet_mesh=bet_mesh,
+        t1_to_standard_mat=t1_to_standard_mat,
+        output_prefix=output_prefix,
+        help_flag=help_flag,
+        verbose_flag=verbose_flag,
+        t1only_flag=t1only_flag,
+        outline_flag=outline_flag,
+        mask_flag=mask_flag,
+        skull_mask_flag=skull_mask_flag,
+        increased_precision=increased_precision,
+    )
     return betsurf_execute(params, execution)
 
 

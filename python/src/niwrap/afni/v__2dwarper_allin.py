@@ -11,6 +11,8 @@ V__2DWARPER_ALLIN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V2dwarperAllinParameters = typing.TypedDict('V2dwarperAllinParameters', {
     "__STYX_TYPE__": typing.Literal["@2dwarper.Allin"],
     "input_prefix": str,
@@ -188,7 +190,11 @@ def v__2dwarper_allin(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__2DWARPER_ALLIN_METADATA)
-    params = v__2dwarper_allin_params(input_prefix=input_prefix, mask_prefix=mask_prefix, output_prefix=output_prefix)
+    params = v__2dwarper_allin_params(
+        input_prefix=input_prefix,
+        mask_prefix=mask_prefix,
+        output_prefix=output_prefix,
+    )
     return v__2dwarper_allin_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_TSMOOTH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTsmoothParameters = typing.TypedDict('V3dTsmoothParameters', {
     "__STYX_TYPE__": typing.Literal["3dTsmooth"],
     "input_dataset": InputPathType,
@@ -301,7 +303,22 @@ def v_3d_tsmooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSMOOTH_METADATA)
-    params = v_3d_tsmooth_params(input_dataset=input_dataset, prefix=prefix, datum_type=datum_type, lin_filter=lin_filter, med_filter=med_filter, osf_filter=osf_filter, lin_filter_custom=lin_filter_custom, hamming=hamming, blackman=blackman, custom_filter=custom_filter, extend=extend, zero=zero, trend=trend, adaptive=adaptive)
+    params = v_3d_tsmooth_params(
+        input_dataset=input_dataset,
+        prefix=prefix,
+        datum_type=datum_type,
+        lin_filter=lin_filter,
+        med_filter=med_filter,
+        osf_filter=osf_filter,
+        lin_filter_custom=lin_filter_custom,
+        hamming=hamming,
+        blackman=blackman,
+        custom_filter=custom_filter,
+        extend=extend,
+        zero=zero,
+        trend=trend,
+        adaptive=adaptive,
+    )
     return v_3d_tsmooth_execute(params, execution)
 
 

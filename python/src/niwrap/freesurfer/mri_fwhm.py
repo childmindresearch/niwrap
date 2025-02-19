@@ -11,6 +11,8 @@ MRI_FWHM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriFwhmParameters = typing.TypedDict('MriFwhmParameters', {
     "__STYX_TYPE__": typing.Literal["mri_fwhm"],
     "inputvol": InputPathType,
@@ -552,7 +554,43 @@ def mri_fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FWHM_METADATA)
-    params = mri_fwhm_params(inputvol=inputvol, outputvol=outputvol, save_detrended=save_detrended, save_unmasked=save_unmasked, smooth_only=smooth_only, mask=mask, mask_thresh=mask_thresh, auto_mask=auto_mask, nerode=nerode, mask_inv=mask_inv, out_mask=out_mask, detrend_matrix=detrend_matrix, detrend_order=detrend_order, square_input=square_input, smooth_by_fwhm=smooth_by_fwhm, smooth_by_gstd=smooth_by_gstd, median_filter=median_filter, smooth_to_fwhm=smooth_to_fwhm, to_fwhm_tol=to_fwhm_tol, to_fwhm_nmax=to_fwhm_nmax, to_fwhm_file=to_fwhm_file, summary_file=summary_file, dat_file=dat_file, fwhm_dat_file=fwhm_dat_file, fwhm_vol_mean_file=fwhm_vol_mean_file, fwhm_vol=fwhm_vol, synth=synth, synth_frames=synth_frames, nframes_min=nframes_min, ispm=ispm, nspm_zero_padding=nspm_zero_padding, threads=threads, debug=debug, checkopts=checkopts, version=version)
+    params = mri_fwhm_params(
+        inputvol=inputvol,
+        outputvol=outputvol,
+        save_detrended=save_detrended,
+        save_unmasked=save_unmasked,
+        smooth_only=smooth_only,
+        mask=mask,
+        mask_thresh=mask_thresh,
+        auto_mask=auto_mask,
+        nerode=nerode,
+        mask_inv=mask_inv,
+        out_mask=out_mask,
+        detrend_matrix=detrend_matrix,
+        detrend_order=detrend_order,
+        square_input=square_input,
+        smooth_by_fwhm=smooth_by_fwhm,
+        smooth_by_gstd=smooth_by_gstd,
+        median_filter=median_filter,
+        smooth_to_fwhm=smooth_to_fwhm,
+        to_fwhm_tol=to_fwhm_tol,
+        to_fwhm_nmax=to_fwhm_nmax,
+        to_fwhm_file=to_fwhm_file,
+        summary_file=summary_file,
+        dat_file=dat_file,
+        fwhm_dat_file=fwhm_dat_file,
+        fwhm_vol_mean_file=fwhm_vol_mean_file,
+        fwhm_vol=fwhm_vol,
+        synth=synth,
+        synth_frames=synth_frames,
+        nframes_min=nframes_min,
+        ispm=ispm,
+        nspm_zero_padding=nspm_zero_padding,
+        threads=threads,
+        debug=debug,
+        checkopts=checkopts,
+        version=version,
+    )
     return mri_fwhm_execute(params, execution)
 
 

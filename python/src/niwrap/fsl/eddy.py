@@ -11,6 +11,8 @@ EDDY_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 EddyParameters = typing.TypedDict('EddyParameters', {
     "__STYX_TYPE__": typing.Literal["eddy"],
     "implementation": typing.Literal["", "_openmp", "_cuda", "_cuda10.2", "_cuda9.1", "_cuda8.0"],
@@ -624,7 +626,53 @@ def eddy(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EDDY_METADATA)
-    params = eddy_params(implementation=implementation, imain=imain, mask=mask, index=index, acqp=acqp, bvecs=bvecs, bvals=bvals, out=out, mb=mb, mb_offs=mb_offs, slspec=slspec, json_=json_, mporder=mporder, s2v_lambda=s2v_lambda, topup=topup, field=field, field_mat=field_mat, flm=flm, slm=slm, fwhm=fwhm, niter=niter, s2v_niter=s2v_niter, cnr_maps=cnr_maps, residuals=residuals, fep=fep, interp=interp, s2v_interp=s2v_interp, resamp=resamp, nvoxhp=nvoxhp, initrand=initrand, ff=ff, repol=repol, ol_nstd=ol_nstd, ol_nvox=ol_nvox, ol_type=ol_type, ol_pos=ol_pos, ol_sqr=ol_sqr, estimate_move_by_susceptibility=estimate_move_by_susceptibility, mbs_niter=mbs_niter, mbs_lambda=mbs_lambda, mbs_ksp=mbs_ksp, dont_sep_offs_move=dont_sep_offs_move, dont_peas=dont_peas, data_is_shelled=data_is_shelled, verbose=verbose)
+    params = eddy_params(
+        implementation=implementation,
+        imain=imain,
+        mask=mask,
+        index=index,
+        acqp=acqp,
+        bvecs=bvecs,
+        bvals=bvals,
+        out=out,
+        mb=mb,
+        mb_offs=mb_offs,
+        slspec=slspec,
+        json_=json_,
+        mporder=mporder,
+        s2v_lambda=s2v_lambda,
+        topup=topup,
+        field=field,
+        field_mat=field_mat,
+        flm=flm,
+        slm=slm,
+        fwhm=fwhm,
+        niter=niter,
+        s2v_niter=s2v_niter,
+        cnr_maps=cnr_maps,
+        residuals=residuals,
+        fep=fep,
+        interp=interp,
+        s2v_interp=s2v_interp,
+        resamp=resamp,
+        nvoxhp=nvoxhp,
+        initrand=initrand,
+        ff=ff,
+        repol=repol,
+        ol_nstd=ol_nstd,
+        ol_nvox=ol_nvox,
+        ol_type=ol_type,
+        ol_pos=ol_pos,
+        ol_sqr=ol_sqr,
+        estimate_move_by_susceptibility=estimate_move_by_susceptibility,
+        mbs_niter=mbs_niter,
+        mbs_lambda=mbs_lambda,
+        mbs_ksp=mbs_ksp,
+        dont_sep_offs_move=dont_sep_offs_move,
+        dont_peas=dont_peas,
+        data_is_shelled=data_is_shelled,
+        verbose=verbose,
+    )
     return eddy_execute(params, execution)
 
 

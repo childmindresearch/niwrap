@@ -11,6 +11,8 @@ V_1D_TOOL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dToolPyParameters = typing.TypedDict('V1dToolPyParameters', {
     "__STYX_TYPE__": typing.Literal["1d_tool.py"],
     "infile": InputPathType,
@@ -290,7 +292,21 @@ def v_1d_tool_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_TOOL_PY_METADATA)
-    params = v_1d_tool_py_params(infile=infile, write=write, select_cols=select_cols, select_rows=select_rows, select_groups=select_groups, censor_motion=censor_motion, pad_into_many_runs=pad_into_many_runs, set_nruns=set_nruns, set_run_lengths=set_run_lengths, show_rows_cols=show_rows_cols, transpose=transpose, reverse=reverse, show_max_displace=show_max_displace)
+    params = v_1d_tool_py_params(
+        infile=infile,
+        write=write,
+        select_cols=select_cols,
+        select_rows=select_rows,
+        select_groups=select_groups,
+        censor_motion=censor_motion,
+        pad_into_many_runs=pad_into_many_runs,
+        set_nruns=set_nruns,
+        set_run_lengths=set_run_lengths,
+        show_rows_cols=show_rows_cols,
+        transpose=transpose,
+        reverse=reverse,
+        show_max_displace=show_max_displace,
+    )
     return v_1d_tool_py_execute(params, execution)
 
 

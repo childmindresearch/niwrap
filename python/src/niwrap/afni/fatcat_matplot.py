@@ -11,6 +11,8 @@ FATCAT_MATPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatcatMatplotParameters = typing.TypedDict('FatcatMatplotParameters', {
     "__STYX_TYPE__": typing.Literal["FATCAT_matplot"],
     "directory": str,
@@ -163,7 +165,10 @@ def fatcat_matplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FATCAT_MATPLOT_METADATA)
-    params = fatcat_matplot_params(directory=directory, shiny_folder=shiny_folder)
+    params = fatcat_matplot_params(
+        directory=directory,
+        shiny_folder=shiny_folder,
+    )
     return fatcat_matplot_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ALIGN_EPI_ANAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AlignEpiAnatParameters = typing.TypedDict('AlignEpiAnatParameters', {
     "__STYX_TYPE__": typing.Literal["align_epi_anat"],
     "epi": InputPathType,
@@ -323,7 +325,25 @@ def align_epi_anat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ALIGN_EPI_ANAT_METADATA)
-    params = align_epi_anat_params(epi=epi, anat=anat, epi_base=epi_base, anat2epi=anat2epi, epi2anat=epi2anat, suffix=suffix, add_edge=add_edge, big_move=big_move, giant_move=giant_move, ginormous_move=ginormous_move, keep_rm_files=keep_rm_files, prep_only=prep_only, ana_has_skull=ana_has_skull, epi_strip=epi_strip, volreg_method=volreg_method, ex_mode=ex_mode, overwrite=overwrite)
+    params = align_epi_anat_params(
+        epi=epi,
+        anat=anat,
+        epi_base=epi_base,
+        anat2epi=anat2epi,
+        epi2anat=epi2anat,
+        suffix=suffix,
+        add_edge=add_edge,
+        big_move=big_move,
+        giant_move=giant_move,
+        ginormous_move=ginormous_move,
+        keep_rm_files=keep_rm_files,
+        prep_only=prep_only,
+        ana_has_skull=ana_has_skull,
+        epi_strip=epi_strip,
+        volreg_method=volreg_method,
+        ex_mode=ex_mode,
+        overwrite=overwrite,
+    )
     return align_epi_anat_execute(params, execution)
 
 

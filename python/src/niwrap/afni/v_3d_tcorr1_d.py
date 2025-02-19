@@ -11,6 +11,8 @@ V_3D_TCORR1_D_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dTcorr1DParameters = typing.TypedDict('V3dTcorr1DParameters', {
     "__STYX_TYPE__": typing.Literal["3dTcorr1D"],
     "ktaub": bool,
@@ -219,7 +221,16 @@ def v_3d_tcorr1_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TCORR1_D_METADATA)
-    params = v_3d_tcorr1_d_params(ktaub=ktaub, num_threads=num_threads, outputtype=outputtype, pearson=pearson, quadrant=quadrant, spearman=spearman, xset=xset, y_1d=y_1d)
+    params = v_3d_tcorr1_d_params(
+        ktaub=ktaub,
+        num_threads=num_threads,
+        outputtype=outputtype,
+        pearson=pearson,
+        quadrant=quadrant,
+        spearman=spearman,
+        xset=xset,
+        y_1d=y_1d,
+    )
     return v_3d_tcorr1_d_execute(params, execution)
 
 

@@ -11,11 +11,15 @@ SET_MAP_NAMES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SetMapNamesMapParameters = typing.TypedDict('SetMapNamesMapParameters', {
     "__STYX_TYPE__": typing.Literal["map"],
     "index": int,
     "new_name": str,
 })
+
+
 SetMapNamesParameters = typing.TypedDict('SetMapNamesParameters', {
     "__STYX_TYPE__": typing.Literal["set-map-names"],
     "data_file": str,
@@ -250,7 +254,12 @@ def set_map_names(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SET_MAP_NAMES_METADATA)
-    params = set_map_names_params(data_file=data_file, opt_name_file_file=opt_name_file_file, opt_from_data_file_file=opt_from_data_file_file, map_=map_)
+    params = set_map_names_params(
+        data_file=data_file,
+        opt_name_file_file=opt_name_file_file,
+        opt_from_data_file_file=opt_from_data_file_file,
+        map_=map_,
+    )
     return set_map_names_execute(params, execution)
 
 

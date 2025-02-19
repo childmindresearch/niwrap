@@ -11,6 +11,8 @@ WAVER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 WaverParameters = typing.TypedDict('WaverParameters', {
     "__STYX_TYPE__": typing.Literal["waver"],
     "wav": bool,
@@ -420,7 +422,30 @@ def waver(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WAVER_METADATA)
-    params = waver_params(wav=wav, gam=gam, expr=expr, file_opt=file_opt, delay_time=delay_time, rise_time=rise_time, fall_time=fall_time, undershoot=undershoot, restore_time=restore_time, gamb=gamb, gamc=gamc, gamd=gamd, peak=peak, dt=dt, tr=tr, xyout=xyout, input_file=input_file, inline_data=inline_data, tstim_data=tstim_data, when_data=when_data, numout=numout, ver_flag=ver_flag)
+    params = waver_params(
+        wav=wav,
+        gam=gam,
+        expr=expr,
+        file_opt=file_opt,
+        delay_time=delay_time,
+        rise_time=rise_time,
+        fall_time=fall_time,
+        undershoot=undershoot,
+        restore_time=restore_time,
+        gamb=gamb,
+        gamc=gamc,
+        gamd=gamd,
+        peak=peak,
+        dt=dt,
+        tr=tr,
+        xyout=xyout,
+        input_file=input_file,
+        inline_data=inline_data,
+        tstim_data=tstim_data,
+        when_data=when_data,
+        numout=numout,
+        ver_flag=ver_flag,
+    )
     return waver_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__BUILD_AFNI_XLIB_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VBuildAfniXlibParameters = typing.TypedDict('VBuildAfniXlibParameters', {
     "__STYX_TYPE__": typing.Literal["@build_afni_Xlib"],
     "localinstall": bool,
@@ -181,7 +183,12 @@ def v__build_afni_xlib(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__BUILD_AFNI_XLIB_METADATA)
-    params = v__build_afni_xlib_params(localinstall=localinstall, debug_symbols=debug_symbols, lib64=lib64, packages=packages)
+    params = v__build_afni_xlib_params(
+        localinstall=localinstall,
+        debug_symbols=debug_symbols,
+        lib64=lib64,
+        packages=packages,
+    )
     return v__build_afni_xlib_execute(params, execution)
 
 

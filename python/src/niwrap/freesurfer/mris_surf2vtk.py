@@ -11,6 +11,8 @@ MRIS_SURF2VTK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSurf2vtkParameters = typing.TypedDict('MrisSurf2vtkParameters', {
     "__STYX_TYPE__": typing.Literal["mris_surf2vtk"],
     "input_surface": InputPathType,
@@ -172,7 +174,10 @@ def mris_surf2vtk(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SURF2VTK_METADATA)
-    params = mris_surf2vtk_params(input_surface=input_surface, output_surface=output_surface)
+    params = mris_surf2vtk_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+    )
     return mris_surf2vtk_execute(params, execution)
 
 

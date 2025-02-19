@@ -11,6 +11,8 @@ B0CALC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 B0calcParameters = typing.TypedDict('B0calcParameters', {
     "__STYX_TYPE__": typing.Literal["b0calc"],
     "input_file": InputPathType,
@@ -321,7 +323,22 @@ def b0calc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(B0CALC_METADATA)
-    params = b0calc_params(input_file=input_file, output_file=output_file, zero_order_x=zero_order_x, zero_order_y=zero_order_y, zero_order_z=zero_order_z, b0_x=b0_x, b0_y=b0_y, b0_z=b0_z, delta=delta, chi0=chi0, xyz_flag=xyz_flag, extend_boundary=extend_boundary, direct_conv=direct_conv, verbose_flag=verbose_flag)
+    params = b0calc_params(
+        input_file=input_file,
+        output_file=output_file,
+        zero_order_x=zero_order_x,
+        zero_order_y=zero_order_y,
+        zero_order_z=zero_order_z,
+        b0_x=b0_x,
+        b0_y=b0_y,
+        b0_z=b0_z,
+        delta=delta,
+        chi0=chi0,
+        xyz_flag=xyz_flag,
+        extend_boundary=extend_boundary,
+        direct_conv=direct_conv,
+        verbose_flag=verbose_flag,
+    )
     return b0calc_execute(params, execution)
 
 

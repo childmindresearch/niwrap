@@ -11,6 +11,8 @@ TEST_RECON_ALL_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TestReconAllCshParameters = typing.TypedDict('TestReconAllCshParameters', {
     "__STYX_TYPE__": typing.Literal["test_recon-all.csh"],
     "reference_subj_source_dir": typing.NotRequired[str | None],
@@ -244,7 +246,14 @@ def test_recon_all_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TEST_RECON_ALL_CSH_METADATA)
-    params = test_recon_all_csh_params(reference_subj_source_dir=reference_subj_source_dir, reference_subjid=reference_subjid, test_subject_dest_dir=test_subject_dest_dir, test_subjid=test_subjid, freesurfer_home=freesurfer_home, norecon=norecon)
+    params = test_recon_all_csh_params(
+        reference_subj_source_dir=reference_subj_source_dir,
+        reference_subjid=reference_subjid,
+        test_subject_dest_dir=test_subject_dest_dir,
+        test_subjid=test_subjid,
+        freesurfer_home=freesurfer_home,
+        norecon=norecon,
+    )
     return test_recon_all_csh_execute(params, execution)
 
 

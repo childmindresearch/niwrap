@@ -11,6 +11,8 @@ V_3D_KRUSKAL_WALLIS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dKruskalWallisParameters = typing.TypedDict('V3dKruskalWallisParameters', {
     "__STYX_TYPE__": typing.Literal["3dKruskalWallis"],
     "levels": int,
@@ -210,7 +212,13 @@ def v_3d_kruskal_wallis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_KRUSKAL_WALLIS_METADATA)
-    params = v_3d_kruskal_wallis_params(levels=levels, datasets=datasets, workmem=workmem, voxel=voxel, output=output)
+    params = v_3d_kruskal_wallis_params(
+        levels=levels,
+        datasets=datasets,
+        workmem=workmem,
+        voxel=voxel,
+        output=output,
+    )
     return v_3d_kruskal_wallis_execute(params, execution)
 
 

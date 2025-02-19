@@ -11,11 +11,15 @@ V_5TT2VIS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 V5tt2visConfigParameters = typing.TypedDict('V5tt2visConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 V5tt2visParameters = typing.TypedDict('V5tt2visParameters', {
     "__STYX_TYPE__": typing.Literal["5tt2vis"],
     "bg": typing.NotRequired[float | None],
@@ -376,7 +380,24 @@ def v_5tt2vis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TT2VIS_METADATA)
-    params = v_5tt2vis_params(bg=bg, cgm=cgm, sgm=sgm, wm=wm, csf=csf, path=path, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = v_5tt2vis_params(
+        bg=bg,
+        cgm=cgm,
+        sgm=sgm,
+        wm=wm,
+        csf=csf,
+        path=path,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return v_5tt2vis_execute(params, execution)
 
 

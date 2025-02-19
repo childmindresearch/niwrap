@@ -11,6 +11,8 @@ ABIDS_TOOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AbidsToolParameters = typing.TypedDict('AbidsToolParameters', {
     "__STYX_TYPE__": typing.Literal["abids_tool"],
     "input_files": list[InputPathType],
@@ -173,7 +175,10 @@ def abids_tool(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ABIDS_TOOL_METADATA)
-    params = abids_tool_params(input_files=input_files, copy_prefix=copy_prefix)
+    params = abids_tool_params(
+        input_files=input_files,
+        copy_prefix=copy_prefix,
+    )
     return abids_tool_execute(params, execution)
 
 

@@ -11,24 +11,34 @@ MRGRID_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrgridAxisParameters = typing.TypedDict('MrgridAxisParameters', {
     "__STYX_TYPE__": typing.Literal["axis"],
     "index": int,
     "spec": str,
 })
+
+
 MrgridVariousStringParameters = typing.TypedDict('MrgridVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 MrgridVariousFileParameters = typing.TypedDict('MrgridVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 MrgridConfigParameters = typing.TypedDict('MrgridConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrgridParameters = typing.TypedDict('MrgridParameters', {
     "__STYX_TYPE__": typing.Literal["mrgrid"],
     "template": typing.NotRequired[InputPathType | None],
@@ -761,7 +771,34 @@ def mrgrid(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRGRID_METADATA)
-    params = mrgrid_params(template=template, size=size, voxel=voxel, scale=scale, interp=interp, oversample=oversample, as_=as_, uniform=uniform, mask=mask, crop_unbound=crop_unbound, axis=axis, all_axes=all_axes, fill=fill, strides=strides, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, operation=operation, output=output)
+    params = mrgrid_params(
+        template=template,
+        size=size,
+        voxel=voxel,
+        scale=scale,
+        interp=interp,
+        oversample=oversample,
+        as_=as_,
+        uniform=uniform,
+        mask=mask,
+        crop_unbound=crop_unbound,
+        axis=axis,
+        all_axes=all_axes,
+        fill=fill,
+        strides=strides,
+        datatype=datatype,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        operation=operation,
+        output=output,
+    )
     return mrgrid_execute(params, execution)
 
 

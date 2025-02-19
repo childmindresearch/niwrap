@@ -11,6 +11,8 @@ ANATOMI_CUTS_UTILS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 AnatomiCutsUtilsParameters = typing.TypedDict('AnatomiCutsUtilsParameters', {
     "__STYX_TYPE__": typing.Literal["anatomiCutsUtils"],
     "modules": typing.NotRequired[list[str] | None],
@@ -159,7 +161,9 @@ def anatomi_cuts_utils(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANATOMI_CUTS_UTILS_METADATA)
-    params = anatomi_cuts_utils_params(modules=modules)
+    params = anatomi_cuts_utils_params(
+        modules=modules,
+    )
     return anatomi_cuts_utils_execute(params, execution)
 
 

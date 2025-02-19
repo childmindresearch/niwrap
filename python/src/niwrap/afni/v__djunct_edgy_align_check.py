@@ -11,6 +11,8 @@ V__DJUNCT_EDGY_ALIGN_CHECK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunctEdgyAlignCheckParameters = typing.TypedDict('VDjunctEdgyAlignCheckParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_edgy_align_check"],
     "ULAY": str,
@@ -306,7 +308,25 @@ def v__djunct_edgy_align_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_EDGY_ALIGN_CHECK_METADATA)
-    params = v__djunct_edgy_align_check_params(ulay=ulay, olay=olay, prefix=prefix, set_dicom_xyz=set_dicom_xyz, box_focus_slices=box_focus_slices, montgap=montgap, montcolor=montcolor, cbar=cbar, save_ftype=save_ftype, umin_fac=umin_fac, montx=montx, monty=monty, use_olay_grid=use_olay_grid, label_mode=label_mode, ulay_range=ulay_range, ulay_range_nz=ulay_range_nz, ulay_range_am=ulay_range_am)
+    params = v__djunct_edgy_align_check_params(
+        ulay=ulay,
+        olay=olay,
+        prefix=prefix,
+        set_dicom_xyz=set_dicom_xyz,
+        box_focus_slices=box_focus_slices,
+        montgap=montgap,
+        montcolor=montcolor,
+        cbar=cbar,
+        save_ftype=save_ftype,
+        umin_fac=umin_fac,
+        montx=montx,
+        monty=monty,
+        use_olay_grid=use_olay_grid,
+        label_mode=label_mode,
+        ulay_range=ulay_range,
+        ulay_range_nz=ulay_range_nz,
+        ulay_range_am=ulay_range_am,
+    )
     return v__djunct_edgy_align_check_execute(params, execution)
 
 

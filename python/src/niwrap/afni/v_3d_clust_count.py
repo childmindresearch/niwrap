@@ -11,6 +11,8 @@ V_3D_CLUST_COUNT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dClustCountParameters = typing.TypedDict('V3dClustCountParameters', {
     "__STYX_TYPE__": typing.Literal["3dClustCount"],
     "datasets": list[InputPathType],
@@ -209,7 +211,12 @@ def v_3d_clust_count(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CLUST_COUNT_METADATA)
-    params = v_3d_clust_count_params(datasets=datasets, prefix=prefix, final=final, quiet=quiet)
+    params = v_3d_clust_count_params(
+        datasets=datasets,
+        prefix=prefix,
+        final=final,
+        quiet=quiet,
+    )
     return v_3d_clust_count_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriExtractSurfaceMeasurementsParameters = typing.TypedDict('DmriExtractSurfaceMeasurementsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_extractSurfaceMeasurements"],
     "streamline_file": InputPathType,
@@ -292,7 +294,21 @@ def dmri_extract_surface_measurements(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA)
-    params = dmri_extract_surface_measurements_params(streamline_file=streamline_file, lh_surface_file=lh_surface_file, lh_thickness_overlay=lh_thickness_overlay, lh_curvature_overlay=lh_curvature_overlay, rh_surface_file=rh_surface_file, rh_thickness_overlay=rh_thickness_overlay, rh_curvature_overlay=rh_curvature_overlay, output_directory=output_directory, reference_image=reference_image, reference_image_anatomical=reference_image_anatomical, transformation=transformation, annotation_file=annotation_file, fa_options=fa_options)
+    params = dmri_extract_surface_measurements_params(
+        streamline_file=streamline_file,
+        lh_surface_file=lh_surface_file,
+        lh_thickness_overlay=lh_thickness_overlay,
+        lh_curvature_overlay=lh_curvature_overlay,
+        rh_surface_file=rh_surface_file,
+        rh_thickness_overlay=rh_thickness_overlay,
+        rh_curvature_overlay=rh_curvature_overlay,
+        output_directory=output_directory,
+        reference_image=reference_image,
+        reference_image_anatomical=reference_image_anatomical,
+        transformation=transformation,
+        annotation_file=annotation_file,
+        fa_options=fa_options,
+    )
     return dmri_extract_surface_measurements_execute(params, execution)
 
 

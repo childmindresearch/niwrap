@@ -11,6 +11,8 @@ MRI_MAP_CPDAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMapCpdatParameters = typing.TypedDict('MriMapCpdatParameters', {
     "__STYX_TYPE__": typing.Literal["mri_map_cpdat"],
     "input_file": InputPathType,
@@ -222,7 +224,14 @@ def mri_map_cpdat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MAP_CPDAT_METADATA)
-    params = mri_map_cpdat_params(input_file=input_file, output_file=output_file, lta_file=lta_file, to_mni305=to_mni305, from_mni305=from_mni305, subject_list_file=subject_list_file)
+    params = mri_map_cpdat_params(
+        input_file=input_file,
+        output_file=output_file,
+        lta_file=lta_file,
+        to_mni305=to_mni305,
+        from_mni305=from_mni305,
+        subject_list_file=subject_list_file,
+    )
     return mri_map_cpdat_execute(params, execution)
 
 

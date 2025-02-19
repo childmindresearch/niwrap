@@ -11,6 +11,8 @@ V__DO_EXAMPLES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDoExamplesParameters = typing.TypedDict('VDoExamplesParameters', {
     "__STYX_TYPE__": typing.Literal["@DO.examples"],
     "auto_test": bool,
@@ -164,7 +166,9 @@ def v__do_examples(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DO_EXAMPLES_METADATA)
-    params = v__do_examples_params(auto_test=auto_test)
+    params = v__do_examples_params(
+        auto_test=auto_test,
+    )
     return v__do_examples_execute(params, execution)
 
 

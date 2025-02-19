@@ -11,6 +11,8 @@ CIFTI_PAIRWISE_CORRELATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 CiftiPairwiseCorrelationParameters = typing.TypedDict('CiftiPairwiseCorrelationParameters', {
     "__STYX_TYPE__": typing.Literal["cifti-pairwise-correlation"],
     "cifti_a": InputPathType,
@@ -200,7 +202,13 @@ def cifti_pairwise_correlation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_PAIRWISE_CORRELATION_METADATA)
-    params = cifti_pairwise_correlation_params(cifti_a=cifti_a, cifti_b=cifti_b, cifti_out=cifti_out, opt_fisher_z=opt_fisher_z, opt_override_mapping_check=opt_override_mapping_check)
+    params = cifti_pairwise_correlation_params(
+        cifti_a=cifti_a,
+        cifti_b=cifti_b,
+        cifti_out=cifti_out,
+        opt_fisher_z=opt_fisher_z,
+        opt_override_mapping_check=opt_override_mapping_check,
+    )
     return cifti_pairwise_correlation_execute(params, execution)
 
 

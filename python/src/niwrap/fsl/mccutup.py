@@ -11,6 +11,8 @@ MCCUTUP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MccutupParameters = typing.TypedDict('MccutupParameters', {
     "__STYX_TYPE__": typing.Literal["mccutup"],
     "input": InputPathType,
@@ -195,7 +197,12 @@ def mccutup(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MCCUTUP_METADATA)
-    params = mccutup_params(input_=input_, output_file=output_file, param1=param1, param2=param2)
+    params = mccutup_params(
+        input_=input_,
+        output_file=output_file,
+        param1=param1,
+        param2=param2,
+    )
     return mccutup_execute(params, execution)
 
 

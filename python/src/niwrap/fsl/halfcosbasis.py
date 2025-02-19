@@ -11,6 +11,8 @@ HALFCOSBASIS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 HalfcosbasisParameters = typing.TypedDict('HalfcosbasisParameters', {
     "__STYX_TYPE__": typing.Literal["halfcosbasis"],
     "hrf_param_file_hf": InputPathType,
@@ -248,7 +250,17 @@ def halfcosbasis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HALFCOSBASIS_METADATA)
-    params = halfcosbasis_params(hrf_param_file_hf=hrf_param_file_hf, verbose_flag=verbose_flag, debug_level_debuglevel=debug_level_debuglevel, timing_on_flag=timing_on_flag, log_dir_logdir=log_dir_logdir, num_hrf_samples=num_hrf_samples, num_hrf_basis_funcs=num_hrf_basis_funcs, num_secs_nsecs=num_secs_nsecs, temp_res=temp_res)
+    params = halfcosbasis_params(
+        hrf_param_file_hf=hrf_param_file_hf,
+        verbose_flag=verbose_flag,
+        debug_level_debuglevel=debug_level_debuglevel,
+        timing_on_flag=timing_on_flag,
+        log_dir_logdir=log_dir_logdir,
+        num_hrf_samples=num_hrf_samples,
+        num_hrf_basis_funcs=num_hrf_basis_funcs,
+        num_secs_nsecs=num_secs_nsecs,
+        temp_res=temp_res,
+    )
     return halfcosbasis_execute(params, execution)
 
 

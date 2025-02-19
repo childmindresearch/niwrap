@@ -11,6 +11,8 @@ PROMPT_POPUP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 PromptPopupParameters = typing.TypedDict('PromptPopupParameters', {
     "__STYX_TYPE__": typing.Literal["prompt_popup"],
     "message_pause": typing.NotRequired[str | None],
@@ -186,7 +188,11 @@ def prompt_popup(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PROMPT_POPUP_METADATA)
-    params = prompt_popup_params(message_pause=message_pause, buttons_b=buttons_b, timeout_to=timeout_to)
+    params = prompt_popup_params(
+        message_pause=message_pause,
+        buttons_b=buttons_b,
+        timeout_to=timeout_to,
+    )
     return prompt_popup_execute(params, execution)
 
 

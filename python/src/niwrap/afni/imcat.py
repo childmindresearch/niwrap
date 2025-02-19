@@ -11,6 +11,8 @@ IMCAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImcatParameters = typing.TypedDict('ImcatParameters', {
     "__STYX_TYPE__": typing.Literal["imcat"],
     "input_files": list[InputPathType],
@@ -457,7 +459,33 @@ def imcat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMCAT_METADATA)
-    params = imcat_params(input_files=input_files, scale_image=scale_image, scale_pixels=scale_pixels, scale_intensity=scale_intensity, gscale=gscale, rgb_out=rgb_out, res_in=res_in, respad_in=respad_in, pad_val=pad_val, crop=crop, autocrop_ctol=autocrop_ctol, autocrop_atol=autocrop_atol, autocrop=autocrop, zero_wrap=zero_wrap, white_wrap=white_wrap, gray_wrap=gray_wrap, image_wrap=image_wrap, rand_wrap=rand_wrap, prefix=prefix, matrix=matrix, nx=nx, ny=ny, matrix_from_scale=matrix_from_scale, gap=gap, gap_col=gap_col)
+    params = imcat_params(
+        input_files=input_files,
+        scale_image=scale_image,
+        scale_pixels=scale_pixels,
+        scale_intensity=scale_intensity,
+        gscale=gscale,
+        rgb_out=rgb_out,
+        res_in=res_in,
+        respad_in=respad_in,
+        pad_val=pad_val,
+        crop=crop,
+        autocrop_ctol=autocrop_ctol,
+        autocrop_atol=autocrop_atol,
+        autocrop=autocrop,
+        zero_wrap=zero_wrap,
+        white_wrap=white_wrap,
+        gray_wrap=gray_wrap,
+        image_wrap=image_wrap,
+        rand_wrap=rand_wrap,
+        prefix=prefix,
+        matrix=matrix,
+        nx=nx,
+        ny=ny,
+        matrix_from_scale=matrix_from_scale,
+        gap=gap,
+        gap_col=gap_col,
+    )
     return imcat_execute(params, execution)
 
 

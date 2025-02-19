@@ -11,6 +11,8 @@ V__CHECK_FOR_AFNI_DSET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VCheckForAfniDsetParameters = typing.TypedDict('VCheckForAfniDsetParameters', {
     "__STYX_TYPE__": typing.Literal["@CheckForAfniDset"],
     "dataset_name": str,
@@ -161,7 +163,9 @@ def v__check_for_afni_dset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CHECK_FOR_AFNI_DSET_METADATA)
-    params = v__check_for_afni_dset_params(dataset_name=dataset_name)
+    params = v__check_for_afni_dset_params(
+        dataset_name=dataset_name,
+    )
     return v__check_for_afni_dset_execute(params, execution)
 
 

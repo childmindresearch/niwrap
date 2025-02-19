@@ -11,6 +11,8 @@ HIST2PROB_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Hist2probParameters = typing.TypedDict('Hist2probParameters', {
     "__STYX_TYPE__": typing.Literal["hist2prob"],
     "image": InputPathType,
@@ -180,7 +182,12 @@ def hist2prob(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIST2PROB_METADATA)
-    params = hist2prob_params(image=image, size=size, low_threshold=low_threshold, high_threshold=high_threshold)
+    params = hist2prob_params(
+        image=image,
+        size=size,
+        low_threshold=low_threshold,
+        high_threshold=high_threshold,
+    )
     return hist2prob_execute(params, execution)
 
 

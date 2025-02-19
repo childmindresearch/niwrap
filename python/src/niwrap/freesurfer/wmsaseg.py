@@ -11,6 +11,8 @@ WMSASEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 WmsasegParameters = typing.TypedDict('WmsasegParameters', {
     "__STYX_TYPE__": typing.Literal["wmsaseg"],
     "subject": str,
@@ -257,7 +259,19 @@ def wmsaseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WMSASEG_METADATA)
-    params = wmsaseg_params(subject=subject, source_orig=source_orig, source_long=source_long, output_subdir=output_subdir, gca_file=gca_file, no_reg=no_reg, no_canorm=no_canorm, init_spm=init_spm, reg_only=reg_only, halo1=halo1, halo2=halo2)
+    params = wmsaseg_params(
+        subject=subject,
+        source_orig=source_orig,
+        source_long=source_long,
+        output_subdir=output_subdir,
+        gca_file=gca_file,
+        no_reg=no_reg,
+        no_canorm=no_canorm,
+        init_spm=init_spm,
+        reg_only=reg_only,
+        halo1=halo1,
+        halo2=halo2,
+    )
     return wmsaseg_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ INFLATE_SUBJECT_SC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 InflateSubjectScParameters = typing.TypedDict('InflateSubjectScParameters', {
     "__STYX_TYPE__": typing.Literal["inflate_subject_sc"],
 })
@@ -155,7 +157,8 @@ def inflate_subject_sc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT_SC_METADATA)
-    params = inflate_subject_sc_params()
+    params = inflate_subject_sc_params(
+    )
     return inflate_subject_sc_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_SKELETONIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSkeletonizeParameters = typing.TypedDict('MrisSkeletonizeParameters', {
     "__STYX_TYPE__": typing.Literal["mris_skeletonize"],
     "surface": str,
@@ -322,7 +324,23 @@ def mris_skeletonize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SKELETONIZE_METADATA)
-    params = mris_skeletonize_params(surface=surface, surfvals=surfvals, mask=mask, k1=k1, curv_nonmaxsup=curv_nonmaxsup, gyrus=gyrus, sulcus=sulcus, outdir=outdir, sphere=sphere, pointset=pointset, label=label, nbrsize=nbrsize, threshold=threshold, cluster=cluster, fwhm=fwhm)
+    params = mris_skeletonize_params(
+        surface=surface,
+        surfvals=surfvals,
+        mask=mask,
+        k1=k1,
+        curv_nonmaxsup=curv_nonmaxsup,
+        gyrus=gyrus,
+        sulcus=sulcus,
+        outdir=outdir,
+        sphere=sphere,
+        pointset=pointset,
+        label=label,
+        nbrsize=nbrsize,
+        threshold=threshold,
+        cluster=cluster,
+        fwhm=fwhm,
+    )
     return mris_skeletonize_execute(params, execution)
 
 

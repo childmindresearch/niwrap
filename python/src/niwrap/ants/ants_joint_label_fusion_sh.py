@@ -11,6 +11,8 @@ ANTS_JOINT_LABEL_FUSION_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsJointLabelFusionShParameters = typing.TypedDict('AntsJointLabelFusionShParameters', {
     "__STYX_TYPE__": typing.Literal["antsJointLabelFusion.sh"],
     "dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
@@ -300,7 +302,20 @@ def ants_joint_label_fusion_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_JOINT_LABEL_FUSION_SH_METADATA)
-    params = ants_joint_label_fusion_sh_params(dimensionality=dimensionality, output=output, atlas_image_mrf=atlas_image_mrf, atlas_segmentation_mrf=atlas_segmentation_mrf, rigid_transform=rigid_transform, similarity_metric=similarity_metric, other_options=other_options, verbose=verbose, target_image=target_image, mask_image=mask_image, rigid_transform_additional_options=rigid_transform_additional_options, similarity_metric_additional_options=similarity_metric_additional_options)
+    params = ants_joint_label_fusion_sh_params(
+        dimensionality=dimensionality,
+        output=output,
+        atlas_image_mrf=atlas_image_mrf,
+        atlas_segmentation_mrf=atlas_segmentation_mrf,
+        rigid_transform=rigid_transform,
+        similarity_metric=similarity_metric,
+        other_options=other_options,
+        verbose=verbose,
+        target_image=target_image,
+        mask_image=mask_image,
+        rigid_transform_additional_options=rigid_transform_additional_options,
+        similarity_metric_additional_options=similarity_metric_additional_options,
+    )
     return ants_joint_label_fusion_sh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__DJUNCT_SSW_INTERMED_EDGE_IMGS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunctSswIntermedEdgeImgsParameters = typing.TypedDict('VDjunctSswIntermedEdgeImgsParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_ssw_intermed_edge_imgs"],
     "prefix": str,
@@ -282,7 +284,21 @@ def v__djunct_ssw_intermed_edge_imgs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_SSW_INTERMED_EDGE_IMGS_METADATA)
-    params = v__djunct_ssw_intermed_edge_imgs_params(prefix=prefix, ulay=ulay, olay=olay, box_focus_slices=box_focus_slices, montgap=montgap, cbar=cbar, ulay_range=ulay_range, montx=montx, monty=monty, help_view=help_view, help_=help_, version=version, no_clean=no_clean)
+    params = v__djunct_ssw_intermed_edge_imgs_params(
+        prefix=prefix,
+        ulay=ulay,
+        olay=olay,
+        box_focus_slices=box_focus_slices,
+        montgap=montgap,
+        cbar=cbar,
+        ulay_range=ulay_range,
+        montx=montx,
+        monty=monty,
+        help_view=help_view,
+        help_=help_,
+        version=version,
+        no_clean=no_clean,
+    )
     return v__djunct_ssw_intermed_edge_imgs_execute(params, execution)
 
 

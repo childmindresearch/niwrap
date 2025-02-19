@@ -11,6 +11,8 @@ V_1D_BANDPASS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dBandpassParameters = typing.TypedDict('V1dBandpassParameters', {
     "__STYX_TYPE__": typing.Literal["1dBandpass"],
     "fbot": float,
@@ -215,7 +217,15 @@ def v_1d_bandpass(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_BANDPASS_METADATA)
-    params = v_1d_bandpass_params(fbot=fbot, ftop=ftop, infile=infile, timestep=timestep, ortfile=ortfile, nodetrend=nodetrend, norm=norm)
+    params = v_1d_bandpass_params(
+        fbot=fbot,
+        ftop=ftop,
+        infile=infile,
+        timestep=timestep,
+        ortfile=ortfile,
+        nodetrend=nodetrend,
+        norm=norm,
+    )
     return v_1d_bandpass_execute(params, execution)
 
 

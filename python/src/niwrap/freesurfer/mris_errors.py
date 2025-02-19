@@ -11,6 +11,8 @@ MRIS_ERRORS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisErrorsParameters = typing.TypedDict('MrisErrorsParameters', {
     "__STYX_TYPE__": typing.Literal["mris_errors"],
     "input_image_file": InputPathType,
@@ -156,7 +158,9 @@ def mris_errors(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ERRORS_METADATA)
-    params = mris_errors_params(input_image_file=input_image_file)
+    params = mris_errors_params(
+        input_image_file=input_image_file,
+    )
     return mris_errors_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SURFACE_MATCH_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceMatchParameters = typing.TypedDict('SurfaceMatchParameters', {
     "__STYX_TYPE__": typing.Literal["surface-match"],
     "match_surface_file": InputPathType,
@@ -176,7 +178,11 @@ def surface_match(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_MATCH_METADATA)
-    params = surface_match_params(match_surface_file=match_surface_file, input_surface_file=input_surface_file, output_surface_name=output_surface_name)
+    params = surface_match_params(
+        match_surface_file=match_surface_file,
+        input_surface_file=input_surface_file,
+        output_surface_name=output_surface_name,
+    )
     return surface_match_execute(params, execution)
 
 

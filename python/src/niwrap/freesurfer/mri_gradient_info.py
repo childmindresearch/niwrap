@@ -11,6 +11,8 @@ MRI_GRADIENT_INFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriGradientInfoParameters = typing.TypedDict('MriGradientInfoParameters', {
     "__STYX_TYPE__": typing.Literal["mri_gradient_info"],
     "input_image": InputPathType,
@@ -159,7 +161,9 @@ def mri_gradient_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GRADIENT_INFO_METADATA)
-    params = mri_gradient_info_params(input_image=input_image)
+    params = mri_gradient_info_params(
+        input_image=input_image,
+    )
     return mri_gradient_info_execute(params, execution)
 
 

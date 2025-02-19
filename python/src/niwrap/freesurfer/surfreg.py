@@ -11,6 +11,8 @@ SURFREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SurfregParameters = typing.TypedDict('SurfregParameters', {
     "__STYX_TYPE__": typing.Literal["surfreg"],
     "subject": str,
@@ -306,7 +308,24 @@ def surfreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFREG_METADATA)
-    params = surfreg_params(subject=subject, target=target, cross_hemi=cross_hemi, reg_lh=reg_lh, reg_rh=reg_rh, reg_both=reg_both, no_annot=no_annot, annot=annot, aparc=aparc, noneg=noneg, init_reg=init_reg, lta=lta, init_from_tal=init_from_tal, outsurf=outsurf, no_set_vol_geom=no_set_vol_geom, threads=threads)
+    params = surfreg_params(
+        subject=subject,
+        target=target,
+        cross_hemi=cross_hemi,
+        reg_lh=reg_lh,
+        reg_rh=reg_rh,
+        reg_both=reg_both,
+        no_annot=no_annot,
+        annot=annot,
+        aparc=aparc,
+        noneg=noneg,
+        init_reg=init_reg,
+        lta=lta,
+        init_from_tal=init_from_tal,
+        outsurf=outsurf,
+        no_set_vol_geom=no_set_vol_geom,
+        threads=threads,
+    )
     return surfreg_execute(params, execution)
 
 

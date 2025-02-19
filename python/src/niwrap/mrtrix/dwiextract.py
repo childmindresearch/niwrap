@@ -11,34 +11,48 @@ DWIEXTRACT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 DwiextractFslgradParameters = typing.TypedDict('DwiextractFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 DwiextractExportGradFslParameters = typing.TypedDict('DwiextractExportGradFslParameters', {
     "__STYX_TYPE__": typing.Literal["export_grad_fsl"],
     "bvecs_path": str,
     "bvals_path": str,
 })
+
+
 DwiextractImportPeEddyParameters = typing.TypedDict('DwiextractImportPeEddyParameters', {
     "__STYX_TYPE__": typing.Literal["import_pe_eddy"],
     "config": InputPathType,
     "indices": InputPathType,
 })
+
+
 DwiextractVariousStringParameters = typing.TypedDict('DwiextractVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 DwiextractVariousFileParameters = typing.TypedDict('DwiextractVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 DwiextractConfigParameters = typing.TypedDict('DwiextractConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 DwiextractParameters = typing.TypedDict('DwiextractParameters', {
     "__STYX_TYPE__": typing.Literal["dwiextract"],
     "bzero": bool,
@@ -762,7 +776,30 @@ def dwiextract(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWIEXTRACT_METADATA)
-    params = dwiextract_params(bzero=bzero, no_bzero=no_bzero, singleshell=singleshell, grad=grad, fslgrad=fslgrad, shells=shells, export_grad_mrtrix=export_grad_mrtrix, export_grad_fsl=export_grad_fsl, import_pe_table=import_pe_table, import_pe_eddy=import_pe_eddy, pe=pe, strides=strides, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = dwiextract_params(
+        bzero=bzero,
+        no_bzero=no_bzero,
+        singleshell=singleshell,
+        grad=grad,
+        fslgrad=fslgrad,
+        shells=shells,
+        export_grad_mrtrix=export_grad_mrtrix,
+        export_grad_fsl=export_grad_fsl,
+        import_pe_table=import_pe_table,
+        import_pe_eddy=import_pe_eddy,
+        pe=pe,
+        strides=strides,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return dwiextract_execute(params, execution)
 
 

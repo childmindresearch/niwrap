@@ -11,6 +11,8 @@ SEGMENT_SUBREGIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentSubregionsParameters = typing.TypedDict('SegmentSubregionsParameters', {
     "__STYX_TYPE__": typing.Literal["segment_subregions"],
     "structure": str,
@@ -259,7 +261,17 @@ def segment_subregions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBREGIONS_METADATA)
-    params = segment_subregions_params(structure=structure, cross=cross, long_base=long_base, sd=sd, suffix=suffix, temp_dir=temp_dir, out_dir=out_dir, debug=debug, threads=threads)
+    params = segment_subregions_params(
+        structure=structure,
+        cross=cross,
+        long_base=long_base,
+        sd=sd,
+        suffix=suffix,
+        temp_dir=temp_dir,
+        out_dir=out_dir,
+        debug=debug,
+        threads=threads,
+    )
     return segment_subregions_execute(params, execution)
 
 

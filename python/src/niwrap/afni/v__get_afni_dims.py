@@ -11,6 +11,8 @@ V__GET_AFNI_DIMS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VGetAfniDimsParameters = typing.TypedDict('VGetAfniDimsParameters', {
     "__STYX_TYPE__": typing.Literal["@GetAfniDims"],
     "input_dset": InputPathType,
@@ -159,7 +161,9 @@ def v__get_afni_dims(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_DIMS_METADATA)
-    params = v__get_afni_dims_params(input_dset=input_dset)
+    params = v__get_afni_dims_params(
+        input_dset=input_dset,
+    )
     return v__get_afni_dims_execute(params, execution)
 
 

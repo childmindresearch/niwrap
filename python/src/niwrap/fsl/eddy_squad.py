@@ -11,6 +11,8 @@ EDDY_SQUAD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 EddySquadParameters = typing.TypedDict('EddySquadParameters', {
     "__STYX_TYPE__": typing.Literal["eddy_squad"],
     "grouping": typing.NotRequired[str | None],
@@ -203,7 +205,13 @@ def eddy_squad(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EDDY_SQUAD_METADATA)
-    params = eddy_squad_params(grouping=grouping, group_db=group_db, update_=update_, output_dir=output_dir, subject_list=subject_list)
+    params = eddy_squad_params(
+        grouping=grouping,
+        group_db=group_db,
+        update_=update_,
+        output_dir=output_dir,
+        subject_list=subject_list,
+    )
     return eddy_squad_execute(params, execution)
 
 

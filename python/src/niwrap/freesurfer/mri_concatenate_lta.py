@@ -11,6 +11,8 @@ MRI_CONCATENATE_LTA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriConcatenateLtaParameters = typing.TypedDict('MriConcatenateLtaParameters', {
     "__STYX_TYPE__": typing.Literal["mri_concatenate_lta"],
     "lta_1": InputPathType,
@@ -263,7 +265,20 @@ def mri_concatenate_lta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CONCATENATE_LTA_METADATA)
-    params = mri_concatenate_lta_params(lta_1=lta_1, lta_2=lta_2, lta_final=lta_final, tal_src=tal_src, tal_template=tal_template, invert1=invert1, invert2=invert2, invertout=invertout, out_type=out_type, subject=subject, rmsdiff_radius=rmsdiff_radius, rmsdiff_outputfile=rmsdiff_outputfile)
+    params = mri_concatenate_lta_params(
+        lta_1=lta_1,
+        lta_2=lta_2,
+        lta_final=lta_final,
+        tal_src=tal_src,
+        tal_template=tal_template,
+        invert1=invert1,
+        invert2=invert2,
+        invertout=invertout,
+        out_type=out_type,
+        subject=subject,
+        rmsdiff_radius=rmsdiff_radius,
+        rmsdiff_outputfile=rmsdiff_outputfile,
+    )
     return mri_concatenate_lta_execute(params, execution)
 
 

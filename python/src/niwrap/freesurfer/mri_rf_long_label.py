@@ -11,6 +11,8 @@ MRI_RF_LONG_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriRfLongLabelParameters = typing.TypedDict('MriRfLongLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mri_rf_long_label"],
     "help_flag": typing.NotRequired[str | None],
@@ -157,7 +159,9 @@ def mri_rf_long_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RF_LONG_LABEL_METADATA)
-    params = mri_rf_long_label_params(help_flag=help_flag)
+    params = mri_rf_long_label_params(
+        help_flag=help_flag,
+    )
     return mri_rf_long_label_execute(params, execution)
 
 

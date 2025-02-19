@@ -11,6 +11,8 @@ TOKENS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 TokensParameters = typing.TypedDict('TokensParameters', {
     "__STYX_TYPE__": typing.Literal["tokens"],
     "infile": typing.NotRequired[InputPathType | None],
@@ -174,7 +176,10 @@ def tokens(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TOKENS_METADATA)
-    params = tokens_params(infile=infile, extra_char=extra_char)
+    params = tokens_params(
+        infile=infile,
+        extra_char=extra_char,
+    )
     return tokens_execute(params, execution)
 
 

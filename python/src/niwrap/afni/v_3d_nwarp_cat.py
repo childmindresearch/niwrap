@@ -11,6 +11,8 @@ V_3D_NWARP_CAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dNwarpCatParameters = typing.TypedDict('V3dNwarpCatParameters', {
     "__STYX_TYPE__": typing.Literal["3dNwarpCat"],
     "interpolation": typing.NotRequired[str | None],
@@ -252,7 +254,17 @@ def v_3d_nwarp_cat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NWARP_CAT_METADATA)
-    params = v_3d_nwarp_cat_params(interpolation=interpolation, verbosity=verbosity, output_prefix=output_prefix, space_marker=space_marker, warp1=warp1, warp2=warp2, additional_warps=additional_warps, invert_final_warp=invert_final_warp, extra_padding=extra_padding)
+    params = v_3d_nwarp_cat_params(
+        interpolation=interpolation,
+        verbosity=verbosity,
+        output_prefix=output_prefix,
+        space_marker=space_marker,
+        warp1=warp1,
+        warp2=warp2,
+        additional_warps=additional_warps,
+        invert_final_warp=invert_final_warp,
+        extra_padding=extra_padding,
+    )
     return v_3d_nwarp_cat_execute(params, execution)
 
 

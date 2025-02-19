@@ -11,6 +11,8 @@ MEICA_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MeicaPyParameters = typing.TypedDict('MeicaPyParameters', {
     "__STYX_TYPE__": typing.Literal["meica.py"],
     "infile": InputPathType,
@@ -235,7 +237,16 @@ def meica_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MEICA_PY_METADATA)
-    params = meica_py_params(infile=infile, echo_times=echo_times, affine=affine, output_directory=output_directory, components=components, talairach=talairach, threshold=threshold, debug=debug)
+    params = meica_py_params(
+        infile=infile,
+        echo_times=echo_times,
+        affine=affine,
+        output_directory=output_directory,
+        components=components,
+        talairach=talairach,
+        threshold=threshold,
+        debug=debug,
+    )
     return meica_py_execute(params, execution)
 
 

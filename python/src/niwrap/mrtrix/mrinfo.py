@@ -11,30 +11,42 @@ MRINFO_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrinfoPropertyParameters = typing.TypedDict('MrinfoPropertyParameters', {
     "__STYX_TYPE__": typing.Literal["property"],
     "key": str,
 })
+
+
 MrinfoFslgradParameters = typing.TypedDict('MrinfoFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 MrinfoExportGradFslParameters = typing.TypedDict('MrinfoExportGradFslParameters', {
     "__STYX_TYPE__": typing.Literal["export_grad_fsl"],
     "bvecs_path": str,
     "bvals_path": str,
 })
+
+
 MrinfoExportPeEddyParameters = typing.TypedDict('MrinfoExportPeEddyParameters', {
     "__STYX_TYPE__": typing.Literal["export_pe_eddy"],
     "config": str,
     "indices": str,
 })
+
+
 MrinfoConfigParameters = typing.TypedDict('MrinfoConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrinfoParameters = typing.TypedDict('MrinfoParameters', {
     "__STYX_TYPE__": typing.Literal["mrinfo"],
     "all": bool,
@@ -916,7 +928,44 @@ def mrinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRINFO_METADATA)
-    params = mrinfo_params(all_=all_, name=name, format_=format_, ndim=ndim, size=size, spacing=spacing, datatype=datatype, strides=strides, offset=offset, multiplier=multiplier, transform=transform, property_=property_, json_keyval=json_keyval, json_all=json_all, grad=grad, fslgrad=fslgrad, bvalue_scaling=bvalue_scaling, export_grad_mrtrix=export_grad_mrtrix, export_grad_fsl=export_grad_fsl, dwgrad=dwgrad, shell_bvalues=shell_bvalues, shell_sizes=shell_sizes, shell_indices=shell_indices, export_pe_table=export_pe_table, export_pe_eddy=export_pe_eddy, petable=petable, nodelete=nodelete, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image=image)
+    params = mrinfo_params(
+        all_=all_,
+        name=name,
+        format_=format_,
+        ndim=ndim,
+        size=size,
+        spacing=spacing,
+        datatype=datatype,
+        strides=strides,
+        offset=offset,
+        multiplier=multiplier,
+        transform=transform,
+        property_=property_,
+        json_keyval=json_keyval,
+        json_all=json_all,
+        grad=grad,
+        fslgrad=fslgrad,
+        bvalue_scaling=bvalue_scaling,
+        export_grad_mrtrix=export_grad_mrtrix,
+        export_grad_fsl=export_grad_fsl,
+        dwgrad=dwgrad,
+        shell_bvalues=shell_bvalues,
+        shell_sizes=shell_sizes,
+        shell_indices=shell_indices,
+        export_pe_table=export_pe_table,
+        export_pe_eddy=export_pe_eddy,
+        petable=petable,
+        nodelete=nodelete,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        image=image,
+    )
     return mrinfo_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ GROUPSTATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GroupstatsParameters = typing.TypedDict('GroupstatsParameters', {
     "__STYX_TYPE__": typing.Literal["groupstats"],
     "outdir": str,
@@ -232,7 +234,15 @@ def groupstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GROUPSTATS_METADATA)
-    params = groupstats_params(outdir=outdir, subjectfile=subjectfile, fwhm=fwhm, subject_dir=subject_dir, mapname=mapname, srcsurfreg=srcsurfreg, keep53=keep53)
+    params = groupstats_params(
+        outdir=outdir,
+        subjectfile=subjectfile,
+        fwhm=fwhm,
+        subject_dir=subject_dir,
+        mapname=mapname,
+        srcsurfreg=srcsurfreg,
+        keep53=keep53,
+    )
     return groupstats_execute(params, execution)
 
 

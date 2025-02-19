@@ -11,6 +11,8 @@ RECON_ALL_EXVIVO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ReconAllExvivoParameters = typing.TypedDict('ReconAllExvivoParameters', {
     "__STYX_TYPE__": typing.Literal["recon-all-exvivo"],
     "subject_id": str,
@@ -178,7 +180,11 @@ def recon_all_exvivo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RECON_ALL_EXVIVO_METADATA)
-    params = recon_all_exvivo_params(subject_id=subject_id, hemisphere=hemisphere, nocerebellum=nocerebellum)
+    params = recon_all_exvivo_params(
+        subject_id=subject_id,
+        hemisphere=hemisphere,
+        nocerebellum=nocerebellum,
+    )
     return recon_all_exvivo_execute(params, execution)
 
 

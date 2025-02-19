@@ -11,6 +11,8 @@ AFF2RIGID_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Aff2rigidParameters = typing.TypedDict('Aff2rigidParameters', {
     "__STYX_TYPE__": typing.Literal["aff2rigid"],
     "input_transform": InputPathType,
@@ -166,7 +168,10 @@ def aff2rigid(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFF2RIGID_METADATA)
-    params = aff2rigid_params(input_transform=input_transform, output_transform=output_transform)
+    params = aff2rigid_params(
+        input_transform=input_transform,
+        output_transform=output_transform,
+    )
     return aff2rigid_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_NL_ALIGN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriNlAlignParameters = typing.TypedDict('MriNlAlignParameters', {
     "__STYX_TYPE__": typing.Literal["mri_nl_align"],
     "source": InputPathType,
@@ -661,7 +663,54 @@ def mri_nl_align(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_NL_ALIGN_METADATA)
-    params = mri_nl_align_params(source=source, target=target, warp=warp, debug_voxel=debug_voxel, debug_node=debug_node, no_neg=no_neg, renormalize=renormalize, aseg_flag=aseg_flag, diag_volume=diag_volume, optimal_flag=optimal_flag, momentum_flag=momentum_flag, fixed_flag=fixed_flag, distance=distance, dtrans=dtrans, match_peak_flag=match_peak_flag, erode=erode, match_mean=match_mean, intensity=intensity, noregrid_flag=noregrid_flag, regrid_flag=regrid_flag, view=view, levels=levels, area_smoothness=area_smoothness, area=area, tolerance=tolerance, sigma=sigma, min_sigma=min_sigma, ribbon=ribbon, rthresh=rthresh, scale=scale, dt=dt, passes=passes, skip=skip, apply=apply, distance_log=distance_log, momentum=momentum, iterations=iterations, smoothness=smoothness, transform=transform, inverse_transform=inverse_transform, binary=binary, jacobian=jacobian, disable_zero_locations=disable_zero_locations, smooth_averages=smooth_averages, exp_k=exp_k, diagnostics=diagnostics)
+    params = mri_nl_align_params(
+        source=source,
+        target=target,
+        warp=warp,
+        debug_voxel=debug_voxel,
+        debug_node=debug_node,
+        no_neg=no_neg,
+        renormalize=renormalize,
+        aseg_flag=aseg_flag,
+        diag_volume=diag_volume,
+        optimal_flag=optimal_flag,
+        momentum_flag=momentum_flag,
+        fixed_flag=fixed_flag,
+        distance=distance,
+        dtrans=dtrans,
+        match_peak_flag=match_peak_flag,
+        erode=erode,
+        match_mean=match_mean,
+        intensity=intensity,
+        noregrid_flag=noregrid_flag,
+        regrid_flag=regrid_flag,
+        view=view,
+        levels=levels,
+        area_smoothness=area_smoothness,
+        area=area,
+        tolerance=tolerance,
+        sigma=sigma,
+        min_sigma=min_sigma,
+        ribbon=ribbon,
+        rthresh=rthresh,
+        scale=scale,
+        dt=dt,
+        passes=passes,
+        skip=skip,
+        apply=apply,
+        distance_log=distance_log,
+        momentum=momentum,
+        iterations=iterations,
+        smoothness=smoothness,
+        transform=transform,
+        inverse_transform=inverse_transform,
+        binary=binary,
+        jacobian=jacobian,
+        disable_zero_locations=disable_zero_locations,
+        smooth_averages=smooth_averages,
+        exp_k=exp_k,
+        diagnostics=diagnostics,
+    )
     return mri_nl_align_execute(params, execution)
 
 

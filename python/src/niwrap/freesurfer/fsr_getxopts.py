@@ -11,6 +11,8 @@ FSR_GETXOPTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsrGetxoptsParameters = typing.TypedDict('FsrGetxoptsParameters', {
     "__STYX_TYPE__": typing.Literal["fsr-getxopts"],
     "help": bool,
@@ -156,7 +158,9 @@ def fsr_getxopts(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSR_GETXOPTS_METADATA)
-    params = fsr_getxopts_params(help_=help_)
+    params = fsr_getxopts_params(
+        help_=help_,
+    )
     return fsr_getxopts_execute(params, execution)
 
 

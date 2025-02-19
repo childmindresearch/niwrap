@@ -11,6 +11,8 @@ MRI_LINEAR_ALIGN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriLinearAlignParameters = typing.TypedDict('MriLinearAlignParameters', {
     "__STYX_TYPE__": typing.Literal["mri_linear_align"],
     "source": InputPathType,
@@ -169,7 +171,11 @@ def mri_linear_align(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LINEAR_ALIGN_METADATA)
-    params = mri_linear_align_params(source=source, target=target, output_xform=output_xform)
+    params = mri_linear_align_params(
+        source=source,
+        target=target,
+        output_xform=output_xform,
+    )
     return mri_linear_align_execute(params, execution)
 
 

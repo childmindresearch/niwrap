@@ -11,6 +11,8 @@ GETFULLPATH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 GetfullpathParameters = typing.TypedDict('GetfullpathParameters', {
     "__STYX_TYPE__": typing.Literal["getfullpath"],
     "filename": str,
@@ -155,7 +157,9 @@ def getfullpath(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GETFULLPATH_METADATA)
-    params = getfullpath_params(filename=filename)
+    params = getfullpath_params(
+        filename=filename,
+    )
     return getfullpath_execute(params, execution)
 
 

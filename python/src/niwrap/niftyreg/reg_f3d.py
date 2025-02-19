@@ -11,6 +11,8 @@ REG_F3D_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+
+
 RegF3dParameters = typing.TypedDict('RegF3dParameters', {
     "__STYX_TYPE__": typing.Literal["reg_f3d"],
     "reference_image": InputPathType,
@@ -629,7 +631,48 @@ def reg_f3d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_F3D_METADATA)
-    params = reg_f3d_params(reference_image=reference_image, floating_image=floating_image, affine_transform=affine_transform, flirt_affine_transform=flirt_affine_transform, control_point_grid_input=control_point_grid_input, output_cpp=output_cpp, output_resampled_image=output_resampled_image, reference_mask=reference_mask, smooth_reference=smooth_reference, smooth_floating=smooth_floating, num_bins_joint_histogram=num_bins_joint_histogram, num_bins_floating_joint_histogram=num_bins_floating_joint_histogram, lower_threshold_reference=lower_threshold_reference, upper_threshold_reference=upper_threshold_reference, lower_threshold_floating=lower_threshold_floating, upper_threshold_floating=upper_threshold_floating, spacing_x=spacing_x, spacing_y=spacing_y, spacing_z=spacing_z, bending_energy=bending_energy, linear_elasticity=linear_elasticity, l2_norm_displacement=l2_norm_displacement, jacobian_determinant=jacobian_determinant, no_approx_jl=no_approx_jl, no_conj=no_conj, ssd=ssd, kld=kld, amc=amc, max_iterations=max_iterations, num_levels=num_levels, first_levels=first_levels, no_pyramid=no_pyramid, symmetric=symmetric, floating_mask=floating_mask, inverse_consistency=inverse_consistency, velocity_field=velocity_field, composition_steps=composition_steps, smooth_gradient=smooth_gradient, padding_value=padding_value, verbose_off=verbose_off)
+    params = reg_f3d_params(
+        reference_image=reference_image,
+        floating_image=floating_image,
+        affine_transform=affine_transform,
+        flirt_affine_transform=flirt_affine_transform,
+        control_point_grid_input=control_point_grid_input,
+        output_cpp=output_cpp,
+        output_resampled_image=output_resampled_image,
+        reference_mask=reference_mask,
+        smooth_reference=smooth_reference,
+        smooth_floating=smooth_floating,
+        num_bins_joint_histogram=num_bins_joint_histogram,
+        num_bins_floating_joint_histogram=num_bins_floating_joint_histogram,
+        lower_threshold_reference=lower_threshold_reference,
+        upper_threshold_reference=upper_threshold_reference,
+        lower_threshold_floating=lower_threshold_floating,
+        upper_threshold_floating=upper_threshold_floating,
+        spacing_x=spacing_x,
+        spacing_y=spacing_y,
+        spacing_z=spacing_z,
+        bending_energy=bending_energy,
+        linear_elasticity=linear_elasticity,
+        l2_norm_displacement=l2_norm_displacement,
+        jacobian_determinant=jacobian_determinant,
+        no_approx_jl=no_approx_jl,
+        no_conj=no_conj,
+        ssd=ssd,
+        kld=kld,
+        amc=amc,
+        max_iterations=max_iterations,
+        num_levels=num_levels,
+        first_levels=first_levels,
+        no_pyramid=no_pyramid,
+        symmetric=symmetric,
+        floating_mask=floating_mask,
+        inverse_consistency=inverse_consistency,
+        velocity_field=velocity_field,
+        composition_steps=composition_steps,
+        smooth_gradient=smooth_gradient,
+        padding_value=padding_value,
+        verbose_off=verbose_off,
+    )
     return reg_f3d_execute(params, execution)
 
 

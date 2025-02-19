@@ -11,12 +11,16 @@ V_5TTGEN_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 V5ttgenFreesurferParameters = typing.TypedDict('V5ttgenFreesurferParameters', {
     "__STYX_TYPE__": typing.Literal["freesurfer"],
     "input": InputPathType,
     "output": str,
     "lut": typing.NotRequired[InputPathType | None],
 })
+
+
 V5ttgenFslParameters = typing.TypedDict('V5ttgenFslParameters', {
     "__STYX_TYPE__": typing.Literal["fsl"],
     "input": InputPathType,
@@ -25,11 +29,15 @@ V5ttgenFslParameters = typing.TypedDict('V5ttgenFslParameters', {
     "mask": typing.NotRequired[InputPathType | None],
     "premasked": bool,
 })
+
+
 V5ttgenGifParameters = typing.TypedDict('V5ttgenGifParameters', {
     "__STYX_TYPE__": typing.Literal["gif"],
     "input": InputPathType,
     "output": str,
 })
+
+
 V5ttgenHsvsParameters = typing.TypedDict('V5ttgenHsvsParameters', {
     "__STYX_TYPE__": typing.Literal["hsvs"],
     "input": InputPathType,
@@ -39,11 +47,15 @@ V5ttgenHsvsParameters = typing.TypedDict('V5ttgenHsvsParameters', {
     "thalami": typing.NotRequired[typing.Literal["nuclei", "first", "aseg"] | None],
     "white_stem": bool,
 })
+
+
 V5ttgenConfigParameters = typing.TypedDict('V5ttgenConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 V5ttgenParameters = typing.TypedDict('V5ttgenParameters', {
     "__STYX_TYPE__": typing.Literal["5ttgen"],
     "algorithm": typing.Union[V5ttgenFreesurferParameters, V5ttgenFslParameters, V5ttgenGifParameters, V5ttgenHsvsParameters],
@@ -762,7 +774,22 @@ def v_5ttgen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TTGEN_METADATA)
-    params = v_5ttgen_params(algorithm=algorithm, nocrop=nocrop, sgm_amyg_hipp=sgm_amyg_hipp, nocleanup=nocleanup, scratch=scratch, continue_=continue_, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version)
+    params = v_5ttgen_params(
+        algorithm=algorithm,
+        nocrop=nocrop,
+        sgm_amyg_hipp=sgm_amyg_hipp,
+        nocleanup=nocleanup,
+        scratch=scratch,
+        continue_=continue_,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+    )
     return v_5ttgen_execute(params, execution)
 
 

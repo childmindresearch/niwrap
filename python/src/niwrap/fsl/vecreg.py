@@ -11,6 +11,8 @@ VECREG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 VecregParameters = typing.TypedDict('VecregParameters', {
     "__STYX_TYPE__": typing.Literal["vecreg"],
     "input_file": InputPathType,
@@ -278,7 +280,19 @@ def vecreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VECREG_METADATA)
-    params = vecreg_params(input_file=input_file, output_file=output_file, reference_volume=reference_volume, transform_file=transform_file, verbose_flag=verbose_flag, help_flag=help_flag, secondary_affine=secondary_affine, secondary_warp=secondary_warp, interp_method=interp_method, brain_mask=brain_mask, ref_brain_mask=ref_brain_mask)
+    params = vecreg_params(
+        input_file=input_file,
+        output_file=output_file,
+        reference_volume=reference_volume,
+        transform_file=transform_file,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+        secondary_affine=secondary_affine,
+        secondary_warp=secondary_warp,
+        interp_method=interp_method,
+        brain_mask=brain_mask,
+        ref_brain_mask=ref_brain_mask,
+    )
     return vecreg_execute(params, execution)
 
 

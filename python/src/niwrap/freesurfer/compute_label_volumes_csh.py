@@ -11,6 +11,8 @@ COMPUTE_LABEL_VOLUMES_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 ComputeLabelVolumesCshParameters = typing.TypedDict('ComputeLabelVolumesCshParameters', {
     "__STYX_TYPE__": typing.Literal["compute_label_volumes.csh"],
     "label_vol": InputPathType,
@@ -202,7 +204,13 @@ def compute_label_volumes_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COMPUTE_LABEL_VOLUMES_CSH_METADATA)
-    params = compute_label_volumes_csh_params(label_vol=label_vol, output_file=output_file, label_l=label_l, version=version, help_=help_)
+    params = compute_label_volumes_csh_params(
+        label_vol=label_vol,
+        output_file=output_file,
+        label_l=label_l,
+        version=version,
+        help_=help_,
+    )
     return compute_label_volumes_csh_execute(params, execution)
 
 

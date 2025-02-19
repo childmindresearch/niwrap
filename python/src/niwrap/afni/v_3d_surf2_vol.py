@@ -11,6 +11,8 @@ V_3D_SURF2_VOL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dSurf2VolParameters = typing.TypedDict('V3dSurf2VolParameters', {
     "__STYX_TYPE__": typing.Literal["3dSurf2Vol"],
     "spec": InputPathType,
@@ -428,7 +430,33 @@ def v_3d_surf2_vol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SURF2_VOL_METADATA)
-    params = v_3d_surf2_vol_params(spec=spec, surface_volume=surface_volume, surf_a=surf_a, surf_b=surf_b, grid_parent=grid_parent, map_func=map_func, prefix=prefix, surf_xyz_1d=surf_xyz_1d, sdata_1d=sdata_1d, sdata=sdata, f_steps=f_steps, f_index=f_index, f_p1_fr=f_p1_fr, f_pn_fr=f_pn_fr, f_p1_mm=f_p1_mm, f_pn_mm=f_pn_mm, stop_gap=stop_gap, cmask=cmask, data_expr=data_expr, datum=datum, debug=debug, dnode=dnode, dvoxel=dvoxel, noscale=noscale, sxyz_orient_as_gpar=sxyz_orient_as_gpar)
+    params = v_3d_surf2_vol_params(
+        spec=spec,
+        surface_volume=surface_volume,
+        surf_a=surf_a,
+        surf_b=surf_b,
+        grid_parent=grid_parent,
+        map_func=map_func,
+        prefix=prefix,
+        surf_xyz_1d=surf_xyz_1d,
+        sdata_1d=sdata_1d,
+        sdata=sdata,
+        f_steps=f_steps,
+        f_index=f_index,
+        f_p1_fr=f_p1_fr,
+        f_pn_fr=f_pn_fr,
+        f_p1_mm=f_p1_mm,
+        f_pn_mm=f_pn_mm,
+        stop_gap=stop_gap,
+        cmask=cmask,
+        data_expr=data_expr,
+        datum=datum,
+        debug=debug,
+        dnode=dnode,
+        dvoxel=dvoxel,
+        noscale=noscale,
+        sxyz_orient_as_gpar=sxyz_orient_as_gpar,
+    )
     return v_3d_surf2_vol_execute(params, execution)
 
 

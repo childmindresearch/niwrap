@@ -11,11 +11,15 @@ SHBASIS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 ShbasisConfigParameters = typing.TypedDict('ShbasisConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 ShbasisParameters = typing.TypedDict('ShbasisParameters', {
     "__STYX_TYPE__": typing.Literal["shbasis"],
     "convert": typing.NotRequired[str | None],
@@ -343,7 +347,18 @@ def shbasis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SHBASIS_METADATA)
-    params = shbasis_params(convert=convert, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, sh=sh)
+    params = shbasis_params(
+        convert=convert,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        sh=sh,
+    )
     return shbasis_execute(params, execution)
 
 

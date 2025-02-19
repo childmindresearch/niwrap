@@ -11,6 +11,8 @@ CONCAT_BVARS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 ConcatBvarsParameters = typing.TypedDict('ConcatBvarsParameters', {
     "__STYX_TYPE__": typing.Literal["concat_bvars"],
     "output_bvars": str,
@@ -160,7 +162,9 @@ def concat_bvars(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONCAT_BVARS_METADATA)
-    params = concat_bvars_params(output_bvars=output_bvars)
+    params = concat_bvars_params(
+        output_bvars=output_bvars,
+    )
     return concat_bvars_execute(params, execution)
 
 

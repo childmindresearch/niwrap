@@ -11,6 +11,8 @@ DCM2NIIX_METADATA = Metadata(
     package="dcm2niix",
     container_image_tag="vnmd/dcm2niix_v1.0.20240202:20241125",
 )
+
+
 Dcm2niixParameters = typing.TypedDict('Dcm2niixParameters', {
     "__STYX_TYPE__": typing.Literal["dcm2niix"],
     "compression_level": typing.NotRequired[float | None],
@@ -502,7 +504,37 @@ def dcm2niix_(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCM2NIIX_METADATA)
-    params = dcm2niix_params(compression_level=compression_level, adjacent=adjacent, bids=bids, bids_anon=bids_anon, comment=comment, depth=depth, export_format=export_format, filename=filename, defaults=defaults, ignore_derived=ignore_derived, scaling=scaling, merge_2d=merge_2d, series_number=series_number, output_dir=output_dir, philips_scaling=philips_scaling, search_mode=search_mode, rename=rename, single_file=single_file, update_check=update_check, verbose=verbose, conflict_behavior=conflict_behavior, crop_3d=crop_3d, compression=compression, endian=endian, progress=progress, ignore_trigger=ignore_trigger, terse=terse, xml_=xml_, input_dir=input_dir)
+    params = dcm2niix_params(
+        compression_level=compression_level,
+        adjacent=adjacent,
+        bids=bids,
+        bids_anon=bids_anon,
+        comment=comment,
+        depth=depth,
+        export_format=export_format,
+        filename=filename,
+        defaults=defaults,
+        ignore_derived=ignore_derived,
+        scaling=scaling,
+        merge_2d=merge_2d,
+        series_number=series_number,
+        output_dir=output_dir,
+        philips_scaling=philips_scaling,
+        search_mode=search_mode,
+        rename=rename,
+        single_file=single_file,
+        update_check=update_check,
+        verbose=verbose,
+        conflict_behavior=conflict_behavior,
+        crop_3d=crop_3d,
+        compression=compression,
+        endian=endian,
+        progress=progress,
+        ignore_trigger=ignore_trigger,
+        terse=terse,
+        xml_=xml_,
+        input_dir=input_dir,
+    )
     return dcm2niix_execute(params, execution)
 
 

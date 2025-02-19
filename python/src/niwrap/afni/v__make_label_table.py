@@ -11,6 +11,8 @@ V__MAKE_LABEL_TABLE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VMakeLabelTableParameters = typing.TypedDict('VMakeLabelTableParameters', {
     "__STYX_TYPE__": typing.Literal["@MakeLabelTable"],
     "labeltable": str,
@@ -537,7 +539,42 @@ def v__make_label_table(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__MAKE_LABEL_TABLE_METADATA)
-    params = v__make_label_table_params(labeltable=labeltable, atlas_pointlist=atlas_pointlist, lab_r=lab_r, lab_v=lab_v, lab_file=lab_file, dset=dset, longnames=longnames, last_longname_col=last_longname_col, centers=centers, centertype=centertype, centermask=centermask, skip_novoxels=skip_novoxels, all_labels=all_labels, all_keys=all_keys, lkeys=lkeys, rkeys=rkeys, klabel=klabel, match_label=match_label, labeltable_of_dset=labeltable_of_dset, word_label_match=word_label_match, quiet_death=quiet_death, lt_to_atlas_pl=lt_to_atlas_pl, dset_lt_to_atlas_pl=dset_lt_to_atlas_pl, lt_to_csv=lt_to_csv, atlasize_labeled_dset=atlasize_labeled_dset, atlas_file=atlas_file, atlas_name=atlas_name, atlas_description=atlas_description, replace=replace, add_atlas_dset=add_atlas_dset, h_web=h_web, h_view=h_view, all_opts=all_opts, h_find=h_find)
+    params = v__make_label_table_params(
+        labeltable=labeltable,
+        atlas_pointlist=atlas_pointlist,
+        lab_r=lab_r,
+        lab_v=lab_v,
+        lab_file=lab_file,
+        dset=dset,
+        longnames=longnames,
+        last_longname_col=last_longname_col,
+        centers=centers,
+        centertype=centertype,
+        centermask=centermask,
+        skip_novoxels=skip_novoxels,
+        all_labels=all_labels,
+        all_keys=all_keys,
+        lkeys=lkeys,
+        rkeys=rkeys,
+        klabel=klabel,
+        match_label=match_label,
+        labeltable_of_dset=labeltable_of_dset,
+        word_label_match=word_label_match,
+        quiet_death=quiet_death,
+        lt_to_atlas_pl=lt_to_atlas_pl,
+        dset_lt_to_atlas_pl=dset_lt_to_atlas_pl,
+        lt_to_csv=lt_to_csv,
+        atlasize_labeled_dset=atlasize_labeled_dset,
+        atlas_file=atlas_file,
+        atlas_name=atlas_name,
+        atlas_description=atlas_description,
+        replace=replace,
+        add_atlas_dset=add_atlas_dset,
+        h_web=h_web,
+        h_view=h_view,
+        all_opts=all_opts,
+        h_find=h_find,
+    )
     return v__make_label_table_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSLADD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FsladdParameters = typing.TypedDict('FsladdParameters', {
     "__STYX_TYPE__": typing.Literal["fsladd"],
     "output_file": str,
@@ -182,7 +184,12 @@ def fsladd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLADD_METADATA)
-    params = fsladd_params(output_file=output_file, mean_flag=mean_flag, scale_flag=scale_flag, volume_list=volume_list)
+    params = fsladd_params(
+        output_file=output_file,
+        mean_flag=mean_flag,
+        scale_flag=scale_flag,
+        volume_list=volume_list,
+    )
     return fsladd_execute(params, execution)
 
 

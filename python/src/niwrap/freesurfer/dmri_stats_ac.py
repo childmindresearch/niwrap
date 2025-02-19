@@ -11,6 +11,8 @@ DMRI_STATS_AC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriStatsAcParameters = typing.TypedDict('DmriStatsAcParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_stats_ac"],
     "anatomicuts_folder": str,
@@ -204,7 +206,13 @@ def dmri_stats_ac(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_STATS_AC_METADATA)
-    params = dmri_stats_ac_params(anatomicuts_folder=anatomicuts_folder, num_clusters=num_clusters, correspondence_file=correspondence_file, measures=measures, output_file=output_file)
+    params = dmri_stats_ac_params(
+        anatomicuts_folder=anatomicuts_folder,
+        num_clusters=num_clusters,
+        correspondence_file=correspondence_file,
+        measures=measures,
+        output_file=output_file,
+    )
     return dmri_stats_ac_execute(params, execution)
 
 

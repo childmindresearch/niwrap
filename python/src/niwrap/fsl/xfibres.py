@@ -11,6 +11,8 @@ XFIBRES_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 XfibresParameters = typing.TypedDict('XfibresParameters', {
     "__STYX_TYPE__": typing.Literal["xfibres"],
     "datafile": InputPathType,
@@ -434,7 +436,35 @@ def xfibres(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XFIBRES_METADATA)
-    params = xfibres_params(datafile=datafile, maskfile=maskfile, bvecs=bvecs, bvals=bvals, logdir=logdir, forcedir=forcedir, max_fibres=max_fibres, model=model, fudge=fudge, num_jumps=num_jumps, num_burnin=num_burnin, burnin_noard=burnin_noard, sampleevery=sampleevery, updateproposal=updateproposal, seed=seed, noard=noard, allard=allard, nospat=nospat, nonlinear=nonlinear, cnonlinear=cnonlinear, rician=rician, add_f0=add_f0, ard_f0=ard_f0, rmean=rmean, rstd=rstd, verbose_flag=verbose_flag, help_flag=help_flag)
+    params = xfibres_params(
+        datafile=datafile,
+        maskfile=maskfile,
+        bvecs=bvecs,
+        bvals=bvals,
+        logdir=logdir,
+        forcedir=forcedir,
+        max_fibres=max_fibres,
+        model=model,
+        fudge=fudge,
+        num_jumps=num_jumps,
+        num_burnin=num_burnin,
+        burnin_noard=burnin_noard,
+        sampleevery=sampleevery,
+        updateproposal=updateproposal,
+        seed=seed,
+        noard=noard,
+        allard=allard,
+        nospat=nospat,
+        nonlinear=nonlinear,
+        cnonlinear=cnonlinear,
+        rician=rician,
+        add_f0=add_f0,
+        ard_f0=ard_f0,
+        rmean=rmean,
+        rstd=rstd,
+        verbose_flag=verbose_flag,
+        help_flag=help_flag,
+    )
     return xfibres_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V__SURF_SMOOTH_HEAT_07_EXAMPLES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VSurfSmoothHeat07ExamplesParameters = typing.TypedDict('VSurfSmoothHeat07ExamplesParameters', {
     "__STYX_TYPE__": typing.Literal["@SurfSmooth.HEAT_07.examples"],
     "path_to_suma_demo": str,
@@ -155,7 +157,9 @@ def v__surf_smooth_heat_07_examples(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SURF_SMOOTH_HEAT_07_EXAMPLES_METADATA)
-    params = v__surf_smooth_heat_07_examples_params(path_to_suma_demo=path_to_suma_demo)
+    params = v__surf_smooth_heat_07_examples_params(
+        path_to_suma_demo=path_to_suma_demo,
+    )
     return v__surf_smooth_heat_07_examples_execute(params, execution)
 
 

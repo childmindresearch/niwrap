@@ -11,6 +11,8 @@ IM2NIML_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 Im2nimlParameters = typing.TypedDict('Im2nimlParameters', {
     "__STYX_TYPE__": typing.Literal["im2niml"],
     "input_files": list[InputPathType],
@@ -161,7 +163,9 @@ def im2niml(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IM2NIML_METADATA)
-    params = im2niml_params(input_files=input_files)
+    params = im2niml_params(
+        input_files=input_files,
+    )
     return im2niml_execute(params, execution)
 
 

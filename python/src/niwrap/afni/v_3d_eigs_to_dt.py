@@ -11,6 +11,8 @@ V_3D_EIGS_TO_DT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dEigsToDtParameters = typing.TypedDict('V3dEigsToDtParameters', {
     "__STYX_TYPE__": typing.Literal["3dEigsToDT"],
     "eig_vals": str,
@@ -247,7 +249,16 @@ def v_3d_eigs_to_dt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EIGS_TO_DT_METADATA)
-    params = v_3d_eigs_to_dt_params(eig_vals=eig_vals, eig_vecs=eig_vecs, prefix=prefix, mask=mask, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z, scale_eigs=scale_eigs)
+    params = v_3d_eigs_to_dt_params(
+        eig_vals=eig_vals,
+        eig_vecs=eig_vecs,
+        prefix=prefix,
+        mask=mask,
+        flip_x=flip_x,
+        flip_y=flip_y,
+        flip_z=flip_z,
+        scale_eigs=scale_eigs,
+    )
     return v_3d_eigs_to_dt_execute(params, execution)
 
 

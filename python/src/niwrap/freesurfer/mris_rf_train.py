@@ -11,6 +11,8 @@ MRIS_RF_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisRfTrainParameters = typing.TypedDict('MrisRfTrainParameters', {
     "__STYX_TYPE__": typing.Literal["mris_rf_train"],
     "subjects": list[str],
@@ -188,7 +190,12 @@ def mris_rf_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_RF_TRAIN_METADATA)
-    params = mris_rf_train_params(subjects=subjects, output_name=output_name, hemi=hemi, surf=surf)
+    params = mris_rf_train_params(
+        subjects=subjects,
+        output_name=output_name,
+        hemi=hemi,
+        surf=surf,
+    )
     return mris_rf_train_execute(params, execution)
 
 

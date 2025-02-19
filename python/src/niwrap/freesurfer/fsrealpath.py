@@ -11,6 +11,8 @@ FSREALPATH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 FsrealpathParameters = typing.TypedDict('FsrealpathParameters', {
     "__STYX_TYPE__": typing.Literal["fsrealpath"],
     "path": str,
@@ -163,7 +165,10 @@ def fsrealpath(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSREALPATH_METADATA)
-    params = fsrealpath_params(path=path, help_=help_)
+    params = fsrealpath_params(
+        path=path,
+        help_=help_,
+    )
     return fsrealpath_execute(params, execution)
 
 

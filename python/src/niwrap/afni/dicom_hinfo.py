@@ -11,6 +11,8 @@ DICOM_HINFO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 DicomHinfoParameters = typing.TypedDict('DicomHinfoParameters', {
     "__STYX_TYPE__": typing.Literal["dicom_hinfo"],
     "tag": list[str],
@@ -199,7 +201,13 @@ def dicom_hinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DICOM_HINFO_METADATA)
-    params = dicom_hinfo_params(tag=tag, sepstr=sepstr, full_entry=full_entry, no_name=no_name, namelast=namelast)
+    params = dicom_hinfo_params(
+        tag=tag,
+        sepstr=sepstr,
+        full_entry=full_entry,
+        no_name=no_name,
+        namelast=namelast,
+    )
     return dicom_hinfo_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ DT_RECON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DtReconParameters = typing.TypedDict('DtReconParameters', {
     "__STYX_TYPE__": typing.Literal["dt_recon"],
     "input_volume": InputPathType,
@@ -350,7 +352,26 @@ def dt_recon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DT_RECON_METADATA)
-    params = dt_recon_params(input_volume=input_volume, bvals_bvecs=bvals_bvecs, subject_id=subject_id, output_dir=output_dir, info_dump=info_dump, ec_reference=ec_reference, no_ec_flag=no_ec_flag, no_reg_flag=no_reg_flag, register_file=register_file, no_tal_flag=no_tal_flag, subjects_dir=subjects_dir, save_ec_residuals_flag=save_ec_residuals_flag, pca_analysis_flag=pca_analysis_flag, mask_prune_threshold=mask_prune_threshold, init_spm_flag=init_spm_flag, init_fsl_flag=init_fsl_flag, debug_flag=debug_flag, version_flag=version_flag)
+    params = dt_recon_params(
+        input_volume=input_volume,
+        bvals_bvecs=bvals_bvecs,
+        subject_id=subject_id,
+        output_dir=output_dir,
+        info_dump=info_dump,
+        ec_reference=ec_reference,
+        no_ec_flag=no_ec_flag,
+        no_reg_flag=no_reg_flag,
+        register_file=register_file,
+        no_tal_flag=no_tal_flag,
+        subjects_dir=subjects_dir,
+        save_ec_residuals_flag=save_ec_residuals_flag,
+        pca_analysis_flag=pca_analysis_flag,
+        mask_prune_threshold=mask_prune_threshold,
+        init_spm_flag=init_spm_flag,
+        init_fsl_flag=init_fsl_flag,
+        debug_flag=debug_flag,
+        version_flag=version_flag,
+    )
     return dt_recon_execute(params, execution)
 
 

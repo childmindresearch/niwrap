@@ -11,6 +11,8 @@ REGISTER_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RegisterSubjectParameters = typing.TypedDict('RegisterSubjectParameters', {
     "__STYX_TYPE__": typing.Literal["register_subject"],
     "input_volume": typing.NotRequired[InputPathType | None],
@@ -211,7 +213,14 @@ def register_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_SUBJECT_METADATA)
-    params = register_subject_params(input_volume=input_volume, mask_volume=mask_volume, control_points=control_points, output_directory=output_directory, log_file=log_file, gca_file=gca_file)
+    params = register_subject_params(
+        input_volume=input_volume,
+        mask_volume=mask_volume,
+        control_points=control_points,
+        output_directory=output_directory,
+        log_file=log_file,
+        gca_file=gca_file,
+    )
     return register_subject_execute(params, execution)
 
 

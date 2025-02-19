@@ -11,6 +11,8 @@ ANTS_NEUROIMAGING_BATTERY_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsNeuroimagingBatteryParameters = typing.TypedDict('AntsNeuroimagingBatteryParameters', {
     "__STYX_TYPE__": typing.Literal["antsNeuroimagingBattery"],
     "input_directory": str,
@@ -207,7 +209,13 @@ def ants_neuroimaging_battery(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_NEUROIMAGING_BATTERY_METADATA)
-    params = ants_neuroimaging_battery_params(input_directory=input_directory, output_directory=output_directory, output_name=output_name, anatomical_image=anatomical_image, anatomical_mask=anatomical_mask)
+    params = ants_neuroimaging_battery_params(
+        input_directory=input_directory,
+        output_directory=output_directory,
+        output_name=output_name,
+        anatomical_image=anatomical_image,
+        anatomical_mask=anatomical_mask,
+    )
     return ants_neuroimaging_battery_execute(params, execution)
 
 

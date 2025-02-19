@@ -11,6 +11,8 @@ TKREGISTER2_CMDL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Tkregister2CmdlParameters = typing.TypedDict('Tkregister2CmdlParameters', {
     "__STYX_TYPE__": typing.Literal["tkregister2_cmdl"],
     "movable_volume": InputPathType,
@@ -788,7 +790,68 @@ def tkregister2_cmdl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKREGISTER2_CMDL_METADATA)
-    params = tkregister2_cmdl_params(movable_volume=movable_volume, target_volume=target_volume, fstarg_flag=fstarg_flag, reg_file=reg_file, check_reg_flag=check_reg_flag, regheader_flag=regheader_flag, regheader_center_flag=regheader_center_flag, fsl_targ_flag=fsl_targ_flag, fsl_targ_lr_flag=fsl_targ_lr_flag, gca_subject=gca_subject, gca_skull_subject=gca_skull_subject, no_zero_cras_flag=no_zero_cras_flag, movbright=movbright, no_inorm_flag=no_inorm_flag, fmov=fmov, fmov_targ_flag=fmov_targ_flag, plane=plane, slice_=slice_, volview=volview, fov=fov, movscale=movscale, surf=surf, surf_rgb=surf_rgb, lh_only_flag=lh_only_flag, rh_only_flag=rh_only_flag, fstal_flag=fstal_flag, talxfmname=talxfmname, ixfm=ixfm, xfm=xfm, xfmout=xfmout, fsl=fsl, fslregout=fslregout, freeview=freeview, vox2vox=vox2vox, lta=lta, lta_inv=lta_inv, ltaout=ltaout, ltaout_inv_flag=ltaout_inv_flag, feat=feat, fsfeat=fsfeat, identity_flag=identity_flag, subject_id=subject_id, subjects_dir=subjects_dir, nofix_flag=nofix_flag, float2int=float2int, title=title, tag_flag=tag_flag, mov_orientation=mov_orientation, targ_orientation=targ_orientation, int_=int_, double_window_size_flag=double_window_size_flag, window_scale=window_scale, det=det, aseg_flag=aseg_flag, aparc_flag=aparc_flag, wmparc_flag=wmparc_flag, gdiagno=gdiagno, trans=trans, rot=rot, conf_targ_flag=conf_targ_flag)
+    params = tkregister2_cmdl_params(
+        movable_volume=movable_volume,
+        target_volume=target_volume,
+        fstarg_flag=fstarg_flag,
+        reg_file=reg_file,
+        check_reg_flag=check_reg_flag,
+        regheader_flag=regheader_flag,
+        regheader_center_flag=regheader_center_flag,
+        fsl_targ_flag=fsl_targ_flag,
+        fsl_targ_lr_flag=fsl_targ_lr_flag,
+        gca_subject=gca_subject,
+        gca_skull_subject=gca_skull_subject,
+        no_zero_cras_flag=no_zero_cras_flag,
+        movbright=movbright,
+        no_inorm_flag=no_inorm_flag,
+        fmov=fmov,
+        fmov_targ_flag=fmov_targ_flag,
+        plane=plane,
+        slice_=slice_,
+        volview=volview,
+        fov=fov,
+        movscale=movscale,
+        surf=surf,
+        surf_rgb=surf_rgb,
+        lh_only_flag=lh_only_flag,
+        rh_only_flag=rh_only_flag,
+        fstal_flag=fstal_flag,
+        talxfmname=talxfmname,
+        ixfm=ixfm,
+        xfm=xfm,
+        xfmout=xfmout,
+        fsl=fsl,
+        fslregout=fslregout,
+        freeview=freeview,
+        vox2vox=vox2vox,
+        lta=lta,
+        lta_inv=lta_inv,
+        ltaout=ltaout,
+        ltaout_inv_flag=ltaout_inv_flag,
+        feat=feat,
+        fsfeat=fsfeat,
+        identity_flag=identity_flag,
+        subject_id=subject_id,
+        subjects_dir=subjects_dir,
+        nofix_flag=nofix_flag,
+        float2int=float2int,
+        title=title,
+        tag_flag=tag_flag,
+        mov_orientation=mov_orientation,
+        targ_orientation=targ_orientation,
+        int_=int_,
+        double_window_size_flag=double_window_size_flag,
+        window_scale=window_scale,
+        det=det,
+        aseg_flag=aseg_flag,
+        aparc_flag=aparc_flag,
+        wmparc_flag=wmparc_flag,
+        gdiagno=gdiagno,
+        trans=trans,
+        rot=rot,
+        conf_targ_flag=conf_targ_flag,
+    )
     return tkregister2_cmdl_execute(params, execution)
 
 

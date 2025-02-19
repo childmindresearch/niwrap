@@ -11,6 +11,8 @@ V_3D_ROW_FILLIN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dRowFillinParameters = typing.TypedDict('V3dRowFillinParameters', {
     "__STYX_TYPE__": typing.Literal["3dRowFillin"],
     "maxgap": typing.NotRequired[float | None],
@@ -210,7 +212,13 @@ def v_3d_row_fillin(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ROW_FILLIN_METADATA)
-    params = v_3d_row_fillin_params(maxgap=maxgap, dir_=dir_, binary=binary, prefix=prefix, input_dataset=input_dataset)
+    params = v_3d_row_fillin_params(
+        maxgap=maxgap,
+        dir_=dir_,
+        binary=binary,
+        prefix=prefix,
+        input_dataset=input_dataset,
+    )
     return v_3d_row_fillin_execute(params, execution)
 
 

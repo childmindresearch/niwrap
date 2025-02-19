@@ -11,6 +11,8 @@ MRI_HIRES_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriHiresRegisterParameters = typing.TypedDict('MriHiresRegisterParameters', {
     "__STYX_TYPE__": typing.Literal["mri_hires_register"],
     "hires_labeling": InputPathType,
@@ -180,7 +182,12 @@ def mri_hires_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_HIRES_REGISTER_METADATA)
-    params = mri_hires_register_params(hires_labeling=hires_labeling, input_intensity=input_intensity, input_aseg=input_aseg, output_xform=output_xform)
+    params = mri_hires_register_params(
+        hires_labeling=hires_labeling,
+        input_intensity=input_intensity,
+        input_aseg=input_aseg,
+        output_xform=output_xform,
+    )
     return mri_hires_register_execute(params, execution)
 
 

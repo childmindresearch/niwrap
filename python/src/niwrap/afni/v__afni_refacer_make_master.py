@@ -11,6 +11,8 @@ V__AFNI_REFACER_MAKE_MASTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VAfniRefacerMakeMasterParameters = typing.TypedDict('VAfniRefacerMakeMasterParameters', {
     "__STYX_TYPE__": typing.Literal["@afni_refacer_make_master"],
     "input_datasets": list[InputPathType],
@@ -163,7 +165,9 @@ def v__afni_refacer_make_master(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_REFACER_MAKE_MASTER_METADATA)
-    params = v__afni_refacer_make_master_params(input_datasets=input_datasets)
+    params = v__afni_refacer_make_master_params(
+        input_datasets=input_datasets,
+    )
     return v__afni_refacer_make_master_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSL_GLM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslGlmParameters = typing.TypedDict('FslGlmParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_glm"],
     "input_file": InputPathType,
@@ -470,7 +472,32 @@ def fsl_glm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_GLM_METADATA)
-    params = fsl_glm_params(input_file=input_file, design_matrix=design_matrix, output_file=output_file, contrasts=contrasts, mask_file=mask_file, dof=dof, design_norm_flag=design_norm_flag, data_norm_flag=data_norm_flag, vn_flag=vn_flag, demean_flag=demean_flag, output_copes=output_copes, output_zstats=output_zstats, output_tstats=output_tstats, output_pvals=output_pvals, output_fvals=output_fvals, output_pfvals=output_pfvals, output_residuals=output_residuals, output_varcb=output_varcb, output_sigsq=output_sigsq, output_data=output_data, output_vnscales=output_vnscales, vx_text=vx_text, vx_images=vx_images, help_flag=help_flag)
+    params = fsl_glm_params(
+        input_file=input_file,
+        design_matrix=design_matrix,
+        output_file=output_file,
+        contrasts=contrasts,
+        mask_file=mask_file,
+        dof=dof,
+        design_norm_flag=design_norm_flag,
+        data_norm_flag=data_norm_flag,
+        vn_flag=vn_flag,
+        demean_flag=demean_flag,
+        output_copes=output_copes,
+        output_zstats=output_zstats,
+        output_tstats=output_tstats,
+        output_pvals=output_pvals,
+        output_fvals=output_fvals,
+        output_pfvals=output_pfvals,
+        output_residuals=output_residuals,
+        output_varcb=output_varcb,
+        output_sigsq=output_sigsq,
+        output_data=output_data,
+        output_vnscales=output_vnscales,
+        vx_text=vx_text,
+        vx_images=vx_images,
+        help_flag=help_flag,
+    )
     return fsl_glm_execute(params, execution)
 
 

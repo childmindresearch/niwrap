@@ -11,6 +11,8 @@ BIASFIELD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 BiasfieldParameters = typing.TypedDict('BiasfieldParameters', {
     "__STYX_TYPE__": typing.Literal["biasfield"],
     "subject": str,
@@ -209,7 +211,14 @@ def biasfield(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BIASFIELD_METADATA)
-    params = biasfield_params(subject=subject, tmpdir=tmpdir, no_cleanup=no_cleanup, help_=help_, debug=debug, version=version)
+    params = biasfield_params(
+        subject=subject,
+        tmpdir=tmpdir,
+        no_cleanup=no_cleanup,
+        help_=help_,
+        debug=debug,
+        version=version,
+    )
     return biasfield_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_1DPLOT_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dplotPyParameters = typing.TypedDict('V1dplotPyParameters', {
     "__STYX_TYPE__": typing.Literal["1dplot.py"],
     "infiles": list[InputPathType],
@@ -530,7 +532,40 @@ def v_1dplot_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DPLOT_PY_METADATA)
-    params = v_1dplot_py_params(infiles=infiles, prefix=prefix, help_=help_, boxplot_on=boxplot_on, bplot_view=bplot_view, margin_off=margin_off, scale=scale, xfile=xfile, xvals=xvals, yaxis=yaxis, ylabels=ylabels, ylabels_maxlen=ylabels_maxlen, legend_on=legend_on, legend_labels=legend_labels, legend_locs=legend_locs, xlabel=xlabel, title=title, reverse_order=reverse_order, sepscl=sepscl, one_graph=one_graph, dpi=dpi, figsize=figsize, fontsize=fontsize, fontfamily=fontfamily, fontstyles=fontstyles, colors=colors, patches=patches, censor_trs=censor_trs, censor_files=censor_files, censor_hline=censor_hline, censor_rgb=censor_rgb, bkgd_color=bkgd_color)
+    params = v_1dplot_py_params(
+        infiles=infiles,
+        prefix=prefix,
+        help_=help_,
+        boxplot_on=boxplot_on,
+        bplot_view=bplot_view,
+        margin_off=margin_off,
+        scale=scale,
+        xfile=xfile,
+        xvals=xvals,
+        yaxis=yaxis,
+        ylabels=ylabels,
+        ylabels_maxlen=ylabels_maxlen,
+        legend_on=legend_on,
+        legend_labels=legend_labels,
+        legend_locs=legend_locs,
+        xlabel=xlabel,
+        title=title,
+        reverse_order=reverse_order,
+        sepscl=sepscl,
+        one_graph=one_graph,
+        dpi=dpi,
+        figsize=figsize,
+        fontsize=fontsize,
+        fontfamily=fontfamily,
+        fontstyles=fontstyles,
+        colors=colors,
+        patches=patches,
+        censor_trs=censor_trs,
+        censor_files=censor_files,
+        censor_hline=censor_hline,
+        censor_rgb=censor_rgb,
+        bkgd_color=bkgd_color,
+    )
     return v_1dplot_py_execute(params, execution)
 
 

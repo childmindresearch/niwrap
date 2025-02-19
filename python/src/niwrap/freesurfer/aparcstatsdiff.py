@@ -11,6 +11,8 @@ APARCSTATSDIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 AparcstatsdiffParameters = typing.TypedDict('AparcstatsdiffParameters', {
     "__STYX_TYPE__": typing.Literal["aparcstatsdiff"],
     "subj1": str,
@@ -198,7 +200,14 @@ def aparcstatsdiff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APARCSTATSDIFF_METADATA)
-    params = aparcstatsdiff_params(subj1=subj1, subj2=subj2, hemi=hemi, parc=parc, meas=meas, outdir=outdir)
+    params = aparcstatsdiff_params(
+        subj1=subj1,
+        subj2=subj2,
+        hemi=hemi,
+        parc=parc,
+        meas=meas,
+        outdir=outdir,
+    )
     return aparcstatsdiff_execute(params, execution)
 
 

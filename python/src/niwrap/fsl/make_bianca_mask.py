@@ -11,6 +11,8 @@ MAKE_BIANCA_MASK_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 MakeBiancaMaskParameters = typing.TypedDict('MakeBiancaMaskParameters', {
     "__STYX_TYPE__": typing.Literal["make_bianca_mask"],
     "input_image": InputPathType,
@@ -362,7 +364,29 @@ def make_bianca_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_BIANCA_MASK_METADATA)
-    params = make_bianca_mask_params(input_image=input_image, output_image=output_image, overlay_flag=overlay_flag, binary_mask_flag=binary_mask_flag, approx_skull_flag=approx_skull_flag, no_seg_output_flag=no_seg_output_flag, fractional_intensity=fractional_intensity, vg_fractional_intensity=vg_fractional_intensity, head_radius=head_radius, center_of_gravity=center_of_gravity, thresholding_flag=thresholding_flag, vtk_mesh=vtk_mesh, robust_iters_flag=robust_iters_flag, residual_optic_cleanup_flag=residual_optic_cleanup_flag, reduce_bias_flag=reduce_bias_flag, slice_padding_flag=slice_padding_flag, whole_set_mask_flag=whole_set_mask_flag, additional_surfaces_flag=additional_surfaces_flag, additional_surfaces_t2=additional_surfaces_t2, verbose_flag=verbose_flag, debug_flag=debug_flag)
+    params = make_bianca_mask_params(
+        input_image=input_image,
+        output_image=output_image,
+        overlay_flag=overlay_flag,
+        binary_mask_flag=binary_mask_flag,
+        approx_skull_flag=approx_skull_flag,
+        no_seg_output_flag=no_seg_output_flag,
+        fractional_intensity=fractional_intensity,
+        vg_fractional_intensity=vg_fractional_intensity,
+        head_radius=head_radius,
+        center_of_gravity=center_of_gravity,
+        thresholding_flag=thresholding_flag,
+        vtk_mesh=vtk_mesh,
+        robust_iters_flag=robust_iters_flag,
+        residual_optic_cleanup_flag=residual_optic_cleanup_flag,
+        reduce_bias_flag=reduce_bias_flag,
+        slice_padding_flag=slice_padding_flag,
+        whole_set_mask_flag=whole_set_mask_flag,
+        additional_surfaces_flag=additional_surfaces_flag,
+        additional_surfaces_t2=additional_surfaces_t2,
+        verbose_flag=verbose_flag,
+        debug_flag=debug_flag,
+    )
     return make_bianca_mask_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3DDOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3ddotParameters = typing.TypedDict('V3ddotParameters', {
     "__STYX_TYPE__": typing.Literal["3ddot"],
     "input_datasets": list[InputPathType],
@@ -291,7 +293,23 @@ def v_3ddot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DDOT_METADATA)
-    params = v_3ddot_params(input_datasets=input_datasets, mask=mask, mrange=mrange, demean=demean, docor=docor, dodot=dodot, docoef=docoef, dosums=dosums, doeta2=doeta2, dodice=dodice, show_labels=show_labels, upper=upper, full=full, v_1_d=v_1_d, niml=niml)
+    params = v_3ddot_params(
+        input_datasets=input_datasets,
+        mask=mask,
+        mrange=mrange,
+        demean=demean,
+        docor=docor,
+        dodot=dodot,
+        docoef=docoef,
+        dosums=dosums,
+        doeta2=doeta2,
+        dodice=dodice,
+        show_labels=show_labels,
+        upper=upper,
+        full=full,
+        v_1_d=v_1_d,
+        niml=niml,
+    )
     return v_3ddot_execute(params, execution)
 
 

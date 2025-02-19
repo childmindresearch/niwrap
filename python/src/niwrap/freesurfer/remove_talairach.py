@@ -11,6 +11,8 @@ REMOVE_TALAIRACH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RemoveTalairachParameters = typing.TypedDict('RemoveTalairachParameters', {
     "__STYX_TYPE__": typing.Literal["remove_talairach"],
     "input_file": InputPathType,
@@ -170,7 +172,10 @@ def remove_talairach(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REMOVE_TALAIRACH_METADATA)
-    params = remove_talairach_params(input_file=input_file, output_file=output_file)
+    params = remove_talairach_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return remove_talairach_execute(params, execution)
 
 

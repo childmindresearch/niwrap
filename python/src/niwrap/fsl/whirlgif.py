@@ -11,6 +11,8 @@ WHIRLGIF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 WhirlgifParameters = typing.TypedDict('WhirlgifParameters', {
     "__STYX_TYPE__": typing.Literal["whirlgif"],
     "outfile": typing.NotRequired[InputPathType | None],
@@ -221,7 +223,14 @@ def whirlgif(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WHIRLGIF_METADATA)
-    params = whirlgif_params(outfile=outfile, loop_count=loop_count, delay_time=delay_time, disp_flag=disp_flag, list_file=list_file, input_files=input_files)
+    params = whirlgif_params(
+        outfile=outfile,
+        loop_count=loop_count,
+        delay_time=delay_time,
+        disp_flag=disp_flag,
+        list_file=list_file,
+        input_files=input_files,
+    )
     return whirlgif_execute(params, execution)
 
 

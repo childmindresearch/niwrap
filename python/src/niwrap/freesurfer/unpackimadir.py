@@ -11,6 +11,8 @@ UNPACKIMADIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 UnpackimadirParameters = typing.TypedDict('UnpackimadirParameters', {
     "__STYX_TYPE__": typing.Literal["unpackimadir"],
     "source_directory": str,
@@ -170,7 +172,10 @@ def unpackimadir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNPACKIMADIR_METADATA)
-    params = unpackimadir_params(source_directory=source_directory, target_directory=target_directory)
+    params = unpackimadir_params(
+        source_directory=source_directory,
+        target_directory=target_directory,
+    )
     return unpackimadir_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRI_BINARIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriBinarizeParameters = typing.TypedDict('MriBinarizeParameters', {
     "__STYX_TYPE__": typing.Literal["mri_binarize"],
     "input_volume": InputPathType,
@@ -510,7 +512,42 @@ def mri_binarize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_BINARIZE_METADATA)
-    params = mri_binarize_params(input_volume=input_volume, output_volume=output_volume, min_threshold=min_threshold, max_threshold=max_threshold, pct_threshold=pct_threshold, rmin=rmin, rmax=rmax, fdr_threshold=fdr_threshold, match_values=match_values, replace_values=replace_values, binval=binval, binval_not=binval_not, frame=frame, merge_volume=merge_volume, mask_volume=mask_volume, mask_threshold=mask_threshold, surf_name=surf_name, surf_smooth=surf_smooth, threads=threads, ctx_wm_flag=ctx_wm_flag, all_wm_flag=all_wm_flag, ventricles_flag=ventricles_flag, wm_vcsf_flag=wm_vcsf_flag, gm_flag=gm_flag, subcort_gm_flag=subcort_gm_flag, scm_lh_flag=scm_lh_flag, scm_rh_flag=scm_rh_flag, zero_edges_flag=zero_edges_flag, zero_slice_edges_flag=zero_slice_edges_flag, dilate_vertex=dilate_vertex, remove_islands_flag=remove_islands_flag, fill_holes_flag=fill_holes_flag, noverbose_flag=noverbose_flag, debug_flag=debug_flag)
+    params = mri_binarize_params(
+        input_volume=input_volume,
+        output_volume=output_volume,
+        min_threshold=min_threshold,
+        max_threshold=max_threshold,
+        pct_threshold=pct_threshold,
+        rmin=rmin,
+        rmax=rmax,
+        fdr_threshold=fdr_threshold,
+        match_values=match_values,
+        replace_values=replace_values,
+        binval=binval,
+        binval_not=binval_not,
+        frame=frame,
+        merge_volume=merge_volume,
+        mask_volume=mask_volume,
+        mask_threshold=mask_threshold,
+        surf_name=surf_name,
+        surf_smooth=surf_smooth,
+        threads=threads,
+        ctx_wm_flag=ctx_wm_flag,
+        all_wm_flag=all_wm_flag,
+        ventricles_flag=ventricles_flag,
+        wm_vcsf_flag=wm_vcsf_flag,
+        gm_flag=gm_flag,
+        subcort_gm_flag=subcort_gm_flag,
+        scm_lh_flag=scm_lh_flag,
+        scm_rh_flag=scm_rh_flag,
+        zero_edges_flag=zero_edges_flag,
+        zero_slice_edges_flag=zero_slice_edges_flag,
+        dilate_vertex=dilate_vertex,
+        remove_islands_flag=remove_islands_flag,
+        fill_holes_flag=fill_holes_flag,
+        noverbose_flag=noverbose_flag,
+        debug_flag=debug_flag,
+    )
     return mri_binarize_execute(params, execution)
 
 

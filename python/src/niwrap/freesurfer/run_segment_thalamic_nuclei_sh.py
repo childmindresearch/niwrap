@@ -11,6 +11,8 @@ RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunSegmentThalamicNucleiShParameters = typing.TypedDict('RunSegmentThalamicNucleiShParameters', {
     "__STYX_TYPE__": typing.Literal["run_SegmentThalamicNuclei.sh"],
     "mcr_root": str,
@@ -166,7 +168,10 @@ def run_segment_thalamic_nuclei_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA)
-    params = run_segment_thalamic_nuclei_sh_params(mcr_root=mcr_root, args=args)
+    params = run_segment_thalamic_nuclei_sh_params(
+        mcr_root=mcr_root,
+        args=args,
+    )
     return run_segment_thalamic_nuclei_sh_execute(params, execution)
 
 

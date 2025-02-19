@@ -11,6 +11,8 @@ V__DJUNCT_ANONYMIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VDjunctAnonymizeParameters = typing.TypedDict('VDjunctAnonymizeParameters', {
     "__STYX_TYPE__": typing.Literal["@djunct_anonymize"],
     "input": InputPathType,
@@ -187,7 +189,12 @@ def v__djunct_anonymize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_ANONYMIZE_METADATA)
-    params = v__djunct_anonymize_params(input_=input_, add_note=add_note, copy_to=copy_to, overwrite=overwrite)
+    params = v__djunct_anonymize_params(
+        input_=input_,
+        add_note=add_note,
+        copy_to=copy_to,
+        overwrite=overwrite,
+    )
     return v__djunct_anonymize_execute(params, execution)
 
 

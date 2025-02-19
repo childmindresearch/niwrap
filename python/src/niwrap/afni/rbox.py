@@ -11,6 +11,8 @@ RBOX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 RboxParameters = typing.TypedDict('RboxParameters', {
     "__STYX_TYPE__": typing.Literal["rbox"],
     "number_points": str,
@@ -222,7 +224,15 @@ def rbox(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RBOX_METADATA)
-    params = rbox_params(number_points=number_points, dimension=dimension, integer_coordinates=integer_coordinates, bounding_box=bounding_box, offset=offset, user_seed=user_seed, mesh_lattice=mesh_lattice)
+    params = rbox_params(
+        number_points=number_points,
+        dimension=dimension,
+        integer_coordinates=integer_coordinates,
+        bounding_box=bounding_box,
+        offset=offset,
+        user_seed=user_seed,
+        mesh_lattice=mesh_lattice,
+    )
     return rbox_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ FSLVBM_2_TEMPLATE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Fslvbm2TemplateParameters = typing.TypedDict('Fslvbm2TemplateParameters', {
     "__STYX_TYPE__": typing.Literal["fslvbm_2_template"],
     "arch": typing.NotRequired[str | None],
@@ -436,7 +438,32 @@ def fslvbm_2_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLVBM_2_TEMPLATE_METADATA)
-    params = fslvbm_2_template_params(arch=arch, coprocessor=coprocessor, coprocessor_multi=coprocessor_multi, coprocessor_class=coprocessor_class, coprocessor_toolkit=coprocessor_toolkit, jobhold=jobhold, array_hold=array_hold, logdir=logdir, mailoptions=mailoptions, mailto=mailto, name=name, priority=priority, queue_=queue_, resource_=resource_, delete_job=delete_job, memory_gb=memory_gb, parallel_env=parallel_env, array_task=array_task, array_native=array_native, num_tasks=num_tasks, coprocessor_name=coprocessor_name, project=project, runtime_limit=runtime_limit, job_file=job_file)
+    params = fslvbm_2_template_params(
+        arch=arch,
+        coprocessor=coprocessor,
+        coprocessor_multi=coprocessor_multi,
+        coprocessor_class=coprocessor_class,
+        coprocessor_toolkit=coprocessor_toolkit,
+        jobhold=jobhold,
+        array_hold=array_hold,
+        logdir=logdir,
+        mailoptions=mailoptions,
+        mailto=mailto,
+        name=name,
+        priority=priority,
+        queue_=queue_,
+        resource_=resource_,
+        delete_job=delete_job,
+        memory_gb=memory_gb,
+        parallel_env=parallel_env,
+        array_task=array_task,
+        array_native=array_native,
+        num_tasks=num_tasks,
+        coprocessor_name=coprocessor_name,
+        project=project,
+        runtime_limit=runtime_limit,
+        job_file=job_file,
+    )
     return fslvbm_2_template_execute(params, execution)
 
 

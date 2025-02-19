@@ -11,6 +11,8 @@ REG_TOOLS_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+
+
 RegToolsParameters = typing.TypedDict('RegToolsParameters', {
     "__STYX_TYPE__": typing.Literal["reg_tools"],
     "input_image": InputPathType,
@@ -292,7 +294,20 @@ def reg_tools(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_TOOLS_METADATA)
-    params = reg_tools_params(input_image=input_image, output_image=output_image, add_value_or_image=add_value_or_image, sub_value_or_image=sub_value_or_image, mul_value_or_image=mul_value_or_image, div_value_or_image=div_value_or_image, smooth_value=smooth_value, smooth_gaussian=smooth_gaussian, rms_image=rms_image, binarize=binarize, threshold_value=threshold_value, nan_mask_image=nan_mask_image)
+    params = reg_tools_params(
+        input_image=input_image,
+        output_image=output_image,
+        add_value_or_image=add_value_or_image,
+        sub_value_or_image=sub_value_or_image,
+        mul_value_or_image=mul_value_or_image,
+        div_value_or_image=div_value_or_image,
+        smooth_value=smooth_value,
+        smooth_gaussian=smooth_gaussian,
+        rms_image=rms_image,
+        binarize=binarize,
+        threshold_value=threshold_value,
+        nan_mask_image=nan_mask_image,
+    )
     return reg_tools_execute(params, execution)
 
 

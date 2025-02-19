@@ -11,6 +11,8 @@ FSL_REGFILT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslRegfiltParameters = typing.TypedDict('FslRegfiltParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_regfilt"],
     "infile": InputPathType,
@@ -349,7 +351,25 @@ def fsl_regfilt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_REGFILT_METADATA)
-    params = fsl_regfilt_params(infile=infile, designfile=designfile, outfile=outfile, maskfile=maskfile, filter_=filter_, freq_filter_flag=freq_filter_flag, freq_ic_flag=freq_ic_flag, freq_ic_smooth=freq_ic_smooth, fthresh=fthresh, fthresh2=fthresh2, vn_flag=vn_flag, verbose_flag=verbose_flag, aggressive_flag=aggressive_flag, help_flag=help_flag, out_data=out_data, out_mix=out_mix, out_vnscales=out_vnscales)
+    params = fsl_regfilt_params(
+        infile=infile,
+        designfile=designfile,
+        outfile=outfile,
+        maskfile=maskfile,
+        filter_=filter_,
+        freq_filter_flag=freq_filter_flag,
+        freq_ic_flag=freq_ic_flag,
+        freq_ic_smooth=freq_ic_smooth,
+        fthresh=fthresh,
+        fthresh2=fthresh2,
+        vn_flag=vn_flag,
+        verbose_flag=verbose_flag,
+        aggressive_flag=aggressive_flag,
+        help_flag=help_flag,
+        out_data=out_data,
+        out_mix=out_mix,
+        out_vnscales=out_vnscales,
+    )
     return fsl_regfilt_execute(params, execution)
 
 

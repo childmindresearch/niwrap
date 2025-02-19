@@ -11,6 +11,8 @@ RUN_SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RunSegmentSubjectT2AutoEstimateAlveusMlShParameters = typing.TypedDict('RunSegmentSubjectT2AutoEstimateAlveusMlShParameters', {
     "__STYX_TYPE__": typing.Literal["run_segmentSubjectT2_autoEstimateAlveusML.sh"],
     "deployed_mcr_root": str,
@@ -172,7 +174,10 @@ def run_segment_subject_t2_auto_estimate_alveus_ml_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA)
-    params = run_segment_subject_t2_auto_estimate_alveus_ml_sh_params(deployed_mcr_root=deployed_mcr_root, arguments=arguments)
+    params = run_segment_subject_t2_auto_estimate_alveus_ml_sh_params(
+        deployed_mcr_root=deployed_mcr_root,
+        arguments=arguments,
+    )
     return run_segment_subject_t2_auto_estimate_alveus_ml_sh_execute(params, execution)
 
 

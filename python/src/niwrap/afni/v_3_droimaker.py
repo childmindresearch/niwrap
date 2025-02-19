@@ -11,6 +11,8 @@ V_3_DROIMAKER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3DroimakerParameters = typing.TypedDict('V3DroimakerParameters', {
     "__STYX_TYPE__": typing.Literal["3DROIMaker"],
     "inset": InputPathType,
@@ -384,7 +386,27 @@ def v_3_droimaker(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3_DROIMAKER_METADATA)
-    params = v_3_droimaker_params(inset=inset, thresh=thresh, prefix=prefix, refset=refset, volthr=volthr, only_conn_top=only_conn_top, inflate=inflate, trim_off_wm=trim_off_wm, wm_skel=wm_skel, skel_thr=skel_thr, skel_stop=skel_stop, skel_stop_strict=skel_stop_strict, csf_skel=csf_skel, mask=mask, neigh_upto_vert=neigh_upto_vert, nifti=nifti, preinfl_inset=preinfl_inset, preinfl_inflate=preinfl_inflate, dump_no_labtab=dump_no_labtab)
+    params = v_3_droimaker_params(
+        inset=inset,
+        thresh=thresh,
+        prefix=prefix,
+        refset=refset,
+        volthr=volthr,
+        only_conn_top=only_conn_top,
+        inflate=inflate,
+        trim_off_wm=trim_off_wm,
+        wm_skel=wm_skel,
+        skel_thr=skel_thr,
+        skel_stop=skel_stop,
+        skel_stop_strict=skel_stop_strict,
+        csf_skel=csf_skel,
+        mask=mask,
+        neigh_upto_vert=neigh_upto_vert,
+        nifti=nifti,
+        preinfl_inset=preinfl_inset,
+        preinfl_inflate=preinfl_inflate,
+        dump_no_labtab=dump_no_labtab,
+    )
     return v_3_droimaker_execute(params, execution)
 
 

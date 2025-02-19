@@ -11,6 +11,8 @@ MRIS_SEGMENT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSegmentParameters = typing.TypedDict('MrisSegmentParameters', {
     "__STYX_TYPE__": typing.Literal["mris_segment"],
     "subjects": list[str],
@@ -173,7 +175,11 @@ def mris_segment(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SEGMENT_METADATA)
-    params = mris_segment_params(subjects=subjects, output_subject=output_subject, output_file=output_file)
+    params = mris_segment_params(
+        subjects=subjects,
+        output_subject=output_subject,
+        output_file=output_file,
+    )
     return mris_segment_execute(params, execution)
 
 

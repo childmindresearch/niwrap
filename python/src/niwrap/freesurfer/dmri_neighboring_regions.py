@@ -11,6 +11,8 @@ DMRI_NEIGHBORING_REGIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriNeighboringRegionsParameters = typing.TypedDict('DmriNeighboringRegionsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_neighboringRegions"],
     "input_file": InputPathType,
@@ -166,7 +168,10 @@ def dmri_neighboring_regions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_NEIGHBORING_REGIONS_METADATA)
-    params = dmri_neighboring_regions_params(input_file=input_file, output_file=output_file)
+    params = dmri_neighboring_regions_params(
+        input_file=input_file,
+        output_file=output_file,
+    )
     return dmri_neighboring_regions_execute(params, execution)
 
 

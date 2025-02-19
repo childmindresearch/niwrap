@@ -11,6 +11,8 @@ MRIS_TRANSFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisTransformParameters = typing.TypedDict('MrisTransformParameters', {
     "__STYX_TYPE__": typing.Literal["mris_transform"],
     "input_surface": InputPathType,
@@ -211,7 +213,14 @@ def mris_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TRANSFORM_METADATA)
-    params = mris_transform_params(input_surface=input_surface, transform=transform, output_surface=output_surface, trx_src=trx_src, trx_dst=trx_dst, is_inverse=is_inverse)
+    params = mris_transform_params(
+        input_surface=input_surface,
+        transform=transform,
+        output_surface=output_surface,
+        trx_src=trx_src,
+        trx_dst=trx_dst,
+        is_inverse=is_inverse,
+    )
     return mris_transform_execute(params, execution)
 
 

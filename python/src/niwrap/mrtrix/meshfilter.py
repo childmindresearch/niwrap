@@ -11,11 +11,15 @@ MESHFILTER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MeshfilterConfigParameters = typing.TypedDict('MeshfilterConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MeshfilterParameters = typing.TypedDict('MeshfilterParameters', {
     "__STYX_TYPE__": typing.Literal["meshfilter"],
     "smooth_spatial": typing.NotRequired[float | None],
@@ -337,7 +341,21 @@ def meshfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MESHFILTER_METADATA)
-    params = meshfilter_params(smooth_spatial=smooth_spatial, smooth_influence=smooth_influence, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, filter_=filter_, output=output)
+    params = meshfilter_params(
+        smooth_spatial=smooth_spatial,
+        smooth_influence=smooth_influence,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        filter_=filter_,
+        output=output,
+    )
     return meshfilter_execute(params, execution)
 
 

@@ -11,16 +11,22 @@ SURFACE_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 SurfaceResampleAreaSurfsParameters = typing.TypedDict('SurfaceResampleAreaSurfsParameters', {
     "__STYX_TYPE__": typing.Literal["area_surfs"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 SurfaceResampleAreaMetricsParameters = typing.TypedDict('SurfaceResampleAreaMetricsParameters', {
     "__STYX_TYPE__": typing.Literal["area_metrics"],
     "current_area": InputPathType,
     "new_area": InputPathType,
 })
+
+
 SurfaceResampleParameters = typing.TypedDict('SurfaceResampleParameters', {
     "__STYX_TYPE__": typing.Literal["surface-resample"],
     "surface_in": InputPathType,
@@ -354,7 +360,16 @@ def surface_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_RESAMPLE_METADATA)
-    params = surface_resample_params(surface_in=surface_in, current_sphere=current_sphere, new_sphere=new_sphere, method=method, surface_out=surface_out, area_surfs=area_surfs, area_metrics=area_metrics, opt_bypass_sphere_check=opt_bypass_sphere_check)
+    params = surface_resample_params(
+        surface_in=surface_in,
+        current_sphere=current_sphere,
+        new_sphere=new_sphere,
+        method=method,
+        surface_out=surface_out,
+        area_surfs=area_surfs,
+        area_metrics=area_metrics,
+        opt_bypass_sphere_check=opt_bypass_sphere_check,
+    )
     return surface_resample_execute(params, execution)
 
 

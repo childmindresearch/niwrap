@@ -11,11 +11,15 @@ FIXEL2VOXEL_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Fixel2voxelConfigParameters = typing.TypedDict('Fixel2voxelConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Fixel2voxelParameters = typing.TypedDict('Fixel2voxelParameters', {
     "__STYX_TYPE__": typing.Literal["fixel2voxel"],
     "number": typing.NotRequired[int | None],
@@ -403,7 +407,22 @@ def fixel2voxel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXEL2VOXEL_METADATA)
-    params = fixel2voxel_params(number=number, fill=fill, weighted=weighted, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_in=fixel_in, operation=operation, image_out=image_out)
+    params = fixel2voxel_params(
+        number=number,
+        fill=fill,
+        weighted=weighted,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        fixel_in=fixel_in,
+        operation=operation,
+        image_out=image_out,
+    )
     return fixel2voxel_execute(params, execution)
 
 

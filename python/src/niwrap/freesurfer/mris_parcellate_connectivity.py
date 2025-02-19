@@ -11,6 +11,8 @@ MRIS_PARCELLATE_CONNECTIVITY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisParcellateConnectivityParameters = typing.TypedDict('MrisParcellateConnectivityParameters', {
     "__STYX_TYPE__": typing.Literal["mris_parcellate_connectivity"],
     "smooth_iterations": typing.NotRequired[float | None],
@@ -187,7 +189,12 @@ def mris_parcellate_connectivity(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PARCELLATE_CONNECTIVITY_METADATA)
-    params = mris_parcellate_connectivity_params(smooth_iterations=smooth_iterations, input_surface=input_surface, input_correlations=input_correlations, output_parcellation=output_parcellation)
+    params = mris_parcellate_connectivity_params(
+        smooth_iterations=smooth_iterations,
+        input_surface=input_surface,
+        input_correlations=input_correlations,
+        output_parcellation=output_parcellation,
+    )
     return mris_parcellate_connectivity_execute(params, execution)
 
 

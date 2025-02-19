@@ -11,6 +11,8 @@ MRI_CNR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriCnrParameters = typing.TypedDict('MriCnrParameters', {
     "__STYX_TYPE__": typing.Literal["mri_cnr"],
     "surf_dir": str,
@@ -232,7 +234,16 @@ def mri_cnr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CNR_METADATA)
-    params = mri_cnr_params(surf_dir=surf_dir, volume_files=volume_files, slope=slope, logfile=logfile, labels=labels, print_total_cnr=print_total_cnr, version_flag=version_flag, help_flag=help_flag)
+    params = mri_cnr_params(
+        surf_dir=surf_dir,
+        volume_files=volume_files,
+        slope=slope,
+        logfile=logfile,
+        labels=labels,
+        print_total_cnr=print_total_cnr,
+        version_flag=version_flag,
+        help_flag=help_flag,
+    )
     return mri_cnr_execute(params, execution)
 
 

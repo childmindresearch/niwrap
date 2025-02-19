@@ -11,6 +11,8 @@ SEGMENT_BS_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentBsShParameters = typing.TypedDict('SegmentBsShParameters', {
     "__STYX_TYPE__": typing.Literal["segmentBS.sh"],
     "matlab_runtime": typing.NotRequired[str | None],
@@ -159,7 +161,9 @@ def segment_bs_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_BS_SH_METADATA)
-    params = segment_bs_sh_params(matlab_runtime=matlab_runtime)
+    params = segment_bs_sh_params(
+        matlab_runtime=matlab_runtime,
+    )
     return segment_bs_sh_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ RTVIEW_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RtviewParameters = typing.TypedDict('RtviewParameters', {
     "__STYX_TYPE__": typing.Literal["rtview"],
     "subject": typing.NotRequired[str | None],
@@ -266,7 +268,19 @@ def rtview(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RTVIEW_METADATA)
-    params = rtview_params(subject=subject, right_hemi=right_hemi, polar=polar, real_file=real_file, imag_file=imag_file, fsig_file=fsig_file, reg_file=reg_file, flat_display=flat_display, patch=patch, tcl_file=tcl_file, no_cleanup=no_cleanup)
+    params = rtview_params(
+        subject=subject,
+        right_hemi=right_hemi,
+        polar=polar,
+        real_file=real_file,
+        imag_file=imag_file,
+        fsig_file=fsig_file,
+        reg_file=reg_file,
+        flat_display=flat_display,
+        patch=patch,
+        tcl_file=tcl_file,
+        no_cleanup=no_cleanup,
+    )
     return rtview_execute(params, execution)
 
 

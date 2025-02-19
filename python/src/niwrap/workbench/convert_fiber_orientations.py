@@ -11,6 +11,8 @@ CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 ConvertFiberOrientationsFiberParameters = typing.TypedDict('ConvertFiberOrientationsFiberParameters', {
     "__STYX_TYPE__": typing.Literal["fiber"],
     "mean_f": InputPathType,
@@ -21,6 +23,8 @@ ConvertFiberOrientationsFiberParameters = typing.TypedDict('ConvertFiberOrientat
     "ka": InputPathType,
     "kb": InputPathType,
 })
+
+
 ConvertFiberOrientationsParameters = typing.TypedDict('ConvertFiberOrientationsParameters', {
     "__STYX_TYPE__": typing.Literal["convert-fiber-orientations"],
     "label_volume": InputPathType,
@@ -326,7 +330,11 @@ def convert_fiber_orientations(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_FIBER_ORIENTATIONS_METADATA)
-    params = convert_fiber_orientations_params(label_volume=label_volume, fiber_out=fiber_out, fiber=fiber)
+    params = convert_fiber_orientations_params(
+        label_volume=label_volume,
+        fiber_out=fiber_out,
+        fiber=fiber,
+    )
     return convert_fiber_orientations_execute(params, execution)
 
 

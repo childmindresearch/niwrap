@@ -11,6 +11,8 @@ FAT_PROC_MAP_TO_DTI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 FatProcMapToDtiParameters = typing.TypedDict('FatProcMapToDtiParameters', {
     "__STYX_TYPE__": typing.Literal["fat_proc_map_to_dti"],
     "source": InputPathType,
@@ -280,7 +282,20 @@ def fat_proc_map_to_dti(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_MAP_TO_DTI_METADATA)
-    params = fat_proc_map_to_dti_params(source=source, base=base, prefix=prefix, followers_nn=followers_nn, followers_wsinc5=followers_wsinc5, followers_surf=followers_surf, followers_ndset=followers_ndset, followers_spec=followers_spec, matrix=matrix, workdir=workdir, no_cmd_out=no_cmd_out, no_clean=no_clean)
+    params = fat_proc_map_to_dti_params(
+        source=source,
+        base=base,
+        prefix=prefix,
+        followers_nn=followers_nn,
+        followers_wsinc5=followers_wsinc5,
+        followers_surf=followers_surf,
+        followers_ndset=followers_ndset,
+        followers_spec=followers_spec,
+        matrix=matrix,
+        workdir=workdir,
+        no_cmd_out=no_cmd_out,
+        no_clean=no_clean,
+    )
     return fat_proc_map_to_dti_execute(params, execution)
 
 

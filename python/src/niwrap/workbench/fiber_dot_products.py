@@ -11,6 +11,8 @@ FIBER_DOT_PRODUCTS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 FiberDotProductsParameters = typing.TypedDict('FiberDotProductsParameters', {
     "__STYX_TYPE__": typing.Literal["fiber-dot-products"],
     "white_surf": InputPathType,
@@ -218,7 +220,14 @@ def fiber_dot_products(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIBER_DOT_PRODUCTS_METADATA)
-    params = fiber_dot_products_params(white_surf=white_surf, fiber_file=fiber_file, max_dist=max_dist, direction=direction, dot_metric=dot_metric, f_metric=f_metric)
+    params = fiber_dot_products_params(
+        white_surf=white_surf,
+        fiber_file=fiber_file,
+        max_dist=max_dist,
+        direction=direction,
+        dot_metric=dot_metric,
+        f_metric=f_metric,
+    )
     return fiber_dot_products_execute(params, execution)
 
 

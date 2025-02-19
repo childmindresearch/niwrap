@@ -11,6 +11,8 @@ VOLUME_MATH_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeMathVarParameters = typing.TypedDict('VolumeMathVarParameters', {
     "__STYX_TYPE__": typing.Literal["var"],
     "name": str,
@@ -18,6 +20,8 @@ VolumeMathVarParameters = typing.TypedDict('VolumeMathVarParameters', {
     "opt_subvolume_subvol": typing.NotRequired[str | None],
     "opt_repeat": bool,
 })
+
+
 VolumeMathParameters = typing.TypedDict('VolumeMathParameters', {
     "__STYX_TYPE__": typing.Literal["volume-math"],
     "expression": str,
@@ -392,7 +396,12 @@ def volume_math(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_MATH_METADATA)
-    params = volume_math_params(expression=expression, volume_out=volume_out, opt_fixnan_replace=opt_fixnan_replace, var=var)
+    params = volume_math_params(
+        expression=expression,
+        volume_out=volume_out,
+        opt_fixnan_replace=opt_fixnan_replace,
+        var=var,
+    )
     return volume_math_execute(params, execution)
 
 

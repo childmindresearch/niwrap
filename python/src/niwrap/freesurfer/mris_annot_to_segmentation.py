@@ -11,6 +11,8 @@ MRIS_ANNOT_TO_SEGMENTATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisAnnotToSegmentationParameters = typing.TypedDict('MrisAnnotToSegmentationParameters', {
     "__STYX_TYPE__": typing.Literal["mris_annot_to_segmentation"],
     "subject_name": str,
@@ -194,7 +196,14 @@ def mris_annot_to_segmentation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ANNOT_TO_SEGMENTATION_METADATA)
-    params = mris_annot_to_segmentation_params(subject_name=subject_name, hemi=hemi, surface=surface, annot_file=annot_file, color_table=color_table, output_volume=output_volume)
+    params = mris_annot_to_segmentation_params(
+        subject_name=subject_name,
+        hemi=hemi,
+        surface=surface,
+        annot_file=annot_file,
+        color_table=color_table,
+        output_volume=output_volume,
+    )
     return mris_annot_to_segmentation_execute(params, execution)
 
 

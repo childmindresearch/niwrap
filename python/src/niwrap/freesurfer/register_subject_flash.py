@@ -11,6 +11,8 @@ REGISTER_SUBJECT_FLASH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 RegisterSubjectFlashParameters = typing.TypedDict('RegisterSubjectFlashParameters', {
     "__STYX_TYPE__": typing.Literal["register_subject_flash"],
     "input_volumes": list[InputPathType],
@@ -159,7 +161,9 @@ def register_subject_flash(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_SUBJECT_FLASH_METADATA)
-    params = register_subject_flash_params(input_volumes=input_volumes)
+    params = register_subject_flash_params(
+        input_volumes=input_volumes,
+    )
     return register_subject_flash_execute(params, execution)
 
 

@@ -11,10 +11,14 @@ METRIC_ESTIMATE_FWHM_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricEstimateFwhmWholeFileParameters = typing.TypedDict('MetricEstimateFwhmWholeFileParameters', {
     "__STYX_TYPE__": typing.Literal["whole_file"],
     "opt_demean": bool,
 })
+
+
 MetricEstimateFwhmParameters = typing.TypedDict('MetricEstimateFwhmParameters', {
     "__STYX_TYPE__": typing.Literal["metric-estimate-fwhm"],
     "surface": InputPathType,
@@ -251,7 +255,13 @@ def metric_estimate_fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_ESTIMATE_FWHM_METADATA)
-    params = metric_estimate_fwhm_params(surface=surface, metric_in=metric_in, opt_roi_roi_metric=opt_roi_roi_metric, opt_column_column=opt_column_column, whole_file=whole_file)
+    params = metric_estimate_fwhm_params(
+        surface=surface,
+        metric_in=metric_in,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_column_column=opt_column_column,
+        whole_file=whole_file,
+    )
     return metric_estimate_fwhm_execute(params, execution)
 
 

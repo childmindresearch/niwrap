@@ -11,6 +11,8 @@ DMRI_PATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 DmriPathsParameters = typing.TypedDict('DmriPathsParameters', {
     "__STYX_TYPE__": typing.Literal["dmri_paths"],
     "indir": typing.NotRequired[str | None],
@@ -584,7 +586,44 @@ def dmri_paths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_PATHS_METADATA)
-    params = dmri_paths_params(indir=indir, outdir=outdir, dwi=dwi, grad=grad, bval=bval, mask=mask, bpdir=bpdir, ntr=ntr, fmin=fmin, basereg=basereg, basemask=basemask, roi1=roi1, roi2=roi2, roimesh1=roimesh1, roimesh2=roimesh2, roiref1=roiref1, roiref2=roiref2, prior=prior, nprior=nprior, nset=nset, lprior=lprior, lset=lset, seg=seg, tprior=tprior, cprior=cprior, reg=reg, regnl=regnl, init=init, nb=nb, ns=ns, nk=nk, nu=nu, sdp=sdp, debug=debug, checkopts=checkopts, version=version)
+    params = dmri_paths_params(
+        indir=indir,
+        outdir=outdir,
+        dwi=dwi,
+        grad=grad,
+        bval=bval,
+        mask=mask,
+        bpdir=bpdir,
+        ntr=ntr,
+        fmin=fmin,
+        basereg=basereg,
+        basemask=basemask,
+        roi1=roi1,
+        roi2=roi2,
+        roimesh1=roimesh1,
+        roimesh2=roimesh2,
+        roiref1=roiref1,
+        roiref2=roiref2,
+        prior=prior,
+        nprior=nprior,
+        nset=nset,
+        lprior=lprior,
+        lset=lset,
+        seg=seg,
+        tprior=tprior,
+        cprior=cprior,
+        reg=reg,
+        regnl=regnl,
+        init=init,
+        nb=nb,
+        ns=ns,
+        nk=nk,
+        nu=nu,
+        sdp=sdp,
+        debug=debug,
+        checkopts=checkopts,
+        version=version,
+    )
     return dmri_paths_execute(params, execution)
 
 

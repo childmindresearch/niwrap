@@ -11,6 +11,8 @@ METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricToVolumeMappingRibbonConstrainedParameters = typing.TypedDict('MetricToVolumeMappingRibbonConstrainedParameters', {
     "__STYX_TYPE__": typing.Literal["ribbon_constrained"],
     "inner_surf": InputPathType,
@@ -19,6 +21,8 @@ MetricToVolumeMappingRibbonConstrainedParameters = typing.TypedDict('MetricToVol
     "opt_greedy": bool,
     "opt_thick_columns": bool,
 })
+
+
 MetricToVolumeMappingParameters = typing.TypedDict('MetricToVolumeMappingParameters', {
     "__STYX_TYPE__": typing.Literal["metric-to-volume-mapping"],
     "metric": InputPathType,
@@ -293,7 +297,14 @@ def metric_to_volume_mapping(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_TO_VOLUME_MAPPING_METADATA)
-    params = metric_to_volume_mapping_params(metric=metric, surface=surface, volume_space=volume_space, volume_out=volume_out, opt_nearest_vertex_distance=opt_nearest_vertex_distance, ribbon_constrained=ribbon_constrained)
+    params = metric_to_volume_mapping_params(
+        metric=metric,
+        surface=surface,
+        volume_space=volume_space,
+        volume_out=volume_out,
+        opt_nearest_vertex_distance=opt_nearest_vertex_distance,
+        ribbon_constrained=ribbon_constrained,
+    )
     return metric_to_volume_mapping_execute(params, execution)
 
 

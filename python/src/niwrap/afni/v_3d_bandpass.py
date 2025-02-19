@@ -11,6 +11,8 @@ V_3D_BANDPASS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dBandpassParameters = typing.TypedDict('V3dBandpassParameters', {
     "__STYX_TYPE__": typing.Literal["3dBandpass"],
     "prefix": typing.NotRequired[str | None],
@@ -348,7 +350,25 @@ def v_3d_bandpass(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_BANDPASS_METADATA)
-    params = v_3d_bandpass_params(prefix=prefix, automask=automask, blur=blur, despike=despike, highpass=highpass, lowpass=lowpass, in_file=in_file, local_pv=local_pv, mask=mask, nfft=nfft, no_detrend=no_detrend, normalize=normalize, notrans=notrans, orthogonalize_dset=orthogonalize_dset, orthogonalize_file=orthogonalize_file, outputtype=outputtype, tr=tr)
+    params = v_3d_bandpass_params(
+        prefix=prefix,
+        automask=automask,
+        blur=blur,
+        despike=despike,
+        highpass=highpass,
+        lowpass=lowpass,
+        in_file=in_file,
+        local_pv=local_pv,
+        mask=mask,
+        nfft=nfft,
+        no_detrend=no_detrend,
+        normalize=normalize,
+        notrans=notrans,
+        orthogonalize_dset=orthogonalize_dset,
+        orthogonalize_file=orthogonalize_file,
+        outputtype=outputtype,
+        tr=tr,
+    )
     return v_3d_bandpass_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SLICEANIMATE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SliceanimateParameters = typing.TypedDict('SliceanimateParameters', {
     "__STYX_TYPE__": typing.Literal["sliceanimate"],
     "output_file": str,
@@ -167,7 +169,10 @@ def sliceanimate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICEANIMATE_METADATA)
-    params = sliceanimate_params(output_file=output_file, input_files=input_files)
+    params = sliceanimate_params(
+        output_file=output_file,
+        input_files=input_files,
+    )
     return sliceanimate_execute(params, execution)
 
 

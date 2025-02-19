@@ -11,6 +11,8 @@ V_3D_GEN_PRIORS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dGenPriorsParameters = typing.TypedDict('V3dGenPriorsParameters', {
     "__STYX_TYPE__": typing.Literal["3dGenPriors"],
     "sigs": InputPathType,
@@ -445,7 +447,34 @@ def v_3d_gen_priors(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_GEN_PRIORS_METADATA)
-    params = v_3d_gen_priors_params(sigs=sigs, tdist=tdist, cprefix=cprefix, pprefix=pprefix, labeltable=labeltable, do=do, prefix=prefix, cmask=cmask, mask=mask, mrange=mrange, debug=debug, vox_debug=vox_debug, vox_debug_file=vox_debug_file, uid=uid, use_tmp=use_tmp, no_tmp=no_tmp, pset=pset, cset=cset, regroup_classes=regroup_classes, classes=classes, features=features, strict_feature_match=strict_feature_match, featgroups=featgroups, show_this_dist=show_this_dist, fast=fast, slow=slow)
+    params = v_3d_gen_priors_params(
+        sigs=sigs,
+        tdist=tdist,
+        cprefix=cprefix,
+        pprefix=pprefix,
+        labeltable=labeltable,
+        do=do,
+        prefix=prefix,
+        cmask=cmask,
+        mask=mask,
+        mrange=mrange,
+        debug=debug,
+        vox_debug=vox_debug,
+        vox_debug_file=vox_debug_file,
+        uid=uid,
+        use_tmp=use_tmp,
+        no_tmp=no_tmp,
+        pset=pset,
+        cset=cset,
+        regroup_classes=regroup_classes,
+        classes=classes,
+        features=features,
+        strict_feature_match=strict_feature_match,
+        featgroups=featgroups,
+        show_this_dist=show_this_dist,
+        fast=fast,
+        slow=slow,
+    )
     return v_3d_gen_priors_execute(params, execution)
 
 

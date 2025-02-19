@@ -11,6 +11,8 @@ V__MEASURE_IN2OUT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VMeasureIn2outParameters = typing.TypedDict('VMeasureIn2outParameters', {
     "__STYX_TYPE__": typing.Literal["@measure_in2out"],
     "maskset": InputPathType,
@@ -327,7 +329,20 @@ def v__measure_in2out(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__MEASURE_IN2OUT_METADATA)
-    params = v__measure_in2out_params(maskset=maskset, surfset=surfset, outdir=outdir, resample=resample, increment=increment, surfsmooth=surfsmooth, maxthick=maxthick, depthsearch=depthsearch, maskinoutvals=maskinoutvals, keep_temp_files=keep_temp_files, surfsmooth_method=surfsmooth_method, fs_cort_dir=fs_cort_dir)
+    params = v__measure_in2out_params(
+        maskset=maskset,
+        surfset=surfset,
+        outdir=outdir,
+        resample=resample,
+        increment=increment,
+        surfsmooth=surfsmooth,
+        maxthick=maxthick,
+        depthsearch=depthsearch,
+        maskinoutvals=maskinoutvals,
+        keep_temp_files=keep_temp_files,
+        surfsmooth_method=surfsmooth_method,
+        fs_cort_dir=fs_cort_dir,
+    )
     return v__measure_in2out_execute(params, execution)
 
 

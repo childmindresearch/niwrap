@@ -11,6 +11,8 @@ TALAIRACH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TalairachParameters = typing.TypedDict('TalairachParameters', {
     "__STYX_TYPE__": typing.Literal["talairach"],
     "input_volume": InputPathType,
@@ -190,7 +192,12 @@ def talairach(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH_METADATA)
-    params = talairach_params(input_volume=input_volume, output_transform=output_transform, log_flag=log_flag, debug_flag=debug_flag)
+    params = talairach_params(
+        input_volume=input_volume,
+        output_transform=output_transform,
+        log_flag=log_flag,
+        debug_flag=debug_flag,
+    )
     return talairach_execute(params, execution)
 
 

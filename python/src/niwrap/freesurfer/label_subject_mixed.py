@@ -11,6 +11,8 @@ LABEL_SUBJECT_MIXED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 LabelSubjectMixedParameters = typing.TypedDict('LabelSubjectMixedParameters', {
     "__STYX_TYPE__": typing.Literal["label_subject_mixed"],
     "brain_mask": InputPathType,
@@ -190,7 +192,13 @@ def label_subject_mixed(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_SUBJECT_MIXED_METADATA)
-    params = label_subject_mixed_params(brain_mask=brain_mask, norm_volume=norm_volume, transform=transform, gca_file=gca_file, aseg_output=aseg_output)
+    params = label_subject_mixed_params(
+        brain_mask=brain_mask,
+        norm_volume=norm_volume,
+        transform=transform,
+        gca_file=gca_file,
+        aseg_output=aseg_output,
+    )
     return label_subject_mixed_execute(params, execution)
 
 

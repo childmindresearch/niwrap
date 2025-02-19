@@ -11,6 +11,8 @@ SWAP_VOXELWISE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 SwapVoxelwiseParameters = typing.TypedDict('SwapVoxelwiseParameters', {
     "__STYX_TYPE__": typing.Literal["swap_voxelwise"],
     "vectors_file_list": InputPathType,
@@ -237,7 +239,15 @@ def swap_voxelwise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SWAP_VOXELWISE_METADATA)
-    params = swap_voxelwise_params(vectors_file_list=vectors_file_list, scalars_file_list=scalars_file_list, mask=mask, output_base_name=output_base_name, reorder_mode=reorder_mode, init_mask=init_mask, crossing_thresh=crossing_thresh)
+    params = swap_voxelwise_params(
+        vectors_file_list=vectors_file_list,
+        scalars_file_list=scalars_file_list,
+        mask=mask,
+        output_base_name=output_base_name,
+        reorder_mode=reorder_mode,
+        init_mask=init_mask,
+        crossing_thresh=crossing_thresh,
+    )
     return swap_voxelwise_execute(params, execution)
 
 

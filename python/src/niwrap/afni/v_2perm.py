@@ -11,6 +11,8 @@ V_2PERM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V2permParameters = typing.TypedDict('V2permParameters', {
     "__STYX_TYPE__": typing.Literal["2perm"],
     "prefix": typing.NotRequired[str | None],
@@ -211,7 +213,14 @@ def v_2perm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_2PERM_METADATA)
-    params = v_2perm_params(prefix=prefix, comma=comma, bottom_int=bottom_int, top_int=top_int, subset1_size=subset1_size, subset2_size=subset2_size)
+    params = v_2perm_params(
+        prefix=prefix,
+        comma=comma,
+        bottom_int=bottom_int,
+        top_int=top_int,
+        subset1_size=subset1_size,
+        subset2_size=subset2_size,
+    )
     return v_2perm_execute(params, execution)
 
 

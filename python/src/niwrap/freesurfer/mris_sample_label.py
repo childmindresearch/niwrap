@@ -11,6 +11,8 @@ MRIS_SAMPLE_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisSampleLabelParameters = typing.TypedDict('MrisSampleLabelParameters', {
     "__STYX_TYPE__": typing.Literal["mris_sample_label"],
     "input_label_file": InputPathType,
@@ -173,7 +175,11 @@ def mris_sample_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SAMPLE_LABEL_METADATA)
-    params = mris_sample_label_params(input_label_file=input_label_file, input_surface_file=input_surface_file, output_label_file=output_label_file)
+    params = mris_sample_label_params(
+        input_label_file=input_label_file,
+        input_surface_file=input_surface_file,
+        output_label_file=output_label_file,
+    )
     return mris_sample_label_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SEG2FILLED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Seg2filledParameters = typing.TypedDict('Seg2filledParameters', {
     "__STYX_TYPE__": typing.Literal["seg2filled"],
     "seg_file": InputPathType,
@@ -226,7 +228,15 @@ def seg2filled(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEG2FILLED_METADATA)
-    params = seg2filled_params(seg_file=seg_file, norm_file=norm_file, output_file=output_file, ndil=ndil, cavity_flag=cavity_flag, surf_name=surf_name, surf_dir=surf_dir)
+    params = seg2filled_params(
+        seg_file=seg_file,
+        norm_file=norm_file,
+        output_file=output_file,
+        ndil=ndil,
+        cavity_flag=cavity_flag,
+        surf_name=surf_name,
+        surf_dir=surf_dir,
+    )
     return seg2filled_execute(params, execution)
 
 

@@ -11,29 +11,41 @@ MRTRANSFORM_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MrtransformFslgradParameters = typing.TypedDict('MrtransformFslgradParameters', {
     "__STYX_TYPE__": typing.Literal["fslgrad"],
     "bvecs": InputPathType,
     "bvals": InputPathType,
 })
+
+
 MrtransformExportGradFslParameters = typing.TypedDict('MrtransformExportGradFslParameters', {
     "__STYX_TYPE__": typing.Literal["export_grad_fsl"],
     "bvecs_path": str,
     "bvals_path": str,
 })
+
+
 MrtransformVariousStringParameters = typing.TypedDict('MrtransformVariousStringParameters', {
     "__STYX_TYPE__": typing.Literal["VariousString"],
     "obj": str,
 })
+
+
 MrtransformVariousFileParameters = typing.TypedDict('MrtransformVariousFileParameters', {
     "__STYX_TYPE__": typing.Literal["VariousFile"],
     "obj": InputPathType,
 })
+
+
 MrtransformConfigParameters = typing.TypedDict('MrtransformConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MrtransformParameters = typing.TypedDict('MrtransformParameters', {
     "__STYX_TYPE__": typing.Literal["mrtransform"],
     "linear": typing.NotRequired[InputPathType | None],
@@ -990,7 +1002,42 @@ def mrtransform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRTRANSFORM_METADATA)
-    params = mrtransform_params(linear=linear, flip=flip, inverse=inverse, half=half, replace=replace, identity=identity, template=template, midway_space=midway_space, interp=interp, oversample=oversample, warp=warp, warp_full=warp_full, from_=from_, modulate=modulate, directions=directions, reorient_fod=reorient_fod, grad=grad, fslgrad=fslgrad, export_grad_mrtrix=export_grad_mrtrix, export_grad_fsl=export_grad_fsl, datatype=datatype, strides=strides, nan=nan, no_reorientation=no_reorientation, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = mrtransform_params(
+        linear=linear,
+        flip=flip,
+        inverse=inverse,
+        half=half,
+        replace=replace,
+        identity=identity,
+        template=template,
+        midway_space=midway_space,
+        interp=interp,
+        oversample=oversample,
+        warp=warp,
+        warp_full=warp_full,
+        from_=from_,
+        modulate=modulate,
+        directions=directions,
+        reorient_fod=reorient_fod,
+        grad=grad,
+        fslgrad=fslgrad,
+        export_grad_mrtrix=export_grad_mrtrix,
+        export_grad_fsl=export_grad_fsl,
+        datatype=datatype,
+        strides=strides,
+        nan=nan,
+        no_reorientation=no_reorientation,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return mrtransform_execute(params, execution)
 
 

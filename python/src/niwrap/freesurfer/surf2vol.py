@@ -11,6 +11,8 @@ SURF2VOL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Surf2volParameters = typing.TypedDict('Surf2volParameters', {
     "__STYX_TYPE__": typing.Literal["surf2vol"],
     "fixed_surface": InputPathType,
@@ -355,7 +357,25 @@ def surf2vol(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF2VOL_METADATA)
-    params = surf2vol_params(fixed_surface=fixed_surface, moving_surface=moving_surface, fixed_mri=fixed_mri, moving_mri=moving_mri, output_file=output_file, output_field=output_field, output_affine=output_affine, output_surf=output_surf, output_surf_affine=output_surf_affine, output_mesh=output_mesh, spacing_x=spacing_x, spacing_y=spacing_y, spacing_z=spacing_z, poisson_ratio=poisson_ratio, dirty_factor=dirty_factor, debug_output=debug_output, cache_transform=cache_transform)
+    params = surf2vol_params(
+        fixed_surface=fixed_surface,
+        moving_surface=moving_surface,
+        fixed_mri=fixed_mri,
+        moving_mri=moving_mri,
+        output_file=output_file,
+        output_field=output_field,
+        output_affine=output_affine,
+        output_surf=output_surf,
+        output_surf_affine=output_surf_affine,
+        output_mesh=output_mesh,
+        spacing_x=spacing_x,
+        spacing_y=spacing_y,
+        spacing_z=spacing_z,
+        poisson_ratio=poisson_ratio,
+        dirty_factor=dirty_factor,
+        debug_output=debug_output,
+        cache_transform=cache_transform,
+    )
     return surf2vol_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ WHIRLGIF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 WhirlgifParameters = typing.TypedDict('WhirlgifParameters', {
     "__STYX_TYPE__": typing.Literal["whirlgif"],
     "verbose": bool,
@@ -231,7 +233,15 @@ def whirlgif(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WHIRLGIF_METADATA)
-    params = whirlgif_params(verbose=verbose, loop=loop, transparency_index=transparency_index, inter_frame_delay=inter_frame_delay, outfile=outfile, infile=infile, gif_files=gif_files)
+    params = whirlgif_params(
+        verbose=verbose,
+        loop=loop,
+        transparency_index=transparency_index,
+        inter_frame_delay=inter_frame_delay,
+        outfile=outfile,
+        infile=infile,
+        gif_files=gif_files,
+    )
     return whirlgif_execute(params, execution)
 
 

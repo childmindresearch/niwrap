@@ -11,11 +11,15 @@ MESH2VOXEL_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Mesh2voxelConfigParameters = typing.TypedDict('Mesh2voxelConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Mesh2voxelParameters = typing.TypedDict('Mesh2voxelParameters', {
     "__STYX_TYPE__": typing.Literal["mesh2voxel"],
     "info": bool,
@@ -317,7 +321,19 @@ def mesh2voxel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MESH2VOXEL_METADATA)
-    params = mesh2voxel_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, source=source, template=template, output=output)
+    params = mesh2voxel_params(
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        source=source,
+        template=template,
+        output=output,
+    )
     return mesh2voxel_execute(params, execution)
 
 

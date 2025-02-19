@@ -11,6 +11,8 @@ V__VOL_CENTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VVolCenterParameters = typing.TypedDict('VVolCenterParameters', {
     "__STYX_TYPE__": typing.Literal["@VolCenter"],
     "dset": InputPathType,
@@ -170,7 +172,10 @@ def v__vol_center(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__VOL_CENTER_METADATA)
-    params = v__vol_center_params(dset=dset, orient=orient)
+    params = v__vol_center_params(
+        dset=dset,
+        orient=orient,
+    )
     return v__vol_center_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ TRAIN_GCS_ATLAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 TrainGcsAtlasParameters = typing.TypedDict('TrainGcsAtlasParameters', {
     "__STYX_TYPE__": typing.Literal["train-gcs-atlas"],
     "manual_parcellation": typing.NotRequired[str | None],
@@ -268,7 +270,18 @@ def train_gcs_atlas(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRAIN_GCS_ATLAS_METADATA)
-    params = train_gcs_atlas_params(manual_parcellation=manual_parcellation, subjlist_file=subjlist_file, hemi_spec=hemi_spec, output_gcs=output_gcs, surf_reg=surf_reg, color_table=color_table, exclude_subject=exclude_subject, jackknife_flag=jackknife_flag, aseg_filename=aseg_filename, threads=threads)
+    params = train_gcs_atlas_params(
+        manual_parcellation=manual_parcellation,
+        subjlist_file=subjlist_file,
+        hemi_spec=hemi_spec,
+        output_gcs=output_gcs,
+        surf_reg=surf_reg,
+        color_table=color_table,
+        exclude_subject=exclude_subject,
+        jackknife_flag=jackknife_flag,
+        aseg_filename=aseg_filename,
+        threads=threads,
+    )
     return train_gcs_atlas_execute(params, execution)
 
 

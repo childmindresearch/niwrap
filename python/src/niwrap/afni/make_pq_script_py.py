@@ -11,6 +11,8 @@ MAKE_PQ_SCRIPT_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 MakePqScriptPyParameters = typing.TypedDict('MakePqScriptPyParameters', {
     "__STYX_TYPE__": typing.Literal["make_pq_script.py"],
     "dataset": InputPathType,
@@ -180,7 +182,12 @@ def make_pq_script_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_PQ_SCRIPT_PY_METADATA)
-    params = make_pq_script_py_params(dataset=dataset, brick_index=brick_index, mask=mask, out_script=out_script)
+    params = make_pq_script_py_params(
+        dataset=dataset,
+        brick_index=brick_index,
+        mask=mask,
+        out_script=out_script,
+    )
     return make_pq_script_py_execute(params, execution)
 
 

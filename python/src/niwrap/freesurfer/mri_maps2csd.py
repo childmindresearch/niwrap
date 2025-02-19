@@ -11,6 +11,8 @@ MRI_MAPS2CSD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriMaps2csdParameters = typing.TypedDict('MriMaps2csdParameters', {
     "__STYX_TYPE__": typing.Literal["mri_maps2csd"],
     "input_files": list[str],
@@ -269,7 +271,19 @@ def mri_maps2csd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MAPS2CSD_METADATA)
-    params = mri_maps2csd_params(input_files=input_files, csd_file=csd_file, pdf_file=pdf_file, subject_hemi_surf=subject_hemi_surf, thresh=thresh, sign=sign, csd_apply_file=csd_apply_file, apply_out=apply_out, subjects_dir=subjects_dir, debug=debug, checkopts=checkopts)
+    params = mri_maps2csd_params(
+        input_files=input_files,
+        csd_file=csd_file,
+        pdf_file=pdf_file,
+        subject_hemi_surf=subject_hemi_surf,
+        thresh=thresh,
+        sign=sign,
+        csd_apply_file=csd_apply_file,
+        apply_out=apply_out,
+        subjects_dir=subjects_dir,
+        debug=debug,
+        checkopts=checkopts,
+    )
     return mri_maps2csd_execute(params, execution)
 
 

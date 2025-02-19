@@ -11,6 +11,8 @@ QUICKSPEC_SL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 QuickspecSlParameters = typing.TypedDict('QuickspecSlParameters', {
     "__STYX_TYPE__": typing.Literal["quickspecSL"],
     "surf_A": InputPathType,
@@ -258,7 +260,16 @@ def quickspec_sl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUICKSPEC_SL_METADATA)
-    params = quickspec_sl_params(surf_a=surf_a, surf_b=surf_b, surf_intermed_pref=surf_intermed_pref, infl_surf_a=infl_surf_a, infl_surf_b=infl_surf_b, infl_surf_intermed_pref=infl_surf_intermed_pref, both_lr_flag=both_lr_flag, out_spec=out_spec)
+    params = quickspec_sl_params(
+        surf_a=surf_a,
+        surf_b=surf_b,
+        surf_intermed_pref=surf_intermed_pref,
+        infl_surf_a=infl_surf_a,
+        infl_surf_b=infl_surf_b,
+        infl_surf_intermed_pref=infl_surf_intermed_pref,
+        both_lr_flag=both_lr_flag,
+        out_spec=out_spec,
+    )
     return quickspec_sl_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MRIS_CA_DEFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MrisCaDeformParameters = typing.TypedDict('MrisCaDeformParameters', {
     "__STYX_TYPE__": typing.Literal["mris_ca_deform"],
     "input_surface": InputPathType,
@@ -191,7 +193,13 @@ def mris_ca_deform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CA_DEFORM_METADATA)
-    params = mris_ca_deform_params(input_surface=input_surface, label_vol=label_vol, transform=transform, intensity_vol=intensity_vol, output_surface=output_surface)
+    params = mris_ca_deform_params(
+        input_surface=input_surface,
+        label_vol=label_vol,
+        transform=transform,
+        intensity_vol=intensity_vol,
+        output_surface=output_surface,
+    )
     return mris_ca_deform_execute(params, execution)
 
 

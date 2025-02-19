@@ -11,15 +11,21 @@ TCKSTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 TckstatsOutputParameters = typing.TypedDict('TckstatsOutputParameters', {
     "__STYX_TYPE__": typing.Literal["output"],
     "field": str,
 })
+
+
 TckstatsConfigParameters = typing.TypedDict('TckstatsConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 TckstatsParameters = typing.TypedDict('TckstatsParameters', {
     "__STYX_TYPE__": typing.Literal["tckstats"],
     "output": typing.NotRequired[list[TckstatsOutputParameters] | None],
@@ -403,7 +409,22 @@ def tckstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKSTATS_METADATA)
-    params = tckstats_params(output=output, histogram=histogram, dump=dump, ignorezero=ignorezero, tck_weights_in=tck_weights_in, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks_in=tracks_in)
+    params = tckstats_params(
+        output=output,
+        histogram=histogram,
+        dump=dump,
+        ignorezero=ignorezero,
+        tck_weights_in=tck_weights_in,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        tracks_in=tracks_in,
+    )
     return tckstats_execute(params, execution)
 
 

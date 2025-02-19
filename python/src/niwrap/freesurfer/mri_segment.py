@@ -11,6 +11,8 @@ MRI_SEGMENT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriSegmentParameters = typing.TypedDict('MriSegmentParameters', {
     "__STYX_TYPE__": typing.Literal["mri_segment"],
     "in_vol": InputPathType,
@@ -513,7 +515,42 @@ def mri_segment(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGMENT_METADATA)
-    params = mri_segment_params(in_vol=in_vol, out_vol=out_vol, no1d_remove=no1d_remove, slope=slope, pslope=pslope, nslope=nslope, debug_voxel=debug_voxel, auto=auto, noauto=noauto, log=log, keep=keep, gray_hi=gray_hi, wm_low=wm_low, wm_low_factor=wm_low_factor, wm_hi=wm_hi, nseg=nseg, thicken=thicken, fillbg=fillbg, fillv=fillv, blur_sigma=blur_sigma, iterations=iterations, thin_strand_limit=thin_strand_limit, verbose=verbose, threshold=threshold, extract_options=extract_options, wsize=wsize, wsizemm=wsizemm, polvw_size=polvw_size, polv_len=polv_len, datfile=datfile, segmentation=segmentation, diagno=diagno, diag_write=diag_write, diag_verbose=diag_verbose)
+    params = mri_segment_params(
+        in_vol=in_vol,
+        out_vol=out_vol,
+        no1d_remove=no1d_remove,
+        slope=slope,
+        pslope=pslope,
+        nslope=nslope,
+        debug_voxel=debug_voxel,
+        auto=auto,
+        noauto=noauto,
+        log=log,
+        keep=keep,
+        gray_hi=gray_hi,
+        wm_low=wm_low,
+        wm_low_factor=wm_low_factor,
+        wm_hi=wm_hi,
+        nseg=nseg,
+        thicken=thicken,
+        fillbg=fillbg,
+        fillv=fillv,
+        blur_sigma=blur_sigma,
+        iterations=iterations,
+        thin_strand_limit=thin_strand_limit,
+        verbose=verbose,
+        threshold=threshold,
+        extract_options=extract_options,
+        wsize=wsize,
+        wsizemm=wsizemm,
+        polvw_size=polvw_size,
+        polv_len=polv_len,
+        datfile=datfile,
+        segmentation=segmentation,
+        diagno=diagno,
+        diag_write=diag_write,
+        diag_verbose=diag_verbose,
+    )
     return mri_segment_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ SURF_MESH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 SurfMeshParameters = typing.TypedDict('SurfMeshParameters', {
     "__STYX_TYPE__": typing.Literal["SurfMesh"],
     "input_surface": str,
@@ -232,7 +234,16 @@ def surf_mesh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_MESH_METADATA)
-    params = surf_mesh_params(input_surface=input_surface, output_surface=output_surface, edge_fraction=edge_fraction, surface_volume=surface_volume, one_state=one_state, anatomical_label=anatomical_label, no_volume_registration=no_volume_registration, set_env=set_env)
+    params = surf_mesh_params(
+        input_surface=input_surface,
+        output_surface=output_surface,
+        edge_fraction=edge_fraction,
+        surface_volume=surface_volume,
+        one_state=one_state,
+        anatomical_label=anatomical_label,
+        no_volume_registration=no_volume_registration,
+        set_env=set_env,
+    )
     return surf_mesh_execute(params, execution)
 
 

@@ -11,21 +11,29 @@ FOCI_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 FociResampleLeftSurfacesParameters = typing.TypedDict('FociResampleLeftSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["left_surfaces"],
     "current_surf": InputPathType,
     "new_surf": InputPathType,
 })
+
+
 FociResampleRightSurfacesParameters = typing.TypedDict('FociResampleRightSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["right_surfaces"],
     "current_surf": InputPathType,
     "new_surf": InputPathType,
 })
+
+
 FociResampleCerebellumSurfacesParameters = typing.TypedDict('FociResampleCerebellumSurfacesParameters', {
     "__STYX_TYPE__": typing.Literal["cerebellum_surfaces"],
     "current_surf": InputPathType,
     "new_surf": InputPathType,
 })
+
+
 FociResampleParameters = typing.TypedDict('FociResampleParameters', {
     "__STYX_TYPE__": typing.Literal["foci-resample"],
     "foci_in": InputPathType,
@@ -367,7 +375,15 @@ def foci_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FOCI_RESAMPLE_METADATA)
-    params = foci_resample_params(foci_in=foci_in, foci_out=foci_out, left_surfaces=left_surfaces, right_surfaces=right_surfaces, cerebellum_surfaces=cerebellum_surfaces, opt_discard_distance_from_surface=opt_discard_distance_from_surface, opt_restore_xyz=opt_restore_xyz)
+    params = foci_resample_params(
+        foci_in=foci_in,
+        foci_out=foci_out,
+        left_surfaces=left_surfaces,
+        right_surfaces=right_surfaces,
+        cerebellum_surfaces=cerebellum_surfaces,
+        opt_discard_distance_from_surface=opt_discard_distance_from_surface,
+        opt_restore_xyz=opt_restore_xyz,
+    )
     return foci_resample_execute(params, execution)
 
 

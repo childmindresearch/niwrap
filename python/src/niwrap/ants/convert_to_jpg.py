@@ -11,6 +11,8 @@ CONVERT_TO_JPG_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 ConvertToJpgParameters = typing.TypedDict('ConvertToJpgParameters', {
     "__STYX_TYPE__": typing.Literal["ConvertToJpg"],
     "infile": InputPathType,
@@ -164,7 +166,10 @@ def convert_to_jpg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_TO_JPG_METADATA)
-    params = convert_to_jpg_params(infile=infile, outfile=outfile)
+    params = convert_to_jpg_params(
+        infile=infile,
+        outfile=outfile,
+    )
     return convert_to_jpg_execute(params, execution)
 
 

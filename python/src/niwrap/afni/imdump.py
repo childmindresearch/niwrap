@@ -11,6 +11,8 @@ IMDUMP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 ImdumpParameters = typing.TypedDict('ImdumpParameters', {
     "__STYX_TYPE__": typing.Literal["imdump"],
     "input_image": InputPathType,
@@ -160,7 +162,9 @@ def imdump(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMDUMP_METADATA)
-    params = imdump_params(input_image=input_image)
+    params = imdump_params(
+        input_image=input_image,
+    )
     return imdump_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ V_3D_AUTOBOX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dAutoboxParameters = typing.TypedDict('V3dAutoboxParameters', {
     "__STYX_TYPE__": typing.Literal["3dAutobox"],
     "input": InputPathType,
@@ -305,7 +307,22 @@ def v_3d_autobox(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_AUTOBOX_METADATA)
-    params = v_3d_autobox_params(input_=input_, prefix=prefix, alt_input=alt_input, noclust=noclust, extent=extent, extent_ijk=extent_ijk, extent_ijk_to_file=extent_ijk_to_file, extent_ijk_midslice=extent_ijk_midslice, extent_ijkord=extent_ijkord, extent_ijkord_to_file=extent_ijkord_to_file, extent_xyz_to_file=extent_xyz_to_file, extent_xyz_midslice=extent_xyz_midslice, npad=npad, npad_safety_on=npad_safety_on)
+    params = v_3d_autobox_params(
+        input_=input_,
+        prefix=prefix,
+        alt_input=alt_input,
+        noclust=noclust,
+        extent=extent,
+        extent_ijk=extent_ijk,
+        extent_ijk_to_file=extent_ijk_to_file,
+        extent_ijk_midslice=extent_ijk_midslice,
+        extent_ijkord=extent_ijkord,
+        extent_ijkord_to_file=extent_ijkord_to_file,
+        extent_xyz_to_file=extent_xyz_to_file,
+        extent_xyz_midslice=extent_xyz_midslice,
+        npad=npad,
+        npad_safety_on=npad_safety_on,
+    )
     return v_3d_autobox_execute(params, execution)
 
 

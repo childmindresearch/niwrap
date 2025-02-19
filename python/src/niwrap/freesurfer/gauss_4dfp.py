@@ -11,6 +11,8 @@ GAUSS_4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 Gauss4dfpParameters = typing.TypedDict('Gauss4dfpParameters', {
     "__STYX_TYPE__": typing.Literal["gauss_4dfp"],
     "input_file": str,
@@ -209,7 +211,14 @@ def gauss_4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GAUSS_4DFP_METADATA)
-    params = gauss_4dfp_params(input_file=input_file, f_half=f_half, output_root=output_root, endian_flag=endian_flag, wrap_flag=wrap_flag, differentiate_flag=differentiate_flag)
+    params = gauss_4dfp_params(
+        input_file=input_file,
+        f_half=f_half,
+        output_root=output_root,
+        endian_flag=endian_flag,
+        wrap_flag=wrap_flag,
+        differentiate_flag=differentiate_flag,
+    )
     return gauss_4dfp_execute(params, execution)
 
 

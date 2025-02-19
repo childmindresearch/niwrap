@@ -11,6 +11,8 @@ MKXSUBJREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MkxsubjregParameters = typing.TypedDict('MkxsubjregParameters', {
     "__STYX_TYPE__": typing.Literal["mkxsubjreg"],
     "srcreg": InputPathType,
@@ -236,7 +238,16 @@ def mkxsubjreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKXSUBJREG_METADATA)
-    params = mkxsubjreg_params(srcreg=srcreg, targreg=targreg, targsubj=targsubj, xfm=xfm, sd=sd, fvol=fvol, help_=help_, version=version)
+    params = mkxsubjreg_params(
+        srcreg=srcreg,
+        targreg=targreg,
+        targsubj=targsubj,
+        xfm=xfm,
+        sd=sd,
+        fvol=fvol,
+        help_=help_,
+        version=version,
+    )
     return mkxsubjreg_execute(params, execution)
 
 

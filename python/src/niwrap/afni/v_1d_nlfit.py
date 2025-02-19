@@ -11,6 +11,8 @@ V_1D_NLFIT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V1dNlfitParameters = typing.TypedDict('V1dNlfitParameters', {
     "__STYX_TYPE__": typing.Literal["1dNLfit"],
     "expression": str,
@@ -233,7 +235,13 @@ def v_1d_nlfit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_NLFIT_METADATA)
-    params = v_1d_nlfit_params(expression=expression, independent_variable=independent_variable, parameters=parameters, dependent_data=dependent_data, method=method)
+    params = v_1d_nlfit_params(
+        expression=expression,
+        independent_variable=independent_variable,
+        parameters=parameters,
+        dependent_data=dependent_data,
+        method=method,
+    )
     return v_1d_nlfit_execute(params, execution)
 
 

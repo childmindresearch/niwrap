@@ -11,6 +11,8 @@ V_3D_CONVOLVE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 V3dConvolveParameters = typing.TypedDict('V3dConvolveParameters', {
     "__STYX_TYPE__": typing.Literal["3dConvolve"],
     "infile": InputPathType,
@@ -178,7 +180,11 @@ def v_3d_convolve(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CONVOLVE_METADATA)
-    params = v_3d_convolve_params(infile=infile, outfile=outfile, options=options)
+    params = v_3d_convolve_params(
+        infile=infile,
+        outfile=outfile,
+        options=options,
+    )
     return v_3d_convolve_execute(params, execution)
 
 

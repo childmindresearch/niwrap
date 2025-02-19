@@ -11,6 +11,8 @@ V__EXAMINE_GEN_FEAT_DISTS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VExamineGenFeatDistsParameters = typing.TypedDict('VExamineGenFeatDistsParameters', {
     "__STYX_TYPE__": typing.Literal["@ExamineGenFeatDists"],
     "features_dir": str,
@@ -252,7 +254,17 @@ def v__examine_gen_feat_dists(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__EXAMINE_GEN_FEAT_DISTS_METADATA)
-    params = v__examine_gen_feat_dists_params(features_dir=features_dir, wildcards=wildcards, output_suffix=output_suffix, exclude_features=exclude_features, exclude_classes=exclude_classes, output_dir=output_dir, panels_horizontal=panels_horizontal, echo=echo, help_=help_)
+    params = v__examine_gen_feat_dists_params(
+        features_dir=features_dir,
+        wildcards=wildcards,
+        output_suffix=output_suffix,
+        exclude_features=exclude_features,
+        exclude_classes=exclude_classes,
+        output_dir=output_dir,
+        panels_horizontal=panels_horizontal,
+        echo=echo,
+        help_=help_,
+    )
     return v__examine_gen_feat_dists_execute(params, execution)
 
 

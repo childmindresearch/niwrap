@@ -11,6 +11,8 @@ V__RENAME_PANGA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 VRenamePangaParameters = typing.TypedDict('VRenamePangaParameters', {
     "__STYX_TYPE__": typing.Literal["@RenamePanga"],
     "dir_number": str,
@@ -253,7 +255,18 @@ def v__rename_panga(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__RENAME_PANGA_METADATA)
-    params = v__rename_panga_params(dir_number=dir_number, first_image_number=first_image_number, num_slices=num_slices, num_reps=num_reps, output_root=output_root, keep_prefix=keep_prefix, interactive=interactive, outliers_check=outliers_check, slice_pattern=slice_pattern, output_directory=output_directory)
+    params = v__rename_panga_params(
+        dir_number=dir_number,
+        first_image_number=first_image_number,
+        num_slices=num_slices,
+        num_reps=num_reps,
+        output_root=output_root,
+        keep_prefix=keep_prefix,
+        interactive=interactive,
+        outliers_check=outliers_check,
+        slice_pattern=slice_pattern,
+        output_directory=output_directory,
+    )
     return v__rename_panga_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ MAKE_FOLDING_ATLAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MakeFoldingAtlasParameters = typing.TypedDict('MakeFoldingAtlasParameters', {
     "__STYX_TYPE__": typing.Literal["make_folding_atlas"],
     "subjlistfile": typing.NotRequired[InputPathType | None],
@@ -355,7 +357,27 @@ def make_folding_atlas(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_FOLDING_ATLAS_METADATA)
-    params = make_folding_atlas_params(subjlistfile=subjlistfile, fsgdfile=fsgdfile, subjects=subjects, output_base=output_base, max_iterations=max_iterations, xhemi=xhemi, init_surf_reg=init_surf_reg, init_subject=init_subject, no_annot_template=no_annot_template, right_hemisphere=right_hemisphere, lhrh=lhrh, ico_order=ico_order, no_vol_on_last=no_vol_on_last, vol=vol, init=init, short_sleep=short_sleep, no_template_only=no_template_only, threads=threads, slurm_account=slurm_account)
+    params = make_folding_atlas_params(
+        subjlistfile=subjlistfile,
+        fsgdfile=fsgdfile,
+        subjects=subjects,
+        output_base=output_base,
+        max_iterations=max_iterations,
+        xhemi=xhemi,
+        init_surf_reg=init_surf_reg,
+        init_subject=init_subject,
+        no_annot_template=no_annot_template,
+        right_hemisphere=right_hemisphere,
+        lhrh=lhrh,
+        ico_order=ico_order,
+        no_vol_on_last=no_vol_on_last,
+        vol=vol,
+        init=init,
+        short_sleep=short_sleep,
+        no_template_only=no_template_only,
+        threads=threads,
+        slurm_account=slurm_account,
+    )
     return make_folding_atlas_execute(params, execution)
 
 

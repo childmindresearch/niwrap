@@ -11,11 +11,15 @@ AMP2RESPONSE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 Amp2responseConfigParameters = typing.TypedDict('Amp2responseConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 Amp2responseParameters = typing.TypedDict('Amp2responseParameters', {
     "__STYX_TYPE__": typing.Literal["amp2response"],
     "isotropic": bool,
@@ -416,7 +420,25 @@ def amp2response(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AMP2RESPONSE_METADATA)
-    params = amp2response_params(isotropic=isotropic, noconstraint=noconstraint, directions=directions, shells=shells, lmax=lmax, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, amps=amps, mask=mask, directions_1=directions_1, response=response)
+    params = amp2response_params(
+        isotropic=isotropic,
+        noconstraint=noconstraint,
+        directions=directions,
+        shells=shells,
+        lmax=lmax,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        amps=amps,
+        mask=mask,
+        directions_1=directions_1,
+        response=response,
+    )
     return amp2response_execute(params, execution)
 
 

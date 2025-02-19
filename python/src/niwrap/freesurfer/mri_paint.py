@@ -11,6 +11,8 @@ MRI_PAINT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 MriPaintParameters = typing.TypedDict('MriPaintParameters', {
     "__STYX_TYPE__": typing.Literal["mri_paint"],
     "input_volume": InputPathType,
@@ -200,7 +202,14 @@ def mri_paint(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PAINT_METADATA)
-    params = mri_paint_params(input_volume=input_volume, input_surface=input_surface, registration_file=registration_file, output_float_file=output_float_file, image_offset=image_offset, paint_surf_coords=paint_surf_coords)
+    params = mri_paint_params(
+        input_volume=input_volume,
+        input_surface=input_surface,
+        registration_file=registration_file,
+        output_float_file=output_float_file,
+        image_offset=image_offset,
+        paint_surf_coords=paint_surf_coords,
+    )
     return mri_paint_execute(params, execution)
 
 

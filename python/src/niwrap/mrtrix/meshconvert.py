@@ -11,16 +11,22 @@ MESHCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+
+
 MeshconvertTransformParameters = typing.TypedDict('MeshconvertTransformParameters', {
     "__STYX_TYPE__": typing.Literal["transform"],
     "mode": str,
     "image": InputPathType,
 })
+
+
 MeshconvertConfigParameters = typing.TypedDict('MeshconvertConfigParameters', {
     "__STYX_TYPE__": typing.Literal["config"],
     "key": str,
     "value": str,
 })
+
+
 MeshconvertParameters = typing.TypedDict('MeshconvertParameters', {
     "__STYX_TYPE__": typing.Literal["meshconvert"],
     "binary": bool,
@@ -374,7 +380,20 @@ def meshconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MESHCONVERT_METADATA)
-    params = meshconvert_params(binary=binary, transform=transform, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    params = meshconvert_params(
+        binary=binary,
+        transform=transform,
+        info=info,
+        quiet=quiet,
+        debug=debug,
+        force=force,
+        nthreads=nthreads,
+        config=config,
+        help_=help_,
+        version=version,
+        input_=input_,
+        output=output,
+    )
     return meshconvert_execute(params, execution)
 
 

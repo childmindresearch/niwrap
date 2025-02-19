@@ -11,16 +11,22 @@ METRIC_REGRESSION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 MetricRegressionRemoveParameters = typing.TypedDict('MetricRegressionRemoveParameters', {
     "__STYX_TYPE__": typing.Literal["remove"],
     "metric": InputPathType,
     "opt_remove_column_column": typing.NotRequired[str | None],
 })
+
+
 MetricRegressionKeepParameters = typing.TypedDict('MetricRegressionKeepParameters', {
     "__STYX_TYPE__": typing.Literal["keep"],
     "metric": InputPathType,
     "opt_keep_column_column": typing.NotRequired[str | None],
 })
+
+
 MetricRegressionParameters = typing.TypedDict('MetricRegressionParameters', {
     "__STYX_TYPE__": typing.Literal["metric-regression"],
     "metric_in": InputPathType,
@@ -331,7 +337,14 @@ def metric_regression(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_REGRESSION_METADATA)
-    params = metric_regression_params(metric_in=metric_in, metric_out=metric_out, opt_roi_roi_metric=opt_roi_roi_metric, opt_column_column=opt_column_column, remove=remove, keep=keep)
+    params = metric_regression_params(
+        metric_in=metric_in,
+        metric_out=metric_out,
+        opt_roi_roi_metric=opt_roi_roi_metric,
+        opt_column_column=opt_column_column,
+        remove=remove,
+        keep=keep,
+    )
     return metric_regression_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ TBSS_2_REG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 Tbss2RegParameters = typing.TypedDict('Tbss2RegParameters', {
     "__STYX_TYPE__": typing.Literal["tbss_2_reg"],
     "use_fmrib58_fa_1mm": bool,
@@ -182,7 +184,11 @@ def tbss_2_reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_2_REG_METADATA)
-    params = tbss_2_reg_params(use_fmrib58_fa_1mm=use_fmrib58_fa_1mm, target_image=target_image, find_best_target=find_best_target)
+    params = tbss_2_reg_params(
+        use_fmrib58_fa_1mm=use_fmrib58_fa_1mm,
+        target_image=target_image,
+        find_best_target=find_best_target,
+    )
     return tbss_2_reg_execute(params, execution)
 
 

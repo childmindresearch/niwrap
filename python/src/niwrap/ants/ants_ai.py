@@ -11,6 +11,8 @@ ANTS_AI_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+
+
 AntsAiParameters = typing.TypedDict('AntsAiParameters', {
     "__STYX_TYPE__": typing.Literal["antsAI"],
     "dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
@@ -314,7 +316,20 @@ def ants_ai(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_AI_METADATA)
-    params = ants_ai_params(dimensionality=dimensionality, metric=metric, transform=transform, align_principal_axes=align_principal_axes, align_blobs=align_blobs, search_factor=search_factor, translation_search_grid=translation_search_grid, convergence=convergence, masks=masks, output=output, random_seed=random_seed, verbose=verbose)
+    params = ants_ai_params(
+        dimensionality=dimensionality,
+        metric=metric,
+        transform=transform,
+        align_principal_axes=align_principal_axes,
+        align_blobs=align_blobs,
+        search_factor=search_factor,
+        translation_search_grid=translation_search_grid,
+        convergence=convergence,
+        masks=masks,
+        output=output,
+        random_seed=random_seed,
+        verbose=verbose,
+    )
     return ants_ai_execute(params, execution)
 
 

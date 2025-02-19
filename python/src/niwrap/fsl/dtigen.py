@@ -11,6 +11,8 @@ DTIGEN_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 DtigenParameters = typing.TypedDict('DtigenParameters', {
     "__STYX_TYPE__": typing.Literal["dtigen"],
     "tensor": InputPathType,
@@ -235,7 +237,16 @@ def dtigen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DTIGEN_METADATA)
-    params = dtigen_params(tensor=tensor, s0=s0, output_data=output_data, bvecs=bvecs, bvals=bvals, brainmask=brainmask, kurtosis=kurtosis, help_=help_)
+    params = dtigen_params(
+        tensor=tensor,
+        s0=s0,
+        output_data=output_data,
+        bvecs=bvecs,
+        bvals=bvals,
+        brainmask=brainmask,
+        kurtosis=kurtosis,
+        help_=help_,
+    )
     return dtigen_execute(params, execution)
 
 

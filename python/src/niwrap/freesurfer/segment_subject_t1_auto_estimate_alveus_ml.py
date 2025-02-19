@@ -11,6 +11,8 @@ SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+
+
 SegmentSubjectT1AutoEstimateAlveusMlParameters = typing.TypedDict('SegmentSubjectT1AutoEstimateAlveusMlParameters', {
     "__STYX_TYPE__": typing.Literal["segmentSubjectT1_autoEstimateAlveusML"],
     "t1_file": InputPathType,
@@ -168,7 +170,10 @@ def segment_subject_t1_auto_estimate_alveus_ml(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_METADATA)
-    params = segment_subject_t1_auto_estimate_alveus_ml_params(t1_file=t1_file, output_folder=output_folder)
+    params = segment_subject_t1_auto_estimate_alveus_ml_params(
+        t1_file=t1_file,
+        output_folder=output_folder,
+    )
     return segment_subject_t1_auto_estimate_alveus_ml_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ VOLUME_FIND_CLUSTERS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
 VolumeFindClustersParameters = typing.TypedDict('VolumeFindClustersParameters', {
     "__STYX_TYPE__": typing.Literal["volume-find-clusters"],
     "volume_in": InputPathType,
@@ -281,7 +283,18 @@ def volume_find_clusters(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_FIND_CLUSTERS_METADATA)
-    params = volume_find_clusters_params(volume_in=volume_in, value_threshold=value_threshold, minimum_volume=minimum_volume, volume_out=volume_out, opt_less_than=opt_less_than, opt_roi_roi_volume=opt_roi_roi_volume, opt_subvolume_subvol=opt_subvolume_subvol, opt_size_ratio_ratio=opt_size_ratio_ratio, opt_distance_distance=opt_distance_distance, opt_start_startval=opt_start_startval)
+    params = volume_find_clusters_params(
+        volume_in=volume_in,
+        value_threshold=value_threshold,
+        minimum_volume=minimum_volume,
+        volume_out=volume_out,
+        opt_less_than=opt_less_than,
+        opt_roi_roi_volume=opt_roi_roi_volume,
+        opt_subvolume_subvol=opt_subvolume_subvol,
+        opt_size_ratio_ratio=opt_size_ratio_ratio,
+        opt_distance_distance=opt_distance_distance,
+        opt_start_startval=opt_start_startval,
+    )
     return volume_find_clusters_execute(params, execution)
 
 

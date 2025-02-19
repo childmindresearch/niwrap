@@ -11,6 +11,8 @@ FSL_ANAT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+
+
 FslAnatParameters = typing.TypedDict('FslAnatParameters', {
     "__STYX_TYPE__": typing.Literal["fsl_anat"],
     "structural_image": typing.NotRequired[InputPathType | None],
@@ -344,7 +346,26 @@ def fsl_anat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_ANAT_METADATA)
-    params = fsl_anat_params(structural_image=structural_image, existing_anat_dir=existing_anat_dir, output_dir=output_dir, clobber_flag=clobber_flag, strongbias_flag=strongbias_flag, weakbias_flag=weakbias_flag, noreorient_flag=noreorient_flag, nocrop_flag=nocrop_flag, nobias_flag=nobias_flag, noreg_flag=noreg_flag, nononlinreg_flag=nononlinreg_flag, noseg_flag=noseg_flag, nosubcortseg_flag=nosubcortseg_flag, bias_smoothing=bias_smoothing, image_type=image_type, nosearch_flag=nosearch_flag, bet_f_param=bet_f_param, nocleanup_flag=nocleanup_flag)
+    params = fsl_anat_params(
+        structural_image=structural_image,
+        existing_anat_dir=existing_anat_dir,
+        output_dir=output_dir,
+        clobber_flag=clobber_flag,
+        strongbias_flag=strongbias_flag,
+        weakbias_flag=weakbias_flag,
+        noreorient_flag=noreorient_flag,
+        nocrop_flag=nocrop_flag,
+        nobias_flag=nobias_flag,
+        noreg_flag=noreg_flag,
+        nononlinreg_flag=nononlinreg_flag,
+        noseg_flag=noseg_flag,
+        nosubcortseg_flag=nosubcortseg_flag,
+        bias_smoothing=bias_smoothing,
+        image_type=image_type,
+        nosearch_flag=nosearch_flag,
+        bet_f_param=bet_f_param,
+        nocleanup_flag=nocleanup_flag,
+    )
     return fsl_anat_execute(params, execution)
 
 

@@ -11,6 +11,8 @@ ABIDS_JSON_INFO_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+
+
 AbidsJsonInfoPyParameters = typing.TypedDict('AbidsJsonInfoPyParameters', {
     "__STYX_TYPE__": typing.Literal["abids_json_info.py"],
     "json_files": list[InputPathType],
@@ -223,7 +225,16 @@ def abids_json_info_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ABIDS_JSON_INFO_PY_METADATA)
-    params = abids_json_info_py_params(json_files=json_files, tr_flag=tr_flag, te_flag=te_flag, te_sec_flag=te_sec_flag, match_nii_flag=match_nii_flag, field_list=field_list, list_fields_flag=list_fields_flag, help_flag=help_flag)
+    params = abids_json_info_py_params(
+        json_files=json_files,
+        tr_flag=tr_flag,
+        te_flag=te_flag,
+        te_sec_flag=te_sec_flag,
+        match_nii_flag=match_nii_flag,
+        field_list=field_list,
+        list_fields_flag=list_fields_flag,
+        help_flag=help_flag,
+    )
     return abids_json_info_py_execute(params, execution)
 
 
